@@ -58,17 +58,22 @@ app.post('/:path', function(req, res)
                     else
                     {
                       var tipoFloat=Number.isInteger(cuerpoPeticion[campoRequeridosDeSwagger][variable][campoDelBody]);
+
                       if(tipoFloat==true){
                           var cambioDeNombre=(typeof(cuerpoPeticion[campoRequeridosDeSwagger][variable][campoDelBody])=="number")?"integer":false;
-                          var isInteger=(tipoDeDatoEnArray == cambioDeNombre)?false:new Error("El campo: " + campoDelBody + " Espera un tipo de dato " + tipoDeDatoEnArray);
+                          var isInteger=(tipoDeDatoEnArray == cambioDeNombre)?true:false;
+                          if(isInteger){
+                          }else {
+                          throw  new Error("El campo: " + campoDelBody + " Espera un tipo de dato " + tipoDeDatoEnArray);
+                          }
 
                       }else {
                         //Validacion con number que es flotante
-                        if(tipoDeDatoEnArray == typeof(cuerpoPeticion[campoRequeridosDeSwagger][variable][campoDelBody]))
+
+                        if(JSON.stringify(tipoDeDatoEnArray) == JSON.stringify(typeof(cuerpoPeticion[campoRequeridosDeSwagger][variable][campoDelBody])))
                         {}
                         else
                         {
-
                           throw new Error("El campo: " + campoDelBody + " Espera un tipo de dato " + tipoDeDatoEnArray);
                         }
                       }
@@ -244,4 +249,4 @@ app.get('/index', function(req, res)
 // escuchar
 app.listen(9090);
 console.log("Servidor Express escuchando en modo %s", app.settings.env);
-console.log("Esta ruta se accede a postman para hacer las peticiones con esta ruta :" + "http://localhost:9000/consultaDatosBasicos");
+console.log("Esta ruta se accede a postman para hacer las peticiones con esta ruta :" + "http://localhost:9090/consultaDatosBasicos");
