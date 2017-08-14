@@ -37,6 +37,7 @@ app.post('/:path', function(req, res)
           {
             var tieneListar = cuerpoPeticion[campoRequeridosDeSwagger].length >= 1 ? true : false;
             //Verifica si es lista
+
             if(tieneListar)
             {
               for(var variable in cuerpoPeticion[campoRequeridosDeSwagger])
@@ -61,6 +62,7 @@ app.post('/:path', function(req, res)
 
                       if(tipoFloat==true){
                           var cambioDeNombre=(typeof(cuerpoPeticion[campoRequeridosDeSwagger][variable][campoDelBody])=="number")?"integer":false;
+
                           var isInteger=(tipoDeDatoEnArray == cambioDeNombre)?true:false;
                           if(isInteger){
                           }else {
