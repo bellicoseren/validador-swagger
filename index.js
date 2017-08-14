@@ -10,6 +10,7 @@ app.use(bodyParser());
 // ruteo
 app.post('/:path', function(req, res)
 {
+  //console.log("Validadaor de cabeceras:  "+req.getHeaders('Content-Type', 'text/plain'));
   var data = swagger.paths[req.path].post.parameters;
   console.log("Valor que viene del Path: " + req.path);
   var listaDeRequeridos = data[0].schema.required;
@@ -50,11 +51,7 @@ app.post('/:path', function(req, res)
                   {
                     var tipoDeDatoEnArray = data[0].schema.properties[campoRequeridosDeSwagger].items.properties[campoDelBody].type;
                     var existeUnRequiere = data[0].schema.properties[campoRequeridosDeSwagger].items.required;
-                    if(cuerpoPeticion[campoRequeridosDeSwagger][variable][
-                        campoDelBody
-                      ] == "" || cuerpoPeticion[campoRequeridosDeSwagger][
-                        variable
-                      ][campoDelBody] == null)
+                    if(cuerpoPeticion[campoRequeridosDeSwagger][variable][campoDelBody] == "" || cuerpoPeticion[campoRequeridosDeSwagger][variable][campoDelBody] == null)
                     {
                       throw new Error("El campo: " + campoDelBody + " No puede ir vacio ");
                     }
@@ -92,9 +89,10 @@ app.post('/:path', function(req, res)
                 else
                 {
                   //Este if es para cuando el campo viene vacio
-                  if(cuerpoPeticion[campoRequeridosDeSwagger] == "" || cuerpoPeticion[campoRequeridosDeSwagger] == null)
+
+                  if(cuerpoPeticion[campoRequeridosDeSwagger][camposReqXTipoDato] == "" || cuerpoPeticion[campoRequeridosDeSwagger] == null)
                   {
-                    throw new Error("El Campo :" + campoRequeridosDeSwagger + " no puede venir vacio:");
+                    throw new Error("El Campo :" + camposReqXTipoDato + " no puede venir vacio:");
                   }
                   //Termina la validacion si el tipo de dato viene vacio
                   else
