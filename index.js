@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 var express = require('express');
 var swagger = require('./swagger.json');
 let modelo = require('./modelo');
+var port = process.env.PORT
 // instanciar
 var app = express();
 app.use(bodyParser());
@@ -248,7 +249,7 @@ app.get('/index', function(req, res)
 {
   res.sendfile(__dirname + '/public/index.html');
 });
-// escuchar
-app.listen(9090);
+// escuchars
+app.listen(port);
 console.log("Servidor Express escuchando en modo %s", app.settings.env);
 console.log("Esta ruta se accede a postman para hacer las peticiones con esta ruta :" + "http://localhost:9090/consultaDatosBasicos");
