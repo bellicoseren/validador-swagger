@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var express = require('express');
 var swagger = require('./swagger.json');
 let modelo = require('./modelo');
-var port = process.env.PORT
+var port = process.env.VALIDADORPUERTO
 // instanciar
 var app = express();
 app.use(bodyParser());
