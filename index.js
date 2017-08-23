@@ -7,24 +7,112 @@ let modelo = require('./modelo');
 var port = 9090
 // instanciar
 var app = express();
+app.use(bodyParser.raw(
+  {
+    type: "application/octet-stream"
+  }
+));
 app.use(bodyParser());
 
 
 
+app.post("/octet", function(req, res)
+{
 
+  console.log(typeof(req.body));
+  console.log("----------------------------------------------------");
+  console.log(req.body);
+  res.status(200).send(req.body);
+});
 
 /*
-**propertyBody: Contiene el valor de la propiedad en el body
-*propertyDef: Contiene la defincion de la propiedad que esta en el swagger
-*propertyName: Contiene el nombre de la propiedad que se esta validando
-*/
-function typeValidation(propertyBody, propertyDef, propertyName, errors)
+**
+**
+**
+**/
+function validateArray(arrayBody, arrayDefinition, errors)
 {
-  var type= typeof( propertyBody );
-  var typeDefinition= propertyDef.type;
-  var formatDefinition= propertyDef.format;
-  console.log("type "+ propertyName +":"+ type);
-  console.log(errors["type"]);
+  var itemsDefinition= arrayDefinition.items;
+  for( var itemArray in arrayBody )
+  {
+    validateObject(arrayBody[itemArray], itemsDefinition, errors);
+    // var propertiesDef= item.properties;
+    // for( var propertyDef in propertiesDef )
+    // {
+    //   var typeDef= propertyDef.type;
+    //   var formatDef= propertyDef.format;
+    //   var type= typeof(itemArray[propertyDef])
+    //   console.log();
+    // }
+  }
+
+}
+
+function validateRequired(bodyreq, propertiesRequired, errors)
+{
+  for(var property in propertiesRequired )
+  {
+    if( bodyreq[propertiesRequired[property]] == null )
+    {
+      // throw new Error("Propiedad requerida faltante: "+ propertiesRequired[property]);
+      console.log("Error: Propiedad requerida faltante: "+ propertiesRequired[property]);
+      errors["required"][propertiesRequired[property]]="No se encontro la propiedad";
+    }
+  }
+}
+
+function validate(bodyreq, schemaDefinition, errors)
+{
+  errors["required"]= {};
+  errors["type"]= {};
+  errors["logic"]={};
+  validateRequired(bodyreq, schemaDefinition.required,errors);
+  validateObject(bodyreq, schemaDefinition, errors);
+}
+
+function validateObject(bodyreq, schemaDefinition, errors)
+{
+
+  var properties= schemaDefinition.properties;
+  validateRequired(bodyreq, schemaDefinition.required, errors)
+
+  for( property in properties )
+  {
+    //Significa que ya pasamos la validacion de requeridos, podriamos encontrarnos con una
+    // propiedad que no esta en el body
+    if(bodyreq[property] == null)
+    {
+      continue;
+    }
+    var type= typeof(bodyreq[property]);
+
+    if(type !=  "object")
+    {
+      var typeDef= properties[property].type;
+      var format= properties[property].format;
+      console.log("-------------------***************-----------------");
+      console.log(properties[property]);
+      validateProperty(type,typeDef, format, property,properties[property],bodyreq[property], errors );
+    }
+    else
+    {
+      if(!Array.isArray(bodyreq[property]))
+      {
+        console.log("VALIDANDO OBJECT "+ bodyreq[property]);
+        validateObject(bodyreq[property], properties[property], errors);
+      }
+      else
+      {
+        console.log("VALIDANDO ARRAY "+ bodyreq[property].length);
+        validateArray(bodyreq[property], properties[property], errors);
+      }
+
+    }
+  }
+}
+function validateProperty(type, typeDefinition, formatDefinition, propertyName, propertyDef, propertyBody , errors)
+{
+  var typeTemp= type;
   if( typeDefinition == "integer" && type == "number")
   {
     type= "integer";
@@ -34,23 +122,24 @@ function typeValidation(propertyBody, propertyDef, propertyName, errors)
   {
     // throw new Error( "El tipo de dato no coincide en el campo "+propertyName+", se esperaba "+ typeDefinition + "y se recibio" + type );
     errors["type"][propertyName]="El tipo de dato no coincide, se esperaba "+ typeDefinition +" y se recibio "+ type ;
+    return;
   }
   //Validar que sea un float o douible en caso que asi se requiera
   if(typeDefinition == "number" && (formatDefinition == "float" || formatDefinition == "double") )
   {
     if( Number.isInteger(propertyBody) )
     {
-      errors["type"][propertyName]="El tipo de dato no coincide, se esperaba "+ typeDefinition +" y se recibio "+ type ;
+      errors["type"][propertyName]="El tipo de dato no coincide, se esperaba "+ typeDefinition +" y se recibio Integer";
 
       // throw new Error("El tipo de dato no coincide en el campo "+ propertyName+",se esperaba " + typeDefinition+":"+formatDefinition+ " y se recibio "+type);
     }
   }
   //Validar que sea un entero en caso que asi se requiera
-  else if(typeDefinition= "integer" && (formatDefinition == "int32" || formatDefinition == "int64"))
+  else if(typeDefinition== "integer" && (formatDefinition == "int32" || formatDefinition == "int64"))
   {
     if( !Number.isInteger(propertyBody) )
     {
-      errors["type"][propertyName]="El tipo de dato no coincide, se esperaba "+ typeDefinition +" y se recibio "+ type ;
+      errors["type"][propertyName]="El tipo de dato no coincide, se esperaba "+ typeDefinition +" y se recibio float" ;
 
       // throw new Error("El tipo de dato no coincide en el campo "+ propertyName+", se esperaba "+ typeDefinition + ":"+formatDefinition+ " y se recibio float");
     }
@@ -79,31 +168,14 @@ function typeValidation(propertyBody, propertyDef, propertyName, errors)
     }
   }
 
-  return true;
+
+
 
 }
-
-
-
-
-
-
 // ruteo
 app.post('/:path', function(req, res)
 {
-
-  var typeArray=typeof(req.body.array);
-  console.log(typeArray);
-  console.log(req.body.array);
-  console.log(req.body.array.length);
-  console.log(req.body.ticket.length);
-
-  //console.log("Validadaor de cabeceras:  "+req.getHeaders('Content-Type', 'text/plain'));
-  // console.log(req);
   var errors={};
-  errors["required"]={};
-  errors["type"]={};
-  errors["logic"]={};
   var path= swagger.paths[req.originalUrl];
   if(path == null)
   {
@@ -113,122 +185,13 @@ app.post('/:path', function(req, res)
     return;
   }
   var bodyreq= req.body;
-
+  errors["required"]={};
+  errors["type"]={};
+  errors["logic"]={};
   console.log("Path " + req.originalUrl + " validando...");
-  //Revisar si en todos los casos solo hay un parametro en el array parameters
-  var propertiesNames= path.post.parameters[0].schema.properties;
-  var propertiesRequired= path.post.parameters[0].schema.required;
 
 
-  // console.log(propertiesNames);
-  // console.log(propertiesRequired);
-  // console.log(bodyreq);
-  //Revisar required properties
-  var requiredErrors=false;
-  for(var property in propertiesRequired )
-  {
-    if( bodyreq[propertiesRequired[property]] == null )
-    {
-      console.log("Error: Propiedad requerida faltante: "+ propertiesRequired[property]);
-      // throw new Error("Propiedad requerida faltante: "+ propertiesRequired[property]);
-      errors["required"][propertiesRequired[property]]="Propiedad requerida";
-      requiredErrors=true;
-    }
-  }
-
-  for(var property in propertiesNames)
-  {
-    // Si la propiedad no existe en el body request, significa que es opcional y en este caso no
-    // esta contenida en el body, por lo tanto se omite su validacion
-    if(bodyreq[property] == null)
-    {
-      continue;
-    }
-
-
-
-    var type= typeof(bodyreq[property]);
-    var typeDefinition= propertiesNames[property].type;
-    var formtatDefinition= propertiesNames[property].format;
-
-    //agregar validación de tipos de dato integer, float, number
-    if(typeDefinition=="integer")
-    {
-      typeDefinition="number"
-    }
-    // Comparar el tipo de dato que sea correcto, Solo aplica para las propiedades simples
-    if( type != "object")
-    {
-      typeValidation(bodyreq[property], propertiesNames[property], property, errors);
-      // if(type != typeDefinition)
-      // {
-      //   throw new Error ("Error de tipo de dato en la propiedad "+ property+ ", se esperaba " + typeDefinition +" y se recibio "+ type);
-      // }
-      // else {
-      //   console.log("Propiedad validada con exito: "+property);
-      // }
-    }// Comparar el tipo de dato de las propiedades internas de los objetos compuestos
-    else
-    {
-
-
-        var innerPropertiesBody= bodyreq[property];
-        var requiredInner= propertiesNames[property].required;
-        var innerPropertiesDef= propertiesNames[property].properties;
-        // Revisar que las propiedades internas esten completas
-        for(var p in requiredInner)
-        {
-          if(innerPropertiesBody[requiredInner[p]] == null)
-          {
-            // throw new Error("Propiedad requerida faltante en "+ property+"."+requiredInner[p]);
-            errors["required"][requiredInner[p]]="Propiedad requerida";
-            requiredErrors=true;
-          }
-        }
-        if(requiredErrors==true)
-        {
-          res.send(errors,202);
-          return;
-        }
-        console.log("Validacion de propiedades requeridas EXITOSA: Objeto->"+ property);
-        //Revisar que se cumplan los tipos de dato de las propiedades internas
-        for(var proper in innerPropertiesDef)
-        {
-          // console.log("Test...............................");
-          // console.log(proper);
-
-          // Si la propiedad no existe en el body request, significa que es opcional y en este caso no
-          // esta contenida en el body, por lo tanto se omite su validacion
-          if(bodyreq[property][proper] == null)
-          {
-            continue;
-          }
-
-
-          typeValidation(bodyreq[property][proper], propertiesNames[property].properties[proper], proper,errors)
-
-          // var innerTypeBody= typeof(bodyreq[property][proper]);
-          // var innerTypeDefinition= propertiesNames[property].properties[proper].type;
-          // if(innerTypeDefinition=="integer")
-          // {
-          //   type="number"
-          // }
-          // if(innerTypeBody != innerTypeDefinition)
-          // {
-          //   throw new Error ("Error de tipo de dato en la propiedad "+ property+ "." +proper + ", se esperaba " + innerTypeDefinition +" y se recibio "+ innerTypeBody);
-          // }
-          // else {
-          //   console.log("Propiedad validada con exito: " + property+ "."+proper);
-          // }
-
-
-        }
-
-
-    }
-    // console.log("Propiedad "+ property + " de tipo " + type );
-
-  }
+  validate(bodyreq, path.post.parameters[0].schema, errors);
 
   console.log("-------------FIN VALIDACION-----------");
   console.log("*******************************************************************");
