@@ -25,7 +25,7 @@
               ],
               "properties": {
                 "idPersona": {
-                  "type": "number",
+                  "type": "integer",
                   "format": "int64",
                   "example": 123546345
                 },
@@ -218,7 +218,7 @@
             "required": true,
             "schema": {
               "required": [
-                "idPersona",
+
                 "ticket",
                 "canal"
               ],

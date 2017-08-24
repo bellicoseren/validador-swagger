@@ -4,247 +4,203 @@ var bodyParser = require('body-parser');
 var express = require('express');
 var swagger = require('./swagger.json');
 let modelo = require('./modelo');
-var port = process.env.VALIDADORPUERTO
+var port = 9090
 // instanciar
 var app = express();
+app.use(bodyParser.raw(
+  {
+    type: "application/octet-stream"
+  }
+));
 app.use(bodyParser());
+
+
+
+app.post("/octet", function(req, res)
+{
+
+  console.log(typeof(req.body));
+  console.log("----------------------------------------------------");
+  console.log(req.body);
+  res.status(200).send(req.body);
+});
+
+/*
+**
+**
+**
+**/
+function validateArray(arrayBody, arrayDefinition, errors)
+{
+  var itemsDefinition= arrayDefinition.items;
+  for( var itemArray in arrayBody )
+  {
+    validateObject(arrayBody[itemArray], itemsDefinition, errors);
+    // var propertiesDef= item.properties;
+    // for( var propertyDef in propertiesDef )
+    // {
+    //   var typeDef= propertyDef.type;
+    //   var formatDef= propertyDef.format;
+    //   var type= typeof(itemArray[propertyDef])
+    //   console.log();
+    // }
+  }
+
+}
+
+function validateRequired(bodyreq, propertiesRequired, errors)
+{
+  for(var property in propertiesRequired )
+  {
+    if( bodyreq[propertiesRequired[property]] == null )
+    {
+      // throw new Error("Propiedad requerida faltante: "+ propertiesRequired[property]);
+      console.log("Error: Propiedad requerida faltante: "+ propertiesRequired[property]);
+      errors["required"][propertiesRequired[property]]="No se encontro la propiedad";
+    }
+  }
+}
+
+function validate(bodyreq, schemaDefinition, errors)
+{
+  errors["required"]= {};
+  errors["type"]= {};
+  errors["logic"]={};
+  validateRequired(bodyreq, schemaDefinition.required,errors);
+  validateObject(bodyreq, schemaDefinition, errors);
+}
+
+function validateObject(bodyreq, schemaDefinition, errors)
+{
+
+  var properties= schemaDefinition.properties;
+  validateRequired(bodyreq, schemaDefinition.required, errors)
+
+  for( property in properties )
+  {
+    //Significa que ya pasamos la validacion de requeridos, podriamos encontrarnos con una
+    // propiedad que no esta en el body
+    if(bodyreq[property] == null)
+    {
+      continue;
+    }
+    var type= typeof(bodyreq[property]);
+
+    if(type !=  "object")
+    {
+      var typeDef= properties[property].type;
+      var format= properties[property].format;
+      console.log("-------------------***************-----------------");
+      console.log(properties[property]);
+      validateProperty(type,typeDef, format, property,properties[property],bodyreq[property], errors );
+    }
+    else
+    {
+      if(!Array.isArray(bodyreq[property]))
+      {
+        console.log("VALIDANDO OBJECT "+ bodyreq[property]);
+        validateObject(bodyreq[property], properties[property], errors);
+      }
+      else
+      {
+        console.log("VALIDANDO ARRAY "+ bodyreq[property].length);
+        validateArray(bodyreq[property], properties[property], errors);
+      }
+
+    }
+  }
+}
+function validateProperty(type, typeDefinition, formatDefinition, propertyName, propertyDef, propertyBody , errors)
+{
+  var typeTemp= type;
+  if( typeDefinition == "integer" && type == "number")
+  {
+    type= "integer";
+  }
+  //Los tipos de dato no coinciden
+  if( type != typeDefinition)
+  {
+    // throw new Error( "El tipo de dato no coincide en el campo "+propertyName+", se esperaba "+ typeDefinition + "y se recibio" + type );
+    errors["type"][propertyName]="El tipo de dato no coincide, se esperaba "+ typeDefinition +" y se recibio "+ type ;
+    return;
+  }
+  //Validar que sea un float o douible en caso que asi se requiera
+  if(typeDefinition == "number" && (formatDefinition == "float" || formatDefinition == "double") )
+  {
+    if( Number.isInteger(propertyBody) )
+    {
+      errors["type"][propertyName]="El tipo de dato no coincide, se esperaba "+ typeDefinition +" y se recibio Integer";
+
+      // throw new Error("El tipo de dato no coincide en el campo "+ propertyName+",se esperaba " + typeDefinition+":"+formatDefinition+ " y se recibio "+type);
+    }
+  }
+  //Validar que sea un entero en caso que asi se requiera
+  else if(typeDefinition== "integer" && (formatDefinition == "int32" || formatDefinition == "int64"))
+  {
+    if( !Number.isInteger(propertyBody) )
+    {
+      errors["type"][propertyName]="El tipo de dato no coincide, se esperaba "+ typeDefinition +" y se recibio float" ;
+
+      // throw new Error("El tipo de dato no coincide en el campo "+ propertyName+", se esperaba "+ typeDefinition + ":"+formatDefinition+ " y se recibio float");
+    }
+  }
+
+  var minLength= propertyDef.minLength;
+  var maxLength= propertyDef.maxLength;
+
+  if(minLength != null && type == "string")
+  {
+    if(!( propertyBody.length >= minLength) )
+    {
+      errors["logic"][propertyName]="Se requiere una longitud minima ("+minLength+") en el campo "+propertyName ;
+
+      // throw new Error("No se cumplio la longitud minima("+minLength+") del campo "+ propertyName);
+    }
+  }
+
+  if( maxLength != null && type == "string")
+  {
+    if( !( propertyBody.length <= maxLength ) )
+    {
+      // throw new Error("No se cumplio la longitud máxima("+ maxLength +") del campo "+ propertyName);
+      errors["logic"][propertyName]="Se requiere una longitud maxima ("+maxLength+") en el campo "+propertyName ;
+
+    }
+  }
+
+
+
+
+}
 // ruteo
 app.post('/:path', function(req, res)
 {
-  //console.log("Validadaor de cabeceras:  "+req.getHeaders('Content-Type', 'text/plain'));
-  var data = swagger.paths[req.path].post.parameters;
-  console.log("Valor que viene del Path: " + req.path);
-  var listaDeRequeridos = data[0].schema.required;
-  var cuerpoPeticion = req.body;
-  if(data[0].schema.required == undefined)
-  {}
-  else
+  var errors={};
+  var path= swagger.paths[req.originalUrl];
+  if(path == null)
   {
-    try
-    {
-      for(var valorDecampoDeRequeridos in listaDeRequeridos)
-      {
-        var campoRequeridosDeSwagger = listaDeRequeridos[valorDecampoDeRequeridos];
-        if(req.body[campoRequeridosDeSwagger] == undefined)
-        {
-          throw new Error("El campo: " + campoRequeridosDeSwagger + " Esta mal escrito");
-        }
-        else
-        {
-          var tipoDeDatoDeSwagger = data[0].schema.properties[campoRequeridosDeSwagger].type;
-          var Swagger = data[0].schema.properties[campoRequeridosDeSwagger];
-          //Saber si el campo es objeto o array
-          if(typeof(cuerpoPeticion[campoRequeridosDeSwagger]) == "object" || typeof(cuerpoPeticion[campoRequeridosDeSwagger]) == undefined)
-          {
-            var tieneListar = cuerpoPeticion[campoRequeridosDeSwagger].length >= 1 ? true : false;
-            //Verifica si es lista
-
-            if(tieneListar)
-            {
-              for(var variable in cuerpoPeticion[campoRequeridosDeSwagger])
-              {
-                for(var campoDelBody in cuerpoPeticion[campoRequeridosDeSwagger][variable])
-                {
-                  if(data[0].schema.properties[campoRequeridosDeSwagger].items.properties[campoDelBody] == undefined)
-                  {
-                    throw new Error("El campo: " + campoDelBody + " Esta mal escrito");
-                  }
-                  else
-                  {
-                    var tipoDeDatoEnArray = data[0].schema.properties[campoRequeridosDeSwagger].items.properties[campoDelBody].type;
-                    var existeUnRequiere = data[0].schema.properties[campoRequeridosDeSwagger].items.required;
-                    if(cuerpoPeticion[campoRequeridosDeSwagger][variable][campoDelBody] == "" || cuerpoPeticion[campoRequeridosDeSwagger][variable][campoDelBody] == null)
-                    {
-                      throw new Error("El campo: " + campoDelBody + " No puede ir vacio ");
-                    }
-                    else
-                    {
-                      var tipoFloat=Number.isInteger(cuerpoPeticion[campoRequeridosDeSwagger][variable][campoDelBody]);
-
-                      if(tipoFloat==true){
-                          var cambioDeNombre=(typeof(cuerpoPeticion[campoRequeridosDeSwagger][variable][campoDelBody])=="number")?"integer":false;
-
-                          var isInteger=(tipoDeDatoEnArray == cambioDeNombre)?true:false;
-                          if(isInteger){
-                          }else {
-                          throw  new Error("El campo: " + campoDelBody + " Espera un tipo de dato " + tipoDeDatoEnArray);
-                          }
-
-                      }else {
-                        //Validacion con number que es flotante
-
-                        if(JSON.stringify(tipoDeDatoEnArray) == JSON.stringify(typeof(cuerpoPeticion[campoRequeridosDeSwagger][variable][campoDelBody])))
-                        {}
-                        else
-                        {
-                          throw new Error("El campo: " + campoDelBody + " Espera un tipo de dato " + tipoDeDatoEnArray);
-                        }
-                      }
-                      }
-                  }
-                }
-              }
-            }//Termina si es listaDirecciones
-
-            else
-            {
-              for(var camposReqXTipoDato in cuerpoPeticion[campoRequeridosDeSwagger])
-              {
-                if(Swagger.properties[camposReqXTipoDato] == undefined)
-                {
-                  throw new Error("El campo :" + camposReqXTipoDato + " esta mal escrito");
-                }
-                else
-                {
-                  //Este if es para cuando el campo viene vacio
-
-                  if(cuerpoPeticion[campoRequeridosDeSwagger][camposReqXTipoDato] == "" || cuerpoPeticion[campoRequeridosDeSwagger] == null)
-                  {
-                    throw new Error("El Campo :" + camposReqXTipoDato + " no puede venir vacio:");
-                  }
-                  //Termina la validacion si el tipo de dato viene vacio
-                  else
-                  {
-                    if(typeof(cuerpoPeticion[campoRequeridosDeSwagger][
-                        camposReqXTipoDato
-                      ]) == Swagger.properties[camposReqXTipoDato].type)
-                    {
-                      var validaTamañoMin = data[0].schema.properties[campoRequeridosDeSwagger].minLength;
-                      var validaTamañoMax = data[0].schema.properties[campoRequeridosDeSwagger].maxLength;
-                      var contieneTamaño = (validaTamañoMin == undefined ? false : true)
-                      if(contieneTamaño)
-                      {
-                        if(validaTamañoMax == undefined)
-                        {
-                          var minCampo = (validaTamañoMin <= JSON.stringify(parseInt(cuerpoPeticion[campoRequeridosDeSwagger])).length) ? true : false;
-                          if(minCampo != true)
-                          {
-                            throw new Error("Campo " + campoRequeridosDeSwagger + " su tamaño requerido es:" + validaTamañoMin + " y su maximo es:" +
-                              validaTamañoMax);
-                          }
-                        }
-                        else
-                        {
-                          var minCampo = (validaTamañoMin <= JSON.stringify(parseInt(cuerpoPeticion[campoRequeridosDeSwagger])).length && validaTamañoMax >=
-                            JSON.stringify(parseInt(cuerpoPeticion[campoRequeridosDeSwagger])).length) ? true : false;
-                          if(minCampo != true)
-                          {
-                            throw new Error("Campo " + campoRequeridosDeSwagger + " su tamaño requerido minimo es:" + validaTamañoMin + " y su maximo es:" +
-                              validaTamañoMax);
-                          }
-                        }
-                      }
-                    }
-                    else
-                    {
-                      throw new Error("El tipo de dato de : " + camposReqXTipoDato + " es incorrecto esperaba un: " + Swagger.properties[camposReqXTipoDato]
-                        .type);
-                    }
-                  }
-                } //Termina la validacion de si esta bien escrito el campo
-              }
-            }
-          } //Termina la validacion de campos con objeto o array
-          else
-          { //Comienza los campos que viene normal
-            if(cuerpoPeticion[campoRequeridosDeSwagger] == "" || cuerpoPeticion[campoRequeridosDeSwagger] == null)
-            {
-              throw new Error("El Campo :" + campoRequeridosDeSwagger + " no puede venir vacio:");
-            }
-            else
-            {
-                var isFloat=Number.isInteger(cuerpoPeticion[campoRequeridosDeSwagger]);
-                if(isFloat==true){
-                    var cambioDeNombre=(typeof(cuerpoPeticion[campoRequeridosDeSwagger])=="number")?"integer":false;
-                            if(cambioDeNombre == tipoDeDatoDeSwagger)
-                            {
-                              var conversionDeDatos = (tipoDeDatoDeSwagger == "integer") ? true : false;
-                              var validaTamañoMin = data[0].schema.properties[campoRequeridosDeSwagger].minLength;
-                              var validaTamañoMax = data[0].schema.properties[campoRequeridosDeSwagger].maxLength;
-                              var contieneTamaño = (validaTamañoMin == undefined ? false : true)
-                              if(contieneTamaño)
-                              {
-                                if(validaTamañoMax == undefined)
-                                {
-                                  var minCampo = (validaTamañoMin <= JSON.stringify(parseInt(cuerpoPeticion[campoRequeridosDeSwagger])).length) ? true : false;
-                                  if(minCampo != true)
-                                  {
-                                    throw new Error("Campo " + campoRequeridosDeSwagger + " su tamaño requerido es:" + validaTamañoMin + " y su maximo es:" +
-                                      validaTamañoMax);
-                                  }
-                                }
-                                else
-                                {
-                                  var minCampo = (validaTamañoMin <= JSON.stringify(parseInt(cuerpoPeticion[campoRequeridosDeSwagger])).length && validaTamañoMax >= JSON
-                                    .stringify(parseInt(cuerpoPeticion[campoRequeridosDeSwagger])).length) ? true : false;
-                                  if(minCampo != true)
-                                  {
-                                    throw new Error("Campo " + campoRequeridosDeSwagger + " su tamaño requerido minimo es:" + validaTamañoMin + " y su maximo es:" +
-                                      validaTamañoMax);
-                                  }
-                                }
-                              }
-                            }
-                          else
-                          {
-                            throw new Error("El tipo de dato de :" + campoRequeridosDeSwagger + " no es correcto esperaba un:" + tipoDeDatoDeSwagger);
-                          }
-                }else {
-                        if(typeof(cuerpoPeticion[campoRequeridosDeSwagger]) == tipoDeDatoDeSwagger)
-                        {
-                          var conversionDeDatos = (tipoDeDatoDeSwagger == "integer") ? true : false;
-                          var validaTamañoMin = data[0].schema.properties[campoRequeridosDeSwagger].minLength;
-                          var validaTamañoMax = data[0].schema.properties[campoRequeridosDeSwagger].maxLength;
-                          var contieneTamaño = (validaTamañoMin == undefined ? false : true)
-                          if(contieneTamaño)
-                          {
-                            if(validaTamañoMax == undefined)
-                            {
-                              var minCampo = (validaTamañoMin <= JSON.stringify(parseInt(cuerpoPeticion[campoRequeridosDeSwagger])).length) ? true : false;
-                              if(minCampo != true)
-                              {
-                                throw new Error("Campo " + campoRequeridosDeSwagger + " su tamaño requerido es:" + validaTamañoMin + " y su maximo es:" +
-                                  validaTamañoMax);
-                              }
-                            }
-                            else
-                            {
-                              var minCampo = (validaTamañoMin <= JSON.stringify(parseInt(cuerpoPeticion[campoRequeridosDeSwagger])).length && validaTamañoMax >= JSON
-                                .stringify(parseInt(cuerpoPeticion[campoRequeridosDeSwagger])).length) ? true : false;
-                              if(minCampo != true)
-                              {
-                                throw new Error("Campo " + campoRequeridosDeSwagger + " su tamaño requerido minimo es:" + validaTamañoMin + " y su maximo es:" +
-                                  validaTamañoMax);
-                              }
-                            }
-                          }
-                        }
-                      else
-                      {
-                        throw new Error("El tipo de dato de :" + campoRequeridosDeSwagger + " no es correcto esperaba un:" + tipoDeDatoDeSwagger);
-                      }
-                }
-
-
-
-            }
-          } //Termina los campos que viene normal
-        }
-      }
-    }
-    catch(e)
-    {
-      mensaje_error = JSON.parse("{\"Error\":\"" + e.message + "\"}")
-      res.status(403).send(mensaje_error);
-    }
-    if(res.statusMessage != "Forbidden")
-    {
-      var pathFinal = req.path.substring(1);
-      var respuesta = modelo.obtenerModelo(pathFinal);
-      res.send(respuesta);
-    }
+    //throw new Error("No existe la deficion en Swagger para validar el path: "+ req.originalUrl);
+    errors["pathError"]="No existe la definición en Swagger para validar el path "+ req.originalUrl;
+    res.send(errors);
+    return;
   }
+  var bodyreq= req.body;
+  errors["required"]={};
+  errors["type"]={};
+  errors["logic"]={};
+  console.log("Path " + req.originalUrl + " validando...");
+
+
+  validate(bodyreq, path.post.parameters[0].schema, errors);
+
+  console.log("-------------FIN VALIDACION-----------");
+  console.log("*******************************************************************");
+  res.status(200).send(errors);
+
 });
+
+
+
 app.get('/index', function(req, res)
 {
   res.sendfile(__dirname + '/public/index.html');

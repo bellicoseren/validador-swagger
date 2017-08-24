@@ -1,0 +1,13 @@
+Servidor Express escuchando en modo development
+Esta ruta se accede a postman para hacer las peticiones con esta ruta :http://localhost:9090/consultaDatosBasicos
+Path /consultaDatosBasicos validando...
+[ { in: 'body',
+    name: 'consultaDatosBasicos,',
+    description: 'Consumidor  que dibuja encabezado con datos de cliente',
+    required: true,
+    schema: { required: [Object], properties: [Object] } } ]
+{ idPersona: { type: 'number', format: 'int64', example: 123546345 },
+  ticket: 
+   { required: [ 'id_user', 'id_creds' ],
+     properties: { id_user: [Object], id_creds: [Object] } },
+  canal: { type: 'string', minLength: 1, example: 'WEB' } }
