@@ -4,9 +4,10 @@ var bodyParser = require('body-parser');
 var express = require('express');
 var swagger = require('./swagger.json');
 let modelo = require('./modelo');
-var port = 9090
-// instanciar
+var port = process.env.VALIDADOR_NODE_PORT
+var basePath=""
 var app = express();
+var file = 'files/EstadodeCtaDemo.pdf';
 app.use(bodyParser.raw(
   {
     type: "application/octet-stream"
@@ -14,7 +15,9 @@ app.use(bodyParser.raw(
 ));
 app.use(bodyParser());
 
-
+app.get('/download', function(req, res){
+  res.status(200).type('application/octet-stream').download(file);
+});
 
 app.post("/octet", function(req, res)
 {
@@ -181,7 +184,8 @@ app.post('/:path', function(req, res)
   {
     //throw new Error("No existe la deficion en Swagger para validar el path: "+ req.originalUrl);
     errors["pathError"]="No existe la definición en Swagger para validar el path "+ req.originalUrl;
-    res.send(errors);
+   res.status(200).send({"errors":errors});
+    //res.send(errors);
     return;
   }
   var bodyreq= req.body;
@@ -192,20 +196,29 @@ app.post('/:path', function(req, res)
 
 
   validate(bodyreq, path.post.parameters[0].schema, errors);
-
   console.log("-------------FIN VALIDACION-----------");
   console.log("*******************************************************************");
-  res.status(200).send(errors);
-
+  if(isEmpty(errors.required) && isEmpty(errors.type) && isEmpty(errors.logic)){
+    var nombreModelo= req.path.replace(basePath,"")
+    var respuesta = modelo.obtenerModelo(nombreModelo.substring(1));
+    if(respuesta._downloadFile)
+      res.status(200).type('application/octet-stream').download(file);
+    else
+      res.status(200).send(respuesta);
+  }else{
+    res.status(200).send({"errors":errors});
+  }
 });
 
-
+var isEmpty = function(obj) {
+  return Object.keys(obj).length === 0;
+}
 
 app.get('/index', function(req, res)
 {
   res.sendfile(__dirname + '/public/index.html');
 });
-// escuchars
+// escucha
 app.listen(port);
-console.log("Servidor Express escuchando en modo %s", app.settings.env);
-console.log("Esta ruta se accede a postman para hacer las peticiones con esta ruta :" + "http://localhost:9090/consultaDatosBasicos");
+//console.log("Servidor Express escuchando en modo %s", app.settings.env);
+console.log("Esta ruta se accede a postman para hacer las peticiones con esta ruta :" + "http://localhost:" +  port);
