@@ -37,7 +37,7 @@ const consultaPerfiles = {
             "isComponenteHabilitado": true,
             "portlet": true,
             "nombrePortlet": "PORTLET 3"
-        }, 
+        },
         {
             "nombre": "Mul_BlockAditional_Otp",
             "activa": true,
@@ -211,6 +211,8 @@ const cambioContrasena = {
     "responseError": ""
 }
 
+//Sprint 1 adecuacion
+/*
 const consultaCuentasAgregadasCliente = {
     "listCuentasCliente": [{
         "numeroDeCuenta": "",
@@ -265,7 +267,7 @@ const consultaCuentasAgregadasCliente = {
     }],
     "responseStatus": 200,
     "responseError": ""
-}
+}*/
 
 const consultaProductosContratados = {
     "listaProductos": [{
@@ -354,26 +356,379 @@ const consultaDatosCliente = {
     "responseError": ""
 }
 
-var mapaModelo = { 
-   //ESB //
+ /////////// Sprint 2  /////////////
+
+const consultaCuentasAgregadasCliente = {
+  "listCuentasCliente": [
+    {
+      "nombreCuenta": "CUENTA DE PRUEBA",
+      "numeroDeCuenta": "123456",
+      "idProducto": "CHQ",
+      "descripcionProducto": "Cuenta de Cheques",
+      "divisa": "MXN",
+      "depositosPendientes": 10000,
+      "depositosSBC": 15000,
+      "saldoMovimientosDia": 1989.5,
+      "movimientos": 1,
+      "lineaSobregiro": 5000,
+      "interesesGenerados": 2000,
+      "CLABE": "123456789012345",
+      "saldo": 1532,
+      "alias": "CUENTA DE PRUEBA"
+    }
+  ],
+  "listCreditosCliente": [
+    {
+      "contrato": "123456",
+      "numeroDeCuenta": "7894560",
+      "idProducto": "CRED",
+      "descripcionProducto": "CREDITO DE PRUEBA",
+      "saldoTotal": 1000000,
+      "alias": "HIPOTECA CASA"
+    }
+  ],
+  "listInversionesPagareCliente": [
+    {
+      "numeroDeCuenta": "789456",
+      "idProducto": "PGR",
+      "descripcionProducto": "Inversion Pagare",
+      "plazo": 30,
+      "tasa": 5.21,
+      "saldo": 100000.5,
+      "interesDevengado": 100,
+      "interesPagar": 100,
+      "fechaVencimiento": "19-07-2017",
+      "instruccionesVencimiento": "instruccionesVencimiento",
+      "alias": "PAGARE DE PRUEBA",
+      "ISRRetenido": 14000,
+      "saldoNeto": 15.02,
+      "apertura": "13-05-2017T00:57:00"
+    }
+  ],
+  "listInversionesCedeCliente": [
+    {
+      "numeroDeCuenta": "789456",
+      "idProducto": "CEDE",
+      "descripcionProducto": "Inversion CEDE",
+      "plazo": 30,
+      "tasa": 5.21,
+      "saldo": 100000.5,
+      "interesesDevengados": 1000,
+      "fechaVencimiento": "19-07-2017",
+      "fechaProximoPago": "19-07-2017T09:00:00",
+      "alias": "CEDE DE PRUEBA",
+      "ISRRetenido": 14000,
+      "saldoNeto": 15.02,
+      "apertura": "13-05-2017T:01:00:00"
+    }
+  ],
+  "listInversionesVistaCliente": [
+    {
+      "numeroDeCuenta": "0123456",
+      "idProducto": "INT",
+      "descripcionProducto": "Multiva Integra",
+      "cuentaIntegra": "789456",
+      "saldo": 780000,
+      "alias": "MULTIVA INTEGRA DE PRUEBA"
+    }
+  ],
+  "listFondosCliente": [
+    {
+      "numeroDeCuenta": "456789",
+      "idProducto": "FND",
+      "descripcionProducto": "Fondos",
+      "saldo": 1000000,
+      "alias": "FONDO DE PRUEBA",
+      "emisora": "ABC-1234-AC1",
+      "titulos": 100,
+      "precioMercado": 120,
+      "valuacion": 12000,
+      "valia": -1.03
+    }
+  ],
+  "responseStatus": 200,
+  "responseError": ""
+}
+
+const consultaDetalleCredito = {
+    "numeroDeCuenta": "123456",
+    "contrato": "123456789",
+    "fechaDisposicion": "17-07-2017",
+    "fechaVencimiento": "18-07-2018",
+    "importe": "200000.00",
+    "tipoCredito": "SIMPLE",
+    "saldoCapital": 1000000,
+    "interesVigente": 50000,
+    "estatus": "estatus",
+    "montoInicial": 2000000,
+    "plazo": 12,
+    "tasa": 12.5,
+    "periodicidadPago": "MENSUAL",
+    "proximoPago": [
+      {
+        "capital": 1000,
+        "interes": 900,
+        "IVA": 150,
+        "otrosCargos": 0,
+        "importePago": 1150,
+        "fecha": "17-08-2017",
+        "moratorio": 500,
+        "IVAmoratorio": 10,
+        "atraso": 10
+      }
+    ],
+    "pagosVencidos": [
+      {
+        "capital": 10000,
+        "interes": 9000,
+        "IVA": 1500,
+        "otrosCargos": 0,
+        "importePago": 1150,
+        "fecha": "17-08-2017",
+        "moratorio": 500,
+        "IVAmoratorio": 15,
+        "atraso": 10
+      }
+    ],
+    "responseStatus": 200,
+    "responseError": "Problema con la peticion"
+}
+
+const activacionPaperless = {
+    "responseStatus": 200,
+    "responseError": ""
+}
+
+const consultaMovimientos = {
+  "saldoInicial": 0,
+  "listMovimientos": [
+    {
+      "folio": "ABCD12345",
+      "fecha": "25-05-2017T08:47:00",
+      "descripcion": "DESCRIPCION DEL MOVIMIENTO",
+      "importe": 21.5,
+      "divisa": "MXN",
+      "cuentaDestino": "123456789012345",
+      "cuentaOrigen": "987654321012345",
+      "referencia": "referencia",
+      "referenciaNumerica": 1234567,
+      "CASFIM": "789456",
+      "canal": "MVNET"
+    }
+  ],
+  "responseStatus": 200,
+  "responseError": ""
+}
+
+const consultaMovsMesaDinero = {
+  "saldoFinDia": 1000000,
+  "saldo": 2000000,
+  "movimientos": [
+    {
+      "fechaLiquidacion": "26-07-2017",
+      "fechaOperacion": "27-07-2017",
+      "folio": "123456789",
+      "concepto": "CONCEPTO",
+      "emisora": "147",
+      "serie": "78A",
+      "noTitulos": 10,
+      "tasaRendimiento": 1.01,
+      "precio": 1200,
+      "importe": 12000,
+      "premio": 500,
+      "plazo": 12
+    }
+  ],
+  "responseStatus": 200,
+  "responseError": "Problema con la peticion"
+}
+
+const consultaMovimientosMultiT ={
+  "listMovimientos": [
+    {
+      "cliente": 12345678,
+      "fecha": "25-05-2017T08:47:00",
+      "descripcion": "DESCRIPCION DEL MOVIMIENTO",
+      "importe": -21.5,
+      "naturaleza": "CARGO",
+      "divisa": "MXN",
+      "cuentaDestino": "123456789012345",
+      "cuentaOrigen": "987654321012345",
+      "saldoInicial": 21.5,
+      "saldoDisponible": 0,
+      "folio": "",
+      "referenciaTransferencia": "1234567",
+      "moneda": "",
+      "canal": "MVNET"
+    }
+  ],
+  "responseStatus": 200,
+  "responseError": "Problema con la peticion"
+}
+
+const consultaCfdCfdi = {
+  //Es un archivo
+  "_downloadFile":true
+}
+
+
+const consultaCfdCfdiRetenciones = {
+    //Es un archivo
+    "_downloadFile":true
+}
+
+const consultaRetenciones = {
+  "listRetenciones": [
+    {
+      "tipoDeConstancia": "CRI",
+      "noDeCliente": "543210987654321",
+      "noDeContrato": "543210987654321",
+      "RFCReceptor": "QUVA790114FT5",
+      "uuid": "SEFDAD1234-87465-ASDSD-14523"
+    }
+  ],
+  "responseStatus": 200,
+  "responseError": "Problema con la peticion"
+}
+
+const consultaCtasServMultiT ={
+  "servicios": [
+    {
+      "cuentaOrigen": "123456789",
+      "cliente": 12456,
+      "nombre": "WALDO TERRY",
+      "RFC": "ABCD01011970XYZ",
+      "CURP": "ABCD123456789",
+      "email": "wterry@dominio.com",
+      "mobil": "123456789",
+      "tipoServicio": "15",
+      "descripcionServicio": "PAGO DE SKY",
+      "tipoTraspaso": "94",
+      "descripcionTraspaso": "PAGO DE SERVICIOS",
+      "cuentaDestino": "123456789",
+      "claveBanxico": "12345",
+      "maxTransacciones": 5,
+      "maxMonto": 50000,
+      "estatus": "Activo",
+      "tipoCuenta": "03",
+      "descripcionTipoCuenta": "TARJETA DE DEBITO"
+    }
+  ],
+  "responseStatus": 200,
+  "responseError": "Problema con la peticion"
+}
+
+const consultaSaldosMultiT = {
+  "cuentas": [
+    {
+      "cuenta": "123456789",
+      "cliente": 12456,
+      "alias": "AliasDeMiCuenta",
+      "nombreCuenta": "WALDO TERRY",
+      "clientePadre": 89456,
+      "saldoDisponible": 123000,
+      "idProducto": "CHQ",
+      "descripcionProducto": "CHEQUES",
+      "CLABE": "123456789987456",
+      "moneda": "MXP"
+    }
+  ],
+  "responseStatus": 200,
+  "responseError": "Problema con la peticion"
+}
+
+const estadoCuentaPDF = {
+    //Es un archivo
+    "_downloadFile":true
+}
+
+const movimientosDonaciones = {
+  "listDonaciones": [
+    {
+      "folio": 123870212,
+      "fecha": "13-05-2017T13:20:35 p.m.",
+      "tipoDonativo": "FUNDACION MULTIVA",
+      "descripcion": "DESCRIPCION DEL DONATIVO",
+      "estatus": "NO APLICADA",
+      "monto": 200012.211
+    }
+  ],
+  "responseStatus": 200,
+  "responseError": "Problema con la peticion"
+}
+
+const estadoPaperless = {
+    "opcionImpresion": "ACTIVA",
+    "omitirNombre": true,
+    "noCuentaParcialmente": true,
+    "responseStatus": 200,
+    "responseError": ""
+}
+
+const consultaMesaDinero = {
+  "efectivoDisponible": 20000,
+  "totalCartera": 20000,
+  "valuacionPortafolio": 30000,
+  "posiciones": [
+    {
+      "inversion": "S1-123-456",
+      "emisora": "S1",
+      "serie": "123",
+      "titulos": 100,
+      "precio": 200,
+      "valuacion": 20000,
+      "numeroCuenta": "123456"
+    }
+  ],
+  "responseStatus": 200,
+  "responseError": "Problema con la peticion"
+}
+
+const validaOTP = {
+  "antiPishing": "12345",
+  "responseStatus": 200,
+  "responseError": ""
+}
+
+
+
+var mapaModelo = {
+   //### ESB ####//
+   /////////// Sprint 1  /////////////
   'consultaDatosBasicos': consultaDatosCliente,
   'consultaServiciosContratados':consultaServiciosContratados,
   'consultaProductosContratados':consultaProductosContratados,
-  'Validacontrato':validacontrato, 
+  'Validacontrato':validacontrato,
   //'Validaotp':Validaotp,
-  'cambioContrasena':cambioContrasena,   
-  'consultaCuentasAgregadasCliente':consultaCuentasAgregadasCliente,
+  'cambioContrasena':cambioContrasena,
+  //'consultaCuentasAgregadasCliente':consultaCuentasAgregadasCliente,
   'envioNotificaciones':envioNotificaciones,
   'listarTokensOTP':listarTokensOTP,
-  'activacionOTP':activacionOTP, 
+  'activacionOTP':activacionOTP,
   'bloqueoOTP':bloqueoOTP,
-  'consultaPerfiles':consultaPerfiles,
-  // /ESB //
+  'consultaPerfiles': consultaPerfiles,
   'login':login,
   'autentificacion':autentificacion,
   'consultaContrato':consultaContrato,
-  'errorServicio':errorServicio, 
-  'consultaContratoerror':consultaContratoerror
+  'errorServicio':errorServicio,
+  'consultaContratoerror':consultaContratoerror,
+  /////////// Sprint 2  /////////////
+  'consultaCuentasAgregadasCliente':consultaCuentasAgregadasCliente,
+  'consultaSaldosMultiT':consultaSaldosMultiT,
+  'consultaMovimientosMultiT':consultaMovimientosMultiT,
+  'consultaCtasServMultiT':consultaCtasServMultiT,
+  'estadoPaperless':estadoPaperless,
+  'activacionPaperless':activacionPaperless,
+  'consultaMovimientos':consultaMovimientos,
+  'consultaMesaDinero':consultaMesaDinero,
+  'consultaMovsMesaDinero':consultaMovsMesaDinero,
+  'movimientosDonaciones':movimientosDonaciones,
+  'consultaCfdCfdiRetenciones':consultaCfdCfdiRetenciones,
+  'consultaRetenciones':consultaRetenciones,
+  'consultaDetalleCredito':consultaDetalleCredito,
+  'consultaCfdCfdi':consultaCfdCfdi,
+  'estadoCuentaPDF':estadoCuentaPDF
+
 }
 
 function obtenerModelo (nombreModelo){
@@ -383,4 +738,3 @@ function obtenerModelo (nombreModelo){
 module.exports = {
   obtenerModelo
 }
-
