@@ -218,7 +218,7 @@
             "required": true,
             "schema": {
               "required": [
-
+                "idPersona",
                 "ticket",
                 "canal"
               ],
@@ -370,62 +370,6 @@
                 "responseError": {
                   "type": "string",
                   "example": "Problema con la peticion"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/validaOTP": {
-      "post": {
-        "tags": [
-          "Sprint 1"
-        ],
-        "description": "Servicio que realiza la validación del OTP",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "validaOTP",
-            "description": "Se requiere la validación de VACMAN del usuario y su OTP",
-            "required": true,
-            "schema": {
-              "properties": {
-                "Usuario": {
-                  "type": "string",
-                  "example": "123456789"
-                },
-                "OTP": {
-                  "type": "string",
-                  "example": 1234567
-                },
-                "Tipo": {
-                  "type": "integer",
-                  "format": "int64",
-                  "example": 1
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Tipos de datos de la respuesta del servicio",
-            "schema": {
-              "properties": {
-                "CodigoRespuesta": {
-                  "type": "integer",
-                  "format": "int64",
-                  "example": "integer"
-                },
-                "DescRespuesta": {
-                  "type": "string",
-                  "example": "string"
-                },
-                "Antiphishing": {
-                  "type": "integer",
-                  "format": "int64",
-                  "example": "integer"
                 }
               }
             }
@@ -1143,8 +1087,7 @@
                 "idPersona",
                 "ticket",
                 "canal",
-                "otp",
-                "listTokens"
+                "otp"
               ],
               "properties": {
                 "idPersona": {
@@ -2428,7 +2371,7 @@
         }
       }
     },
-    "/consultaMovimientos": {
+    "/consultaMovimientosCaptaciones": {
       "post": {
         "tags": [
           "Sprint 2"
@@ -2500,10 +2443,6 @@
                   "type": "string",
                   "minLength": 1,
                   "example": "WEB"
-                },
-                "otp": {
-                  "type": "string",
-                  "example": 1234567
                 }
               }
             }
@@ -2855,6 +2794,168 @@
         }
       }
     },
+    "/consultaMovimientosMultiT": {
+      "post": {
+        "tags": [
+          "Sprint 2"
+        ],
+        "description": "Este servicio englobará la consulta de movimientos múltiples (aquellos que ocurren con cuentas que conforman la multitesoreía de un cliente que tenga el servicio) en T24. ",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "consultaMovimientosMultiT",
+            "description": "1. Consumidor  que solicita la consulta de movimientos múltiples.",
+            "required": true,
+            "schema": {
+              "required": [
+                "idPersona",
+                "ticket",
+                "canal"
+              ],
+              "properties": {
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "fechaInicio": {
+                  "description": "Rango de fechas que representa desde que fecha se requiere consultar. dd-MM-yyyy",
+                  "type": "string",
+                  "format": "date",
+                  "example": "01-05-2017"
+                },
+                "fechaFin": {
+                  "description": "Rango de fechas que representa hasta que fecha se requiere consultar. dd-MM-yyyy",
+                  "type": "string",
+                  "format": "date",
+                  "example": "30-07-2017"
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Nos va a traer facultades Simples",
+            "schema": {
+              "properties": {
+                "listMovimientos": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "cliente": {
+                        "description": "id de la persona propietaria de esta cuenta.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 12345678
+                      },
+                      "fecha": {
+                        "description": "Fecha del movimiento a consultar. dd-MM-yyyyThh:mm:ss",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "25-05-2017T08:47:00"
+                      },
+                      "descripcion": {
+                        "description": "Descripción del movimiento consultado.",
+                        "type": "string",
+                        "example": "DESCRIPCION DEL MOVIMIENTO"
+                      },
+                      "importe": {
+                        "description": "Cantidad monetaria que se movió en la operación bancaria.",
+                        "type": "number",
+                        "format": "double",
+                        "example": -21.5
+                      },
+                      "naturaleza": {
+                        "description": "CARGO o ABONO",
+                        "type": "string",
+                        "example": "CARGO"
+                      },
+                      "divisa": {
+                        "description": "Divisa de la transacción.",
+                        "type": "string",
+                        "example": "MXN"
+                      },
+                      "cuentaDestino": {
+                        "description": "Cuenta a la cual se movió el importe.",
+                        "type": "string",
+                        "example": "123456789012345"
+                      },
+                      "cuentaOrigen": {
+                        "description": "Cuenta origen del movimiento.",
+                        "type": "string",
+                        "example": "987654321012345"
+                      },
+                      "saldoInicial": {
+                        "description": "Saldo en la cuenta al inicio del periodo proporcionado de consulta.",
+                        "type": "number",
+                        "format": "double",
+                        "example": 21.5
+                      },
+                      "saldoDisponible": {
+                        "description": "Saldo disponible en la cuenta al día de hoy.",
+                        "type": "number",
+                        "format": "double",
+                        "example": 0
+                      },
+                      "folio": {
+                        "description": "Folio del movimiento.",
+                        "type": "string",
+                        "example": ""
+                      },
+                      "referenciaTransferencia": {
+                        "description": "Referencia de la transferencia.",
+                        "type": "string",
+                        "example": "1234567"
+                      },
+                      "moneda": {
+                        "description": "Divisa del movimiento.",
+                        "type": "string",
+                        "example": ""
+                      },
+                      "canal": {
+                        "description": "Canal por el que se generó el movimiento.",
+                        "type": "string",
+                        "example": "MVNET"
+                      }
+                    }
+                  }
+                },
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/consultaCfdCfdi": {
       "post": {
         "tags": [
@@ -2929,6 +3030,135 @@
           },
           "201": {
             "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "No hay información para esta consulta."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/consultaCfdCfdiRetenciones": {
+      "post": {
+        "tags": [
+          "Sprint 2"
+        ],
+        "description": "Este servicio obtiene el Cfd y Cfdi de Retenciones para el perido solicitado.",
+        "produces": [
+          "application/octet-stream",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "consultaCfdCfdiRetenciones",
+            "description": "Consulta Cfd y Cfdi de Retenciones",
+            "required": true,
+            "schema": {
+              "required": [
+                "idPersona",
+                "tipoDeConstancia",
+                "noDeCliente",
+                "noDeContrato",
+                "RFCReceptor",
+                "uuid",
+                "anio",
+                "formatoDocumento",
+                "ticket",
+                "canal"
+              ],
+              "properties": {
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "tipoDeConstancia": {
+                  "description": "Tipo de constancia de la retención.",
+                  "type": "string",
+                  "example": "CRI"
+                },
+                "noDeCliente": {
+                  "description": "Número de cliente al que se le aplicará la retención.",
+                  "type": "string",
+                  "example": "123456789012345"
+                },
+                "noDeContrato": {
+                  "description": "Número de contrato que genera la retención.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123456789012345
+                },
+                "RFCReceptor": {
+                  "description": "RFC del Receptor de la retención.",
+                  "type": "string",
+                  "example": "CUBA890113DY3"
+                },
+                "uuid": {
+                  "description": "uuid",
+                  "type": "string",
+                  "example": "SEDFA13456-65454-ASDDF-45654"
+                },
+                "anio": {
+                  "description": "Año cuya retención se desea descargar",
+                  "type": "integer",
+                  "format": "int32",
+                  "example": 2015
+                },
+                "formatoDocumento": {
+                  "description": "Tipo de documento que se desea descargar (PDF o XML)",
+                  "type": "string",
+                  "example": "PDF"
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Archivo en stream de bytes para descargar. Contendrá un PDF o XML según se haya solicitado en la invocación.",
+            "headers": {
+              "content-type": {
+                "description": "application/octet-stream",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "type": "string",
+              "format": "binary"
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
             "headers": {
               "content-type": {
                 "description": "application/json",
@@ -2966,8 +3196,7 @@
             "schema": {
               "required": [
                 "anio",
-                "ticket",
-                "canal"
+                "idPersona"
               ],
               "properties": {
                 "idPersona": {
@@ -2980,27 +3209,6 @@
                   "format": "int32",
                   "description": "Año cuya retención se quiere consultar en el sistema de retenciones",
                   "example": 2016
-                },
-                "ticket": {
-                  "required": [
-                    "id_user",
-                    "id_creds"
-                  ],
-                  "properties": {
-                    "id_user": {
-                      "type": "string",
-                      "example": "abc"
-                    },
-                    "id_creds": {
-                      "type": "string",
-                      "example": "1233"
-                    }
-                  }
-                },
-                "canal": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": "WEB"
                 }
               }
             }
@@ -3107,6 +3315,318 @@
                 "responseError": {
                   "type": "string",
                   "example": "No hay información para esta consulta."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/consultaCtasServMultiT": {
+      "post": {
+        "tags": [
+          "Sprint 2"
+        ],
+        "description": "Este servicio consulta el servicio de mesa de dinero de T24 para obtener la información de las cuentas registradas en la multitesorería de un cliente para traspasos, tanto de pago de servicios como traspaso de fondos. ",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "consultaCtasServMultiT",
+            "description": "Un consumidor solicita las cuentas de transferencia y servicios registrados para pago para un cliente",
+            "required": true,
+            "schema": {
+              "required": [
+                "idPersona",
+                "ticket",
+                "canal"
+              ],
+              "properties": {
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Nos va a traer facultades Simples",
+            "schema": {
+              "properties": {
+                "servicios": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "cuentaOrigen": {
+                        "description": "Cuenta origen de la transferencia.",
+                        "type": "string",
+                        "example": "123456789"
+                      },
+                      "cliente": {
+                        "description": "Id de persona asociada con el servicio.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 12456
+                      },
+                      "nombre": {
+                        "description": "Nombre o razón social del beneficiario.",
+                        "type": "string",
+                        "example": "WALDO TERRY"
+                      },
+                      "RFC": {
+                        "description": "RFC del beneficiario.",
+                        "type": "string",
+                        "example": "ABCD01011970XYZ"
+                      },
+                      "CURP": {
+                        "description": "CURP del beneficiario",
+                        "type": "string",
+                        "example": "ABCD123456789"
+                      },
+                      "email": {
+                        "description": "Email del beneficiario.",
+                        "type": "string",
+                        "example": "wterry@dominio.com"
+                      },
+                      "mobil": {
+                        "description": "Teléfono celular del beneficiario.",
+                        "type": "string",
+                        "example": "123456789"
+                      },
+                      "tipoServicio": {
+                        "description": "Identificador de T24 del servicio para el que se realiza este traspaso.",
+                        "type": "string",
+                        "example": "15"
+                      },
+                      "descripcionServicio": {
+                        "description": "Descripción del servicio registrado.",
+                        "type": "string",
+                        "example": "PAGO DE SKY"
+                      },
+                      "tipoTraspaso": {
+                        "description": "Identificador del tipo de traspaso que se realizará en este registro de servicio.",
+                        "type": "string",
+                        "example": "94"
+                      },
+                      "descripcionTraspaso": {
+                        "description": "Descripción del tipo de traspaso seleccionado para este servicio.",
+                        "type": "string",
+                        "example": "PAGO DE SERVICIOS"
+                      },
+                      "cuentaDestino": {
+                        "description": "Cuenta destino del traspaso.",
+                        "type": "string",
+                        "example": "123456789"
+                      },
+                      "claveBanxico": {
+                        "description": "Clave de participante en SPEI de la institución receptora, para aquellos traspasos que la requieren.",
+                        "type": "string",
+                        "example": "12345"
+                      },
+                      "maxTransacciones": {
+                        "description": "Número máximo de transacciones permitidas para este servicio en un mes.",
+                        "type": "integer",
+                        "format": "int32",
+                        "example": 5
+                      },
+                      "maxMonto": {
+                        "description": "Monto máximo acumulado permitido de transferencias para este servicio al mes.",
+                        "type": "number",
+                        "format": "double",
+                        "example": 50000
+                      },
+                      "estatus": {
+                        "description": "Estatus de este registro de servicio.",
+                        "type": "string",
+                        "example": "Activo"
+                      },
+                      "tipoCuenta": {
+                        "description": "Identificador del tipo de cuenta utilizada para este servicio.",
+                        "type": "string",
+                        "example": "03"
+                      },
+                      "descripcionTipoCuenta": {
+                        "description": "Descripción del tipo de cuenta que será utilizada en este servicio.",
+                        "type": "string",
+                        "example": "TARJETA DE DEBITO"
+                      }
+                    }
+                  }
+                },
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "description": "Sistema T24 fuera de línea.",
+                  "type": "number",
+                  "example": 4500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "T24 FUERA DE LINEA"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/consultaSaldosMultiT": {
+      "post": {
+        "tags": [
+          "Sprint 2"
+        ],
+        "description": "Este servicio consulta T24 para obtener los saldos de todas las cuentas asociadas a la multitesorería de un cliente.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "consultaSaldosMultiT",
+            "description": "Un consumidor solicita el saldo de las cuentas de multitesorería de un cliente.",
+            "required": true,
+            "schema": {
+              "required": [
+                "idPersona",
+                "ticket",
+                "canal"
+              ],
+              "properties": {
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de cuentas.",
+            "schema": {
+              "properties": {
+                "cuentas": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "cuenta": {
+                        "description": "Número de cuenta.",
+                        "type": "string",
+                        "example": "123456789"
+                      },
+                      "cliente": {
+                        "description": "Id de persona asociada con la cuenta.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 12456
+                      },
+                      "alias": {
+                        "description": "Alias de la cuenta.",
+                        "type": "string",
+                        "example": "AliasDeMiCuenta"
+                      },
+                      "nombreCuenta": {
+                        "description": "Nombre de la cuenta.",
+                        "type": "string",
+                        "example": "WALDO TERRY"
+                      },
+                      "clientePadre": {
+                        "description": "idPersona del cliente padre de esta cuenta.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 89456
+                      },
+                      "saldoDisponible": {
+                        "description": "Saldo disponible en la cuenta.",
+                        "type": "number",
+                        "format": "double",
+                        "example": 123000
+                      },
+                      "idProducto": {
+                        "description": "Identificador del producto de la cuenta.",
+                        "type": "string",
+                        "example": "CHQ"
+                      },
+                      "descripcionProducto": {
+                        "description": "Descripción del producto de la cuenta.",
+                        "type": "string",
+                        "example": "CHEQUES"
+                      },
+                      "CLABE": {
+                        "description": "CLABE de la cuenta, si la maneja.",
+                        "type": "string",
+                        "example": "123456789987456"
+                      },
+                      "moneda": {
+                        "description": "Divisa de la cuenta.",
+                        "type": "string",
+                        "example": "MXP"
+                      }
+                    }
+                  }
+                },
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
                 }
               }
             }
@@ -3602,7 +4122,7 @@
                       "serie": {
                         "description": "Serie de los títulos de inversión",
                         "type": "string",
-                        "example": 123
+                        "example": "123"
                       },
                       "titulos": {
                         "description": "Valor individual  de los títulos de inversión.",
@@ -3625,7 +4145,7 @@
                       "numeroCuenta": {
                         "description": "Número de cuenta de cheques asociada con esta inversión.",
                         "type": "string",
-                        "example": 123456
+                        "example": "123456"
                       }
                     }
                   }
@@ -3653,6 +4173,59 @@
                 "responseError": {
                   "type": "string",
                   "example": "SABI NO DISPONIBLE"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/validaOTP": {
+      "post": {
+        "tags": [
+          "Sprint 2"
+        ],
+        "description": "Servicio que realiza la validación del OTP",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "validaOTP",
+            "description": "Se requiere la validación de VACMAN del usuario y su OTP",
+            "required": true,
+            "schema": {
+              "properties": {
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "otp": {
+                  "type": "string",
+                  "example": 1234567
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tipos de datos de la respuesta del servicio",
+            "schema": {
+              "properties": {
+                "antiPishing": {
+                  "description": "Es el challenge del servidor de Vasco para el control de antipishing, este codigo es utilizable cuando la validacion de otp se hace independiente a la transaccion que se quiere ejecutar.",
+                  "type": "string",
+                  "example": "string"
+                },
+                "responseStatus": {
+                  "description": "Código de respuesta del servicio. 200 Representa una ejecución exitosa.",
+                  "type": "string",
+                  "example": "string"
+                },
+                "responseError": {
+                  "description": "Mensaje de error, si aplica. Si se trata de una ejecución exitosa, este mensaje va vacío en la respuesta.",
+                  "type": "string",
+                  "example": "string"
                 }
               }
             }
