@@ -201,11 +201,15 @@ app.post('/:path', function(req, res)
   if(isEmpty(errors.required) && isEmpty(errors.type) && isEmpty(errors.logic)){
     var nombreModelo= req.path.replace(basePath,"")
     var respuesta = modelo.obtenerModelo(nombreModelo.substring(1));
-    if(respuesta._downloadFile)
-      res.status(200).type('application/octet-stream').download(file);
+    console.log("Respuesta:  " + respuesta)
+    if(respuesta._downloadFile){
+      console.log("FIle")
+      res.type('application/octet-stream').download(file);
+    }
     else
       res.status(200).send(respuesta);
   }else{
+    console.log("Errors:  ", errors)
     res.status(200).send({"errors":errors});
   }
 });

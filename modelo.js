@@ -727,8 +727,8 @@ var mapaModelo = {
   'consultaRetenciones':consultaRetenciones,
   'consultaDetalleCredito':consultaDetalleCredito,
   'consultaCfdCfdi':consultaCfdCfdi,
-  'estadoCuentaPDF':estadoCuentaPDF
-
+  'estadoCuentaPDF':estadoCuentaPDF,
+  'validaOTP':validaOTP
 }
 
 function obtenerModelo (nombreModelo){
