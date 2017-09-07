@@ -2,12 +2,18 @@
 var validador = require('./src/validateModel');
 var bodyParser = require('body-parser');
 var express = require('express');
-var swagger = require('./swagger.json');
+var swagger = require('./index.json');
 let modelo = require('./modelo');
-var port = process.env.VALIDADOR_NODE_PORT
+var port
 var basePath=""
 var app = express();
 var file = 'files/EstadodeCtaDemo.pdf';
+//Se verifica variable de ambiente para puerto del validador
+if(process.env.VALIDADOR_NODE_PORT)
+    port = process.env.VALIDADOR_NODE_PORT
+else
+    port = 9094
+
 app.use(bodyParser.raw(
   {
     type: "application/octet-stream"
@@ -15,24 +21,6 @@ app.use(bodyParser.raw(
 ));
 app.use(bodyParser());
 
-app.get('/download', function(req, res){
-  res.status(200).type('application/octet-stream').download(file);
-});
-
-app.post("/octet", function(req, res)
-{
-
-  console.log(typeof(req.body));
-  console.log("----------------------------------------------------");
-  console.log(req.body);
-  res.status(200).send(req.body);
-});
-
-/*
-**
-**
-**
-**/
 function validateArray(arrayBody, arrayDefinition, errors)
 {
   var itemsDefinition= arrayDefinition.items;
@@ -176,41 +164,45 @@ function validateProperty(type, typeDefinition, formatDefinition, propertyName, 
 
 }
 // ruteo
-app.post('/:path', function(req, res)
-{
-  var errors={};
-  var path= swagger.paths[req.originalUrl];
-  if(path == null)
-  {
-    //throw new Error("No existe la deficion en Swagger para validar el path: "+ req.originalUrl);
-    errors["pathError"]="No existe la definición en Swagger para validar el path "+ req.originalUrl;
-   res.status(200).send({"errors":errors});
-    //res.send(errors);
-    return;
-  }
-  var bodyreq= req.body;
-  errors["required"]={};
-  errors["type"]={};
-  errors["logic"]={};
-  console.log("Path " + req.originalUrl + " validando...");
-
-
-  validate(bodyreq, path.post.parameters[0].schema, errors);
-  console.log("-------------FIN VALIDACION-----------");
-  console.log("*******************************************************************");
-  if(isEmpty(errors.required) && isEmpty(errors.type) && isEmpty(errors.logic)){
-    var nombreModelo= req.path.replace(basePath,"")
-    var respuesta = modelo.obtenerModelo(nombreModelo.substring(1));
-    console.log("Respuesta:  " + respuesta)
-    if(respuesta._downloadFile){
-      console.log("FIle")
-      res.type('application/octet-stream').download(file);
+app.post('/:path', function(req, res){
+  try {
+    var errors={};
+    var path= swagger.paths[req.originalUrl];
+    if(path == null)
+    {
+      //throw new Error("No existe la deficion en Swagger para validar el path: "+ req.originalUrl);
+      errors["pathError"]="No existe la definición en Swagger para validar el path "+ req.originalUrl;
+     res.status(200).send({"errors":errors});
+      //res.send(errors);
+      return;
     }
-    else
-      res.status(200).send(respuesta);
-  }else{
-    console.log("Errors:  ", errors)
-    res.status(200).send({"errors":errors});
+    var bodyreq= req.body;
+    errors["required"]={};
+    errors["type"]={};
+    errors["logic"]={};
+    console.log("Path " + req.originalUrl + " validando...");
+
+
+    validate(bodyreq, path.post.parameters[0].schema, errors);
+    console.log("-------------FIN VALIDACION-----------");
+    console.log("*******************************************************************");
+    if(isEmpty(errors.required) && isEmpty(errors.type) && isEmpty(errors.logic)){
+      var nombreModelo= req.path.replace(basePath,"")
+      var respuesta = modelo.obtenerModelo(nombreModelo.substring(1));
+      console.log("Respuesta:  " + respuesta)
+      if(respuesta._downloadFile){
+        console.log("FIle")
+        res.type('application/octet-stream').download(file);
+      }
+      else
+        res.status(200).send(respuesta);
+    }else{
+      console.log("Errors:  ", errors)
+      res.status(200).send({"errors":errors});
+    }
+  } catch (e) {
+    console.log('There was an error on the process', e);
+    res.status(500).send({"errors":"Problema con la peticion"});
   }
 });
 
@@ -218,10 +210,6 @@ var isEmpty = function(obj) {
   return Object.keys(obj).length === 0;
 }
 
-app.get('/index', function(req, res)
-{
-  res.sendfile(__dirname + '/public/index.html');
-});
 // escucha
 app.listen(port);
 //console.log("Servidor Express escuchando en modo %s", app.settings.env);
