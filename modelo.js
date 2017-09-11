@@ -193,8 +193,10 @@ const Validaotp = {
     "responseError": "Usuario correcto y token correcto"
 }
 
-const validacontrato = {
-    "responseStatus": 200
+const validaContrato = {
+    "descripcion": "Operacion exitosa",
+    "codigo": 0,
+    "contrato": "0"
 }
 
 const envioNotificaciones = {
@@ -698,8 +700,7 @@ var mapaModelo = {
   'consultaDatosBasicos': consultaDatosCliente,
   'consultaServiciosContratados':consultaServiciosContratados,
   'consultaProductosContratados':consultaProductosContratados,
-  'Validacontrato':validacontrato,
-  //'Validaotp':Validaotp,
+  'validaContrato':validaContrato,
   'cambioContrasena':cambioContrasena,
   //'consultaCuentasAgregadasCliente':consultaCuentasAgregadasCliente,
   'envioNotificaciones':envioNotificaciones,
