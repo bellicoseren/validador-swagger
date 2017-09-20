@@ -1,15 +1,21 @@
 {
-  "name": "test1",
+  "name": "validador-swagger",
+  "description": "ESB services",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "contributors": [
+    "Edgar Alan Valdes Iglesias <edgaralan.valdes.iglesias@nova.com>"
+  ],
+  "main": "validador.js",
   "scripts": {
+    "start": "node validador.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "engines": {
+    "node": ">=4.3"
+  },
+  "private": true,
   "dependencies": {
-    "body-parser": "^1.17.2",
-    "express": "^4.15.3"
+    "express": "3.4.4",
+    "body-parser": "1.16.0"
   }
 }
