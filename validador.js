@@ -3,7 +3,7 @@ var validador = require('./src/validateModel');
 var bodyParser = require('body-parser');
 var express = require('express');
 var swagger = require('./index.json');
-let modelo = require('./modelo');
+var modelo = require('./modelo');
 var port
 var basePath=""
 var app = express();
