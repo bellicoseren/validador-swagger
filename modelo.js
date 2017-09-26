@@ -693,6 +693,11 @@ const validaOTP = {
 }
 
 
+const sincronizaOTP = {
+  "responseStatus": 200,
+  "responseError": ""
+}
+
 
 var mapaModelo = {
    //### ESB ####//
@@ -729,7 +734,8 @@ var mapaModelo = {
   'consultaDetalleCredito':consultaDetalleCredito,
   'consultaCfdCfdi':consultaCfdCfdi,
   'estadoCuentaPDF':estadoCuentaPDF,
-  'validaOTP':validaOTP
+  'validaOTP':validaOTP,
+  'sincronizaOTP':sincronizaOTP
 }
 
 function obtenerModelo (nombreModelo){
