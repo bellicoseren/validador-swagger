@@ -224,3 +224,49 @@ Variable de ambiente para puerto del servidor
 VALIDADOR_PORT=9094
 ```
 
+### Importante
+Cabe mencionar que es necesario antes de realizar cada prueba, actualizar el archivo ***"modelo.js"*** y reemplazar el archivo ***"index.json"*** de la siguiente manera:
+
+Al archivo ***"modelo.js"***, como primer paso, se le debe agregar una constante (const) con el nombre del endPoint de nuestro nuevo servicio a probar, con el response(nuestra respuesta JSON) como valor:
+
+```
+const activacionOTP = {
+  "listTokens": [{
+    "usuario": 1234567890,
+    "responseStatus": 200,
+    "responseError": ""
+  },{
+    "usuario": 9876543210,
+    "responseStatus": 200,
+    "responseError": ""
+  }],
+  "responseStatus": 200,
+  "responseError": ""
+}
+```
+
+Como segundo paso, se debe agregar la constante definida en el objeto mapa ***"mapaModelo"*** como llave-valor bajo el mismo nombre del endPoint, tanto para la llave, como para el valor.
+
+```
+var mapaModelo = {
+   //### ESB ####//
+   /////////// Sprint 1  /////////////
+   ... ... ... ...
+   ... ... ... ...
+   ... ... ... ...
+   'activacionOTP':activacionOTP,
+   ... ... ... ...
+   ... ... ... ...
+   ... ... ... ...
+   /////////// Sprint 2  /////////////
+   ... ... ... ...
+   ... ... ... ...
+   ... ... ... ...
+   /////////// Sprint 3  /////////////
+   ... ... ... ...
+   ... ... ... ...
+   ... ... ... ...
+}
+```
+
+El archivo ***"index.json"***, debe ser reemplazado por el archivo "index.json" generado en nuestros proyectos swagger-xxx-api mediante el comando ***"multi-file-swagger index.yaml > index.json"*** después de cada nuevo cambio a validar.
