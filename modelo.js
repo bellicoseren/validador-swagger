@@ -692,12 +692,29 @@ const validaOTP = {
   "responseError": ""
 }
 
-
 const sincronizaOTP = {
   "responseStatus": 200,
   "responseError": ""
 }
 
+const obtenerCatalogoTipoTxn = [
+    {
+      "id": 1,
+      "nombre": "Cuentas Propias"
+    }
+]
+
+const obtenerCatalogoConvenios = [
+    {
+      "id": 2,
+      "nombre": "Pago de servicio telefonico"
+    }
+]
+
+const eliminaPreregistro = {
+    "responseStatus": 200,
+    "responseError": "Problema con la peticion"
+}
 
 var mapaModelo = {
    //### ESB ####//
@@ -735,7 +752,11 @@ var mapaModelo = {
   'consultaCfdCfdi':consultaCfdCfdi,
   'estadoCuentaPDF':estadoCuentaPDF,
   'validaOTP':validaOTP,
-  'sincronizaOTP':sincronizaOTP
+  /////////// Sprint 3  /////////////
+  'sincronizaOTP':sincronizaOTP,
+  'obtenerCatalogoTipoTxn':obtenerCatalogoTipoTxn,
+  'obtenerCatalogoConvenios':obtenerCatalogoConvenios,
+  'eliminaPreregistro':eliminaPreregistro
 }
 
 function obtenerModelo (nombreModelo){
