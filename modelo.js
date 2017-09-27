@@ -693,10 +693,37 @@ const validaOTP = {
 }
 
 
+ /////////// Sprint 3  /////////////
+
 const sincronizaOTP = {
   "responseStatus": 200,
   "responseError": ""
 }
+
+const asociaMovil ={
+  "responseStatus": 200,
+  "responseError": "Problema con la peticion"
+}
+
+const consultaBancos = {
+  "bancos": [
+    {
+      "casfim": "123456798",
+      "nombreCorto": "BANCOMER",
+      "nombre": "BANCOMER BBVA",
+      "participaCECOBAN": false,
+      "participaPROSA": false,
+      "participaSPEI": false,
+      "activoCECOBAN": false,
+      "activoPROSA": false,
+      "activoSPEI": false
+    }
+  ],
+  "responseStatus": 200,
+  "responseError": "Problema con la peticion"
+}
+
+const 
 
 
 var mapaModelo = {
@@ -735,7 +762,11 @@ var mapaModelo = {
   'consultaCfdCfdi':consultaCfdCfdi,
   'estadoCuentaPDF':estadoCuentaPDF,
   'validaOTP':validaOTP,
-  'sincronizaOTP':sincronizaOTP
+ /////////// Sprint 3  /////////////
+  'sincronizaOTP':sincronizaOTP,
+  'asociaMovil':asociaMovil,
+  'consultaBancos':consultaBancos
+
 }
 
 function obtenerModelo (nombreModelo){
