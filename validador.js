@@ -164,6 +164,7 @@ function validateProperty(type, typeDefinition, formatDefinition, propertyName, 
 
 }
 // ruteo
+app.set('json spaces', 0);
 app.post('/:path', function(req, res){
   try {
     var errors={};
@@ -189,9 +190,9 @@ app.post('/:path', function(req, res){
     if(isEmpty(errors.required) && isEmpty(errors.type) && isEmpty(errors.logic)){
       var nombreModelo= req.path.replace(basePath,"")
       var respuesta = modelo.obtenerModelo(nombreModelo.substring(1));
-      console.log("Respuesta:  " + respuesta)
+      console.log("Respuesta:  ", respuesta)
       if(respuesta._downloadFile){
-        console.log("FIle")
+        console.log("File")
         res.type('application/octet-stream').download(file);
       }
       else
