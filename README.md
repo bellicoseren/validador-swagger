@@ -216,5 +216,11 @@ Cabe mencionar que si el archivo Swagger.json, si esta mal armado no podras real
        }
      }
    }
- }
- ```
+   ```
+   
+Variable de ambiente para puerto del servidor
+
+```
+VALIDADOR_PORT=9094
+```
+
