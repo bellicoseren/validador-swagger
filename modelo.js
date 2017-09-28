@@ -722,8 +722,7 @@ const consultaBancos = {
   "responseStatus": 200,
   "responseError": "Problema con la peticion"
 }
-
-const 
+ 
 
 
 var mapaModelo = {
