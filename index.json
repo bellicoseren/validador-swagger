@@ -4546,6 +4546,287 @@
         }
       }
     },
+    "/consultaBines": {
+      "post": {
+        "tags": [
+          "Sprint 3"
+        ],
+        "description": "Este servicio devuelve el catálogo de bines por institución, registrado en Banco Multiva.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "consultaBines,",
+            "description": "consulta Bines",
+            "required": true,
+            "schema": {
+              "required": [
+                "ticket"
+              ],
+              "properties": {
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "consulta Bines",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                },
+                "bines": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "casfim": {
+                        "description": "Clave de la institución financiera en el catálogo del sistema financiero mexicano. Este valor es opcional en la respuesta, pues solo se incluirá para aquellos bines cuyas tarjetas estén respaldadas por una institución financiera.",
+                        "type": "string",
+                        "example": "123456"
+                      },
+                      "nombreCosto": {
+                        "description": "Nombre corto de la institución.",
+                        "type": "string",
+                        "example": "BANCOMER"
+                      },
+                      "bin": {
+                        "description": "Bines asociados con la institución.",
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "example": "123456"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/actualizaMovil": {
+      "post": {
+        "tags": [
+          "Sprint 3"
+        ],
+        "description": "Este servicio solicita al core bancario T24 hacer la actualización de la asociación de un número de teléfono móvil a una cuenta de cheques de un cliente, a fin de poder realizar transacciones hacia la cuenta utilizando un nuevo número de teléfono.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "actualizaMovil,",
+            "description": "actualiza Movil",
+            "required": true,
+            "schema": {
+              "required": [
+                "numeroDeCuenta",
+                "idPersona",
+                "numeroMovil",
+                "ticket",
+                "canal"
+              ],
+              "properties": {
+                "numeroDeCuenta": {
+                  "description": "Número de la cuenta a la que se desea asociar un número de móvil.",
+                  "type": "string",
+                  "example": "String"
+                },
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "numeroMovil": {
+                  "description": "Número de teléfono móvil a asociar la cuenta.",
+                  "type": "string",
+                  "example": "String"
+                },
+                "otp": {
+                  "description": "OTP del dispositivo para la autenticación del usuario.",
+                  "type": "string",
+                  "example": "String"
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "actualiza Movil",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "actualiza Movil error",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/eliminaMovil": {
+      "post": {
+        "tags": [
+          "Sprint 3"
+        ],
+        "description": "Este servicio solicita al core bancario T24 hacer la eliminación de la asociación de un número de teléfono móvil a una cuenta de cheques de un cliente, a fin de eliminar la posibilidad de transaccionar con una cuenta a través de un número de teléfono móvil.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "eliminaMovil,",
+            "description": "elimina Movil",
+            "required": true,
+            "schema": {
+              "required": [
+                "numeroDeCuenta",
+                "idPersona",
+                "numeroMovil",
+                "ticket",
+                "canal"
+              ],
+              "properties": {
+                "numeroDeCuenta": {
+                  "description": "Número de la cuenta a la que se desea asociar un número de móvil.",
+                  "type": "string",
+                  "example": "String"
+                },
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "otp": {
+                  "description": "OTP del dispositivo para la autenticación del usuario.",
+                  "type": "string",
+                  "example": "String"
+                },
+                "numeroMovil": {
+                  "description": "Número de teléfono móvil a asociar la cuenta.",
+                  "type": "string",
+                  "example": "String"
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "elimina Movil",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "elimina Movil error",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/asociaMovil": {
       "post": {
         "tags": [
@@ -4616,285 +4897,6 @@
             "description": "Asocia Movil",
             "schema": {
               "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 200
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": "Problema con la peticion"
-                }
-              }
-            }
-          },
-          "201": {
-            "description": "Error controlado, el codigo http real es 200",
-            "schema": {
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 500
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": "Mensaje de Error."
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/consultaBancos": {
-      "post": {
-        "tags": [
-          "Sprint 3"
-        ],
-        "description": "Este servicio solicita al core bancario T24 hacer la asociación de un número de teléfono móvil a una cuenta de cheques de un cliente, a fin de poder realizar transacciones hacia la cuenta utilizando este número de teléfono.",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "consultaBancos",
-            "description": "Consulta Bancos",
-            "required": true,
-            "schema": {
-              "required": [
-                "ticket",
-                "participaCECOBAN",
-                "participaPROSA",
-                "participaSPEI"
-              ],
-              "properties": {
-                "ticket": {
-                  "required": [
-                    "id_user",
-                    "id_creds"
-                  ],
-                  "properties": {
-                    "id_user": {
-                      "type": "string",
-                      "example": "abc"
-                    },
-                    "id_creds": {
-                      "type": "string",
-                      "example": "1233"
-                    }
-                  }
-                },
-                "participaCECOBAN": {
-                  "description": "Si esta bandera se prende, se solicitan las instituciones que participen en CECOBAN",
-                  "type": "boolean",
-                  "example": "false"
-                },
-                "participaPROSA": {
-                  "description": "Si esta bandera se prende, se solicitan las instituciones que participen en PROSA.",
-                  "type": "boolean",
-                  "example": "false"
-                },
-                "participaSPEI": {
-                  "description": "Si esta bandera se prende, se solicitan todas las instituciones que participen en SPEI.",
-                  "type": "boolean",
-                  "example": "false"
-                },
-                "responses": {
-                  "200": {
-                    "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
-                    "schema": {
-                      "properties": {
-                        "bancos": {
-                          "type": "array",
-                          "items": {
-                            "properties": {
-                              "casfim": {
-                                "description": "Clave de la institución financiera en el catálogo del sistema financiero mexicano.",
-                                "type": "string",
-                                "example": "123456798"
-                              },
-                              "nombreCorto": {
-                                "description": "Nombre corto de la institución financiera.",
-                                "type": "string",
-                                "example": "BANCOMER"
-                              },
-                              "nombre": {
-                                "description": "Nombre completo de la institución financiera.",
-                                "type": "string",
-                                "example": "BANCOMER BBVA"
-                              },
-                              "participaCECOBAN": {
-                                "description": "Si esta bandera se prende, se solicitan las instituciones que participen en CECOBAN.",
-                                "type": "boolean",
-                                "example": "false"
-                              },
-                              "participaPROSA": {
-                                "description": "Si esta bandera se prende, se solicitan las instituciones que participen en PROSA.",
-                                "type": "boolean",
-                                "example": "false"
-                              },
-                              "participaSPEI": {
-                                "description": "Si esta bandera se prende, se solicitan HLD 37 Página 9 de 11 todas las instituciones que participen en SPEI.",
-                                "type": "boolean",
-                                "example": "false"
-                              },
-                              "activoCECOBAN": {
-                                "description": "Bandera que indica si la participación de la institución en CECOBAN está activa.",
-                                "type": "boolean",
-                                "example": "false"
-                              },
-                              "activoPROSA": {
-                                "description": "Bandera que indica si la participación de la institución en PROSA está activa.",
-                                "type": "boolean",
-                                "example": "false"
-                              },
-                              "activoSPEI": {
-                                "description": "Bandera que indica si la participación de la institución en SPEI está activa.",
-                                "type": "boolean",
-                                "example": "false"
-                              }
-                            }
-                          }
-                        },
-                        "responseStatus": {
-                          "type": "number",
-                          "example": 200
-                        },
-                        "responseError": {
-                          "type": "string",
-                          "example": "Problema con la peticion"
-                        }
-                      }
-                    }
-                  },
-                  "201": {
-                    "description": "Error controlado, el codigo http real es 200",
-                    "schema": {
-                      "properties": {
-                        "listMovimientos": {
-                          "type": "array",
-                          "items": {
-                            "properties": {
-                              "folio": {
-                                "description": "Folio del movimiento en el core bancario",
-                                "type": "string"
-                              },
-                              "fecha": {
-                                "description": "Fecha del movimiento a consultar. dd-MM-yyyyThh:mm:ss",
-                                "type": "string",
-                                "format": "date-time"
-                              },
-                              "descripcion": {
-                                "description": "Descripción del movimiento consultado",
-                                "type": "string"
-                              },
-                              "importe": {
-                                "description": "Cantidad monetaria que se movió en la operación bancaria",
-                                "type": "number",
-                                "format": "double"
-                              },
-                              "divisa": {
-                                "description": "Divisa de la transacción",
-                                "type": "string"
-                              },
-                              "cuentaDestino": {
-                                "description": "Cuenta a la cual se movió el importe",
-                                "type": "string"
-                              },
-                              "cuentaOrigen": {
-                                "description": "Cuenta desde la cual se movió el importe. Solo se agrega cuando se trata de operaciones de SPEI",
-                                "type": "string"
-                              },
-                              "referencia": {
-                                "description": "Referencia alfanumérica del movimiento. Es opcional por el caso de movimientos de Multiva Integra",
-                                "type": "string"
-                              },
-                              "referenciaNumerica": {
-                                "description": "Referencia numérica del movimiento",
-                                "type": "integer",
-                                "format": "int64"
-                              },
-                              "CASFIM": {
-                                "description": "Clave de participante en SPEI del banco que envía o recibe el pago",
-                                "type": "string"
-                              },
-                              "canal": {
-                                "description": "Canal por el que se generó el movimiento",
-                                "type": "string"
-                              }
-                            }
-                          }
-                        },
-                        "responseStatus": {
-                          "type": "number",
-                          "example": 200
-                        },
-                        "responseError": {
-                          "type": "string",
-                          "example": ""
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Consulta Bancos",
-            "schema": {
-              "properties": {
-                "bancos": {
-                  "type": "array",
-                  "items": {
-                    "properties": {
-                      "casfim": {
-                        "description": "Clave de la institución financiera en el catálogo del sistema financiero mexicano.",
-                        "type": "string",
-                        "example": "123456798"
-                      },
-                      "nombreCorto": {
-                        "description": "Nombre corto de la institución financiera.",
-                        "type": "string",
-                        "example": "BANCOMER"
-                      },
-                      "nombre": {
-                        "description": "Nombre completo de la institución financiera.",
-                        "type": "string",
-                        "example": "BANCOMER BBVA"
-                      },
-                      "participaCECOBAN": {
-                        "description": "Si esta bandera se prende, se solicitan las instituciones que participen en CECOBAN.",
-                        "type": "boolean",
-                        "example": "false"
-                      },
-                      "participaPROSA": {
-                        "description": "Si esta bandera se prende, se solicitan las instituciones que participen en PROSA.",
-                        "type": "boolean",
-                        "example": "false"
-                      },
-                      "participaSPEI": {
-                        "description": "Si esta bandera se prende, se solicitan HLD 37 Página 9 de 11 todas las instituciones que participen en SPEI.",
-                        "type": "boolean",
-                        "example": "false"
-                      },
-                      "activoCECOBAN": {
-                        "description": "Bandera que indica si la participación de la institución en CECOBAN está activa.",
-                        "type": "boolean",
-                        "example": "false"
-                      },
-                      "activoPROSA": {
-                        "description": "Bandera que indica si la participación de la institución en PROSA está activa.",
-                        "type": "boolean",
-                        "example": "false"
-                      },
-                      "activoSPEI": {
-                        "description": "Bandera que indica si la participación de la institución en SPEI está activa.",
-                        "type": "boolean",
-                        "example": "false"
-                      }
-                    }
-                  }
-                },
                 "responseStatus": {
                   "type": "number",
                   "example": 200
