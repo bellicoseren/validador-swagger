@@ -747,6 +747,30 @@ const eliminaPreregistro = {
     "responseError": "Problema con la peticion"
 }
 
+const consultaBines = {
+  "responseStatus": 200,
+  "responseError": "Problema con la peticion",
+  "bines": [
+    {
+      "casfim": "123456",
+      "nombreCosto": "BANCOMER",
+      "bin": [
+        "123456"
+      ]
+    }
+  ]
+}
+
+const actualizaMovil = {
+  "responseStatus": 200,
+  "responseError": "Problema con la peticion"
+}
+
+const eliminaMovil = {
+  "responseStatus": 200,
+  "responseError": "Problema con la peticion"
+}
+
 
 var mapaModelo = {
    //### ESB ####//
@@ -791,7 +815,10 @@ var mapaModelo = {
   'consultaBancos':consultaBancos
   'obtenerCatalogoTipoTxn':obtenerCatalogoTipoTxn,
   'obtenerCatalogoConvenios':obtenerCatalogoConvenios,
-  'eliminaPreregistro':eliminaPreregistro
+  'eliminaPreregistro':eliminaPreregistro,
+  'consultaBines':consultaBines,
+  'actualizaMovil':actualizaMovil,
+  'eliminaMovil':eliminaMovil
 
 }
 
