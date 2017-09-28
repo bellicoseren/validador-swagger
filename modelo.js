@@ -693,12 +693,15 @@ const validaOTP = {
 }
 
 
- /////////// Sprint 3  /////////////
+
+/////////// Sprint 3  /////////////
+
 
 const sincronizaOTP = {
   "responseStatus": 200,
   "responseError": ""
 }
+
 
 const asociaMovil ={
   "responseStatus": 200,
@@ -723,6 +726,26 @@ const consultaBancos = {
   "responseError": "Problema con la peticion"
 }
  
+
+
+const obtenerCatalogoTipoTxn = [
+    {
+      "id": 1,
+      "nombre": "Cuentas Propias"
+    }
+]
+
+const obtenerCatalogoConvenios = [
+    {
+      "id": 2,
+      "nombre": "Pago de servicio telefonico"
+    }
+]
+
+const eliminaPreregistro = {
+    "responseStatus": 200,
+    "responseError": "Problema con la peticion"
+}
 
 
 var mapaModelo = {
@@ -761,10 +784,14 @@ var mapaModelo = {
   'consultaCfdCfdi':consultaCfdCfdi,
   'estadoCuentaPDF':estadoCuentaPDF,
   'validaOTP':validaOTP,
+
  /////////// Sprint 3  /////////////
   'sincronizaOTP':sincronizaOTP,
   'asociaMovil':asociaMovil,
   'consultaBancos':consultaBancos
+  'obtenerCatalogoTipoTxn':obtenerCatalogoTipoTxn,
+  'obtenerCatalogoConvenios':obtenerCatalogoConvenios,
+  'eliminaPreregistro':eliminaPreregistro
 
 }
 

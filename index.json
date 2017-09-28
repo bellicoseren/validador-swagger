@@ -1975,6 +1975,580 @@
         }
       }
     },
+    "/consultaCuentasAgregadasCliente": {
+      "post": {
+        "tags": [
+          "Sprint 2"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación/consultaCuentasAgregadasCliente del serviciorequerido para la integración de Multivanet con T24",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "consultaDatosBasicos,",
+            "description": "Consumidor  que dibuja encabezado con datos de cliente",
+            "required": true,
+            "schema": {
+              "required": [
+                "idPersona",
+                "ticket",
+                "canal"
+              ],
+              "properties": {
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Servicio dummy que se publicara para el uso del consumidor en tanto se completa la integracion del ESB a T24. Bajo el entendido de que la firma expuesta en este servicio dummy no cambiara cuando el desarrollo termine",
+            "schema": {
+              "properties": {
+                "listCuentasCliente": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "nombreCuenta": {
+                        "description": "Nombre asignado a la cuenta",
+                        "type": "string",
+                        "example": "CUENTA DE PRUEBA"
+                      },
+                      "numeroDeCuenta": {
+                        "description": "Número de cuenta",
+                        "type": "string",
+                        "example": "123456"
+                      },
+                      "idProducto": {
+                        "description": "Identificador del producto",
+                        "type": "string",
+                        "example": "CHQ"
+                      },
+                      "descripcionProducto": {
+                        "description": "Nombre comercial del producto",
+                        "type": "string",
+                        "example": "Cuenta de Cheques"
+                      },
+                      "divisa": {
+                        "description": "Clave de 3 letras de la divisa. Pesos Mexicanos será MXN",
+                        "type": "string",
+                        "example": "MXN"
+                      },
+                      "depositosPendientes": {
+                        "description": "Monto acumulado de depósitos pendientes registrados en la cuenta",
+                        "type": "number",
+                        "format": "double",
+                        "example": "10000.00"
+                      },
+                      "depositosSBC": {
+                        "description": "Monto acumulado de depósitos salvo buen cobro registrados en la cuenta",
+                        "type": "number",
+                        "format": "double",
+                        "example": "15000.00"
+                      },
+                      "saldoMovimientosDia": {
+                        "description": "Contador de movimientos registrados en la cuenta durante el día",
+                        "type": "number",
+                        "format": "double",
+                        "example": "1989.50"
+                      },
+                      "movimientos": {
+                        "description": "Contador de movimientos completados registrados en la cuenta durante el día",
+                        "type": "integer",
+                        "format": "int32",
+                        "example": "1"
+                      },
+                      "lineaSobregiro": {
+                        "description": "Monto autorizado de sobregiro en la cuenta. Solo se devolverá un valor si la cuenta permite esta opción",
+                        "type": "number",
+                        "format": "double",
+                        "example": "5000.00"
+                      },
+                      "interesesGenerados": {
+                        "description": "Monto de intereses devengados por el saldo actual en la cuenta. Este valor sólo se incluirá si el producto de la cuenta permite la generación de intereses",
+                        "type": "number",
+                        "format": "double",
+                        "example": "2000.00"
+                      },
+                      "CLABE": {
+                        "description": "Clave para transferencias electrónicas interbancarias. Este campo se recibe en mayúsculas",
+                        "type": "string",
+                        "example": "123456789012345"
+                      },
+                      "saldo": {
+                        "description": "Saldo de la cuenta",
+                        "type": "number",
+                        "format": "double",
+                        "example": "1532.00"
+                      },
+                      "alias": {
+                        "description": "Alias asociado con la cuenta en el core bancario",
+                        "type": "string",
+                        "example": "CUENTA DE PRUEBA"
+                      }
+                    }
+                  }
+                },
+                "listCreditosCliente": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "contrato": {
+                        "description": "Número del crédito, LD",
+                        "type": "string",
+                        "example": "123456"
+                      },
+                      "numeroDeCuenta": {
+                        "description": "Número de cuenta",
+                        "type": "string",
+                        "example": "7894560"
+                      },
+                      "idProducto": {
+                        "description": "Identificador del producto",
+                        "type": "string",
+                        "example": "CRED"
+                      },
+                      "descripcionProducto": {
+                        "description": "Nombre comercial del producto",
+                        "type": "string",
+                        "example": "CREDITO DE PRUEBA"
+                      },
+                      "saldoTotal": {
+                        "description": "Monto total de deuda en este crédito",
+                        "type": "number",
+                        "format": "double",
+                        "example": "1000000.00"
+                      },
+                      "alias": {
+                        "description": "Alias asociado con la cuenta en el core bancario",
+                        "type": "string",
+                        "example": "HIPOTECA CASA"
+                      }
+                    }
+                  }
+                },
+                "listInversionesPagareCliente": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "numeroDeCuenta": {
+                        "description": "Número de cuenta",
+                        "type": "string",
+                        "example": "789456"
+                      },
+                      "idProducto": {
+                        "description": "Identificador del producto",
+                        "type": "string",
+                        "example": "PGR"
+                      },
+                      "descripcionProducto": {
+                        "description": "Nombre comercial del producto",
+                        "type": "string",
+                        "example": "Inversion Pagare"
+                      },
+                      "plazo": {
+                        "description": "Plazo de la inversión en días",
+                        "type": "integer",
+                        "format": "int32",
+                        "example": "30"
+                      },
+                      "tasa": {
+                        "description": "Tasa de la inversión",
+                        "type": "number",
+                        "format": "double",
+                        "example": "5.21"
+                      },
+                      "saldo": {
+                        "description": "Monto de la inversión sin contar intereses ni im",
+                        "type": "number",
+                        "format": "double",
+                        "example": "100000.50"
+                      },
+                      "interesDevengado": {
+                        "description": "Intereses generados por el pagaré al día de consulta",
+                        "type": "number",
+                        "format": "double",
+                        "example": "100.00"
+                      },
+                      "interesPagar": {
+                        "description": "Intereses a pagar al vencimiento del pagaré",
+                        "type": "number",
+                        "format": "double",
+                        "example": "100.00"
+                      },
+                      "fechaVencimiento": {
+                        "description": "Fecha de vencimiento del pagaré en formato dd-MM-yyyy",
+                        "type": "string",
+                        "format": "date",
+                        "example": "19-07-2017"
+                      },
+                      "instruccionesVencimiento": {
+                        "description": "Instrucciones a ejecutar al vencimiento del pagaré",
+                        "type": "string",
+                        "example": "instruccionesVencimiento"
+                      },
+                      "alias": {
+                        "description": "Alias asociado con la cuenta en el core bancario",
+                        "type": "string",
+                        "example": "PAGARE DE PRUEBA"
+                      },
+                      "ISRRetenido": {
+                        "description": "Impuesto retenido",
+                        "type": "number",
+                        "format": "double",
+                        "example": "14000.00"
+                      },
+                      "saldoNeto": {
+                        "description": "Monto de la inversión más los intereses menos el ISR",
+                        "type": "number",
+                        "format": "double",
+                        "example": "15.02"
+                      },
+                      "apertura": {
+                        "description": "Fecha de apertura del contrato. dd-MM-yyyyThh:mm:ss",
+                        "type": "string",
+                        "format": "date",
+                        "example": "13-05-2017T00:57:00"
+                      }
+                    }
+                  }
+                },
+                "listInversionesCedeCliente": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "numeroDeCuenta": {
+                        "description": "Número de la cuenta del cliente",
+                        "type": "string",
+                        "example": "789456"
+                      },
+                      "idProducto": {
+                        "description": "Identificador del producto",
+                        "type": "string",
+                        "example": "CEDE"
+                      },
+                      "descripcionProducto": {
+                        "description": "Nombre comercial del producto",
+                        "type": "string",
+                        "example": "Inversion CEDE"
+                      },
+                      "plazo": {
+                        "description": "Plazo de la inversión en días",
+                        "type": "integer",
+                        "format": "int32",
+                        "example": "30"
+                      },
+                      "tasa": {
+                        "description": "Tasa de la inversión",
+                        "type": "number",
+                        "format": "double",
+                        "example": "5.21"
+                      },
+                      "saldo": {
+                        "description": "Saldo de la inversión",
+                        "type": "number",
+                        "format": "double",
+                        "example": "100000.50"
+                      },
+                      "interesesDevengados": {
+                        "description": "Intereses devengados por el CEDE",
+                        "type": "number",
+                        "format": "double",
+                        "example": "1000.00"
+                      },
+                      "fechaVencimiento": {
+                        "description": "Fecha de vencimiento del CEDE en formato dd-MM-yyyy",
+                        "type": "string",
+                        "format": "date",
+                        "example": "19-07-2017"
+                      },
+                      "fechaProximoPago": {
+                        "description": "Fecha del próximo pago recibido en el CEDE en formato dd-MM-yyyyThh:mm:ss",
+                        "type": "string",
+                        "format": "date",
+                        "example": "19-07-2017T09:00:00"
+                      },
+                      "alias": {
+                        "description": "Alias asociado con la cuenta en el core bancario",
+                        "type": "string",
+                        "example": "CEDE DE PRUEBA"
+                      },
+                      "ISRRetenido": {
+                        "description": "Impuesto retenido",
+                        "type": "number",
+                        "format": "double",
+                        "example": "14000.00"
+                      },
+                      "saldoNeto": {
+                        "description": "Monto de la inversion mas los intereses menos el isr",
+                        "type": "number",
+                        "format": "double",
+                        "example": "15.02"
+                      },
+                      "apertura": {
+                        "description": "Fecha de apertura del contrato. En formato dd-MM-yyyyThh:mm:ss",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "13-05-2017T:01:00:00"
+                      }
+                    }
+                  }
+                },
+                "listInversionesVistaCliente": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "numeroDeCuenta": {
+                        "description": "Número de cuenta asociada con esta cuenta de inversión",
+                        "type": "string",
+                        "example": "0123456"
+                      },
+                      "idProducto": {
+                        "description": "Identificador del producto",
+                        "type": "string",
+                        "example": "INT"
+                      },
+                      "descripcionProducto": {
+                        "description": "Nombre comercial del producto",
+                        "type": "string",
+                        "example": "Multiva Integra"
+                      },
+                      "cuentaIntegra": {
+                        "description": "Número de la cuenta MultivaIntegra que constituye esta inversión",
+                        "type": "string",
+                        "example": "789456"
+                      },
+                      "saldo": {
+                        "description": "Saldo de la cuenta",
+                        "type": "number",
+                        "format": "double",
+                        "example": "780000.00"
+                      },
+                      "alias": {
+                        "description": "Alias asociado con la cuenta en el core bancario",
+                        "type": "string",
+                        "example": "MULTIVA INTEGRA DE PRUEBA"
+                      }
+                    }
+                  }
+                },
+                "listFondosCliente": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "numeroDeCuenta": {
+                        "description": "Número de cuenta asociada con esta cuenta de inversión",
+                        "type": "string",
+                        "example": "456789"
+                      },
+                      "idProducto": {
+                        "description": "Identificador del producto",
+                        "type": "string",
+                        "example": "FND"
+                      },
+                      "descripcionProducto": {
+                        "description": "Nombre comercial del producto",
+                        "type": "string",
+                        "example": "Fondos"
+                      },
+                      "saldo": {
+                        "description": "Saldo del fondo",
+                        "type": "number",
+                        "format": "double",
+                        "example": "1000000.00"
+                      },
+                      "alias": {
+                        "description": "Alias asociado con la cuenta en el core bancario",
+                        "type": "string",
+                        "example": "FONDO DE PRUEBA"
+                      },
+                      "emisora": {
+                        "description": "Emisora del fondo",
+                        "type": "string",
+                        "example": "ABC-1234-AC1"
+                      },
+                      "titulos": {
+                        "description": "Número de títulos adquiridos de este fondo",
+                        "type": "integer",
+                        "format": "int32",
+                        "example": "100"
+                      },
+                      "precioMercado": {
+                        "description": "Precio de mercado de cada título de este fondo",
+                        "type": "number",
+                        "format": "double",
+                        "example": "120.00"
+                      },
+                      "valuacion": {
+                        "description": "Valor total de la cartera de títulos de este fondo",
+                        "type": "number",
+                        "format": "double",
+                        "example": "12000.00"
+                      },
+                      "valia": {
+                        "description": "Un número positivo o negativo que indica la plusvalía o minusvalía de los títulos de este fondo, respectivamente",
+                        "type": "number",
+                        "format": "double",
+                        "example": "-1.03"
+                      }
+                    }
+                  }
+                },
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "listCuentasCliente": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "nombreCuenta": {
+                        "description": "Nombre asignado a la cuenta",
+                        "type": "string"
+                      },
+                      "numeroDeCuenta": {
+                        "description": "Número de cuenta",
+                        "type": "string"
+                      },
+                      "idProducto": {
+                        "description": "Identificador del producto",
+                        "type": "string"
+                      },
+                      "descripcionProducto": {
+                        "description": "Nombre comercial del producto",
+                        "type": "string"
+                      },
+                      "divisa": {
+                        "description": "Clave de 3 letras de la divisa. Pesos Mexicanos será MXN",
+                        "type": "string"
+                      },
+                      "depositosPendientes": {
+                        "description": "Monto acumulado de depósitos pendientes registrados en la cuenta",
+                        "type": "number",
+                        "format": "double"
+                      },
+                      "depositosSBC": {
+                        "description": "Monto acumulado de depósitos salvo buen cobro registrados en la cuenta",
+                        "type": "number",
+                        "format": "double"
+                      },
+                      "saldoMovimientosDia": {
+                        "description": "Contador de movimientos registrados en la cuenta durante el día",
+                        "type": "number",
+                        "format": "double"
+                      },
+                      "movimientos": {
+                        "description": "Contador de movimientos completados registrados en la cuenta durante el día",
+                        "type": "integer",
+                        "format": "int32"
+                      },
+                      "lineaSobregiro": {
+                        "description": "Monto autorizado de sobregiro en la cuenta. Solo se devolverá un valor si la cuenta permite esta opción",
+                        "type": "number",
+                        "format": "double"
+                      },
+                      "interesesGenerados": {
+                        "description": "Monto de intereses devengados por el saldo actual en la cuenta. Este valor sólo se incluirá si el producto de la cuenta permite la generación de intereses",
+                        "type": "number",
+                        "format": "double"
+                      },
+                      "CLABE": {
+                        "description": "Clave para transferencias electrónicas interbancarias. Este campo se recibe en mayúsculas",
+                        "type": "string"
+                      },
+                      "saldo": {
+                        "description": "Saldo de la cuenta",
+                        "type": "number",
+                        "format": "double"
+                      },
+                      "alias": {
+                        "description": "Alias asociado con la cuenta en el core bancario",
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "listCreditosCliente": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "contrato": {
+                        "description": "Número del crédito, LD",
+                        "type": "string"
+                      },
+                      "numeroDeCuenta": {
+                        "description": "Número de cuenta",
+                        "type": "string"
+                      },
+                      "idProducto": {
+                        "description": "Identificador del producto",
+                        "type": "string"
+                      },
+                      "descripcionProducto": {
+                        "description": "Nombre comercial del producto",
+                        "type": "string"
+                      },
+                      "saldoTotal": {
+                        "description": "Monto total de deuda en este crédito",
+                        "type": "number",
+                        "format": "double"
+                      },
+                      "alias": {
+                        "description": "Alias asociado con la cuenta en el core bancario",
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "responseStatus": {
+                  "type": "number",
+                  "example": 404
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "No existen cuentas, inversiones ni creditos."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/consultaDetalleCredito": {
       "post": {
         "tags": [
@@ -4241,6 +4815,403 @@
                   "description": "Mensaje de error, si aplica. Si se trata de una ejecución exitosa, este mensaje va vacío en la respuesta.",
                   "type": "string",
                   "example": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/eliminaPreregistro": {
+      "post": {
+        "tags": [
+          "Sprint 3"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación /eliminaPreregistro del servicio requerido para la integración de Multivanet con T24.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "eliminaPreregistro",
+            "description": "eliminaPreregistro",
+            "required": true,
+            "schema": {
+              "required": [
+                "idPreregistro",
+                "otp",
+                "canal",
+                "ticket"
+              ],
+              "properties": {
+                "idPreregistro": {
+                  "description": "Identificador único del preregistro en el core bancario.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": "123456"
+                },
+                "otp": {
+                  "type": "string",
+                  "example": "1234567"
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/obtenerCatalogoConvenios": {
+      "post": {
+        "tags": [
+          "Sprint 3"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación/obtenerCatalogoConvenios del servicio requerido para la integración de Multivanet con T24.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "obtenerCatalogoConvenios",
+            "description": "obtenerCatalogoConvenios",
+            "required": true,
+            "schema": {
+              "required": [
+                "ticket"
+              ],
+              "properties": {
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "properties": {
+                  "id": {
+                    "description": "Identificador que representa cada uno de los convenios.",
+                    "type": "integer",
+                    "format": "int64",
+                    "example": "2"
+                  },
+                  "nombre": {
+                    "description": "Nombre de convenio.",
+                    "type": "string",
+                    "example": "Pago de servicio telefonico"
+                  }
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/obtenerCatalogoTipoTxn": {
+      "post": {
+        "tags": [
+          "Sprint 3"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación/obtenerCatalogoTipoTxn del servicio requerido para la integración de Multivanet con T24.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "obtenerCatalogoTipoTxn",
+            "description": "obtenerCatalogoTipoTxn",
+            "required": true,
+            "schema": {
+              "required": [
+                "ticket"
+              ],
+              "properties": {
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "properties": {
+                  "id": {
+                    "description": "Identificador que representa cada una de las transacciones.",
+                    "type": "integer",
+                    "format": "int64",
+                    "example": "1"
+                  },
+                  "nombre": {
+                    "description": "Nombre de las transacciones.",
+                    "type": "string",
+                    "example": "Cuentas Propias"
+                  }
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sincronizaOTP": {
+      "post": {
+        "tags": [
+          "Sprint 3"
+        ],
+        "description": "Este servicio realiza la sincronización de la semilla de un dispositivo de OTP. Recibe dos diferentes valores de OTP e invoca la ejecución del servicio de Vasco, el cual sincroniza el dispositivo con la semilla.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "sincronizaOTP,",
+            "description": "Sincroniza OTP",
+            "required": true,
+            "schema": {
+              "required": [
+                "idPersona",
+                "otp1",
+                "otp2"
+              ],
+              "properties": {
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "otp1": {
+                  "type": "string",
+                  "example": "1234567"
+                },
+                "otp2": {
+                  "type": "string",
+                  "example": "1234567"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sincroniza OTP",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/asociaMovil": {
+      "post": {
+        "tags": [
+          "Sprint 3"
+        ],
+        "description": "Este servicio solicita al core bancario T24 hacer la asociación de un número de teléfono móvil a una cuenta de cheques de un cliente, a fin de poder realizar transacciones hacia la cuenta utilizando este número de teléfono.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "asociaMovil",
+            "description": "Asocia Movil",
+            "required": true,
+            "schema": {
+              "required": [
+                "numeroDeCuenta",
+                "idPersona",
+                "numeroMovil",
+                "otp",
+                "ticket",
+                "canal"
+              ],
+              "properties": {
+                "numeroDeCuenta": {
+                  "type": "string",
+                  "example": 12342456423985
+                },
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "numeroMovil": {
+                  "description": "Número de teléfono móvil a asociar la cuenta.",
+                  "type": "string",
+                  "example": "5512345"
+                },
+                "otp": {
+                  "type": "string",
+                  "example": "1234567"
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Asocia Movil",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Mensaje de Error."
                 }
               }
             }
