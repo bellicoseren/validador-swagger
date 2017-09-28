@@ -788,7 +788,7 @@ var mapaModelo = {
  /////////// Sprint 3  /////////////
   'sincronizaOTP':sincronizaOTP,
   'asociaMovil':asociaMovil,
-  'consultaBancos':consultaBancos
+  'consultaBancos':consultaBancos,
   'obtenerCatalogoTipoTxn':obtenerCatalogoTipoTxn,
   'obtenerCatalogoConvenios':obtenerCatalogoConvenios,
   'eliminaPreregistro':eliminaPreregistro
