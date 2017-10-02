@@ -4976,144 +4976,6 @@
                   "description": "Si esta bandera se prende, se solicitan todas las instituciones que participen en SPEI.",
                   "type": "boolean",
                   "example": "false"
-                },
-                "responses": {
-                  "200": {
-                    "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
-                    "schema": {
-                      "properties": {
-                        "bancos": {
-                          "type": "array",
-                          "items": {
-                            "properties": {
-                              "casfim": {
-                                "description": "Clave de la institución financiera en el catálogo del sistema financiero mexicano.",
-                                "type": "string",
-                                "example": "123456798"
-                              },
-                              "nombreCorto": {
-                                "description": "Nombre corto de la institución financiera.",
-                                "type": "string",
-                                "example": "BANCOMER"
-                              },
-                              "nombre": {
-                                "description": "Nombre completo de la institución financiera.",
-                                "type": "string",
-                                "example": "BANCOMER BBVA"
-                              },
-                              "participaCECOBAN": {
-                                "description": "Si esta bandera se prende, se solicitan las instituciones que participen en CECOBAN.",
-                                "type": "boolean",
-                                "example": "false"
-                              },
-                              "participaPROSA": {
-                                "description": "Si esta bandera se prende, se solicitan las instituciones que participen en PROSA.",
-                                "type": "boolean",
-                                "example": "false"
-                              },
-                              "participaSPEI": {
-                                "description": "Si esta bandera se prende, se solicitan HLD 37 Página 9 de 11 todas las instituciones que participen en SPEI.",
-                                "type": "boolean",
-                                "example": "false"
-                              },
-                              "activoCECOBAN": {
-                                "description": "Bandera que indica si la participación de la institución en CECOBAN está activa.",
-                                "type": "boolean",
-                                "example": "false"
-                              },
-                              "activoPROSA": {
-                                "description": "Bandera que indica si la participación de la institución en PROSA está activa.",
-                                "type": "boolean",
-                                "example": "false"
-                              },
-                              "activoSPEI": {
-                                "description": "Bandera que indica si la participación de la institución en SPEI está activa.",
-                                "type": "boolean",
-                                "example": "false"
-                              }
-                            }
-                          }
-                        },
-                        "responseStatus": {
-                          "type": "number",
-                          "example": 200
-                        },
-                        "responseError": {
-                          "type": "string",
-                          "example": "Problema con la peticion"
-                        }
-                      }
-                    }
-                  },
-                  "201": {
-                    "description": "Error controlado, el codigo http real es 200",
-                    "schema": {
-                      "properties": {
-                        "listMovimientos": {
-                          "type": "array",
-                          "items": {
-                            "properties": {
-                              "folio": {
-                                "description": "Folio del movimiento en el core bancario",
-                                "type": "string"
-                              },
-                              "fecha": {
-                                "description": "Fecha del movimiento a consultar. dd-MM-yyyyThh:mm:ss",
-                                "type": "string",
-                                "format": "date-time"
-                              },
-                              "descripcion": {
-                                "description": "Descripción del movimiento consultado",
-                                "type": "string"
-                              },
-                              "importe": {
-                                "description": "Cantidad monetaria que se movió en la operación bancaria",
-                                "type": "number",
-                                "format": "double"
-                              },
-                              "divisa": {
-                                "description": "Divisa de la transacción",
-                                "type": "string"
-                              },
-                              "cuentaDestino": {
-                                "description": "Cuenta a la cual se movió el importe",
-                                "type": "string"
-                              },
-                              "cuentaOrigen": {
-                                "description": "Cuenta desde la cual se movió el importe. Solo se agrega cuando se trata de operaciones de SPEI",
-                                "type": "string"
-                              },
-                              "referencia": {
-                                "description": "Referencia alfanumérica del movimiento. Es opcional por el caso de movimientos de Multiva Integra",
-                                "type": "string"
-                              },
-                              "referenciaNumerica": {
-                                "description": "Referencia numérica del movimiento",
-                                "type": "integer",
-                                "format": "int64"
-                              },
-                              "CASFIM": {
-                                "description": "Clave de participante en SPEI del banco que envía o recibe el pago",
-                                "type": "string"
-                              },
-                              "canal": {
-                                "description": "Canal por el que se generó el movimiento",
-                                "type": "string"
-                              }
-                            }
-                          }
-                        },
-                        "responseStatus": {
-                          "type": "number",
-                          "example": 200
-                        },
-                        "responseError": {
-                          "type": "string",
-                          "example": ""
-                        }
-                      }
-                    }
-                  }
                 }
               }
             }
@@ -5124,9 +4986,28 @@
             "description": "Consulta Bancos",
             "schema": {
               "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                },
                 "bancos": {
                   "type": "array",
                   "items": {
+                    "required": [
+                      "casfim",
+                      "nombreCorto",
+                      "nombre",
+                      "participaCECOBAN",
+                      "participaPROSA",
+                      "participaSPEI",
+                      "activoCECOBAN",
+                      "activoPROSA",
+                      "activoSPEI"
+                    ],
                     "properties": {
                       "casfim": {
                         "description": "Clave de la institución financiera en el catálogo del sistema financiero mexicano.",
@@ -5175,14 +5056,6 @@
                       }
                     }
                   }
-                },
-                "responseStatus": {
-                  "type": "number",
-                  "example": 200
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": "Problema con la peticion"
                 }
               }
             }
@@ -5198,6 +5071,194 @@
                 "responseError": {
                   "type": "string",
                   "example": "Mensaje de Error."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/actualizarNIP": {
+      "post": {
+        "tags": [
+          "Sprint 3"
+        ],
+        "description": "Este servicio permitirá actualizar el NIP de acceso de un dispositivo móvil a Multivatouch.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "actualizaNIP,",
+            "description": "actualiza NIP",
+            "required": true,
+            "schema": {
+              "required": [
+                "idPersona",
+                "ticket",
+                "canal",
+                "otp"
+              ],
+              "properties": {
+                "otp": {
+                  "description": "Cadena del OTP del cliente.",
+                  "type": "string",
+                  "example": "String"
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                },
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "numeroSerie": {
+                  "description": "Identificador único del dispositivo de la persona cuyo NIP se restablecerá.",
+                  "type": "string",
+                  "example": "String"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "actualiza NIP",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "actualiza NIP error",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/consultaCuentahabiente": {
+      "post": {
+        "tags": [
+          "Sprint 3"
+        ],
+        "description": "Este servicio permite consultar el nombre del propietario de una cuenta.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "consultaCuentahabiente,",
+            "description": "consulta Cuenta habiente",
+            "required": true,
+            "schema": {
+              "required": [
+                "numeroDeCuenta",
+                "ticket",
+                "canal",
+                "otp"
+              ],
+              "properties": {
+                "otp": {
+                  "description": "OTP del dispositivo para la autenticación del usuario.",
+                  "type": "string",
+                  "example": "String"
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                },
+                "numeroDeCuenta": {
+                  "description": "Número de cuenta cuyo cuentahabiente se desea consultar.",
+                  "type": "string",
+                  "example": "String"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "consulta Cuenta habiente",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                },
+                "nombreCuentahabiente": {
+                  "description": "Número de la cuenta a la que se desea asociar un número de móvil.",
+                  "type": "string",
+                  "example": "wterry@legosoft.com.mx"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "consulta Cuenta habiente error",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
                 }
               }
             }
@@ -5484,7 +5545,6 @@
           "Sprint 3"
         ],
         "description": "La finalidad de este servicio es permitir la persistencia de la información de cualquier tipo de preregistro para la ejecución de operaciones del cliente.",
-        "operationId": "guardaPreregistro",
         "parameters": [
           {
             "in": "body",
@@ -5498,7 +5558,7 @@
                 "noCuenta",
                 "idTipoTransaccion",
                 "alias",
-                "monto",
+                "montoMaximo",
                 "celularNotification",
                 "email",
                 "periodo",
