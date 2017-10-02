@@ -4546,6 +4546,287 @@
         }
       }
     },
+    "/consultaBines": {
+      "post": {
+        "tags": [
+          "Sprint 3"
+        ],
+        "description": "Este servicio devuelve el catálogo de bines por institución, registrado en Banco Multiva.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "consultaBines,",
+            "description": "consulta Bines",
+            "required": true,
+            "schema": {
+              "required": [
+                "ticket"
+              ],
+              "properties": {
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "consulta Bines",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                },
+                "bines": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "casfim": {
+                        "description": "Clave de la institución financiera en el catálogo del sistema financiero mexicano. Este valor es opcional en la respuesta, pues solo se incluirá para aquellos bines cuyas tarjetas estén respaldadas por una institución financiera.",
+                        "type": "string",
+                        "example": "123456"
+                      },
+                      "nombreCosto": {
+                        "description": "Nombre corto de la institución.",
+                        "type": "string",
+                        "example": "BANCOMER"
+                      },
+                      "bin": {
+                        "description": "Bines asociados con la institución.",
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "example": "123456"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/actualizaMovil": {
+      "post": {
+        "tags": [
+          "Sprint 3"
+        ],
+        "description": "Este servicio solicita al core bancario T24 hacer la actualización de la asociación de un número de teléfono móvil a una cuenta de cheques de un cliente, a fin de poder realizar transacciones hacia la cuenta utilizando un nuevo número de teléfono.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "actualizaMovil,",
+            "description": "actualiza Movil",
+            "required": true,
+            "schema": {
+              "required": [
+                "numeroDeCuenta",
+                "idPersona",
+                "numeroMovil",
+                "ticket",
+                "canal"
+              ],
+              "properties": {
+                "numeroDeCuenta": {
+                  "description": "Número de la cuenta a la que se desea asociar un número de móvil.",
+                  "type": "string",
+                  "example": "String"
+                },
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "numeroMovil": {
+                  "description": "Número de teléfono móvil a asociar la cuenta.",
+                  "type": "string",
+                  "example": "String"
+                },
+                "otp": {
+                  "description": "OTP del dispositivo para la autenticación del usuario.",
+                  "type": "string",
+                  "example": "String"
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "actualiza Movil",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "actualiza Movil error",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/eliminaMovil": {
+      "post": {
+        "tags": [
+          "Sprint 3"
+        ],
+        "description": "Este servicio solicita al core bancario T24 hacer la eliminación de la asociación de un número de teléfono móvil a una cuenta de cheques de un cliente, a fin de eliminar la posibilidad de transaccionar con una cuenta a través de un número de teléfono móvil.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "eliminaMovil,",
+            "description": "elimina Movil",
+            "required": true,
+            "schema": {
+              "required": [
+                "numeroDeCuenta",
+                "idPersona",
+                "numeroMovil",
+                "ticket",
+                "canal"
+              ],
+              "properties": {
+                "numeroDeCuenta": {
+                  "description": "Número de la cuenta a la que se desea asociar un número de móvil.",
+                  "type": "string",
+                  "example": "String"
+                },
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "otp": {
+                  "description": "OTP del dispositivo para la autenticación del usuario.",
+                  "type": "string",
+                  "example": "String"
+                },
+                "numeroMovil": {
+                  "description": "Número de teléfono móvil a asociar la cuenta.",
+                  "type": "string",
+                  "example": "String"
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "elimina Movil",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "elimina Movil error",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/asociaMovil": {
       "post": {
         "tags": [
@@ -4902,6 +5183,688 @@
                 "responseError": {
                   "type": "string",
                   "example": "Problema con la peticion"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Mensaje de Error."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/obtenerReporteCobranza": {
+      "post": {
+        "tags": [
+          "Sprint 3"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación/obtenerReporteCobranza del servicio requerido para la integración de Multivanet con T24.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "obtenerReporteCobranza",
+            "description": "obtenerReporteCobranza",
+            "required": true,
+            "schema": {
+              "required": [
+                "canal",
+                "noCuenta",
+                "tipoReporte",
+                "ticket"
+              ],
+              "properties": {
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "noCuenta": {
+                  "type": "string",
+                  "example": 12342456423985
+                },
+                "tipoReporte": {
+                  "description": "Tipo de cuenta de cobranza solicitado. Este campo determina el servicio que se ejecutará para generar el reporte, así como el layout que se obtendrá como respuesta. Puede tomar uno de los siguientes valores TBP, COBRANZA_REFERENCIADA o CONCILIACION_EMPRESA",
+                  "type": "string",
+                  "example": "344UY888"
+                },
+                "fechaInicio": {
+                  "type": "string",
+                  "format": "date",
+                  "example": "27-07-2017"
+                },
+                "fechaFin": {
+                  "type": "string",
+                  "format": "date",
+                  "example": "27-07-2018"
+                },
+                "horaProgramacion": {
+                  "description": "Hora de ejecución DIARIA de la generación de reporte de manera automática en la hora proporcionada. En formato hh:mm:ss",
+                  "type": "string",
+                  "format": "date-time",
+                  "example": "15:00:00"
+                },
+                "separador": {
+                  "description": "Separador seleccionado para la generación del reporte de resultado. El default es ,",
+                  "type": "string",
+                  "example": "|"
+                },
+                "formato": {
+                  "description": "Formato del reporte resultante. Puede ser TXT, CSV o XLS. El default es CSV.",
+                  "type": "string",
+                  "example": "CSV"
+                },
+                "columnas": {
+                  "description": "Columnas del reporte completo que se desea incluir en el reporte resultante. Si este listado no se proporciona, se incluirán todas las columnas del resultado.",
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "example": [
+                    "fecha",
+                    "monto"
+                  ]
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                },
+                "rutaReporte": {
+                  "description": "",
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/consultarAutorizaciones": {
+      "post": {
+        "tags": [
+          "Sprint 3"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación/consultarAutorizaciones del servicio requerido para la integración de Multivanet con T24.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "consultarAutorizaciones",
+            "description": "consultarAutorizaciones",
+            "required": true,
+            "schema": {
+              "required": [
+                "idPersona",
+                "canal",
+                "ticket"
+              ],
+              "properties": {
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                },
+                "autorizaciones": {
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "taskId",
+                      "idPersona",
+                      "nombreRazonSocial",
+                      "idPersonaSolicitante",
+                      "nombreSolicitante",
+                      "folio",
+                      "descripcionOperacion",
+                      "montoOperacion"
+                    ],
+                    "properties": {
+                      "taskId": {
+                        "description": "Identificador único del a tarea consultada en la BPM. Este valor será necesario para completar la tarea cuando se haya emitido el voto.",
+                        "type": "string",
+                        "example": "123456789"
+                      },
+                      "idPersona": {
+                        "description": "Identificador único de la persona cuyo voto se espera con  esta tarea.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "123456789"
+                      },
+                      "nombreRazonSocial": {
+                        "description": "Nombre o razón social de la persona cuyo voto se espera con esta tarea.",
+                        "type": "string",
+                        "example": "WALDO MANUEL TERRY DO REGO BARROS"
+                      },
+                      "idPersonaSolicitante": {
+                        "description": "Identificador único de la persona que solicita la operación que está por autorizarse.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "123456"
+                      },
+                      "nombreSolicitante": {
+                        "description": "Nombre de la persona que solicita la operación cuya autorización está en curso.",
+                        "type": "string",
+                        "example": "JULIO GARCIA"
+                      },
+                      "folio": {
+                        "description": "Folio único de la transacción en el middleware.",
+                        "type": "string",
+                        "example": "QWERTY123456789"
+                      },
+                      "descripcionOperacion": {
+                        "description": "Descripción de la operación en curso.",
+                        "type": "string",
+                        "example": "tipo de preregistro + tipo de convenio/alta de preregistro/nombre de operacion"
+                      },
+                      "montoOperacion": {
+                        "description": "Monto de la operación en curso.",
+                        "type": "number",
+                        "format": "double",
+                        "example": "123456000.00"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/guardaPreregistro": {
+      "post": {
+        "tags": [
+          "Sprint 3"
+        ],
+        "description": "La finalidad de este servicio es permitir la persistencia de la información de cualquier tipo de preregistro para la ejecución de operaciones del cliente.",
+        "operationId": "guardaPreregistro",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "guardaPreregistro",
+            "description": " Guarda preregistro",
+            "required": true,
+            "schema": {
+              "required": [
+                "idPersona",
+                "tipoCuenta",
+                "noCuenta",
+                "idTipoTransaccion",
+                "alias",
+                "monto",
+                "celularNotification",
+                "email",
+                "periodo",
+                "moneda",
+                "otp",
+                "ticket",
+                "canal",
+                "terceroMultiva",
+                "interbancario",
+                "credito",
+                "servicio",
+                "pagoTDC"
+              ],
+              "properties": {
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "tipoCuenta": {
+                  "type": "string",
+                  "example": ""
+                },
+                "noCuenta": {
+                  "type": "string",
+                  "example": ""
+                },
+                "idTipoTransaccion": {
+                  "type": "integer",
+                  "format": "int32",
+                  "example": 1
+                },
+                "alias": {
+                  "type": "string",
+                  "example": "ALIAS"
+                },
+                "montoMaximo": {
+                  "description": "Monto donado en cantidad monetaria.",
+                  "type": "number",
+                  "format": "double",
+                  "example": 120000
+                },
+                "celularNotification": {
+                  "type": "string",
+                  "example": "5512233456"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "test@domain.com"
+                },
+                "periodo": {
+                  "type": "string",
+                  "example": "semanal"
+                },
+                "moneda": {
+                  "type": "string",
+                  "example": "MXN"
+                },
+                "otp": {
+                  "type": "string",
+                  "example": "1234567"
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "example": "MVNET"
+                },
+                "terceroMultiva": {
+                  "properties": {
+                    "idProducto": {
+                      "type": "string",
+                      "example": "CHQ"
+                    },
+                    "beneficiario": {
+                      "type": "string",
+                      "example": "Waldo Terry"
+                    }
+                  }
+                },
+                "interbancario": {
+                  "properties": {
+                    "banco": {
+                      "type": "string",
+                      "example": ""
+                    },
+                    "beneficiario": {
+                      "type": "string",
+                      "example": "Waldo Terry"
+                    }
+                  }
+                },
+                "credito": {
+                  "properties": {
+                    "banco": {
+                      "type": "string",
+                      "example": "123456789"
+                    },
+                    "tipoCredito": {
+                      "type": "integer",
+                      "format": "int32",
+                      "example": 1
+                    }
+                  }
+                },
+                "servicio": {
+                  "properties": {
+                    "noEstablecimiento": {
+                      "type": "integer",
+                      "format": "int32",
+                      "example": 15
+                    },
+                    "razonSocial": {
+                      "type": "string",
+                      "example": "Telefonos de Mexico"
+                    }
+                  }
+                },
+                "pagoTDC": {
+                  "properties": {
+                    "noEstablecimiento": {
+                      "type": "integer",
+                      "format": "int32",
+                      "example": 15
+                    },
+                    "banco": {
+                      "type": "string",
+                      "example": "123456789"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Representa una ejecución exitosa. Para efectos de este servicio, será indicativo de que la notificación solicitada se envió correctamente.",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Mensaje de Error."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/obtenerPreregistroPorCliente": {
+      "post": {
+        "tags": [
+          "Sprint 3"
+        ],
+        "description": "La finalidad de este servicio es recuperar la información de los preregistros de un cliente por medio del identificador del cliente.",
+        "operationId": "obtenerPreregistroPorCliente",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "obtenerPreregistroPorCliente",
+            "description": "Obtener preregistro por cliente",
+            "required": true,
+            "schema": {
+              "required": [
+                "idPersona",
+                "ticket",
+                "canal"
+              ],
+              "properties": {
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "example": "MVNET"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Representa una ejecución exitosa. Para efectos de este servicio, será indicativo de que la notificación solicitada se envió correctamente.",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                },
+                "preregistros": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "idPreregistro": {
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1245
+                      },
+                      "estatus": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "tipoCuenta": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "noCuenta": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "idTipoTransaccion": {
+                        "type": "integer",
+                        "format": "int32",
+                        "example": 1
+                      },
+                      "alias": {
+                        "type": "string",
+                        "example": "ALIAS"
+                      },
+                      "montoMaximo": {
+                        "description": "Monto donado en cantidad monetaria.",
+                        "type": "number",
+                        "format": "double",
+                        "example": 120000
+                      },
+                      "celularNotification": {
+                        "type": "string",
+                        "example": "5512233456"
+                      },
+                      "email": {
+                        "type": "string",
+                        "example": "test@domain.com"
+                      },
+                      "periodo": {
+                        "type": "string",
+                        "example": "semanal"
+                      },
+                      "moneda": {
+                        "type": "string",
+                        "example": "MXN"
+                      },
+                      "terceroMultiva": {
+                        "properties": {
+                          "idProducto": {
+                            "type": "string",
+                            "example": "CHQ"
+                          },
+                          "pagoProveedor": {
+                            "type": "boolean",
+                            "example": false
+                          }
+                        }
+                      },
+                      "interbancario": {
+                        "properties": {
+                          "banco": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "beneficiario": {
+                            "type": "string",
+                            "example": "Waldo Terry"
+                          },
+                          "pagoProveedor": {
+                            "type": "boolean",
+                            "example": false
+                          }
+                        }
+                      },
+                      "credito": {
+                        "properties": {
+                          "banco": {
+                            "type": "string",
+                            "example": "123456789"
+                          },
+                          "tipoCredito": {
+                            "type": "integer",
+                            "format": "int32",
+                            "example": 1
+                          }
+                        }
+                      },
+                      "servicio": {
+                        "properties": {
+                          "noEstablecimiento": {
+                            "type": "integer",
+                            "format": "int32",
+                            "example": 15
+                          },
+                          "razonSocial": {
+                            "type": "string",
+                            "example": "Telefonos de Mexico"
+                          }
+                        }
+                      },
+                      "pagoTDC": {
+                        "properties": {
+                          "noEstablecimiento": {
+                            "type": "integer",
+                            "format": "int32",
+                            "example": 15
+                          },
+                          "banco": {
+                            "type": "string",
+                            "example": "123456789"
+                          }
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
