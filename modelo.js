@@ -771,6 +771,17 @@ const eliminaMovil = {
   "responseError": "Problema con la peticion"
 }
 
+const actualizarNIP = {
+  "responseStatus": 200,
+  "responseError": "Problema con la peticion"
+}
+
+const consultaCuentahabiente = {
+  "responseStatus": 200,
+  "responseError": "Problema con la peticion",
+  "nombreCuentahabiente": "wterry@legosoft.com.mx"
+}
+
 const obtenerReporteCobranza = {
   "responseStatus": 200,
   "responseError": "Problema con la peticion",
@@ -792,7 +803,7 @@ const consultarAutorizaciones = {
       "montoOperacion": 123456000
     }
   ]
-}
+} 
 
 var mapaModelo = {
    //### ESB ####//
@@ -841,6 +852,8 @@ var mapaModelo = {
   'consultaBines':consultaBines,
   'actualizaMovil':actualizaMovil,
   'eliminaMovil':eliminaMovil,
+  'actualizarNIP':actualizarNIP,
+  'consultaCuentahabiente':consultaCuentahabiente,
   'obtenerReporteCobranza':obtenerReporteCobranza,
   'consultarAutorizaciones':consultarAutorizaciones
 }
