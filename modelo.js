@@ -782,6 +782,28 @@ const consultaCuentahabiente = {
   "nombreCuentahabiente": "wterry@legosoft.com.mx"
 }
 
+const obtenerReporteCobranza = {
+  "responseStatus": 200,
+  "responseError": "Problema con la peticion",
+  "rutaReporte": ""
+}
+
+const consultarAutorizaciones = {
+  "responseStatus": 200,
+  "responseError": "Problema con la peticion",
+  "autorizaciones": [
+    {
+      "taskId": "123456789",
+      "idPersona": 123456789,
+      "nombreRazonSocial": "WALDO MANUEL TERRY DO REGO BARROS",
+      "idPersonaSolicitante": 123456,
+      "nombreSolicitante": "JULIO GARCIA",
+      "folio": "QWERTY123456789",
+      "descripcionOperacion": "tipo de preregistro + tipo de convenio/alta de preregistro/nombre de operacion",
+      "montoOperacion": 123456000
+    }
+  ]
+} 
 
 var mapaModelo = {
    //### ESB ####//
@@ -831,8 +853,9 @@ var mapaModelo = {
   'actualizaMovil':actualizaMovil,
   'eliminaMovil':eliminaMovil,
   'actualizarNIP':actualizarNIP,
-  'consultaCuentahabiente':consultaCuentahabiente
-
+  'consultaCuentahabiente':consultaCuentahabiente,
+  'obtenerReporteCobranza':obtenerReporteCobranza,
+  'consultarAutorizaciones':consultarAutorizaciones
 }
 
 function obtenerModelo (nombreModelo){
