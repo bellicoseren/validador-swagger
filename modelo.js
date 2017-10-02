@@ -771,6 +771,17 @@ const eliminaMovil = {
   "responseError": "Problema con la peticion"
 }
 
+const actualizarNIP = {
+  "responseStatus": 200,
+  "responseError": "Problema con la peticion"
+}
+
+const consultaCuentahabiente = {
+  "responseStatus": 200,
+  "responseError": "Problema con la peticion",
+  "nombreCuentahabiente": "wterry@legosoft.com.mx"
+}
+
 
 var mapaModelo = {
    //### ESB ####//
@@ -818,7 +829,9 @@ var mapaModelo = {
   'eliminaPreregistro':eliminaPreregistro,
   'consultaBines':consultaBines,
   'actualizaMovil':actualizaMovil,
-  'eliminaMovil':eliminaMovil
+  'eliminaMovil':eliminaMovil,
+  'actualizarNIP':actualizarNIP,
+  'consultaCuentahabiente':consultaCuentahabiente
 
 }
 
