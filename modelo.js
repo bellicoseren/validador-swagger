@@ -803,7 +803,53 @@ const consultarAutorizaciones = {
       "montoOperacion": 123456000
     }
   ]
-} 
+}
+
+const guardaPreregistro = {
+  "responseStatus": 200,
+  "responseError": "Problema con la peticion"
+}
+
+const obtenerPreregistroPorCliente = {
+  "responseStatus": 200,
+  "responseError": "Problema con la peticion",
+  "preregistros": [
+    {
+      "idPreregistro": 1245,
+      "estatus": "",
+      "tipoCuenta": "",
+      "noCuenta": "",
+      "idTipoTransaccion": 1,
+      "alias": "ALIAS",
+      "montoMaximo": 120000,
+      "celularNotification": "5512233456",
+      "email": "test@domain.com",
+      "periodo": "semanal",
+      "moneda": "MXN",
+      "terceroMultiva": {
+        "idProducto": "CHQ",
+        "pagoProveedor": false
+      },
+      "interbancario": {
+        "banco": "",
+        "beneficiario": "Waldo Terry",
+        "pagoProveedor": false
+      },
+      "credito": {
+        "banco": "123456789",
+        "tipoCredito": 1
+      },
+      "servicio": {
+        "noEstablecimiento": 15,
+        "razonSocial": "Telefonos de Mexico"
+      },
+      "pagoTDC": {
+        "noEstablecimiento": 15,
+        "banco": "123456789"
+      }
+    }
+  ]
+}
 
 var mapaModelo = {
    //### ESB ####//
@@ -855,7 +901,10 @@ var mapaModelo = {
   'actualizarNIP':actualizarNIP,
   'consultaCuentahabiente':consultaCuentahabiente,
   'obtenerReporteCobranza':obtenerReporteCobranza,
-  'consultarAutorizaciones':consultarAutorizaciones
+  'consultarAutorizaciones':consultarAutorizaciones,
+  'guardaPreregistro':guardaPreregistro,
+  'obtenerPreregistroPorCliente':obtenerPreregistroPorCliente
+  
 }
 
 function obtenerModelo (nombreModelo){
