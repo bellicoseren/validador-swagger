@@ -851,6 +851,11 @@ const obtenerPreregistroPorCliente = {
   ]
 }
 
+const eliminaBarrido = {
+  "responseStatus": 200,
+  "responseError": ""
+}
+
 var mapaModelo = {
    //### ESB ####//
    /////////// Sprint 1  /////////////
@@ -903,7 +908,8 @@ var mapaModelo = {
   'obtenerReporteCobranza':obtenerReporteCobranza,
   'consultarAutorizaciones':consultarAutorizaciones,
   'guardaPreregistro':guardaPreregistro,
-  'obtenerPreregistroPorCliente':obtenerPreregistroPorCliente
+  'obtenerPreregistroPorCliente':obtenerPreregistroPorCliente,
+  'eliminaBarrido':eliminaBarrido
   
 }
 
