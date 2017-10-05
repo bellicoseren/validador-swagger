@@ -856,6 +856,11 @@ const eliminaBarrido = {
   "responseError": ""
 }
 
+const eliminaDispersion = {
+  "responseStatus": 200,
+  "responseError": "Problema con la peticion"
+}
+
 var mapaModelo = {
    //### ESB ####//
    /////////// Sprint 1  /////////////
@@ -909,7 +914,8 @@ var mapaModelo = {
   'consultarAutorizaciones':consultarAutorizaciones,
   'guardaPreregistro':guardaPreregistro,
   'obtenerPreregistroPorCliente':obtenerPreregistroPorCliente,
-  'eliminaBarrido':eliminaBarrido
+  'eliminaBarrido':eliminaBarrido,
+  'eliminaDispersion':eliminaDispersion
   
 }
 
