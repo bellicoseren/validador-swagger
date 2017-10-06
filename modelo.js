@@ -871,6 +871,22 @@ const actualizaAliasCuenta = {
   "responseError": "Problema con la peticion"
 }
 
+const consultaMovilesCliente = {
+  "responseStatus": 200,
+  "responseError": "Problema con la peticion",
+  "moviles": [
+    {
+      "noSerie": "12345679",
+      "imei": "12346"
+    }
+  ]
+}
+
+const registraMovilTouch = {
+  "responseStatus": 200,
+  "responseError": "Problema con la peticion"
+}
+
 var mapaModelo = {
    //### ESB ####//
    /////////// Sprint 1  /////////////
@@ -927,8 +943,9 @@ var mapaModelo = {
   'eliminaBarrido':eliminaBarrido,
   'eliminaDispersion':eliminaDispersion,
   'emiteVoto':emiteVoto,
-  'actualizaAliasCuenta':actualizaAliasCuenta
-  
+  'actualizaAliasCuenta':actualizaAliasCuenta,
+  'consultaMovilesCliente':consultaMovilesCliente,
+  'registraMovilTouch':registraMovilTouch  
 }
 
 function obtenerModelo (nombreModelo){
