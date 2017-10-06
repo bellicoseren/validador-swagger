@@ -861,6 +861,16 @@ const eliminaDispersion = {
   "responseError": "Problema con la peticion"
 }
 
+const emiteVoto = {
+  "responseStatus": 200,
+  "responseError": "Problema con la peticion"
+}
+
+const actualizaAliasCuenta = {
+  "responseStatus": 200,
+  "responseError": "Problema con la peticion"
+}
+
 var mapaModelo = {
    //### ESB ####//
    /////////// Sprint 1  /////////////
@@ -915,7 +925,9 @@ var mapaModelo = {
   'guardaPreregistro':guardaPreregistro,
   'obtenerPreregistroPorCliente':obtenerPreregistroPorCliente,
   'eliminaBarrido':eliminaBarrido,
-  'eliminaDispersion':eliminaDispersion
+  'eliminaDispersion':eliminaDispersion,
+  'emiteVoto':emiteVoto,
+  'actualizaAliasCuenta':actualizaAliasCuenta
   
 }
 
@@ -926,3 +938,4 @@ function obtenerModelo (nombreModelo){
 module.exports = {
   obtenerModelo
 }
+
