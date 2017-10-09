@@ -5947,29 +5947,32 @@
         }
       }
     },
-    "/consultaMovilesCliente": {
+    "/emiteVoto": {
       "post": {
         "tags": [
           "Sprint 3"
         ],
-        "description": "Consolidar la información relevante respecto al diseño de la operación/consultaMovilesCliente del servicio requerido para la integración de Multivanet con TAM.",
+        "description": "Este servicio permite a un aplicativo registrar el voto de un usuario durante el proceso de autorización de operaciones. Este servicio no ejecuta la evaluación de la regla por sí mismo, pero cuando se captura el último voto afirmativo la regla se resuelve automáticamente y el proceso sujeto a la autorización termina de ejecutarse.",
         "parameters": [
           {
             "in": "body",
-            "name": "consultaMovilesCliente",
-            "description": "consultaMovilesCliente",
+            "name": "actualizaNIP,",
+            "description": "actualiza NIP",
             "required": true,
             "schema": {
               "required": [
-                "otp",
-                "canal",
+                "idPersona",
                 "ticket",
-                "idPersona"
+                "canal",
+                "otp",
+                "taskId",
+                "voto"
               ],
               "properties": {
                 "otp": {
+                  "description": "Cadena del OTP del cliente.",
                   "type": "string",
-                  "example": "1234567"
+                  "example": "String"
                 },
                 "canal": {
                   "type": "string",
@@ -5996,6 +5999,16 @@
                   "type": "integer",
                   "format": "int64",
                   "example": 123546345
+                },
+                "taskId": {
+                  "description": "Identificador único de la tarea que será completada con la emisión del voto.",
+                  "type": "string",
+                  "example": "String"
+                },
+                "voto": {
+                  "description": "Voto emitido por la persona. Puede ser ACEPTAR o RECHAZAR Se requieren suficientes votos aceptados para que la operación se ejecute sin embargo un solo voto rechazado será suficiente para detener la ejecución de la operación detenida por la autorización.",
+                  "type": "string",
+                  "example": "String"
                 }
               }
             }
@@ -6003,7 +6016,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "description": "emite Voto",
             "schema": {
               "properties": {
                 "responseStatus": {
@@ -6013,29 +6026,12 @@
                 "responseError": {
                   "type": "string",
                   "example": "Problema con la peticion"
-                },
-                "moviles": {
-                  "type": "array",
-                  "items": {
-                    "properties": {
-                      "noSerie": {
-                        "description": "Número de serie del dispositivo móvil.",
-                        "type": "string",
-                        "example": "12345679"
-                      },
-                      "imei": {
-                        "description": "IMEI asociado al dispositivo móvil.",
-                        "type": "string",
-                        "example": "12346"
-                      }
-                    }
-                  }
                 }
               }
             }
           },
-          "201": {
-            "description": "Error controlado, el codigo http real es 200",
+          "500": {
+            "description": "emite Voto error",
             "schema": {
               "properties": {
                 "responseStatus": {
@@ -6052,30 +6048,41 @@
         }
       }
     },
-    "/registraMovilTouch": {
+    "/actualizaAliasCuenta": {
       "post": {
         "tags": [
           "Sprint 3"
         ],
-        "description": "Consolidar la información relevante respecto al diseño de la operación/registraMovilTouch del servicio requerido para la integración de Multivanet con TAM.",
+        "description": "Este servicio permite eliminar la configuración de una programación de generación de reportes de cobranza.",
         "parameters": [
           {
             "in": "body",
-            "name": "registraMovilTouch",
-            "description": "registraMovilTouch",
+            "name": "actualizaAliasCuenta,",
+            "description": "actualiza Alias Cuenta",
             "required": true,
             "schema": {
               "required": [
+                "alias",
+                "noCuenta",
                 "otp",
                 "canal",
-                "ticket",
-                "idPersona",
-                "noSerie"
+                "ticket"
               ],
               "properties": {
-                "otp": {
+                "alias": {
+                  "description": "Nuevo alias a asignar a la cuenta. Si se manda el campo vacío, se desasocia el alias de la cuenta, quedando nulo este valor.",
                   "type": "string",
-                  "example": "1234567"
+                  "example": "1131313"
+                },
+                "noCuenta": {
+                  "description": "Número de cuenta cuyo alias se cambia.",
+                  "type": "string",
+                  "example": "12131313113"
+                },
+                "otp": {
+                  "description": "OTP del cliente.",
+                  "type": "string",
+                  "example": "122"
                 },
                 "canal": {
                   "type": "string",
@@ -6097,21 +6104,6 @@
                       "example": "1233"
                     }
                   }
-                },
-                "idPersona": {
-                  "type": "integer",
-                  "format": "int64",
-                  "example": 123546345
-                },
-                "noSerie": {
-                  "description": "Número de serie del dispositivo a asignar.",
-                  "type": "string",
-                  "example": "1234567"
-                },
-                "imei": {
-                  "description": "IMEI asociado con el teléfono",
-                  "format": "string",
-                  "example": "123456"
                 }
               }
             }
@@ -6119,7 +6111,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Registro movil.",
+            "description": "actualiza Alias Cuenta",
             "schema": {
               "properties": {
                 "responseStatus": {
@@ -6133,8 +6125,8 @@
               }
             }
           },
-          "201": {
-            "description": "Error controlado, el codigo http real es 200",
+          "500": {
+            "description": "actualiza Alias Cuenta error",
             "schema": {
               "properties": {
                 "responseStatus": {
@@ -6173,95 +6165,6 @@
               "properties": {
                 "folio": {
                   "description": "Folio del barrido a eliminar.",
-                  "type": "integer",
-                  "format": "int64",
-                  "example": "123456"
-                },
-                "otp": {
-                  "type": "string",
-                  "example": "1234567"
-                },
-                "canal": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": "WEB"
-                },
-                "ticket": {
-                  "required": [
-                    "id_user",
-                    "id_creds"
-                  ],
-                  "properties": {
-                    "id_user": {
-                      "type": "string",
-                      "example": "abc"
-                    },
-                    "id_creds": {
-                      "type": "string",
-                      "example": "1233"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
-            "schema": {
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 200
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": "Problema con la peticion"
-                }
-              }
-            }
-          },
-          "201": {
-            "description": "Error controlado, el codigo http real es 200",
-            "schema": {
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 500
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": ""
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/eliminaDispersion": {
-      "post": {
-        "tags": [
-          "Sprint 3"
-        ],
-        "description": "Consolidar la información relevante respecto al diseño de la operación /eliminaDispersion del servicio requerido para la integración de Multivanet con el sistema de Programación de Operaciones.",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "eliminaDispersion",
-            "description": "eliminaDispersion",
-            "required": true,
-            "schema": {
-              "required": [
-                "folio",
-                "otp",
-                "canal",
-                "ticket"
-              ],
-              "properties": {
-                "folio": {
-                  "description": "Folio de la dispersión a eliminar.",
                   "type": "integer",
                   "format": "int64",
                   "example": "123456"
