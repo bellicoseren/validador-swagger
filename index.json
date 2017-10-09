@@ -6328,6 +6328,95 @@
           }
         }
       }
+    },
+    "/eliminaDispersion": {
+      "post": {
+        "tags": [
+          "Sprint 3"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación /eliminaDispersion del servicio requerido para la integración de Multivanet con el sistema de Programación de Operaciones.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "eliminaDispersion",
+            "description": "eliminaDispersion",
+            "required": true,
+            "schema": {
+              "required": [
+                "folio",
+                "otp",
+                "canal",
+                "ticket"
+              ],
+              "properties": {
+                "folio": {
+                  "description": "Folio de la dispersión a eliminar.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": "123456"
+                },
+                "otp": {
+                  "type": "string",
+                  "example": "1234567"
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
