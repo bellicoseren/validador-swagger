@@ -6320,6 +6320,246 @@
           }
         }
       }
+    },
+    "/consultaReporteCobranza": {
+      "post": {
+        "tags": [
+          "Sprint 3"
+        ],
+        "description": "Este servicio permite consultar la configuración de una programación de generación de reportes de cobranza.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "consultaReporteCobranza,",
+            "description": "consulta Reporte Cobranza",
+            "required": true,
+            "schema": {
+              "required": [
+                "noCuenta",
+                "canal",
+                "ticket"
+              ],
+              "properties": {
+                "noCuenta": {
+                  "description": "Número de cuenta cuyas operaciones de cobranza se desea consultar.",
+                  "type": "string",
+                  "example": "12131313113"
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "consulta Reporte Cobranza",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                },
+                "reportes": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "folio": {
+                        "description": "El folio de la configuración de reporte de cobranza.",
+                        "type": "string",
+                        "example": "12131313113"
+                      },
+                      "noCuenta": {
+                        "description": "Número de cuenta asociado con esta configuración de reporte de cobranza..",
+                        "type": "string",
+                        "example": "12131313113"
+                      },
+                      "tipoCuenta": {
+                        "description": "Tipo de reporte de cobranza solicitado. Este campo determina el servicio que se ejecutará para generar el reporte, así como el layout que se obtendrá como respuesta. Puede tomar uno de lossiguientes valores:TBP, COBRANZA_REFERENCIADA o CONCILIACION_EMPRESA",
+                        "type": "string",
+                        "format": "date",
+                        "example": "TPB"
+                      },
+                      "fechaInicio": {
+                        "description": "Fecha de inicio para la búsqueda por rango en formato dd-MM- yyyy. Si se proporciona una fecha inicial, el servicio generará el reporte en línea y no ejecutará una programación.",
+                        "type": "string",
+                        "format": "date",
+                        "example": "27-07-2017"
+                      },
+                      "fechaFin": {
+                        "description": "Fecha final para la búsqueda por rango en formato dd-MM- yyyy. Si se proporciona un rango de fecha para la consulta, el reporte se generará en línea y no se ejecutará una programación.",
+                        "type": "string",
+                        "example": "26-07-2017"
+                      },
+                      "horaProgramacion": {
+                        "description": "Hora de ejecución DIARIA de la generación de reporte de manera automática en la",
+                        "type": "string",
+                        "example": "09:09:09"
+                      },
+                      "separador": {
+                        "description": "Separador seleccionado para la generación del reporte de resultado. El default es ,",
+                        "type": "string",
+                        "example": "|"
+                      },
+                      "formato": {
+                        "description": "Formato del reporte resultante. Puede ser TXT, CSV o XLS. El default es CSV.",
+                        "type": "string",
+                        "example": "CSV"
+                      },
+                      "columnas": {
+                        "description": "Bines asociados con la institución.",
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "example": "fecha"
+                        }
+                      },
+                      "email": {
+                        "description": "Correo de notificación para recibir la ruta de descarga del reporte de cobranza.",
+                        "type": "string",
+                        "example": "multiva@multi.com"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "consulta Reporte Cobranza error",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/eliminaReporteCobranza": {
+      "post": {
+        "tags": [
+          "Sprint 3"
+        ],
+        "description": "Este servicio permite eliminar la configuración de una programación de generación de reportes de cobranza.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "eliminaReporteCobranza,",
+            "description": "elimina Reporte Cobranza",
+            "required": true,
+            "schema": {
+              "required": [
+                "idPersona",
+                "folio",
+                "otp",
+                "canal",
+                "ticket"
+              ],
+              "properties": {
+                "idPersona": {
+                  "description": "Identificador único de la persona que solicita la eliminación del reporte de cobranza.",
+                  "type": "string",
+                  "example": "1131313"
+                },
+                "folio": {
+                  "description": "Folio del reporte de cobranza que será eliminado.",
+                  "type": "string",
+                  "example": "12131313113"
+                },
+                "otp": {
+                  "description": "OTP del cliente.",
+                  "type": "string",
+                  "example": "122"
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "elimina Reporte Cobranza",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "elimina Reporte Cobranza error",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

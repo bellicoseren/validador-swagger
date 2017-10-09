@@ -887,6 +887,33 @@ const registraMovilTouch = {
   "responseError": "Problema con la peticion"
 }
 
+
+const consultaReporteCobranza = {
+  "responseError": "Problema con la peticion",
+  "reportes": [
+    {
+      "noCuenta": "12131313113",
+      "fechaInicio": "27-07-2017",
+      "formato": "CSV",
+      "folio": "12131313113",
+      "tipoCuenta": "TPB",
+      "horaProgramacion": "09:09:09",
+      "fechaFin": "26-07-2017",
+      "separador": "|",
+      "email": "multiva@multi.com",
+      "columnas": [
+        "fecha"
+      ]
+    }
+  ],
+  "responseStatus": 200
+}
+
+const eliminaReporteCobranza = {
+  "responseError": "Problema con la peticion",
+  "responseStatus": 200
+}
+
 var mapaModelo = {
    //### ESB ####//
    /////////// Sprint 1  /////////////
@@ -945,7 +972,9 @@ var mapaModelo = {
   'emiteVoto':emiteVoto,
   'actualizaAliasCuenta':actualizaAliasCuenta,
   'consultaMovilesCliente':consultaMovilesCliente,
-  'registraMovilTouch':registraMovilTouch  
+  'registraMovilTouch':registraMovilTouch,  
+  'consultaReporteCobranza':consultaReporteCobranza,
+  'eliminaReporteCobranza':eliminaReporteCobranza
 }
 
 function obtenerModelo (nombreModelo){
