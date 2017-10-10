@@ -924,6 +924,14 @@ const catCreditos = {
     {
       "idTipoCredito": 1,
       "nombre": "Hipotecario"
+    },
+    {
+      "idTipoCredito": 2,
+      "nombre": "Automotriz"
+    },
+    {
+      "idTipoCredito": 3,
+      "nombre": "Personal"
     }
   ],
   "responseStatus": 200,
