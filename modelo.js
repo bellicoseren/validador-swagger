@@ -914,6 +914,30 @@ const eliminaReporteCobranza = {
   "responseStatus": 200
 }
 
+const actualizarDatosBE = {
+  "responseStatus": 200,
+  "responseError": ""
+}
+
+const catCreditos = {
+  "catTiposCreditos": [
+    {
+      "idTipoCredito": 1,
+      "nombre": "Hipotecario"
+    },
+    {
+      "idTipoCredito": 2,
+      "nombre": "Automotriz"
+    },
+    {
+      "idTipoCredito": 3,
+      "nombre": "Personal"
+    }
+  ],
+  "responseStatus": 200,
+  "responseError": ""
+}
+
 var mapaModelo = {
    //### ESB ####//
    /////////// Sprint 1  /////////////
@@ -974,7 +998,9 @@ var mapaModelo = {
   'consultaMovilesCliente':consultaMovilesCliente,
   'registraMovilTouch':registraMovilTouch,  
   'consultaReporteCobranza':consultaReporteCobranza,
-  'eliminaReporteCobranza':eliminaReporteCobranza
+  'eliminaReporteCobranza':eliminaReporteCobranza,
+  'actualizarDatosBE':actualizarDatosBE,
+  'catCreditos':catCreditos
 }
 
 function obtenerModelo (nombreModelo){
