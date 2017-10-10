@@ -5947,6 +5947,210 @@
         }
       }
     },
+    "/consultaMovilesCliente": {
+      "post": {
+        "tags": [
+          "Sprint 3"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación/consultaMovilesCliente del servicio requerido para la integración de Multivanet con TAM.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "consultaMovilesCliente",
+            "description": "consultaMovilesCliente",
+            "required": true,
+            "schema": {
+              "required": [
+                "otp",
+                "canal",
+                "ticket",
+                "idPersona"
+              ],
+              "properties": {
+                "otp": {
+                  "type": "string",
+                  "example": "1234567"
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                },
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                },
+                "moviles": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "noSerie": {
+                        "description": "Número de serie del dispositivo móvil.",
+                        "type": "string",
+                        "example": "12345679"
+                      },
+                      "imei": {
+                        "description": "IMEI asociado al dispositivo móvil.",
+                        "type": "string",
+                        "example": "12346"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/registraMovilTouch": {
+      "post": {
+        "tags": [
+          "Sprint 3"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación/registraMovilTouch del servicio requerido para la integración de Multivanet con TAM.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "registraMovilTouch",
+            "description": "registraMovilTouch",
+            "required": true,
+            "schema": {
+              "required": [
+                "otp",
+                "canal",
+                "ticket",
+                "idPersona",
+                "noSerie"
+              ],
+              "properties": {
+                "otp": {
+                  "type": "string",
+                  "example": "1234567"
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                },
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "noSerie": {
+                  "description": "Número de serie del dispositivo a asignar.",
+                  "type": "string",
+                  "example": "1234567"
+                },
+                "imei": {
+                  "description": "IMEI asociado con el teléfono",
+                  "format": "string",
+                  "example": "123456"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Registro movil.",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/emiteVoto": {
       "post": {
         "tags": [
@@ -6578,9 +6782,7 @@
                 "idPersona",
                 "ticket",
                 "canal",
-                "otp",
-                "montoMaximo",
-                "telefono"
+                "otp"
               ],
               "properties": {
                 "idPersona": {
@@ -6643,6 +6845,354 @@
                 "responseError": {
                   "type": "string",
                   "example": "Mensaje de Error."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/catCreditos": {
+      "post": {
+        "tags": [
+          "Sprint 3"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación/catCreditos del servicio requerido para la integración de Multivanet con T24..",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "catCreditos",
+            "description": "Catálogo de créditos",
+            "required": true,
+            "schema": {
+              "required": [
+                "ticket"
+              ],
+              "properties": {
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Consulta Bancos",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                },
+                "catTiposCreditos": {
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "idTipoCredito",
+                      "nombre"
+                    ],
+                    "properties": {
+                      "idTipoCredito": {
+                        "description": "Identificador que representa cada una de los Creditos.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "1"
+                      },
+                      "nombre": {
+                        "description": "Nombre de las transacciones.",
+                        "type": "string",
+                        "example": "Hipotecario"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Mensaje de Error."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/actualizaReporteCobranza": {
+      "post": {
+        "tags": [
+          "Sprint 3"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación/actualizaReporteCobranza del servicio requerido para la integración de Multivanet con T24.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "actualizaReporteCobranza",
+            "description": "Actualiza reporte de cobranza",
+            "required": true,
+            "schema": {
+              "required": [
+                "idPersona"
+              ],
+              "properties": {
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "otp": {
+                  "description": "OTP del cliente solicitante.",
+                  "type": "string",
+                  "example": "123456"
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                },
+                "reporteCobranza": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "canal": {
+                        "description": "Identificador del canal a través del cual se recibió la petición. Se utilizarán los identificadores de canal definidos por T24.",
+                        "type": "string",
+                        "example": "MVNET"
+                      },
+                      "noCuenta": {
+                        "description": "Número de cuenta asociado con esta configuración de reporte de cobranza.",
+                        "type": "string",
+                        "example": "344 UY888"
+                      },
+                      "fechaInicio": {
+                        "description": "Fecha de inicio para la búsqueda por rango en formato dd-MM-yyyy. Si se proporciona una fecha inicial, el servicio generará el reporte en línea y no ejecutará una programación.",
+                        "type": "string",
+                        "format": "date",
+                        "example": "31-08-2017"
+                      },
+                      "fechaFin": {
+                        "description": "Fecha final para la búsqueda por rango en formato dd-MM-yyyy. Si se proporciona un rango de fecha para la consulta, el reporte se generará en línea y no se ejecutará una programación.",
+                        "type": "string",
+                        "format": "date",
+                        "example": "15-10-2017"
+                      },
+                      "horaProgramacion": {
+                        "description": "Hora de ejecución DIARIA de la generación de reporte de manera automática en la hora proporcionada. En formato hh:mm:ss. La programación de la generación recurrente del reporte sólo se utilizará cuando no se proporcione un rango específico de fechas para consulta.",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "15:00:00"
+                      },
+                      "separador": {
+                        "description": "Separador seleccionado para la generación del reporte de resultado. El default es ,",
+                        "type": "string",
+                        "example": " | "
+                      },
+                      "formato": {
+                        "description": "Formato del reporte resultante. Puede ser TXT, CSV o XLS. El default es CSV.",
+                        "type": "string",
+                        "example": "CSV"
+                      },
+                      "columnas": {
+                        "description": "Columnas del reporte completo que se desea incluir en el reporte resultante. Si este listado no se proporciona, se incluirán todas las columnas del resultado.",
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "example": [
+                          "fecha",
+                          "monto"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Representa una ejecución exitosa. Para efectos de este servicio, será indicativo de que la notificación solicitada se envió correctamente.",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "description": "Código de la respuesta del servicio. Un código de error de 200 indica una ejecución correcta del servicio.",
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "description": "Mensaje de error asociado con el código.",
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/catTipoCuenta": {
+      "post": {
+        "tags": [
+          "Sprint 3"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación/catTipoCuenta del servicio requerido para la integración de Multivanet con T24.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "catTipoCuenta",
+            "description": "Tipo de cuenta",
+            "required": true,
+            "schema": {
+              "required": [
+                "ticket"
+              ],
+              "properties": {
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Representa una ejecución exitosa. Para efectos de este servicio, será indicativo de que la notificación solicitada se envió correctamente.",
+            "schema": {
+              "required": [
+                "catTipoCuentas",
+                "responseStatus"
+              ],
+              "properties": {
+                "catTipoCuentas": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "idTipoCuenta": {
+                        "description": "Identificador que representa cada una de los Tipos de Cuenta.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "1"
+                      },
+                      "nombre": {
+                        "description": "Nombre de las transacciones.",
+                        "type": "string",
+                        "example": "Numero de Cuenta"
+                      }
+                    }
+                  }
+                },
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "catTipoCuentas": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "idTipoCuenta": {
+                        "description": "Identificador que representa cada una de los Tipos de Cuenta.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "1"
+                      },
+                      "nombre": {
+                        "description": "Nombre de las transacciones.",
+                        "type": "string",
+                        "example": "Numero de Cuenta"
+                      }
+                    }
+                  }
+                },
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Internal Error Server"
                 }
               }
             }

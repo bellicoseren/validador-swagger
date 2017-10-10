@@ -938,6 +938,22 @@ const catCreditos = {
   "responseError": ""
 }
 
+const catTipoCuenta = {
+  "catTipoCuentas": [
+    {
+      "idTipoCuenta": 1,
+      "nombre": "Numero de Cuenta"
+    }
+  ],
+  "responseStatus": 200,
+  "responseError": "Problema con la peticion"
+}
+
+const actualizaReporteCobranza = {
+  "responseStatus": 200,
+  "responseError": ""
+}
+
 var mapaModelo = {
    //### ESB ####//
    /////////// Sprint 1  /////////////
@@ -1000,7 +1016,9 @@ var mapaModelo = {
   'consultaReporteCobranza':consultaReporteCobranza,
   'eliminaReporteCobranza':eliminaReporteCobranza,
   'actualizarDatosBE':actualizarDatosBE,
-  'catCreditos':catCreditos
+  'catCreditos':catCreditos,
+  'catTipoCuenta':catTipoCuenta,
+  'actualizaReporteCobranza':actualizaReporteCobranza
 }
 
 function obtenerModelo (nombreModelo){
@@ -1010,4 +1028,3 @@ function obtenerModelo (nombreModelo){
 module.exports = {
   obtenerModelo
 }
-
