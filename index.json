@@ -6857,7 +6857,7 @@
         "tags": [
           "Sprint 3"
         ],
-        "description": "Consolidar la información relevante respecto al diseño de la operación/catCreditos del servicio requerido para la integración de Multivanet con T24..",
+        "description": "Consolidar la información relevante respecto al diseño de la operación /catCreditos del servicio requerido para la integración de Multivanet con T24.",
         "parameters": [
           {
             "in": "body",
@@ -6891,7 +6891,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Consulta Bancos",
+            "description": "Catálogo de créditos",
             "schema": {
               "properties": {
                 "responseStatus": {
