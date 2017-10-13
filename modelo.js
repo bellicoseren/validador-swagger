@@ -67,58 +67,60 @@ const consultaPerfiles = {
     "responseError": ""
 }
 
-
 const bloqueoOTP = {
-  "listTokens": [{
-    "usuario": 1234567890,
-    "responseStatus": 200,
-    "responseError": ""
-  },{
-    "usuario": 9876543210,
-    "responseStatus": 200,
-    "responseError": ""
-  }],
+  "listTokens": [
+    {
+      "usuario": "1234567890",
+      "responseStatus": 200,
+      "responseError": ""
+    },
+    {
+      "usuario": "9876543210",
+      "responseStatus": 200,
+      "responseError": ""
+    }
+  ],
   "responseStatus": 200,
   "responseError": ""
 }
 
 const activacionOTP = {
-  "listTokens": [{
-    "usuario": 1234567890,
-    "responseStatus": 200,
-    "responseError": ""
-  },{
-    "usuario": 9876543210,
-    "responseStatus": 200,
-    "responseError": ""
-  }],
+  "listTokens": [
+    {
+      "usuario": "1234567890",
+      "responseStatus": 200,
+      "responseError": ""
+    },
+    {
+      "usuario": "9876543210",
+      "responseStatus": 200,
+      "responseError": ""
+    }
+  ],
   "responseStatus": 200,
   "responseError": ""
 }
 
-
 const listarTokensOTP = {
-    "listTokens": [{
-                "usuario": 1234567890,
-                "tokenSerial": "7121804170B32HOSTVER",
-                "nombreUsuario": "SAUL PEREZ SANCHEZ",
-                "fechaAlta": "06-06-2017T08:20:13",
-                "tokenStatus": "f"
-            },
-            {
-                "usuario": 9876543210,
-                "tokenSerial": "7121804170B32HOSTVER",
-                "nombreUsuario": "RAUL PEREZ SANCHEZ",
-                "fechaAlta": "06-06-2017T08:20:13",
-                "tokenStatus": "t"
-            }
-
-        ]
-        ,
-    "responseStatus": 200,
-    "responseError": ""
+  "listTokens": [
+    {
+      "usuario": "1234567890",
+      "tokenSerial": "7121804170B32HOSTVER",
+      "nombreUsuario": "SAUL PEREZ SANCHEZ",
+      "fechaAlta": "06-06-2017T08:20:13",
+      "tokenStatus": "t"
+    },
+    {
+      "usuario": "1234567890",
+      "tokenSerial": "7121804170B32HOSTVER",
+      "nombreUsuario": "RAUL PEREZ SANCHEZ",
+      "fechaAlta": "06-06-2017T08:20:13",
+      "tokenStatus": "t"
+    }
+  ],
+  "responseStatus": 200,
+  "responseError": ""
 }
-
 
 const autentificacion = {
     "fechaUltimoAcceso": 20170612120212,
@@ -954,61 +956,6 @@ const actualizaReporteCobranza = {
   "responseError": ""
 }
 
-const activacionOTP = {
-  "listTokens": [
-    {
-      "usuario": "1234567890",
-      "responseStatus": 200,
-      "responseError": ""
-    },
-    {
-      "usuario": "9876543210",
-      "responseStatus": 200,
-      "responseError": ""
-    }
-  ],
-  "responseStatus": 200,
-  "responseError": ""
-}
-
-const bloqueoOTP = {
-  "listTokens": [
-    {
-      "usuario": "1234567890",
-      "responseStatus": 200,
-      "responseError": ""
-    },
-    {
-      "usuario": "9876543210",
-      "responseStatus": 200,
-      "responseError": ""
-    }
-  ],
-  "responseStatus": 200,
-  "responseError": ""
-}
-
-const listarTokensOTP = {
-  "listTokens": [
-    {
-      "usuario": "1234567890",
-      "tokenSerial": "7121804170B32HOSTVER",
-      "nombreUsuario": "SAUL PEREZ SANCHEZ",
-      "fechaAlta": "date",
-      "tokenStatus": "t"
-    },
-    {
-      "usuario": "1234567890",
-      "tokenSerial": "7121804170B32HOSTVER",
-      "nombreUsuario": "RAUL PEREZ SANCHEZ",
-      "fechaAlta": "date",
-      "tokenStatus": "t"
-    }
-  ],
-  "responseStatus": 200,
-  "responseError": ""
-}
-
 var mapaModelo = {
    //### ESB ####//
    /////////// Sprint 1  /////////////
@@ -1073,10 +1020,7 @@ var mapaModelo = {
   'actualizarDatosBE':actualizarDatosBE,
   'catCreditos':catCreditos,
   'catTipoCuenta':catTipoCuenta,
-  'actualizaReporteCobranza':actualizaReporteCobranza,
-  'activacionOTP':activacionOTP,
-  'bloqueoOTP':bloqueoOTP,
-  'listarTokensOTP':listarTokensOTP
+  'actualizaReporteCobranza':actualizaReporteCobranza
 }
 
 function obtenerModelo (nombreModelo){
