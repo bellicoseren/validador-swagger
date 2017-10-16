@@ -956,7 +956,12 @@ const actualizaReporteCobranza = {
   "responseError": ""
 }
 
-const = actualizaPreregistro = {
+const actualizaPreregistro = {
+  "responseStatus": 200,
+  "responseError": ""
+}
+
+const barrerCuentas = {
   "responseStatus": 200,
   "responseError": ""
 }
@@ -1026,7 +1031,8 @@ var mapaModelo = {
   'catCreditos':catCreditos,
   'catTipoCuenta':catTipoCuenta,
   'actualizaReporteCobranza':actualizaReporteCobranza,
-  'actualizaPreregistro':actualizaPreregistro
+  'actualizaPreregistro':actualizaPreregistro,
+  'barrerCuentas':barrerCuentas
 }
 
 function obtenerModelo (nombreModelo){
