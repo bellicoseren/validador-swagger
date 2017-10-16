@@ -7412,11 +7412,6 @@
                 "responseError": {
                   "type": "string",
                   "example": "Problema con la peticion"
-                },
-                "rutaReporte": {
-                  "description": "",
-                  "type": "string",
-                  "example": ""
                 }
               }
             }
