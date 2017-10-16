@@ -956,6 +956,11 @@ const actualizaReporteCobranza = {
   "responseError": ""
 }
 
+const = actualizaPreregistro = {
+  "responseStatus": 200,
+  "responseError": ""
+}
+
 var mapaModelo = {
    //### ESB ####//
    /////////// Sprint 1  /////////////
@@ -1020,7 +1025,8 @@ var mapaModelo = {
   'actualizarDatosBE':actualizarDatosBE,
   'catCreditos':catCreditos,
   'catTipoCuenta':catTipoCuenta,
-  'actualizaReporteCobranza':actualizaReporteCobranza
+  'actualizaReporteCobranza':actualizaReporteCobranza,
+  'actualizaPreregistro':actualizaPreregistro
 }
 
 function obtenerModelo (nombreModelo){
