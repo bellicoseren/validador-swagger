@@ -7294,6 +7294,145 @@
           }
         }
       }
+    },
+    "/barrerCuentas": {
+      "post": {
+        "tags": [
+          "Sprint 3"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación /barrerCuentas del servicio requerido para la integración de Multivanet con T24.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "barrerCuentas",
+            "description": "Barrer cuentas",
+            "required": true,
+            "schema": {
+              "required": [
+                "idPersona",
+                "cuentaConcentradora",
+                "nombreCuentaConcentradora",
+                "otp",
+                "ticket",
+                "canal",
+                "horasEjecucion",
+                "cuentasBarrer"
+              ],
+              "properties": {
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "cuentaConcentradora": {
+                  "description": "Número de cuenta a la cual se va a ir a dejar el monto total acumulado.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": "6542312345"
+                },
+                "nombreCuentaConcentradora": {
+                  "description": "Nombre de la cuenta concentradora.",
+                  "type": "string",
+                  "format": "string",
+                  "example": "CUENTA CONCENTRADORA"
+                },
+                "otp": {
+                  "type": "string",
+                  "example": "1234567"
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "horasEjecucion": {
+                  "description": "Horas en las que se realizará la ejecución del barrido.",
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "example": [
+                    "12:00:00",
+                    "14:00:00",
+                    "16:00:00"
+                  ]
+                },
+                "cuentasBarrer": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "cuenta": {
+                        "description": "Número de cuenta donde se realizará la recolección del efectivo.",
+                        "type": "string",
+                        "example": "4564523153498"
+                      },
+                      "montoMinDejar": {
+                        "description": "Mínimo de efectivo que se dejará en la cuenta donde se realizó el barrido.",
+                        "type": "number",
+                        "format": "double",
+                        "example": 500
+                      },
+                      "nombre": {
+                        "description": "Nombre de la cuenta que será barrida.",
+                        "type": "string",
+                        "example": "CUENTA 1"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
