@@ -737,12 +737,16 @@ const obtenerCatalogoTipoTxn = [
     }
 ]
 
-const obtenerCatalogoConvenios = [
+const obtenerCatalogoConvenios = {
+  "responseStatus": 200,
+  "responseError": "Problema con la peticion",
+  "convenios": [
     {
       "id": 2,
       "nombre": "Pago de servicio telefonico"
     }
-]
+  ]
+}
 
 const eliminaPreregistro = {
     "responseStatus": 200,
@@ -943,8 +947,14 @@ const catCreditos = {
 const catTipoCuenta = {
   "catTipoCuentas": [
     {
-      "idTipoCuenta": 1,
-      "nombre": "Numero de Cuenta"
+      "idTipoCuenta": 4,
+      "nombre": "Celular",
+      "tiposTransaccion": [
+        2,
+        3,
+        10,
+        11
+      ]
     }
   ],
   "responseStatus": 200,

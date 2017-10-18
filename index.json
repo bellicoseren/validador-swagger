@@ -4378,19 +4378,31 @@
           "200": {
             "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
             "schema": {
-              "type": "array",
-              "items": {
-                "properties": {
-                  "id": {
-                    "description": "Identificador que representa cada uno de los convenios.",
-                    "type": "integer",
-                    "format": "int64",
-                    "example": "2"
-                  },
-                  "nombre": {
-                    "description": "Nombre de convenio.",
-                    "type": "string",
-                    "example": "Pago de servicio telefonico"
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                },
+                "convenios": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "id": {
+                        "description": "Identificador que representa cada uno de los convenios.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "2"
+                      },
+                      "nombre": {
+                        "description": "Nombre de convenio.",
+                        "type": "string",
+                        "example": "Pago de servicio telefonico"
+                      }
+                    }
                   }
                 }
               }
@@ -7143,12 +7155,25 @@
                         "description": "Identificador que representa cada una de los Tipos de Cuenta.",
                         "type": "integer",
                         "format": "int64",
-                        "example": "1"
+                        "example": "4"
                       },
                       "nombre": {
                         "description": "Nombre de las transacciones.",
                         "type": "string",
-                        "example": "Numero de Cuenta"
+                        "example": "Celular"
+                      },
+                      "tiposTransaccion": {
+                        "description": "Listado de tipos de transacción para los que este tipo de cuenta se puede utilizar.",
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        },
+                        "example": [
+                          2,
+                          3,
+                          10,
+                          11
+                        ]
                       }
                     }
                   }
@@ -7392,6 +7417,151 @@
                         "description": "Nombre de la cuenta que será barrida.",
                         "type": "string",
                         "example": "CUENTA 1"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dispersaFondos": {
+      "post": {
+        "tags": [
+          "Sprint 3"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación /dispersaFondos del servicio requerido para la integración de Multivanet con T24.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "dispersaFondos",
+            "description": "Dispersa fondos",
+            "required": true,
+            "schema": {
+              "required": [
+                "idPersona",
+                "cuentaDispersion",
+                "nombreCuentaDispersion",
+                "otp",
+                "ticket",
+                "canal",
+                "horasEjecucion",
+                "cuentasDestino"
+              ],
+              "properties": {
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "cuentaDispersion": {
+                  "description": "Número de cuenta a la cual se va a ir a dejar el monto total acumulado.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": "6542312345"
+                },
+                "nombreCuentaDispersion": {
+                  "description": "Nombre de la cuenta concentradora.",
+                  "type": "string",
+                  "format": "string",
+                  "example": "CUENTA ORIGEN"
+                },
+                "otp": {
+                  "type": "string",
+                  "example": "1234567"
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "horasEjecucion": {
+                  "description": "Horas en las que se realizará la ejecución del barrido.",
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "example": [
+                    "12:00:00",
+                    "14:00:00",
+                    "16:00:00"
+                  ]
+                },
+                "cuentasDestino": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "cuenta": {
+                        "description": "Número de cuenta donde se realizará la recolección del efectivo.",
+                        "type": "string",
+                        "example": "4564523153498"
+                      },
+                      "nombre": {
+                        "description": "Nombre de la cuenta que será barrida.",
+                        "type": "string",
+                        "example": "CUENTA 1"
+                      },
+                      "montoTransferencia": {
+                        "description": "Mínimo de efectivo que se dejará en la cuenta donde se realizó el barrido.",
+                        "type": "number",
+                        "format": "double",
+                        "example": 500
+                      },
+                      "orden": {
+                        "description": "Posición de esta cuenta destino en al bloque de transferencias para dispersión.",
+                        "type": "integer",
+                        "format": "int32",
+                        "example": 1
                       }
                     }
                   }
