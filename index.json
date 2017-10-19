@@ -7603,6 +7603,161 @@
           }
         }
       }
+    },
+    "/consultaBarridoCuentas": {
+      "post": {
+        "tags": [
+          "Sprint 3"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación/consultaBarridoCuentas del servicio requerido para la integración de Multivanet con el componente de programación de tareas.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "consultaBarridoCuentas",
+            "description": "Consulta barrido de cuentas",
+            "required": true,
+            "schema": {
+              "required": [
+                "cuentaConcentradora",
+                "canal",
+                "ticket"
+              ],
+              "properties": {
+                "cuentaConcentradora": {
+                  "description": "Número de cuenta a la cual se va a ir a dejar el monto total acumulado.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": "5642312345"
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Representa una ejecución exitosa. Para efectos de este servicio, será indicativo de que la notificación solicitada se envió correctamente.",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                },
+                "barridos": {
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "folioBarrido",
+                      "cuentaConcentradora",
+                      "nombreCuentaConcentradora",
+                      "horaEjecucion",
+                      "cuentasBarrer"
+                    ],
+                    "properties": {
+                      "folioBarrido": {
+                        "description": "Identificador único del registro de barrido.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "265"
+                      },
+                      "cuentaConcentradora": {
+                        "description": "Número de cuenta a la cual se va a ir a dejar el monto total acumulado.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "5642312345"
+                      },
+                      "nombreCuentaConcentradora": {
+                        "description": "Nombre de la cuenta concentradora.",
+                        "type": "string",
+                        "example": "CUENTA CONCENTRADORA"
+                      },
+                      "horasEjecucion": {
+                        "description": "Horas en las que se realizará la ejecución del barrido. En formato hh:mm:ss. Es de especial importancia notar que el servicio NO se hará responsable por verificar que los horarios solicitados  para los barridos no choquen con cualquier otro barrido previamente programado.",
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "example": [
+                          "12:00:00",
+                          "14:00:00",
+                          "16:00:00"
+                        ]
+                      },
+                      "cuentasBarrer": {
+                        "type": "array",
+                        "items": {
+                          "required": [
+                            "cuenta",
+                            "montoMinDejar",
+                            "nombre"
+                          ],
+                          "properties": {
+                            "cuenta": {
+                              "description": "Número de cuenta donde se realizará la recolección del efectivo.",
+                              "type": "string",
+                              "example": "4564523153498"
+                            },
+                            "montoMinDejar": {
+                              "description": "Mínimo de efectivo que se dejará en la cuenta donde se realizó el barrido. Es posible dejar una cuenta en 0.  Si un barrido previo deja esta cuenta en saldo 0, no se arrojará ningún error, simplemente no se recolectará nada.",
+                              "type": "number",
+                              "format": "double",
+                              "example": 500
+                            },
+                            "nombre": {
+                              "description": "Nombre de la cuenta que será barrida.",
+                              "type": "string",
+                              "example": "CUENTA 1"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
