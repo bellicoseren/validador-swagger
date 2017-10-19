@@ -7758,6 +7758,232 @@
           }
         }
       }
+    },
+    "/actualizaBarrido": {
+      "post": {
+        "tags": [
+          "Sprint 3"
+        ],
+        "description": "Este servicio permite actualizar la configuración de un barrido para cambiar tanto las cuentas que afecta como las horas en las que se ejecuta.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "actualizaBarrido,",
+            "description": "actualiza Barrido",
+            "required": true,
+            "schema": {
+              "required": [
+                "otp",
+                "canal",
+                "ticket"
+              ],
+              "properties": {
+                "barrido": {
+                  "required": [
+                    "horaEjecucion",
+                    "cuentasBarrer"
+                  ],
+                  "properties": {
+                    "horaEjecucion": {
+                      "description": "Horas en las que se realizará la ejecución del barrido. En formato hh:mm:ss. Es de especial importancia notar que el servicio NO se hará responsable por verificar que los horarios solicitados  para los barridos no choquen con cualquier otro barrido previamente programado.",
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "example": [
+                        "12:00:00",
+                        "14:00:00",
+                        "16:00:00"
+                      ]
+                    },
+                    "cuentasBarrer": {
+                      "type": "array",
+                      "items": {
+                        "required": [
+                          "cuenta",
+                          "montoMinDejar",
+                          "modificacion"
+                        ],
+                        "properties": {
+                          "cuenta": {
+                            "description": "Número de cuenta donde se realizará la recolección del efectivo.",
+                            "type": "string",
+                            "example": "4564523153498"
+                          },
+                          "montoMinDejar": {
+                            "description": "Mínimo de efectivo que se dejará en la cuenta donde se realizó el barrido. Es posible dejar una cuenta en 0.  Si un barrido previo deja esta cuenta en saldo 0, no se arrojará ningún error, simplemente no se recolectará nada.",
+                            "type": "number",
+                            "format": "double",
+                            "example": 500
+                          },
+                          "modificacion": {
+                            "description": "Nombre de la cuenta que será barrida.",
+                            "type": "string",
+                            "example": "1"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "otp": {
+                  "description": "OTP del cliente.",
+                  "type": "string",
+                  "example": "122"
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "actualiza Barrido",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "actualiza Barrido error",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/desregistraMovil": {
+      "post": {
+        "tags": [
+          "Sprint 3"
+        ],
+        "description": "Este servicio permite registrar un dispositivo móvil par su operación con Multivatouch",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "desregistraMovil,",
+            "description": "desregistra Movil",
+            "required": true,
+            "schema": {
+              "required": [
+                "imei",
+                "idPersona",
+                "otp",
+                "canal",
+                "ticket"
+              ],
+              "properties": {
+                "otp": {
+                  "description": "OTP del cliente.",
+                  "type": "string",
+                  "example": "122"
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                },
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "imei": {
+                  "description": "Identificador único del dispositivo de la persona cuyo NIP se restablecerá.",
+                  "type": "string",
+                  "example": "12131313113"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "desregistra Movil",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "desregistra Movil error",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

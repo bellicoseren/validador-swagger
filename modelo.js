@@ -1000,6 +1000,16 @@ const consultaBarridoCuentas = {
   ]
 } 
 
+const actualizaBarrido = {
+  "responseError": "Problema con la peticion",
+  "responseStatus": 200
+}
+
+const desregistraMovil = {
+  "responseError": "Problema con la peticion",
+  "responseStatus": 200
+}
+
 var mapaModelo = {
    //### ESB ####//
    /////////// Sprint 1  /////////////
@@ -1067,7 +1077,9 @@ var mapaModelo = {
   'actualizaReporteCobranza':actualizaReporteCobranza,
   'actualizaPreregistro':actualizaPreregistro,
   'barrerCuentas':barrerCuentas,
-  'consultaBarridoCuentas':consultaBarridoCuentas
+  'consultaBarridoCuentas':consultaBarridoCuentas,
+  'actualizaBarrido':actualizaBarrido,
+  'desregistraMovil':desregistraMovil
 }
 
 function obtenerModelo (nombreModelo){
