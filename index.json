@@ -4467,19 +4467,41 @@
           "200": {
             "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
             "schema": {
-              "type": "array",
-              "items": {
-                "properties": {
-                  "id": {
-                    "description": "Identificador que representa cada una de las transacciones.",
-                    "type": "integer",
-                    "format": "int64",
-                    "example": "1"
-                  },
-                  "nombre": {
-                    "description": "Nombre de las transacciones.",
-                    "type": "string",
-                    "example": "Cuentas Propias"
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                },
+                "tiposTransaccion": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "id": {
+                        "description": "Identificador que representa cada una de las transacciones.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "1"
+                      },
+                      "nombre": {
+                        "description": "Nombre de las transacciones.",
+                        "type": "string",
+                        "example": "Cuentas Propias"
+                      },
+                      "participaRegistro": {
+                        "description": "Bandera que indica si este tipo de transacción se puede preregistrar.",
+                        "type": "boolean",
+                        "example": true
+                      },
+                      "participaTransaccion": {
+                        "description": "Bandera que indica si este tipo de transacción se puede utilizar para solicitar la ejecución de una transacción.",
+                        "type": "boolean",
+                        "example": true
+                      }
+                    }
                   }
                 }
               }

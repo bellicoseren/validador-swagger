@@ -730,12 +730,18 @@ const consultaBancos = {
  
 
 
-const obtenerCatalogoTipoTxn = [
+const obtenerCatalogoTipoTxn = {
+  "responseStatus": 200,
+  "responseError": "",
+  "tiposTransaccion": [
     {
-      "id": 1,
-      "nombre": "Cuentas Propias"
+      "id": "1",
+      "nombre": "Cuentas Propias",
+      "participaRegistro": true,
+      "participaTransaccion": true
     }
-]
+  ]
+}
 
 const obtenerCatalogoConvenios = {
   "responseStatus": 200,
