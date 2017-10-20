@@ -7511,13 +7511,13 @@
                   "example": 123546345
                 },
                 "cuentaDispersion": {
-                  "description": "Número de cuenta a la cual se va a ir a dejar el monto total acumulado.",
+                  "description": "Número de cuenta de donde se tomarán los recursos para la dispersión.",
                   "type": "integer",
                   "format": "int64",
                   "example": "6542312345"
                 },
                 "nombreCuentaDispersion": {
-                  "description": "Nombre de la cuenta concentradora.",
+                  "description": "Nombre la cuenta origen de la dispersión.",
                   "type": "string",
                   "format": "string",
                   "example": "CUENTA ORIGEN"
@@ -7569,12 +7569,12 @@
                         "example": "4564523153498"
                       },
                       "nombre": {
-                        "description": "Nombre de la cuenta que será barrida.",
+                        "description": "Nombre de la cuenta destino.",
                         "type": "string",
-                        "example": "CUENTA 1"
+                        "example": "CUENTA DESTINO 1"
                       },
                       "montoTransferencia": {
-                        "description": "Mínimo de efectivo que se dejará en la cuenta donde se realizó el barrido.",
+                        "description": "Monto que se transferirá a esta cuenta durante la dispersión.",
                         "type": "number",
                         "format": "double",
                         "example": 500
@@ -7626,6 +7626,138 @@
         }
       }
     },
+<<<<<<< HEAD
+    "/actualizaDispersionFondos": {
+      "post": {
+        "tags": [
+          "Sprint 3"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación /actualizaDispersionFondos del servicio requerido para la integración de Multivanet con T24.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "actualizaDispersionFondos",
+            "description": "Actualiza dispersa fondos",
+            "required": true,
+            "schema": {
+              "required": [
+                "folio",
+                "ticket",
+                "canal",
+                "dispersion"
+              ],
+              "properties": {
+                "folio": {
+                  "description": "Folio de la dispersión a modificar",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123456789
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "dispersion": {
+                  "required": [
+                    "horasEjecucion",
+                    "cuentasDestino"
+                  ],
+                  "properties": {
+                    "horasEjecucion": {
+                      "description": "Horas en las que se realizará la ejecución del barrido.",
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "example": [
+                        "12:00:00",
+                        "14:00:00",
+                        "16:00:00"
+                      ]
+                    },
+                    "cuentasDestino": {
+                      "type": "array",
+                      "items": {
+                        "properties": {
+                          "cuenta": {
+                            "description": "Número de cuenta donde se realizará la recolección del efectivo.",
+                            "type": "string",
+                            "example": "4564523153498"
+                          },
+                          "modificacion": {
+                            "description": "Esta bandera indica la operacion que se realiza sobre esta cuenta hija",
+                            "type": "string",
+                            "maxLength": 1,
+                            "example": "A"
+                          },
+                          "montoTransferencia": {
+                            "description": "Monto que se transferirá a esta cuenta durante la dispersión.",
+                            "type": "number",
+                            "format": "double",
+                            "example": "500.00"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+=======
+>>>>>>> upstream/master
     "/consultaBarridoCuentas": {
       "post": {
         "tags": [

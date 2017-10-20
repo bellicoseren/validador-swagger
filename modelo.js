@@ -982,6 +982,16 @@ const barrerCuentas = {
   "responseError": ""
 }
 
+const dispersaFondos = {
+  "responseStatus": 200,
+  "responseError": ""
+}
+
+const actualizaDispersionFondos = {
+  "responseStatus": 200,
+  "responseError": ""
+}
+
 const consultaBarridoCuentas = {
   "responseStatus": 200,
   "responseError": "Problema con la peticion",
@@ -1083,9 +1093,12 @@ var mapaModelo = {
   'actualizaReporteCobranza':actualizaReporteCobranza,
   'actualizaPreregistro':actualizaPreregistro,
   'barrerCuentas':barrerCuentas,
+  'dispersaFondos':dispersaFondos,
+  'actualizaDispersionFondos':actualizaDispersionFondos,
   'consultaBarridoCuentas':consultaBarridoCuentas,
   'actualizaBarrido':actualizaBarrido,
   'desregistraMovil':desregistraMovil
+
 }
 
 function obtenerModelo (nombreModelo){
