@@ -730,12 +730,18 @@ const consultaBancos = {
  
 
 
-const obtenerCatalogoTipoTxn = [
+const obtenerCatalogoTipoTxn = {
+  "responseStatus": 200,
+  "responseError": "",
+  "tiposTransaccion": [
     {
-      "id": 1,
-      "nombre": "Cuentas Propias"
+      "id": "1",
+      "nombre": "Cuentas Propias",
+      "participaRegistro": true,
+      "participaTransaccion": true
     }
-]
+  ]
+}
 
 const obtenerCatalogoConvenios = {
   "responseStatus": 200,
@@ -986,6 +992,40 @@ const actualizaDispersionFondos = {
   "responseError": ""
 }
 
+const consultaBarridoCuentas = {
+  "responseStatus": 200,
+  "responseError": "Problema con la peticion",
+  "barridos": [
+    {
+      "folioBarrido": 265,
+      "cuentaConcentradora": 5642312345,
+      "nombreCuentaConcentradora": "CUENTA CONCENTRADORA",
+      "horasEjecucion": [
+        "12:00:00",
+        "14:00:00",
+        "16:00:00"
+      ],
+      "cuentasBarrer": [
+        {
+          "cuenta": "4564523153498",
+          "montoMinDejar": 500,
+          "nombre": "CUENTA 1"
+        }
+      ]
+    }
+  ]
+} 
+
+const actualizaBarrido = {
+  "responseError": "Problema con la peticion",
+  "responseStatus": 200
+}
+
+const desregistraMovil = {
+  "responseError": "Problema con la peticion",
+  "responseStatus": 200
+}
+
 var mapaModelo = {
    //### ESB ####//
    /////////// Sprint 1  /////////////
@@ -1054,7 +1094,11 @@ var mapaModelo = {
   'actualizaPreregistro':actualizaPreregistro,
   'barrerCuentas':barrerCuentas,
   'dispersaFondos':dispersaFondos,
-  'actualizaDispersionFondos':actualizaDispersionFondos
+  'actualizaDispersionFondos':actualizaDispersionFondos,
+  'consultaBarridoCuentas':consultaBarridoCuentas,
+  'actualizaBarrido':actualizaBarrido,
+  'desregistraMovil':desregistraMovil
+
 }
 
 function obtenerModelo (nombreModelo){

@@ -7626,6 +7626,7 @@
         }
       }
     },
+<<<<<<< HEAD
     "/actualizaDispersionFondos": {
       "post": {
         "tags": [
@@ -7755,6 +7756,8 @@
         }
       }
     },
+=======
+>>>>>>> upstream/master
     "/consultaBarridoCuentas": {
       "post": {
         "tags": [
