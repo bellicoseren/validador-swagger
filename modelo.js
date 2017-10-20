@@ -976,6 +976,16 @@ const barrerCuentas = {
   "responseError": ""
 }
 
+const dispersaFondos = {
+  "responseStatus": 200,
+  "responseError": ""
+}
+
+const actualizaDispersionFondos = {
+  "responseStatus": 200,
+  "responseError": ""
+}
+
 var mapaModelo = {
    //### ESB ####//
    /////////// Sprint 1  /////////////
@@ -1042,7 +1052,9 @@ var mapaModelo = {
   'catTipoCuenta':catTipoCuenta,
   'actualizaReporteCobranza':actualizaReporteCobranza,
   'actualizaPreregistro':actualizaPreregistro,
-  'barrerCuentas':barrerCuentas
+  'barrerCuentas':barrerCuentas,
+  'dispersaFondos':dispersaFondos,
+  'actualizaDispersionFondos':actualizaDispersionFondos
 }
 
 function obtenerModelo (nombreModelo){

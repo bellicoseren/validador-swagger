@@ -4467,19 +4467,41 @@
           "200": {
             "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
             "schema": {
-              "type": "array",
-              "items": {
-                "properties": {
-                  "id": {
-                    "description": "Identificador que representa cada una de las transacciones.",
-                    "type": "integer",
-                    "format": "int64",
-                    "example": "1"
-                  },
-                  "nombre": {
-                    "description": "Nombre de las transacciones.",
-                    "type": "string",
-                    "example": "Cuentas Propias"
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                },
+                "tiposTransaccion": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "id": {
+                        "description": "Identificador que representa cada una de las transacciones.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "1"
+                      },
+                      "nombre": {
+                        "description": "Nombre de las transacciones.",
+                        "type": "string",
+                        "example": "Cuentas Propias"
+                      },
+                      "participaRegistro": {
+                        "description": "Bandera que indica si este tipo de transacción se puede preregistrar.",
+                        "type": "boolean",
+                        "example": true
+                      },
+                      "participaTransaccion": {
+                        "description": "Bandera que indica si este tipo de transacción se puede utilizar para solicitar la ejecución de una transacción.",
+                        "type": "boolean",
+                        "example": true
+                      }
+                    }
                   }
                 }
               }
@@ -7489,13 +7511,13 @@
                   "example": 123546345
                 },
                 "cuentaDispersion": {
-                  "description": "Número de cuenta a la cual se va a ir a dejar el monto total acumulado.",
+                  "description": "Número de cuenta de donde se tomarán los recursos para la dispersión.",
                   "type": "integer",
                   "format": "int64",
                   "example": "6542312345"
                 },
                 "nombreCuentaDispersion": {
-                  "description": "Nombre de la cuenta concentradora.",
+                  "description": "Nombre la cuenta origen de la dispersión.",
                   "type": "string",
                   "format": "string",
                   "example": "CUENTA ORIGEN"
@@ -7547,12 +7569,12 @@
                         "example": "4564523153498"
                       },
                       "nombre": {
-                        "description": "Nombre de la cuenta que será barrida.",
+                        "description": "Nombre de la cuenta destino.",
                         "type": "string",
-                        "example": "CUENTA 1"
+                        "example": "CUENTA DESTINO 1"
                       },
                       "montoTransferencia": {
-                        "description": "Mínimo de efectivo que se dejará en la cuenta donde se realizó el barrido.",
+                        "description": "Monto que se transferirá a esta cuenta durante la dispersión.",
                         "type": "number",
                         "format": "double",
                         "example": 500
@@ -7588,6 +7610,516 @@
           },
           "201": {
             "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/actualizaDispersionFondos": {
+      "post": {
+        "tags": [
+          "Sprint 3"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación /actualizaDispersionFondos del servicio requerido para la integración de Multivanet con T24.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "actualizaDispersionFondos",
+            "description": "Actualiza dispersa fondos",
+            "required": true,
+            "schema": {
+              "required": [
+                "folio",
+                "ticket",
+                "canal",
+                "dispersion"
+              ],
+              "properties": {
+                "folio": {
+                  "description": "Folio de la dispersión a modificar",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123456789
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "dispersion": {
+                  "required": [
+                    "horasEjecucion",
+                    "cuentasDestino"
+                  ],
+                  "properties": {
+                    "horasEjecucion": {
+                      "description": "Horas en las que se realizará la ejecución del barrido.",
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "example": [
+                        "12:00:00",
+                        "14:00:00",
+                        "16:00:00"
+                      ]
+                    },
+                    "cuentasDestino": {
+                      "type": "array",
+                      "items": {
+                        "properties": {
+                          "cuenta": {
+                            "description": "Número de cuenta donde se realizará la recolección del efectivo.",
+                            "type": "string",
+                            "example": "4564523153498"
+                          },
+                          "modificacion": {
+                            "description": "Esta bandera indica la operacion que se realiza sobre esta cuenta hija",
+                            "type": "string",
+                            "maxLength": 1,
+                            "example": "A"
+                          },
+                          "montoTransferencia": {
+                            "description": "Monto que se transferirá a esta cuenta durante la dispersión.",
+                            "type": "number",
+                            "format": "double",
+                            "example": "500.00"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/consultaBarridoCuentas": {
+      "post": {
+        "tags": [
+          "Sprint 3"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación/consultaBarridoCuentas del servicio requerido para la integración de Multivanet con el componente de programación de tareas.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "consultaBarridoCuentas",
+            "description": "Consulta barrido de cuentas",
+            "required": true,
+            "schema": {
+              "required": [
+                "cuentaConcentradora",
+                "canal",
+                "ticket"
+              ],
+              "properties": {
+                "cuentaConcentradora": {
+                  "description": "Número de cuenta a la cual se va a ir a dejar el monto total acumulado.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": "5642312345"
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Representa una ejecución exitosa. Para efectos de este servicio, será indicativo de que la notificación solicitada se envió correctamente.",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                },
+                "barridos": {
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "folioBarrido",
+                      "cuentaConcentradora",
+                      "nombreCuentaConcentradora",
+                      "horaEjecucion",
+                      "cuentasBarrer"
+                    ],
+                    "properties": {
+                      "folioBarrido": {
+                        "description": "Identificador único del registro de barrido.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "265"
+                      },
+                      "cuentaConcentradora": {
+                        "description": "Número de cuenta a la cual se va a ir a dejar el monto total acumulado.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "5642312345"
+                      },
+                      "nombreCuentaConcentradora": {
+                        "description": "Nombre de la cuenta concentradora.",
+                        "type": "string",
+                        "example": "CUENTA CONCENTRADORA"
+                      },
+                      "horasEjecucion": {
+                        "description": "Horas en las que se realizará la ejecución del barrido. En formato hh:mm:ss. Es de especial importancia notar que el servicio NO se hará responsable por verificar que los horarios solicitados  para los barridos no choquen con cualquier otro barrido previamente programado.",
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "example": [
+                          "12:00:00",
+                          "14:00:00",
+                          "16:00:00"
+                        ]
+                      },
+                      "cuentasBarrer": {
+                        "type": "array",
+                        "items": {
+                          "required": [
+                            "cuenta",
+                            "montoMinDejar",
+                            "nombre"
+                          ],
+                          "properties": {
+                            "cuenta": {
+                              "description": "Número de cuenta donde se realizará la recolección del efectivo.",
+                              "type": "string",
+                              "example": "4564523153498"
+                            },
+                            "montoMinDejar": {
+                              "description": "Mínimo de efectivo que se dejará en la cuenta donde se realizó el barrido. Es posible dejar una cuenta en 0.  Si un barrido previo deja esta cuenta en saldo 0, no se arrojará ningún error, simplemente no se recolectará nada.",
+                              "type": "number",
+                              "format": "double",
+                              "example": 500
+                            },
+                            "nombre": {
+                              "description": "Nombre de la cuenta que será barrida.",
+                              "type": "string",
+                              "example": "CUENTA 1"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/actualizaBarrido": {
+      "post": {
+        "tags": [
+          "Sprint 3"
+        ],
+        "description": "Este servicio permite actualizar la configuración de un barrido para cambiar tanto las cuentas que afecta como las horas en las que se ejecuta.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "actualizaBarrido,",
+            "description": "actualiza Barrido",
+            "required": true,
+            "schema": {
+              "required": [
+                "otp",
+                "canal",
+                "ticket"
+              ],
+              "properties": {
+                "barrido": {
+                  "required": [
+                    "horaEjecucion",
+                    "cuentasBarrer"
+                  ],
+                  "properties": {
+                    "horaEjecucion": {
+                      "description": "Horas en las que se realizará la ejecución del barrido. En formato hh:mm:ss. Es de especial importancia notar que el servicio NO se hará responsable por verificar que los horarios solicitados  para los barridos no choquen con cualquier otro barrido previamente programado.",
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "example": [
+                        "12:00:00",
+                        "14:00:00",
+                        "16:00:00"
+                      ]
+                    },
+                    "cuentasBarrer": {
+                      "type": "array",
+                      "items": {
+                        "required": [
+                          "cuenta",
+                          "montoMinDejar",
+                          "modificacion"
+                        ],
+                        "properties": {
+                          "cuenta": {
+                            "description": "Número de cuenta donde se realizará la recolección del efectivo.",
+                            "type": "string",
+                            "example": "4564523153498"
+                          },
+                          "montoMinDejar": {
+                            "description": "Mínimo de efectivo que se dejará en la cuenta donde se realizó el barrido. Es posible dejar una cuenta en 0.  Si un barrido previo deja esta cuenta en saldo 0, no se arrojará ningún error, simplemente no se recolectará nada.",
+                            "type": "number",
+                            "format": "double",
+                            "example": 500
+                          },
+                          "modificacion": {
+                            "description": "Nombre de la cuenta que será barrida.",
+                            "type": "string",
+                            "example": "1"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "otp": {
+                  "description": "OTP del cliente.",
+                  "type": "string",
+                  "example": "122"
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "actualiza Barrido",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "actualiza Barrido error",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/desregistraMovil": {
+      "post": {
+        "tags": [
+          "Sprint 3"
+        ],
+        "description": "Este servicio permite registrar un dispositivo móvil par su operación con Multivatouch",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "desregistraMovil,",
+            "description": "desregistra Movil",
+            "required": true,
+            "schema": {
+              "required": [
+                "imei",
+                "idPersona",
+                "otp",
+                "canal",
+                "ticket"
+              ],
+              "properties": {
+                "otp": {
+                  "description": "OTP del cliente.",
+                  "type": "string",
+                  "example": "122"
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                },
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "imei": {
+                  "description": "Identificador único del dispositivo de la persona cuyo NIP se restablecerá.",
+                  "type": "string",
+                  "example": "12131313113"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "desregistra Movil",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "desregistra Movil error",
             "schema": {
               "properties": {
                 "responseStatus": {
