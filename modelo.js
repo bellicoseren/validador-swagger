@@ -829,7 +829,7 @@ const obtenerPreregistroPorCliente = {
     {
       "idPreregistro": 1245,
       "estatus": "",
-      "tipoCuenta": "",
+      "tipoCuenta": 2,
       "noCuenta": "",
       "idTipoTransaccion": 1,
       "alias": "ALIAS",

@@ -5635,8 +5635,9 @@
                   "example": 123546345
                 },
                 "tipoCuenta": {
-                  "type": "string",
-                  "example": ""
+                  "type": "integer",
+                  "format": "int32",
+                  "example": "2"
                 },
                 "noCuenta": {
                   "type": "string",
@@ -5874,8 +5875,9 @@
                         "example": ""
                       },
                       "tipoCuenta": {
-                        "type": "string",
-                        "example": ""
+                        "type": "integer",
+                        "format": "int32",
+                        "example": "2"
                       },
                       "noCuenta": {
                         "type": "string",
