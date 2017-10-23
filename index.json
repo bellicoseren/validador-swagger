@@ -4541,7 +4541,9 @@
               "required": [
                 "idPersona",
                 "otp1",
-                "otp2"
+                "otp2",
+                "contrasena",
+                "ticket"
               ],
               "properties": {
                 "idPersona": {
@@ -4556,6 +4558,26 @@
                 "otp2": {
                   "type": "string",
                   "example": "1234567"
+                },
+                "contrasena": {
+                  "type": "string",
+                  "example": "ABCD1234"
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
                 }
               }
             }
@@ -7626,7 +7648,6 @@
         }
       }
     },
-<<<<<<< HEAD
     "/actualizaDispersionFondos": {
       "post": {
         "tags": [
@@ -7756,8 +7777,6 @@
         }
       }
     },
-=======
->>>>>>> upstream/master
     "/consultaBarridoCuentas": {
       "post": {
         "tags": [
