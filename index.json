@@ -7724,12 +7724,6 @@
                             "type": "string",
                             "example": "4564523153498"
                           },
-                          "modificacion": {
-                            "description": "Esta bandera indica la operacion que se realiza sobre esta cuenta hija",
-                            "type": "string",
-                            "maxLength": 1,
-                            "example": "A"
-                          },
                           "montoTransferencia": {
                             "description": "Monto que se transferirá a esta cuenta durante la dispersión.",
                             "type": "number",
@@ -8144,6 +8138,241 @@
           },
           "500": {
             "description": "desregistra Movil error",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/obtenerPreregistroPorClienteTransaccion": {
+      "post": {
+        "tags": [
+          "Sprint 3"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación/obtenerPreregistroPorClienteTransaccion del servicio requerido para la integración de Multivanet con T24.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "obtenerPreregistroPorClienteTransaccion",
+            "description": "Obtener preregistro por ClienteTransaccion",
+            "required": true,
+            "schema": {
+              "required": [
+                "idPersona",
+                "idTipoTransaccion",
+                "canal",
+                "ticket"
+              ],
+              "properties": {
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "idTipoTransaccion": {
+                  "description": "Identificador único para representar el tipo de transacción perteneciente al preregistro.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": "1"
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                },
+                "preregistros": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "idPreregistro": {
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1245
+                      },
+                      "estatus": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "fechaAlta": {
+                        "type": "string",
+                        "format": "date",
+                        "example": ""
+                      },
+                      "fechaModificacion": {
+                        "type": "string",
+                        "format": "date",
+                        "example": ""
+                      },
+                      "tipoCuenta": {
+                        "type": "integer",
+                        "format": "int32",
+                        "example": "2"
+                      },
+                      "noCuenta": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "idTipoTransaccion": {
+                        "type": "integer",
+                        "format": "int32",
+                        "example": 1
+                      },
+                      "alias": {
+                        "type": "string",
+                        "example": "ALIAS"
+                      },
+                      "montoMaximo": {
+                        "description": "Monto donado en cantidad monetaria.",
+                        "type": "number",
+                        "format": "double",
+                        "example": 120000
+                      },
+                      "celularNotification": {
+                        "type": "string",
+                        "example": "5512233456"
+                      },
+                      "email": {
+                        "type": "string",
+                        "example": "test@domain.com"
+                      },
+                      "moneda": {
+                        "type": "string",
+                        "example": "MXN"
+                      },
+                      "periodo": {
+                        "type": "string",
+                        "example": "semanal"
+                      },
+                      "terceroMultiva": {
+                        "properties": {
+                          "idProducto": {
+                            "type": "string",
+                            "example": "CHQ"
+                          },
+                          "beneficiario": {
+                            "type": "string",
+                            "example": "Waldo Terry"
+                          },
+                          "pagoProveedor": {
+                            "type": "boolean",
+                            "example": false
+                          },
+                          "referenciado": {
+                            "type": "boolean",
+                            "example": false
+                          }
+                        }
+                      },
+                      "interbancario": {
+                        "properties": {
+                          "banco": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "beneficiario": {
+                            "type": "string",
+                            "example": "Waldo Terry"
+                          },
+                          "rfcCurp": {
+                            "type": "string",
+                            "example": "TEDW123456789"
+                          },
+                          "pagoProveedor": {
+                            "type": "boolean",
+                            "example": false
+                          }
+                        }
+                      },
+                      "credito": {
+                        "properties": {
+                          "banco": {
+                            "type": "string",
+                            "example": "123456789"
+                          },
+                          "tipoCredito": {
+                            "type": "integer",
+                            "format": "int32",
+                            "example": 1
+                          }
+                        }
+                      },
+                      "servicio": {
+                        "properties": {
+                          "noEstablecimiento": {
+                            "type": "integer",
+                            "format": "int32",
+                            "example": 1
+                          },
+                          "razonSocial": {
+                            "type": "string",
+                            "example": "Teléfonos de México"
+                          }
+                        }
+                      },
+                      "pagoTDC": {
+                        "properties": {
+                          "noEstablecimiento": {
+                            "type": "integer",
+                            "format": "int32",
+                            "example": 3
+                          },
+                          "banco": {
+                            "type": "string",
+                            "example": "12345689"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
             "schema": {
               "properties": {
                 "responseStatus": {
