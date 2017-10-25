@@ -3967,6 +3967,11 @@
                   "type": "string",
                   "minLength": 1,
                   "example": "WEB"
+                },
+                "noCredito": {
+                  "type": "string",
+                  "description": "Si la petición se hace para el paperless de un crédito.",
+                  "example": "credito"
                 }
               }
             }
