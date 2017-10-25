@@ -1026,6 +1026,52 @@ const desregistraMovil = {
   "responseStatus": 200
 }
 
+const obtenerPreregistroPorClienteTransaccion = {
+  "responseStatus": 200,
+  "responseError": "Problema con la peticion",
+  "preregistros": [
+    {
+      "idPreregistro": 1245,
+      "estatus": "",
+      "fechaAlta": "",
+      "fechaModificacion": "",
+      "tipoCuenta": 2,
+      "noCuenta": "",
+      "idTipoTransaccion": 1,
+      "alias": "ALIAS",
+      "montoMaximo": 120000,
+      "celularNotification": "5512233456",
+      "email": "test@domain.com",
+      "moneda": "MXN",
+      "periodo": "semanal",
+      "terceroMultiva": {
+        "idProducto": "CHQ",
+        "beneficiario": "Waldo Terry",
+        "pagoProveedor": false,
+        "referenciado": false
+      },
+      "interbancario": {
+        "banco": "",
+        "beneficiario": "Waldo Terry",
+        "rfcCurp": "TEDW123456789",
+        "pagoProveedor": false
+      },
+      "credito": {
+        "banco": "123456789",
+        "tipoCredito": 1
+      },
+      "servicio": {
+        "noEstablecimiento": 1,
+        "razonSocial": "Teléfonos de México"
+      },
+      "pagoTDC": {
+        "noEstablecimiento": 3,
+        "banco": "12345689"
+      }
+    }
+  ]
+}
+
 var mapaModelo = {
    //### ESB ####//
    /////////// Sprint 1  /////////////
@@ -1097,8 +1143,8 @@ var mapaModelo = {
   'actualizaDispersionFondos':actualizaDispersionFondos,
   'consultaBarridoCuentas':consultaBarridoCuentas,
   'actualizaBarrido':actualizaBarrido,
-  'desregistraMovil':desregistraMovil
-
+  'desregistraMovil':desregistraMovil,
+  'obtenerPreregistroPorClienteTransaccion':obtenerPreregistroPorClienteTransaccion
 }
 
 function obtenerModelo (nombreModelo){
