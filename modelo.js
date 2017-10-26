@@ -1072,6 +1072,22 @@ const obtenerPreregistroPorClienteTransaccion = {
   ]
 }
 
+const consultaLotes = {
+  "responseStatus": 200,
+  "responseError": "",
+  "lotes": [
+    {
+      "folio": "123456",
+      "nombreArchivo": "dispersion.csv",
+      "fechaRegistro": "01-09-2017T02:26:00",
+      "fechaEjecucion": "01-09-2017T02:26:00",
+      "estatus": "EJECUTADO",
+      "operacion": "DISPERSION",
+      "tipo": "RESPUESTA"
+    }
+  ]
+}
+
 var mapaModelo = {
    //### ESB ####//
    /////////// Sprint 1  /////////////
@@ -1144,7 +1160,8 @@ var mapaModelo = {
   'consultaBarridoCuentas':consultaBarridoCuentas,
   'actualizaBarrido':actualizaBarrido,
   'desregistraMovil':desregistraMovil,
-  'obtenerPreregistroPorClienteTransaccion':obtenerPreregistroPorClienteTransaccion
+  'obtenerPreregistroPorClienteTransaccion':obtenerPreregistroPorClienteTransaccion,
+  'consultaLotes':consultaLotes
 }
 
 function obtenerModelo (nombreModelo){

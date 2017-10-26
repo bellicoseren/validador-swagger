@@ -8388,6 +8388,145 @@
           }
         }
       }
+    },
+    "/consultaLotes": {
+      "post": {
+        "tags": [
+          "Sprint 3"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación/consultaLotes del servicio requerido para la integración de Multivanet con el sistema de Programación de Operaciones.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "consultaLotes",
+            "description": "Consulta por lotes",
+            "required": true,
+            "schema": {
+              "required": [
+                "idPersona",
+                "fechaInicio",
+                "ticket",
+                "canal"
+              ],
+              "properties": {
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "fechaInicio": {
+                  "description": "Fecha de inicio del rango de fechas de consulta.",
+                  "type": "string",
+                  "example": "01-09-2017"
+                },
+                "fechaFin": {
+                  "description": "Fecha de inicio del rango de fechas de consulta. En formato dd-MM-yyyy.",
+                  "type": "string",
+                  "example": "10-09-2017"
+                },
+                "operacion": {
+                  "description": "Indica el tipo de operación por lote que se desea consultar",
+                  "type": "string",
+                  "example": "DISPERSION"
+                },
+                "tipo": {
+                  "description": "Indica si el archivo es de envío o de respuesta",
+                  "type": "string",
+                  "example": "RESPUESTA"
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                },
+                "lotes": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "folio": {
+                        "type": "string",
+                        "example": 123456
+                      },
+                      "nombreArchivo": {
+                        "type": "string",
+                        "example": "dispersion.csv"
+                      },
+                      "fechaRegistro": {
+                        "type": "string",
+                        "example": "01-09-2017T02:26:00"
+                      },
+                      "fechaEjecucion": {
+                        "type": "string",
+                        "example": "01-09-2017T02:26:00"
+                      },
+                      "estatus": {
+                        "type": "string",
+                        "example": "EJECUTADO"
+                      },
+                      "operacion": {
+                        "type": "string",
+                        "example": "DISPERSION"
+                      },
+                      "tipo": {
+                        "type": "string",
+                        "example": "RESPUESTA"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "resposeError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
