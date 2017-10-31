@@ -6319,7 +6319,7 @@
         "parameters": [
           {
             "in": "body",
-            "name": "actualizaAliasCuenta,",
+            "name": "actualizaAliasCuenta",
             "description": "actualiza Alias Cuenta",
             "required": true,
             "schema": {
