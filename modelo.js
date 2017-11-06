@@ -1088,6 +1088,11 @@ const consultaLotes = {
   ]
 }
 
+const ejecutarTransaccion = {
+  "responseError": "Problema con la peticion",
+  "responseStatus": 200
+}
+
 var mapaModelo = {
    //### ESB ####//
    /////////// Sprint 1  /////////////
@@ -1161,7 +1166,8 @@ var mapaModelo = {
   'actualizaBarrido':actualizaBarrido,
   'desregistraMovil':desregistraMovil,
   'obtenerPreregistroPorClienteTransaccion':obtenerPreregistroPorClienteTransaccion,
-  'consultaLotes':consultaLotes
+  'consultaLotes':consultaLotes,
+  'ejecutarTransaccion':ejecutarTransaccion  
 }
 
 function obtenerModelo (nombreModelo){
