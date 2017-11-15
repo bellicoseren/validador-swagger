@@ -8529,6 +8529,420 @@
           }
         }
       }
+    },
+    "/ejecutarTransaccion": {
+      "post": {
+        "tags": [
+          "Sprint 3"
+        ],
+        "description": "Este servicio solicita al core bancario T24 hacer la ejecución de alguna transaccion.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "ejecutarTransaccion,",
+            "description": "ejecuta transaccion",
+            "required": true,
+            "schema": {
+              "required": [
+                "ipOrigen",
+                "numeroCuentaCargo",
+                "idTipoTxn",
+                "usuarioCaptura",
+                "moneda",
+                "importeTransaccion",
+                "fechaProgramacion",
+                "concepto"
+              ],
+              "properties": {
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "ipOrigen": {
+                  "description": "Ip de donde se origina a transacción.",
+                  "type": "string",
+                  "format": "string",
+                  "example": "192.168.15.78"
+                },
+                "numeroCuentaCargo": {
+                  "description": "Cuenta de donde saldra la transaccion",
+                  "type": "string",
+                  "format": "string",
+                  "example": "1234567890"
+                },
+                "idTipoTxn": {
+                  "description": "Identificador del tipo de trasaccion",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": "4564513"
+                },
+                "numeroCuentaAbono": {
+                  "description": "Cuenta de donde saldra la transaccion",
+                  "type": "string",
+                  "format": "string",
+                  "example": "1234567890"
+                },
+                "usuarioCaptura": {
+                  "description": "Cuenta de donde saldra la transaccion",
+                  "type": "string",
+                  "format": "string",
+                  "example": "4456"
+                },
+                "moneda": {
+                  "description": "Moneda en la que saldra la transaccion",
+                  "type": "string",
+                  "format": "string",
+                  "example": "MXN"
+                },
+                "importeTransaccion": {
+                  "description": "Importe en la que saldra la transaccion",
+                  "type": "number",
+                  "format": "double",
+                  "example": "125.00"
+                },
+                "fechaProgramacion": {
+                  "description": "fecha en la que saldra la transaccion",
+                  "type": "string",
+                  "format": "date",
+                  "example": "2016-09-25"
+                },
+                "concepto": {
+                  "description": "Concepto por el cual saldra la transaccion",
+                  "type": "string",
+                  "format": "string",
+                  "example": "PAGO DE LUZ"
+                },
+                "cuentasTerceros": {
+                  "required": [
+                    "beneficiario",
+                    "rfcCurp"
+                  ],
+                  "properties": {
+                    "beneficiario": {
+                      "description": "Nombre del titular de cuenta donde se realizará el deposito del efectivo.",
+                      "type": "string",
+                      "example": "Hector Juarez Santos"
+                    },
+                    "rfcCurp": {
+                      "description": "Número de RFC o curp del Titular de la cuenta",
+                      "type": "string",
+                      "example": "GUMR880723BJ2"
+                    },
+                    "referencia": {
+                      "description": "Cadena de referencia del concepto de la transaccion:",
+                      "type": "string",
+                      "example": "GUMR880723BJ2"
+                    },
+                    "concepto": {
+                      "description": "Concepto de la transaccion.",
+                      "type": "string",
+                      "example": ""
+                    },
+                    "edoCuenta": {
+                      "description": "Estado de cuenta para la transaccion.",
+                      "type": "string",
+                      "example": ""
+                    },
+                    "iva": {
+                      "type": "number",
+                      "example": "100.00"
+                    }
+                  }
+                },
+                "interbancario": {
+                  "required": [
+                    "banco",
+                    "tipoCuentaAbono",
+                    "idTipoPago",
+                    "beneficiario",
+                    "referencia"
+                  ],
+                  "properties": {
+                    "banco": {
+                      "description": "Nombre del Banco donde esta ubicada la cuenta donde se realizará el deposito del efectivo.",
+                      "type": "string",
+                      "example": "Banamex"
+                    },
+                    "tipoCuentaAbono": {
+                      "type": "string",
+                      "example": "NOMINA"
+                    },
+                    "idTipoPago": {
+                      "type": "integer",
+                      "example": "1"
+                    },
+                    "beneficiario": {
+                      "type": "string",
+                      "example": "Hector Juarez Santos"
+                    },
+                    "referencia": {
+                      "description": "Cadena de referencia del concepto de la transaccion:",
+                      "type": "string",
+                      "example": "PAGO DE RENTA"
+                    },
+                    "rfcCurp": {
+                      "description": "Número de RFC o curp del Titular de la cuenta",
+                      "type": "string",
+                      "example": "GUMR880723BJ2"
+                    }
+                  }
+                },
+                "credito": {
+                  "required": [
+                    "banco",
+                    "idTipoCredito",
+                    "referencia",
+                    "rfcCurp"
+                  ],
+                  "properties": {
+                    "banco": {
+                      "description": "Nombre del Banco donde esta ubicada la cuenta donde se realizará el deposito del efectivo.",
+                      "type": "string",
+                      "example": "BANAMEX"
+                    },
+                    "idTipoCredito": {
+                      "type": "integer",
+                      "format": "int64",
+                      "example": "2"
+                    },
+                    "referencia": {
+                      "description": "Cadena de referencia del concepto de la transaccion:",
+                      "type": "string",
+                      "format": "string",
+                      "example": "PAGO DE RENTA"
+                    },
+                    "rfcCurp": {
+                      "description": "Número de RFC o curp del Titular de la cuenta",
+                      "type": "string",
+                      "example": "GUMR880723BJ2"
+                    }
+                  }
+                },
+                "servicio": {
+                  "required": [
+                    "referencia",
+                    "rfcCurp"
+                  ],
+                  "properties": {
+                    "numeroEstablecimiento": {
+                      "description": "Nombre del Banco donde esta ubicada la cuenta donde se realizará el deposito del efectivo.",
+                      "type": "integer",
+                      "format": "int64",
+                      "example": "1"
+                    },
+                    "referencia": {
+                      "description": "Cadena de referencia del concepto de la transaccion:",
+                      "type": "string",
+                      "format": "string",
+                      "example": "PAGO DE MES DE AGOSTO"
+                    },
+                    "rfcCurp": {
+                      "description": "Número de RFC o curp del Titular de la cuenta",
+                      "type": "string",
+                      "example": "TEDW112233445566"
+                    }
+                  }
+                },
+                "tarjetaCredito": {
+                  "required": [
+                    "banco",
+                    "numeroEstablecimiento",
+                    "referencia"
+                  ],
+                  "properties": {
+                    "numeroEstablecimiento": {
+                      "description": "Identificador único del convenio cuyo contrato se está pagando con esta transacción.",
+                      "type": "integer",
+                      "format": "int64",
+                      "example": "3"
+                    },
+                    "referencia": {
+                      "description": "Cadena de referencia del concepto de la transaccion:",
+                      "type": "string",
+                      "format": "string",
+                      "example": "PAGO DE MES DE AGOSTO"
+                    },
+                    "banco": {
+                      "description": "Número de RFC o curp del Titular de la cuenta",
+                      "type": "string",
+                      "format": "string",
+                      "example": "123456"
+                    }
+                  }
+                },
+                "donacion": {
+                  "properties": {
+                    "campania": {
+                      "description": "Identificador de la campaña en T24.",
+                      "type": "integer",
+                      "format": "int64",
+                      "example": "123"
+                    }
+                  }
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ejecuta Transaccion",
+            "schema": {
+              "properties": {
+                "folio": {
+                  "type": "string",
+                  "format": "string",
+                  "example": "A-545445"
+                },
+                "importeComision": {
+                  "type": "number",
+                  "format": "double",
+                  "example": "14"
+                },
+                "importeIva": {
+                  "type": "number",
+                  "format": "double",
+                  "example": "15.12"
+                },
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "ejecuta Transaccion error",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/catDispositivosMoviles": {
+      "post": {
+        "tags": [
+          "Sprint 3"
+        ],
+        "description": "Devuelve la información de dispositivos en una lista",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "catDispositivosMoviles,",
+            "description": "catalogo de dispositivos moviles",
+            "required": true,
+            "schema": {
+              "required": [
+                "ticket",
+                "idPersona"
+              ],
+              "properties": {
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                },
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Catalogo Dispositivos Moviles",
+            "schema": {
+              "properties": {
+                "dispositivos": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "idDispositivo": {
+                        "description": "Número de serie del dispositivo móvil.",
+                        "type": "integer",
+                        "example": "1"
+                      },
+                      "descripcion": {
+                        "description": "Descricpcion asociado al dispositivo móvil.",
+                        "type": "string",
+                        "example": "ANDROID GALAXY NOTE 8"
+                      }
+                    }
+                  }
+                },
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Catalogo Dispositivos Moviles Error",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
