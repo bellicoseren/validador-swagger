@@ -262,15 +262,27 @@
                   "type": "array",
                   "items": {
                     "properties": {
+                      "id": {
+                        "description": "Identificador del servicio contratado",
+                        "type": "integer",
+                        "format": "int32",
+                        "example": 3
+                      },
                       "nombre": {
                         "description": "Nombre del servicio",
                         "type": "string",
-                        "example": "String"
+                        "example": "BANCA ELECTRONICA"
                       },
-                      "idProducto": {
-                        "description": "",
-                        "type": "string",
-                        "example": "String"
+                      "contratado": {
+                        "description": "Bandera que indica si el servicio ha sido contratado por la persona",
+                        "type": "boolean",
+                        "example": true
+                      },
+                      "montoMaximoAutorizado": {
+                        "description": "Monto máximo autorizado por el cliente",
+                        "type": "number",
+                        "format": "double",
+                        "example": 10000.1
                       }
                     }
                   }
@@ -876,8 +888,6 @@
                 "idPersona",
                 "tipoMensaje",
                 "tipoNotificacion",
-                "from",
-                "subject",
                 "to"
               ],
               "properties": {
@@ -915,24 +925,16 @@
                   "type": "string",
                   "example": "notificacion"
                 },
-                "from": {
-                  "type": "string",
-                  "example": "123"
-                },
-                "subject": {
-                  "type": "string",
-                  "example": "12344"
-                },
                 "to": {
                   "type": "string",
-                  "example": "321"
+                  "example": "cliente@mail.com"
                 },
                 "mapParameters": {
                   "properties": {
                     "key": {
                       "description": "Mapa de parámetros opcionales para la configuración de diferentes medios de envío.",
                       "type": "string",
-                      "example": "1223333"
+                      "example": "key"
                     }
                   }
                 }
@@ -6319,7 +6321,7 @@
         "parameters": [
           {
             "in": "body",
-            "name": "actualizaAliasCuenta",
+            "name": "actualizaAliasCuenta,",
             "description": "actualiza Alias Cuenta",
             "required": true,
             "schema": {
@@ -8519,311 +8521,6 @@
                   "example": 500
                 },
                 "resposeError": {
-                  "type": "string",
-                  "example": ""
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/ejecutarTransaccion": {
-      "post": {
-        "tags": [
-          "Sprint 3"
-        ],
-        "description": "Este servicio solicita al core bancario T24 hacer la ejecución de alguna transaccion.",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "ejecutarTransaccion,",
-            "description": "ejecuta transaccion",
-            "required": true,
-            "schema": {
-              "required": [
-                "ipOrigen",
-                "numeroCuentaCargo",
-                "idTipoTxn",
-                "usuarioCaptura",
-                "moneda",
-                "importeTransaccion",
-                "fechaProgramacion",
-                "concepto"
-              ],
-              "properties": {
-                "idPersona": {
-                  "type": "integer",
-                  "format": "int64",
-                  "example": 123546345
-                },
-                "ipOrigen": {
-                  "description": "Ip de donde se origina a transacción.",
-                  "type": "string",
-                  "format": "string",
-                  "example": "192.168.15.78"
-                },
-                "numeroCuentaCargo": {
-                  "description": "Cuenta de donde saldra la transaccion",
-                  "type": "string",
-                  "format": "string",
-                  "example": "1234567890"
-                },
-                "idTipoTxn": {
-                  "description": "Identificador del tipo de trasaccion",
-                  "type": "integer",
-                  "format": "int64",
-                  "example": "4564513"
-                },
-                "numeroCuentaAbono": {
-                  "description": "Cuenta de donde saldra la transaccion",
-                  "type": "string",
-                  "format": "string",
-                  "example": "1234567890"
-                },
-                "usuarioCaptura": {
-                  "description": "Cuenta de donde saldra la transaccion",
-                  "type": "string",
-                  "format": "string",
-                  "example": "4456"
-                },
-                "moneda": {
-                  "description": "Moneda en la que saldra la transaccion",
-                  "type": "string",
-                  "format": "string",
-                  "example": "MXN"
-                },
-                "importeTransaccion": {
-                  "description": "Importe en la que saldra la transaccion",
-                  "type": "number",
-                  "format": "double",
-                  "example": "125.00"
-                },
-                "fechaProgramacion": {
-                  "description": "fecha en la que saldra la transaccion",
-                  "type": "string",
-                  "format": "date",
-                  "example": "2016-09-25"
-                },
-                "concepto": {
-                  "description": "Concepto por el cual saldra la transaccion",
-                  "type": "string",
-                  "format": "string",
-                  "example": "PAGO DE LUZ"
-                },
-                "cuentasTerceros": {
-                  "required": [
-                    "beneficiario",
-                    "rfcCurp"
-                  ],
-                  "properties": {
-                    "beneficiario": {
-                      "description": "Nombre del titular de cuenta donde se realizará el deposito del efectivo.",
-                      "type": "string",
-                      "example": "Hector Juarez Santos"
-                    },
-                    "rfcCurp": {
-                      "description": "Número de RFC o curp del Titular de la cuenta",
-                      "type": "string",
-                      "example": "GUMR880723BJ2"
-                    },
-                    "referencia": {
-                      "description": "Cadena de referencia del concepto de la transaccion:",
-                      "type": "string",
-                      "example": "GUMR880723BJ2"
-                    },
-                    "concepto": {
-                      "description": "Concepto de la transaccion.",
-                      "type": "string",
-                      "example": ""
-                    },
-                    "edoCuenta": {
-                      "description": "Estado de cuenta para la transaccion.",
-                      "type": "string",
-                      "example": ""
-                    },
-                    "iva": {
-                      "type": "number",
-                      "example": "100.00"
-                    }
-                  }
-                },
-                "interbancario": {
-                  "required": [
-                    "banco",
-                    "tipoCuentaAbono",
-                    "idTipoPago",
-                    "beneficiario",
-                    "referencia"
-                  ],
-                  "properties": {
-                    "banco": {
-                      "description": "Nombre del Banco donde esta ubicada la cuenta donde se realizará el deposito del efectivo.",
-                      "type": "string",
-                      "example": "Banamex"
-                    },
-                    "tipoCuentaAbono": {
-                      "type": "string",
-                      "example": "NOMINA"
-                    },
-                    "idTipoPago": {
-                      "type": "integer",
-                      "example": "1"
-                    },
-                    "beneficiario": {
-                      "type": "string",
-                      "example": "Hector Juarez Santos"
-                    },
-                    "referencia": {
-                      "description": "Cadena de referencia del concepto de la transaccion:",
-                      "type": "string",
-                      "example": "PAGO DE RENTA"
-                    },
-                    "rfcCurp": {
-                      "description": "Número de RFC o curp del Titular de la cuenta",
-                      "type": "string",
-                      "example": "GUMR880723BJ2"
-                    }
-                  }
-                },
-                "credito": {
-                  "required": [
-                    "banco",
-                    "idTipoCredito",
-                    "referencia",
-                    "rfcCurp"
-                  ],
-                  "properties": {
-                    "banco": {
-                      "description": "Nombre del Banco donde esta ubicada la cuenta donde se realizará el deposito del efectivo.",
-                      "type": "string",
-                      "example": "BANAMEX"
-                    },
-                    "idTipoCredito": {
-                      "type": "integer",
-                      "format": "int64",
-                      "example": "2"
-                    },
-                    "referencia": {
-                      "description": "Cadena de referencia del concepto de la transaccion:",
-                      "type": "string",
-                      "format": "string",
-                      "example": "PAGO DE RENTA"
-                    },
-                    "rfcCurp": {
-                      "description": "Número de RFC o curp del Titular de la cuenta",
-                      "type": "string",
-                      "example": "GUMR880723BJ2"
-                    }
-                  }
-                },
-                "servicio": {
-                  "required": [
-                    "referencia",
-                    "rfcCurp"
-                  ],
-                  "properties": {
-                    "numeroEstablecimiento": {
-                      "description": "Nombre del Banco donde esta ubicada la cuenta donde se realizará el deposito del efectivo.",
-                      "type": "integer",
-                      "format": "int64",
-                      "example": "1"
-                    },
-                    "referencia": {
-                      "description": "Cadena de referencia del concepto de la transaccion:",
-                      "type": "string",
-                      "format": "string",
-                      "example": "PAGO DE MES DE AGOSTO"
-                    },
-                    "rfcCurp": {
-                      "description": "Número de RFC o curp del Titular de la cuenta",
-                      "type": "string",
-                      "example": "TEDW112233445566"
-                    }
-                  }
-                },
-                "tarjetaCredito": {
-                  "required": [
-                    "banco",
-                    "numeroEstablecimiento",
-                    "referencia"
-                  ],
-                  "properties": {
-                    "numeroEstablecimiento": {
-                      "description": "Identificador único del convenio cuyo contrato se está pagando con esta transacción.",
-                      "type": "integer",
-                      "format": "int64",
-                      "example": "3"
-                    },
-                    "referencia": {
-                      "description": "Cadena de referencia del concepto de la transaccion:",
-                      "type": "string",
-                      "format": "string",
-                      "example": "PAGO DE MES DE AGOSTO"
-                    },
-                    "banco": {
-                      "description": "Número de RFC o curp del Titular de la cuenta",
-                      "type": "string",
-                      "format": "string",
-                      "example": "123456"
-                    }
-                  }
-                },
-                "donacion": {
-                  "properties": {
-                    "campania": {
-                      "description": "Identificador de la campaña en T24.",
-                      "type": "integer",
-                      "format": "int64",
-                      "example": "123"
-                    }
-                  }
-                },
-                "ticket": {
-                  "required": [
-                    "id_user",
-                    "id_creds"
-                  ],
-                  "properties": {
-                    "id_user": {
-                      "type": "string",
-                      "example": "abc"
-                    },
-                    "id_creds": {
-                      "type": "string",
-                      "example": "1233"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "ejecuta Transaccion",
-            "schema": {
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 200
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": "Problema con la peticion"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "ejecuta Transaccion error",
-            "schema": {
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 500
-                },
-                "responseError": {
                   "type": "string",
                   "example": ""
                 }
