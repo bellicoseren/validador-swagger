@@ -8804,6 +8804,21 @@
             "description": "ejecuta Transaccion",
             "schema": {
               "properties": {
+                "folio": {
+                  "type": "string",
+                  "format": "string",
+                  "example": "A-545445"
+                },
+                "importeComision": {
+                  "type": "number",
+                  "format": "double",
+                  "example": "14"
+                },
+                "importeIva": {
+                  "type": "number",
+                  "format": "double",
+                  "example": "15.12"
+                },
                 "responseStatus": {
                   "type": "number",
                   "example": 200
@@ -8817,6 +8832,100 @@
           },
           "500": {
             "description": "ejecuta Transaccion error",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/catDispositivosMoviles": {
+      "post": {
+        "tags": [
+          "Sprint 3"
+        ],
+        "description": "Devuelve la información de dispositivos en una lista",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "catDispositivosMoviles,",
+            "description": "catalogo de dispositivos moviles",
+            "required": true,
+            "schema": {
+              "required": [
+                "ticket",
+                "idPersona"
+              ],
+              "properties": {
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                },
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Catalogo Dispositivos Moviles",
+            "schema": {
+              "properties": {
+                "dispositivos": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "idDispositivo": {
+                        "description": "Número de serie del dispositivo móvil.",
+                        "type": "integer",
+                        "example": "1"
+                      },
+                      "descripcion": {
+                        "description": "Descricpcion asociado al dispositivo móvil.",
+                        "type": "string",
+                        "example": "ANDROID GALAXY NOTE 8"
+                      }
+                    }
+                  }
+                },
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Catalogo Dispositivos Moviles Error",
             "schema": {
               "properties": {
                 "responseStatus": {
