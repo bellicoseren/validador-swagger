@@ -1093,6 +1093,18 @@ const ejecutarTransaccion = {
   "responseStatus": 200
 }
 
+const catDispositivosMoviles = {
+   "dispositivos": [
+    {
+      "descripcion": "ANDROID GALAXY NOTE 8",
+      "idDispositivo": 1
+    }
+  ],
+  "responseError": "Problema con la peticion",
+  "responseStatus": 200
+}
+
+
 var mapaModelo = {
    //### ESB ####//
    /////////// Sprint 1  /////////////
@@ -1167,7 +1179,8 @@ var mapaModelo = {
   'desregistraMovil':desregistraMovil,
   'obtenerPreregistroPorClienteTransaccion':obtenerPreregistroPorClienteTransaccion,
   'consultaLotes':consultaLotes,
-  'ejecutarTransaccion':ejecutarTransaccion  
+  'ejecutarTransaccion':ejecutarTransaccion,
+  'catDispositivosMoviles':catDispositivosMoviles   
 }
 
 function obtenerModelo (nombreModelo){
