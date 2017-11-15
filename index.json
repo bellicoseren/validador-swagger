@@ -8529,7 +8529,6 @@
           }
         }
       }
-<<<<<<< HEAD
     },
     "/ejecutarTransaccion": {
       "post": {
@@ -8944,8 +8943,6 @@
           }
         }
       }
-=======
->>>>>>> upstream/master
     }
   }
 }
