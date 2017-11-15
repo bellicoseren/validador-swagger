@@ -131,13 +131,21 @@ const autentificacion = {
     "consultaServiciosContratados": {
 
         "listaServicios": [{
-                "contratado": true,
-                "nombre": "MULTITESORERIA"
-            },
-            {
-                "contratado": true,
-                "nombre": "PAGO DE NOMINA"
-            }
+              "id": 1,      
+              "nombre": "MULTITESORERIA",
+              "contratado": true
+          },
+          {
+              "id": 2,          
+              "nombre": "PAGO DE NOMINA",
+              "contratado": true
+          },
+          {
+              "id": 3,
+              "nombre": "BANCA ELECTRONICA",
+              "contratado": true,
+              "montoMaximoAutorizado": 10000.10
+          }
         ],
 
     },
@@ -162,13 +170,20 @@ const login = {
     "consultaServiciosContratados": {
         "responseError": "",
         "listaServicios": [{
-                "contratado": true,
-                "nombre": "MULTITESORERIA"
-            },
-            {
-                "contratado": true,
-                "nombre": "PAGO DE NOMINA"
-            }
+              "nombre": "MULTITESORERIA",
+              "contratado": true
+          },
+          {
+              "id": 2,          
+              "nombre": "PAGO DE NOMINA",
+              "contratado": true
+          },
+          {
+              "id": 3,
+              "nombre": "BANCA ELECTRONICA",
+              "contratado": true,
+              "montoMaximoAutorizado": 10000.10
+          }
         ],
         "responseStatus": 200
     },
@@ -289,13 +304,20 @@ const consultaProductosContratados = {
 
 const consultaServiciosContratados = {
     "listaServicios": [{
-            "nombre": "MULTITESORERIA",
-            "contratado": true
-        },
-        {
-            "nombre": "PAGO DE NOMINA",
-            "contratado": true
-        }
+              "nombre": "MULTITESORERIA",
+              "contratado": true
+          },
+          {
+              "id": 2,          
+              "nombre": "PAGO DE NOMINA",
+              "contratado": true
+          },
+          {
+              "id": 3,
+              "nombre": "BANCA ELECTRONICA",
+              "contratado": true,
+              "montoMaximoAutorizado": 10000.10
+          }
     ],
     "responseStatus": 200,
     "responseError": ""

@@ -262,15 +262,27 @@
                   "type": "array",
                   "items": {
                     "properties": {
+                      "id": {
+                        "description": "Identificador del servicio contratado",
+                        "type": "integer",
+                        "format": "int32",
+                        "example": 3
+                      },
                       "nombre": {
                         "description": "Nombre del servicio",
                         "type": "string",
-                        "example": "String"
+                        "example": "BANCA ELECTRONICA"
                       },
-                      "idProducto": {
-                        "description": "",
-                        "type": "string",
-                        "example": "String"
+                      "contratado": {
+                        "description": "Bandera que indica si el servicio ha sido contratado por la persona",
+                        "type": "boolean",
+                        "example": true
+                      },
+                      "montoMaximoAutorizado": {
+                        "description": "Monto máximo autorizado por el cliente",
+                        "type": "number",
+                        "format": "double",
+                        "example": 10000.1
                       }
                     }
                   }
@@ -876,8 +888,6 @@
                 "idPersona",
                 "tipoMensaje",
                 "tipoNotificacion",
-                "from",
-                "subject",
                 "to"
               ],
               "properties": {
@@ -915,24 +925,16 @@
                   "type": "string",
                   "example": "notificacion"
                 },
-                "from": {
-                  "type": "string",
-                  "example": "123"
-                },
-                "subject": {
-                  "type": "string",
-                  "example": "12344"
-                },
                 "to": {
                   "type": "string",
-                  "example": "321"
+                  "example": "cliente@mail.com"
                 },
                 "mapParameters": {
                   "properties": {
                     "key": {
                       "description": "Mapa de parámetros opcionales para la configuración de diferentes medios de envío.",
                       "type": "string",
-                      "example": "1223333"
+                      "example": "key"
                     }
                   }
                 }
@@ -6319,7 +6321,7 @@
         "parameters": [
           {
             "in": "body",
-            "name": "actualizaAliasCuenta",
+            "name": "actualizaAliasCuenta,",
             "description": "actualiza Alias Cuenta",
             "required": true,
             "schema": {
@@ -8527,6 +8529,7 @@
           }
         }
       }
+<<<<<<< HEAD
     },
     "/ejecutarTransaccion": {
       "post": {
@@ -8941,6 +8944,8 @@
           }
         }
       }
+=======
+>>>>>>> upstream/master
     }
   }
 }
