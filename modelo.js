@@ -126,13 +126,13 @@ const autentificacion = {
     "fechaUltimoAcceso": 20170612120212,
     "nombreRazonSocial": "Empresa Mexicana de Autopartes A.S",
     "medioAcceso": "telefono",
-    "mail": "edwind@multiva.com",
+    "mail": "enrique@gmail.com",
 
     "consultaServiciosContratados": {
 
         "listaServicios": [{
               "id": 1,      
-              "nombre": "MULTITESORERIA",
+              "nombre": "TESORERIA",
               "contratado": true
           },
           {
@@ -149,7 +149,7 @@ const autentificacion = {
         ],
 
     },
-    "nombreUsuario": "edwind ramirez perez",
+    "nombreUsuario": "enrique ramirez perez",
     "listaTelefonos": {
         "cvePais": 52,
         "tipoTelefono": "celular",
@@ -170,7 +170,7 @@ const login = {
     "consultaServiciosContratados": {
         "responseError": "",
         "listaServicios": [{
-              "nombre": "MULTITESORERIA",
+              "nombre": "TESORERIA",
               "contratado": true
           },
           {
@@ -304,7 +304,7 @@ const consultaProductosContratados = {
 
 const consultaServiciosContratados = {
     "listaServicios": [{
-              "nombre": "MULTITESORERIA",
+              "nombre": "TESORERIA",
               "contratado": true
           },
           {
@@ -370,7 +370,7 @@ const consultaDatosCliente = {
 
     ],
     "listaEmails": [{
-        "mail": "edwin@multiva.com",
+        "mail": "enrique@gmail.com",
         "activo": true,
         "tipoEmail": "empresa"
     }],
@@ -452,10 +452,10 @@ const consultaCuentasAgregadasCliente = {
     {
       "numeroDeCuenta": "0123456",
       "idProducto": "INT",
-      "descripcionProducto": "Multiva Integra",
+      "descripcionProducto": "Chequera integral",
       "cuentaIntegra": "789456",
       "saldo": 780000,
-      "alias": "MULTIVA INTEGRA DE PRUEBA"
+      "alias": "Mi inversion"
     }
   ],
   "listFondosCliente": [
@@ -622,7 +622,7 @@ const consultaCtasServMultiT ={
     {
       "cuentaOrigen": "123456789",
       "cliente": 12456,
-      "nombre": "WALDO TERRY",
+      "nombre": "Enrique Gaona",
       "RFC": "ABCD01011970XYZ",
       "CURP": "ABCD123456789",
       "email": "wterry@dominio.com",
@@ -650,7 +650,7 @@ const consultaSaldosMultiT = {
       "cuenta": "123456789",
       "cliente": 12456,
       "alias": "AliasDeMiCuenta",
-      "nombreCuenta": "WALDO TERRY",
+      "nombreCuenta": "Enrique Gaona",
       "clientePadre": 89456,
       "saldoDisponible": 123000,
       "idProducto": "CHQ",
@@ -673,7 +673,7 @@ const movimientosDonaciones = {
     {
       "folio": 123870212,
       "fecha": "13-05-2017T13:20:35 p.m.",
-      "tipoDonativo": "FUNDACION MULTIVA",
+      "tipoDonativo": "FUNDACION",
       "descripcion": "DESCRIPCION DEL DONATIVO",
       "estatus": "NO APLICADA",
       "monto": 200012.211
@@ -860,13 +860,13 @@ const obtenerPreregistroPorCliente = {
       "email": "test@domain.com",
       "periodo": "semanal",
       "moneda": "MXN",
-      "terceroMultiva": {
+      "tercero": {
         "idProducto": "CHQ",
         "pagoProveedor": false
       },
       "interbancario": {
         "banco": "",
-        "beneficiario": "Waldo Terry",
+        "beneficiario": "Enrique Gaona",
         "pagoProveedor": false
       },
       "credito": {
@@ -934,7 +934,7 @@ const consultaReporteCobranza = {
       "horaProgramacion": "09:09:09",
       "fechaFin": "26-07-2017",
       "separador": "|",
-      "email": "multiva@multi.com",
+      "email": "enrique@gmail.com",
       "columnas": [
         "fecha"
       ]
@@ -1066,15 +1066,15 @@ const obtenerPreregistroPorClienteTransaccion = {
       "email": "test@domain.com",
       "moneda": "MXN",
       "periodo": "semanal",
-      "terceroMultiva": {
+      "tercero": {
         "idProducto": "CHQ",
-        "beneficiario": "Waldo Terry",
+        "beneficiario": "Enrique Gaona",
         "pagoProveedor": false,
         "referenciado": false
       },
       "interbancario": {
         "banco": "",
-        "beneficiario": "Waldo Terry",
+        "beneficiario": "Enrique Gaona",
         "rfcCurp": "TEDW123456789",
         "pagoProveedor": false
       },
