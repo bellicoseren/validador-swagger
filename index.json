@@ -6321,7 +6321,7 @@
         "parameters": [
           {
             "in": "body",
-            "name": "actualizaAliasCuenta,",
+            "name": "actualizaAliasCuenta",
             "description": "actualiza Alias Cuenta",
             "required": true,
             "schema": {
@@ -8928,6 +8928,97 @@
           },
           "500": {
             "description": "Catalogo Dispositivos Moviles Error",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cancelaOpProg": {
+      "post": {
+        "tags": [
+          "Sprint 3"
+        ],
+        "description": "Este servicio solicita al core bancario T24 hacer la cancelacion de alguna transaccion que se haya quedado pendiente.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "cancelaOpProg",
+            "description": "cancela operacion",
+            "required": true,
+            "schema": {
+              "required": [
+                "folio"
+              ],
+              "properties": {
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "folio": {
+                  "description": "folio que tiene la operacion a cancelar.",
+                  "type": "integer",
+                  "format": "long",
+                  "example": "1234567"
+                },
+                "otp": {
+                  "type": "string",
+                  "example": "1234567"
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "cancela operacion programada",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "cancela operacion programada error",
             "schema": {
               "properties": {
                 "responseStatus": {
