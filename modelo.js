@@ -517,7 +517,7 @@ const consultaDetalleCredito = {
       }
     ],
     "responseStatus": 200,
-    "responseError": "Problema con la peticion"
+    "responseError": "P"
 }
 
 const activacionPaperless = {
@@ -566,7 +566,7 @@ const consultaMovsMesaDinero = {
     }
   ],
   "responseStatus": 200,
-  "responseError": "Problema con la peticion"
+  "responseError": ""
 }
 
 const consultaMovimientosMultiT ={
@@ -589,7 +589,7 @@ const consultaMovimientosMultiT ={
     }
   ],
   "responseStatus": 200,
-  "responseError": "Problema con la peticion"
+  "responseError": ""
 }
 
 const consultaCfdCfdi = {
@@ -614,7 +614,7 @@ const consultaRetenciones = {
     }
   ],
   "responseStatus": 200,
-  "responseError": "Problema con la peticion"
+  "responseError": ""
 }
 
 const consultaCtasServMultiT ={
@@ -641,7 +641,7 @@ const consultaCtasServMultiT ={
     }
   ],
   "responseStatus": 200,
-  "responseError": "Problema con la peticion"
+  "responseError": ""
 }
 
 const consultaSaldosMultiT = {
@@ -660,7 +660,7 @@ const consultaSaldosMultiT = {
     }
   ],
   "responseStatus": 200,
-  "responseError": "Problema con la peticion"
+  "responseError": ""
 }
 
 const estadoCuentaPDF = {
@@ -680,7 +680,7 @@ const movimientosDonaciones = {
     }
   ],
   "responseStatus": 200,
-  "responseError": "Problema con la peticion"
+  "responseError": ""
 }
 
 const estadoPaperless = {
@@ -707,7 +707,7 @@ const consultaMesaDinero = {
     }
   ],
   "responseStatus": 200,
-  "responseError": "Problema con la peticion"
+  "responseError": ""
 }
 
 const validaOTP = {
@@ -729,7 +729,7 @@ const sincronizaOTP = {
 
 const asociaMovil ={
   "responseStatus": 200,
-  "responseError": "Problema con la peticion"
+  "responseError": ""
 }
 
 const consultaBancos = {
@@ -747,7 +747,7 @@ const consultaBancos = {
     }
   ],
   "responseStatus": 200,
-  "responseError": "Problema con la peticion"
+  "responseError": ""
 }
  
 
@@ -767,7 +767,7 @@ const obtenerCatalogoTipoTxn = {
 
 const obtenerCatalogoConvenios = {
   "responseStatus": 200,
-  "responseError": "Problema con la peticion",
+  "responseError": "",
   "convenios": [
     {
       "id": 2,
@@ -778,12 +778,12 @@ const obtenerCatalogoConvenios = {
 
 const eliminaPreregistro = {
     "responseStatus": 200,
-    "responseError": "Problema con la peticion"
+    "responseError": ""
 }
 
 const consultaBines = {
   "responseStatus": 200,
-  "responseError": "Problema con la peticion",
+  "responseError": "",
   "bines": [
     {
       "casfim": "123456",
@@ -797,34 +797,34 @@ const consultaBines = {
 
 const actualizaMovil = {
   "responseStatus": 200,
-  "responseError": "Problema con la peticion"
+  "responseError": ""
 }
 
 const eliminaMovil = {
   "responseStatus": 200,
-  "responseError": "Problema con la peticion"
+  "responseError": ""
 }
 
 const actualizarNIP = {
   "responseStatus": 200,
-  "responseError": "Problema con la peticion"
+  "responseError": ""
 }
 
 const consultaCuentahabiente = {
   "responseStatus": 200,
-  "responseError": "Problema con la peticion",
+  "responseError": "",
   "nombreCuentahabiente": "wterry@legosoft.com.mx"
 }
 
 const obtenerReporteCobranza = {
   "responseStatus": 200,
-  "responseError": "Problema con la peticion",
+  "responseError": "",
   "rutaReporte": ""
 }
 
 const consultarAutorizaciones = {
   "responseStatus": 200,
-  "responseError": "Problema con la peticion",
+  "responseError": "",
   "autorizaciones": [
     {
       "taskId": "123456789",
@@ -841,12 +841,12 @@ const consultarAutorizaciones = {
 
 const guardaPreregistro = {
   "responseStatus": 200,
-  "responseError": "Problema con la peticion"
+  "responseError": ""
 }
 
 const obtenerPreregistroPorCliente = {
   "responseStatus": 200,
-  "responseError": "Problema con la peticion",
+  "responseError": "",
   "preregistros": [
     {
       "idPreregistro": 1245,
@@ -892,22 +892,22 @@ const eliminaBarrido = {
 
 const eliminaDispersion = {
   "responseStatus": 200,
-  "responseError": "Problema con la peticion"
+  "responseError": ""
 }
 
 const emiteVoto = {
   "responseStatus": 200,
-  "responseError": "Problema con la peticion"
+  "responseError": ""
 }
 
 const actualizaAliasCuenta = {
   "responseStatus": 200,
-  "responseError": "Problema con la peticion"
+  "responseError": ""
 }
 
 const consultaMovilesCliente = {
   "responseStatus": 200,
-  "responseError": "Problema con la peticion",
+  "responseError": "",
   "moviles": [
     {
       "noSerie": "12345679",
@@ -918,12 +918,12 @@ const consultaMovilesCliente = {
 
 const registraMovilTouch = {
   "responseStatus": 200,
-  "responseError": "Problema con la peticion"
+  "responseError": ""
 }
 
 
 const consultaReporteCobranza = {
-  "responseError": "Problema con la peticion",
+  "responseError": "",
   "reportes": [
     {
       "noCuenta": "12131313113",
@@ -944,7 +944,7 @@ const consultaReporteCobranza = {
 }
 
 const eliminaReporteCobranza = {
-  "responseError": "Problema con la peticion",
+  "responseError": "",
   "responseStatus": 200
 }
 
@@ -986,7 +986,7 @@ const catTipoCuenta = {
     }
   ],
   "responseStatus": 200,
-  "responseError": "Problema con la peticion"
+  "responseError": ""
 }
 
 const actualizaReporteCobranza = {
@@ -1016,7 +1016,7 @@ const actualizaDispersionFondos = {
 
 const consultaBarridoCuentas = {
   "responseStatus": 200,
-  "responseError": "Problema con la peticion",
+  "responseError": "",
   "barridos": [
     {
       "folioBarrido": 265,
@@ -1039,18 +1039,18 @@ const consultaBarridoCuentas = {
 } 
 
 const actualizaBarrido = {
-  "responseError": "Problema con la peticion",
+  "responseError": "",
   "responseStatus": 200
 }
 
 const desregistraMovil = {
-  "responseError": "Problema con la peticion",
+  "responseError": "",
   "responseStatus": 200
 }
 
 const obtenerPreregistroPorClienteTransaccion = {
   "responseStatus": 200,
-  "responseError": "Problema con la peticion",
+  "responseError": "",
   "preregistros": [
     {
       "idPreregistro": 1245,
@@ -1111,7 +1111,7 @@ const consultaLotes = {
 }
 
 const ejecutarTransaccion = {
-  "responseError": "Problema con la peticion",
+  "responseError": "",
   "responseStatus": 200
 }
 
@@ -1122,7 +1122,7 @@ const catDispositivosMoviles = {
       "idDispositivo": 1
     }
   ],
-  "responseError": "Problema con la peticion",
+  "responseError": "",
   "responseStatus": 200
 }
 
