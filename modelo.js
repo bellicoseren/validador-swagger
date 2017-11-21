@@ -1126,6 +1126,10 @@ const catDispositivosMoviles = {
   "responseStatus": 200
 }
 
+const cancelaOpProg = {
+  "responseError": "",
+  "responseStatus": 200
+}
 
 var mapaModelo = {
    //### ESB ####//
@@ -1202,7 +1206,8 @@ var mapaModelo = {
   'obtenerPreregistroPorClienteTransaccion':obtenerPreregistroPorClienteTransaccion,
   'consultaLotes':consultaLotes,
   'ejecutarTransaccion':ejecutarTransaccion,
-  'catDispositivosMoviles':catDispositivosMoviles   
+  'catDispositivosMoviles':catDispositivosMoviles,
+  'cancelaOpProg':cancelaOpProg   
 }
 
 function obtenerModelo (nombreModelo){
