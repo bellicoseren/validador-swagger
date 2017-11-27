@@ -735,7 +735,7 @@ const asociaMovil ={
 const consultaBancos = {
   "bancos": [
     {
-      "casfim": "123456798",
+      "CASFIM": "123456798",
       "nombreCorto": "BANCOMER",
       "nombre": "BANCOMER BBVA",
       "participaCECOBAN": false,
@@ -786,7 +786,7 @@ const consultaBines = {
   "responseError": "",
   "bines": [
     {
-      "casfim": "123456",
+      "CASFIM": "123456",
       "nombreCosto": "BANCOMER",
       "bin": [
         "123456"
