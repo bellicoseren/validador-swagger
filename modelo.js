@@ -787,7 +787,7 @@ const consultaBines = {
   "bines": [
     {
       "CASFIM": "123456",
-      "nombreCosto": "BANCOMER",
+      "nombreCorto": "BANCOMER",
       "bin": [
         "123456"
       ]
@@ -840,6 +840,7 @@ const consultarAutorizaciones = {
 }
 
 const guardaPreregistro = {
+  "idPreregistro:":"123456",
   "responseStatus": 200,
   "responseError": ""
 }

@@ -4658,12 +4658,12 @@
                   "type": "array",
                   "items": {
                     "properties": {
-                      "casfim": {
+                      "CASFIM": {
                         "description": "Clave de la institución financiera en el catálogo del sistema financiero mexicano. Este valor es opcional en la respuesta, pues solo se incluirá para aquellos bines cuyas tarjetas estén respaldadas por una institución financiera.",
                         "type": "string",
                         "example": "123456"
                       },
-                      "nombreCosto": {
+                      "nombreCorto": {
                         "description": "Nombre corto de la institución.",
                         "type": "string",
                         "example": "BANCOMER"
@@ -4801,9 +4801,8 @@
               "required": [
                 "numeroDeCuenta",
                 "idPersona",
-                "numeroMovil",
                 "ticket",
-                "canal"
+                "otp"
               ],
               "properties": {
                 "numeroDeCuenta": {
@@ -4818,11 +4817,6 @@
                 },
                 "otp": {
                   "description": "OTP del dispositivo para la autenticación del usuario.",
-                  "type": "string",
-                  "example": "String"
-                },
-                "numeroMovil": {
-                  "description": "Número de teléfono móvil a asociar la cuenta.",
                   "type": "string",
                   "example": "String"
                 },
@@ -5056,7 +5050,7 @@
                   "type": "array",
                   "items": {
                     "required": [
-                      "casfim",
+                      "CASFIM",
                       "nombreCorto",
                       "nombre",
                       "participaCECOBAN",
@@ -5067,7 +5061,7 @@
                       "activoSPEI"
                     ],
                     "properties": {
-                      "casfim": {
+                      "CASFIM": {
                         "description": "Clave de la institución financiera en el catálogo del sistema financiero mexicano.",
                         "type": "string",
                         "example": "123456798"
@@ -5622,13 +5616,7 @@
                 "periodo",
                 "moneda",
                 "otp",
-                "ticket",
-                "canal",
-                "terceroMultiva",
-                "interbancario",
-                "credito",
-                "servicio",
-                "pagoTDC"
+                "ticket"
               ],
               "properties": {
                 "idPersona": {
@@ -5709,6 +5697,14 @@
                     "beneficiario": {
                       "type": "string",
                       "example": "Waldo Terry"
+                    },
+                    "pagoProveedor": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "referenciado": {
+                      "type": "boolean",
+                      "example": false
                     }
                   }
                 },
@@ -5721,6 +5717,14 @@
                     "beneficiario": {
                       "type": "string",
                       "example": "Waldo Terry"
+                    },
+                    "rfcCurp": {
+                      "type": "string",
+                      "example": "BAE121289EQ2"
+                    },
+                    "pagoProveedor": {
+                      "type": "boolean",
+                      "example": false
                     }
                   }
                 },
@@ -5743,10 +5747,6 @@
                       "type": "integer",
                       "format": "int32",
                       "example": 15
-                    },
-                    "razonSocial": {
-                      "type": "string",
-                      "example": "Telefonos de Mexico"
                     }
                   }
                 },
@@ -5772,6 +5772,10 @@
             "description": "Representa una ejecución exitosa. Para efectos de este servicio, será indicativo de que la notificación solicitada se envió correctamente.",
             "schema": {
               "properties": {
+                "idPreregistro": {
+                  "type": "string",
+                  "example": "1234567"
+                },
                 "responseStatus": {
                   "type": "number",
                   "example": 200
