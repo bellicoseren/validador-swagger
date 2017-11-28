@@ -19,6 +19,7 @@ app.use(bodyParser.raw(
     type: "application/octet-stream"
   }
 ));
+app.use(bodyParser.json({limit: '50mb', type: 'application/json'}));
 app.use(bodyParser());
 
 function validateArray(arrayBody, arrayDefinition, errors)
