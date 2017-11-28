@@ -123,41 +123,103 @@ const listarTokensOTP = {
 }
 
 const autentificacion = {
-    "fechaUltimoAcceso": 20170612120212,
-    "nombreRazonSocial": "Empresa Mexicana de Autopartes A.S",
-    "medioAcceso": "telefono",
-    "mail": "enrique@gmail.com",
-
-    "consultaServiciosContratados": {
-
-        "listaServicios": [{
-              "id": 1,      
-              "nombre": "TESORERIA",
-              "contratado": true
-          },
-          {
-              "id": 2,          
-              "nombre": "PAGO DE NOMINA",
-              "contratado": true
-          },
-          {
-              "id": 3,
-              "nombre": "BANCA ELECTRONICA",
-              "contratado": true,
-              "montoMaximoAutorizado": 10000.10
-          }
-        ],
-
+    fechaUltimoAcceso: "20170322163223.0Z",
+    nombreUsuario: "Vaughn Grimes",
+    medioAcceso: "teléfono",
+    mail: "vaughn.grimes@orbean.tv",
+    nombreRazonSocial: " ORBEAN, S.A. de C.V",
+    responseError: "",
+    consultaServiciosContratados: {
+      listaServicios: [
+        {
+          contratado: true,
+          nombre: "MULTITESORERIA"
+        },
+        {
+          contratado: true,
+          nombre: "PAGO DE NOMINA"
+        }
+      ]
     },
-    "nombreUsuario": "enrique ramirez perez",
-    "listaTelefonos": {
-        "cvePais": 52,
-        "tipoTelefono": "celular",
-        "codArea": 55,
-        "telefono": "5529017222"
+    listaTelefonos: {
+      cvePais: 1,
+      tipoTelefono: "celular",
+      codArea: 964,
+      telefono: "+1 (964) 436-2374"
     },
-    "responseStatus": 200,
-    "responseError": ""
+    responseStatus: 200,
+    facultadesSimples: [{
+        nombre: 'Mult_Pf_privilege',
+        restriccionHorario: false,
+        horaInicio: '09:00:00',
+        horaFin: '18:00:00',
+      },
+      {
+        nombre: 'Mul_Pf_Password_change',
+        restriccionHorario: false,
+        horaInicio: '09:00:00',
+        horaFin: '18:00:00',
+      },
+      {
+        nombre: 'Mul_Pf_listAdditional_Otp',
+        restriccionHorario: false,
+        horaInicio: '09:00:00',
+        horaFin: '18:00:00',
+      },
+      {
+        nombre: 'Mul_Pf_ActivateAditional_Otp',
+        restriccionHorario: false,
+        horaInicio: '09:00:00',
+        horaFin: '18:00:00',
+      },
+      {
+        nombre: 'Mul_BlockAditional_Otp',
+        restriccionHorario: false,
+        horaInicio: '09:00:00',
+        horaFin: '18:00:00',
+      },
+      {
+        nombre: 'Mul_Con_privilege',
+        restriccionHorario: false,
+        horaInicio: '09:00:00',
+        horaFin: '18:00:00',
+      },
+      {
+        nombre: 'Mul_Con_Balance',
+        restriccionHorario: false,
+        horaInicio: '09:00:00',
+        horaFin: '18:00:00',
+      },
+      {
+        nombre: 'Mul_Con_CFDI',
+        restriccionHorario: false,
+        horaInicio: '09:00:00',
+        horaFin: '18:00:00',
+      },
+      {
+        nombre: 'Mul_Con_Retenciones_CFDI',
+        restriccionHorario: false,
+        horaInicio: '09:00:00',
+        horaFin: '18:00:00',
+      },
+      {
+        nombre: 'Mul_Con_CEP_Recibido',
+        restriccionHorario: false,
+        horaInicio: '09:00:00',
+        horaFin: '18:00:00',
+      },
+      {
+        nombre: 'Mul_Con_MoneyMarket',
+        restriccionHorario: false,
+        horaInicio: '09:00:00',
+        horaFin: '18:00:00',
+      },
+      {
+        nombre: 'Mul_Con_Transactions',
+        restriccionHorario: false,
+        horaInicio: '09:00:00',
+        horaFin: '18:00:00',
+      }]
 }
 
 
@@ -757,7 +819,7 @@ const obtenerCatalogoTipoTxn = {
   "responseError": "",
   "tiposTransaccion": [
     {
-      "id": "1",
+      "idTipoTransaccion": "1",
       "nombre": "Cuentas Propias",
       "participaRegistro": true,
       "participaTransaccion": true
@@ -1001,6 +1063,7 @@ const actualizaPreregistro = {
 }
 
 const barrerCuentas = {
+  "folioBarrido": "5642312345",
   "responseStatus": 200,
   "responseError": ""
 }
