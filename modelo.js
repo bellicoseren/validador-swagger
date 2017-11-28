@@ -1,68 +1,78 @@
 'use strict';
 
 const consultaPerfiles = {
-    "facultadesSimples": [
-        {
-            "nombre": "Mult_Pf_privilege",
-            "activa": true,
-            "restriccionHorario": true,
-            "horaInicio": "15:30:00",
-            "horaFin": "17:30:00",
-            "tipoFacultad": "FACULTAD_SIMPLE",
-            "isComponenteVisible": true,
-            "isComponenteHabilitado": true,
-            "portlet": true,
-            "nombrePortlet": "PORTLET 1"
-        },
-        {
-            "nombre": "Mul_Pf_listAdditional_Otp",
-            "activa": true,
-            "restriccionHorario": true,
-            "horaInicio": "15:30:00",
-            "horaFin": "17:30:00",
-            "tipoFacultad": "FACULTAD_SIMPLE",
-            "isComponenteVisible": true,
-            "isComponenteHabilitado": true,
-            "portlet": true,
-            "nombrePortlet": "PORTLET 2"
-        },
-        {
-            "nombre": "Mul_Pf_ActivateAditional_Otp",
-            "activa": true,
-            "restriccionHorario": true,
-            "horaInicio": "15:30:00",
-            "horaFin": "17:30:00",
-            "tipoFacultad": "FACULTAD_SIMPLE",
-            "isComponenteVisible": true,
-            "isComponenteHabilitado": true,
-            "portlet": true,
-            "nombrePortlet": "PORTLET 3"
-        },
-        {
-            "nombre": "Mul_BlockAditional_Otp",
-            "activa": true,
-            "restriccionHorario": true,
-            "horaInicio": "15:30:00",
-            "horaFin": "17:30:00",
-            "tipoFacultad": "FACULTAD_SIMPLE",
-            "isComponenteVisible": true,
-            "isComponenteHabilitado": true,
-            "portlet": true,
-            "nombrePortlet": "PORTLET 4"
-        },
-        {
-            "nombre": "Mul_Pf_Password_change",
-            "activa": true,
-            "restriccionHorario": true,
-            "horaInicio": "15:30:00",
-            "horaFin": "17:30:00",
-            "tipoFacultad": "FACULTAD_SIMPLE",
-            "isComponenteVisible": true,
-            "isComponenteHabilitado": true,
-            "portlet": true,
-            "nombrePortlet": "PORTLET 5"
-        }
-    ],
+    "facultadesSimples": [{
+        nombre: 'Mult_Pf_privilege',
+        restriccionHorario: false,
+        horaInicio: '09:00:00',
+        horaFin: '18:00:00',
+      },
+      {
+        nombre: 'Mul_Pf_Password_change',
+        restriccionHorario: false,
+        horaInicio: '09:00:00',
+        horaFin: '18:00:00',
+      },
+      {
+        nombre: 'Mul_Pf_listAdditional_Otp',
+        restriccionHorario: false,
+        horaInicio: '09:00:00',
+        horaFin: '18:00:00',
+      },
+      {
+        nombre: 'Mul_Pf_ActivateAditional_Otp',
+        restriccionHorario: false,
+        horaInicio: '09:00:00',
+        horaFin: '18:00:00',
+      },
+      {
+        nombre: 'Mul_BlockAditional_Otp',
+        restriccionHorario: false,
+        horaInicio: '09:00:00',
+        horaFin: '18:00:00',
+      },
+      {
+        nombre: 'Mul_Con_privilege',
+        restriccionHorario: false,
+        horaInicio: '09:00:00',
+        horaFin: '18:00:00',
+      },
+      {
+        nombre: 'Mul_Con_Balance',
+        restriccionHorario: false,
+        horaInicio: '09:00:00',
+        horaFin: '18:00:00',
+      },
+      {
+        nombre: 'Mul_Con_CFDI',
+        restriccionHorario: false,
+        horaInicio: '09:00:00',
+        horaFin: '18:00:00',
+      },
+      {
+        nombre: 'Mul_Con_Retenciones_CFDI',
+        restriccionHorario: false,
+        horaInicio: '09:00:00',
+        horaFin: '18:00:00',
+      },
+      {
+        nombre: 'Mul_Con_CEP_Recibido',
+        restriccionHorario: false,
+        horaInicio: '09:00:00',
+        horaFin: '18:00:00',
+      },
+      {
+        nombre: 'Mul_Con_MoneyMarket',
+        restriccionHorario: false,
+        horaInicio: '09:00:00',
+        horaFin: '18:00:00',
+      },
+      {
+        nombre: 'Mul_Con_Transactions',
+        restriccionHorario: false,
+        horaInicio: '09:00:00',
+        horaFin: '18:00:00',
+      }],
     "responseStatus": 200,
     "responseError": ""
 }
