@@ -4482,7 +4482,7 @@
                   "type": "array",
                   "items": {
                     "properties": {
-                      "id": {
+                      "idTipoTransaccion": {
                         "description": "Identificador que representa cada una de las transacciones.",
                         "type": "integer",
                         "format": "int64",
@@ -5239,16 +5239,9 @@
             "schema": {
               "required": [
                 "numeroDeCuenta",
-                "ticket",
-                "canal",
-                "otp"
+                "ticket"
               ],
               "properties": {
-                "otp": {
-                  "description": "OTP del dispositivo para la autenticación del usuario.",
-                  "type": "string",
-                  "example": "String"
-                },
                 "canal": {
                   "type": "string",
                   "minLength": 1,
@@ -6133,8 +6126,7 @@
                 "otp",
                 "canal",
                 "ticket",
-                "idPersona",
-                "noSerie"
+                "idPersona"
               ],
               "properties": {
                 "otp": {
@@ -6174,7 +6166,7 @@
                 },
                 "imei": {
                   "description": "IMEI asociado con el teléfono",
-                  "format": "string",
+                  "type": "string",
                   "example": "123456"
                 }
               }
@@ -6330,6 +6322,7 @@
             "required": true,
             "schema": {
               "required": [
+                "idPersona",
                 "alias",
                 "noCuenta",
                 "otp",
@@ -6337,6 +6330,11 @@
                 "ticket"
               ],
               "properties": {
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
                 "alias": {
                   "description": "Nuevo alias a asignar a la cuenta. Si se manda el campo vacío, se desasocia el alias de la cuenta, quedando nulo este valor.",
                   "type": "string",
@@ -7061,10 +7059,10 @@
                   "type": "array",
                   "items": {
                     "properties": {
-                      "canal": {
-                        "description": "Identificador del canal a través del cual se recibió la petición. Se utilizarán los identificadores de canal definidos por T24.",
+                      "folio": {
+                        "description": "El folio de la configuración de reporte de cobranza",
                         "type": "string",
-                        "example": "MVNET"
+                        "example": "123456"
                       },
                       "noCuenta": {
                         "description": "Número de cuenta asociado con esta configuración de reporte de cobranza.",
@@ -7109,6 +7107,11 @@
                           "fecha",
                           "monto"
                         ]
+                      },
+                      "email": {
+                        "description": "Correo de notificación para recibir la ruta de descarga del reporte de cobranza",
+                        "type": "string",
+                        "example": "mail@mail.com"
                       }
                     }
                   }
@@ -7482,6 +7485,10 @@
             "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
             "schema": {
               "properties": {
+                "folioBarrido": {
+                  "type": "string",
+                  "example": "123456"
+                },
                 "responseStatus": {
                   "type": "number",
                   "example": 200
@@ -7603,17 +7610,27 @@
                         "type": "string",
                         "example": "CUENTA DESTINO 1"
                       },
+                      "orden": {
+                        "description": "Posición de esta cuenta destino en al bloque de transferencias para dispersión.",
+                        "type": "integer",
+                        "format": "int32",
+                        "example": 1
+                      },
                       "montoTransferencia": {
                         "description": "Monto que se transferirá a esta cuenta durante la dispersión.",
                         "type": "number",
                         "format": "double",
                         "example": 500
                       },
-                      "orden": {
-                        "description": "Posición de esta cuenta destino en al bloque de transferencias para dispersión.",
-                        "type": "integer",
-                        "format": "int32",
-                        "example": 1
+                      "tipoTransferencia": {
+                        "description": "Tipo de transferencia que se debe realizar para la operación ",
+                        "type": "string",
+                        "example": "TERCEROS"
+                      },
+                      "CASFIM": {
+                        "description": "Clave del banco, necesaria para ejecutar la transferencia si el tipo de operación es SPEI.",
+                        "type": "string",
+                        "example": "12345"
                       }
                     }
                   }
@@ -7627,6 +7644,11 @@
             "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
             "schema": {
               "properties": {
+                "folioDispersion": {
+                  "description": "Folio dispersion",
+                  "type": "string",
+                  "example": "12456"
+                },
                 "responseStatus": {
                   "type": "number",
                   "example": 200
@@ -7735,6 +7757,16 @@
                             "type": "number",
                             "format": "double",
                             "example": "500.00"
+                          },
+                          "tipoTransferencia": {
+                            "description": "Tipo de transferencia que se debe realizar para la operación ",
+                            "type": "string",
+                            "example": "TERCEROS"
+                          },
+                          "CASFIM": {
+                            "description": "Clave del banco, necesaria para ejecutar la transferencia si el tipo de operación es SPEI.",
+                            "type": "string",
+                            "example": "12345"
                           }
                         }
                       }
@@ -7949,10 +7981,16 @@
             "schema": {
               "required": [
                 "otp",
-                "canal",
+                "folio",
                 "ticket"
               ],
               "properties": {
+                "folio": {
+                  "description": "folio",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123456
+                },
                 "barrido": {
                   "required": [
                     "horaEjecucion",
@@ -7976,8 +8014,7 @@
                       "items": {
                         "required": [
                           "cuenta",
-                          "montoMinDejar",
-                          "modificacion"
+                          "montoMinDejar"
                         ],
                         "properties": {
                           "cuenta": {
@@ -7990,11 +8027,6 @@
                             "type": "number",
                             "format": "double",
                             "example": 500
-                          },
-                          "modificacion": {
-                            "description": "Nombre de la cuenta que será barrida.",
-                            "type": "string",
-                            "example": "1"
                           }
                         }
                       }
@@ -8079,10 +8111,8 @@
             "required": true,
             "schema": {
               "required": [
-                "imei",
                 "idPersona",
                 "otp",
-                "canal",
                 "ticket"
               ],
               "properties": {
@@ -8121,6 +8151,11 @@
                   "description": "Identificador único del dispositivo de la persona cuyo NIP se restablecerá.",
                   "type": "string",
                   "example": "12131313113"
+                },
+                "idDispositivo": {
+                  "description": "Número de serie del dispositivo, utilizado cuando el dispositivo a desasociar no es un teléfono móvil (y por lo tanto no cuenta con IMEI).",
+                  "type": "string",
+                  "example": "123456ABC"
                 }
               }
             }
