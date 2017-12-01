@@ -3204,28 +3204,26 @@ const cancelaOpProg = {
 }
 
 const consultaDispersionFondos = {
+  "responseStatus": 200,
+  "responseError": "",
+  "dispersiones": [
     {
-      "responseStatus": 200,
-      "responseError": "",
-      "dispersiones": [
+      "cuentaDispersion": 5642312345,
+      "nombreCuentaDispersion": "CUENTA DISPERSION 1",
+      "horasEjecucion": [
+        "12:00:00",
+        "14:00:00",
+        "16:00:00"
+      ],
+      "cuentasDestino": [
         {
-          "cuentaDispersion": 5642312345,
-          "nombreCuentaDispersion": "CUENTA DISPERSION 1",
-          "horasEjecucion": [
-            "12:00:00",
-            "14:00:00",
-            "16:00:00"
-          ],
-          "cuentasDestino": [
-            {
-              "cuenta": "4564523153498",
-              "nombre": "CUENTA DESTINO 1",
-              "montoTransferencia": 500.5
-            }
-          ]
+          "cuenta": "4564523153498",
+          "nombre": "CUENTA DESTINO 1",
+          "montoTransferencia": 500.5
         }
       ]
     }
+  ]
 }
 
 var mapaModelo = {
