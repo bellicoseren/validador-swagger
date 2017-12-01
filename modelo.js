@@ -3203,6 +3203,31 @@ const cancelaOpProg = {
   "responseStatus": 200
 }
 
+const consultaDispersionFondos = {
+    {
+      "responseStatus": 200,
+      "responseError": "",
+      "dispersiones": [
+        {
+          "cuentaDispersion": 5642312345,
+          "nombreCuentaDispersion": "CUENTA DISPERSION 1",
+          "horasEjecucion": [
+            "12:00:00",
+            "14:00:00",
+            "16:00:00"
+          ],
+          "cuentasDestino": [
+            {
+              "cuenta": "4564523153498",
+              "nombre": "CUENTA DESTINO 1",
+              "montoTransferencia": 500.5
+            }
+          ]
+        }
+      ]
+    }
+}
+
 var mapaModelo = {
    //### ESB ####//
    /////////// Sprint 1  /////////////
@@ -3279,7 +3304,8 @@ var mapaModelo = {
  'consultaLotes':consultaLotes,
  'ejecutaTransaccion':ejecutaTransaccion,
  'catDispositivosMoviles':catDispositivosMoviles,
- 'cancelaOpProg':cancelaOpProg   
+ 'cancelaOpProg':cancelaOpProg,
+ 'consultaDispersionFondos':consultaDispersionFondos 
 }
 
 function obtenerModelo (nombreModelo){
