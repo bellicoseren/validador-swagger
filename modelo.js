@@ -3182,7 +3182,7 @@ const consultaLotes = {
   ]
 }
 
-const ejecutarTransaccion = {
+const ejecutaTransaccion = {
   "responseError": "",
   "responseStatus": 200
 }
@@ -3277,7 +3277,7 @@ var mapaModelo = {
  'desregistraMovil':desregistraMovil,
  'obtenerPreregistroPorClienteTransaccion':obtenerPreregistroPorClienteTransaccion,
  'consultaLotes':consultaLotes,
- 'ejecutarTransaccion':ejecutarTransaccion,
+ 'ejecutaTransaccion':ejecutaTransaccion,
  'catDispositivosMoviles':catDispositivosMoviles,
  'cancelaOpProg':cancelaOpProg   
 }
