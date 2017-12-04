@@ -2544,7 +2544,7 @@ const consultaCfdCfdiRetenciones = {
     {
       "tipoDeConstancia": "CRI",
       "noDeCliente": "543210987654321",
-      "noDeContrato": "543210987654321",
+      "noDeContrato": 543210987654321,
       "RFCReceptor": "QUVA790114FT5",
       "uuid": "SEFDAD1234-87465-ASDSD-14523"
     }
@@ -2640,7 +2640,26 @@ const consultaCfdCfdiRetenciones = {
       "precio": 200,
       "valuacion": 20000,
       "numeroCuenta": "123456"
+    },
+    {
+        "inversion": "R1-123-456",
+        "emisora": "R1",
+        "serie": "34",
+        "titulos": 300,
+        "precio": 540.09,
+        "valuacion": 64180.09,
+        "numeroCuenta": "00074531000",
+    },
+    {
+        "inversion": "T1-123-456",
+        "emisora": "T1",
+        "serie": "74",
+        "titulos": 3623,
+        "precio": 640.09,
+        "valuacion": 87180.09,
+        "numeroCuenta": "00044332000",
     }
+
     ],
     "responseStatus": 200,
     "responseError": ""
