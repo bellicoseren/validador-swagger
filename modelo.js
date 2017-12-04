@@ -2430,8 +2430,7 @@ const consultaCuentasAgregadasCliente = {
   "plazo": 12,
   "tasa": 12.5,
   "periodicidadPago": "MENSUAL",
-  "proximoPago": [
-  {
+  "proximoPago":{
     "capital": 1000,
     "interes": 900,
     "IVA": 150,
@@ -2441,10 +2440,8 @@ const consultaCuentasAgregadasCliente = {
     "moratorio": 500,
     "IVAmoratorio": 10,
     "atraso": 10
-  }
-  ],
-  "pagosVencidos": [
-  {
+  },
+  "pagosVencidos": {
     "capital": 10000,
     "interes": 9000,
     "IVA": 1500,
@@ -2454,8 +2451,7 @@ const consultaCuentasAgregadasCliente = {
     "moratorio": 500,
     "IVAmoratorio": 15,
     "atraso": 10
-  }
-  ],
+  },
   "responseStatus": 200,
   "responseError": "P"
 }
