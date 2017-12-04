@@ -221,7 +221,7 @@ Cabe mencionar que si el archivo Swagger.json, si esta mal armado no podras real
 Variable de ambiente para puerto del servidor
 
 ```
-VALIDADOR_PORT=9094
+VALIDADOR_PORT=9093
 ```
 
 ### Importante
@@ -269,4 +269,6 @@ var mapaModelo = {
 }
 ```
 
-El archivo ***"index.json"***, debe ser reemplazado por el archivo "index.json" generado en nuestros proyectos swagger-xxx-api mediante el comando ***"multi-file-swagger index.yaml > index.json"*** después de cada nuevo cambio a validar.
+###IMPORTANTE:
+
+El archivo ***"index.json"*** ***del proyecto swagger-esb-apis***, debe ser reemplazado por el archivo "index.json" generado en nuestros proyectos swagger-xxx-api mediante el comando ***"multi-file-swagger index.yaml > index.json"*** después de cada nuevo cambio a validar.
