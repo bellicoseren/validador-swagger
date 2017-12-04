@@ -621,7 +621,7 @@ const Validaotp = {
 const validaContrato = {
   "descripcion": "Operacion exitosa",
   "codigo": 0,
-  "contrato": "0"
+  "contrato":0
 }
 
 const envioNotificaciones = {
@@ -642,16 +642,16 @@ const cambioContrasena = {
 /*
 const consultaCuentasAgregadasCliente = {
     "listCuentasCliente": [{
-        "numeroDeCuenta": "",
-        "idProducto": "",
+        "numeroDeCuenta":" "",
+     "   "idProducto": "",
         "descripcionProducto": "",
         "divisa": "",
         "saldo": 1532,
         "idSucursal": 124,
         "nombreSucursal": ""
     }, {
-        "numeroDeCuenta": "",
-        "idProducto": "",
+        "numeroDeCuenta":" "",
+     "   "idProducto": "",
         "descripcionProducto": "",
         "divisa": "",
         "saldo": 1532,
@@ -659,16 +659,16 @@ const consultaCuentasAgregadasCliente = {
         "nombreSucursal": ""
     }],
     "listCreditosCliente": [{
-        "numeroDeCuenta": "",
-        "idProducto": "",
+        "numeroDeCuenta":" "",
+     "   "idProducto": "",
         "descripcionProducto": "",
         "divisa": "",
         "saldo": 1532,
         "idSucursal": 124,
         "nombreSucursal": ""
     }, {
-        "numeroDeCuenta": "",
-        "idProducto": "",
+        "numeroDeCuenta":" "",
+     "   "idProducto": "",
         "descripcionProducto": "",
         "divisa": "",
         "saldo": 1532,
@@ -676,16 +676,16 @@ const consultaCuentasAgregadasCliente = {
         "nombreSucursal": ""
     }],
     "listInversionesCliente": [{
-        "numeroDeCuenta": "",
-        "idProducto": "",
+        "numeroDeCuenta":" "",
+     "   "idProducto": "",
         "descripcionProducto": "",
         "divisa": "",
         "saldo": 1532,
         "idSucursal": 124,
         "nombreSucursal": ""
     }, {
-        "numeroDeCuenta": "",
-        "idProducto": "",
+        "numeroDeCuenta":" "",
+     "   "idProducto": "",
         "descripcionProducto": "",
         "divisa": "",
         "saldo": 1532,
@@ -796,7 +796,7 @@ const consultaCuentasAgregadasCliente = {
    "listCuentasCliente":[  
    {  
      "nombreCuenta":"BERG ROSARIO",
-     "numeroDeCuenta":3873812345,
+     "numeroDeCuenta":"3873812345",
      "idProducto":"CHQ",
      "descripcionProducto":"CUENTA ANIM",
      "divisa":"MXN",
@@ -806,14 +806,14 @@ const consultaCuentasAgregadasCliente = {
      "movimientos":3,
      "lineaSobregiro":3022,
      "interesesGenerados":2025,
-     "CLABE":6357391630041472,
+     "CLABE":"6357391630041472",
      "saldo":1234567890123456,
      "alias":"RUBY - MAGNA",
      "telefono":"5582738829"
    },
    {  
      "nombreCuenta":"FLEMING BENSON",
-     "numeroDeCuenta":4448467850,
+     "numeroDeCuenta":"4448467850",
      "idProducto":"CHQ",
      "descripcionProducto":"CUENTA FUGIAT",
      "divisa":"MXN",
@@ -823,13 +823,13 @@ const consultaCuentasAgregadasCliente = {
      "movimientos":1,
      "lineaSobregiro":1270,
      "interesesGenerados":1683,
-     "CLABE":2414223241854109,
+     "CLABE":"2414223241854109",
      "saldo":584573,
      "alias":"HOLMES QUIS"
    },
    {  
      "nombreCuenta":"GILMORE GREEN",
-     "numeroDeCuenta":5275646789,
+     "numeroDeCuenta":"5275646789",
      "idProducto":"CHQ",
      "descripcionProducto":"CUENTA AD",
      "divisa":"MXN",
@@ -839,14 +839,14 @@ const consultaCuentasAgregadasCliente = {
      "movimientos":9,
      "lineaSobregiro":4162,
      "interesesGenerados":4954,
-     "CLABE":8530758550208450,
+     "CLABE":"8530758550208450",
      "saldo":263062,
      "alias":"MATHEWS ENIM",
      "telefono":"5523223829"
    },
    {  
      "nombreCuenta":"JANIS MOODY",
-     "numeroDeCuenta":1916356784,
+     "numeroDeCuenta":"1916356784",
      "idProducto":"CHQ",
      "descripcionProducto":"CUENTA TEMPOR",
      "divisa":"MXN",
@@ -856,14 +856,14 @@ const consultaCuentasAgregadasCliente = {
      "movimientos":1,
      "lineaSobregiro":3070,
      "interesesGenerados":3338,
-     "CLABE":5533138624650534,
+     "CLABE":"5533138624650534",
      "saldo":524595,
      "alias":"ROSANNA FUGIAT",
      "telefono":"5599203483"
    },
    {  
      "nombreCuenta":"STRICKLAND SANCHEZ",
-     "numeroDeCuenta":2231345674,
+     "numeroDeCuenta":"2231345674",
      "idProducto":"CHQ",
      "descripcionProducto":"CUENTA ALIQUA",
      "divisa":"MXN",
@@ -873,14 +873,14 @@ const consultaCuentasAgregadasCliente = {
      "movimientos":7,
      "lineaSobregiro":4515,
      "interesesGenerados":1653,
-     "CLABE":9406411786255546,
+     "CLABE":"9406411786255546",
      "saldo":351250,
      "alias":"JEANNE QUIS",
      "telefono":"5562733123"
    },
    {  
      "nombreCuenta":"FITZGERALD MEADOWS",
-     "numeroDeCuenta":7378434654,
+     "numeroDeCuenta":"7378434654",
      "idProducto":"CHQ",
      "descripcionProducto":"CUENTA EXERCITATION",
      "divisa":"MXN",
@@ -890,13 +890,13 @@ const consultaCuentasAgregadasCliente = {
      "movimientos":9,
      "lineaSobregiro":3728,
      "interesesGenerados":4310,
-     "CLABE":6231961653052986,
+     "CLABE":"6231961653052986",
      "saldo":40795,
      "alias":"GLOVER DESERUNT"
    },
    {  
      "nombreCuenta":"MONIQUE WHITLEY",
-     "numeroDeCuenta":2104456328,
+     "numeroDeCuenta":"2104456328",
      "idProducto":"CHQ",
      "descripcionProducto":"CUENTA DOLORE",
      "divisa":"MXN",
@@ -906,13 +906,13 @@ const consultaCuentasAgregadasCliente = {
      "movimientos":6,
      "lineaSobregiro":4773,
      "interesesGenerados":5584,
-     "CLABE":9016768587593992,
+     "CLABE":"9016768587593992",
      "saldo":304739,
      "alias":"TAYLOR ALIQUIP"
    },
    {  
      "nombreCuenta":"DOLLIE FINLEY",
-     "numeroDeCuenta":6953146785,
+     "numeroDeCuenta":"6953146785",
      "idProducto":"CHQ",
      "descripcionProducto":"CUENTA INCIDIDUNT",
      "divisa":"MXN",
@@ -922,13 +922,13 @@ const consultaCuentasAgregadasCliente = {
      "movimientos":3,
      "lineaSobregiro":3912,
      "interesesGenerados":3668,
-     "CLABE":8654073923620344,
+     "CLABE":"8654073923620344",
      "saldo":596637,
      "alias":"BEST DOLOR"
    },
    {  
      "nombreCuenta":"LOGAN MASSEY",
-     "numeroDeCuenta":3104945632,
+     "numeroDeCuenta":"3104945632",
      "idProducto":"CHQ",
      "descripcionProducto":"CUENTA ALIQUIP",
      "divisa":"MXN",
@@ -938,14 +938,14 @@ const consultaCuentasAgregadasCliente = {
      "movimientos":7,
      "lineaSobregiro":4827,
      "interesesGenerados":4836,
-     "CLABE":1141792532062969,
+     "CLABE":"1141792532062969",
      "saldo":808057,
      "alias":"NADIA AD",
      "telefono":"5598987547"
    },
    {  
      "nombreCuenta":"HAMPTON KELLY",
-     "numeroDeCuenta":5508346890,
+     "numeroDeCuenta":"5508346890",
      "idProducto":"CHQ",
      "descripcionProducto":"CUENTA ADIPISICING",
      "divisa":"MXN",
@@ -955,14 +955,14 @@ const consultaCuentasAgregadasCliente = {
      "movimientos":6,
      "lineaSobregiro":2078,
      "interesesGenerados":2360,
-     "CLABE":3024929704405096,
+     "CLABE":"3024929704405096",
      "saldo":642845,
      "alias":"DURHAM CONSEQUAT",
      "telefono":"5535442631"
    },
    {  
      "nombreCuenta":"HARRISON LAWSON",
-     "numeroDeCuenta":1085109768,
+     "numeroDeCuenta":"1085109768",
      "idProducto":"CHQ",
      "descripcionProducto":"CUENTA ENIM",
      "divisa":"MXN",
@@ -972,13 +972,13 @@ const consultaCuentasAgregadasCliente = {
      "movimientos":6,
      "lineaSobregiro":1456,
      "interesesGenerados":1420,
-     "CLABE":7383666342713216,
+     "CLABE":"7383666342713216",
      "saldo":891122,
      "alias":"MCINTOSH SINT"
    },
    {  
      "nombreCuenta":"BLACKBURN DUNLAP",
-     "numeroDeCuenta":7956532412,
+     "numeroDeCuenta":"7956532412",
      "idProducto":"CHQ",
      "descripcionProducto":"CUENTA DO",
      "divisa":"MXN",
@@ -988,14 +988,14 @@ const consultaCuentasAgregadasCliente = {
      "movimientos":4,
      "lineaSobregiro":4344,
      "interesesGenerados":1349,
-     "CLABE":9651922496187914,
+     "CLABE":"9651922496187914",
      "saldo":995748,
      "alias":"MACIAS QUI",
      "telefono":"5562773142"
    },
    {  
      "nombreCuenta":"HILLARY SHELTON",
-     "numeroDeCuenta":8224245367,
+     "numeroDeCuenta":"8224245367",
      "idProducto":"CHQ",
      "descripcionProducto":"CUENTA UT",
      "divisa":"MXN",
@@ -1005,13 +1005,13 @@ const consultaCuentasAgregadasCliente = {
      "movimientos":8,
      "lineaSobregiro":4423,
      "interesesGenerados":2149,
-     "CLABE":9838918971754596,
+     "CLABE":"9838918971754596",
      "saldo":624469,
      "alias":"HOLCOMB ULLAMCO"
    },
    {  
      "nombreCuenta":"VIRGINIA MCFADDEN",
-     "numeroDeCuenta":3758545376,
+     "numeroDeCuenta":"3758545376",
      "idProducto":"CHQ",
      "descripcionProducto":"CUENTA NOSTRUD",
      "divisa":"MXN",
@@ -1021,13 +1021,13 @@ const consultaCuentasAgregadasCliente = {
      "movimientos":6,
      "lineaSobregiro":3830,
      "interesesGenerados":3602,
-     "CLABE":3830704143003909,
+     "CLABE":"3830704143003909",
      "saldo":325111,
      "alias":"RUSSO LABORIS"
    },
    {  
      "nombreCuenta":"DOROTHY DELANEY",
-     "numeroDeCuenta":9467654365,
+     "numeroDeCuenta":"9467654365",
      "idProducto":"CHQ",
      "descripcionProducto":"CUENTA CONSECTETUR",
      "divisa":"MXN",
@@ -1037,13 +1037,13 @@ const consultaCuentasAgregadasCliente = {
      "movimientos":10,
      "lineaSobregiro":3216,
      "interesesGenerados":1128,
-     "CLABE":8775753888969680,
+     "CLABE":"8775753888969680",
      "saldo":955181,
      "alias":"GARZA COMMODO"
    },
    {  
      "nombreCuenta":"OSBORN BECK",
-     "numeroDeCuenta":6678845345,
+     "numeroDeCuenta":"6678845345",
      "idProducto":"CHQ",
      "descripcionProducto":"CUENTA EIUSMOD",
      "divisa":"MXN",
@@ -1053,13 +1053,13 @@ const consultaCuentasAgregadasCliente = {
      "movimientos":9,
      "lineaSobregiro":3116,
      "interesesGenerados":3387,
-     "CLABE":2338990607011866,
+     "CLABE":"2338990607011866",
      "saldo":243173,
      "alias":"AMALIA AMET"
    },
    {  
      "nombreCuenta":"JODIE SERRANO",
-     "numeroDeCuenta":2886954678,
+     "numeroDeCuenta":"2886954678",
      "idProducto":"CHQ",
      "descripcionProducto":"CUENTA DESERUNT",
      "divisa":"MXN",
@@ -1069,13 +1069,13 @@ const consultaCuentasAgregadasCliente = {
      "movimientos":3,
      "lineaSobregiro":1541,
      "interesesGenerados":3189,
-     "CLABE":4459625898298295,
+     "CLABE":"4459625898298295",
      "saldo":526986,
      "alias":"KEISHA MOLLIT"
    },
    {  
      "nombreCuenta":"HESTER RIVAS",
-     "numeroDeCuenta":6756556476,
+     "numeroDeCuenta":"6756556476",
      "idProducto":"CHQ",
      "descripcionProducto":"CUENTA IN",
      "divisa":"MXN",
@@ -1085,13 +1085,13 @@ const consultaCuentasAgregadasCliente = {
      "movimientos":3,
      "lineaSobregiro":4603,
      "interesesGenerados":5879,
-     "CLABE":8039700793791198,
+     "CLABE":"8039700793791198",
      "saldo":11354,
      "alias":"SANCHEZ INCIDIDUNT"
    },
    {  
      "nombreCuenta":"AIDA GONZALEZ",
-     "numeroDeCuenta":9429554653,
+     "numeroDeCuenta":"9429554653",
      "idProducto":"CHQ",
      "descripcionProducto":"CUENTA DOLORE",
      "divisa":"MXN",
@@ -1101,13 +1101,13 @@ const consultaCuentasAgregadasCliente = {
      "movimientos":4,
      "lineaSobregiro":1439,
      "interesesGenerados":3893,
-     "CLABE":4991615214861048,
+     "CLABE":"4991615214861048",
      "saldo":464938,
      "alias":"SHEPARD REPREHENDERIT"
    },
    {  
      "nombreCuenta":"KERR MCCLURE",
-     "numeroDeCuenta":9369423127,
+     "numeroDeCuenta":"9369423127",
      "idProducto":"CHQ",
      "descripcionProducto":"CUENTA ESSE",
      "divisa":"MXN",
@@ -1117,13 +1117,13 @@ const consultaCuentasAgregadasCliente = {
      "movimientos":5,
      "lineaSobregiro":4513,
      "interesesGenerados":4607,
-     "CLABE":3556933423954500,
+     "CLABE":"3556933423954500",
      "saldo":282733,
      "alias":"BOND REPREHENDERIT"
    },
    {  
      "nombreCuenta":"SHARLENE GORDON",
-     "numeroDeCuenta":3603435467,
+     "numeroDeCuenta":"3603435467",
      "idProducto":"CHQ",
      "descripcionProducto":"CUENTA DESERUNT",
      "divisa":"MXN",
@@ -1133,13 +1133,13 @@ const consultaCuentasAgregadasCliente = {
      "movimientos":5,
      "lineaSobregiro":1272,
      "interesesGenerados":3508,
-     "CLABE":4769920988437920,
+     "CLABE":"4769920988437920",
      "saldo":648424,
      "alias":"LINDSEY NON"
    },
    {  
      "nombreCuenta":"GARCIA CAMPBELL",
-     "numeroDeCuenta":47997546786,
+     "numeroDeCuenta":"4799754678"6,
      "idProducto":"CHQ",
      "descripcionProducto":"CUENTA VELIT",
      "divisa":"MXN",
@@ -1149,13 +1149,13 @@ const consultaCuentasAgregadasCliente = {
      "movimientos":8,
      "lineaSobregiro":4196,
      "interesesGenerados":5325,
-     "CLABE":9580037845978432,
+     "CLABE":"9580037845978432",
      "saldo":626987,
      "alias":"SANTANA QUI"
    },
    {  
      "nombreCuenta":"RANDI NEWMAN",
-     "numeroDeCuenta":4859124356,
+     "numeroDeCuenta":"4859124356",
      "idProducto":"CHQ",
      "descripcionProducto":"CUENTA NISI",
      "divisa":"MXN",
@@ -1165,13 +1165,13 @@ const consultaCuentasAgregadasCliente = {
      "movimientos":7,
      "lineaSobregiro":1826,
      "interesesGenerados":4637,
-     "CLABE":8730420728195786,
+     "CLABE":"8730420728195786",
      "saldo":854894,
      "alias":"LAUREL ESSE"
    },
    {  
      "nombreCuenta":"MADGE GREGORY",
-     "numeroDeCuenta":7021276897,
+     "numeroDeCuenta":"7021276897",
      "idProducto":"CHQ",
      "descripcionProducto":"CUENTA MOLLIT",
      "divisa":"MXN",
@@ -1181,13 +1181,13 @@ const consultaCuentasAgregadasCliente = {
      "movimientos":1,
      "lineaSobregiro":2761,
      "interesesGenerados":3733,
-     "CLABE":9722548139549464,
+     "CLABE":"9722548139549464",
      "saldo":515910,
      "alias":"PERRY SINT"
    },
    {  
      "nombreCuenta":"BEARD DOWNS",
-     "numeroDeCuenta":88943435,
+     "numeroDeCuenta":"8894343511",
      "idProducto":"CHQ",
      "descripcionProducto":"CUENTA LOREM",
      "divisa":"MXN",
@@ -1197,13 +1197,13 @@ const consultaCuentasAgregadasCliente = {
      "movimientos":7,
      "lineaSobregiro":3696,
      "interesesGenerados":4396,
-     "CLABE":6250729462506608,
+     "CLABE":"6250729462506608",
      "saldo":224287,
      "alias":"CONWAY EA"
    },
    {  
      "nombreCuenta":"MEREDITH ONEIL",
-     "numeroDeCuenta":2068745365,
+     "numeroDeCuenta":"2068745365",
      "idProducto":"CHQ",
      "descripcionProducto":"CUENTA EXCEPTEUR",
      "divisa":"MXN",
@@ -1213,13 +1213,13 @@ const consultaCuentasAgregadasCliente = {
      "movimientos":1,
      "lineaSobregiro":1884,
      "interesesGenerados":1969,
-     "CLABE":2545026892873488,
+     "CLABE":"2545026892873488",
      "saldo":167399,
      "alias":"ROCHA ANIM"
    },
    {  
      "nombreCuenta":"KARLA KOCH",
-     "numeroDeCuenta":7358545654,
+     "numeroDeCuenta":"7358545654",
      "idProducto":"CHQ",
      "descripcionProducto":"CUENTA ULLAMCO",
      "divisa":"MXN",
@@ -1229,13 +1229,13 @@ const consultaCuentasAgregadasCliente = {
      "movimientos":9,
      "lineaSobregiro":2455,
      "interesesGenerados":4048,
-     "CLABE":9671645391827812,
+     "CLABE":"9671645391827812",
      "saldo":659202,
      "alias":"BRYAN MAGNA"
    },
    {  
      "nombreCuenta":"CLARISSA HANEY",
-     "numeroDeCuenta":8969132409,
+     "numeroDeCuenta":"8969132409",
      "idProducto":"CHQ",
      "descripcionProducto":"CUENTA EU",
      "divisa":"MXN",
@@ -1245,13 +1245,13 @@ const consultaCuentasAgregadasCliente = {
      "movimientos":2,
      "lineaSobregiro":4705,
      "interesesGenerados":2689,
-     "CLABE":8519518733135406,
+     "CLABE":"8519518733135406",
      "saldo":747727,
      "alias":"HAWKINS EIUSMOD"
    },
    {  
      "nombreCuenta":"SANDERS PATEL",
-     "numeroDeCuenta":4167465789,
+     "numeroDeCuenta":"4167465789",
      "idProducto":"CHQ",
      "descripcionProducto":"CUENTA INCIDIDUNT",
      "divisa":"MXN",
@@ -1261,13 +1261,13 @@ const consultaCuentasAgregadasCliente = {
      "movimientos":2,
      "lineaSobregiro":2435,
      "interesesGenerados":3034,
-     "CLABE":6228474602698788,
+     "CLABE":"6228474602698788",
      "saldo":918327,
      "alias":"ADRIENNE DOLOR"
    },
    {  
      "nombreCuenta":"CASEY SANTIAGO",
-     "numeroDeCuenta":5808845678,
+     "numeroDeCuenta":"5808845678",
      "idProducto":"CHQ",
      "descripcionProducto":"CUENTA DESERUNT",
      "divisa":"MXN",
@@ -1277,13 +1277,13 @@ const consultaCuentasAgregadasCliente = {
      "movimientos":4,
      "lineaSobregiro":3928,
      "interesesGenerados":1737,
-     "CLABE":5523201193299208,
+     "CLABE":"5523201193299208",
      "saldo":227970,
      "alias":"DONALDSON PARIATUR"
    },
    {  
      "nombreCuenta":"KARINA CAMERON",
-     "numeroDeCuenta":6216854678,
+     "numeroDeCuenta":"6216854678",
      "idProducto":"CHQ",
      "descripcionProducto":"CUENTA ALIQUIP",
      "divisa":"MXN",
@@ -1293,127 +1293,127 @@ const consultaCuentasAgregadasCliente = {
      "movimientos":4,
      "lineaSobregiro":3113,
      "interesesGenerados":2188,
-     "CLABE":1669199001128238,
+     "CLABE":"1669199001128238",
      "saldo":645796,
      "alias":"HERMINIA ULLAMCO"
    }
    ],
    "listCreditosCliente":[  
    {  
-     "contrato":38738,
-     "numeroDeCuenta":5817673423,
+     "contrato":"38738",
+     "numeroDeCuenta":"5817673423",
      "idProducto":"CRED",
      "descripcionProducto":"CREDITO DE OVERFORK",
      "saldoTotal":1696.05,
      "alias":"HIPOTECA PLASMOS"
    },
    {  
-     "contrato":52756,
-     "numeroDeCuenta":7970353456,
+     "contrato":"52756",
+     "numeroDeCuenta":"7970353456",
      "idProducto":"CRED",
      "descripcionProducto":"CREDITO DE EVENTAGE",
      "saldoTotal":2867.79,
      "alias":"HIPOTECA ZENSURE"
    },
    {  
-     "contrato":44484,
-     "numeroDeCuenta":2655764356,
+     "contrato":"44484",
+     "numeroDeCuenta":"2655764356",
      "idProducto":"CRED",
      "descripcionProducto":"CREDITO DE ENOMEN",
      "saldoTotal":1257.28,
      "alias":"HIPOTECA MEDESIGN"
    },
    {  
-     "contrato":52756,
-     "numeroDeCuenta":2153824535,
+     "contrato":"52756",
+     "numeroDeCuenta":"2153824535",
      "idProducto":"CRED",
      "descripcionProducto":"CREDITO DE ERSUM",
      "saldoTotal":1869.71,
      "alias":"HIPOTECA KIDSTOCK"
    },
    {  
-     "contrato":44484,
-     "numeroDeCuenta":3887873241,
+     "contrato":"44484",
+     "numeroDeCuenta":"3887873241",
      "idProducto":"CRED",
      "descripcionProducto":"CREDITO DE PATHWAYS",
      "saldoTotal":2935.91,
      "alias":"HIPOTECA AVENETRO"
    },
    {  
-     "contrato":38738,
-     "numeroDeCuenta":3365649876,
+     "contrato":"38738",
+     "numeroDeCuenta":"3365649876",
      "idProducto":"CRED",
      "descripcionProducto":"CREDITO DE MARVANE",
      "saldoTotal":1527.6,
      "alias":"HIPOTECA MONDICIL"
    },
    {  
-     "contrato":44484,
-     "numeroDeCuenta":8034723245,
+     "contrato":"44484",
+     "numeroDeCuenta":"8034723245",
      "idProducto":"CRED",
      "descripcionProducto":"CREDITO DE ECLIPSENT",
      "saldoTotal":3549.58,
      "alias":"HIPOTECA ENTOGROK"
    },
    {  
-     "contrato":44484,
-     "numeroDeCuenta":8767014356,
+     "contrato":"44484",
+     "numeroDeCuenta":"8767014356",
      "idProducto":"CRED",
      "descripcionProducto":"CREDITO DE ZIDOX",
      "saldoTotal":2401.75,
      "alias":"HIPOTECA COMDOM"
    },
    {  
-     "contrato":38738,
-     "numeroDeCuenta":7537432134,
+     "contrato":"38738",
+     "numeroDeCuenta":"7537432134",
      "idProducto":"CRED",
      "descripcionProducto":"CREDITO DE APEXIA",
      "saldoTotal":2865.16,
      "alias":"HIPOTECA DYMI"
    },
    {  
-     "contrato":44484,
-     "numeroDeCuenta":8588843421,
+     "contrato":"44484",
+     "numeroDeCuenta":"8588843421",
      "idProducto":"CRED",
      "descripcionProducto":"CREDITO DE FRANSCENE",
      "saldoTotal":2644.52,
      "alias":"HIPOTECA QUALITERN"
    },
    {  
-     "contrato":52756,
-     "numeroDeCuenta":8569835698,
+     "contrato":"52756",
+     "numeroDeCuenta":"8569835698",
      "idProducto":"CRED",
      "descripcionProducto":"CREDITO DE XYMONK",
      "saldoTotal":1479.28,
      "alias":"HIPOTECA ORBAXTER"
    },
    {  
-     "contrato":44484,
-     "numeroDeCuenta":8935484356,
+     "contrato":"44484",
+     "numeroDeCuenta":"8935484356",
      "idProducto":"CRED",
      "descripcionProducto":"CREDITO DE CENTREXIN",
      "saldoTotal":3092.77,
      "alias":"HIPOTECA DOGSPA"
    },
    {  
-     "contrato":38738,
-     "numeroDeCuenta":4583348970,
+     "contrato":"38738",
+     "numeroDeCuenta":"4583348970",
      "idProducto":"CRED",
      "descripcionProducto":"CREDITO DE EXOBLUE",
      "saldoTotal":2111.76,
      "alias":"HIPOTECA CUBIX"
    },
    {  
-     "contrato":44484,
-     "numeroDeCuenta":6805468098,
+     "contrato":"44484",
+     "numeroDeCuenta":"6805468098",
      "idProducto":"CRED",
      "descripcionProducto":"CREDITO DE ZILLACON",
      "saldoTotal":3473.18,
      "alias":"HIPOTECA SENMAO"
    },
    {  
-     "contrato":44484,
-     "numeroDeCuenta":4367585678,
+     "contrato":"44484",
+     "numeroDeCuenta":"4367585678",
      "idProducto":"CRED",
      "descripcionProducto":"CREDITO DE FANGOLD",
      "saldoTotal":2466.54,
@@ -1422,7 +1422,7 @@ const consultaCuentasAgregadasCliente = {
    ],
    "listInversionesPagareCliente":[  
    {  
-     "numeroDeCuenta":2324224356,
+     "numeroDeCuenta":"2324224356",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":90,
@@ -1438,7 +1438,7 @@ const consultaCuentasAgregadasCliente = {
      "apertura":"2015-11-19T09:47:39 +06:00"
    },
    {  
-     "numeroDeCuenta":4552474356,
+     "numeroDeCuenta":"4552474356",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":60,
@@ -1454,7 +1454,7 @@ const consultaCuentasAgregadasCliente = {
      "apertura":"2013-07-23T08:50:38 +05:00"
    },
    {  
-     "numeroDeCuenta":6133044356,
+     "numeroDeCuenta":"6133044356",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":60,
@@ -1470,7 +1470,7 @@ const consultaCuentasAgregadasCliente = {
      "apertura":"2012-06-21T10:17:05 +05:00"
    },
    {  
-     "numeroDeCuenta":6244123245,
+     "numeroDeCuenta":"6244123245",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":90,
@@ -1486,7 +1486,7 @@ const consultaCuentasAgregadasCliente = {
      "apertura":"2012-12-04T10:50:51 +06:00"
    },
    {  
-     "numeroDeCuenta":7463644563,
+     "numeroDeCuenta":"7463644563",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":90,
@@ -1502,7 +1502,7 @@ const consultaCuentasAgregadasCliente = {
      "apertura":"2014-11-17T04:35:02 +06:00"
    },
    {  
-     "numeroDeCuenta":2273978970,
+     "numeroDeCuenta":"2273978970",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":90,
@@ -1518,7 +1518,7 @@ const consultaCuentasAgregadasCliente = {
      "apertura":"2012-01-27T02:35:39 +06:00"
    },
    {  
-     "numeroDeCuenta":7619557689,
+     "numeroDeCuenta":"7619557689",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":120,
@@ -1534,7 +1534,7 @@ const consultaCuentasAgregadasCliente = {
      "apertura":"2013-06-18T02:04:57 +05:00"
    },
    {  
-     "numeroDeCuenta":3991866579,
+     "numeroDeCuenta":"3991866579",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":30,
@@ -1550,7 +1550,7 @@ const consultaCuentasAgregadasCliente = {
      "apertura":"2015-09-04T10:07:21 +05:00"
    },
    {  
-     "numeroDeCuenta":7317311234,
+     "numeroDeCuenta":"7317311234",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":120,
@@ -1566,7 +1566,7 @@ const consultaCuentasAgregadasCliente = {
      "apertura":"2016-04-21T11:43:44 +05:00"
    },
    {  
-     "numeroDeCuenta":5718233425,
+     "numeroDeCuenta":"5718233425",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":120,
@@ -1582,7 +1582,7 @@ const consultaCuentasAgregadasCliente = {
      "apertura":"2013-11-08T01:49:10 +06:00"
    },
    {  
-     "numeroDeCuenta":3826942314,
+     "numeroDeCuenta":"3826942314",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":60,
@@ -1598,7 +1598,7 @@ const consultaCuentasAgregadasCliente = {
      "apertura":"2013-09-05T03:23:49 +05:00"
    },
    {  
-     "numeroDeCuenta":7935453245,
+     "numeroDeCuenta":"7935453245",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":90,
@@ -1614,7 +1614,7 @@ const consultaCuentasAgregadasCliente = {
      "apertura":"2013-07-18T07:55:57 +05:00"
    },
    {  
-     "numeroDeCuenta":2875782314,
+     "numeroDeCuenta":"2875782314",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":60,
@@ -1630,7 +1630,7 @@ const consultaCuentasAgregadasCliente = {
      "apertura":"2016-03-02T09:09:09 +06:00"
    },
    {  
-     "numeroDeCuenta":3547704567,
+     "numeroDeCuenta":"3547704567",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":120,
@@ -1646,7 +1646,7 @@ const consultaCuentasAgregadasCliente = {
      "apertura":"2016-08-20T05:45:18 +05:00"
    },
    {  
-     "numeroDeCuenta":7936281287,
+     "numeroDeCuenta":"7936281287",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":90,
@@ -1662,7 +1662,7 @@ const consultaCuentasAgregadasCliente = {
      "apertura":"2015-03-17T01:14:46 +06:00"
    },
    {  
-     "numeroDeCuenta":5574004567,
+     "numeroDeCuenta":"5574004567",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":30,
@@ -1678,7 +1678,7 @@ const consultaCuentasAgregadasCliente = {
      "apertura":"2012-07-09T12:05:41 +05:00"
    },
    {  
-     "numeroDeCuenta":1627014356,
+     "numeroDeCuenta":"1627014356",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":90,
@@ -1694,7 +1694,7 @@ const consultaCuentasAgregadasCliente = {
      "apertura":"2013-01-31T09:23:58 +06:00"
    },
    {  
-     "numeroDeCuenta":8144403245,
+     "numeroDeCuenta":"8144403245",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":120,
@@ -1710,7 +1710,7 @@ const consultaCuentasAgregadasCliente = {
      "apertura":"2015-01-23T12:24:03 +06:00"
    },
    {  
-     "numeroDeCuenta":5166082345,
+     "numeroDeCuenta":"5166082345",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":60,
@@ -1726,7 +1726,7 @@ const consultaCuentasAgregadasCliente = {
      "apertura":"2015-05-11T06:25:25 +05:00"
    },
    {  
-     "numeroDeCuenta":4918612313,
+     "numeroDeCuenta":"4918612313",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":120,
@@ -1742,7 +1742,7 @@ const consultaCuentasAgregadasCliente = {
      "apertura":"2012-12-09T09:07:00 +06:00"
    },
    {  
-     "numeroDeCuenta":6247112346,
+     "numeroDeCuenta":"6247112346",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":120,
@@ -1758,7 +1758,7 @@ const consultaCuentasAgregadasCliente = {
      "apertura":"2012-12-30T06:20:09 +06:00"
    },
    {  
-     "numeroDeCuenta":3306471232,
+     "numeroDeCuenta":"3306471232",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":90,
@@ -1774,7 +1774,7 @@ const consultaCuentasAgregadasCliente = {
      "apertura":"2014-12-19T07:06:53 +06:00"
    },
    {  
-     "numeroDeCuenta":2029321245,
+     "numeroDeCuenta":"2029321245",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":120,
@@ -1790,7 +1790,7 @@ const consultaCuentasAgregadasCliente = {
      "apertura":"2016-05-15T05:55:25 +05:00"
    },
    {  
-     "numeroDeCuenta":4404876789,
+     "numeroDeCuenta":"4404876789",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":60,
@@ -1806,7 +1806,7 @@ const consultaCuentasAgregadasCliente = {
      "apertura":"2014-04-20T11:46:46 +05:00"
    },
    {  
-     "numeroDeCuenta":5418922345,
+     "numeroDeCuenta":"5418922345",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":120,
@@ -1822,7 +1822,7 @@ const consultaCuentasAgregadasCliente = {
      "apertura":"2013-11-05T09:56:26 +06:00"
    },
    {  
-     "numeroDeCuenta":3368054563,
+     "numeroDeCuenta":"3368054563",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":60,
@@ -1840,7 +1840,7 @@ const consultaCuentasAgregadasCliente = {
    ],
    "listInversionesCedeCliente":[  
    {  
-     "numeroDeCuenta":4831967890,
+     "numeroDeCuenta":"4831967890",
      "idProducto":"CEDE",
      "descripcionProducto":"Inversion CEDE OVATION",
      "plazo":60,
@@ -1855,7 +1855,7 @@ const consultaCuentasAgregadasCliente = {
      "apertura":"2015-11-04T06:38:10 +06:00"
    },
    {  
-     "numeroDeCuenta":3522854567,
+     "numeroDeCuenta":"3522854567",
      "idProducto":"CEDE",
      "descripcionProducto":"Inversion CEDE QUALITEX",
      "plazo":30,
@@ -1870,7 +1870,7 @@ const consultaCuentasAgregadasCliente = {
      "apertura":"2012-10-17T08:17:49 +05:00"
    },
    {  
-     "numeroDeCuenta":7371353245,
+     "numeroDeCuenta":"7371353245",
      "idProducto":"CEDE",
      "descripcionProducto":"Inversion CEDE CINCYR",
      "plazo":30,
@@ -1885,7 +1885,7 @@ const consultaCuentasAgregadasCliente = {
      "apertura":"2012-06-06T05:55:29 +05:00"
    },
    {  
-     "numeroDeCuenta":7568459807,
+     "numeroDeCuenta":"7568459807",
      "idProducto":"CEDE",
      "descripcionProducto":"Inversion CEDE PLASMOX",
      "plazo":30,
@@ -1900,7 +1900,7 @@ const consultaCuentasAgregadasCliente = {
      "apertura":"2014-01-25T07:15:39 +06:00"
    },
    {  
-     "numeroDeCuenta":5906933245,
+     "numeroDeCuenta":"5906933245",
      "idProducto":"CEDE",
      "descripcionProducto":"Inversion CEDE VERBUS",
      "plazo":120,
@@ -1915,7 +1915,7 @@ const consultaCuentasAgregadasCliente = {
      "apertura":"2014-02-27T10:31:32 +06:00"
    },
    {  
-     "numeroDeCuenta":1264212345,
+     "numeroDeCuenta":"1264212345",
      "idProducto":"CEDE",
      "descripcionProducto":"Inversion CEDE INFOTRIPS",
      "plazo":60,
@@ -1930,7 +1930,7 @@ const consultaCuentasAgregadasCliente = {
      "apertura":"2014-07-11T08:07:41 +05:00"
    },
    {  
-     "numeroDeCuenta":2912493245,
+     "numeroDeCuenta":"2912493245",
      "idProducto":"CEDE",
      "descripcionProducto":"Inversion CEDE MICRONAUT",
      "plazo":30,
@@ -1945,7 +1945,7 @@ const consultaCuentasAgregadasCliente = {
      "apertura":"2012-06-11T07:50:25 +05:00"
    },
    {  
-     "numeroDeCuenta":4223311243,
+     "numeroDeCuenta":"4223311243",
      "idProducto":"CEDE",
      "descripcionProducto":"Inversion CEDE TEMORAK",
      "plazo":60,
@@ -1960,7 +1960,7 @@ const consultaCuentasAgregadasCliente = {
      "apertura":"2012-06-19T04:07:20 +05:00"
    },
    {  
-     "numeroDeCuenta":4786953245,
+     "numeroDeCuenta":"4786953245",
      "idProducto":"CEDE",
      "descripcionProducto":"Inversion CEDE DYMI",
      "plazo":120,
@@ -1975,7 +1975,7 @@ const consultaCuentasAgregadasCliente = {
      "apertura":"2013-10-25T05:23:44 +05:00"
    },
    {  
-     "numeroDeCuenta":8439601243,
+     "numeroDeCuenta":"8439601243",
      "idProducto":"CEDE",
      "descripcionProducto":"Inversion CEDE ZOLAR",
      "plazo":30,
@@ -1990,7 +1990,7 @@ const consultaCuentasAgregadasCliente = {
      "apertura":"2017-07-22T06:26:11 +05:00"
    },
    {  
-     "numeroDeCuenta":1121143254,
+     "numeroDeCuenta":"1121143254",
      "idProducto":"CEDE",
      "descripcionProducto":"Inversion CEDE SILODYNE",
      "plazo":90,
@@ -2005,7 +2005,7 @@ const consultaCuentasAgregadasCliente = {
      "apertura":"2014-03-15T05:23:59 +06:00"
    },
    {  
-     "numeroDeCuenta":7566888790,
+     "numeroDeCuenta":"7566888790",
      "idProducto":"CEDE",
      "descripcionProducto":"Inversion CEDE ZOGAK",
      "plazo":120,
@@ -2020,7 +2020,7 @@ const consultaCuentasAgregadasCliente = {
      "apertura":"2013-07-02T07:44:43 +05:00"
    },
    {  
-     "numeroDeCuenta":3468937896,
+     "numeroDeCuenta":"3468937896",
      "idProducto":"CEDE",
      "descripcionProducto":"Inversion CEDE ELENTRIX",
      "plazo":60,
@@ -2035,7 +2035,7 @@ const consultaCuentasAgregadasCliente = {
      "apertura":"2017-01-16T10:53:50 +06:00"
    },
    {  
-     "numeroDeCuenta":8020345673,
+     "numeroDeCuenta":"8020345673",
      "idProducto":"CEDE",
      "descripcionProducto":"Inversion CEDE ZAPHIRE",
      "plazo":30,
@@ -2050,7 +2050,7 @@ const consultaCuentasAgregadasCliente = {
      "apertura":"2012-03-26T09:31:58 +06:00"
    },
    {  
-     "numeroDeCuenta":3045851432,
+     "numeroDeCuenta":"3045851432",
      "idProducto":"CEDE",
      "descripcionProducto":"Inversion CEDE GINKOGENE",
      "plazo":60,
@@ -2065,7 +2065,7 @@ const consultaCuentasAgregadasCliente = {
      "apertura":"2015-05-14T11:15:02 +05:00"
    },
    {  
-     "numeroDeCuenta":3805261876,
+     "numeroDeCuenta":"3805261876",
      "idProducto":"CEDE",
      "descripcionProducto":"Inversion CEDE VERAQ",
      "plazo":120,
@@ -2080,7 +2080,7 @@ const consultaCuentasAgregadasCliente = {
      "apertura":"2013-05-30T06:00:03 +05:00"
    },
    {  
-     "numeroDeCuenta":8875049870,
+     "numeroDeCuenta":"8875049870",
      "idProducto":"CEDE",
      "descripcionProducto":"Inversion CEDE CANOPOLY",
      "plazo":60,
@@ -2097,7 +2097,7 @@ const consultaCuentasAgregadasCliente = {
    ],
    "listInversionesVistaCliente":[  
    {  
-     "numeroDeCuenta":3883812343,
+     "numeroDeCuenta":"3883812343",
      "idProducto":"INT",
      "descripcionProducto":"Multiva Integra 0",
      "cuentaMultiva":5443234474,
@@ -2106,7 +2106,7 @@ const consultaCuentasAgregadasCliente = {
      "alias":"MULTIVA INTEGRA DEGROK"
    },
    {  
-     "numeroDeCuenta":4431352314,
+     "numeroDeCuenta":"4431352314",
      "idProducto":"INT",
      "descripcionProducto":"Multiva Integra 1",
      "cuentaMultiva":5443436467,
@@ -2115,7 +2115,7 @@ const consultaCuentasAgregadasCliente = {
      "alias":"MULTIVA INTEGRA DEMUSAPHICS"
    },
    {  
-     "numeroDeCuenta":3509717689,
+     "numeroDeCuenta":"3509717689",
      "idProducto":"INT",
      "descripcionProducto":"Multiva Integra 2",
      "cuentaMultiva":5532235467,
@@ -2124,7 +2124,7 @@ const consultaCuentasAgregadasCliente = {
      "alias":"MULTIVA INTEGRA DEINSURON"
    },
    {  
-     "numeroDeCuenta":3234202314,
+     "numeroDeCuenta":"3234202314",
      "idProducto":"INT",
      "descripcionProducto":"Multiva Integra 3",
      "cuentaMultiva":5490435467,
@@ -2133,7 +2133,7 @@ const consultaCuentasAgregadasCliente = {
      "alias":"MULTIVA INTEGRA DEZILLAR"
    },
    {  
-     "numeroDeCuenta":2175434356,
+     "numeroDeCuenta":"2175434356",
      "idProducto":"INT",
      "descripcionProducto":"Multiva Integra 4",
      "cuentaMultiva":5443234354,
@@ -2142,7 +2142,7 @@ const consultaCuentasAgregadasCliente = {
      "alias":"MULTIVA INTEGRA DEIPLAX"
    },
    {  
-     "numeroDeCuenta":2350716789,
+     "numeroDeCuenta":"2350716789",
      "idProducto":"INT",
      "descripcionProducto":"Multiva Integra 5",
      "cuentaMultiva":5443235467,
@@ -2151,7 +2151,7 @@ const consultaCuentasAgregadasCliente = {
      "alias":"MULTIVA INTEGRA DESUREMAX"
    },
    {  
-     "numeroDeCuenta":8851630989,
+     "numeroDeCuenta":"8851630989",
      "idProducto":"INT",
      "descripcionProducto":"Multiva Integra 6",
      "cuentaMultiva":5907535467,
@@ -2160,7 +2160,7 @@ const consultaCuentasAgregadasCliente = {
      "alias":"MULTIVA INTEGRA DERECRISYS"
    },
    {  
-     "numeroDeCuenta":8491832546,
+     "numeroDeCuenta":"8491832546",
      "idProducto":"INT",
      "descripcionProducto":"Multiva Integra 7",
      "cuentaMultiva":6745647895,
@@ -2169,7 +2169,7 @@ const consultaCuentasAgregadasCliente = {
      "alias":"MULTIVA INTEGRA DESPORTAN"
    },
    {  
-     "numeroDeCuenta":3452882546,
+     "numeroDeCuenta":"3452882546",
      "idProducto":"INT",
      "descripcionProducto":"Multiva Integra 8",
      "cuentaMultiva":3456785678,
@@ -2178,7 +2178,7 @@ const consultaCuentasAgregadasCliente = {
      "alias":"MULTIVA INTEGRA DECOMSTRUCT"
    },
    {  
-     "numeroDeCuenta":5565414678,
+     "numeroDeCuenta":"5565414678",
      "idProducto":"INT",
      "descripcionProducto":"Multiva Integra 9",
      "cuentaMultiva":5546734567,
@@ -2187,7 +2187,7 @@ const consultaCuentasAgregadasCliente = {
      "alias":"MULTIVA INTEGRA DEOULU"
    },
    {  
-     "numeroDeCuenta":1226443425,
+     "numeroDeCuenta":"1226443425",
      "idProducto":"INT",
      "descripcionProducto":"Multiva Integra 10",
      "cuentaMultiva":5443342467,
@@ -2196,7 +2196,7 @@ const consultaCuentasAgregadasCliente = {
      "alias":"MULTIVA INTEGRA DEQUIZMO"
    },
    {  
-     "numeroDeCuenta":5345652435,
+     "numeroDeCuenta":"5345652435",
      "idProducto":"INT",
      "descripcionProducto":"Multiva Integra 11",
      "cuentaMultiva":6573235467,
@@ -2205,7 +2205,7 @@ const consultaCuentasAgregadasCliente = {
      "alias":"MULTIVA INTEGRA DEOPTICON"
    },
    {  
-     "numeroDeCuenta":6158594689,
+     "numeroDeCuenta":"6158594689",
      "idProducto":"INT",
      "descripcionProducto":"Multiva Integra 12",
      "cuentaMultiva":6783235467,
@@ -2214,7 +2214,7 @@ const consultaCuentasAgregadasCliente = {
      "alias":"MULTIVA INTEGRA DEEXTRO"
    },
    {  
-     "numeroDeCuenta":3477226478,
+     "numeroDeCuenta":"3477226478",
      "idProducto":"INT",
      "descripcionProducto":"Multiva Integra 13",
      "cuentaMultiva":5489765467,
@@ -2223,7 +2223,7 @@ const consultaCuentasAgregadasCliente = {
      "alias":"MULTIVA INTEGRA DEENTALITY"
    },
    {  
-     "numeroDeCuenta":7041450789,
+     "numeroDeCuenta":"7041450789",
      "idProducto":"INT",
      "descripcionProducto":"Multiva Integra 14",
      "cuentaMultiva":5324356767,
@@ -2232,7 +2232,7 @@ const consultaCuentasAgregadasCliente = {
      "alias":"MULTIVA INTEGRA DEAPPLIDECK"
    },
    {  
-     "numeroDeCuenta":2275403426,
+     "numeroDeCuenta":"2275403426",
      "idProducto":"INT",
      "descripcionProducto":"Multiva Integra 15",
      "cuentaMultiva":8943235467,
@@ -2243,7 +2243,7 @@ const consultaCuentasAgregadasCliente = {
    ],
    "listFondosCliente":[  
    {  
-     "numeroDeCuenta":6928332435,
+     "numeroDeCuenta":"6928332435",
      "idProducto":"FND",
      "descripcionProducto":"Fondos0",
      "saldo":657599.7,
@@ -2255,7 +2255,7 @@ const consultaCuentasAgregadasCliente = {
      "valia":-6.54
    },
    {  
-     "numeroDeCuenta":5837865467,
+     "numeroDeCuenta":"5837865467",
      "idProducto":"FND",
      "descripcionProducto":"Fondos1",
      "saldo":468097.85,
@@ -2267,7 +2267,7 @@ const consultaCuentasAgregadasCliente = {
      "valia":-5.45
    },
    {  
-     "numeroDeCuenta":3341636587,
+     "numeroDeCuenta":"3341636587",
      "idProducto":"FND",
      "descripcionProducto":"Fondos2",
      "saldo":194110.04,
@@ -2279,7 +2279,7 @@ const consultaCuentasAgregadasCliente = {
      "valia":-2.55
    },
    {  
-     "numeroDeCuenta":8689489780,
+     "numeroDeCuenta":"8689489780",
      "idProducto":"FND",
      "descripcionProducto":"Fondos3",
      "saldo":613263.83,
@@ -2291,7 +2291,7 @@ const consultaCuentasAgregadasCliente = {
      "valia":0.78
    },
    {  
-     "numeroDeCuenta":4040474356,
+     "numeroDeCuenta":"4040474356",
      "idProducto":"FND",
      "descripcionProducto":"Fondos4",
      "saldo":668384.77,
@@ -2303,7 +2303,7 @@ const consultaCuentasAgregadasCliente = {
      "valia":-8.99
    },
    {  
-     "numeroDeCuenta":5258605467,
+     "numeroDeCuenta":"5258605467",
      "idProducto":"FND",
      "descripcionProducto":"Fondos5",
      "saldo":769361.54,
@@ -2315,7 +2315,7 @@ const consultaCuentasAgregadasCliente = {
      "valia":-0.71
    },
    {  
-     "numeroDeCuenta":4398490786,
+     "numeroDeCuenta":"4398490786",
      "idProducto":"FND",
      "descripcionProducto":"Fondos6",
      "saldo":788008.79,
@@ -2327,7 +2327,7 @@ const consultaCuentasAgregadasCliente = {
      "valia":-1.38
    },
    {  
-     "numeroDeCuenta":8461852143,
+     "numeroDeCuenta":"8461852143",
      "idProducto":"FND",
      "descripcionProducto":"Fondos7",
      "saldo":927634.84,
@@ -2339,7 +2339,7 @@ const consultaCuentasAgregadasCliente = {
      "valia":-3.92
    },
    {  
-     "numeroDeCuenta":5764254365,
+     "numeroDeCuenta":"5764254365",
      "idProducto":"FND",
      "descripcionProducto":"Fondos8",
      "saldo":259139.85,
@@ -2351,7 +2351,7 @@ const consultaCuentasAgregadasCliente = {
      "valia":-3.7
    },
    {  
-     "numeroDeCuenta":4705266475,
+     "numeroDeCuenta":"4705266475",
      "idProducto":"FND",
      "descripcionProducto":"Fondos9",
      "saldo":335967.16,
@@ -2363,7 +2363,7 @@ const consultaCuentasAgregadasCliente = {
      "valia":-2.54
    },
    {  
-     "numeroDeCuenta":2417684365,
+     "numeroDeCuenta":"2417684365",
      "idProducto":"FND",
      "descripcionProducto":"Fondos10",
      "saldo":515263.35,
@@ -2375,7 +2375,7 @@ const consultaCuentasAgregadasCliente = {
      "valia":-6.56
    },
    {  
-     "numeroDeCuenta":8938864325,
+     "numeroDeCuenta":"8938864325",
      "idProducto":"FND",
      "descripcionProducto":"Fondos11",
      "saldo":844717.14,
@@ -2387,7 +2387,7 @@ const consultaCuentasAgregadasCliente = {
      "valia":-1.49
    },
    {  
-     "numeroDeCuenta":6077364365,
+     "numeroDeCuenta":"6077364365",
      "idProducto":"FND",
      "descripcionProducto":"Fondos12",
      "saldo":401770.56,
@@ -2399,7 +2399,7 @@ const consultaCuentasAgregadasCliente = {
      "valia":-0.29
    },
    {  
-     "numeroDeCuenta":7824813245,
+     "numeroDeCuenta":"7824813245",
      "idProducto":"FND",
      "descripcionProducto":"Fondos13",
      "saldo":672815.43,
@@ -2417,8 +2417,8 @@ const consultaCuentasAgregadasCliente = {
 
 
  const consultaDetalleCredito = {
-  "numeroDeCuenta": "123456",
-  "contrato": "123456789",
+  "numeroDeCuenta":" "123456","
+  "contrato":" "123"456789",
   "fechaDisposicion": "17-07-2017",
   "fechaVencimiento": "18-07-2018",
   "importe": "200000.00",
@@ -2595,7 +2595,7 @@ const consultaCfdCfdiRetenciones = {
       "saldoDisponible": 123000,
       "idProducto": "CHQ",
       "descripcionProducto": "CHEQUES",
-      "CLABE": "123456789987456",
+      "CLABE":" "12345678998745"6",
       "moneda": "MXP"
     }
     ],
