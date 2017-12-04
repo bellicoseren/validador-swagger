@@ -1139,7 +1139,7 @@ const consultaCuentasAgregadasCliente = {
    },
    {  
      "nombreCuenta":"GARCIA CAMPBELL",
-     "numeroDeCuenta":"4799754678"6,
+     "numeroDeCuenta":"4799754678",
      "idProducto":"CHQ",
      "descripcionProducto":"CUENTA VELIT",
      "divisa":"MXN",
@@ -2417,8 +2417,8 @@ const consultaCuentasAgregadasCliente = {
 
 
  const consultaDetalleCredito = {
-  "numeroDeCuenta":" "123456","
-  "contrato":" "123"456789",
+  "numeroDeCuenta":"1234567890",
+  "contrato":"456789",
   "fechaDisposicion": "17-07-2017",
   "fechaVencimiento": "18-07-2018",
   "importe": "200000.00",
@@ -2595,7 +2595,7 @@ const consultaCfdCfdiRetenciones = {
       "saldoDisponible": 123000,
       "idProducto": "CHQ",
       "descripcionProducto": "CHEQUES",
-      "CLABE":" "12345678998745"6",
+      "CLABE":"123456789987451234",
       "moneda": "MXP"
     }
     ],
