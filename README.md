@@ -269,6 +269,6 @@ var mapaModelo = {
 }
 ```
 
-###IMPORTANTE:
+### NOTA IMPORTANTE:
 
-El archivo ***"index.json"*** ***del proyecto swagger-esb-apis***, debe ser reemplazado por el archivo "index.json" generado en nuestros proyectos swagger-xxx-api mediante el comando ***"multi-file-swagger index.yaml > index.json"*** después de cada nuevo cambio a validar.
+El archivo "index.json" ***del proyecto swagger-esb-apis***, debe ser reemplazado por el archivo "index.json" generado en nuestros proyectos swagger-xxx-api mediante el comando ***"multi-file-swagger index.yaml > index.json"*** después de cada nuevo cambio a validar.
