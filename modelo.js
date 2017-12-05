@@ -3358,4 +3358,4 @@ function obtenerModelo (nombreModelo){
 
 module.exports = {
   obtenerModelo
-}
+} 
