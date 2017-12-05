@@ -2462,24 +2462,39 @@ const activacionPaperless = {
 }
 
 const consultaMovimientos = {
-  "saldoInicial": 0,
-  "listMovimientos": [
-  {
-    "folio": "ABCD12345",
-    "fecha": "25-05-2017T08:47:00",
-    "descripcion": "DESCRIPCION DEL MOVIMIENTO",
-    "importe": 21.5,
-    "divisa": "MXN",
-    "cuentaDestino": "123456789012345",
-    "cuentaOrigen": "987654321012345",
-    "referencia": "referencia",
-    "referenciaNumerica": 1234567,
-    "CASFIM": "789456",
-    "canal": "MVNET"
-  }
-  ],
-  "responseStatus": 200,
-  "responseError": ""
+   "saldoInicial": 40654,
+   "listMovimientos": [
+       {
+           "folio": "g9x3XlWSDyr",
+           "fecha": "2017-09-05T03:43:56Z",
+           "descripcion": "Industrial",
+           "importe": 7770.53,
+           "naturaleza": "CARGO",
+           "divisa": "MXN",
+           "cuentaDestino": 12730,
+           "cuentaOrigen": 23430,
+           "referencia": 2487,
+           "referenciaNumerica": 8429,
+           "CASFIM": 7022,
+           "canal": "Services"
+       },
+       {
+           "folio": "NpF0CZH3Al",
+           "fecha": "2017-09-08T10:23:41Z",
+           "descripcion": "Jewelery",
+           "importe": 6871.34,
+           "naturaleza": "ABONO",
+           "divisa": "MXN",
+           "cuentaDestino": 13195,
+           "cuentaOrigen": 26138,
+           "referencia": 9458,
+           "referenciaNumerica": 9153,
+           "CASFIM": 6599,
+           "canal": "Accounting"
+       }
+   ],
+   "responseStatus": 200,
+   "responseError": ""
 }
 
 const consultaMovsMesaDinero = {
