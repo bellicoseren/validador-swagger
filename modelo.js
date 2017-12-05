@@ -2476,6 +2476,7 @@ const consultaMovimientos = {
            "referencia": 2487,
            "referenciaNumerica": 8429,
            "CASFIM": 7022,
+           "claveRastreo": "ASDW223222",
            "canal": "Services"
        },
        {
@@ -2490,6 +2491,7 @@ const consultaMovimientos = {
            "referencia": 9458,
            "referenciaNumerica": 9153,
            "CASFIM": 6599,
+           "claveRastreo": "BSDW223555",
            "canal": "Accounting"
        }
    ],
