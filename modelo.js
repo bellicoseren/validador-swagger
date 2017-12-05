@@ -3263,7 +3263,7 @@ const impuestosLocales = {
 }
 
 const aperturaPagare = {
-    "folioInversion": "ABC123456"
+  "folioInversion": "ABC123456",
 	"responseStatus": 200,
 	"responseError": ""
 }
