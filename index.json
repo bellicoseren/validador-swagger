@@ -9213,6 +9213,120 @@
           }
         }
       }
+    },
+    "/impuestosLocales": {
+      "post": {
+        "tags": [
+          "Sprint 5"
+        ],
+        "description": "Este servicio solicita al core bancario T24 hacer el registro de los impuestos locales.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "impuestosLocales",
+            "description": "impuestos locales",
+            "required": true,
+            "schema": {
+              "required": [
+                "canal"
+              ],
+              "properties": {
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                },
+                "canal": {
+                  "description": "Identificador del canal a través del cual se recibió la petición. Se utilizarán los identificadores de canal definidos por T24.",
+                  "type": "string",
+                  "example": "MVNET"
+                },
+                "impuestosLocales": {
+                  "properties": {
+                    "numeroCliente": {
+                      "type": "integer",
+                      "example": "987654321",
+                      "description": "Numero de cliente que se va a generar los impuestos"
+                    },
+                    "usuarioId": {
+                      "type": "string",
+                      "example": "987654321",
+                      "description": "Id del usuario que se va a generar los impuestos"
+                    },
+                    "direccionIp": {
+                      "type": "string",
+                      "example": "192.168.99.102",
+                      "description": "Numero de cliente que se va a generar los impuestos"
+                    },
+                    "lineaCaptura": {
+                      "type": "string",
+                      "example": "ASDSAD-ASDASD-ASDASD-ASDSAD-KIOIJ",
+                      "description": "Línea de captura que se procesará."
+                    },
+                    "importeLineaCaptura": {
+                      "type": "number",
+                      "example": 5862.8,
+                      "description": "Monto de la línea de captura."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "impuestos locales",
+            "schema": {
+              "properties": {
+                "htmlGdf": {
+                  "type": "string",
+                  "example": "<table><tr><td></td></tr></table>"
+                },
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "impuestos locales error",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

@@ -3241,6 +3241,12 @@ const consultaDispersionFondos = {
   ]
 }
 
+const impuestosLocales={
+    "htmlGdf":"<table><tr><td></td></tr></table>", 
+	"responseStatus": 200,
+	"responseError": ""
+}
+
 var mapaModelo = {
    //### ESB ####//
    /////////// Sprint 1  /////////////
@@ -3318,7 +3324,10 @@ var mapaModelo = {
  'ejecutaTransaccion':ejecutaTransaccion,
  'catDispositivosMoviles':catDispositivosMoviles,
  'cancelaOpProg':cancelaOpProg,
- 'consultaDispersionFondos':consultaDispersionFondos 
+ 'consultaDispersionFondos':consultaDispersionFondos,
+//////////// Sprint 5 ////////////////////////
+ 'impuestosLocales': impuestosLocales
+
 }
 
 function obtenerModelo (nombreModelo){
@@ -3327,4 +3336,4 @@ function obtenerModelo (nombreModelo){
 
 module.exports = {
   obtenerModelo
-}
+}:
