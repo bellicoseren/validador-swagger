@@ -3241,8 +3241,14 @@ const consultaDispersionFondos = {
   ]
 }
 
-const impuestosLocales={
+const impuestosLocales = {
     "htmlGdf":"<table><tr><td></td></tr></table>", 
+	"responseStatus": 200,
+	"responseError": ""
+}
+
+const aperturaPagare = {
+    "folioInversion": "ABC123456"
 	"responseStatus": 200,
 	"responseError": ""
 }
@@ -3327,6 +3333,7 @@ var mapaModelo = {
  'consultaDispersionFondos':consultaDispersionFondos,
 //////////// Sprint 5 ////////////////////////
  'impuestosLocales': impuestosLocales
+ 'aperturaPagare': aperturaPagare
 
 }
 

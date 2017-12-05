@@ -9327,6 +9327,119 @@
           }
         }
       }
+    },
+    "/aperturaPagare": {
+      "post": {
+        "tags": [
+          "Sprint 5"
+        ],
+        "description": "Este servicio solicita al core bancario T24 hacer la apertura de pagares.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "aperturaPagare",
+            "description": "apertura Pagare",
+            "required": true,
+            "schema": {
+              "required": [
+                "canal",
+                "otp",
+                "monto",
+                "plazo",
+                "ticket"
+              ],
+              "properties": {
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "canal": {
+                  "type": "string",
+                  "example": "MVNET"
+                },
+                "otp": {
+                  "type": "string",
+                  "example": "1234567"
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                },
+                "monto": {
+                  "type": "number",
+                  "format": "long",
+                  "example": 1000000
+                },
+                "cuentaAsociada": {
+                  "type": "string",
+                  "example": "123456"
+                },
+                "plazo": {
+                  "type": "integer",
+                  "example": 3
+                },
+                "recreacionAlVencimiento": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "reinversionIntereses": {
+                  "type": "boolean",
+                  "example": true
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "impuestos locales",
+            "schema": {
+              "properties": {
+                "folioInversion": {
+                  "type": "string",
+                  "example": "ABC123456"
+                },
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "impuestos locales error",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 4500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "T24 FUERA DE LINEA"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
