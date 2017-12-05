@@ -3347,7 +3347,7 @@ var mapaModelo = {
  'cancelaOpProg':cancelaOpProg,
  'consultaDispersionFondos':consultaDispersionFondos,
 //////////// Sprint 5 ////////////////////////
- 'impuestosLocales': impuestosLocales
+ 'impuestosLocales': impuestosLocales,
  'aperturaPagare': aperturaPagare
 
 }
@@ -3358,4 +3358,4 @@ function obtenerModelo (nombreModelo){
 
 module.exports = {
   obtenerModelo
-}:
+}
