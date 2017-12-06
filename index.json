@@ -3334,8 +3334,8 @@
             "schema": {
               "required": [
                 "idPersona",
+                "noCuenta",
                 "fechaInicio",
-                "fechaFin",
                 "ticket",
                 "canal"
               ],
@@ -3344,6 +3344,11 @@
                   "type": "integer",
                   "format": "int64",
                   "example": 123546345
+                },
+                "noCuenta": {
+                  "description": "Número de cuenta eje cuyos contratos se desea consultar",
+                  "type": "string",
+                  "example": "123456"
                 },
                 "fechaInicio": {
                   "type": "string",
@@ -9222,124 +9227,6 @@
         }
       }
     },
-    "/aperturaCede": {
-      "post": {
-        "tags": [
-          "Sprint 5"
-        ],
-        "description": "Consolidar la información relevante respecto al diseño de la operación /aperturaCede del servicio requerido para la integración de Multivanet con T24.",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "aperturaCede",
-            "description": "Diseño de la operación para aperturaCede",
-            "required": true,
-            "schema": {
-              "required": [
-                "ticket",
-                "cuentaAsociada",
-                "idPersona",
-                "monto",
-                "canal",
-                "otp",
-                "plazo"
-              ],
-              "properties": {
-                "idPersona": {
-                  "type": "integer",
-                  "format": "int64",
-                  "example": 123546345
-                },
-                "canal": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": "WEB"
-                },
-                "otp": {
-                  "type": "string",
-                  "example": "1234567"
-                },
-                "ticket": {
-                  "required": [
-                    "id_user",
-                    "id_creds"
-                  ],
-                  "properties": {
-                    "id_user": {
-                      "type": "string",
-                      "example": "abc"
-                    },
-                    "id_creds": {
-                      "type": "string",
-                      "example": "1233"
-                    }
-                  }
-                },
-                "monto": {
-                  "description": "Monto de apertura para el Cede.",
-                  "type": "number",
-                  "format": "double",
-                  "example": 1000000
-                },
-                "cuentaAsociada": {
-                  "description": "Número de la cuenta que se asociará con la nueva inversión. Las transferencias desde y hacia la inversión resultante sólo se podrán ejecutar a esta cuenta.",
-                  "type": "string",
-                  "example": "123456"
-                },
-                "plazo": {
-                  "description": "Plazo de la inversión en días.",
-                  "type": "integer",
-                  "format": "int32",
-                  "example": 3
-                },
-                "reinversionIntereses": {
-                  "description": "Esta bandera indica si  al vencimiento del plazo los intereses deberán moverse a la cuenta asociada con la inversión o reinvertirse en la inversión como capital.",
-                  "type": "boolean",
-                  "example": true
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
-            "schema": {
-              "properties": {
-                "folioInversion": {
-                  "description": "El identificador único de la inversión creada en T24.",
-                  "type": "string",
-                  "example": "ABC123456"
-                },
-                "responseStatus": {
-                  "type": "number",
-                  "example": 200
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": "Problema con la peticion"
-                }
-              }
-            }
-          },
-          "201": {
-            "description": "Error controlado, el codigo http real es 200",
-            "schema": {
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 4500
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": "T24 FUERA DE LINEA"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/impuestosLocales": {
       "post": {
         "tags": [
@@ -9438,6 +9325,309 @@
           },
           "500": {
             "description": "impuestos locales error",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tasasIntegra": {
+      "post": {
+        "tags": [
+          "Sprint 5"
+        ],
+        "description": "Este servicio permite obtener la información vigente de las tasas del banco.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "tasasIntegra",
+            "description": "Tasas Integra",
+            "required": true,
+            "schema": {
+              "required": [
+                "ticket"
+              ],
+              "properties": {
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tasas Integra",
+            "schema": {
+              "properties": {
+                "tasas": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "tasa": {
+                        "type": "number",
+                        "example": 0.3
+                      },
+                      "rangoFinal": {
+                        "type": "number",
+                        "example": 1000000
+                      },
+                      "rangoInicial": {
+                        "type": "number",
+                        "example": 0
+                      },
+                      "montoMensual": {
+                        "type": "number",
+                        "example": 50000
+                      },
+                      "tasaMensual": {
+                        "type": "number",
+                        "example": 0.3
+                      }
+                    }
+                  }
+                },
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Tasas Integra",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/depositoIntegra": {
+      "post": {
+        "tags": [
+          "Sprint 5"
+        ],
+        "description": "Este servicio permite realizar un depósito a una cuenta Multiva Intgegra desde su cuenta Eje.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "tasasIntegra",
+            "description": "Depósito Integra",
+            "required": true,
+            "schema": {
+              "required": [
+                "idPersona",
+                "ticket",
+                "otp",
+                "canal",
+                "cuentaOrigen",
+                "cuentaDestino",
+                "monto"
+              ],
+              "properties": {
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                },
+                "otp": {
+                  "type": "string",
+                  "example": "1234567"
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "cuentaOrigen": {
+                  "type": "string",
+                  "example": "123456"
+                },
+                "cuentaDestino": {
+                  "type": "string",
+                  "example": "123456"
+                },
+                "monto": {
+                  "type": "number",
+                  "example": 100000
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Depósito Integra",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Depósito Integra",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/aperturaIntegra": {
+      "post": {
+        "tags": [
+          "Sprint 5"
+        ],
+        "description": "Este servicio permite solicitar la apertura de una inversión de tipo Multiva Integra para un cliente.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "aperturaIntegra",
+            "description": "Apertura Integra",
+            "required": true,
+            "schema": {
+              "required": [
+                "idPersona",
+                "canal",
+                "otp",
+                "ticket",
+                "cuentaEje",
+                "monto"
+              ],
+              "properties": {
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "otp": {
+                  "type": "string",
+                  "example": "1234567"
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                },
+                "cuentaEje": {
+                  "type": "string",
+                  "example": "123456"
+                },
+                "monto": {
+                  "type": "number",
+                  "example": 100000
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Apertura Integra",
+            "schema": {
+              "properties": {
+                "folioInversion": {
+                  "type": "string",
+                  "example": "123456"
+                },
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Apertura Integra",
             "schema": {
               "properties": {
                 "responseStatus": {

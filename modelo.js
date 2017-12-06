@@ -3270,6 +3270,30 @@ const aperturaPagare = {
 	"responseError": ""
 }
 
+const aperturaIntegra = {
+  "folioInversion": "123456",
+  "responseStatus": 200,
+  "responseError": ""
+}
+
+const depositoIntegra = {
+  "responseStatus": 200,
+  "responseError": ""
+}
+const tasasIntegra = {
+    "tasas": [
+        {
+          "tasa": 0.3,
+          "rangoFinal": 1000000,
+          "rangoInicial": 0,
+          "montoMensual": 50000,
+          "tasaMensual": 0.3
+        }
+      ],
+  "responseStatus": 200,
+  "responseError": ""
+}
+
 var mapaModelo = {
    //### ESB ####//
    /////////// Sprint 1  /////////////
@@ -3350,7 +3374,11 @@ var mapaModelo = {
  'consultaDispersionFondos':consultaDispersionFondos,
 //////////// Sprint 5 ////////////////////////
  'impuestosLocales': impuestosLocales,
- 'aperturaPagare': aperturaPagare
+ 'aperturaPagare': aperturaPagare,
+ 'tasasIntegra': tasasIntegra,
+ 'aperturaIntegra': aperturaIntegra,
+ 'depositoIntegra': depositoIntegra
+
 
 }
 
