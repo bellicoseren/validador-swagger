@@ -3294,6 +3294,23 @@ const tasasIntegra = {
   "responseError": ""
 }
 
+const aperturaCede = {
+  "folioInversion": "ABC123456",
+  "responseStatus": 200,
+  "responseError": "Problema con la peticion"
+}
+
+const tasasCede = {
+  "tasas": [{
+		"tasa": 0.3,
+		"montoFinal": 1000000.00,
+		"montoInicial": 0.0,
+		"plazo": 30
+	}],
+	"responseStatus": 200,
+	"responseError": ""
+}
+
 var mapaModelo = {
    //### ESB ####//
    /////////// Sprint 1  /////////////
@@ -3377,9 +3394,9 @@ var mapaModelo = {
  'aperturaPagare': aperturaPagare,
  'tasasIntegra': tasasIntegra,
  'aperturaIntegra': aperturaIntegra,
- 'depositoIntegra': depositoIntegra
-
-
+ 'depositoIntegra': depositoIntegra,
+ 'aperturaCede':aperturaCede,
+ 'tasasCede': tasasCede
 }
 
 function obtenerModelo (nombreModelo){
