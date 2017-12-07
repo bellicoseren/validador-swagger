@@ -9669,6 +9669,108 @@
         }
       }
     },
+    "/tasasPagare": {
+      "post": {
+        "tags": [
+          "Sprint 5"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación tasasPagare del servicio requerido para la integración de Multivanet con T24.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "tasasPagare",
+            "description": "Diseño de la operación para tasasPagare.",
+            "required": true,
+            "schema": {
+              "required": [
+                "ticket"
+              ],
+              "properties": {
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "properties": {
+                "tasas": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "tasa": {
+                        "description": "Tasa registrada para este monto.",
+                        "type": "number",
+                        "format": "double",
+                        "example": 0.3
+                      },
+                      "montoInicial": {
+                        "description": "Monto inicial del rango requerido para que esta tasa aplique.",
+                        "type": "number",
+                        "format": "double",
+                        "example": 0
+                      },
+                      "montoFinal": {
+                        "description": "Monto final del rango requerido para que aplique esta tasa.",
+                        "type": "number",
+                        "format": "double",
+                        "example": 1000000
+                      },
+                      "plazo": {
+                        "description": "Plazo aplicable para esta tasa.o.",
+                        "type": "integer",
+                        "format": "int32",
+                        "example": 30
+                      }
+                    }
+                  }
+                },
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Internal Error Server"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/tasasIntegra": {
       "post": {
         "tags": [
@@ -9956,6 +10058,681 @@
           },
           "500": {
             "description": "Apertura Integra",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/aperturaPagare": {
+      "post": {
+        "tags": [
+          "Sprint 5"
+        ],
+        "description": "Este servicio solicita al core bancario T24 hacer la apertura de pagares.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "aperturaPagare",
+            "description": "apertura Pagare",
+            "required": true,
+            "schema": {
+              "required": [
+                "canal",
+                "otp",
+                "monto",
+                "plazo",
+                "ticket"
+              ],
+              "properties": {
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "canal": {
+                  "type": "string",
+                  "example": "MVNET"
+                },
+                "otp": {
+                  "type": "string",
+                  "example": "1234567"
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                },
+                "monto": {
+                  "type": "number",
+                  "format": "long",
+                  "example": 1000000
+                },
+                "cuentaAsociada": {
+                  "type": "string",
+                  "example": "123456"
+                },
+                "plazo": {
+                  "type": "integer",
+                  "example": 3
+                },
+                "recreacionAlVencimiento": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "reinversionIntereses": {
+                  "type": "boolean",
+                  "example": true
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "impuestos locales",
+            "schema": {
+              "properties": {
+                "folioInversion": {
+                  "type": "string",
+                  "example": "ABC123456"
+                },
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "impuestos locales error",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/movimientosDiputados": {
+      "post": {
+        "tags": [
+          "Sprint 5"
+        ],
+        "description": "Servicio de consulta Cfd y Cfdi para obtener el estado de cuenta timbrado de hasta 18 meses atras",
+        "produces": [
+          "application/octet-stream"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "movimientosDiputados",
+            "description": "movimientos Diputados",
+            "required": true,
+            "schema": {
+              "required": [
+                "numeroDeCuenta",
+                "ticket",
+                "canal"
+              ],
+              "properties": {
+                "numeroDeCuenta": {
+                  "type": "string",
+                  "example": 12342456423985
+                },
+                "fechaInicio": {
+                  "type": "string",
+                  "format": "date",
+                  "example": "2012-12-12"
+                },
+                "fechaFin": {
+                  "type": "string",
+                  "format": "date",
+                  "example": "2012-12-12"
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "example": "MVNET"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Archivo en stream de bytes",
+            "schema": {
+              "type": "string",
+              "format": "binary"
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "No hay información para esta consulta."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cambioInstruccion": {
+      "post": {
+        "tags": [
+          "Sprint 5"
+        ],
+        "description": "Este servicio permite cambiar el comportamiento de la inversión proporcionada al vencimiento.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "cambioInstruccion",
+            "description": "cambioInstruccion",
+            "required": true,
+            "schema": {
+              "required": [
+                "idPersona",
+                "canal",
+                "otp",
+                "ticket",
+                "recreacionAlVencimiento",
+                "reinversionIntereses"
+              ],
+              "properties": {
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "canal": {
+                  "description": "Identificador del canal a través del cual se recibió la petición. Se utilizarán los identificadores de canal definidos por T24.",
+                  "type": "string",
+                  "example": "MVNET"
+                },
+                "otp": {
+                  "type": "string",
+                  "example": "1234567"
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                },
+                "recreacionAlVencimiento": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "reinversionIntereses": {
+                  "type": "boolean",
+                  "example": true
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "cambio Instruccion",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "cambio Instruccion error",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pagoImpuestosGdf": {
+      "post": {
+        "tags": [
+          "Sprint 5"
+        ],
+        "description": "Este servicio solicita al core bancario T24 hacer el pago de servicios.",
+        "produces": [
+          "application/octet-stream"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "pagoImpuestosGdf",
+            "description": "pagoImpuestosGdf",
+            "required": true,
+            "schema": {
+              "required": [
+                "idPersona",
+                "ticket"
+              ],
+              "properties": {
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "canal": {
+                  "type": "string",
+                  "format": "string",
+                  "example": "MVNET"
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                },
+                "pagoImpuestosGdf": {
+                  "required": [
+                    "ctaOrigen",
+                    "CLABE",
+                    "fechaCaptura",
+                    "lineaCaptura",
+                    "mail"
+                  ],
+                  "properties": {
+                    "ctaOrigen": {
+                      "type": "number",
+                      "example": 1000525658
+                    },
+                    "CLABE": {
+                      "type": "string",
+                      "example": "9879865465"
+                    },
+                    "moneda": {
+                      "type": "string",
+                      "example": "MXN"
+                    },
+                    "folioFW": {
+                      "type": "number",
+                      "example": 987954654
+                    },
+                    "importe": {
+                      "type": "number",
+                      "example": 120000
+                    },
+                    "tipoComision": {
+                      "type": "integer",
+                      "example": 5512233456
+                    },
+                    "montoComision": {
+                      "type": "number",
+                      "example": "1000.00"
+                    },
+                    "descripcion": {
+                      "type": "string",
+                      "example": "Descripcion"
+                    },
+                    "tipoTraspaso": {
+                      "type": "string",
+                      "example": "1"
+                    },
+                    "fechaCaptura": {
+                      "type": "string",
+                      "format": "date",
+                      "example": "2017-10-12"
+                    },
+                    "formaProceso": {
+                      "type": "string"
+                    },
+                    "usuarioCaptura": {
+                      "type": "string",
+                      "format": "string",
+                      "example": "Usuario 1"
+                    },
+                    "usuarioAutoriza": {
+                      "type": "string",
+                      "format": "string",
+                      "example": "Usuario 2"
+                    },
+                    "lineaCaptura": {
+                      "type": "string",
+                      "example": "GUMR880723BJ2"
+                    },
+                    "mail": {
+                      "type": "string",
+                      "format": "string",
+                      "example": "test@domain.com"
+                    },
+                    "celular": {
+                      "type": "string",
+                      "example": "5512233456"
+                    },
+                    "enviaCorreo": {
+                      "type": "boolean",
+                      "example": "false"
+                    },
+                    "enviaSms": {
+                      "type": "boolean",
+                      "example": "false"
+                    },
+                    "numCliente": {
+                      "type": "number"
+                    },
+                    "nombre": {
+                      "type": "string",
+                      "format": "string",
+                      "example": "nombre usuario"
+                    },
+                    "domicilio": {
+                      "type": "string",
+                      "example": "BANAMEX"
+                    },
+                    "colonia": {
+                      "type": "string",
+                      "example": "Gustavo Baz"
+                    },
+                    "delegacion": {
+                      "type": "string",
+                      "example": "PAGO DE RENTA"
+                    },
+                    "codigoPostal": {
+                      "type": "string",
+                      "example": "GUMR880723BJ2"
+                    },
+                    "estado": {
+                      "type": "string",
+                      "example": "1"
+                    },
+                    "numCtaAgua": {
+                      "type": "string",
+                      "format": "string",
+                      "example": "PAGO DE MES DE AGOSTO"
+                    },
+                    "marca": {
+                      "type": "string",
+                      "example": "TEDW112233445566"
+                    },
+                    "subMarca": {
+                      "type": "string",
+                      "example": "submarca"
+                    },
+                    "valorFactura": {
+                      "type": "number",
+                      "format": "string"
+                    },
+                    "numCilindros": {
+                      "type": "number",
+                      "example": "123456"
+                    },
+                    "tipoDeclaracion": {
+                      "type": "string",
+                      "format": "string"
+                    },
+                    "renumeraciones": {
+                      "type": "number",
+                      "example": "123456"
+                    },
+                    "numTrabajadores": {
+                      "type": "number",
+                      "example": "1"
+                    },
+                    "fechaEscritura": {
+                      "type": "string",
+                      "format": "string",
+                      "example": "PAGO DE MES DE AGOSTO"
+                    },
+                    "fechaEvento": {
+                      "type": "string",
+                      "format": "string",
+                      "example": "123456"
+                    },
+                    "numeroEscritura": {
+                      "type": "string",
+                      "format": "string",
+                      "example": "PAGO DE MES DE AGOSTO"
+                    },
+                    "cuentaCastastral": {
+                      "type": "string",
+                      "format": "string",
+                      "example": "123456"
+                    },
+                    "numNotario": {
+                      "type": "string",
+                      "format": "string",
+                      "example": "PAGO DE MES DE AGOSTO"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Archivo en stream de bytes",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                },
+                "response": {
+                  "properties": {
+                    "idPagoImpuestos": {
+                      "type": "number",
+                      "example": 123456789
+                    },
+                    "rutaArchivo": {
+                      "type": "string",
+                      "example": "/home/Archivos"
+                    },
+                    "archivoStream": {
+                      "type": "string",
+                      "format": "binary"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "pagoImpuestosGdf error",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/aperturaFondo": {
+      "post": {
+        "tags": [
+          "Sprint 5"
+        ],
+        "description": "Este servicio solicita al core bancario T24 hacer el registro la apertura para un nuevo fondo de inversion locales.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "aperturaFondo",
+            "description": "apertura Fondo",
+            "required": true,
+            "schema": {
+              "required": [
+                "idPersona",
+                "canal",
+                "ticket"
+              ],
+              "properties": {
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "canal": {
+                  "type": "string",
+                  "example": "MVNET"
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                },
+                "fondoInversion": {
+                  "required": [
+                    "numeroCuenta",
+                    "email",
+                    "ipConexion"
+                  ],
+                  "properties": {
+                    "numeroCuenta": {
+                      "type": "string",
+                      "format": "string",
+                      "example": "example@multiva.com.mx"
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "ipConexion": {
+                      "type": "string",
+                      "format": "string",
+                      "example": "192.168.125.22"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "apertura Fondo",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "apertura Fondo error",
             "schema": {
               "properties": {
                 "responseStatus": {
