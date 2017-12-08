@@ -3323,12 +3323,14 @@ const tasasPagare = {
 }
 
 const movimientosCFE = {
-  "ticket": {
-		"id_user": 1000897576,
-		"id_creds": ""
-	},
-	"fechaInicio": "10-10-2017",
-	"fechaFin": "30-30-2017"
+  "movimientos": [{
+		"fecha": 0.3,
+		"monto": 1000000.00,
+		"referencia": "1234567989",
+		"canal": "MULTIVANET"
+	}],
+	"responseStatus": 200,
+	"responseError": ""
 }
 
 
