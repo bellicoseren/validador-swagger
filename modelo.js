@@ -3322,6 +3322,31 @@ const tasasPagare = {
 	"responseError": ""
 }
 
+const pagoImpuestosGdf = {
+  "responseStatus": 200,
+  "responseError": "",
+  "response": {
+    "idPagoImpuestos": 123456789,
+    "rutaArchivo": "/home/Archivos",
+    "archivoStream": "string"
+  }
+}
+
+const cambioInstruccion ={
+  "responseStatus": 200,
+  "responseError": ""
+}
+
+const movimientosDiputados={
+    "archivoStream": "string"
+}
+
+const aperturaFondo ={
+  "responseStatus": 200,
+  "responseError": ""
+}
+
+
 var mapaModelo = {
    //### ESB ####//
    /////////// Sprint 1  /////////////
@@ -3408,7 +3433,11 @@ var mapaModelo = {
  'depositoIntegra': depositoIntegra,
  'aperturaCede':aperturaCede,
  'tasasCede': tasasCede,
- 'tasasPagare': tasasPagare
+ 'tasasPagare': tasasPagare,
+ 'pagoImpuestosGdf':pagoImpuestosGdf,
+ 'cambioInstruccion': cambioInstruccion,
+ 'movimientosDiputados':movimientosDiputados,
+ 'aperturaFondo':aperturaFondo
  
 }
 
