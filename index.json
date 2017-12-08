@@ -10748,6 +10748,119 @@
           }
         }
       }
+    },
+    "/movimientosCFE": {
+      "post": {
+        "tags": [
+          "Sprint 5"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación movimientosCFE del servicio requerido para la integración de Multivanet con T24.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "tasasCede",
+            "description": "Diseño de la operación para movimientosCFE.",
+            "required": true,
+            "schema": {
+              "required": [
+                "ticket",
+                "fechaInicio"
+              ],
+              "properties": {
+                "fechaInicio": {
+                  "description": "Fecha de inicio del rango de búsqueda de movimientos. En formato dd-MM-yyyy.",
+                  "type": "string",
+                  "format": "date",
+                  "example": "10-10-2017"
+                },
+                "fechaFin": {
+                  "description": "La fecha fin del rango de búsqueda de movimientos. En formato dd-MM-yyyy.",
+                  "type": "string",
+                  "format": "date",
+                  "example": "30-30-2017"
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "abc"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "1233"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "properties": {
+                "movimientos": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "fecha": {
+                        "description": "Fecha en que se aplicó el movimiento.",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "10-10-2017"
+                      },
+                      "monto": {
+                        "description": "Monto del movimiento registrado.",
+                        "type": "number",
+                        "format": "double",
+                        "example": 1000000
+                      },
+                      "referencia": {
+                        "description": "Referencia del movimiento.",
+                        "type": "string",
+                        "example": "1234567989"
+                      },
+                      "canal": {
+                        "description": "Canal por el que se registró el movimiento.",
+                        "type": "string",
+                        "example": "MULTIVANET"
+                      }
+                    }
+                  }
+                },
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la peticion"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Internal Error Server"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
