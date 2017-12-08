@@ -3448,7 +3448,7 @@ var mapaModelo = {
  'cambioInstruccion': cambioInstruccion,
  'movimientosDiputados':movimientosDiputados,
  'aperturaFondo':aperturaFondo,
- 'movimientosCFE':movimientosCFE
+ 'movimientosCFE':movimientosCFE 
  
 }
 
