@@ -3322,6 +3322,16 @@ const tasasPagare = {
 	"responseError": ""
 }
 
+const movimientosCFE = {
+  "ticket": {
+		"id_user": 1000897576,
+		"id_creds": ""
+	},
+	"fechaInicio": "10-10-2017",
+	"fechaFin": "30-30-2017"
+}
+
+
 var mapaModelo = {
    //### ESB ####//
    /////////// Sprint 1  /////////////
@@ -3408,7 +3418,8 @@ var mapaModelo = {
  'depositoIntegra': depositoIntegra,
  'aperturaCede':aperturaCede,
  'tasasCede': tasasCede,
- 'tasasPagare': tasasPagare
+ 'tasasPagare': tasasPagare,
+ 'movimientosCFE': movimientosCFE
  
 }
 
