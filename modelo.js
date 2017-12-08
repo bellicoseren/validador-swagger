@@ -3322,8 +3322,32 @@ const tasasPagare = {
 	"responseError": ""
 }
 
-const movimientosCFE = {
-  "movimientos": [{
+const pagoImpuestosGdf = {
+  "responseStatus": 200,
+  "responseError": "",
+  "response": {
+    "idPagoImpuestos": 123456789,
+    "rutaArchivo": "/home/Archivos",
+    "archivoStream": "string"
+  }
+}
+
+const cambioInstruccion ={
+  "responseStatus": 200,
+  "responseError": ""
+}
+
+const movimientosDiputados={
+    "archivoStream": "string"
+}
+
+const aperturaFondo ={
+  "responseStatus": 200,
+  "responseError": ""
+}
+
+const movimientosCFE ={
+	"movimientos": [{
 		"fecha": 0.3,
 		"monto": 1000000.00,
 		"referencia": "1234567989",
@@ -3332,7 +3356,6 @@ const movimientosCFE = {
 	"responseStatus": 200,
 	"responseError": ""
 }
-
 
 var mapaModelo = {
    //### ESB ####//
@@ -3421,7 +3444,11 @@ var mapaModelo = {
  'aperturaCede':aperturaCede,
  'tasasCede': tasasCede,
  'tasasPagare': tasasPagare,
- 'movimientosCFE': movimientosCFE
+ 'pagoImpuestosGdf':pagoImpuestosGdf,
+ 'cambioInstruccion': cambioInstruccion,
+ 'movimientosDiputados':movimientosDiputados,
+ 'aperturaFondo':aperturaFondo,
+ 'movimientosCFE':movimientosCFE
  
 }
 
