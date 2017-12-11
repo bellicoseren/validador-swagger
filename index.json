@@ -10758,7 +10758,7 @@
         "parameters": [
           {
             "in": "body",
-            "name": "tasasCede",
+            "name": "movimientosCFE",
             "description": "Diseño de la operación para movimientosCFE.",
             "required": true,
             "schema": {

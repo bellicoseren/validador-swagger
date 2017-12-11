@@ -3346,6 +3346,16 @@ const aperturaFondo ={
   "responseError": ""
 }
 
+const movimientosCFE ={
+	"movimientos": [{
+		"fecha": 0.3,
+		"monto": 1000000.00,
+		"referencia": "1234567989",
+		"canal": "MULTIVANET"
+	}],
+	"responseStatus": 200,
+	"responseError": ""
+}
 
 var mapaModelo = {
    //### ESB ####//
@@ -3437,7 +3447,8 @@ var mapaModelo = {
  'pagoImpuestosGdf':pagoImpuestosGdf,
  'cambioInstruccion': cambioInstruccion,
  'movimientosDiputados':movimientosDiputados,
- 'aperturaFondo':aperturaFondo
+ 'aperturaFondo':aperturaFondo,
+ 'movimientosCFE':movimientosCFE 
  
 }
 
