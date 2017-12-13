@@ -3338,9 +3338,7 @@ const cambioInstruccion ={
 }
 
 const movimientosDiputados={
-    "archivoStream": "string",
-    "responseError": "",
-    "responseStatus": 200
+      "_downloadFile":true
 }
 
 const aperturaFondo ={
