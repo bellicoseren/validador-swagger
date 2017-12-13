@@ -6360,6 +6360,11 @@
                   "type": "array",
                   "items": {
                     "properties": {
+                      "folio": {
+                        "description": "El folio asignado a la dispersión.",
+                        "type": "string",
+                        "example": 1234567
+                      },
                       "cuentaDispersion": {
                         "type": "integer",
                         "format": "int64",
@@ -6405,6 +6410,16 @@
                               "type": "number",
                               "format": "double",
                               "example": 500.5
+                            },
+                            "tipoTransferencia": {
+                              "description": "Este campo indica el tipo de transferencia que se debe realizar para la operación registrada en esta cuenta.",
+                              "type": "string",
+                              "example": "SPEI"
+                            },
+                            "CASFIM": {
+                              "description": "Clave del banco, necesaria para ejecutar la transferencia si el tipo de operación es SPEI.",
+                              "type": "string",
+                              "example": 123456
                             }
                           }
                         }
