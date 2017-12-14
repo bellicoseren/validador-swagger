@@ -2637,7 +2637,7 @@ const consultaCfdCfdiRetenciones = {
   }
 
   const estadoPaperless = {
-    "opcionImpresion": "ACTIVA",
+    "opcionImpresion": "CONSULTA MULTIVANET",
     "omitirNombre": true,
     "noCuentaParcialmente": true,
     "responseStatus": 200,
