@@ -6360,6 +6360,11 @@
                   "type": "array",
                   "items": {
                     "properties": {
+                      "folio": {
+                        "description": "El folio asignado a la dispersión.",
+                        "type": "string",
+                        "example": 1234567
+                      },
                       "cuentaDispersion": {
                         "type": "integer",
                         "format": "int64",
@@ -6405,6 +6410,16 @@
                               "type": "number",
                               "format": "double",
                               "example": 500.5
+                            },
+                            "tipoTransferencia": {
+                              "description": "Este campo indica el tipo de transferencia que se debe realizar para la operación registrada en esta cuenta.",
+                              "type": "string",
+                              "example": "SPEI"
+                            },
+                            "CASFIM": {
+                              "description": "Clave del banco, necesaria para ejecutar la transferencia si el tipo de operación es SPEI.",
+                              "type": "string",
+                              "example": 123456
                             }
                           }
                         }
@@ -9340,7 +9355,7 @@
         "tags": [
           "Sprint 5"
         ],
-        "description": "Consolidar la información relevante respecto al diseño de la operación /aperturaCede del servicio requerido para la integración de Multivanet con T24.",
+        "description": "Consolidar la información relevante respecto al diseño de la operación aperturaCede del servicio requerido para la integración de Multivanet con T24.",
         "parameters": [
           {
             "in": "body",
@@ -9572,7 +9587,7 @@
         "tags": [
           "Sprint 5"
         ],
-        "description": "Consolidar la información relevante respecto al diseño de la operación/tasasCede del servicio requerido para la integración de Multivanet con T24.",
+        "description": "Consolidar la información relevante respecto al diseño de la operación tasasCede del servicio requerido para la integración de Multivanet con T24.",
         "parameters": [
           {
             "in": "body",
@@ -9632,7 +9647,7 @@
                         "example": 1000000
                       },
                       "plazo": {
-                        "description": "Plazo aplicable para esta tasa.o.",
+                        "description": "Plazo aplicable para esta tasa.",
                         "type": "integer",
                         "format": "int32",
                         "example": 30
@@ -9734,7 +9749,7 @@
                         "example": 1000000
                       },
                       "plazo": {
-                        "description": "Plazo aplicable para esta tasa.o.",
+                        "description": "Plazo aplicable para esta tasa.",
                         "type": "integer",
                         "format": "int32",
                         "example": 30
