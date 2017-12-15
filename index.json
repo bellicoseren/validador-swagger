@@ -9355,7 +9355,7 @@
         "tags": [
           "Sprint 5"
         ],
-        "description": "Consolidar la información relevante respecto al diseño de la operación /aperturaCede del servicio requerido para la integración de Multivanet con T24.",
+        "description": "Consolidar la información relevante respecto al diseño de la operación aperturaCede del servicio requerido para la integración de Multivanet con T24.",
         "parameters": [
           {
             "in": "body",
@@ -9587,7 +9587,7 @@
         "tags": [
           "Sprint 5"
         ],
-        "description": "Consolidar la información relevante respecto al diseño de la operación/tasasCede del servicio requerido para la integración de Multivanet con T24.",
+        "description": "Consolidar la información relevante respecto al diseño de la operación tasasCede del servicio requerido para la integración de Multivanet con T24.",
         "parameters": [
           {
             "in": "body",
@@ -9647,7 +9647,7 @@
                         "example": 1000000
                       },
                       "plazo": {
-                        "description": "Plazo aplicable para esta tasa.o.",
+                        "description": "Plazo aplicable para esta tasa.",
                         "type": "integer",
                         "format": "int32",
                         "example": 30
@@ -9749,7 +9749,7 @@
                         "example": 1000000
                       },
                       "plazo": {
-                        "description": "Plazo aplicable para esta tasa.o.",
+                        "description": "Plazo aplicable para esta tasa.",
                         "type": "integer",
                         "format": "int32",
                         "example": 30
