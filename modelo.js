@@ -2637,7 +2637,7 @@ const consultaCfdCfdiRetenciones = {
   }
 
   const estadoPaperless = {
-    "opcionImpresion": "ACTIVA",
+    "opcionImpresion": "CONSULTA MULTIVANET",
     "omitirNombre": true,
     "noCuentaParcialmente": true,
     "responseStatus": 200,
@@ -3240,6 +3240,7 @@ const consultaDispersionFondos = {
   "responseError": "",
   "dispersiones": [
     {
+     "folio": "1234567",
       "cuentaDispersion": 5642312345,
       "nombreCuentaDispersion": "CUENTA DISPERSION 1",
       "horasEjecucion": [
@@ -3251,7 +3252,9 @@ const consultaDispersionFondos = {
         {
           "cuenta": "4564523153498",
           "nombre": "CUENTA DESTINO 1",
-          "montoTransferencia": 500.5
+          "montoTransferencia": 500.5,
+          "tipoTransferencia": "SPEI",
+          "CASFIM": "123456"
         }
       ]
     }
@@ -3338,7 +3341,7 @@ const cambioInstruccion ={
 }
 
 const movimientosDiputados={
-    "archivoStream": "string"
+      "_downloadFile":true
 }
 
 const aperturaFondo ={
