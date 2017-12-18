@@ -7295,7 +7295,7 @@
                   "example": "1234567890"
                 },
                 "idTipoTxn": {
-                  "description": "Identificador del tipo de trasaccion",
+                  "description": "Identificador del tipo de transaccion",
                   "type": "integer",
                   "format": "int64",
                   "example": "4564513"
@@ -7307,7 +7307,7 @@
                   "example": "1234567890"
                 },
                 "usuarioCaptura": {
-                  "description": "Cuenta de donde saldra la transaccion",
+                  "description": "Usuario que captura la transaccion",
                   "type": "string",
                   "format": "string",
                   "example": "4456"
@@ -9536,7 +9536,7 @@
                     "numeroCliente": {
                       "type": "integer",
                       "example": "987654321",
-                      "description": "Numero de cliente que se va a generar los impuestos"
+                      "description": "Numero de cliente que va a generar los impuestos"
                     },
                     "usuarioId": {
                       "type": "string",
@@ -10073,8 +10073,12 @@
         ],
         "responses": {
           "200": {
-            "description": "Apertura Integra",
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
             "schema": {
+              "required": [
+                "folioInversion",
+                "responseStatus"
+              ],
               "properties": {
                 "folioInversion": {
                   "type": "string",
@@ -10092,7 +10096,7 @@
             }
           },
           "500": {
-            "description": "Apertura Integra",
+            "description": "Apertura Integra error",
             "schema": {
               "properties": {
                 "responseStatus": {
@@ -10227,7 +10231,7 @@
         "tags": [
           "Sprint 5"
         ],
-        "description": "Servicio de consulta Cfd y Cfdi para obtener el estado de cuenta timbrado de hasta 18 meses atras",
+        "description": "Este servicio permite realizar una consulta de los movimientos registrados para alguna cuenta, devolviendo el listado de movimientos resultante como un archivo de texto",
         "produces": [
           "application/octet-stream"
         ],
@@ -10684,7 +10688,7 @@
         "tags": [
           "Sprint 5"
         ],
-        "description": "Este servicio solicita al core bancario T24 hacer el registro la apertura para un nuevo fondo de inversion locales.",
+        "description": "Este servicio solicita al core bancario T24 hacer el registro la apertura para un nuevo fondo de inversion local.",
         "parameters": [
           {
             "in": "body",
