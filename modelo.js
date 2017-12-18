@@ -3108,7 +3108,7 @@ const barrerCuentas = {
 }
 
 const dispersaFondos = {
-  "folioBarrido": "5642312345",
+  "folioDispersion": "5642312345",
   "responseStatus": 200,
   "responseError": ""
 }
@@ -3126,6 +3126,7 @@ const consultaBarridoCuentas = {
     "folioBarrido": 265,
     "cuentaConcentradora": 5642312345,
     "nombreCuentaConcentradora": "CUENTA CONCENTRADORA",
+    "nombreBarrido":"Barrido Test",
     "horasEjecucion": [
     "12:00:00",
     "14:00:00",
@@ -3223,7 +3224,8 @@ const catDispositivosMoviles = {
  "dispositivos": [
  {
   "descripcion": "ANDROID GALAXY NOTE 8",
-  "idDispositivo": 1
+  "idDispositivo": 1,
+  "requiereIMEI": true
 }
 ],
 "responseError": "",
@@ -3243,6 +3245,7 @@ const consultaDispersionFondos = {
      "folio": "1234567",
       "cuentaDispersion": 5642312345,
       "nombreCuentaDispersion": "CUENTA DISPERSION 1",
+      "nombreDispersion": "DISPERSION TEST",
       "horasEjecucion": [
         "12:00:00",
         "14:00:00",
