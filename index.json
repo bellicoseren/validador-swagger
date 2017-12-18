@@ -9909,7 +9909,7 @@
         "tags": [
           "Sprint 5"
         ],
-        "description": "Este servicio permite realizar un depósito a una cuenta Multiva Intgegra desde su cuenta Eje.",
+        "description": "Consolidar la información relevante respecto al diseño de la operación depositoIntegra del servicio requerido para la integración de Multivanet con T24.",
         "parameters": [
           {
             "in": "body",
@@ -9975,8 +9975,11 @@
         ],
         "responses": {
           "200": {
-            "description": "Depósito Integra",
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
             "schema": {
+              "required": [
+                "responseStatus"
+              ],
               "properties": {
                 "responseStatus": {
                   "type": "number",
@@ -9990,7 +9993,7 @@
             }
           },
           "500": {
-            "description": "Depósito Integra",
+            "description": "Depósito Integra error",
             "schema": {
               "properties": {
                 "responseStatus": {
