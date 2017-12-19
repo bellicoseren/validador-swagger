@@ -9811,7 +9811,7 @@
         "tags": [
           "Sprint 5"
         ],
-        "description": "Este servicio permite obtener la información vigente de las tasas del banco.",
+        "description": "Consolidar la información relevante respecto al diseño de la operación tasasIntegra del servicio requerido para la integración de Multivanet con T24.",
         "parameters": [
           {
             "in": "body",
@@ -9845,31 +9845,44 @@
         ],
         "responses": {
           "200": {
-            "description": "Tasas Integra",
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
             "schema": {
+              "required": [
+                "responseStatus"
+              ],
               "properties": {
                 "tasas": {
                   "type": "array",
                   "items": {
                     "properties": {
                       "tasa": {
+                        "description": "Tasa registrada para este monto.",
                         "type": "number",
+                        "format": "double",
                         "example": 0.3
                       },
                       "rangoFinal": {
+                        "description": "Monto final del rango requerido para que aplique esta tasa.",
                         "type": "number",
+                        "format": "double",
                         "example": 1000000
                       },
                       "rangoInicial": {
+                        "description": "Monto inicial del rango requerido para que esta tasa aplique.",
                         "type": "number",
+                        "format": "double",
                         "example": 0
                       },
                       "montoMensual": {
+                        "description": "Monto mensual requerido para que aplique esta tasa.",
                         "type": "number",
+                        "format": "double",
                         "example": 50000
                       },
                       "tasaMensual": {
+                        "description": "Tasa mensual aplicable si se cumplen estas condiciones.",
                         "type": "number",
+                        "format": "double",
                         "example": 0.3
                       }
                     }
@@ -9887,7 +9900,7 @@
             }
           },
           "500": {
-            "description": "Tasas Integra",
+            "description": "Tasas Integra error",
             "schema": {
               "properties": {
                 "responseStatus": {
