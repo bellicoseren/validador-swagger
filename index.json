@@ -1154,7 +1154,7 @@
         "tags": [
           "Sprint 1"
         ],
-        "description": "Interfaz  que le permitirá a un usuario o sistema enviar notifiaciones de varios tipos.",
+        "description": "Interfaz  que le permitirá a un usuario o sistema enviar notificaciones de varios tipos.",
         "operationId": "envioNotificacionesPOST",
         "parameters": [
           {
@@ -2187,7 +2187,7 @@
         "tags": [
           "Sprint 2"
         ],
-        "description": "Este servicio obtiene el Cfd y Cfdi de Retenciones para el perido solicitado.",
+        "description": "Este servicio obtiene el Cfd y Cfdi de Retenciones para el periodo solicitado.",
         "produces": [
           "application/octet-stream",
           "application/json"
@@ -3162,12 +3162,12 @@
         "tags": [
           "Sprint 2"
         ],
-        "description": "Este servicio englobará la consulta de movimientos múltiples (aquellos que ocurren con cuentas que conforman la multitesoreía de un cliente que tenga el servicio) en T24. ",
+        "description": "Este servicio englobará la consulta de movimientos múltiples (aquellos que ocurren con cuentas que conforman la multitesorería de un cliente que tenga el servicio) en T24. ",
         "parameters": [
           {
             "in": "body",
             "name": "consultaMovimientosMultiT",
-            "description": "1. Consumidor  que solicita la consulta de movimientos múltiples.",
+            "description": "Consumidor  que solicita la consulta de movimientos múltiples.",
             "required": true,
             "schema": {
               "required": [
@@ -4736,6 +4736,12 @@
                   "format": "int64",
                   "example": 123546345
                 },
+                "idPreregistro": {
+                  "description": "Identificador único del preregistro en el core bancario.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": "123456"
+                },
                 "montoMaximo": {
                   "description": "Monto máximo permitido para las operaciones de este preregistro.",
                   "type": "number",
@@ -4747,16 +4753,15 @@
                   "type": "string",
                   "example": 5512223456
                 },
+                "email": {
+                  "description": "Correo electrónico para el envío de notificaciones cuando se opere con este preregistro.",
+                  "type": "string",
+                  "example": "test@domain.com"
+                },
                 "rfcCurp": {
                   "description": "Valor a modificar en el rfc o curp.",
                   "type": "string",
                   "example": "ABCD11223333E44"
-                },
-                "idPreregistro": {
-                  "description": "Identificador único del preregistro en el core bancario.",
-                  "type": "integer",
-                  "format": "int64",
-                  "example": "123456"
                 },
                 "alias": {
                   "description": "Valor a asignar como alias del preregistro modificado.",
@@ -4985,7 +4990,7 @@
         "tags": [
           "Sprint 3"
         ],
-        "description": "Consolidar la información relevante respecto al diseño de la operación/actualizarDatosBE del servicio requerido para la integración de Multivanet con T24..",
+        "description": "Consolidar la información relevante respecto al diseño de la operación /actualizarDatosBE del servicio requerido para la integración de Multivanet con T24..",
         "parameters": [
           {
             "in": "body",
@@ -5834,7 +5839,7 @@
         "tags": [
           "Sprint 3"
         ],
-        "description": "Este servicio solicita al core bancario T24 hacer la asociación de un número de teléfono móvil a una cuenta de cheques de un cliente, a fin de poder realizar transacciones hacia la cuenta utilizando este número de teléfono.",
+        "description": "Consolidar la información relevante respecto al diseño de la operación /consultaBancos del servicio requerido para la integración de Multivanet con T24",
         "parameters": [
           {
             "in": "body",
@@ -6462,7 +6467,7 @@
         "tags": [
           "Sprint 3"
         ],
-        "description": "Consolidar la información relevante respecto al diseño de la operación/consultaLotes del servicio requerido para la integración de Multivanet con el sistema de Programación de Operaciones.",
+        "description": "Consolidar la información relevante respecto al diseño de la operación /consultaLotes del servicio requerido para la integración de Multivanet con el sistema de Programación de Operaciones.",
         "parameters": [
           {
             "in": "body",
@@ -6778,7 +6783,7 @@
                         "example": "12131313113"
                       },
                       "tipoCuenta": {
-                        "description": "Tipo de reporte de cobranza solicitado. Este campo determina el servicio que se ejecutará para generar el reporte, así como el layout que se obtendrá como respuesta. Puede tomar uno de lossiguientes valores:TBP, COBRANZA_REFERENCIADA o CONCILIACION_EMPRESA",
+                        "description": "Tipo de reporte de cobranza solicitado. Este campo determina el servicio que se ejecutará para generar el reporte, así como el layout que se obtendrá como respuesta. Puede tomar uno de los siguientes valores:TBP, COBRANZA_REFERENCIADA o CONCILIACION_EMPRESA",
                         "type": "string",
                         "format": "date",
                         "example": "TPB"
@@ -8684,6 +8689,10 @@
                           "referenciado": {
                             "type": "boolean",
                             "example": false
+                          },
+                          "beneficiario": {
+                            "type": "string",
+                            "example": "Waldo Terry"
                           }
                         }
                       },
@@ -8701,6 +8710,10 @@
                           "beneficiario": {
                             "type": "string",
                             "example": "Waldo Terry"
+                          },
+                          "rfcCurp": {
+                            "type": "string",
+                            "example": "TEDW123456789"
                           },
                           "pagoProveedor": {
                             "type": "boolean",
@@ -8734,10 +8747,6 @@
                             "type": "integer",
                             "format": "int32",
                             "example": 15
-                          },
-                          "razonSocial": {
-                            "type": "string",
-                            "example": "Telefonos de Mexico"
                           }
                         }
                       },
@@ -8933,6 +8942,10 @@
                         "example": "semanal"
                       },
                       "terceroMultiva": {
+                        "required": [
+                          "idProducto",
+                          "beneficiario"
+                        ],
                         "properties": {
                           "idProducto": {
                             "type": "string",
@@ -8953,6 +8966,10 @@
                         }
                       },
                       "interbancario": {
+                        "required": [
+                          "banco",
+                          "beneficiario"
+                        ],
                         "properties": {
                           "banco": {
                             "type": "string",
@@ -8973,6 +8990,10 @@
                         }
                       },
                       "credito": {
+                        "required": [
+                          "banco",
+                          "tipoCredito"
+                        ],
                         "properties": {
                           "banco": {
                             "type": "string",
@@ -8986,19 +9007,23 @@
                         }
                       },
                       "servicio": {
+                        "required": [
+                          "noEstablecimiento"
+                        ],
                         "properties": {
                           "noEstablecimiento": {
                             "type": "integer",
                             "format": "int32",
                             "example": 1
-                          },
-                          "razonSocial": {
-                            "type": "string",
-                            "example": "Teléfonos de México"
                           }
                         }
                       },
                       "pagoTDC": {
+                        "required": [
+                          "noEstablecimiento",
+                          "banco",
+                          "noTarjeta"
+                        ],
                         "properties": {
                           "noEstablecimiento": {
                             "type": "integer",
@@ -9008,6 +9033,10 @@
                           "banco": {
                             "type": "string",
                             "example": "12345689"
+                          },
+                          "noTarjeta": {
+                            "type": "string",
+                            "example": 123456
                           }
                         }
                       },
@@ -9065,7 +9094,7 @@
         "tags": [
           "Sprint 3"
         ],
-        "description": "Consolidar la información relevante respecto al diseño de la operación/obtenerReporteCobranza del servicio requerido para la integración de Multivanet con T24.",
+        "description": "Consolidar la información relevante respecto al diseño de la operación /obtenerReporteCobranza del servicio requerido para la integración de Multivanet con T24.",
         "parameters": [
           {
             "in": "body",
@@ -9078,13 +9107,9 @@
                 "noCuenta",
                 "tipoReporte",
                 "ticket",
-                "otp"
+                "email"
               ],
               "properties": {
-                "otp": {
-                  "type": "string",
-                  "example": "1234567"
-                },
                 "canal": {
                   "type": "string",
                   "minLength": 1,
@@ -9116,7 +9141,7 @@
                   "example": "15:00:00"
                 },
                 "separador": {
-                  "description": "Separador seleccionado para la generación del reporte de resultado. El default es ,",
+                  "description": "Separador seleccionado para la generación del reporte de resultado. El default es.",
                   "type": "string",
                   "example": "|"
                 },
@@ -9135,6 +9160,11 @@
                     "fecha",
                     "monto"
                   ]
+                },
+                "email": {
+                  "description": "Correo de notificación para recibir la ruta de descarga del reporte de cobranza.",
+                  "type": "string",
+                  "example": "ejemplo@ejemplo.com"
                 },
                 "ticket": {
                   "required": [
@@ -9169,8 +9199,13 @@
                   "type": "string",
                   "example": "Problema con la peticion"
                 },
+                "folioProgramacion": {
+                  "description": "Folio de la programación de generación de reporte de cobranza.",
+                  "type": "string",
+                  "example": ""
+                },
                 "rutaReporte": {
-                  "description": "",
+                  "description": "Destino final del reporte donde el consumidor podrá recuperar el archivo generado. El contenido exacto de esta variable dependerá del esquema que se decida implementar para la gestión de documentos.",
                   "type": "string",
                   "example": ""
                 }
