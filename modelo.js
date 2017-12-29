@@ -2791,6 +2791,7 @@ const consultaCuentahabiente = {
 const obtenerReporteCobranza = {
   "responseStatus": 200,
   "responseError": "",
+  "folioProgramacion": "",
   "rutaReporte": ""
 }
 
