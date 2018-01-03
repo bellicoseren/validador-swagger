@@ -3456,7 +3456,7 @@ var mapaModelo = {
  'movimientosDiputados':movimientosDiputados,
  'aperturaFondo':aperturaFondo,
  'movimientosCFE':movimientosCFE 
- 
+  
 }
 
 function obtenerModelo (nombreModelo){
