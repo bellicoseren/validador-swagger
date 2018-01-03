@@ -122,7 +122,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -247,7 +247,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -260,7 +260,7 @@
         "tags": [
           "Sprint 1"
         ],
-        "description": "Servicio  que le permitira cambiar la informacion de contraseña de un usuario activo en el sistema TAM de Multiva. ",
+        "description": "Servicio  que le permitira cambiar la información de contraseña de un usuario activo en el sistema TAM de Multiva. ",
         "parameters": [
           {
             "in": "body",
@@ -354,7 +354,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -367,7 +367,7 @@
         "tags": [
           "Sprint 1"
         ],
-        "description": "Interfaz  que le permitira consultar informacion de las cuentas agregadas de los clientes desde el core bancario T24 de Multiva.",
+        "description": "Interfaz  que le permitira consultar información de las cuentas agregadas de los clientes desde el core bancario T24 de Multiva.",
         "operationId": "consultaCuentasAgregadasClientePOST",
         "parameters": [
           {
@@ -675,7 +675,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -734,7 +734,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Servicio dummy que se publicara para el uso del consumidor en tanto se completa la integracion del ESB a T24. Bajo el entendido de que la firma expuesta en este servicio dummy no cambiara cuando el desarrollo termine",
+            "description": "Servicio dummy que se publicara para el uso del consumidor en tanto se completa la integración del ESB a T24. Bajo el entendido de que la firma expuesta en este servicio dummy no cambiara cuando el desarrollo termine",
             "schema": {
               "required": [
                 "numCliente",
@@ -806,7 +806,7 @@
                         "example": "integer"
                       },
                       "codArea": {
-                        "description": "Codigo Area",
+                        "description": "Codigo de Area",
                         "type": "integer",
                         "format": "int64",
                         "example": "integer"
@@ -874,7 +874,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -956,7 +956,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -969,7 +969,7 @@
         "tags": [
           "Sprint 1"
         ],
-        "description": "Consolidar la información relevante respecto al diseño de la operacion /consultaProductosContratados del servicio /cliente requerida para la integración de Multivanet con T24",
+        "description": "Consolidar la información relevante respecto al diseño de la operación /consultaProductosContratados del servicio /cliente requerida para la integración de Multivanet con T24",
         "parameters": [
           {
             "in": "body",
@@ -1044,7 +1044,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -1057,7 +1057,7 @@
         "tags": [
           "Sprint 1"
         ],
-        "description": "Consolidar la información relevante respecto al diseño de la operacion /consultaServiciosContratados del servicio /cliente requerida para la integración de Multivanet con T24",
+        "description": "Consolidar la información relevante respecto al diseño de la operación /consultaServiciosContratados del servicio /cliente requerida para la integración de Multivanet con T24",
         "parameters": [
           {
             "in": "body",
@@ -1141,7 +1141,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -1233,7 +1233,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -1246,7 +1246,7 @@
         "tags": [
           "Sprint 1"
         ],
-        "description": "Interfaz  que le permitira Listar los Tokens de OTP en el sistema TAM de Multiva.",
+        "description": "Interfaz  que le permitira listar los Tokens de OTP en el sistema TAM de Multiva.",
         "parameters": [
           {
             "in": "body",
@@ -1343,7 +1343,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -1408,7 +1408,7 @@
         "tags": [
           "Sprint 2"
         ],
-        "description": "Consolidar la información relevante respecto al diseño de la operación/activacionPaperless del servicio requerido para la integración de Multivanet con T24",
+        "description": "Consolidar la información relevante respecto al diseño de la operación /activacionPaperless del servicio requerido para la integración de Multivanet con T24",
         "parameters": [
           {
             "in": "body",
@@ -1495,7 +1495,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -1523,12 +1523,12 @@
         "tags": [
           "Sprint 2"
         ],
-        "description": "Consolidar la información relevante respecto al diseño de la operación/consultaCuentasAgregadasCliente del serviciorequerido para la integración de Multivanet con T24",
+        "description": "Consolidar la información relevante respecto al diseño de la operación/consultaCuentasAgregadasCliente del servicio requerido para la integración de Multivanet con T24",
         "parameters": [
           {
             "in": "body",
             "name": "consultaDatosBasicos,",
-            "description": "Consumidor  que dibuja encabezado con datos de cliente",
+            "description": "Consumidor que dibuja encabezado con datos de cliente",
             "required": true,
             "schema": {
               "required": [
@@ -1847,7 +1847,7 @@
                         "example": "14000.00"
                       },
                       "saldoNeto": {
-                        "description": "Monto de la inversion mas los intereses menos el isr",
+                        "description": "Monto de la inversion mas los intereses menos el ISR",
                         "type": "number",
                         "format": "double",
                         "example": "15.02"
@@ -1967,7 +1967,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -2477,7 +2477,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -2675,7 +2675,7 @@
                       "example": "10.00"
                     },
                     "atraso": {
-                      "description": "Dias de atraso de este pago. Si el pago no está retrasdo, este valor será 0",
+                      "description": "Dias de atraso de este pago. Si el pago no está retrasado, este valor será 0",
                       "type": "integer",
                       "format": "int32",
                       "example": "10"
@@ -2746,7 +2746,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -2897,7 +2897,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -3080,7 +3080,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -3162,12 +3162,12 @@
         "tags": [
           "Sprint 2"
         ],
-        "description": "Este servicio englobará la consulta de movimientos múltiples (aquellos que ocurren con cuentas que conforman la multitesorería de un cliente que tenga el servicio) en T24. ",
+        "description": "Este servicio englobará la consulta de movimientos múltiples (aquellos que ocurren con cuentas que conforman la multitesorería de un cliente que tenga el servicio) en T24.",
         "parameters": [
           {
             "in": "body",
             "name": "consultaMovimientosMultiT",
-            "description": "Consumidor  que solicita la consulta de movimientos múltiples.",
+            "description": "Consumidor que solicita la consulta de movimientos múltiples.",
             "required": true,
             "schema": {
               "required": [
@@ -3220,12 +3220,136 @@
         ],
         "responses": {
           "200": {
-            "description": "Nos va a traer facultades Simples",
+            "description": "Nos va a traer facultades Simples.",
+            "schema": {
+              "required": [
+                "listMovimientos",
+                "responseStatus",
+                "responseError"
+              ],
+              "properties": {
+                "listMovimientos": {
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "cliente",
+                      "fecha",
+                      "descripcion",
+                      "importe",
+                      "divisa",
+                      "cuentaOrigen",
+                      "saldoInicial",
+                      "saldoDisponible",
+                      "canal"
+                    ]
+                  },
+                  "properties": {
+                    "cliente": {
+                      "description": "id de la persona propietaria de esta cuenta.",
+                      "type": "integer",
+                      "format": "int64",
+                      "example": 12345678
+                    },
+                    "fecha": {
+                      "description": "Fecha del movimiento a consultar. dd-MM-yyyyThh:mm:ss",
+                      "type": "string",
+                      "format": "date-time",
+                      "example": "25-05-2017T08:47:00"
+                    },
+                    "descripcion": {
+                      "description": "Descripción del movimiento consultado.",
+                      "type": "string",
+                      "example": "DESCRIPCION DEL MOVIMIENTO"
+                    },
+                    "importe": {
+                      "description": "Cantidad monetaria que se movió en la operación bancaria.",
+                      "type": "number",
+                      "format": "double",
+                      "example": -21.5
+                    },
+                    "naturaleza": {
+                      "description": "CARGO o ABONO",
+                      "type": "string",
+                      "example": "CARGO"
+                    },
+                    "divisa": {
+                      "description": "Divisa de la transacción.",
+                      "type": "string",
+                      "example": "MXN"
+                    },
+                    "cuentaDestino": {
+                      "description": "Cuenta a la cual se movió el importe.",
+                      "type": "string",
+                      "example": "123456789012345"
+                    },
+                    "cuentaOrigen": {
+                      "description": "Cuenta origen del movimiento.",
+                      "type": "string",
+                      "example": "987654321012345"
+                    },
+                    "saldoInicial": {
+                      "description": "Saldo en la cuenta al inicio del período proporcionado de consulta.",
+                      "type": "number",
+                      "format": "double",
+                      "example": 21.5
+                    },
+                    "saldoDisponible": {
+                      "description": "Saldo disponible en la cuenta al día de hoy.",
+                      "type": "number",
+                      "format": "double",
+                      "example": 0
+                    },
+                    "folio": {
+                      "description": "Folio del movimiento.",
+                      "type": "string",
+                      "example": ""
+                    },
+                    "referenciaTransferencia": {
+                      "description": "Referencia de la transferencia.",
+                      "type": "string",
+                      "example": "1234567"
+                    },
+                    "moneda": {
+                      "description": "Divisa del movimiento.",
+                      "type": "string",
+                      "example": ""
+                    },
+                    "canal": {
+                      "description": "Canal por el que se generó el movimiento.",
+                      "type": "string",
+                      "example": "MVNET"
+                    }
+                  }
+                },
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Problema con la petición"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
             "schema": {
               "properties": {
                 "listMovimientos": {
                   "type": "array",
                   "items": {
+                    "required": [
+                      "cliente",
+                      "fecha",
+                      "descripcion",
+                      "importe",
+                      "divisa",
+                      "cuentaOrigen",
+                      "saldoInicial",
+                      "saldoDisponible",
+                      "canal"
+                    ],
                     "properties": {
                       "cliente": {
                         "description": "id de la persona propietaria de esta cuenta.",
@@ -3271,7 +3395,7 @@
                         "example": "987654321012345"
                       },
                       "saldoInicial": {
-                        "description": "Saldo en la cuenta al inicio del periodo proporcionado de consulta.",
+                        "description": "Saldo en la cuenta al inicio del período proporcionado de consulta.",
                         "type": "number",
                         "format": "double",
                         "example": 21.5
@@ -3307,11 +3431,11 @@
                 },
                 "responseStatus": {
                   "type": "number",
-                  "example": 200
+                  "example": 500
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Internal Error Server"
                 }
               }
             }
@@ -3324,7 +3448,7 @@
         "tags": [
           "Sprint 2"
         ],
-        "description": "Consolidar la información relevante respecto al diseño de la operación /consultaMovsMesaDinero del servicio requerido para la integración de Multivanet con SABI",
+        "description": "Consolidar la información relevante respecto al diseño de la operación /consultaMovsMesaDinero del servicio requerido para la integración de Multivanet con SABI.",
         "parameters": [
           {
             "in": "body",
@@ -3478,7 +3602,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -3621,7 +3745,22 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 4500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "T24 FUERA DE LINEA"
                 }
               }
             }
@@ -3735,7 +3874,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -3973,7 +4112,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -4123,7 +4262,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -4224,7 +4363,7 @@
             "schema": {
               "properties": {
                 "antiPishing": {
-                  "description": "Es el challenge del servidor de Vasco para el control de antipishing, este codigo es utilizable cuando la validacion de otp se hace independiente a la transaccion que se quiere ejecutar.",
+                  "description": "Es el challenge del servidor de Vasco para el control de antipishing, este codigo es utilizable cuando la validación de otp se hace independiente a la transacción que se quiere ejecutar.",
                   "type": "string",
                   "example": "string"
                 },
@@ -4323,7 +4462,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -4454,7 +4593,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -4587,7 +4726,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -4687,7 +4826,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -4813,7 +4952,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -4841,7 +4980,7 @@
         "tags": [
           "Sprint 3"
         ],
-        "description": "Consolidar la información relevante respecto al diseño de la operación/actualizaReporteCobranza del servicio requerido para la integración de Multivanet con T24.",
+        "description": "Consolidar la información relevante respecto al diseño de la operación /actualizaReporteCobranza del servicio requerido para la integración de Multivanet con T24.",
         "parameters": [
           {
             "in": "body",
@@ -4864,9 +5003,8 @@
                   "example": "WEB"
                 },
                 "otp": {
-                  "description": "OTP del cliente solicitante.",
                   "type": "string",
-                  "example": "123456"
+                  "example": "1234567"
                 },
                 "ticket": {
                   "required": [
@@ -4955,14 +5093,12 @@
             "schema": {
               "properties": {
                 "responseStatus": {
-                  "description": "Código de la respuesta del servicio. Un código de error de 200 indica una ejecución correcta del servicio.",
                   "type": "number",
                   "example": 200
                 },
                 "responseError": {
-                  "description": "Mensaje de error asociado con el código.",
                   "type": "string",
-                  "example": ""
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -5062,7 +5198,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -5156,7 +5292,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -5255,7 +5391,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -5404,7 +5540,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -5432,7 +5568,7 @@
         "tags": [
           "Sprint 3"
         ],
-        "description": "Este servicio solicita al core bancario T24 hacer la cancelacion de alguna transaccion que se haya quedado pendiente.",
+        "description": "Este servicio solicita al core bancario T24 hacer la cancelación de alguna transacción que se haya quedado pendiente.",
         "parameters": [
           {
             "in": "body",
@@ -5450,7 +5586,7 @@
                   "example": 123546345
                 },
                 "folio": {
-                  "description": "folio que tiene la operacion a cancelar.",
+                  "description": "folio que tiene la operación a cancelar.",
                   "type": "integer",
                   "format": "long",
                   "example": "1234567"
@@ -5486,7 +5622,7 @@
         ],
         "responses": {
           "200": {
-            "description": "cancela operacion programada",
+            "description": "cancela operación programada",
             "schema": {
               "properties": {
                 "responseStatus": {
@@ -5495,13 +5631,13 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
           },
           "500": {
-            "description": "cancela operacion programada error",
+            "description": "cancela operación programada error",
             "schema": {
               "properties": {
                 "responseStatus": {
@@ -5566,7 +5702,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 },
                 "catTiposCreditos": {
                   "type": "array",
@@ -5616,7 +5752,7 @@
         "tags": [
           "Sprint 3"
         ],
-        "description": "Consolidar la información relevante respecto al diseño de la operación/catTipoCuenta del servicio requerido para la integración de Multivanet con T24.",
+        "description": "Consolidar la información relevante respecto al diseño de la operación /catTipoCuenta del servicio requerido para la integración de Multivanet con T24.",
         "parameters": [
           {
             "in": "body",
@@ -5694,7 +5830,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -5717,6 +5853,19 @@
                         "description": "Nombre de las transacciones.",
                         "type": "string",
                         "example": "Numero de Cuenta"
+                      },
+                      "tiposTransaccion": {
+                        "description": "Listado de tipos de transacción para los que este tipo de cuenta se puede utilizar.",
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        },
+                        "example": [
+                          2,
+                          3,
+                          10,
+                          11
+                        ]
                       }
                     }
                   }
@@ -5793,7 +5942,7 @@
                         "example": "1"
                       },
                       "descripcion": {
-                        "description": "Descricpcion asociado al dispositivo móvil.",
+                        "description": "Descricpción asociado al dispositivo móvil.",
                         "type": "string",
                         "example": "ANDROID GALAXY NOTE 8"
                       },
@@ -5811,7 +5960,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -5900,7 +6049,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 },
                 "bancos": {
                   "type": "array",
@@ -5991,7 +6140,7 @@
         "tags": [
           "Sprint 3"
         ],
-        "description": "Consolidar la información relevante respecto al diseño de la operación/consultaBarridoCuentas del servicio requerido para la integración de Multivanet con el componente de programación de tareas.",
+        "description": "Consolidar la información relevante respecto al diseño de la operación /consultaBarridoCuentas del servicio requerido para la integración de Multivanet con el componente de programación de tareas.",
         "parameters": [
           {
             "in": "body",
@@ -6001,7 +6150,8 @@
             "schema": {
               "required": [
                 "canal",
-                "ticket"
+                "ticket",
+                "cuentaConcentradora"
               ],
               "properties": {
                 "canal": {
@@ -6024,6 +6174,12 @@
                       "example": "1233"
                     }
                   }
+                },
+                "cuentaConcentradora": {
+                  "description": "Número de cuenta a la cual se va a ir a dejar el monto total acumulado.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": "5642312345"
                 }
               }
             }
@@ -6040,7 +6196,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 },
                 "barridos": {
                   "type": "array",
@@ -6049,7 +6205,7 @@
                       "folioBarrido",
                       "cuentaConcentradora",
                       "nombreCuentaConcentradora",
-                      "horaEjecucion",
+                      "horasEjecucion",
                       "cuentasBarrer"
                     ],
                     "properties": {
@@ -6069,11 +6225,6 @@
                         "description": "Nombre de la cuenta concentradora.",
                         "type": "string",
                         "example": "CUENTA CONCENTRADORA"
-                      },
-                      "nombreBarrido": {
-                        "description": "Nombre identificatorio para el barrido.",
-                        "type": "string",
-                        "example": "Barrido Test"
                       },
                       "horasEjecucion": {
                         "description": "Horas en las que se realizará la ejecución del barrido. En formato hh:mm:ss. Es de especial importancia notar que el servicio NO se hará responsable por verificar que los horarios solicitados  para los barridos no choquen con cualquier otro barrido previamente programado.",
@@ -6187,7 +6338,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 },
                 "bines": {
                   "type": "array",
@@ -6279,7 +6430,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 },
                 "nombreCuentahabiente": {
                   "description": "Número de la cuenta a la que se desea asociar un número de móvil.",
@@ -6368,7 +6519,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 },
                 "dispersiones": {
                   "type": "array",
@@ -6543,7 +6694,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 },
                 "lotes": {
                   "type": "array",
@@ -6606,7 +6757,7 @@
         "tags": [
           "Sprint 3"
         ],
-        "description": "Consolidar la información relevante respecto al diseño de la operación/consultaMovilesCliente del servicio requerido para la integración de Multivanet con TAM.",
+        "description": "Consolidar la información relevante respecto al diseño de la operación /consultaMovilesCliente del servicio requerido para la integración de Multivanet con TAM.",
         "parameters": [
           {
             "in": "body",
@@ -6615,16 +6766,11 @@
             "required": true,
             "schema": {
               "required": [
-                "otp",
                 "canal",
                 "ticket",
                 "idPersona"
               ],
               "properties": {
-                "otp": {
-                  "type": "string",
-                  "example": "1234567"
-                },
                 "canal": {
                   "type": "string",
                   "minLength": 1,
@@ -6666,7 +6812,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 },
                 "moviles": {
                   "type": "array",
@@ -6766,7 +6912,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 },
                 "reportes": {
                   "type": "array",
@@ -6789,7 +6935,7 @@
                         "example": "TPB"
                       },
                       "fechaInicio": {
-                        "description": "Fecha de inicio para la búsqueda por rango en formato dd-MM- yyyy. Si se proporciona una fecha inicial, el servicio generará el reporte en línea y no ejecutará una programación.",
+                        "description": "Fecha de inicio para la búsqueda por rango en formato dd-MM-yyyy. Si se proporciona una fecha inicial, el servicio generará el reporte en línea y no ejecutará una programación.",
                         "type": "string",
                         "format": "date",
                         "example": "27-07-2017"
@@ -6856,7 +7002,7 @@
         "tags": [
           "Sprint 3"
         ],
-        "description": "Consolidar la información relevante respecto al diseño de la operación/consultarAutorizaciones del servicio requerido para la integración de Multivanet con T24.",
+        "description": "Consolidar la información relevante respecto al diseño de la operación /consultarAutorizaciones del servicio requerido para la integración de Multivanet con T24.",
         "parameters": [
           {
             "in": "body",
@@ -6911,7 +7057,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 },
                 "autorizaciones": {
                   "type": "array",
@@ -6928,7 +7074,7 @@
                     ],
                     "properties": {
                       "taskId": {
-                        "description": "Identificador único del a tarea consultada en la BPM. Este valor será necesario para completar la tarea cuando se haya emitido el voto.",
+                        "description": "Identificador único de la tarea consultada en la BPM. Este valor será necesario para completar la tarea cuando se haya emitido el voto.",
                         "type": "string",
                         "example": "123456789"
                       },
@@ -6962,7 +7108,7 @@
                       "descripcionOperacion": {
                         "description": "Descripción de la operación en curso.",
                         "type": "string",
-                        "example": "tipo de preregistro + tipo de convenio/alta de preregistro/nombre de operacion"
+                        "example": "tipo de preregistro + tipo de convenio/alta de preregistro/nombre de operación"
                       },
                       "montoOperacion": {
                         "description": "Monto de la operación en curso.",
@@ -7069,7 +7215,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -7225,7 +7371,7 @@
             "schema": {
               "properties": {
                 "folioDispersion": {
-                  "description": "Folio dispersion",
+                  "description": "Folio dispersión",
                   "type": "string",
                   "example": "12456"
                 },
@@ -7235,7 +7381,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -7263,12 +7409,12 @@
         "tags": [
           "Sprint 3"
         ],
-        "description": "Este servicio solicita al core bancario T24 hacer la ejecución de alguna transaccion.",
+        "description": "Este servicio solicita al core bancario T24 hacer la ejecución de alguna transacción.",
         "parameters": [
           {
             "in": "body",
             "name": "ejecutaTransaccion,",
-            "description": "ejecuta transaccion",
+            "description": "ejecuta transacción",
             "required": true,
             "schema": {
               "required": [
@@ -7294,49 +7440,49 @@
                   "example": "192.168.15.78"
                 },
                 "numeroCuentaCargo": {
-                  "description": "Cuenta de donde saldra la transaccion",
+                  "description": "Cuenta de donde saldra la transacción",
                   "type": "string",
                   "format": "string",
                   "example": "1234567890"
                 },
                 "idTipoTxn": {
-                  "description": "Identificador del tipo de transaccion",
+                  "description": "Identificador del tipo de transacción",
                   "type": "integer",
                   "format": "int64",
                   "example": "4564513"
                 },
                 "numeroCuentaAbono": {
-                  "description": "Cuenta de donde saldra la transaccion",
+                  "description": "Cuenta de donde saldra la transacción",
                   "type": "string",
                   "format": "string",
                   "example": "1234567890"
                 },
                 "usuarioCaptura": {
-                  "description": "Usuario que captura la transaccion",
+                  "description": "Usuario que captura la transacción",
                   "type": "string",
                   "format": "string",
                   "example": "4456"
                 },
                 "moneda": {
-                  "description": "Moneda en la que saldra la transaccion",
+                  "description": "Moneda en la que saldra la transacción",
                   "type": "string",
                   "format": "string",
                   "example": "MXN"
                 },
                 "importeTransaccion": {
-                  "description": "Importe en la que saldra la transaccion",
+                  "description": "Importe en la que saldra la transacción",
                   "type": "number",
                   "format": "double",
                   "example": "125.00"
                 },
                 "fechaProgramacion": {
-                  "description": "fecha en la que saldra la transaccion",
+                  "description": "fecha en la que saldra la transacción",
                   "type": "string",
                   "format": "date",
                   "example": "2016-09-25"
                 },
                 "concepto": {
-                  "description": "Concepto por el cual saldra la transaccion",
+                  "description": "Concepto por el cual saldra la transacción",
                   "type": "string",
                   "format": "string",
                   "example": "PAGO DE LUZ"
@@ -7358,17 +7504,17 @@
                       "example": "GUMR880723BJ2"
                     },
                     "referencia": {
-                      "description": "Cadena de referencia del concepto de la transaccion:",
+                      "description": "Cadena de referencia del concepto de la transacción:",
                       "type": "string",
                       "example": "GUMR880723BJ2"
                     },
                     "concepto": {
-                      "description": "Concepto de la transaccion.",
+                      "description": "Concepto de la transacción.",
                       "type": "string",
                       "example": ""
                     },
                     "edoCuenta": {
-                      "description": "Estado de cuenta para la transaccion.",
+                      "description": "Estado de cuenta para la transacción.",
                       "type": "string",
                       "example": ""
                     },
@@ -7405,7 +7551,7 @@
                       "example": "Hector Juarez Santos"
                     },
                     "referencia": {
-                      "description": "Cadena de referencia del concepto de la transaccion:",
+                      "description": "Cadena de referencia del concepto de la transacción:",
                       "type": "string",
                       "example": "PAGO DE RENTA"
                     },
@@ -7435,7 +7581,7 @@
                       "example": "2"
                     },
                     "referencia": {
-                      "description": "Cadena de referencia del concepto de la transaccion:",
+                      "description": "Cadena de referencia del concepto de la transacción:",
                       "type": "string",
                       "format": "string",
                       "example": "PAGO DE RENTA"
@@ -7460,7 +7606,7 @@
                       "example": "1"
                     },
                     "referencia": {
-                      "description": "Cadena de referencia del concepto de la transaccion:",
+                      "description": "Cadena de referencia del concepto de la transacción:",
                       "type": "string",
                       "format": "string",
                       "example": "PAGO DE MES DE AGOSTO"
@@ -7486,7 +7632,7 @@
                       "example": "3"
                     },
                     "referencia": {
-                      "description": "Cadena de referencia del concepto de la transaccion:",
+                      "description": "Cadena de referencia del concepto de la transacción:",
                       "type": "string",
                       "format": "string",
                       "example": "PAGO DE MES DE AGOSTO"
@@ -7555,7 +7701,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -7644,7 +7790,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -7733,7 +7879,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -7827,7 +7973,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -7916,7 +8062,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -8011,7 +8157,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -8112,7 +8258,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -8326,7 +8472,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -8354,7 +8500,7 @@
         "tags": [
           "Sprint 3"
         ],
-        "description": "Consolidar la información relevante respecto al diseño de la operación/obtenerCatalogoConvenios del servicio requerido para la integración de Multivanet con T24.",
+        "description": "Consolidar la información relevante respecto al diseño de la operación /obtenerCatalogoConvenios del servicio requerido para la integración de Multivanet con T24.",
         "parameters": [
           {
             "in": "body",
@@ -8397,7 +8543,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 },
                 "convenios": {
                   "type": "array",
@@ -8443,7 +8589,7 @@
         "tags": [
           "Sprint 3"
         ],
-        "description": "Consolidar la información relevante respecto al diseño de la operación/obtenerCatalogoTipoTxn del servicio requerido para la integración de Multivanet con T24.",
+        "description": "Consolidar la información relevante respecto al diseño de la operación /obtenerCatalogoTipoTxn del servicio requerido para la integración de Multivanet con T24.",
         "parameters": [
           {
             "in": "body",
@@ -8486,7 +8632,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 },
                 "tiposTransaccion": {
                   "type": "array",
@@ -8597,7 +8743,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 },
                 "preregistros": {
                   "type": "array",
@@ -8796,7 +8942,7 @@
         "tags": [
           "Sprint 3"
         ],
-        "description": "Consolidar la información relevante respecto al diseño de la operación/obtenerPreregistroPorClienteTransaccion del servicio requerido para la integración de Multivanet con T24.",
+        "description": "Consolidar la información relevante respecto al diseño de la operación /obtenerPreregistroPorClienteTransaccion del servicio requerido para la integración de Multivanet con T24.",
         "parameters": [
           {
             "in": "body",
@@ -8861,7 +9007,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 },
                 "preregistros": {
                   "type": "array",
@@ -8873,7 +9019,7 @@
                       "idTipoTransaccion",
                       "alias",
                       "montoMaximo",
-                      "celularNotification",
+                      "celularNotificacion",
                       "email",
                       "periodo",
                       "moneda",
@@ -8883,61 +9029,73 @@
                     ],
                     "properties": {
                       "idPreregistro": {
+                        "description": "Identificador único del preregistro.",
                         "type": "integer",
                         "format": "int64",
                         "example": 1245
                       },
                       "estatus": {
+                        "description": "Indica el estado del preregistro. Si no se incluye, el registro está activo.",
                         "type": "string",
                         "example": ""
                       },
                       "fechaAlta": {
+                        "description": "Indica la fecha en que se generó el preregistro.",
                         "type": "string",
                         "format": "date",
                         "example": ""
                       },
                       "fechaModificacion": {
+                        "description": "Indica la fecha en que se realizó la última modificación al preregistro.",
                         "type": "string",
                         "format": "date",
                         "example": ""
                       },
                       "tipoCuenta": {
+                        "description": "Indica el tipo de dato que viajará en el campo noCuenta, dependiendo del valor que se haya recibido en el campo tipoTransacción. En el Apéndice 1 se detallan los posibles valores de tipoCuenta en relación con tipoTransaccion y el significado de noCuenta resultante.",
                         "type": "integer",
                         "format": "int32",
                         "example": "2"
                       },
                       "noCuenta": {
+                        "description": "Número de recurso que se utilizará para transaccionar cuando se utilice el preregistro. Dependiendo del valor del campo tipoCuenta, este campo puede contener; Tarjetas de débito, CLABEs interbancarias, números celulares, números de contrato de servicios (cuyo significado a su vez puede variar según el tipo de servicio que se pague), números de crédito o números de tarjeta de crédito.",
                         "type": "string",
                         "example": ""
                       },
                       "idTipoTransaccion": {
+                        "description": "Indicativo del tipo de preregistro que se guarda. Puede tomar uno de los siguientes valores; 1; Transferencia entre cuentas propias. 2; Transferencia entre terceros Multiva. 3; Transferencia Interbancaria. 4; Pago de créditos. 5; Pago de servicios. 6; Pago de tarjetas de crédito. 7; Pago de tarjetas departamentales. 8; Órdenes de Pago 9; Órdenes de pago internacionales.",
                         "type": "integer",
                         "format": "int32",
                         "example": 1
                       },
                       "alias": {
+                        "description": "Nombre o descripción corta del preregistro proporcionada por el cliente.",
                         "type": "string",
                         "example": "ALIAS"
                       },
                       "montoMaximo": {
-                        "description": "Monto donado en cantidad monetaria.",
+                        "description": "Monto máximo permitido para las operaciones de este preregistro. Si el tipo de preregistro en cuestión puede recibir un período, este monto constituye el monto total acumulado en transacciones permitido a este preregistro dentro de ese período; de lo contrario se considera un límite por transacción individual.",
                         "type": "number",
                         "format": "double",
                         "example": 120000
                       },
-                      "celularNotification": {
+                      "celularNotificacion": {
+                        "description": "Número de celular al que se enviará una notificación cuando se registre una operación con este preregistro.",
                         "type": "string",
                         "example": "5512233456"
                       },
                       "email": {
+                        "description": "Correo electrónico para el envío de notificaciones cuando se opere con este preregistro.",
                         "type": "string",
                         "example": "test@domain.com"
                       },
                       "moneda": {
+                        "description": "Moneda de la cuenta se depósito.",
                         "type": "string",
                         "example": "MXN"
                       },
                       "periodo": {
+                        "description": "Período de acumulación para las operaciones con este preregistro. Puede tomar uno de los siguientes valores; mensual, diario o semanal.",
                         "type": "string",
                         "example": "semanal"
                       },
@@ -8948,18 +9106,22 @@
                         ],
                         "properties": {
                           "idProducto": {
+                            "description": "Producto de cheques al que pertenece la cuenta que se preregistra.",
                             "type": "string",
                             "example": "CHQ"
                           },
                           "beneficiario": {
+                            "description": "Nombre o razón social del beneficiario.",
                             "type": "string",
                             "example": "Waldo Terry"
                           },
                           "pagoProveedor": {
+                            "description": "Bandera que indica si este preregistro es para hacer pagos a proveedor.",
                             "type": "boolean",
                             "example": false
                           },
                           "referenciado": {
+                            "description": "Bandera que indica si este preregistro es para pagos referenciados.",
                             "type": "boolean",
                             "example": false
                           }
@@ -8972,18 +9134,22 @@
                         ],
                         "properties": {
                           "banco": {
+                            "description": "CASFIM del banco destino.",
                             "type": "string",
                             "example": ""
                           },
                           "beneficiario": {
+                            "description": "Nombre o razón social del beneficiario.",
                             "type": "string",
                             "example": "Waldo Terry"
                           },
                           "rfcCurp": {
+                            "description": "RFC o CURP del cliente.",
                             "type": "string",
                             "example": "TEDW123456789"
                           },
                           "pagoProveedor": {
+                            "description": "Bandera que indica si este preregistro es para hacer pagos a proveedor.",
                             "type": "boolean",
                             "example": false
                           }
@@ -8996,10 +9162,12 @@
                         ],
                         "properties": {
                           "banco": {
+                            "description": "CASFIM del banco destino.",
                             "type": "string",
                             "example": "123456789"
                           },
                           "tipoCredito": {
+                            "description": "Tipo de crédito que se pagará con este preregistro. 1; Hipotecario 2; Automotriz 3; Personal",
                             "type": "integer",
                             "format": "int32",
                             "example": 1
@@ -9008,12 +9176,19 @@
                       },
                       "servicio": {
                         "required": [
-                          "noEstablecimiento"
+                          "noEstablecimiento",
+                          "razonSocial"
                         ],
                         "properties": {
                           "noEstablecimiento": {
+                            "description": "Identificador del convenio del servicio que corresponde a este preregistro. Este valor puede ser uno de los siguientes; 1; Teléfono 12; CFE 14; Cablevisión 15; Sky",
                             "type": "integer",
                             "format": "int32",
+                            "example": 1
+                          },
+                          "razonSocial": {
+                            "description": "Razón social de la empresa proveedora del servicio.",
+                            "type": "string",
                             "example": 1
                           }
                         }
@@ -9026,17 +9201,20 @@
                         ],
                         "properties": {
                           "noEstablecimiento": {
+                            "description": "Identificador del convenio del servicio que corresponde a este preregistro. Este valor puede ser uno de los siguientes; 3; Pagos de tarjeta de crédito.",
                             "type": "integer",
                             "format": "int32",
                             "example": 3
                           },
                           "banco": {
+                            "description": "CASFIM del banco destino.",
                             "type": "string",
                             "example": "12345689"
                           },
                           "noTarjeta": {
+                            "description": "Número de la tarjeta de crédito a la que se hace el pago.",
                             "type": "string",
-                            "example": 123456
+                            "example": "123456"
                           }
                         }
                       },
@@ -9197,7 +9375,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 },
                 "folioProgramacion": {
                   "description": "Folio de la programación de generación de reporte de cobranza.",
@@ -9235,7 +9413,7 @@
         "tags": [
           "Sprint 3"
         ],
-        "description": "Consolidar la información relevante respecto al diseño de la operación/registraMovilTouch del servicio requerido para la integración de Multivanet con TAM.",
+        "description": "Consolidar la información relevante respecto al diseño de la operación /registraMovilTouch del servicio requerido para la integración de Multivanet con TAM.",
         "parameters": [
           {
             "in": "body",
@@ -9247,7 +9425,8 @@
                 "otp",
                 "canal",
                 "ticket",
-                "idPersona"
+                "idPersona",
+                "noSerie"
               ],
               "properties": {
                 "otp": {
@@ -9305,7 +9484,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -9500,7 +9679,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -9614,7 +9793,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -9716,7 +9895,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -9818,7 +9997,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -10254,7 +10433,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -10438,7 +10617,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -10695,7 +10874,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 },
                 "response": {
                   "properties": {
@@ -10816,7 +10995,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
@@ -10929,7 +11108,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la peticion"
+                  "example": "Problema con la petición"
                 }
               }
             }
