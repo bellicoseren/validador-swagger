@@ -3127,7 +3127,6 @@ const consultaBarridoCuentas = {
     "folioBarrido": 265,
     "cuentaConcentradora": 5642312345,
     "nombreCuentaConcentradora": "CUENTA CONCENTRADORA",
-    "nombreBarrido":"Barrido Test",
     "horasEjecucion": [
     "12:00:00",
     "14:00:00",
@@ -3168,11 +3167,11 @@ const obtenerPreregistroPorClienteTransaccion = {
     "idTipoTransaccion": 1,
     "alias": "ALIAS",
     "montoMaximo": 120000,
-    "celularNotification": "5512233456",
+    "celularNotificacion": "5512233456",
     "email": "test@domain.com",
-    "moneda": "MXN",
     "periodo": "semanal",
-    "tercero": {
+    "moneda": "MXN",  
+    "terceroMultiva": {
       "idProducto": "CHQ",
       "beneficiario": "Enrique Gaona",
       "pagoProveedor": false,
@@ -3194,7 +3193,8 @@ const obtenerPreregistroPorClienteTransaccion = {
     },
     "pagoTDC": {
       "noEstablecimiento": 3,
-      "banco": "12345689"
+      "banco": "12345689",
+      "noTarjeta": "123456789101"
     }
   }
   ]

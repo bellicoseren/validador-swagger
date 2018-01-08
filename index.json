@@ -5789,7 +5789,6 @@
             "description": "Representa una ejecución exitosa. Para efectos de este servicio, será indicativo de que la notificación solicitada se envió correctamente.",
             "schema": {
               "required": [
-                "catTipoCuentas",
                 "responseStatus"
               ],
               "properties": {
@@ -9022,10 +9021,7 @@
                       "celularNotificacion",
                       "email",
                       "periodo",
-                      "moneda",
-                      "otp",
-                      "ticket",
-                      "canal"
+                      "moneda"
                     ],
                     "properties": {
                       "idPreregistro": {
@@ -9217,31 +9213,6 @@
                             "example": "123456"
                           }
                         }
-                      },
-                      "otp": {
-                        "type": "string",
-                        "example": "1234567"
-                      },
-                      "ticket": {
-                        "required": [
-                          "id_user",
-                          "id_creds"
-                        ],
-                        "properties": {
-                          "id_user": {
-                            "type": "string",
-                            "example": "abc"
-                          },
-                          "id_creds": {
-                            "type": "string",
-                            "example": "1233"
-                          }
-                        }
-                      },
-                      "canal": {
-                        "type": "string",
-                        "minLength": 1,
-                        "example": "WEB"
                       }
                     }
                   }
@@ -10957,7 +10928,7 @@
                     }
                   }
                 },
-                "fondoInversion": {
+                "fondosInversion": {
                   "required": [
                     "numeroCuenta",
                     "email",
@@ -10967,11 +10938,11 @@
                     "numeroCuenta": {
                       "type": "string",
                       "format": "string",
-                      "example": "example@multiva.com.mx"
+                      "example": "1000585654"
                     },
                     "email": {
                       "type": "string",
-                      "example": "123456"
+                      "example": "example@multiva.com.mx"
                     },
                     "ipConexion": {
                       "type": "string",
