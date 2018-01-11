@@ -368,7 +368,6 @@
           "Sprint 1"
         ],
         "description": "Interfaz  que le permitira consultar información de las cuentas agregadas de los clientes desde el core bancario T24 de Multiva.",
-        "operationId": "consultaCuentasAgregadasClientePOST",
         "parameters": [
           {
             "in": "body",
@@ -1155,7 +1154,6 @@
           "Sprint 1"
         ],
         "description": "Interfaz  que le permitirá a un usuario o sistema enviar notificaciones de varios tipos.",
-        "operationId": "envioNotificacionesPOST",
         "parameters": [
           {
             "in": "body",
@@ -8688,7 +8686,6 @@
           "Sprint 3"
         ],
         "description": "La finalidad de este servicio es recuperar la información de los preregistros de un cliente por medio del identificador del cliente.",
-        "operationId": "obtenerPreregistroPorCliente",
         "parameters": [
           {
             "in": "body",

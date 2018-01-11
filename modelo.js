@@ -3355,7 +3355,7 @@ const aperturaFondo ={
 
 const movimientosCFE ={
 	"movimientos": [{
-		"fecha": 0.3,
+		"fecha": "10-10-2017",
 		"monto": 1000000.00,
 		"referencia": "1234567989",
 		"canal": "MULTIVANET"
