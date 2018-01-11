@@ -10529,7 +10529,8 @@
                 "otp",
                 "ticket",
                 "recreacionAlVencimiento",
-                "reinversionIntereses"
+                "reinversionIntereses",
+                "folioInversion"
               ],
               "properties": {
                 "idPersona": {
@@ -10538,9 +10539,9 @@
                   "example": 123546345
                 },
                 "canal": {
-                  "description": "Identificador del canal a través del cual se recibió la petición. Se utilizarán los identificadores de canal definidos por T24.",
                   "type": "string",
-                  "example": "MVNET"
+                  "minLength": 1,
+                  "example": "WEB"
                 },
                 "otp": {
                   "type": "string",
@@ -10569,6 +10570,10 @@
                 "reinversionIntereses": {
                   "type": "boolean",
                   "example": true
+                },
+                "folioInversion": {
+                  "type": "string",
+                  "example": "123456"
                 }
               }
             }
