@@ -10902,7 +10902,8 @@
               "required": [
                 "idPersona",
                 "canal",
-                "ticket"
+                "ticket",
+                "fondosInversion"
               ],
               "properties": {
                 "idPersona": {
