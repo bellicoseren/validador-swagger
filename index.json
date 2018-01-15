@@ -38,11 +38,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -122,7 +122,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -163,11 +163,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -247,7 +247,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -289,11 +289,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -354,7 +354,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -394,11 +394,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -674,7 +674,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -714,11 +714,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -873,7 +873,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -914,11 +914,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -955,7 +955,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -995,11 +995,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -1043,7 +1043,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -1083,11 +1083,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -1140,7 +1140,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -1182,11 +1182,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -1231,7 +1231,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -1271,11 +1271,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -1341,7 +1341,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -1461,11 +1461,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -1493,7 +1493,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -1548,11 +1548,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -1965,7 +1965,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -2137,11 +2137,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -2260,11 +2260,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -2347,11 +2347,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -2475,7 +2475,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -2530,11 +2530,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -2744,7 +2744,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -2804,11 +2804,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -2895,7 +2895,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -2979,11 +2979,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -3078,7 +3078,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -3199,11 +3199,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -3325,7 +3325,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -3485,11 +3485,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -3600,7 +3600,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -3655,11 +3655,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -3743,7 +3743,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -3805,11 +3805,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -3872,7 +3872,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -3982,11 +3982,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -4062,11 +4062,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -4110,7 +4110,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -4191,11 +4191,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -4260,7 +4260,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -4437,11 +4437,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 }
@@ -4460,7 +4460,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -4568,11 +4568,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 }
@@ -4591,7 +4591,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -4648,11 +4648,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -4724,7 +4724,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -4796,11 +4796,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -4824,7 +4824,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -4927,11 +4927,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 }
@@ -4950,7 +4950,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -5012,11 +5012,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -5096,7 +5096,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -5152,11 +5152,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -5196,7 +5196,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -5257,11 +5257,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -5290,7 +5290,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -5361,11 +5361,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -5389,7 +5389,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -5471,11 +5471,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -5538,7 +5538,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -5606,11 +5606,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 }
@@ -5629,7 +5629,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -5677,11 +5677,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 }
@@ -5700,7 +5700,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 },
                 "catTiposCreditos": {
                   "type": "array",
@@ -5770,11 +5770,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 }
@@ -5827,7 +5827,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -5907,11 +5907,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -5957,7 +5957,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -6008,11 +6008,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -6046,7 +6046,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 },
                 "bancos": {
                   "type": "array",
@@ -6164,11 +6164,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -6193,7 +6193,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 },
                 "barridos": {
                   "type": "array",
@@ -6312,11 +6312,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 }
@@ -6335,7 +6335,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 },
                 "bines": {
                   "type": "array",
@@ -6399,11 +6399,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -6427,7 +6427,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 },
                 "nombreCuentahabiente": {
                   "description": "Número de la cuenta a la que se desea asociar un número de móvil.",
@@ -6488,11 +6488,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -6516,7 +6516,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 },
                 "dispersiones": {
                   "type": "array",
@@ -6663,11 +6663,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -6691,7 +6691,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 },
                 "lotes": {
                   "type": "array",
@@ -6781,11 +6781,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -6809,7 +6809,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 },
                 "moviles": {
                   "type": "array",
@@ -6886,11 +6886,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 }
@@ -6909,7 +6909,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 },
                 "reportes": {
                   "type": "array",
@@ -7031,11 +7031,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 }
@@ -7054,7 +7054,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 },
                 "autorizaciones": {
                   "type": "array",
@@ -7174,11 +7174,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -7212,7 +7212,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -7294,11 +7294,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -7378,7 +7378,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -7392,6 +7392,122 @@
                   "example": 500
                 },
                 "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ejecutaOperacionLote": {
+      "post": {
+        "tags": [
+          "Sprint 3"
+        ],
+        "description": "Procesar cualquier petición de ejecución de transacciones masivamente por medio de archivos batch.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "ejecutaOperacionLote",
+            "description": "Valores para la ejecución de operacion Lotes",
+            "required": true,
+            "schema": {
+              "required": [
+                "idPersona",
+                "fechaEjecucion",
+                "rutaDocumento",
+                "tipoOperacion",
+                "opt",
+                "ticket",
+                "canal"
+              ],
+              "properties": {
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "fechaEjecucion": {
+                  "description": "Fecha en la que se ejecutará el procesamiento de este archivo de operaciones. En formato dd-MM-yyyy.",
+                  "type": "string",
+                  "example": "01-01-2018"
+                },
+                "rutaDocumento": {
+                  "description": "Ruta donde se encontrará el documento a procesar.",
+                  "type": "string",
+                  "example": "http://10.201.8.1:9000/202020.captura-masiva/pruebaMultipart.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=P7L503WK4UJ4T9VAWZM2%2F20180111%2F%2Fs3%2Faws4_request&X-Amz-Date=20180111T145946Z&X-Amz-Expires=432000&X-Amz-SignedHeaders=host&X-Amz-Signature=6583d3182856994b4893803a605ea63115338bdd918b89941564c58d931a6baa"
+                },
+                "tipoOperacion": {
+                  "description": "Determina el trato que se le dará al documento de operaciones que se recibe.",
+                  "type": "string",
+                  "example": "REGISTRO"
+                },
+                "opt": {
+                  "type": "string",
+                  "example": "1234567"
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Representa una ejecución exitosa. Para efectos de este servicio, será indicativo de que el archivo se subió correctamente.",
+            "schema": {
+              "required": [
+                "folioOperacion",
+                "responseStatus",
+                "responseError"
+              ],
+              "properties": {
+                "folioOperacion": {
+                  "description": "Folio asignado para la operación por lote, que se utilizará para dar seguimiento a su ejecución",
+                  "type": "string",
+                  "example": 123456
+                },
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "resposeError": {
                   "type": "string",
                   "example": ""
                 }
@@ -7660,11 +7776,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 }
@@ -7698,7 +7814,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -7764,11 +7880,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 }
@@ -7787,7 +7903,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -7853,11 +7969,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 }
@@ -7876,7 +7992,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -7942,11 +8058,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -7970,7 +8086,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -8036,11 +8152,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 }
@@ -8059,7 +8175,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -8131,11 +8247,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 }
@@ -8154,7 +8270,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -8217,11 +8333,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -8255,7 +8371,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -8363,11 +8479,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -8469,7 +8585,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -8517,11 +8633,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 }
@@ -8540,7 +8656,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 },
                 "convenios": {
                   "type": "array",
@@ -8606,11 +8722,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 }
@@ -8629,7 +8745,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 },
                 "tiposTransaccion": {
                   "type": "array",
@@ -8712,11 +8828,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -8739,7 +8855,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 },
                 "preregistros": {
                   "type": "array",
@@ -8977,11 +9093,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 }
@@ -9003,7 +9119,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 },
                 "preregistros": {
                   "type": "array",
@@ -9320,11 +9436,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 }
@@ -9343,7 +9459,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 },
                 "folioProgramacion": {
                   "description": "Folio de la programación de generación de reporte de cobranza.",
@@ -9414,11 +9530,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -9452,7 +9568,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -9521,11 +9637,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 }
@@ -9597,11 +9713,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -9647,7 +9763,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -9700,11 +9816,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -9761,7 +9877,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -9809,11 +9925,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 }
@@ -9863,7 +9979,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -9911,11 +10027,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 }
@@ -9965,7 +10081,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -10013,11 +10129,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 }
@@ -10135,11 +10251,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -10249,11 +10365,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -10353,11 +10469,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -10401,7 +10517,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -10468,11 +10584,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -10503,6 +10619,21 @@
                 "responseError": {
                   "type": "string",
                   "example": "No hay información para esta consulta."
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Error no existe Archivo",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 404
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Error al obtener los datos del archivo"
                 }
               }
             }
@@ -10555,11 +10686,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -10590,7 +10721,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -10630,20 +10761,10 @@
             "required": true,
             "schema": {
               "required": [
-                "idPersona",
-                "ticket"
+                "ticket",
+                "idPersona"
               ],
               "properties": {
-                "idPersona": {
-                  "type": "integer",
-                  "format": "int64",
-                  "example": 123546345
-                },
-                "canal": {
-                  "type": "string",
-                  "format": "string",
-                  "example": "MVNET"
-                },
                 "ticket": {
                   "required": [
                     "id_user",
@@ -10652,13 +10773,23 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
+                },
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
                 },
                 "pagoImpuestosGdf": {
                   "required": [
@@ -10670,164 +10801,189 @@
                   ],
                   "properties": {
                     "ctaOrigen": {
-                      "type": "number",
-                      "example": 1000525658
+                      "type": "integer",
+                      "format": "int64",
+                      "example": "1000525658"
                     },
                     "CLABE": {
+                      "description": "CLABE de la cuenta con la que se hace el pago.",
                       "type": "string",
                       "example": "9879865465"
                     },
                     "moneda": {
+                      "description": "Divisa del pago.",
                       "type": "string",
                       "example": "MXN"
                     },
                     "folioFW": {
-                      "type": "number",
-                      "example": 987954654
+                      "type": "integer",
+                      "format": "int64",
+                      "example": "987954654"
                     },
                     "importe": {
+                      "description": "Importe de la línea de captura.",
                       "type": "number",
-                      "example": 120000
+                      "format": "double",
+                      "example": "120000.00"
                     },
                     "tipoComision": {
                       "type": "integer",
+                      "format": "int32",
                       "example": 5512233456
                     },
                     "montoComision": {
+                      "description": "Monto de la comisión aplicable al pago.",
                       "type": "number",
+                      "format": "double",
                       "example": "1000.00"
                     },
                     "descripcion": {
+                      "description": "Descripción del pago realizado.",
                       "type": "string",
-                      "example": "Descripcion"
+                      "example": "Descripción"
                     },
                     "tipoTraspaso": {
                       "type": "string",
                       "example": "1"
                     },
                     "fechaCaptura": {
+                      "description": "Fecha de captura del pago, en formato dd-MM-yyyyThh:mm:ss.",
                       "type": "string",
                       "format": "date",
                       "example": "2017-10-12"
                     },
                     "formaProceso": {
-                      "type": "string"
+                      "type": "string",
+                      "example": ""
                     },
                     "usuarioCaptura": {
                       "type": "string",
-                      "format": "string",
                       "example": "Usuario 1"
                     },
                     "usuarioAutoriza": {
                       "type": "string",
-                      "format": "string",
                       "example": "Usuario 2"
                     },
                     "lineaCaptura": {
+                      "description": "Línea de captura con la que se procesa el pago.",
                       "type": "string",
                       "example": "GUMR880723BJ2"
                     },
                     "mail": {
+                      "description": "Correo electrónico para notificación del pago.",
                       "type": "string",
-                      "format": "string",
                       "example": "test@domain.com"
                     },
                     "celular": {
+                      "description": "Número de móvil para envío de notificación del pago en SMS.",
                       "type": "string",
                       "example": "5512233456"
                     },
                     "enviaCorreo": {
+                      "description": "Bandera que dispara el envío de correo al realizar el pago.",
                       "type": "boolean",
                       "example": "false"
                     },
                     "enviaSms": {
+                      "description": "Bandera que dispara el envío de un SMS cuando se realiza el pago.",
                       "type": "boolean",
                       "example": "false"
                     },
                     "numCliente": {
-                      "type": "number"
+                      "description": "Id de la persona que realiza el pago.",
+                      "type": "integer",
+                      "format": "int64",
+                      "example": "123456789"
                     },
                     "nombre": {
+                      "description": "Nombre del titular del pago.",
                       "type": "string",
-                      "format": "string",
                       "example": "nombre usuario"
                     },
                     "domicilio": {
+                      "description": "Domicilio del titular del pago.",
                       "type": "string",
                       "example": "BANAMEX"
                     },
                     "colonia": {
+                      "description": "Colonia de la dirección.",
                       "type": "string",
                       "example": "Gustavo Baz"
                     },
                     "delegacion": {
+                      "description": "Delegación o municipio de la dirección del pago.",
                       "type": "string",
                       "example": "PAGO DE RENTA"
                     },
                     "codigoPostal": {
+                      "description": "Código postal de la dirección.",
                       "type": "string",
                       "example": "GUMR880723BJ2"
                     },
                     "estado": {
+                      "description": "Estado de la dirección.",
                       "type": "string",
                       "example": "1"
                     },
                     "numCtaAgua": {
+                      "description": "Si se va hacer un pago de servicios de agua, este campo trae el identificador de la toma.",
                       "type": "string",
-                      "format": "string",
                       "example": "PAGO DE MES DE AGOSTO"
                     },
                     "marca": {
+                      "description": "Si se va hacer un pago de tenencia, este campo trae la marca del automóvil.",
                       "type": "string",
                       "example": "TEDW112233445566"
                     },
                     "subMarca": {
+                      "description": "Si se va hacer un pago de tenencia, este campo trae la marca del automóvil.",
                       "type": "string",
                       "example": "submarca"
                     },
                     "valorFactura": {
+                      "description": "Valor de la factura para el pago de tenencias.",
                       "type": "number",
-                      "format": "string"
+                      "format": "double",
+                      "example": "120000.00"
                     },
                     "numCilindros": {
-                      "type": "number",
+                      "description": "Número de cilindros para el pago tenencia.",
+                      "type": "integer",
+                      "format": "int64",
                       "example": "123456"
                     },
                     "tipoDeclaracion": {
                       "type": "string",
-                      "format": "string"
+                      "example": ""
                     },
-                    "renumeraciones": {
-                      "type": "number",
+                    "remuneraciones": {
+                      "type": "integer",
+                      "format": "int64",
                       "example": "123456"
                     },
                     "numTrabajadores": {
-                      "type": "number",
+                      "type": "integer",
+                      "format": "int64",
                       "example": "1"
-                    },
-                    "fechaEscritura": {
-                      "type": "string",
-                      "format": "string",
-                      "example": "PAGO DE MES DE AGOSTO"
                     },
                     "fechaEvento": {
                       "type": "string",
-                      "format": "string",
                       "example": "123456"
+                    },
+                    "fechaEscritura": {
+                      "type": "string",
+                      "example": "PAGO DE MES DE AGOSTO"
                     },
                     "numeroEscritura": {
                       "type": "string",
-                      "format": "string",
                       "example": "PAGO DE MES DE AGOSTO"
                     },
-                    "cuentaCastastral": {
+                    "cuentaCatastral": {
                       "type": "string",
-                      "format": "string",
                       "example": "123456"
                     },
-                    "numNotario": {
+                    "numeroNotario": {
                       "type": "string",
-                      "format": "string",
                       "example": "PAGO DE MES DE AGOSTO"
                     }
                   }
@@ -10847,13 +11003,14 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 },
                 "response": {
                   "properties": {
                     "idPagoImpuestos": {
-                      "type": "number",
-                      "example": 123456789
+                      "type": "integer",
+                      "format": "int64",
+                      "example": "123456789"
                     },
                     "rutaArchivo": {
                       "type": "string",
@@ -10868,8 +11025,8 @@
               }
             }
           },
-          "500": {
-            "description": "pagoImpuestosGdf error",
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
             "schema": {
               "properties": {
                 "responseStatus": {
@@ -10878,7 +11035,219 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": ""
+                  "example": "Internal Server Error"
+                },
+                "pagoImpuestosGdf": {
+                  "required": [
+                    "ctaOrigen",
+                    "CLABE",
+                    "fechaCaptura",
+                    "lineaCaptura",
+                    "mail"
+                  ],
+                  "properties": {
+                    "ctaOrigen": {
+                      "type": "integer",
+                      "format": "int64",
+                      "example": ""
+                    },
+                    "CLABE": {
+                      "description": "CLABE de la cuenta con la que se hace el pago.",
+                      "type": "string",
+                      "example": ""
+                    },
+                    "moneda": {
+                      "description": "Divisa del pago.",
+                      "type": "string",
+                      "example": ""
+                    },
+                    "folioFW": {
+                      "type": "integer",
+                      "format": "int64",
+                      "example": ""
+                    },
+                    "importe": {
+                      "description": "Importe de la línea de captura.",
+                      "type": "number",
+                      "format": "double",
+                      "example": ""
+                    },
+                    "tipoComision": {
+                      "type": "integer",
+                      "format": "int32",
+                      "example": ""
+                    },
+                    "montoComision": {
+                      "description": "Monto de la comisión aplicable al pago.",
+                      "type": "number",
+                      "format": "double",
+                      "example": ""
+                    },
+                    "descripcion": {
+                      "description": "Descripción del pago realizado.",
+                      "type": "string",
+                      "example": ""
+                    },
+                    "tipoTraspaso": {
+                      "type": "string",
+                      "example": ""
+                    },
+                    "fechaCaptura": {
+                      "description": "Fecha de captura del pago, en formato dd-MM-yyyyThh:mm:ss.",
+                      "type": "string",
+                      "format": "date",
+                      "example": ""
+                    },
+                    "formaProceso": {
+                      "type": "string",
+                      "example": ""
+                    },
+                    "usuarioCaptura": {
+                      "type": "string",
+                      "example": ""
+                    },
+                    "usuarioAutoriza": {
+                      "type": "string",
+                      "example": ""
+                    },
+                    "lineaCaptura": {
+                      "description": "Línea de captura con la que se procesa el pago.",
+                      "type": "string",
+                      "example": ""
+                    },
+                    "mail": {
+                      "description": "Correo electrónico para notificación del pago.",
+                      "type": "string",
+                      "example": ""
+                    },
+                    "celular": {
+                      "description": "Número de móvil para envío de notificación del pago en SMS.",
+                      "type": "string",
+                      "example": ""
+                    },
+                    "enviaCorreo": {
+                      "description": "Bandera que dispara el envío de correo al realizar el pago.",
+                      "type": "boolean",
+                      "example": "false"
+                    },
+                    "enviaSms": {
+                      "description": "Bandera que dispara el envío de un SMS cuando se realiza el pago.",
+                      "type": "boolean",
+                      "example": "false"
+                    },
+                    "numCliente": {
+                      "description": "Id de la persona que realiza el pago.",
+                      "type": "integer",
+                      "format": "int64",
+                      "example": ""
+                    },
+                    "nombre": {
+                      "description": "Nombre del titular del pago.",
+                      "type": "string",
+                      "example": ""
+                    },
+                    "domicilio": {
+                      "description": "Domicilio del titular del pago.",
+                      "type": "string",
+                      "example": ""
+                    },
+                    "colonia": {
+                      "description": "Colonia de la dirección.",
+                      "type": "string",
+                      "example": ""
+                    },
+                    "delegacion": {
+                      "description": "Delegación o municipio de la dirección del pago.",
+                      "type": "string",
+                      "example": ""
+                    },
+                    "codigoPostal": {
+                      "description": "Código postal de la dirección.",
+                      "type": "string",
+                      "example": ""
+                    },
+                    "estado": {
+                      "description": "Estado de la dirección.",
+                      "type": "string",
+                      "example": ""
+                    },
+                    "numCtaAgua": {
+                      "description": "Si se va hacer un pago de servicios de agua, este campo trae el identificador de la toma.",
+                      "type": "string",
+                      "example": ""
+                    },
+                    "marca": {
+                      "description": "Si se va hacer un pago de tenencia, este campo trae la marca del automóvil.",
+                      "type": "string",
+                      "example": ""
+                    },
+                    "subMarca": {
+                      "description": "Si se va hacer un pago de tenencia, este campo trae la marca del automóvil.",
+                      "type": "string",
+                      "example": ""
+                    },
+                    "valorFactura": {
+                      "description": "Valor de la factura para el pago de tenencias.",
+                      "type": "number",
+                      "format": "double",
+                      "example": ""
+                    },
+                    "numCilindros": {
+                      "description": "Número de cilindros para el pago tenencia.",
+                      "type": "integer",
+                      "format": "int64",
+                      "example": ""
+                    },
+                    "tipoDeclaracion": {
+                      "type": "string",
+                      "example": ""
+                    },
+                    "remuneraciones": {
+                      "type": "integer",
+                      "format": "int64",
+                      "example": ""
+                    },
+                    "numTrabajadores": {
+                      "type": "integer",
+                      "format": "int64",
+                      "example": ""
+                    },
+                    "fechaEvento": {
+                      "type": "string",
+                      "example": ""
+                    },
+                    "fechaEscritura": {
+                      "type": "string",
+                      "example": ""
+                    },
+                    "numeroEscritura": {
+                      "type": "string",
+                      "example": ""
+                    },
+                    "cuentaCatastral": {
+                      "type": "string",
+                      "example": ""
+                    },
+                    "numeroNotario": {
+                      "type": "string",
+                      "example": ""
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Error no existe Archivo",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 404
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Error al obtener los datos del archivo"
                 }
               }
             }
@@ -10923,11 +11292,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 },
@@ -10969,7 +11338,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
@@ -11030,11 +11399,11 @@
                   "properties": {
                     "id_user": {
                       "type": "string",
-                      "example": "abc"
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
-                      "example": "1233"
+                      "example": "12345678"
                     }
                   }
                 }
@@ -11082,7 +11451,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Problema con la petición"
+                  "example": ""
                 }
               }
             }
