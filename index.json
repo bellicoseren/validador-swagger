@@ -10594,7 +10594,8 @@
                 },
                 "canal": {
                   "type": "string",
-                  "example": "MVNET"
+                  "minLength": 1,
+                  "example": "WEB"
                 }
               }
             }
@@ -10614,11 +10615,11 @@
               "properties": {
                 "responseStatus": {
                   "type": "number",
-                  "example": 500
+                  "example": 4500
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "No hay información para esta consulta."
+                  "example": "T24 FUERA DE LINEA."
                 }
               }
             }
