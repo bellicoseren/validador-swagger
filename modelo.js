@@ -1,5 +1,6 @@
 'use strict';
 
+
 const consultaPerfiles = {
   "facultadesSimples": [{
     nombre: 'Mult_Pf_privilege',
@@ -617,6 +618,7 @@ const Validaotp = {
   "responseStatus": 200,
   "responseError": "Usuario correcto y token correcto"
 }
+
 
 const validaContrato = {
   "descripcion": "Operacion exitosa",
@@ -2682,12 +2684,22 @@ const consultaCfdCfdiRetenciones = {
     "responseError": ""
   }
 
-  const validaOTP = {
-    "antiPishing": "12345",
-    "responseStatus": 200,
-    "responseError": ""
-  }
 
+function validaOTP(bodyreq){
+
+    if( bodyreq.otp != "999"){
+        var respuesta = {
+            "responseStatus": 200,
+            "responseError": ""
+            };
+    }else{
+        var respuesta = {
+            "responseStatus": 2402,
+            "responseError": "OTP BLOQUEADO POR INACTIVIDAD"
+            };
+    }
+    return respuesta;
+  }
 
 
 /////////// Sprint 3  /////////////
@@ -3399,8 +3411,7 @@ var mapaModelo = {
   'consultaDetalleCredito':consultaDetalleCredito,
   'consultaCfdCfdi':consultaCfdCfdi,
   'estadoCuentaPDF':estadoCuentaPDF,
-  'validaOTP':validaOTP,
-
+  'validaOTP': validaOTP,
  /////////// Sprint 3  /////////////
  'sincronizaOTP':sincronizaOTP,
  'asociaMovil':asociaMovil,
@@ -3459,9 +3470,17 @@ var mapaModelo = {
   
 }
 
-function obtenerModelo (nombreModelo){
-  return mapaModelo[nombreModelo]
+function obtenerModelo (nombreModelo,bodyreq){
+
+  var modelo = mapaModelo[nombreModelo];
+  if (typeof modelo === 'function') {
+        return modelo(bodyreq);
+  }else{
+    return modelo;
+  }
 }
+
+
 
 module.exports = {
   obtenerModelo
