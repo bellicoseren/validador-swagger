@@ -3364,6 +3364,11 @@ const movimientosCFE ={
 	"responseError": ""
 }
 
+const consultaPdfGdf ={
+
+  "_downloadFile":true
+
+}
 var mapaModelo = {
    //### ESB ####//
    /////////// Sprint 1  /////////////
@@ -3455,7 +3460,8 @@ var mapaModelo = {
  'cambioInstruccion': cambioInstruccion,
  'movimientosDiputados':movimientosDiputados,
  'aperturaFondo':aperturaFondo,
- 'movimientosCFE':movimientosCFE 
+ 'movimientosCFE':movimientosCFE,
+ 'consultaPdfGdf':consultaPdfGdf 
   
 }
 

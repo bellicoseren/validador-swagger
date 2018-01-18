@@ -5980,6 +5980,118 @@
         }
       }
     },
+    "/consultaArchivoLote": {
+      "post": {
+        "tags": [
+          "Sprint 3"
+        ],
+        "description": "Este servicio permite obtener el contenido de un archivo asociado con la programación o ejecución de un archivo por lote.",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "consultaArchivoLote",
+            "description": "Valores para la consulta del archivo por lotes",
+            "required": true,
+            "schema": {
+              "required": [
+                "idPersona",
+                "folio",
+                "tipo",
+                "ticket",
+                "canal"
+              ],
+              "properties": {
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "folio": {
+                  "description": "Folio asignado para la operación por lote, que se utilizará para dar seguimiento a su ejecución",
+                  "type": "string",
+                  "example": 123456
+                },
+                "tipo": {
+                  "description": "Indica si se solicitan sólo archivos de envío o de respuesta en la consulta.Si no se proporciona este valor, se incluirán ambos tipos de archivos en la respuesta",
+                  "type": "string",
+                  "example": "RESPUESTA"
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Representa una ejecución exitosa. Para efectos de este servicio, será indicativo de que la consulta se realizó correctamente.",
+            "schema": {
+              "required": [
+                "contenido",
+                "responseStatus",
+                "responseError"
+              ],
+              "properties": {
+                "contenido": {
+                  "description": "Muestra el contenido del archivo",
+                  "type": "string",
+                  "format": "byte",
+                  "example": "http://10.201.8.1:9000/202020.captura-masiva/pruebaMultipart.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=P7L503WK4UJ4T9VAWZM2%2F20180111%2F%2Fs3%2Faws4_request&X-Amz-Date=20180111T145946Z&X-Amz-Expires=432000&X-Amz-SignedHeaders=host&X-Amz-Signature=6583d3182856994b4893803a605ea63115338bdd918b89941564c58d931a6baa"
+                },
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "resposeError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/consultaBancos": {
       "post": {
         "tags": [
@@ -9365,6 +9477,7 @@
             "required": true,
             "schema": {
               "required": [
+                "idPersona",
                 "canal",
                 "noCuenta",
                 "tipoReporte",
@@ -9372,6 +9485,11 @@
                 "email"
               ],
               "properties": {
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
                 "canal": {
                   "type": "string",
                   "minLength": 1,
@@ -9464,12 +9582,12 @@
                 "folioProgramacion": {
                   "description": "Folio de la programación de generación de reporte de cobranza.",
                   "type": "string",
-                  "example": ""
+                  "example": "123456"
                 },
                 "rutaReporte": {
                   "description": "Destino final del reporte donde el consumidor podrá recuperar el archivo generado. El contenido exacto de esta variable dependerá del esquema que se decida implementar para la gestión de documentos.",
                   "type": "string",
-                  "example": ""
+                  "example": "http://10.201.8.1:9000/202020.captura-masiva/pruebaMultipart.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=P7L503WK4UJ4T9VAWZM2%2F20180111%2F%2Fs3%2Faws4_request&X-Amz-Date=20180111T145946Z&X-Amz-Expires=432000&X-Amz-SignedHeaders=host&X-Amz-Signature=6583d3182856994b4893803a605ea63115338bdd918b89941564c58d931a6baa"
                 }
               }
             }
@@ -11468,6 +11586,138 @@
                 "responseError": {
                   "type": "string",
                   "example": "Internal Error Server"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/consultaPdfGdf": {
+      "post": {
+        "tags": [
+          "Sprint 5"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación /consultaPdfGdf del servicio requerido para la integración de Multivanet con T24.",
+        "produces": [
+          "application/octet-stream"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "consultaPdfGdf",
+            "description": "Diseño de la operación para consultaPdfGdf",
+            "required": true,
+            "schema": {
+              "required": [
+                "idPersona",
+                "ticket",
+                "canal",
+                "consultaPdfGdf"
+              ],
+              "properties": {
+                "consultaPdfGdf": {
+                  "required": [
+                    "numeroCliente",
+                    "folio"
+                  ],
+                  "properties": {
+                    "numeroCliente": {
+                      "description": "Número de cliente del cual se esta consultando el PDF",
+                      "type": "integer",
+                      "format": "int64",
+                      "example": 987654321
+                    },
+                    "folio": {
+                      "type": "string",
+                      "example": ""
+                    }
+                  }
+                },
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Archivo en stream de bytes",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                },
+                "archivoStream": {
+                  "description": "Devuelve el comprobante de pago de un impuesto local (GDF).",
+                  "type": "string",
+                  "format": "binary",
+                  "example": "Archivo Stream"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Internal Server Error."
+                },
+                "archivoStream": {
+                  "description": "Devuelve el comprobante de pago de un impuesto local (GDF).",
+                  "type": "string",
+                  "format": "binary",
+                  "example": ""
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Error no existe Archivo",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 404
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Error al obtener los datos del archivo"
                 }
               }
             }
