@@ -3364,11 +3364,18 @@ const movimientosCFE ={
 	"responseError": ""
 }
 
+
+const ejecutaOperacionLote ={
+   "folioOperacion": "123456",
+   "responseStatus": 200,
+   "responseError": ""
+}
+
 const consultaPdfGdf ={
 
   "_downloadFile":true
-
 }
+
 var mapaModelo = {
    //### ESB ####//
    /////////// Sprint 1  /////////////
@@ -3447,6 +3454,7 @@ var mapaModelo = {
  'catDispositivosMoviles':catDispositivosMoviles,
  'cancelaOpProg':cancelaOpProg,
  'consultaDispersionFondos':consultaDispersionFondos,
+  'ejecutaOperacionLote':ejecutaOperacionLote,
 //////////// Sprint 5 ////////////////////////
  'impuestosLocales': impuestosLocales,
  'aperturaPagare': aperturaPagare,
