@@ -186,11 +186,11 @@ app.post('/:path', function(req, res){
 
 
     validate(bodyreq, path.post.parameters[0].schema, errors);
-    console.log("-------------FIN VALIDACION-----------");
-    console.log("*******************************************************************");
+    console.log("-------------FIN VALIDACION------------");
+    console.log("*****************************************************************");
     if(isEmpty(errors.required) && isEmpty(errors.type) && isEmpty(errors.logic)){
       var nombreModelo= req.path.replace(basePath,"")
-      var respuesta = modelo.obtenerModelo(nombreModelo.substring(1));
+      var respuesta = modelo.obtenerModelo(nombreModelo.substring(1), bodyreq);
       console.log("Respuesta:  ", respuesta)
       if(respuesta._downloadFile){
         console.log("File")

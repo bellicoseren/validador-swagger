@@ -2311,6 +2311,48 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": null,
+            "headers": {
+              "content-type": {
+                "description": "application/json",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 401
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Falló al validar OTP."
+                }
+              }
+            }
+          },
+          "404": {
+            "description": null,
+            "headers": {
+              "content-type": {
+                "description": "application/json",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 404
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "No hay información para esta consulta."
+                }
+              }
+            }
           }
         }
       }
