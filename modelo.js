@@ -3474,7 +3474,7 @@ function obtenerModelo (nombreModelo,bodyreq){
 
   var modelo = mapaModelo[nombreModelo];
   if (typeof modelo === 'function') {
-        return modelo(bodyreq);
+    return modelo(bodyreq);
   }else{
     return modelo;
   }
