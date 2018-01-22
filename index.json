@@ -2313,7 +2313,7 @@
             }
           },
           "401": {
-            "description": null,
+            "description": "Error al validar OTP",
             "headers": {
               "content-type": {
                 "description": "application/json",
@@ -2334,7 +2334,7 @@
             }
           },
           "404": {
-            "description": null,
+            "description": "Error al no encontrar archivo",
             "headers": {
               "content-type": {
                 "description": "application/json",

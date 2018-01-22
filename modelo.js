@@ -3342,13 +3342,9 @@ const tasasPagare = {
 }
 
 const pagoImpuestosGdf = {
-  "responseStatus": 200,
-  "responseError": "",
-  "response": {
-    "idPagoImpuestos": 123456789,
-    "rutaArchivo": "/home/Archivos",
-    "archivoStream": "string"
-  }
+
+  "_downloadFile":true
+
 }
 
 const cambioInstruccion ={
