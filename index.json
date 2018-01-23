@@ -10985,7 +10985,7 @@
                       "description": "Importe de la línea de captura.",
                       "type": "number",
                       "format": "double",
-                      "example": "120000.00"
+                      "example": "120000.10"
                     },
                     "tipoComision": {
                       "type": "integer",
@@ -10996,7 +10996,7 @@
                       "description": "Monto de la comisión aplicable al pago.",
                       "type": "number",
                       "format": "double",
-                      "example": "1000.00"
+                      "example": "1000.10"
                     },
                     "descripcion": {
                       "description": "Descripción del pago realizado.",
@@ -11105,7 +11105,7 @@
                       "description": "Valor de la factura para el pago de tenencias.",
                       "type": "number",
                       "format": "double",
-                      "example": "120000.00"
+                      "example": "120000.10"
                     },
                     "numCilindros": {
                       "description": "Número de cilindros para el pago tenencia.",
