@@ -3356,20 +3356,21 @@ const movimientosDiputados={
       "_downloadFile":true
 }
 
-function movimientosDiputados(bodyreq) {
-    if(bodyreq._downloadFile=true){
-        var respuesta = {        
-            "responseStatus": 200,
-            "responseError" : "Archivo en stream de bytes"
-        };
-    }else{
-        var respuesta = {        
-            "responseStatus": 404,
-            "responseError": "Error al obtener los datos del archivo"
-        };
-    }
-    return respuesta;
+function movimientosDiputados(movimientosDiputados){
+  if(downloadFile=true){
+      var respuesta = {
+          "responseStatus": 200,
+          "responseError": ""
+          };
+  }else{
+      var respuesta = {
+          "responseStatus": 404,
+          "responseError": "Error al obtener los datos del archivo"
+          };
+  }
+  return respuesta;
 }
+
 
 const aperturaFondo ={
   "responseStatus": 200,
