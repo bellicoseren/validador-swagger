@@ -3384,6 +3384,10 @@ const consultaPdfGdf ={
   "_downloadFile":true
 }
 
+const consultaArchivoLote = {
+  "contenido": "http://localhost:9000/202020.captura-masiva/Archivo.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=P7L503WK4UJ4T9VAWZM2%2F20180121%2F%2Fs3%2Faws4_request&X-Amz-Date=20180121T065320Z&X-Amz-Expires=432000&X-Amz-SignedHeaders=host&X-Amz-Signature=faf1a2cb4845fb9112ea20906dd1971280723e07eee7fe8a699b9e7098412af9",
+}
+
 const solicitaOTPVirtual = {
   "responseStatus": 200,
   "responseError": ""
@@ -3466,7 +3470,8 @@ var mapaModelo = {
  'catDispositivosMoviles':catDispositivosMoviles,
  'cancelaOpProg':cancelaOpProg,
  'consultaDispersionFondos':consultaDispersionFondos,
-  'ejecutaOperacionLote':ejecutaOperacionLote,
+ 'ejecutaOperacionLote':ejecutaOperacionLote,
+ 'consultaArchivoLote':consultaArchivoLote,
 //////////// Sprint 5 ////////////////////////
  'impuestosLocales': impuestosLocales,
  'aperturaPagare': aperturaPagare,
