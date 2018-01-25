@@ -9828,6 +9828,112 @@
         }
       }
     },
+    "/solicitaOTPVirtual": {
+      "post": {
+        "tags": [
+          "Sprint 3"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación/solicitaOTPVirtual del servicio requerido para la integración de Multivanet con TAM",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "solicitaOTPVirtual",
+            "description": "solicitaOTPVirtual",
+            "required": true,
+            "schema": {
+              "required": [
+                "idPersona",
+                "ticket",
+                "canal",
+                "otp",
+                "imei",
+                "noSerie",
+                "cuenta"
+              ],
+              "properties": {
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "otp": {
+                  "type": "string",
+                  "example": "1234567"
+                },
+                "imei": {
+                  "description": "IMEI asociado con el teléfono",
+                  "type": "string",
+                  "example": "wterry@legosoft.com.mx"
+                },
+                "noSerie": {
+                  "description": "Número de serie del dispositivo a asignar.",
+                  "type": "string",
+                  "example": "1234567"
+                },
+                "cuenta": {
+                  "description": "Cuenta del cliente.",
+                  "type": "string",
+                  "example": "1234567"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Solicita OTP Virtual",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/aperturaCede": {
       "post": {
         "tags": [
