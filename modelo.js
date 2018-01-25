@@ -2702,6 +2702,8 @@ function validaOTP(bodyreq){
   }
 
 
+  
+
 /////////// Sprint 3  /////////////
 
 
@@ -3347,6 +3349,20 @@ const pagoImpuestosGdf = {
 
 }
 
+function PagoImpuestosGdf(bodyreq){
+  if(bodyreq.idPersona !="987654321"){
+    var respuesta = {       
+      "_downloadFile":true
+    };
+  }else{
+    var respuesta = {       
+      "responseStatus": 404,
+      "responseError": "Error al obtener los datos del archivo"
+  };
+  }
+  return respuesta; 
+}
+
 const cambioInstruccion ={
   "responseStatus": 200,
   "responseError": ""
@@ -3356,21 +3372,21 @@ const movimientosDiputados={
       "_downloadFile":true
 }
 
-function movimientosDiputados(movimientosDiputados){
-  if(downloadFile=true){
-      var respuesta = {
-          "responseStatus": 200,
-          "responseError": ""
-          };
-  }else{
-      var respuesta = {
-          "responseStatus": 404,
-          "responseError": "Error al obtener los datos del archivo"
-          };
-  }
+function MovimientosDiputados(bodyreq){
+
+  if(bodyreq.numeroDeCuenta != "124" ){
+    var respuesta = {       
+      "_downloadFile":true
+    };
+}else{
+    var respuesta = {       
+        "responseStatus": 404,
+        "responseError": "Error al obtener los datos del archivo"
+    };
+
   return respuesta;
 }
-
+}
 
 const aperturaFondo ={
   "responseStatus": 200,
@@ -3398,6 +3414,20 @@ const ejecutaOperacionLote ={
 const consultaPdfGdf ={
 
   "_downloadFile":true
+}
+
+function ConsultaPdfGdf(bodyreq){
+  if(bodyreq.idPersona != "123456"){
+    var respuesta={
+      "_downloadFile":true
+    };
+  }else{
+    var respuesta = {       
+      "responseStatus": 404,
+      "responseError": "Error al obtener los datos del archivo"
+  };
+  }
+  return respuesta;
 }
 
 var mapaModelo = {
