@@ -3384,6 +3384,11 @@ const consultaPdfGdf ={
   "_downloadFile":true
 }
 
+const solicitaOTPVirtual = {
+  "responseStatus": 200,
+  "responseError": ""
+}
+
 var mapaModelo = {
    //### ESB ####//
    /////////// Sprint 1  /////////////
@@ -3476,7 +3481,8 @@ var mapaModelo = {
  'movimientosDiputados':movimientosDiputados,
  'aperturaFondo':aperturaFondo,
  'movimientosCFE':movimientosCFE,
- 'consultaPdfGdf':consultaPdfGdf 
+ 'consultaPdfGdf':consultaPdfGdf,
+ 'solicitaOTPVirtual':solicitaOTPVirtual
   
 }
 
