@@ -3342,15 +3342,15 @@ const tasasPagare = {
 	"responseStatus": 200,
 	"responseError": ""
 }
-
+/*
 const pagoImpuestosGdf = {
 
   "_downloadFile":true
 
 }
-
-function PagoImpuestosGdf(bodyreq){
-  if(bodyreq.idPersona !="987654321"){
+*/
+function pagoImpuestosGdf(bodyreq){
+  if(bodyreq.idPersona =="123456"){
     var respuesta = {       
       "_downloadFile":true
     };
@@ -3367,12 +3367,12 @@ const cambioInstruccion ={
   "responseStatus": 200,
   "responseError": ""
 }
-
+/*
 const movimientosDiputados={
       "_downloadFile":true
 }
-
-function MovimientosDiputados(bodyreq){
+*/
+function movimientosDiputados(bodyreq){
 
   if(bodyreq.numeroDeCuenta != "124" ){
     var respuesta = {       
@@ -3410,22 +3410,24 @@ const ejecutaOperacionLote ={
    "responseStatus": 200,
    "responseError": ""
 }
-
+/*
 const consultaPdfGdf ={
 
   "_downloadFile":true
 }
+*/
+function consultaPdfGdf(bodyreq){
 
-function ConsultaPdfGdf(bodyreq){
-  if(bodyreq.idPersona != "123456"){
+  if (!bodyreq.ticket.id_user || !bodyreq.ticket.id_creds || !bodyreq.canal ||
+    !bodyreq.idPersona || !bodyreq.consultaPdfGdf.numeroCliente || !bodyreq.consultaPdfGdf.folio) {
+      var respuesta = {
+        "responseStatus": 404,
+        "responseError": "Error al obtener los datos del archivo"
+    };
+  } else {
     var respuesta={
       "_downloadFile":true
     };
-  }else{
-    var respuesta = {       
-      "responseStatus": 404,
-      "responseError": "Error al obtener los datos del archivo"
-  };
   }
   return respuesta;
 }
