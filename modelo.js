@@ -3384,9 +3384,9 @@ function movimientosDiputados(bodyreq){
         "responseStatus": 404,
         "responseError": "Error al obtener los datos del archivo"
     };
- 
-  return respuesta;
+    return respuesta;
  }
+    
  }
  
  
@@ -3420,13 +3420,17 @@ const consultaPdfGdf ={
 */
 function consultaPdfGdf(bodyreq){
 
-  if (!bodyreq.ticket.id_user || !bodyreq.ticket.id_creds || !bodyreq.canal ||
-    !bodyreq.idPersona || !bodyreq.consultaPdfGdf.numeroCliente || !bodyreq.consultaPdfGdf.folio) {
+  if (bodyreq.consultaPdfGdf.folio == "1234") {
       var respuesta = {
         "responseStatus": 404,
         "responseError": "Error al obtener los datos del archivo"
     };
-  } else {
+  }else if(bodyreq.consultaPdfGdf.folio == "4321") {
+    var respuesta = {
+      "responseStatus": 500,
+      "responseError": "Error en el servidor"
+  };
+  }else {
     var respuesta={
       "_downloadFile":true
     };
