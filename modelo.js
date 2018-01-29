@@ -3350,17 +3350,17 @@ const pagoImpuestosGdf = {
 }
 */
 function pagoImpuestosGdf(bodyreq){
-  if(bodyreq.idPersona =="123456"){
-    var respuesta = {       
-      "_downloadFile":true
-    };
-  }else{
-    var respuesta = {       
+  if(!bodyreq.ticket.id_user || !bodyreq.ticket.id_creds || !bodyreq.pagoImpuestosGdf.ctaOrigen || !bodyreq.pagoImpuestosGdf.CLABE || !bodyreq.pagoImpuestosGdf.fechaCaptura || !bodyreq.pagoImpuestosGdf.lineaCaptura || !bodyreq.pagoImpuestosGdf.mail){
+    var respuesta = {      
       "responseStatus": 404,
-      "responseError": "Error al obtener los datos del archivo"
-  };
+      "responseError": "Error al obtener los datos del archivo",
+ 	    };
+ }else{
+    var respuesta={
+      "_downloadFile":true
+   	   };
   }
-  return respuesta; 
+ return respuesta;
 }
 
 const cambioInstruccion ={
@@ -3372,22 +3372,24 @@ const movimientosDiputados={
       "_downloadFile":true
 }
 */
+
 function movimientosDiputados(bodyreq){
 
   if(bodyreq.numeroDeCuenta != "124" ){
-    var respuesta = {       
+    var respuesta = {      
       "_downloadFile":true
     };
-}else{
-    var respuesta = {       
+ }else{
+    var respuesta = {      
         "responseStatus": 404,
         "responseError": "Error al obtener los datos del archivo"
     };
-
+ 
   return respuesta;
-}
-}
-
+ }
+ }
+ 
+ 
 const aperturaFondo ={
   "responseStatus": 200,
   "responseError": ""
