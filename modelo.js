@@ -2800,13 +2800,6 @@ const consultaCuentahabiente = {
   "nombreCuentahabiente": "wterry@legosoft.com.mx"
 }
 
-const obtenerReporteCobranza = {
-  "responseStatus": 200,
-  "responseError": "",
-  "folioProgramacion": "",
-  "rutaReporte": ""
-}
-
 const consultarAutorizaciones = {
   "responseStatus": 200,
   "responseError": "",
@@ -3392,6 +3385,36 @@ const solicitaOTPVirtual = {
   "responseStatus": 200,
   "responseError": ""
 }
+
+function obtenerReporteCobranza(bodyreq){
+
+    if((bodyreq.fechaInicio!= "" && bodyreq.fechaFin!= "") &&  bodyreq.horaProgramacion == ""){
+        var respuesta = {
+         "responseStatus": 200,
+         "responseError": "",
+         "folioProgramacion": "1234567",
+         "rutaReporte": "http://localhost:9000/333333.captura-masiva/Archivo.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=P7L503WK4UJ4T9VAWZM2%2F20180128%2F%2Fs3%2Faws4_request&X-Amz-Date=20180128T065234Z&X-Amz-Expires=432000&X-Amz-SignedHeaders=host&X-Amz-Signature=f8e2290bc5169a96586be2c5fe7c0ea3d23a7b3f3340ae3f44193a83e37e4853"
+            };
+
+    }else if ((bodyreq.fechaInicio == "" && bodyreq.fechaFin== "") &&  bodyreq.horaProgramacion != ""){
+         var respuesta = {
+        "responseStatus": 200,
+        "responseError": "",
+        "folioProgramacion": "123456",
+        "rutaReporte": ""
+            };
+        
+    }else if ((bodyreq.fechaInicio != "") &&  bodyreq.horaProgramacion == ""){
+        var respuesta = {
+         "responseStatus": 200,
+         "responseError": "",
+         "folioProgramacion": "",
+         "rutaReporte": "http://localhost:9000/333333.captura-masiva/Archivo2.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=P7L503WK4UJ4T9VAWZM2%2F20180128%2F%2Fs3%2Faws4_request&X-Amz-Date=20180128T065234Z&X-Amz-Expires=432000&X-Amz-SignedHeaders=host&X-Amz-Signature=f8e2290bc5169a96586be2c5fe7c0ea3d23a7b3f3340ae3f44193a83e37e4853"
+            };
+
+    }
+    return respuesta;
+  }
 
 var mapaModelo = {
    //### ESB ####//
