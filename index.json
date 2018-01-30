@@ -7573,7 +7573,7 @@
                 "fechaEjecucion",
                 "rutaDocumento",
                 "tipoOperacion",
-                "opt",
+                "otp",
                 "ticket",
                 "canal"
               ],
@@ -7598,7 +7598,7 @@
                   "type": "string",
                   "example": "REGISTRO"
                 },
-                "opt": {
+                "otp": {
                   "type": "string",
                   "example": "1234567"
                 },
