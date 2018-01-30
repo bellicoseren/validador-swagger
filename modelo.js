@@ -3378,7 +3378,7 @@ const consultaPdfGdf ={
 }
 
 const consultaArchivoLote = {
-  "contenido": "http://localhost:9000/202020.captura-masiva/Archivo.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=P7L503WK4UJ4T9VAWZM2%2F20180121%2F%2Fs3%2Faws4_request&X-Amz-Date=20180121T065320Z&X-Amz-Expires=432000&X-Amz-SignedHeaders=host&X-Amz-Signature=faf1a2cb4845fb9112ea20906dd1971280723e07eee7fe8a699b9e7098412af9",
+  "contenido": "http://localhost:9000/202020.captura-masiva/Archivo.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=P7L503WK4UJ4T9VAWZM2%2F20180130%2F%2Fs3%2Faws4_request&X-Amz-Date=20180130T183227Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=bc8cc18bd3785562f2a8c089c0a73b6fc1004aa620092858ae3a3ea3c797543b",
 }
 
 const solicitaOTPVirtual = {
@@ -3393,7 +3393,7 @@ function obtenerReporteCobranza(bodyreq){
          "responseStatus": 200,
          "responseError": "",
          "folioProgramacion": "1234567",
-         "rutaReporte": "http://localhost:9000/333333.captura-masiva/Archivo.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=P7L503WK4UJ4T9VAWZM2%2F20180128%2F%2Fs3%2Faws4_request&X-Amz-Date=20180128T065234Z&X-Amz-Expires=432000&X-Amz-SignedHeaders=host&X-Amz-Signature=f8e2290bc5169a96586be2c5fe7c0ea3d23a7b3f3340ae3f44193a83e37e4853"
+         "rutaReporte": "http://localhost:9000/202020.captura-masiva/Archivo.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=P7L503WK4UJ4T9VAWZM2%2F20180130%2F%2Fs3%2Faws4_request&X-Amz-Date=20180130T183227Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=bc8cc18bd3785562f2a8c089c0a73b6fc1004aa620092858ae3a3ea3c797543b"
             };
 
     }else if ((bodyreq.fechaInicio == "" && bodyreq.fechaFin== "") &&  bodyreq.horaProgramacion != ""){
@@ -3409,7 +3409,7 @@ function obtenerReporteCobranza(bodyreq){
          "responseStatus": 200,
          "responseError": "",
          "folioProgramacion": "",
-         "rutaReporte": "http://localhost:9000/333333.captura-masiva/Archivo2.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=P7L503WK4UJ4T9VAWZM2%2F20180128%2F%2Fs3%2Faws4_request&X-Amz-Date=20180128T065234Z&X-Amz-Expires=432000&X-Amz-SignedHeaders=host&X-Amz-Signature=f8e2290bc5169a96586be2c5fe7c0ea3d23a7b3f3340ae3f44193a83e37e4853"
+         "rutaReporte": "http://localhost:9000/202020.captura-masiva/Archivo2.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=P7L503WK4UJ4T9VAWZM2%2F20180130%2F%2Fs3%2Faws4_request&X-Amz-Date=20180130T183227Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=bc8cc18bd3785562f2a8c089c0a73b6fc1004aa620092858ae3a3ea3c797543b"
             };
 
     }
