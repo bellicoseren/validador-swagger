@@ -3350,15 +3350,20 @@ const pagoImpuestosGdf = {
 }
 */
 function pagoImpuestosGdf(bodyreq){
-  if(!bodyreq.ticket.id_user || !bodyreq.ticket.id_creds || !bodyreq.pagoImpuestosGdf.ctaOrigen || !bodyreq.pagoImpuestosGdf.CLABE || !bodyreq.pagoImpuestosGdf.fechaCaptura || !bodyreq.pagoImpuestosGdf.lineaCaptura || !bodyreq.pagoImpuestosGdf.mail){
+  if(bodyreq.numeroDeCuenta =="1234567890"){
     var respuesta = {      
       "responseStatus": 404,
       "responseError": "Error al obtener los datos del archivo",
  	    };
- }else{
+ }else if(bodyreq.numeroDeCuenta == "0987654321"){
+    var respuesta = {
+      "responseStatus": 500,
+      "responseError": "Error en el servidor"
+  };
+  }else{
     var respuesta={
       "_downloadFile":true
-   	   };
+    };
   }
  return respuesta;
 }
@@ -3375,19 +3380,25 @@ const movimientosDiputados={
 
 function movimientosDiputados(bodyreq){
 
-  if(bodyreq.numeroDeCuenta != "124" ){
-    var respuesta = {      
+  if(bodyreq.numeroDeCuenta == "123456789" ){
+    var respuesta = {
+      "responseStatus": 404,
+      "responseError": "Error al obtener los datos del archivo"
+  };
+ }else if(bodyreq.numeroDeCuenta == "987654321"){
+    var respuesta = {
+      "responseStatus": 500,
+      "responseError": "Error en el servidor"
+  };
+  }else {
+    var respuesta={
       "_downloadFile":true
     };
- }else{
-    var respuesta = {      
-        "responseStatus": 404,
-        "responseError": "Error al obtener los datos del archivo"
-    };
+  }
     return respuesta;
  }
     
- }
+ 
  
  
 const aperturaFondo ={
@@ -3416,7 +3427,7 @@ const ejecutaOperacionLote ={
 const consultaPdfGdf ={
 
   "_downloadFile":true
-}
+} |
 */
 function consultaPdfGdf(bodyreq){
 
