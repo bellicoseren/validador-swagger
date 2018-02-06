@@ -211,8 +211,10 @@ app.post('/:path', function(req, res){
       console.log(file);
       console.log("antes de Base64");
       base64.encode(file, function(err, base64String) {
-        console.log(base64String);
+        console.log(base64String); 
         res.send(base64String);
+        res.status(200).send("nova solifgdfgdfgd");
+        //res.type('application/base64').download(base64String);
       }); 
       }
       else
