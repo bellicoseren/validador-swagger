@@ -3443,7 +3443,7 @@ function consultaPdfGdf(bodyreq){
   };
   }else {
     var respuesta={
-      "_downloadFile":true
+      "_downloadFileBase":true
     };
   }
   return respuesta;
