@@ -2458,12 +2458,6 @@ const consultaCuentasAgregadasCliente = {
   "responseError": "P"
 }
 
-const activacionPaperlessConst= {
-  "responseStatus": 200,
-  "responseError": ""
-}
-
-
 function activacionPaperless(bodyreq){
 
     if( bodyreq.otp != "999"){
@@ -2574,22 +2568,6 @@ const consultaCfdCfdiRetenciones = {
     //Es un archivo
     "_downloadFile":true
   }
-
-  const consultaRetencionesConst = {
-    "listRetenciones": [
-    {
-      "tipoDeConstancia": "CRI",
-      "noDeCliente": "543210987654321",
-      "noDeContrato": 543210987654321,
-      "RFCReceptor": "QUVA790114FT5",
-      "uuid": "SEFDAD1234-87465-ASDSD-14523"
-    }
-    ],
-    "responseStatus": 200,
-    "responseError": ""
-  }
-
-
 
 function consultaRetenciones(bodyreq){
 
