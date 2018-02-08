@@ -2458,10 +2458,27 @@ const consultaCuentasAgregadasCliente = {
   "responseError": "P"
 }
 
-const activacionPaperless = {
+const activacionPaperlessConst= {
   "responseStatus": 200,
   "responseError": ""
 }
+
+
+function activacionPaperless(bodyreq){
+
+    if( bodyreq.otp != "999"){
+        var respuesta = {
+             "responseStatus": 200,
+              "responseError": ""
+            };
+    }else{
+        var respuesta = {
+            "responseStatus": 2431,
+            "responseError": "ERROR OPT"
+            };
+    }
+    return respuesta;
+  }
 
 const consultaMovimientos = {
    "saldoInicial": 40654,
@@ -2558,7 +2575,7 @@ const consultaCfdCfdiRetenciones = {
     "_downloadFile":true
   }
 
-  const consultaRetenciones = {
+  const consultaRetencionesConst = {
     "listRetenciones": [
     {
       "tipoDeConstancia": "CRI",
@@ -2570,6 +2587,33 @@ const consultaCfdCfdiRetenciones = {
     ],
     "responseStatus": 200,
     "responseError": ""
+  }
+
+
+
+function consultaRetenciones(bodyreq){
+
+    if( bodyreq.otp != "999"){
+        var respuesta = {
+            "listRetenciones": [
+    {
+      "tipoDeConstancia": "CRI",
+      "noDeCliente": "543210987654321",
+      "noDeContrato": 543210987654321,
+      "RFCReceptor": "QUVA790114FT5",
+      "uuid": "SEFDAD1234-87465-ASDSD-14523"
+    }
+    ],
+    "responseStatus": 200,
+    "responseError": ""
+            };
+    }else{
+        var respuesta = {
+            "responseStatus": 2004,
+            "responseError": "OTP BLOQUEADO POR INACTIVIDAD"
+            };
+    }
+    return respuesta;
   }
 
   const consultaCtasServMultiT ={
@@ -2694,7 +2738,7 @@ function validaOTP(bodyreq){
             };
     }else{
         var respuesta = {
-            "responseStatus": 2402,
+            "responseStatus": 2004,
             "responseError": "OTP BLOQUEADO POR INACTIVIDAD"
             };
     }
