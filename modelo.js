@@ -2458,10 +2458,21 @@ const consultaCuentasAgregadasCliente = {
   "responseError": "P"
 }
 
-const activacionPaperless = {
-  "responseStatus": 200,
-  "responseError": ""
-}
+function activacionPaperless(bodyreq){
+
+    if( bodyreq.otp != "999"){
+        var respuesta = {
+             "responseStatus": 200,
+              "responseError": ""
+            };
+    }else{
+        var respuesta = {
+            "responseStatus": 2431,
+            "responseError": "ERROR OPT"
+            };
+    }
+    return respuesta;
+  }
 
 const consultaMovimientos = {
    "saldoInicial": 40654,
@@ -2558,8 +2569,11 @@ const consultaCfdCfdiRetenciones = {
     "_downloadFile":true
   }
 
-  const consultaRetenciones = {
-    "listRetenciones": [
+function consultaRetenciones(bodyreq){
+
+    if( bodyreq.otp != "999"){
+        var respuesta = {
+            "listRetenciones": [
     {
       "tipoDeConstancia": "CRI",
       "noDeCliente": "543210987654321",
@@ -2570,6 +2584,14 @@ const consultaCfdCfdiRetenciones = {
     ],
     "responseStatus": 200,
     "responseError": ""
+            };
+    }else{
+        var respuesta = {
+            "responseStatus": 2004,
+            "responseError": "OTP BLOQUEADO POR INACTIVIDAD"
+            };
+    }
+    return respuesta;
   }
 
   const consultaCtasServMultiT ={
@@ -2694,7 +2716,7 @@ function validaOTP(bodyreq){
             };
     }else{
         var respuesta = {
-            "responseStatus": 2402,
+            "responseStatus": 2004,
             "responseError": "OTP BLOQUEADO POR INACTIVIDAD"
             };
     }
@@ -2800,13 +2822,6 @@ const consultaCuentahabiente = {
   "responseStatus": 200,
   "responseError": "",
   "nombreCuentahabiente": "wterry@legosoft.com.mx"
-}
-
-const obtenerReporteCobranza = {
-  "responseStatus": 200,
-  "responseError": "",
-  "folioProgramacion": "",
-  "rutaReporte": ""
 }
 
 const consultarAutorizaciones = {
@@ -3464,6 +3479,44 @@ function consultaPdfGdf(bodyreq){
   return respuesta;
 }
 
+const consultaArchivoLote = {
+  "contenido": "http://localhost:9000/202020.captura-masiva/Archivo.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=P7L503WK4UJ4T9VAWZM2%2F20180130%2F%2Fs3%2Faws4_request&X-Amz-Date=20180130T183227Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=bc8cc18bd3785562f2a8c089c0a73b6fc1004aa620092858ae3a3ea3c797543b",
+}
+
+const solicitaOTPVirtual = {
+  "responseStatus": 200,
+  "responseError": ""
+}
+
+function obtenerReporteCobranza(bodyreq){
+
+    if((bodyreq.fechaInicio!= "" && bodyreq.fechaFin!= "") &&  bodyreq.horaProgramacion == ""){
+        var respuesta = {
+         "responseStatus": 200,
+         "responseError": "",
+         "folioProgramacion": "1234567",
+         "rutaReporte": "http://localhost:9000/202020.captura-masiva/Archivo.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=P7L503WK4UJ4T9VAWZM2%2F20180130%2F%2Fs3%2Faws4_request&X-Amz-Date=20180130T183227Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=bc8cc18bd3785562f2a8c089c0a73b6fc1004aa620092858ae3a3ea3c797543b"
+            };
+
+    }else if ((bodyreq.fechaInicio == "" && bodyreq.fechaFin== "") &&  bodyreq.horaProgramacion != ""){
+         var respuesta = {
+        "responseStatus": 200,
+        "responseError": "",
+        "folioProgramacion": "123456",
+        "rutaReporte": ""
+            };
+        
+    }else if ((bodyreq.fechaInicio != "") &&  bodyreq.horaProgramacion == ""){
+        var respuesta = {
+         "responseStatus": 200,
+         "responseError": "",
+         "folioProgramacion": "",
+         "rutaReporte": "http://localhost:9000/202020.captura-masiva/Archivo2.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=P7L503WK4UJ4T9VAWZM2%2F20180130%2F%2Fs3%2Faws4_request&X-Amz-Date=20180130T183227Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=bc8cc18bd3785562f2a8c089c0a73b6fc1004aa620092858ae3a3ea3c797543b"
+            };
+
+    }
+    return respuesta;
+  }
 
 var mapaModelo = {
    //### ESB ####//
@@ -3542,7 +3595,8 @@ var mapaModelo = {
  'catDispositivosMoviles':catDispositivosMoviles,
  'cancelaOpProg':cancelaOpProg,
  'consultaDispersionFondos':consultaDispersionFondos,
-  'ejecutaOperacionLote':ejecutaOperacionLote,
+ 'ejecutaOperacionLote':ejecutaOperacionLote,
+ 'consultaArchivoLote':consultaArchivoLote,
 //////////// Sprint 5 ////////////////////////
  'impuestosLocales': impuestosLocales,
  'aperturaPagare': aperturaPagare,
@@ -3557,7 +3611,8 @@ var mapaModelo = {
  'movimientosDiputados':movimientosDiputados,
  'aperturaFondo':aperturaFondo,
  'movimientosCFE':movimientosCFE,
- 'consultaPdfGdf':consultaPdfGdf
+ 'consultaPdfGdf':consultaPdfGdf,
+ 'solicitaOTPVirtual':solicitaOTPVirtual
   
 }
 
