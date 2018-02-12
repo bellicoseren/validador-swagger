@@ -1,13 +1,23 @@
+ 
+
+
 // importar
 var validador = require('./src/validateModel');
 var bodyParser = require('body-parser');
 var express = require('express');
 var swagger = require('./index.json');
 var modelo = require('./modelo');
+var Buffer1=require("Buffer");
+
 var port
 var basePath=""
 var app = express();
 var file = 'files/EstadodeCtaDemo.pdf';
+ 
+var fs = require('fs'); 
+
+var base64 = require('file-base64');
+
 //Se verifica variable de ambiente para puerto del validador
 if(process.env.VALIDADOR_NODE_PORT)
     port = process.env.VALIDADOR_NODE_PORT
@@ -16,7 +26,8 @@ else
 
 app.use(bodyParser.raw(
   {
-    type: "application/octet-stream"
+    type: "application/octet-stream",
+    type: "application/base64"
   }
 ));
 app.use(bodyParser.json({limit: '50mb', type: 'application/json'}));
@@ -195,8 +206,7 @@ app.post('/:path', function(req, res){
       if(respuesta._downloadFile){
         console.log("File")
         res.type('application/octet-stream').download(file);
-      }
-      else
+      }else
         res.status(200).send(respuesta);
     }else{
       console.log("Errors:  ", errors)
