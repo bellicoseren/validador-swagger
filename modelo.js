@@ -3391,37 +3391,17 @@ const cambioInstruccion ={
 }
 function movimientosDiputados(bodyreq){
 
-  if(bodyreq.numeroDeCuenta == "12345678" ){
+  if(bodyreq.numeroDeCuenta == "4321" ){
     var respuesta = {
-      "responseStatus": 4500,
+      "responseStatus": 500,
       "responseError": "T24 FUERA DE LINEA"
   };
- }else if(bodyreq.numeroDeCuenta == "987654321"){
+ }else if(bodyreq.numeroDeCuenta == "1234"){
     var respuesta = {
       "responseStatus": 4400,
-      "responseError": "NO SE ENCONTRARON RESULTADOS"
+      "responseError": "Error al obtener los datos del archivo"
   };
-  }else if(bodyreq.numeroDeCuenta == "98765432"){
-    var respuesta = {
-      "responseStatus": 2003,
-      "responseError": "TICKET ACTIVO INCORRECTO"
-  };
-  }else if(bodyreq.numeroDeCuenta == "98765431"){
-    var respuesta = {
-      "responseStatus": 2004,
-      "responseError": "TICKET DUPLICADO"
-  };
-  }else if(bodyreq.numeroDeCuenta == "98765421"){
-    var respuesta = {
-      "responseStatus": 2002,
-      "responseError": "CREDENCIALES DSC INVALIDAS"
-  };
-  }else if(bodyreq.numeroDeCuenta == "4321") {
-    var respuesta = {
-	"responseStatus": 500,
-	"responseError": "ERROR EN EL SERVER"
-};
-  }else{
+ }else{
 	  console.log("Entro en el archivo------------------------------------");
     var respuesta = {
 	  "_downloadFile":true	
