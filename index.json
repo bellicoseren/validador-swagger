@@ -1349,7 +1349,7 @@
         }
       }
     },
-    "/validaContrato": {
+    "/modificaContrato": {
       "post": {
         "tags": [
           "Sprint 1"
@@ -1359,19 +1359,17 @@
           {
             "in": "body",
             "name": "contrato",
-            "description": "Se requiere del idCLiente del usuario y la bandera en un valor=1",
+            "description": "Se requiere del idCliente del usuario y la bandera en un valor=1",
             "required": true,
             "schema": {
               "properties": {
-                "Usuario": {
-                  "type": "integer",
-                  "format": "int64",
-                  "example": 1
+                "usuario": {
+                  "type": "string",
+                  "example": "1000104401"
                 },
-                "ContratoAceptado": {
-                  "type": "integer",
-                  "format": "int64",
-                  "example": 1
+                "contratoAceptado": {
+                  "type": "string",
+                  "example": "1"
                 }
               }
             }
@@ -1387,11 +1385,6 @@
                   "example": "Operacion exitosa"
                 },
                 "codigo": {
-                  "type": "integer",
-                  "format": "int64",
-                  "example": 0
-                },
-                "contrato": {
                   "type": "string",
                   "example": "0"
                 }

@@ -620,10 +620,9 @@ const Validaotp = {
 }
 
 
-const validaContrato = {
+const modificaContrato = {
   "descripcion": "Operacion exitosa",
-  "codigo": 0,
-  "contrato":0
+  "codigo": "0"
 }
 
 const envioNotificaciones = {
@@ -3504,7 +3503,7 @@ var mapaModelo = {
    'consultaDatosBasicos': consultaDatosCliente,
    'consultaServiciosContratados':consultaServiciosContratados,
    'consultaProductosContratados':consultaProductosContratados,
-   'validaContrato':validaContrato,
+   'modificaContrato':modificaContrato,
    'cambioContrasena':cambioContrasena,
   //'consultaCuentasAgregadasCliente':consultaCuentasAgregadasCliente,
   'envioNotificaciones':envioNotificaciones,
