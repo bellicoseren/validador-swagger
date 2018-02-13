@@ -2547,9 +2547,58 @@ const consultaMovimientosMultiT ={
   "responseError": ""
 }
 
-const consultaCfdCfdi = {
+
+ /** const estadoCuentaPDF = {
+    //Es un archivo
+    "_downloadFile":true
+  }**/
+  
+  function estadoCuentaPDF(bodyreq){
+	if (bodyreq.numeroDeCuenta == "1234") {
+      var respuesta = {
+         //Es un archivo
+    	"_downloadFile":true
+	  };
+	}else if(bodyreq.numeroDeCuenta == "4321"){
+	var respuesta = {
+	"responseStatus": 4400,
+	"responseError": ""
+};
+	}else if(bodyreq.numeroDeCuenta == "1111") {
+    var respuesta = {
+	"responseStatus": 500,
+	"responseError": "Internal Server Error"
+};
+  }
+	  return respuesta;
+  
+}
+
+/**const consultaCfdCfdi = {
   //Es un archivo
   "_downloadFile":true
+}*/
+
+  function consultaCfdCfdi(bodyreq){ 
+	  
+	if (bodyreq.numeroDeCuenta == "1234") {
+      var respuesta = {
+         //Es un archivo
+    	"_downloadFile":true
+	  };
+	}else if(bodyreq.numeroDeCuenta == "4321"){
+	var respuesta = {
+	"responseStatus": 4400,
+	"responseError": ""
+};
+	}else if(bodyreq.numeroDeCuenta == "1111") {
+    var respuesta = {
+	"responseStatus": 500,
+	"responseError": "Internal Server Error"
+};
+  }
+	  return respuesta;
+  
 }
 
 
@@ -2616,12 +2665,8 @@ const consultaCfdCfdiRetenciones = {
     ],
     "responseStatus": 200,
     "responseError": ""
-  }
+  } 
 
-  const estadoCuentaPDF = {
-    //Es un archivo
-    "_downloadFile":true
-  }
 
   const movimientosDonaciones = {
     "listDonaciones": [
