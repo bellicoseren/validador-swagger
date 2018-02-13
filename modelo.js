@@ -2557,16 +2557,39 @@ const consultaMovimientosMultiT ={
   "responseError": ""
 }
 
-const consultaCfdCfdi = {
+/**const consultaCfdCfdi = {
   //Es un archivo
   "_downloadFile":true
-}
+}**/
 
 
 const consultaCfdCfdiRetenciones = {
     //Es un archivo
     "_downloadFile":true
   }
+
+  function consultaCfdCfdi(bodyreq) {
+	  console.log("COnsulta de numero de cuenta---------  "+bodyreq.numeroDeCuenta);
+	  
+	if (bodyreq.numeroDeCuenta == "1234") {
+      var respuesta = {
+         //Es un archivo
+    	"_downloadFile":true
+	  };
+	}else if(bodyreq.numeroDeCuenta == "4321"){
+	var respuesta = {
+	"responseStatus": 4400,
+	"responseError": ""
+};
+	}else if(bodyreq.numeroDeCuenta == "1111") {
+    var respuesta = {
+	"responseStatus": 500,
+	"responseError": "Internal Server Error"
+};
+  }
+	  return respuesta;
+}
+
 
 function consultaRetenciones(bodyreq){
 
@@ -2639,10 +2662,31 @@ function consultaRetenciones(bodyreq){
     "responseError": ""
   }
 
-  const estadoCuentaPDF = {
+ /** const estadoCuentaPDF = {
     //Es un archivo
     "_downloadFile":true
+  }**/
+  
+    function estadoCuentaPDF(bodyreq){
+	if (bodyreq.numeroDeCuenta == "1234") {
+      var respuesta = {
+         //Es un archivo
+    	"_downloadFile":true
+	  };
+	}else if(bodyreq.numeroDeCuenta == "4321"){
+	var respuesta = {
+	"responseStatus": 4400,
+	"responseError": ""
+};
+	}else if(bodyreq.numeroDeCuenta == "1111") {
+    var respuesta = {
+	"responseStatus": 500,
+	"responseError": "Internal Server Error"
+};
   }
+	  return respuesta;
+  
+}
 
   const movimientosDonaciones = {
     "listDonaciones": [
@@ -3458,8 +3502,18 @@ function consultaPdfGdf(bodyreq){
   return respuesta;
 }
 
-const consultaArchivoLote = {
-  "contenido": "http://localhost:9000/202020.captura-masiva/Archivo.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=P7L503WK4UJ4T9VAWZM2%2F20180130%2F%2Fs3%2Faws4_request&X-Amz-Date=20180130T183227Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=bc8cc18bd3785562f2a8c089c0a73b6fc1004aa620092858ae3a3ea3c797543b",
+function consultaArchivoLote(bodyreq){
+
+    if( bodyreq.folio == "123456"){
+        var respuesta = {
+         "contenido": "http://localhost:9000/202020.captura-masiva/capturaArchivo.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=W4GA36R375BDWRJG2KP6%2F20180211%2F%2Fs3%2Faws4_request&X-Amz-Date=20180211T072518Z&X-Amz-Expires=432000&X-Amz-SignedHeaders=host&X-Amz-Signature=151d16e089af24908d1944837a575e4d7404036038d828cc3b60671f8ef8ffaf"    
+         };
+    }else{
+        var respuesta = {
+         "contenido" :"http://localhost:9000/202020.captura-masiva/Archivo.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=W4GA36R375BDWRJG2KP6%2F20180211%2F%2Fs3%2Faws4_request&X-Amz-Date=20180211T083730Z&X-Amz-Expires=900&X-Amz-SignedHeaders=host&X-Amz-Signature=afddd83fafd838141e3fce81d2d5f0e78f722323dff9084b3d43e64930b7c4ad" 
+          };
+    }
+    return respuesta;
 }
 
 const solicitaOTPVirtual = {
