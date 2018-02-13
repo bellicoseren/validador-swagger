@@ -3360,7 +3360,7 @@ const tasasPagare = {
 function pagoImpuestosGdf(bodyreq){
   if (bodyreq.pagoImpuestosGdf.ctaOrigen == "1234") {
       var respuesta = {
-        "responseStatus": 404,
+        "responseStatus": 4400,
         "responseError": "Error al obtener los datos del archivo"
     };
 	  }else if(bodyreq.pagoImpuestosGdf.ctaOrigen == "85652501"){
@@ -3439,7 +3439,7 @@ const ejecutaOperacionLote ={
 function consultaPdfGdf(bodyreq){
 	if (bodyreq.consultaPdfGdf.folio == "1234") {
       var respuesta = {
-        "responseStatus": 404,
+        "responseStatus": 4400,
         "responseError": "Error al obtener los datos del archivo"
 	  };
 	}else if(bodyreq.consultaPdfGdf.folio == "4321") {
