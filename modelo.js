@@ -2557,16 +2557,39 @@ const consultaMovimientosMultiT ={
   "responseError": ""
 }
 
-const consultaCfdCfdi = {
+/**const consultaCfdCfdi = {
   //Es un archivo
   "_downloadFile":true
-}
+}**/
 
 
 const consultaCfdCfdiRetenciones = {
     //Es un archivo
     "_downloadFile":true
   }
+
+  function consultaCfdCfdi(bodyreq) {
+	  console.log("COnsulta de numero de cuenta---------  "+bodyreq.numeroDeCuenta);
+	  
+	if (bodyreq.numeroDeCuenta == "1234") {
+      var respuesta = {
+         //Es un archivo
+    	"_downloadFile":true
+	  };
+	}else if(bodyreq.numeroDeCuenta == "4321"){
+	var respuesta = {
+	"responseStatus": 4400,
+	"responseError": ""
+};
+	}else if(bodyreq.numeroDeCuenta == "1111") {
+    var respuesta = {
+	"responseStatus": 500,
+	"responseError": "Internal Server Error"
+};
+  }
+	  return respuesta;
+}
+
 
 function consultaRetenciones(bodyreq){
 
@@ -2639,10 +2662,31 @@ function consultaRetenciones(bodyreq){
     "responseError": ""
   }
 
-  const estadoCuentaPDF = {
+ /** const estadoCuentaPDF = {
     //Es un archivo
     "_downloadFile":true
+  }**/
+  
+    function estadoCuentaPDF(bodyreq){
+	if (bodyreq.numeroDeCuenta == "1234") {
+      var respuesta = {
+         //Es un archivo
+    	"_downloadFile":true
+	  };
+	}else if(bodyreq.numeroDeCuenta == "4321"){
+	var respuesta = {
+	"responseStatus": 4400,
+	"responseError": ""
+};
+	}else if(bodyreq.numeroDeCuenta == "1111") {
+    var respuesta = {
+	"responseStatus": 500,
+	"responseError": "Internal Server Error"
+};
   }
+	  return respuesta;
+  
+}
 
   const movimientosDonaciones = {
     "listDonaciones": [
