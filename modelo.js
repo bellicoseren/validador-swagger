@@ -2457,10 +2457,21 @@ const consultaCuentasAgregadasCliente = {
   "responseError": "P"
 }
 
-const activacionPaperless = {
-  "responseStatus": 200,
-  "responseError": ""
-}
+function activacionPaperless(bodyreq){
+
+    if( bodyreq.otp != "999"){
+        var respuesta = {
+             "responseStatus": 200,
+              "responseError": ""
+            };
+    }else{
+        var respuesta = {
+            "responseStatus": 2431,
+            "responseError": "ERROR OPT"
+            };
+    }
+    return respuesta;
+  }
 
 const consultaMovimientos = {
    "saldoInicial": 40654,
@@ -2546,39 +2557,19 @@ const consultaMovimientosMultiT ={
   "responseError": ""
 }
 
-
- /** const estadoCuentaPDF = {
-    //Es un archivo
-    "_downloadFile":true
-  }**/
-  
-  function estadoCuentaPDF(bodyreq){
-	if (bodyreq.numeroDeCuenta == "1234") {
-      var respuesta = {
-         //Es un archivo
-    	"_downloadFile":true
-	  };
-	}else if(bodyreq.numeroDeCuenta == "4321"){
-	var respuesta = {
-	"responseStatus": 4400,
-	"responseError": ""
-};
-	}else if(bodyreq.numeroDeCuenta == "1111") {
-    var respuesta = {
-	"responseStatus": 500,
-	"responseError": "Internal Server Error"
-};
-  }
-	  return respuesta;
-  
-}
-
 /**const consultaCfdCfdi = {
   //Es un archivo
   "_downloadFile":true
-}*/
+}**/
 
-  function consultaCfdCfdi(bodyreq){ 
+
+const consultaCfdCfdiRetenciones = {
+    //Es un archivo
+    "_downloadFile":true
+  }
+
+  function consultaCfdCfdi(bodyreq) {
+	  console.log("COnsulta de numero de cuenta---------  "+bodyreq.numeroDeCuenta);
 	  
 	if (bodyreq.numeroDeCuenta == "1234") {
       var respuesta = {
@@ -2597,17 +2588,14 @@ const consultaMovimientosMultiT ={
 };
   }
 	  return respuesta;
-  
 }
 
 
-const consultaCfdCfdiRetenciones = {
-    //Es un archivo
-    "_downloadFile":true
-  }
+function consultaRetenciones(bodyreq){
 
-  const consultaRetenciones = {
-    "listRetenciones": [
+    if( bodyreq.otp != "999"){
+        var respuesta = {
+            "listRetenciones": [
     {
       "tipoDeConstancia": "CRI",
       "noDeCliente": "543210987654321",
@@ -2618,6 +2606,14 @@ const consultaCfdCfdiRetenciones = {
     ],
     "responseStatus": 200,
     "responseError": ""
+            };
+    }else{
+        var respuesta = {
+            "responseStatus": 2004,
+            "responseError": "OTP BLOQUEADO POR INACTIVIDAD"
+            };
+    }
+    return respuesta;
   }
 
   const consultaCtasServMultiT ={
@@ -2664,8 +2660,33 @@ const consultaCfdCfdiRetenciones = {
     ],
     "responseStatus": 200,
     "responseError": ""
-  } 
+  }
 
+ /** const estadoCuentaPDF = {
+    //Es un archivo
+    "_downloadFile":true
+  }**/
+  
+    function estadoCuentaPDF(bodyreq){
+	if (bodyreq.numeroDeCuenta == "1234") {
+      var respuesta = {
+         //Es un archivo
+    	"_downloadFile":true
+	  };
+	}else if(bodyreq.numeroDeCuenta == "4321"){
+	var respuesta = {
+	"responseStatus": 4400,
+	"responseError": ""
+};
+	}else if(bodyreq.numeroDeCuenta == "1111") {
+    var respuesta = {
+	"responseStatus": 500,
+	"responseError": "Internal Server Error"
+};
+  }
+	  return respuesta;
+  
+}
 
   const movimientosDonaciones = {
     "listDonaciones": [
@@ -2738,7 +2759,7 @@ function validaOTP(bodyreq){
             };
     }else{
         var respuesta = {
-            "responseStatus": 2402,
+            "responseStatus": 2004,
             "responseError": "OTP BLOQUEADO POR INACTIVIDAD"
             };
     }
@@ -2844,13 +2865,6 @@ const consultaCuentahabiente = {
   "responseStatus": 200,
   "responseError": "",
   "nombreCuentahabiente": "wterry@legosoft.com.mx"
-}
-
-const obtenerReporteCobranza = {
-  "responseStatus": 200,
-  "responseError": "",
-  "folioProgramacion": "",
-  "rutaReporte": ""
 }
 
 const consultarAutorizaciones = {
@@ -3417,13 +3431,7 @@ function pagoImpuestosGdf(bodyreq){
 const cambioInstruccion ={
   "responseStatus": 200,
   "responseError": ""
-} 
-/*
-const movimientosDiputados={
-      "_downloadFile":true
 }
-*/
- 
 function movimientosDiputados(bodyreq){
 
   if(bodyreq.numeroDeCuenta == "12345678" ){
@@ -3490,7 +3498,8 @@ const ejecutaOperacionLote ={
    "responseStatus": 200,
    "responseError": ""
 }
- 
+
+
 function consultaPdfGdf(bodyreq){
 	if (bodyreq.consultaPdfGdf.folio == "1234") {
       var respuesta = {
@@ -3508,7 +3517,7 @@ function consultaPdfGdf(bodyreq){
       "archivoStream":"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QiAvSW1hZ2VDIC9JbWFnZUldCi9Gb250IDw8Cj4+Ci9YT2JqZWN0IDw8Ci9UUEwxIDUgMCBSCj4+Cj4+CmVuZG9iagoxMyAwIG9iago8PAovQ3JlYXRvciAoT25saW5lMlBERi5jb20pCi9Qcm9kdWNlciAoT25saW5lMlBERi5jb20pCi9DcmVhdGlvbkRhdGUgKEQ6MjAxODAyMDgxNzIwNTgpCj4+CmVuZG9iagoxNCAwIG9iago8PAovVHlwZSAvQ2F0YWxvZwovUGFnZXMgMSAwIFIKL09wZW5BY3Rpb24gWzMgMCBSIC9GaXRIIG51bGxdCi9QYWdlTGF5b3V0IC9PbmVDb2x1bW4KPj4KZW5kb2JqCnhyZWYKMCAxNQowMDAwMDAwMDAwIDY1NTM1IGYgCjAwMDAwMDAyNTcgMDAwMDAgbiAKMDAwMDAwNjI2MiAwMDAwMCBuIAowMDAwMDAwMDA5IDAwMDAwIG4gCjAwMDAwMDAxMTcgMDAwMDAgbiAKMDAwMDAwMDM0NCAwMDAwMCBuIAowMDAwMDAwNjk3IDAwMDAwIG4gCjAwMDAwMDA3MjcgMDAwMDAgbiAKMDAwMDAwMDc1NyAwMDAwMCBuIAowMDAwMDAwODIyIDAwMDAwIG4gCjAwMDAwMDEwMDAgMDAwMDAgbiAKMDAwMDAwMTIxMiAwMDAwMCBuIAowMDAwMDAxNDYzIDAwMDAwIG4gCjAwMDAwMDYzNjggMDAwMDAgbiAKMDAwMDAwNjQ3NiAwMDAwMCBuIAp0cmFpbGVyCjw8Ci9TaXplIDE1Ci9Sb290IDE0IDAgUgovSW5mbyAxMyAwIFIKL0lEIFs8M0ZFNUMwMTQyN0EyRjhCNzI0OEMxMENFNjM2NzUxNTM+PDNGRTVDMDE0MjdBMkY4QjcyNDhDMTBDRTYzNjc1MTUzPl0KPj4Kc3RhcnR4cmVmCjY1ODAKJSVFT0YK",
       "responseStatus": 200,
       "responseError": ""
-    }; 
+    };
   }
   return respuesta;
 }
@@ -3559,10 +3568,8 @@ function obtenerReporteCobranza(bodyreq){
             };
 
     }
-    return respuesta; 
+    return respuesta;
   }
-  return respuesta;
-}
 
 var mapaModelo = {
    //### ESB ####//
@@ -3641,7 +3648,8 @@ var mapaModelo = {
  'catDispositivosMoviles':catDispositivosMoviles,
  'cancelaOpProg':cancelaOpProg,
  'consultaDispersionFondos':consultaDispersionFondos,
-  'ejecutaOperacionLote':ejecutaOperacionLote,
+ 'ejecutaOperacionLote':ejecutaOperacionLote,
+ 'consultaArchivoLote':consultaArchivoLote,
 //////////// Sprint 5 ////////////////////////
  'impuestosLocales': impuestosLocales,
  'aperturaPagare': aperturaPagare,
@@ -3656,7 +3664,8 @@ var mapaModelo = {
  'movimientosDiputados':movimientosDiputados,
  'aperturaFondo':aperturaFondo,
  'movimientosCFE':movimientosCFE,
- 'consultaPdfGdf':consultaPdfGdf
+ 'consultaPdfGdf':consultaPdfGdf,
+ 'solicitaOTPVirtual':solicitaOTPVirtual
   
 }
 
@@ -3669,6 +3678,8 @@ function obtenerModelo (nombreModelo,bodyreq){
     return modelo;
   }
 }
+
+
 
 module.exports = {
   obtenerModelo
