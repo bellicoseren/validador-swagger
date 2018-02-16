@@ -10045,6 +10045,154 @@
         }
       }
     },
+    "/consultaFoliosGdf": {
+      "post": {
+        "tags": [
+          "Sprint 5"
+        ],
+        "description": "Consultar un listado de los folios de operaciones de GDF que se han ejecutado por el cliente. El cliente a utilizar para la consulta se obtendrá a partir del usuario que esté logueado.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "consultaFoliosGdf",
+            "description": "Diseño de la operación para consultaFoliosGdf",
+            "required": true,
+            "schema": {
+              "required": [
+                "ticket",
+                "canal"
+              ],
+              "properties": {
+                "idPersona": {
+                  "description": "Identificador del usuario logueado en la sesión. A partir de este dato se obtendrá el idPersona cuyos folios se consultarán.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123456
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Listado de Folios operaciones de GDF",
+            "schema": {
+              "required": [
+                "result"
+              ],
+              "properties": {
+                "result": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "folioOperacion": {
+                        "description": "El folio asignado por el ESB a la operación.",
+                        "type": "integer",
+                        "example": 12345678
+                      },
+                      "folioGDF": {
+                        "description": "El folio asignado por el sistema de GDF a la operación.",
+                        "type": "integer",
+                        "example": 8965433
+                      }
+                    }
+                  }
+                },
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Internal Server Error."
+                }
+              }
+            }
+          },
+          "202": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 4500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Ocurrió un error en T24."
+                }
+              }
+            }
+          },
+          "203": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 2003
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Ticket invalido."
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 2004
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Ticket duplicado."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/impuestosLocales": {
       "post": {
         "tags": [
