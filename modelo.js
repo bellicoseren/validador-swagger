@@ -3549,6 +3549,48 @@ function obtenerReporteCobranza(bodyreq){
     return respuesta;
   }
 
+function consultaFoliosGdf(bodyreq){
+
+	if (bodyreq.idPersona == "123456") {
+      var respuesta = {
+        "responseStatus": 4500,
+        "responseError": "Ocurrió un error en T24"
+    };
+  }else if(bodyreq.idPersona == "789123") {
+    var respuesta = {
+	"responseStatus": 500,
+  "responseError": "Internal Server Error"
+    };
+	}else if(bodyreq.idPersona == "654321") {
+    var respuesta = {
+	"responseStatus": 2003,
+	"responseError": "Ticket invalido"
+    };
+	}else if(bodyreq.idPersona == "987654") {
+    var respuesta = {
+	"responseStatus": 2004,
+	"responseError": "Ticket duplicado"
+    };
+  }else {
+    var respuesta ={
+      "result": [
+        {
+          "folioOperacion": 12345678,
+          "folioGDF": 8965433
+        }
+        ,
+        {
+          "folioOperacion": 45678903,
+          "folioGDF": 543654
+        }
+      ],
+      "responseStatus": 200,
+      "responseError": ""
+    };
+  }
+  return respuesta;
+}
+
 var mapaModelo = {
    //### ESB ####//
    /////////// Sprint 1  /////////////
@@ -3643,8 +3685,8 @@ var mapaModelo = {
  'aperturaFondo':aperturaFondo,
  'movimientosCFE':movimientosCFE,
  'consultaPdfGdf':consultaPdfGdf,
- 'solicitaOTPVirtual':solicitaOTPVirtual
-  
+ 'solicitaOTPVirtual':solicitaOTPVirtual,
+ 'consultaFoliosGdf':consultaFoliosGdf
 }
 
 function obtenerModelo (nombreModelo,bodyreq){
