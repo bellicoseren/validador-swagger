@@ -3551,22 +3551,22 @@ function obtenerReporteCobranza(bodyreq){
 
 function consultaFoliosGdf(bodyreq){
 
-	if (bodyreq.idPersona == "123456") {
+	if (bodyreq.idUsuario == "123456") {
       var respuesta = {
         "responseStatus": 4500,
         "responseError": "Ocurrió un error en T24"
     };
-  }else if(bodyreq.idPersona == "789123") {
+  }else if(bodyreq.idUsuario == "789123") {
     var respuesta = {
 	"responseStatus": 500,
   "responseError": "Internal Server Error"
     };
-	}else if(bodyreq.idPersona == "654321") {
+	}else if(bodyreq.idUsuario == "654321") {
     var respuesta = {
 	"responseStatus": 2003,
 	"responseError": "Ticket invalido"
     };
-	}else if(bodyreq.idPersona == "987654") {
+	}else if(bodyreq.idUsuario == "987654") {
     var respuesta = {
 	"responseStatus": 2004,
 	"responseError": "Ticket duplicado"
