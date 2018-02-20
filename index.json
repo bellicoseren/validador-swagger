@@ -9996,11 +9996,6 @@
                   "type": "integer",
                   "format": "int32",
                   "example": 3
-                },
-                "reinversionIntereses": {
-                  "description": "Esta bandera indica si  al vencimiento del plazo los intereses deberán moverse a la cuenta asociada con la inversión o reinvertirse en la inversión como capital.",
-                  "type": "boolean",
-                  "example": true
                 }
               }
             }
@@ -10010,6 +10005,10 @@
           "200": {
             "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
             "schema": {
+              "required": [
+                "folioInversion",
+                "responseStatus"
+              ],
               "properties": {
                 "folioInversion": {
                   "description": "El identificador único de la inversión creada en T24.",
@@ -10207,7 +10206,10 @@
             "required": true,
             "schema": {
               "required": [
-                "canal"
+                "idPersona",
+                "ticket",
+                "canal",
+                "impuestosLocales"
               ],
               "properties": {
                 "idPersona": {
@@ -10232,14 +10234,22 @@
                   }
                 },
                 "canal": {
-                  "description": "Identificador del canal a través del cual se recibió la petición. Se utilizarán los identificadores de canal definidos por T24.",
                   "type": "string",
-                  "example": "MVNET"
+                  "minLength": 1,
+                  "example": "WEB"
                 },
                 "impuestosLocales": {
+                  "required": [
+                    "numeroCliente",
+                    "usuarioId",
+                    "direccionIp",
+                    "lineaCaptura",
+                    "importeLineaCaptura"
+                  ],
                   "properties": {
                     "numeroCliente": {
                       "type": "integer",
+                      "format": "int64",
                       "example": "987654321",
                       "description": "Numero de cliente que va a generar los impuestos"
                     },
@@ -10251,7 +10261,7 @@
                     "direccionIp": {
                       "type": "string",
                       "example": "192.168.99.102",
-                      "description": "Numero de cliente que se va a generar los impuestos"
+                      "description": "Dirección solicitante del request"
                     },
                     "lineaCaptura": {
                       "type": "string",
@@ -10260,6 +10270,7 @@
                     },
                     "importeLineaCaptura": {
                       "type": "number",
+                      "format": "double",
                       "example": 5862.8,
                       "description": "Monto de la línea de captura."
                     }
@@ -10289,8 +10300,8 @@
               }
             }
           },
-          "500": {
-            "description": "impuestos locales error",
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
             "schema": {
               "properties": {
                 "responseStatus": {
@@ -10299,7 +10310,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": ""
+                  "example": "Internal Server Error"
                 }
               }
             }
@@ -10348,6 +10359,9 @@
           "200": {
             "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
             "schema": {
+              "required": [
+                "responseStatus"
+              ],
               "properties": {
                 "tasas": {
                   "type": "array",
@@ -10401,7 +10415,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": ""
+                  "example": "Internal Error Server"
                 }
               }
             }
@@ -10450,6 +10464,9 @@
           "200": {
             "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
             "schema": {
+              "required": [
+                "responseStatus"
+              ],
               "properties": {
                 "tasas": {
                   "type": "array",
@@ -10566,17 +10583,17 @@
                         "format": "double",
                         "example": 0.3
                       },
-                      "rangoFinal": {
-                        "description": "Monto final del rango requerido para que aplique esta tasa.",
-                        "type": "number",
-                        "format": "double",
-                        "example": 1000000
-                      },
                       "rangoInicial": {
                         "description": "Monto inicial del rango requerido para que esta tasa aplique.",
                         "type": "number",
                         "format": "double",
                         "example": 0
+                      },
+                      "rangoFinal": {
+                        "description": "Monto final del rango requerido para que aplique esta tasa.",
+                        "type": "number",
+                        "format": "double",
+                        "example": 1000000
                       },
                       "montoMensual": {
                         "description": "Monto mensual requerido para que aplique esta tasa.",
@@ -10604,8 +10621,8 @@
               }
             }
           },
-          "500": {
-            "description": "Tasas Integra error",
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
             "schema": {
               "properties": {
                 "responseStatus": {
@@ -10614,7 +10631,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": ""
+                  "example": "Internal Error Server"
                 }
               }
             }
@@ -10636,20 +10653,15 @@
             "required": true,
             "schema": {
               "required": [
-                "idPersona",
                 "ticket",
-                "otp",
-                "canal",
                 "cuentaOrigen",
                 "cuentaDestino",
-                "monto"
+                "idPersona",
+                "canal",
+                "monto",
+                "otp"
               ],
               "properties": {
-                "idPersona": {
-                  "type": "integer",
-                  "format": "int64",
-                  "example": 123546345
-                },
                 "ticket": {
                   "required": [
                     "id_user",
@@ -10666,26 +10678,35 @@
                     }
                   }
                 },
-                "otp": {
-                  "type": "string",
-                  "example": "1234567"
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
                 },
                 "canal": {
                   "type": "string",
                   "minLength": 1,
                   "example": "WEB"
                 },
+                "otp": {
+                  "type": "string",
+                  "example": "1234567"
+                },
                 "cuentaOrigen": {
+                  "description": "Cuenta origen del movimiento.",
                   "type": "string",
                   "example": "123456"
                 },
                 "cuentaDestino": {
+                  "description": "Cuenta destino del movimiento. Debe ser una cuenta Integra.",
                   "type": "string",
                   "example": "123456"
                 },
                 "monto": {
+                  "description": "Monto con el que se abrirá la inversión inicialmente.",
                   "type": "number",
-                  "example": 100000
+                  "format": "double",
+                  "example": 100000.1
                 }
               }
             }
@@ -10710,17 +10731,17 @@
               }
             }
           },
-          "500": {
-            "description": "Depósito Integra error",
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
             "schema": {
               "properties": {
                 "responseStatus": {
                   "type": "number",
-                  "example": 500
+                  "example": 4500
                 },
                 "responseError": {
                   "type": "string",
-                  "example": ""
+                  "example": "T24 FUERA DE LINEA"
                 }
               }
             }
@@ -10742,28 +10763,14 @@
             "required": true,
             "schema": {
               "required": [
-                "idPersona",
-                "canal",
-                "otp",
                 "ticket",
                 "cuentaEje",
-                "monto"
+                "idPersona",
+                "canal",
+                "monto",
+                "otp"
               ],
               "properties": {
-                "idPersona": {
-                  "type": "integer",
-                  "format": "int64",
-                  "example": 123546345
-                },
-                "canal": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": "WEB"
-                },
-                "otp": {
-                  "type": "string",
-                  "example": "1234567"
-                },
                 "ticket": {
                   "required": [
                     "id_user",
@@ -10780,13 +10787,30 @@
                     }
                   }
                 },
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "otp": {
+                  "type": "string",
+                  "example": "1234567"
+                },
                 "cuentaEje": {
+                  "description": "Número de cuenta que alimentará esta cuenta integra.",
                   "type": "string",
                   "example": "123456"
                 },
                 "monto": {
+                  "description": "Monto con el que se abrirá la inversión inicialmente.",
                   "type": "number",
-                  "example": 100000
+                  "format": "double",
+                  "example": 100000.1
                 }
               }
             }
@@ -10816,17 +10840,17 @@
               }
             }
           },
-          "500": {
-            "description": "Apertura Integra error",
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
             "schema": {
               "properties": {
                 "responseStatus": {
                   "type": "number",
-                  "example": 500
+                  "example": 4500
                 },
                 "responseError": {
                   "type": "string",
-                  "example": ""
+                  "example": "T24 FUERA DE LINEA"
                 }
               }
             }
@@ -10848,11 +10872,13 @@
             "required": true,
             "schema": {
               "required": [
+                "ticket",
+                "cuentaAsociada",
+                "idPersona",
+                "monto",
                 "canal",
                 "otp",
-                "monto",
-                "plazo",
-                "ticket"
+                "plazo"
               ],
               "properties": {
                 "idPersona": {
@@ -10862,7 +10888,8 @@
                 },
                 "canal": {
                   "type": "string",
-                  "example": "MVNET"
+                  "minLength": 1,
+                  "example": "WEB"
                 },
                 "otp": {
                   "type": "string",
@@ -10885,23 +10912,28 @@
                   }
                 },
                 "monto": {
+                  "description": "Monto de apertura para el pagaré.",
                   "type": "number",
-                  "format": "long",
+                  "format": "double",
                   "example": 1000000
                 },
                 "cuentaAsociada": {
+                  "description": "Número de la cuenta que se asociará con la nueva inversión. Las transferencias desde y hacia la inversión resultante sólo se podrán ejecutar a esta cuenta.",
                   "type": "string",
                   "example": "123456"
                 },
                 "plazo": {
+                  "description": "Plazo de la inversión en días.",
                   "type": "integer",
                   "example": 3
                 },
-                "recreacionAlVencimiento": {
+                "reinversionIntereses": {
+                  "description": "Esta bandera indica si  al vencimiento del plazo los intereses deberán moverse a la cuenta asociada con la inversión o reinvertirse en la inversión como capital.",
                   "type": "boolean",
                   "example": true
                 },
-                "reinversionIntereses": {
+                "recreacionAlVencimiento": {
+                  "description": "Esta bandera indica que el pagaré regenerará con las mismas características al vencimiento del plazo.",
                   "type": "boolean",
                   "example": true
                 }
@@ -10913,6 +10945,10 @@
           "200": {
             "description": "impuestos locales",
             "schema": {
+              "required": [
+                "folioInversion",
+                "responseStatus"
+              ],
               "properties": {
                 "folioInversion": {
                   "type": "string",
@@ -10929,17 +10965,17 @@
               }
             }
           },
-          "500": {
-            "description": "impuestos locales error",
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
             "schema": {
               "properties": {
                 "responseStatus": {
                   "type": "number",
-                  "example": 500
+                  "example": 4500
                 },
                 "responseError": {
                   "type": "string",
-                  "example": ""
+                  "example": "T24 FUERA DE LINEA"
                 }
               }
             }
@@ -10964,24 +11000,17 @@
             "required": true,
             "schema": {
               "required": [
-                "numeroDeCuenta",
+                "idPersona",
                 "ticket",
-                "canal"
+                "numeroDeCuenta",
+                "canal",
+                "otp"
               ],
               "properties": {
-                "numeroDeCuenta": {
-                  "type": "string",
-                  "example": 12342456423985
-                },
-                "fechaInicio": {
-                  "type": "string",
-                  "format": "date",
-                  "example": "2012-12-12"
-                },
-                "fechaFin": {
-                  "type": "string",
-                  "format": "date",
-                  "example": "2012-12-12"
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
                 },
                 "ticket": {
                   "required": [
@@ -11003,6 +11032,26 @@
                   "type": "string",
                   "minLength": 1,
                   "example": "WEB"
+                },
+                "otp": {
+                  "type": "string",
+                  "example": "1234567"
+                },
+                "numeroDeCuenta": {
+                  "type": "string",
+                  "example": 12342456423985
+                },
+                "fechaInicio": {
+                  "description": "Rango de fechas que representa desde que fecha se requiere consultar dd-MM-yyyy.",
+                  "type": "string",
+                  "format": "date",
+                  "example": "2012-12-12"
+                },
+                "fechaFin": {
+                  "description": "Rango de fechas que representa hasta que fecha se requiere consultar dd-MM-yyyy.",
+                  "type": "string",
+                  "format": "date",
+                  "example": "2012-12-12"
                 }
               }
             }
@@ -11063,29 +11112,15 @@
             "required": true,
             "schema": {
               "required": [
+                "ticket",
+                "folioInversion",
                 "idPersona",
                 "canal",
-                "otp",
-                "ticket",
-                "recreacionAlVencimiento",
                 "reinversionIntereses",
-                "folioInversion"
+                "recreacionAlVencimiento",
+                "otp"
               ],
               "properties": {
-                "idPersona": {
-                  "type": "integer",
-                  "format": "int64",
-                  "example": 123546345
-                },
-                "canal": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": "WEB"
-                },
-                "otp": {
-                  "type": "string",
-                  "example": "1234567"
-                },
                 "ticket": {
                   "required": [
                     "id_user",
@@ -11102,17 +11137,31 @@
                     }
                   }
                 },
-                "recreacionAlVencimiento": {
-                  "type": "boolean",
-                  "example": true
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "otp": {
+                  "type": "string",
+                  "example": "1234567"
+                },
+                "folioInversion": {
+                  "type": "string",
+                  "example": "123456"
                 },
                 "reinversionIntereses": {
                   "type": "boolean",
                   "example": true
                 },
-                "folioInversion": {
-                  "type": "string",
-                  "example": "123456"
+                "recreacionAlVencimiento": {
+                  "type": "boolean",
+                  "example": true
                 }
               }
             }
@@ -11122,6 +11171,9 @@
           "200": {
             "description": "cambio Instruccion",
             "schema": {
+              "required": [
+                "responseStatus"
+              ],
               "properties": {
                 "responseStatus": {
                   "type": "number",
@@ -11134,17 +11186,17 @@
               }
             }
           },
-          "500": {
-            "description": "cambio Instruccion error",
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
             "schema": {
               "properties": {
                 "responseStatus": {
                   "type": "number",
-                  "example": 500
+                  "example": 4500
                 },
                 "responseError": {
                   "type": "string",
-                  "example": ""
+                  "example": "T24 FUERA DE LINEA"
                 }
               }
             }
@@ -11169,8 +11221,7 @@
             "required": true,
             "schema": {
               "required": [
-                "ticket",
-                "idPersona"
+                "ticket"
               ],
               "properties": {
                 "ticket": {
@@ -11204,29 +11255,24 @@
                     "ctaOrigen",
                     "CLABE",
                     "fechaCaptura",
-                    "lineaCaptura",
-                    "mail"
+                    "lineaCaptura"
                   ],
                   "properties": {
                     "ctaOrigen": {
+                      "description": "Cuenta a la que se hará el abono.",
                       "type": "integer",
                       "format": "int64",
                       "example": "1000525658"
                     },
                     "CLABE": {
-                      "description": "CLABE de la cuenta con la que se hace el pago.",
+                      "description": "Cuenta a la que se hará el cargo.",
                       "type": "string",
                       "example": "9879865465"
                     },
-                    "moneda": {
-                      "description": "Divisa del pago.",
+                    "Moneda": {
+                      "description": "Moneda de la cuenta origen.",
                       "type": "string",
                       "example": "MXN"
-                    },
-                    "folioFW": {
-                      "type": "integer",
-                      "format": "int64",
-                      "example": "987954654"
                     },
                     "importe": {
                       "description": "Importe de la línea de captura.",
@@ -11234,25 +11280,10 @@
                       "format": "double",
                       "example": "120000.10"
                     },
-                    "tipoComision": {
-                      "type": "integer",
-                      "format": "int32",
-                      "example": 5512233456
-                    },
-                    "montoComision": {
-                      "description": "Monto de la comisión aplicable al pago.",
-                      "type": "number",
-                      "format": "double",
-                      "example": "1000.10"
-                    },
                     "descripcion": {
-                      "description": "Descripción del pago realizado.",
+                      "description": "Descripción capturada por el cliente para el estado de cuenta.",
                       "type": "string",
                       "example": "Descripción"
-                    },
-                    "tipoTraspaso": {
-                      "type": "string",
-                      "example": "1"
                     },
                     "fechaCaptura": {
                       "description": "Fecha de captura del pago, en formato dd-MM-yyyyThh:mm:ss.",
@@ -11260,42 +11291,25 @@
                       "format": "date",
                       "example": "2017-10-12"
                     },
-                    "formaProceso": {
-                      "type": "string",
-                      "example": ""
-                    },
                     "usuarioCaptura": {
+                      "description": "Usuario que realiza la operación.",
                       "type": "string",
                       "example": "Usuario 1"
-                    },
-                    "usuarioAutoriza": {
-                      "type": "string",
-                      "example": "Usuario 2"
                     },
                     "lineaCaptura": {
                       "description": "Línea de captura con la que se procesa el pago.",
                       "type": "string",
                       "example": "GUMR880723BJ2"
                     },
-                    "mail": {
-                      "description": "Correo electrónico para notificación del pago.",
-                      "type": "string",
-                      "example": "test@domain.com"
-                    },
-                    "celular": {
-                      "description": "Número de móvil para envío de notificación del pago en SMS.",
-                      "type": "string",
-                      "example": "5512233456"
-                    },
                     "enviaCorreo": {
                       "description": "Bandera que dispara el envío de correo al realizar el pago.",
                       "type": "boolean",
-                      "example": "false"
+                      "example": "true"
                     },
-                    "enviaSms": {
+                    "enviaSMS": {
                       "description": "Bandera que dispara el envío de un SMS cuando se realiza el pago.",
                       "type": "boolean",
-                      "example": "false"
+                      "example": "true"
                     },
                     "numCliente": {
                       "description": "Id de la persona que realiza el pago.",
@@ -11343,7 +11357,7 @@
                       "type": "string",
                       "example": "TEDW112233445566"
                     },
-                    "subMarca": {
+                    "submarca": {
                       "description": "Si se va hacer un pago de tenencia, este campo trae la marca del automóvil.",
                       "type": "string",
                       "example": "submarca"
@@ -11361,36 +11375,44 @@
                       "example": "123456"
                     },
                     "tipoDeclaracion": {
+                      "description": "Datos del pago.",
                       "type": "string",
                       "example": ""
                     },
                     "remuneraciones": {
+                      "description": "Datos del pago.",
                       "type": "integer",
                       "format": "int64",
                       "example": "123456"
                     },
                     "numTrabajadores": {
+                      "description": "Datos del pago.",
                       "type": "integer",
                       "format": "int64",
                       "example": "1"
                     },
                     "fechaEvento": {
+                      "description": "Datos del pago.",
                       "type": "string",
                       "example": "123456"
                     },
                     "fechaEscritura": {
+                      "description": "Datos del pago.",
                       "type": "string",
                       "example": "PAGO DE MES DE AGOSTO"
                     },
                     "numeroEscritura": {
+                      "description": "Datos del pago.",
                       "type": "string",
                       "example": "PAGO DE MES DE AGOSTO"
                     },
                     "cuentaCatastral": {
+                      "description": "Datos del pago.",
                       "type": "string",
                       "example": "123456"
                     },
                     "numeroNotario": {
+                      "description": "Datos del pago.",
                       "type": "string",
                       "example": "PAGO DE MES DE AGOSTO"
                     }
@@ -11404,6 +11426,9 @@
           "200": {
             "description": "Archivo en stream de bytes",
             "schema": {
+              "required": [
+                "responseStatus"
+              ],
               "properties": {
                 "responseStatus": {
                   "type": "number",
@@ -11416,15 +11441,17 @@
                 "response": {
                   "properties": {
                     "idPagoImpuestos": {
+                      "description": "Identificador que representa cada una de los Creditos.",
                       "type": "integer",
                       "format": "int64",
                       "example": "123456789"
                     },
-                    "rutaArchivo": {
+                    "folio": {
+                      "description": "Folio generado para la operación.",
                       "type": "string",
-                      "example": "/home/Archivos"
+                      "example": "123456"
                     },
-                    "archivoStream": {
+                    "ArchivoStream": {
                       "type": "string",
                       "format": "binary"
                     }
@@ -11450,28 +11477,23 @@
                     "ctaOrigen",
                     "CLABE",
                     "fechaCaptura",
-                    "lineaCaptura",
-                    "mail"
+                    "lineaCaptura"
                   ],
                   "properties": {
                     "ctaOrigen": {
+                      "description": "Cuenta a la que se hará el abono.",
                       "type": "integer",
                       "format": "int64",
                       "example": ""
                     },
                     "CLABE": {
-                      "description": "CLABE de la cuenta con la que se hace el pago.",
+                      "description": "Cuenta a la que se hará el cargo.",
                       "type": "string",
                       "example": ""
                     },
-                    "moneda": {
-                      "description": "Divisa del pago.",
+                    "Moneda": {
+                      "description": "Moneda de la cuenta origen.",
                       "type": "string",
-                      "example": ""
-                    },
-                    "folioFW": {
-                      "type": "integer",
-                      "format": "int64",
                       "example": ""
                     },
                     "importe": {
@@ -11480,23 +11502,8 @@
                       "format": "double",
                       "example": ""
                     },
-                    "tipoComision": {
-                      "type": "integer",
-                      "format": "int32",
-                      "example": ""
-                    },
-                    "montoComision": {
-                      "description": "Monto de la comisión aplicable al pago.",
-                      "type": "number",
-                      "format": "double",
-                      "example": ""
-                    },
                     "descripcion": {
-                      "description": "Descripción del pago realizado.",
-                      "type": "string",
-                      "example": ""
-                    },
-                    "tipoTraspaso": {
+                      "description": "Descripción capturada por el cliente para el estado de cuenta.",
                       "type": "string",
                       "example": ""
                     },
@@ -11506,15 +11513,8 @@
                       "format": "date",
                       "example": ""
                     },
-                    "formaProceso": {
-                      "type": "string",
-                      "example": ""
-                    },
                     "usuarioCaptura": {
-                      "type": "string",
-                      "example": ""
-                    },
-                    "usuarioAutoriza": {
+                      "description": "Usuario que realiza la operación.",
                       "type": "string",
                       "example": ""
                     },
@@ -11523,25 +11523,15 @@
                       "type": "string",
                       "example": ""
                     },
-                    "mail": {
-                      "description": "Correo electrónico para notificación del pago.",
-                      "type": "string",
-                      "example": ""
-                    },
-                    "celular": {
-                      "description": "Número de móvil para envío de notificación del pago en SMS.",
-                      "type": "string",
-                      "example": ""
-                    },
                     "enviaCorreo": {
                       "description": "Bandera que dispara el envío de correo al realizar el pago.",
                       "type": "boolean",
-                      "example": "false"
+                      "example": "true"
                     },
-                    "enviaSms": {
+                    "enviaSMS": {
                       "description": "Bandera que dispara el envío de un SMS cuando se realiza el pago.",
                       "type": "boolean",
-                      "example": "false"
+                      "example": "true"
                     },
                     "numCliente": {
                       "description": "Id de la persona que realiza el pago.",
@@ -11589,7 +11579,7 @@
                       "type": "string",
                       "example": ""
                     },
-                    "subMarca": {
+                    "submarca": {
                       "description": "Si se va hacer un pago de tenencia, este campo trae la marca del automóvil.",
                       "type": "string",
                       "example": ""
@@ -11607,36 +11597,44 @@
                       "example": ""
                     },
                     "tipoDeclaracion": {
+                      "description": "Datos del pago.",
                       "type": "string",
                       "example": ""
                     },
                     "remuneraciones": {
+                      "description": "Datos del pago.",
                       "type": "integer",
                       "format": "int64",
                       "example": ""
                     },
                     "numTrabajadores": {
+                      "description": "Datos del pago.",
                       "type": "integer",
                       "format": "int64",
                       "example": ""
                     },
                     "fechaEvento": {
+                      "description": "Datos del pago.",
                       "type": "string",
                       "example": ""
                     },
                     "fechaEscritura": {
+                      "description": "Datos del pago.",
                       "type": "string",
                       "example": ""
                     },
                     "numeroEscritura": {
+                      "description": "Datos del pago.",
                       "type": "string",
                       "example": ""
                     },
                     "cuentaCatastral": {
+                      "description": "Datos del pago.",
                       "type": "string",
                       "example": ""
                     },
                     "numeroNotario": {
+                      "description": "Datos del pago.",
                       "type": "string",
                       "example": ""
                     }
@@ -11680,6 +11678,7 @@
                 "idPersona",
                 "canal",
                 "ticket",
+                "otp",
                 "fondosInversion"
               ],
               "properties": {
@@ -11690,7 +11689,8 @@
                 },
                 "canal": {
                   "type": "string",
-                  "example": "MVNET"
+                  "minLength": 1,
+                  "example": "WEB"
                 },
                 "ticket": {
                   "required": [
@@ -11708,26 +11708,18 @@
                     }
                   }
                 },
+                "otp": {
+                  "type": "string",
+                  "example": "1234567"
+                },
                 "fondosInversion": {
                   "required": [
-                    "numeroCuenta",
-                    "email",
-                    "ipConexion"
+                    "numeroCuenta"
                   ],
                   "properties": {
                     "numeroCuenta": {
                       "type": "string",
-                      "format": "string",
                       "example": "1000585654"
-                    },
-                    "email": {
-                      "type": "string",
-                      "example": "example@multiva.com.mx"
-                    },
-                    "ipConexion": {
-                      "type": "string",
-                      "format": "string",
-                      "example": "192.168.125.22"
                     }
                   }
                 }
@@ -11751,8 +11743,8 @@
               }
             }
           },
-          "500": {
-            "description": "apertura Fondo error",
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
             "schema": {
               "properties": {
                 "responseStatus": {
@@ -11761,7 +11753,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": ""
+                  "example": "Internal Server Error"
                 }
               }
             }
@@ -11823,6 +11815,9 @@
           "200": {
             "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
             "schema": {
+              "required": [
+                "responseStatus"
+              ],
               "properties": {
                 "movimientos": {
                   "type": "array",
@@ -11838,7 +11833,7 @@
                         "description": "Monto del movimiento registrado.",
                         "type": "number",
                         "format": "double",
-                        "example": 1000000
+                        "example": 1000000.1
                       },
                       "referencia": {
                         "description": "Referencia del movimiento.",
@@ -11918,6 +11913,7 @@
                       "example": 987654321
                     },
                     "folio": {
+                      "description": "Es el folio de la operación de pago de impuestos cuyo comprobante se desea consultar.",
                       "type": "string",
                       "example": ""
                     }

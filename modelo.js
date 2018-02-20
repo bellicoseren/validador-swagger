@@ -3338,7 +3338,7 @@ const consultaDispersionFondos = {
 }
 
 const impuestosLocales = {
-    "htmlGdf":"<table><tr><td></td></tr></table>", 
+  "htmlGdf":"<table><tr><td></td></tr></table>", 
 	"responseStatus": 200,
 	"responseError": ""
 }
@@ -3363,8 +3363,8 @@ const tasasIntegra = {
     "tasas": [
         {
           "tasa": 0.3,
+          "rangoInicial": 0,          
           "rangoFinal": 1000000,
-          "rangoInicial": 0,
           "montoMensual": 50000,
           "tasaMensual": 0.3
         }
@@ -3381,9 +3381,9 @@ const aperturaCede = {
 
 const tasasCede = {
   "tasas": [{
-		"tasa": 0.3,
+    "tasa": 0.3,
+		"montoInicial": 0.0,    
 		"montoFinal": 1000000.00,
-		"montoInicial": 0.0,
 		"plazo": 30
 	}],
 	"responseStatus": 200,
@@ -3392,9 +3392,9 @@ const tasasCede = {
 
 const tasasPagare = {
   "tasas": [{
-		"tasa": 0.3,
+    "tasa": 0.3,
+		"montoInicial": 0.0,    
 		"montoFinal": 1000000.00,
-		"montoInicial": 0.0,
 		"plazo": 30
 	}],
 	"responseStatus": 200,
@@ -3434,7 +3434,7 @@ function movimientosDiputados(bodyreq){
 
   if(bodyreq.numeroDeCuenta == "4321" ){
     var respuesta = {
-      "responseStatus": 500,
+      "responseStatus": 4500,
       "responseError": "T24 FUERA DE LINEA"
   };
  }else if(bodyreq.numeroDeCuenta == "1234"){
@@ -3443,7 +3443,6 @@ function movimientosDiputados(bodyreq){
       "responseError": "Error al obtener los datos del archivo"
   };
  }else{
-	  console.log("Entro en el archivo------------------------------------");
     var respuesta = {
 	  "_downloadFile":true	
     };
@@ -3451,8 +3450,6 @@ function movimientosDiputados(bodyreq){
     return respuesta;
  }
     
- 
- 
  
 const aperturaFondo ={
   "responseStatus": 200,
