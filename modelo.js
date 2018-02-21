@@ -3442,6 +3442,11 @@ function movimientosDiputados(bodyreq){
       "responseStatus": 4400,
       "responseError": "Error al obtener los datos del archivo"
   };
+ }else if(bodyreq.otp == "1234"){
+    var respuesta = {
+      "responseStatus": 401,
+      "responseError": "Error al validar el OTP"
+}; 
  }else{
     var respuesta = {
 	  "_downloadFile":true	
