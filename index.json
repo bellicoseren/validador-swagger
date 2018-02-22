@@ -11080,6 +11080,21 @@
               }
             }
           },
+          "401": {
+            "description": "Error OTP invalido",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 401
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Error OTP invalido"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Error no existe Archivo",
             "schema": {
