@@ -630,7 +630,7 @@ const envioNotificaciones = {
   "responseError": ""
 }
 
-const cambioContrasena = {
+/**const cambioContrasena = {
   "listCambioContrasena": {
     "codigo": 0,
     "mensaje": ""
@@ -638,6 +638,36 @@ const cambioContrasena = {
   "responseStatus": 200,
   "responseError": ""
 }
+**/
+
+function cambioContrasena(bodyreq){ 
+
+  if( bodyreq.oldPassword == "999"){
+        if( bodyreq.newPassword == "123" &&  bodyreq.confirmNewPassword == "123"){
+        var respuesta = {
+              "listCambioContrasena": {
+                "codigo": 0,
+                "mensaje": ""
+              },
+              "responseStatus": 200,
+              "responseError": "OK"
+            };
+        }else{
+        var respuesta = {
+            "responseStatus": 404,
+            "responseError": "LAS CONTRASEÑAS QUE INGRESASTE NO SON IGUALES"
+            };
+        }
+    }else{
+        var respuesta = {
+            "responseStatus": 404,
+            "responseError": "TU CONTRASEÑA ACTUAL NO EXISTE"
+            };
+    } 
+    return respuesta;
+  }
+
+
 
 //Sprint 1 adecuacion
 /*
