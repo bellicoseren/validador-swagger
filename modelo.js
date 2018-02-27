@@ -620,10 +620,31 @@ const Validaotp = {
 }
 
 
-const modificaContrato = {
+/**const modificaContrato = {
   "descripcion": "Operacion exitosa",
   "codigo": "0"
+}**/
+
+function modificaContrato(bodyreq){
+
+console.log("USUARIO--------------"+bodyreq.usuario);
+
+
+  if( bodyreq.usuario == "999"){
+        var  respuesta =  {
+              "descripcion": "Error",
+              "codigo": "1"
+            }; 
+   }else{
+    var respuesta =  {
+             "descripcion": "Operacion exitosa",
+              "codigo": "0"
+            };
+    }
+console.log("RESPUESTA-------------------------"+respuesta);
+    return respuesta;
 }
+
 
 const envioNotificaciones = {
   "responseStatus": 200,
