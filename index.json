@@ -12024,6 +12024,400 @@
           }
         }
       }
+    },
+    "/crearAbastecimientoTokensCliente": {
+      "post": {
+        "tags": [
+          "Sprint F"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación /crearAbastecimientoTokensCliente del servicio /otp requerida para la integración de Multivanet con OTP",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "crearAbastecimientoTokensCliente",
+            "description": "Crear Abastecimiento de Tokens por Cliente",
+            "required": true,
+            "schema": {
+              "required": [
+                "idUsuario",
+                "idPersonaCliente",
+                "cantidadDispositivos",
+                "ticket",
+                "canal"
+              ],
+              "properties": {
+                "idPersonaCliente": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "idUsuario": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "cantidadDispositivos": {
+                  "description": "Cantidad de dispositivos a solicitar a una sucursal.",
+                  "type": "string",
+                  "example": "10"
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                },
+                "result": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "idSolicitud": {
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 8
+                      },
+                      "fechaRegistro": {
+                        "type": "string",
+                        "example": "09-01-2018T15:42:00"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 2500
+                },
+                "resposeError": {
+                  "type": "string",
+                  "example": "Internal Server Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/consultaStockTokens": {
+      "post": {
+        "tags": [
+          "Sprint F"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación /consultaStockTokens del servicio /otp requerida para la integración de Multivanet con OTP.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "consultaStockTokens",
+            "description": "Cnsulta Stock Tokens",
+            "required": true,
+            "schema": {
+              "required": [
+                "idUsuario",
+                "canal",
+                "idPersonaCliente",
+                "ticket"
+              ],
+              "properties": {
+                "idUsuario": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "idPersonaCliente": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Representa una ejecución exitosa",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                },
+                "result": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "idDispositivo": {
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 12345
+                      },
+                      "numeroSerie": {
+                        "type": "string",
+                        "example": "MXS-9087-HDF"
+                      },
+                      "numeroCaja": {
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                      },
+                      "estatusCliente": {
+                        "type": "string",
+                        "example": "ASIGNADO"
+                      },
+                      "fechaRegistro": {
+                        "type": "string",
+                        "example": "07/12/2017 06:12:42"
+                      },
+                      "fechaAsignacion": {
+                        "type": "string",
+                        "example": "09/01/2018 12:30:42"
+                      },
+                      "usuarioAdicional": {
+                        "properties": {
+                          "id": {
+                            "type": "integer",
+                            "format": "int64",
+                            "example": 4
+                          },
+                          "nombre": {
+                            "type": "string",
+                            "example": "Juan"
+                          },
+                          "apellidoMaterno": {
+                            "type": "string",
+                            "example": "Lopez"
+                          },
+                          "apellidoPaterno": {
+                            "type": "string",
+                            "example": "Lopez"
+                          },
+                          "perfil": {
+                            "type": "string",
+                            "example": "Adicional"
+                          }
+                        }
+                      },
+                      "sucursal": {
+                        "properties": {
+                          "id": {
+                            "type": "integer",
+                            "format": "int64",
+                            "example": 3
+                          },
+                          "nombre": {
+                            "type": "string",
+                            "example": "Tecamachalco"
+                          }
+                        }
+                      },
+                      "solicitud": {
+                        "properties": {
+                          "id": {
+                            "type": "integer",
+                            "format": "int64",
+                            "example": 1
+                          },
+                          "proveedor": {
+                            "properties": {
+                              "id": {
+                                "type": "integer",
+                                "format": "int64",
+                                "example": 11
+                              },
+                              "nombre": {
+                                "type": "string",
+                                "example": "VASCO"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 2204
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "No se encontraron registros"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/asignacionOtpUsuario": {
+      "post": {
+        "tags": [
+          "Sprint F"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación /AsignacionOtpUsuario del servicio /otp requerida para la integración de Multivanet con OTP.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "asignacionOtpUsuario",
+            "description": "Asignacion de Otp a Usuario",
+            "required": true,
+            "schema": {
+              "required": [
+                "idUsuario",
+                "dispositivo",
+                "ticket",
+                "canal"
+              ],
+              "properties": {
+                "idUsuario": {
+                  "properties": {
+                    "id": {
+                      "type": "number",
+                      "format": "int64",
+                      "example": 2
+                    },
+                    "nombre": {
+                      "type": "string",
+                      "example": "Alfredo"
+                    }
+                  }
+                },
+                "dispositivo": {
+                  "properties": {
+                    "idDispositivo": {
+                      "type": "number",
+                      "format": "int64",
+                      "example": 3
+                    }
+                  }
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Representa una ejecución exitosa.",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 2500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Internal Server Error"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
