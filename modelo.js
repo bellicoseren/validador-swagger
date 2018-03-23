@@ -3644,6 +3644,198 @@ function consultaFoliosGdf(bodyreq){
   return respuesta;
 }
 
+
+////////////////////////////////////////////////////////////
+
+
+const actualizaDatosPersona ={
+  "responseStatus": 200,
+  "responseError": ""
+}
+
+
+const consultaCuentasCliente = {
+  "result": [
+    {
+      "idPersona": "11",
+      "noCuenta": "0000000009",
+      "tipoCuenta": "cheques",
+      "alias": ""
+    }
+  ],
+  "responseStatus": 200,
+  "responseError": ""
+}
+
+
+const consultaSucursales = {
+  "sucursales": [
+    {
+      "id": "11",
+      "calle": "",
+      "noExterior": "",
+      "noInterior": "",
+      "nombre": "",
+      "estado": "",
+      "entrecalles": "",
+      "país": "",
+      "ciudad": "",
+      "colonia": "",
+      "codigoPostal": "",
+      "municipio": ""
+    }
+  ],
+  "responseStatus": 200,
+  "responseError": ""
+}
+
+
+
+
+const direccionesPorPersona = {
+  "id": "11",
+  "nombre": "",
+  "listaDirecciones": [
+    {
+      "tipoDireccion": {
+        "id": "11",
+        "descripcion": ""
+      },
+      "pais": {
+        "id": "11",
+        "descripcion": "",
+        "nacionalidad": ""
+      },
+      "estado": {
+        "id": "11",
+        "descripcion": ""
+      },
+      "id": "11",
+      "calle": "",
+      "noExterior": "",
+      "noInterior": "",
+      "entreCalles": "",
+      "ciudad": "",
+      "colonia": "",
+      "codigoPostal": "",
+      "esPrincipal": true,
+      "municipio": "",
+      "responseStatus": 200,
+      "responseError": ""
+    }
+  ],
+  "responseStatus": 200,
+  "responseError": ""
+}
+
+
+const busquedaPorRFC = {
+  "responseStatus": 200,
+  "responseError": "",
+  "result": {
+    "Id": "9",
+    "regimenFiscal": "Persona Moral",
+    "nombre": "nombre",
+    "razonSocial": "VASCO",
+    "apellidoPaterno": "apellidoPaterno",
+    "apellidoMaterno": "apellidoMaterno",
+    "nombreCompleto": "nombreCompleto",
+    "rfc": "VAS647909",
+    "curp": "curp",
+    "direccion": [
+      {
+        "tipoDireccion": {
+          "id": 1,
+          "descripcion": "Fiscal"
+        },
+        "pais": {
+          "id": 1,
+          "descripcion": "México"
+        },
+        "estado": {
+          "id": 1,
+          "descripcion": "Distrito Federal"
+        },
+        "municipio": "municipio",
+        "ciudad": "ciudad",
+        "colonia": "colonia",
+        "codigoPostal": "codigoPostal",
+        "calle": "Calle",
+        "noExterior": "182",
+        "noInterior": "2",
+        "entreCalles": "Pensamiento y laureles",
+        "esPrincipal": true
+      }
+    ],
+    "activo": true,
+    "telefonos": [
+      {
+        "telefono": "12345678",
+        "descTipoTelefono": "Casa",
+        "esPrincipal": true
+      }
+    ],
+    "correos": [
+      {
+        "correo": "ejemplo@ejemplo.com",
+        "esPrincipal": true
+      }
+    ],
+    "contactos": [
+      {
+        "tipoRelacion": {
+          "id": 3,
+          "descripcion": "Contacto"
+        },
+        "telefonos": [
+          {
+            "telefono": "5537136838",
+            "descTipoTelefono": "Casa",
+            "esPrincipal": true
+          }
+        ],
+        "correos": [
+          {
+            "correo": "shernandez@mail.com.mx",
+            "esPrincipal": true
+          }
+        ],
+        "idContacto": 12,
+        "nombre": "Silvano Ruiz Lopez",
+        "email": "shernandez@mail.com.mx",
+        "rfc": "SRLP654321ZA5",
+        "isNomina": true
+      }
+    ]
+  }
+}
+
+const consultaEstados = {
+  "responseStatus": 200,
+  "responseError": "",
+  "estados": [
+    {
+      "id": 5,
+      "descripcion": 5
+    }
+  ]
+}
+
+const consultaMunicipioDelegacion = {
+  "responseStatus": 200,
+  "responseError": "",
+  "municipiosDelegaciones": [
+    {
+      "id": 5,
+      "nombre": "Venustiano C.",
+      "claveMunicipioDelegacion": 5,
+      "idEstado": 5
+    }
+  ]
+}
+
+
+
 var mapaModelo = {
    //### ESB ####//
    /////////// Sprint 1  /////////////
@@ -3739,7 +3931,16 @@ var mapaModelo = {
  'movimientosCFE':movimientosCFE,
  'consultaPdfGdf':consultaPdfGdf,
  'solicitaOTPVirtual':solicitaOTPVirtual,
- 'consultaFoliosGdf':consultaFoliosGdf
+ 'consultaFoliosGdf':consultaFoliosGdf,
+//////////Sprint f//////////////////
+ 'actualizaDatosPersona':actualizaDatosPersona,
+ 'consultaCuentasCliente':consultaCuentasCliente,
+ 'consultaSucursales':consultaSucursales,
+ 'direccionesPorPersona':direccionesPorPersona,
+ 'busquedaPorRFC':busquedaPorRFC,
+ 'consultaEstados':consultaEstados,
+ 'consultaMunicipioDelegacion':consultaMunicipioDelegacion
+ 
 }
 
 function obtenerModelo (nombreModelo,bodyreq){
