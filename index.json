@@ -12025,10 +12025,1432 @@
         }
       }
     },
+    "/actualizaDatosPersona": {
+      "post": {
+        "tags": [
+          "Sprint f"
+        ],
+        "description": " Interfaz que le permitirá actualizar los datos (correo electrónico y teléfono) de una persona cabe mencionar que el correo y teléfono que se estarán actualizando solo serán los marcados como principales",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "actualizaDatosPersona",
+            "description": "Diseño de la operación para actualizaDatosPersona",
+            "required": true,
+            "schema": {
+              "required": [
+                "idUsuario",
+                "IdPersonaCambio",
+                "telefono",
+                "correoElectronico",
+                "canal",
+                "ticket"
+              ],
+              "properties": {
+                "idUsuario": {
+                  "description": "Identificador único de la persona en los sistemas institucionales.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 1
+                },
+                "IdPersonaCambio": {
+                  "description": "Id de la persona a la cual se le quieren actualizar los datos.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 1
+                },
+                "telefono": {
+                  "description": "Número de teléfono para actualizar como principal.",
+                  "type": "string",
+                  "example": ""
+                },
+                "correoElectronico": {
+                  "description": "Correo electrónico para actualizar como principal",
+                  "type": "string",
+                  "example": ""
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "required": [
+                "responseStatus"
+              ],
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "El registro no se pudo actualizar.",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 5204
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "registro no se pudo actualizar"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error interno en el servidor.",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 5500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Error interno en el servidor."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/consultaCuentasCliente": {
+      "post": {
+        "tags": [
+          "Sprint f"
+        ],
+        "description": " Interfaz que le permitirá consultar información de las cuentas por cliente, estas deben de incluir a otros elementos del holding marcadas como multitesoreria.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "consultaCuentasCliente",
+            "description": "Diseño de la operación para consultaCuentasCliente",
+            "required": true,
+            "schema": {
+              "required": [
+                "idUsuario",
+                "idPersonaCliente",
+                "canal",
+                "ticket"
+              ],
+              "properties": {
+                "idUsuario": {
+                  "description": "Identificador único de la persona en los sistemas institucionales.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 1
+                },
+                "idPersonaCliente": {
+                  "description": "Id de la persona moral de la cual se quieren extraer las cuentas y las cuentas de sus empresas relacionadas.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 1
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "properties": {
+                "result": {
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "idPersona",
+                      "noCuenta",
+                      "tipoCuenta",
+                      "alias"
+                    ],
+                    "properties": {
+                      "idPersona": {
+                        "description": "idPersona propietaria de la cuenta",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                      },
+                      "noCuenta": {
+                        "description": "Número de cuenta.",
+                        "type": "string",
+                        "example": "0000000009"
+                      },
+                      "tipoCuenta": {
+                        "description": "Tipo de cuenta (Producto de la cuenta).",
+                        "type": "string",
+                        "example": "cheques"
+                      },
+                      "alias": {
+                        "description": "Alias de la cuenta",
+                        "type": "string",
+                        "example": ""
+                      }
+                    }
+                  }
+                },
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "No se encontraron registros",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 5204
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "No se encontraron registros"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error interno en el servidor.",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 5500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Error interno en el servidor."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/consultaSucursales": {
+      "post": {
+        "tags": [
+          "Sprint f"
+        ],
+        "description": "Interfaz que permitirá la consulta de las sucursales existentes con el detalle de la misma, la información se extraerá de la tabla bupSucursal. No se recibirá ningún para metro ya que se regresara una lista de todas las sucursales, si se envía algún filtro nombre o id de la sucursal si se regresara solo esa sucursal en particular.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "consultaSucursales",
+            "description": "Diseño de la operación para consultaSucursales",
+            "required": true,
+            "schema": {
+              "required": [
+                "idUsuario",
+                "canal",
+                "ticket"
+              ],
+              "properties": {
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "idUsuario": {
+                  "description": "Identificador único de la persona en los sistemas institucionales.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 1
+                },
+                "nombre": {
+                  "description": "Nombre de la sucursal que se quiere consultar.",
+                  "type": "string",
+                  "example": ""
+                },
+                "idEstado": {
+                  "description": "Identificador del estado de la dirección de una sucursal.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 1
+                },
+                "municipioDelegacion": {
+                  "description": "Municipio de la dirección de la sucursal.",
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "properties": {
+                "sucursales": {
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "id",
+                      "calle",
+                      "noExterior",
+                      "nombre",
+                      "estado",
+                      "entrecalles",
+                      "país",
+                      "ciudad",
+                      "colonia",
+                      "codigoPostal",
+                      "municipio"
+                    ],
+                    "properties": {
+                      "id": {
+                        "description": "Lista de sucursales.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "11"
+                      },
+                      "calle": {
+                        "description": "Calle donde se encuentra la sucursal.",
+                        "type": "string",
+                        "example": ""
+                      },
+                      "noExterior": {
+                        "description": "Numero exterior de la sucursal",
+                        "type": "string",
+                        "example": ""
+                      },
+                      "noInterior": {
+                        "description": "Numero interior de la sucursal",
+                        "type": "string",
+                        "example": ""
+                      },
+                      "nombre": {
+                        "description": "Nombre de la sucursal",
+                        "type": "string",
+                        "example": ""
+                      },
+                      "estado": {
+                        "description": "Estado donde se encuentra la sucursal",
+                        "type": "string",
+                        "example": ""
+                      },
+                      "entrecalles": {
+                        "description": "Entre calles en las que se encuentra la sucursal",
+                        "type": "string",
+                        "example": ""
+                      },
+                      "país": {
+                        "description": "Pais donde se encuentra la sucursal",
+                        "type": "string",
+                        "example": ""
+                      },
+                      "ciudad": {
+                        "description": "Ciudad donde se encuentra la sucursal",
+                        "type": "string",
+                        "example": ""
+                      },
+                      "colonia": {
+                        "description": "Colonia donde se encuentra la sucursal",
+                        "type": "string",
+                        "example": ""
+                      },
+                      "codigoPostal": {
+                        "description": "Código postal donde se encuentra la sucursal",
+                        "type": "string",
+                        "example": ""
+                      },
+                      "municipio": {
+                        "description": "Municipio donde se encuentra la sucursal",
+                        "type": "string",
+                        "example": ""
+                      }
+                    }
+                  }
+                },
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "No se encontraron registros",
+            "schema": {
+              "properties": {
+                "sucursales": {
+                  "example": []
+                },
+                "responseStatus": {
+                  "type": "number",
+                  "example": 5204
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "No se encontraron registros"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error interno en el servidor.",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 5500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Error interno en el servidor."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/direccionesPorPersona": {
+      "post": {
+        "tags": [
+          "Sprint f"
+        ],
+        "description": "Interfaz que le permitirá consultar la lista de direcciones de una persona propietaria. Se recibirá como parámetro de entrada el id de la persona, la información se obtendrá de las siguiente tablas.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "direccionesPorPersona",
+            "description": "Diseño de la operación para direccionesPorPersona",
+            "required": true,
+            "schema": {
+              "required": [
+                "idUsuario",
+                "canal",
+                "ticket"
+              ],
+              "properties": {
+                "idUsuario": {
+                  "description": "Identificador único de la persona en los sistemas institucionales.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 1
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "properties": {
+                "id": {
+                  "description": "Lista de sucursales.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": "11"
+                },
+                "nombre": {
+                  "description": "Nombre del cliente (agregar apellidos)",
+                  "type": "string",
+                  "example": ""
+                },
+                "listaDirecciones": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "tipoDireccion": {
+                        "properties": {
+                          "id": {
+                            "description": "Descripción del tipo de dirección.",
+                            "type": "integer",
+                            "format": "int64",
+                            "example": 1
+                          },
+                          "descripcion": {
+                            "description": "Descripción del país.",
+                            "type": "string",
+                            "example": ""
+                          }
+                        }
+                      },
+                      "pais": {
+                        "properties": {
+                          "id": {
+                            "description": "Id del país.",
+                            "type": "integer",
+                            "format": "int64",
+                            "example": 1
+                          },
+                          "descripcion": {
+                            "description": "Descripción del país.",
+                            "type": "string",
+                            "example": ""
+                          },
+                          "nacionalidad": {
+                            "description": "Descripción de la nacionalidad por país",
+                            "type": "string",
+                            "example": ""
+                          }
+                        }
+                      },
+                      "estado": {
+                        "properties": {
+                          "id": {
+                            "description": "Descripción del tipo de dirección.",
+                            "type": "integer",
+                            "format": "int64",
+                            "example": 1
+                          },
+                          "descripcion": {
+                            "description": "Descripción del país.",
+                            "type": "string",
+                            "example": ""
+                          }
+                        }
+                      },
+                      "id": {
+                        "description": "Id de la dirección",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "11"
+                      },
+                      "calle": {
+                        "description": "Calle de la dirección",
+                        "type": "string",
+                        "example": ""
+                      },
+                      "noExterior": {
+                        "description": "Numero exterior",
+                        "type": "string",
+                        "example": ""
+                      },
+                      "noInterior": {
+                        "description": "Numero interior",
+                        "type": "string",
+                        "example": ""
+                      },
+                      "entreCalles": {
+                        "description": "Entre calles",
+                        "type": "string",
+                        "example": ""
+                      },
+                      "ciudad": {
+                        "description": "Ciudad de la dirección",
+                        "type": "string",
+                        "example": ""
+                      },
+                      "colonia": {
+                        "description": "Colonia de la dirección",
+                        "type": "string",
+                        "example": ""
+                      },
+                      "codigoPostal": {
+                        "description": "Código postal de la dirección",
+                        "type": "string",
+                        "example": ""
+                      },
+                      "esPrincipal": {
+                        "description": "Bandera que indica si la dirección es la principal",
+                        "type": "boolean",
+                        "example": true
+                      },
+                      "municipio": {
+                        "description": "Municipio de la dirección",
+                        "type": "string",
+                        "example": ""
+                      },
+                      "responseStatus": {
+                        "type": "number",
+                        "example": 200
+                      },
+                      "responseError": {
+                        "type": "string",
+                        "example": ""
+                      }
+                    }
+                  }
+                },
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "No se encontraron registros",
+            "schema": {
+              "properties": {
+                "id": {
+                  "description": "Descripción del tipo de dirección.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": ""
+                },
+                "nombre": {
+                  "description": "Descripción del país.",
+                  "type": "string",
+                  "example": ""
+                },
+                "listaDirecciones": {
+                  "example": []
+                },
+                "responseStatus": {
+                  "type": "number",
+                  "example": 5204
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "No se encontraron registros"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error interno en el servidor.",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 5500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Error interno en el servidor."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/busquedaPorRFC": {
+      "post": {
+        "tags": [
+          "Sprint f"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación /buscar/personaFisicaPorFiltro del servicio /bup requerida para la integración de Multivanet con T24.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "busquedaPorRFC",
+            "description": "Diseño de la operación para busquedaPorRFC",
+            "required": true,
+            "schema": {
+              "required": [
+                "idPersona",
+                "ticket",
+                "canal"
+              ],
+              "properties": {
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "filtro": {
+                  "description": "Valor que se usará para la consulta.  Puede ser un RFC, un nombre, apellido paterno o apellido materno. La consulta ejecuta ORs para todos estos campos.",
+                  "type": "string",
+                  "example": " "
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                },
+                "result": {
+                  "required": [
+                    "Id",
+                    "regimenFiscal",
+                    "nombre",
+                    "razonSocial",
+                    "apellidoPaterno",
+                    "apellidoMaterno",
+                    "nombreCompleto",
+                    "rfc",
+                    "curp",
+                    "activo",
+                    "telefonos",
+                    "correos",
+                    "contactos"
+                  ],
+                  "properties": {
+                    "Id": {
+                      "description": "Id de la persona consultada.",
+                      "type": "integer",
+                      "format": "int64",
+                      "example": "9"
+                    },
+                    "regimenFiscal": {
+                      "description": "Régimen fiscal de la persona consultada para este caso PF (Persona Fisica).",
+                      "type": "string",
+                      "example": "Persona Moral"
+                    },
+                    "nombre": {
+                      "description": "Nombre de la persona consultada.",
+                      "type": "string",
+                      "example": "null"
+                    },
+                    "razonSocial": {
+                      "description": "Razón social de la persona consultada. Se llena solo para personas morales.",
+                      "type": "string",
+                      "example": "VASCO"
+                    },
+                    "apellidoPaterno": {
+                      "description": "Apellido paterno de la persona consultada. Se llena solo para personas físicas.",
+                      "type": "string",
+                      "example": "null"
+                    },
+                    "apellidoMaterno": {
+                      "description": "Apellido Materno de la persona consultada. Se llena solo para personas físicas.",
+                      "type": "string",
+                      "example": "null"
+                    },
+                    "nombreCompleto": {
+                      "description": "Nombre completo de la persona consultada. Se llena sólo para personas físicas.",
+                      "type": "string",
+                      "example": "null"
+                    },
+                    "rfc": {
+                      "description": "RFC de la persona consultada.",
+                      "type": "string",
+                      "example": "VAS647909"
+                    },
+                    "curp": {
+                      "description": "Curp de la persona consultada.",
+                      "type": "string",
+                      "example": "null"
+                    },
+                    "direccion": {
+                      "type": "array",
+                      "items": {
+                        "required": [
+                          "tipoDireccion",
+                          "pais",
+                          "estado",
+                          "esPrincipal"
+                        ],
+                        "properties": {
+                          "tipoDireccion": {
+                            "required": [
+                              "id",
+                              "descripcion"
+                            ],
+                            "properties": {
+                              "id": {
+                                "description": "Id del tipo de dirección.",
+                                "type": "integer",
+                                "format": "int64",
+                                "example": 1
+                              },
+                              "descripcion": {
+                                "description": "Descripción del tipo de dirección.",
+                                "type": "string",
+                                "example": "Fiscal"
+                              }
+                            }
+                          },
+                          "pais": {
+                            "required": [
+                              "id",
+                              "descripcion"
+                            ],
+                            "properties": {
+                              "id": {
+                                "description": "Id país.",
+                                "type": "integer",
+                                "format": "int64",
+                                "example": 1
+                              },
+                              "descripcion": {
+                                "description": "Descripción del país.",
+                                "type": "string",
+                                "example": "México"
+                              }
+                            }
+                          },
+                          "estado": {
+                            "required": [
+                              "id",
+                              "descripcion"
+                            ],
+                            "properties": {
+                              "id": {
+                                "description": "Id estado.",
+                                "type": "integer",
+                                "format": "int64",
+                                "example": 1
+                              },
+                              "descripcion": {
+                                "description": "Descripción del estado.",
+                                "type": "string",
+                                "example": "Distrito Federal"
+                              }
+                            }
+                          },
+                          "municipio": {
+                            "description": "Municipio de la dirección relacionada.",
+                            "type": "string",
+                            "example": "null"
+                          },
+                          "ciudad": {
+                            "description": "Ciudad de la dirección relacionada.",
+                            "type": "string",
+                            "example": "null"
+                          },
+                          "colonia": {
+                            "description": "Colonia de la dirección relacionada.",
+                            "type": "string",
+                            "example": "null"
+                          },
+                          "codigoPostal": {
+                            "description": "Código postal de la dirección relacionada.",
+                            "type": "string",
+                            "example": "null"
+                          },
+                          "calle": {
+                            "description": "Calle de la dirección relacionada.",
+                            "type": "string",
+                            "example": "Calle"
+                          },
+                          "noExterior": {
+                            "description": "noExterior de la dirección relacionada.",
+                            "type": "string",
+                            "example": "182"
+                          },
+                          "noInterior": {
+                            "description": "noInterior de la dirección relacionada.",
+                            "type": "string",
+                            "example": "2"
+                          },
+                          "entreCalles": {
+                            "description": "Entre calles de la dirección relacionada.",
+                            "type": "string",
+                            "example": "Pensamiento y laureles"
+                          },
+                          "esPrincipal": {
+                            "description": "Bandera que indica si la dirección es principal.",
+                            "type": "boolean",
+                            "example": true
+                          }
+                        }
+                      }
+                    },
+                    "activo": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "telefonos": {
+                      "type": "array",
+                      "items": {
+                        "required": [
+                          "telefono",
+                          "descTipoTelefono",
+                          "esPrincipal"
+                        ],
+                        "properties": {
+                          "telefono": {
+                            "description": "Teléfono relacionado a la persona.",
+                            "type": "string",
+                            "example": "12345678"
+                          },
+                          "descTipoTelefono": {
+                            "description": "Descripción del tipo de teléfono que se muestra (casa, oficina, celular).",
+                            "type": "string",
+                            "example": "Casa"
+                          },
+                          "esPrincipal": {
+                            "description": "Bandera que indica si el teléfono que se muestra es el principal.",
+                            "type": "boolean",
+                            "example": true
+                          }
+                        }
+                      }
+                    },
+                    "correos": {
+                      "type": "array",
+                      "items": {
+                        "required": [
+                          "correo",
+                          "esPrincipal"
+                        ],
+                        "properties": {
+                          "correo": {
+                            "description": "correo relacionado a la persona.",
+                            "type": "string",
+                            "example": "ejemplo@ejemplo.com"
+                          },
+                          "esPrincipal": {
+                            "description": "Bandera que indica si el correo que se muestra es el principal.",
+                            "type": "boolean",
+                            "example": true
+                          }
+                        }
+                      }
+                    },
+                    "contactos": {
+                      "type": "array",
+                      "items": {
+                        "required": [
+                          "tipoRelacion",
+                          "telefonos",
+                          "correos",
+                          "idContacto",
+                          "nombre",
+                          "email",
+                          "rfc",
+                          "isNomina"
+                        ],
+                        "properties": {
+                          "tipoRelacion": {
+                            "required": [
+                              "id",
+                              "descripcion"
+                            ],
+                            "properties": {
+                              "id": {
+                                "description": "Id tipo de relación.",
+                                "type": "integer",
+                                "format": "int64",
+                                "example": 3
+                              },
+                              "descripcion": {
+                                "description": "Descripción de la relación.",
+                                "type": "string",
+                                "example": "Contacto"
+                              }
+                            }
+                          },
+                          "telefonos": {
+                            "type": "array",
+                            "items": {
+                              "required": [
+                                "telefono",
+                                "descTipoTelefono",
+                                "esPrincipal"
+                              ],
+                              "properties": {
+                                "telefono": {
+                                  "description": "Teléfono relacionado a la persona.",
+                                  "type": "string",
+                                  "example": "5537136838"
+                                },
+                                "descTipoTelefono": {
+                                  "description": "Descripción del tipo de teléfono que se muestra (casa, oficina, celular).",
+                                  "type": "string",
+                                  "example": "Casa"
+                                },
+                                "esPrincipal": {
+                                  "description": "Bandera que indica si el teléfono que se muestra es el principal.",
+                                  "type": "boolean",
+                                  "example": true
+                                }
+                              }
+                            }
+                          },
+                          "correos": {
+                            "type": "array",
+                            "items": {
+                              "required": [
+                                "correo",
+                                "esPrincipal"
+                              ],
+                              "properties": {
+                                "correo": {
+                                  "description": "correo relacionado a la persona.",
+                                  "type": "string",
+                                  "example": "shernandez@mail.com.mx"
+                                },
+                                "esPrincipal": {
+                                  "description": "Bandera que indica si el correo que se muestra es el principal.",
+                                  "type": "boolean",
+                                  "example": true
+                                }
+                              }
+                            }
+                          },
+                          "idContacto": {
+                            "description": "Id del contacto.",
+                            "type": "integer",
+                            "format": "int64",
+                            "example": 12
+                          },
+                          "nombre": {
+                            "description": "Nombre completo del contacto.",
+                            "type": "string",
+                            "example": "Silvano Ruiz Lopez"
+                          },
+                          "email": {
+                            "description": "Email del contacto.",
+                            "type": "string",
+                            "example": "shernandez@mail.com.mx"
+                          },
+                          "rfc": {
+                            "description": "Rfc del contacto.",
+                            "type": "string",
+                            "example": "SRLP654321ZA5"
+                          },
+                          "isNomina": {
+                            "description": "Bandera que indica si el contacto es de tipo nomina.",
+                            "type": "boolean",
+                            "example": true
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 5204
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "No se encontraron registros"
+                },
+                "result": {
+                  "example": null
+                }
+              }
+            }
+          },
+          "202": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 5500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Error interno del servidor"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/consultaEstados": {
+      "post": {
+        "tags": [
+          "Sprint f"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación /consultaEstados del servicio /bup requerida para la integración de Multivanet con BUP.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "consultaEstados",
+            "description": "Diseño de la operación para consultaEstados",
+            "required": true,
+            "schema": {
+              "required": [
+                "idUsuario",
+                "ticket",
+                "canal"
+              ],
+              "properties": {
+                "idUsuario": {
+                  "description": "Identificador único de la persona en los sistemas institucionales.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 0
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                },
+                "estados": {
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "id",
+                      "descripcion"
+                    ],
+                    "properties": {
+                      "id": {
+                        "description": "Id del estado.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 5
+                      },
+                      "descripcion": {
+                        "description": "Descripción del estado.",
+                        "type": "string",
+                        "example": 5
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 5204
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "No se encontrarón registros"
+                },
+                "estados": {
+                  "example": []
+                }
+              }
+            }
+          },
+          "202": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 5500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Error interno del servidor"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/consultaMunicipioDelegacion": {
+      "post": {
+        "tags": [
+          "Sprint f"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación /consultaMunicipioDelegacion del servicio /bup requerida para la integración de Multivanet con BUP.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "consultaMunicipioDelegacion",
+            "description": "Diseño de la operación para consultaMunicipioDelegacion",
+            "required": true,
+            "schema": {
+              "required": [
+                "idUsuario",
+                "ticket",
+                "canal"
+              ],
+              "properties": {
+                "idUsuario": {
+                  "description": "Identificador único de la persona en los sistemas institucionales.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 0
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "idEstado": {
+                  "description": "Id del estado del cual se quiere obtener los municipios o delegaciones.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 0
+                },
+                "idMunicipioDelegacion": {
+                  "description": "d del municipio o delegacion de la cual se quiere obtener el detalle.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 0
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                },
+                "municipiosDelegaciones": {
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "id",
+                      "nombre",
+                      "claveMunicipioDelegacion",
+                      "idEstado"
+                    ],
+                    "properties": {
+                      "id": {
+                        "description": "Id del municipio o delegación.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 5
+                      },
+                      "nombre": {
+                        "description": "Nombre del municipio o delegación.",
+                        "type": "string",
+                        "example": "Venustiano C."
+                      },
+                      "claveMunicipioDelegacion": {
+                        "description": "Clave del municipio o delegación en catálogo SEPOMEX.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 5
+                      },
+                      "idEstado": {
+                        "description": "Id del estado al que pertenece el municipio o la delegación.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 5
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 5204
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "No se encontrarón registros"
+                },
+                "municipiosDelegaciones": {
+                  "example": []
+                }
+              }
+            }
+          },
+          "202": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 5500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Error interno del servidor"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/crearAbastecimientoTokensCliente": {
       "post": {
         "tags": [
-          "Sprint F"
+          "Sprint f"
         ],
         "description": "Consolidar la información relevante respecto al diseño de la operación /crearAbastecimientoTokensCliente del servicio /otp requerida para la integración de Multivanet con OTP",
         "parameters": [
@@ -12052,9 +13474,10 @@
                   "example": 123546345
                 },
                 "idUsuario": {
+                  "description": "Identificador único de la persona en los sistemas institucionales.",
                   "type": "integer",
                   "format": "int64",
-                  "example": 123546345
+                  "example": 0
                 },
                 "cantidadDispositivos": {
                   "description": "Cantidad de dispositivos a solicitar a una sucursal.",
@@ -12139,7 +13562,7 @@
     "/consultaStockTokens": {
       "post": {
         "tags": [
-          "Sprint F"
+          "Sprint f"
         ],
         "description": "Consolidar la información relevante respecto al diseño de la operación /consultaStockTokens del servicio /otp requerida para la integración de Multivanet con OTP.",
         "parameters": [
@@ -12157,9 +13580,10 @@
               ],
               "properties": {
                 "idUsuario": {
+                  "description": "Identificador único de la persona en los sistemas institucionales.",
                   "type": "integer",
                   "format": "int64",
-                  "example": 123546345
+                  "example": 0
                 },
                 "canal": {
                   "type": "string",
@@ -12321,7 +13745,7 @@
     "/asignacionOtpUsuario": {
       "post": {
         "tags": [
-          "Sprint F"
+          "Sprint f"
         ],
         "description": "Consolidar la información relevante respecto al diseño de la operación /AsignacionOtpUsuario del servicio /otp requerida para la integración de Multivanet con OTP.",
         "parameters": [
