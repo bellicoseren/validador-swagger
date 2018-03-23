@@ -3643,16 +3643,21 @@ function consultaFoliosGdf(bodyreq){
   }
   return respuesta;
 }
-
+ 
 
 ////////////////////////////////////////////////////////////
 
 
-const actualizaDatosPersona ={
+const actualizaDatosPersona = {
   "responseStatus": 200,
   "responseError": ""
 }
-
+ 
+const asignacionOtpUsuario = { 
+  "responseStatus": 200,
+  "responseError": ""
+}
+ 
 
 const consultaCuentasCliente = {
   "result": [
@@ -3820,7 +3825,39 @@ const consultaEstados = {
     }
   ]
 }
-
+const consultaStockTokens = {
+  "responseStatus": 200,
+  "responseError": "",
+  "result": [
+    {
+      "idDispositivo": 12345,
+      "numeroSerie": "MXS-9087-HDF",
+      "numeroCaja": 1,
+      "estatusCliente": "ASIGNADO",
+      "fechaRegistro": "07/12/2017 06:12:42",
+      "fechaAsignacion": "09/01/2018 12:30:42",
+      "usuarioAdicional": {
+        "id": 4,
+        "nombre": "Juan",
+        "apellidoMaterno": "Lopez",
+        "apellidoPaterno": "Lopez",
+        "perfil": "Adicional"
+      },
+      "sucursal": {
+        "id": 3,
+        "nombre": "Tecamachalco"
+      },
+      "solicitud": {
+        "id": 1,
+        "proveedor": {
+          "id": 11,
+          "nombre": "VASCO"
+        }
+      }
+    }
+  ]
+}
+ 
 const consultaMunicipioDelegacion = {
   "responseStatus": 200,
   "responseError": "",
@@ -3833,9 +3870,17 @@ const consultaMunicipioDelegacion = {
     }
   ]
 }
-
-
-
+const crearAbastecimientoTokensCliente = {
+  "responseStatus": 200,
+  "responseError": "",
+  "result": [
+    {
+      "idSolicitud": 8,
+      "fechaRegistro": "09-01-2018T15:42:00" 
+    }
+  ]
+}
+ 
 var mapaModelo = {
    //### ESB ####//
    /////////// Sprint 1  /////////////
@@ -3932,6 +3977,7 @@ var mapaModelo = {
  'consultaPdfGdf':consultaPdfGdf,
  'solicitaOTPVirtual':solicitaOTPVirtual,
  'consultaFoliosGdf':consultaFoliosGdf,
+ 
 //////////Sprint f//////////////////
  'actualizaDatosPersona':actualizaDatosPersona,
  'consultaCuentasCliente':consultaCuentasCliente,
@@ -3939,7 +3985,10 @@ var mapaModelo = {
  'direccionesPorPersona':direccionesPorPersona,
  'busquedaPorRFC':busquedaPorRFC,
  'consultaEstados':consultaEstados,
- 'consultaMunicipioDelegacion':consultaMunicipioDelegacion
+ 'consultaMunicipioDelegacion':consultaMunicipioDelegacion,
+ 'crearAbastecimientoTokensCliente': crearAbastecimientoTokensCliente,
+ 'consultaStockTokens': consultaStockTokens,
+ 'asignacionOtpUsuario': asignacionOtpUsuario
  
 }
 
