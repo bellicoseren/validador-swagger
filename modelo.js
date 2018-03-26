@@ -3643,8 +3643,100 @@ function consultaFoliosGdf(bodyreq){
   }
   return respuesta;
 }
+ 
 
+////////////////////////////////////////////////////////////
+
+
+const actualizaDatosPersona = {
+  "responseStatus": 200,
+  "responseError": ""
+}
+ 
+const asignacionOtpUsuario = { 
+  "responseStatus": 200,
+  "responseError": ""
+}
+ 
+
+const consultaCuentasCliente = {
+  "result": [
+    {
+      "idPersona": "11",
+      "noCuenta": "0000000009",
+      "tipoCuenta": "cheques",
+      "alias": ""
+    }
+  ],
+  "responseStatus": 200,
+  "responseError": ""
+}
+
+
+const consultaSucursales = {
+  "sucursales": [
+    {
+      "id": "11",
+      "calle": "",
+      "noExterior": "",
+      "noInterior": "",
+      "nombre": "",
+      "estado": "",
+      "entrecalles": "",
+      "país": "",
+      "ciudad": "",
+      "colonia": "",
+      "codigoPostal": "",
+      "municipio": ""
+    }
+  ],
+  "responseStatus": 200,
+  "responseError": ""
+}
+
+
+
+
+const direccionesPorPersona = {
+  "id": "11",
+  "nombre": "",
+  "listaDirecciones": [
+    {
+      "tipoDireccion": {
+        "id": "11",
+        "descripcion": ""
+      },
+      "pais": {
+        "id": "11",
+        "descripcion": "",
+        "nacionalidad": ""
+      },
+      "estado": {
+        "id": "11",
+        "descripcion": ""
+      },
+      "id": "11",
+      "calle": "",
+      "noExterior": "",
+      "noInterior": "",
+      "entreCalles": "",
+      "ciudad": "",
+      "colonia": "",
+      "codigoPostal": "",
+      "esPrincipal": true,
+      "municipio": "",
+      "responseStatus": 200,
+      "responseError": ""
+    }
+  ],
+  "responseStatus": 200,
+  "responseError": ""
+}
+
+<<<<<<< HEAD
  /////////// Sprint F  /////////////
+=======
+>>>>>>> upstream/master
 
 const busquedaPorRFC = {
   "responseStatus": 200,
@@ -3738,6 +3830,39 @@ const consultaEstados = {
   ]
 }
 
+const consultaStockTokens = {
+  "responseStatus": 200,
+  "responseError": "",
+  "result": [
+    {
+      "idDispositivo": 12345,
+      "numeroSerie": "MXS-9087-HDF",
+      "numeroCaja": 1,
+      "estatusCliente": "ASIGNADO",
+      "fechaRegistro": "07/12/2017 06:12:42",
+      "fechaAsignacion": "09/01/2018 12:30:42",
+      "usuarioAdicional": {
+        "id": 4,
+        "nombre": "Juan",
+        "apellidoMaterno": "Lopez",
+        "apellidoPaterno": "Lopez",
+        "perfil": "Adicional"
+      },
+      "sucursal": {
+        "id": 3,
+        "nombre": "Tecamachalco"
+      },
+      "solicitud": {
+        "id": 1,
+        "proveedor": {
+          "id": 11,
+          "nombre": "VASCO"
+        }
+      }
+    }
+  ]
+}
+ 
 const consultaMunicipioDelegacion = {
   "responseStatus": 200,
   "responseError": "",
@@ -3757,6 +3882,18 @@ const consultaOperacionesActivasUsuario = {
     "tieneOperacionesActivas": true		
 }
 
+
+const crearAbastecimientoTokensCliente = {
+  "responseStatus": 200,
+  "responseError": "",
+  "result": [
+    {
+      "idSolicitud": 8,
+      "fechaRegistro": "09-01-2018T15:42:00" 
+    }
+  ]
+}
+ 
 var mapaModelo = {
    //### ESB ####//
    /////////// Sprint 1  /////////////
@@ -3853,11 +3990,21 @@ var mapaModelo = {
  'consultaPdfGdf':consultaPdfGdf,
  'solicitaOTPVirtual':solicitaOTPVirtual,
  'consultaFoliosGdf':consultaFoliosGdf,
-//////////// Sprint F ////////////////////////
+
+ 
+//////////Sprint f//////////////////
+ 'actualizaDatosPersona':actualizaDatosPersona,
+ 'consultaCuentasCliente':consultaCuentasCliente,
+ 'consultaSucursales':consultaSucursales,
+ 'direccionesPorPersona':direccionesPorPersona,
  'busquedaPorRFC':busquedaPorRFC,
  'consultaEstados':consultaEstados,
  'consultaMunicipioDelegacion':consultaMunicipioDelegacion,
-'consultaOperacionesActivasUsuario': consultaOperacionesActivasUsuario
+ 'crearAbastecimientoTokensCliente': crearAbastecimientoTokensCliente,
+ 'consultaOperacionesActivasUsuario': consultaOperacionesActivasUsuario,
+ 'consultaStockTokens': consultaStockTokens,
+ 'asignacionOtpUsuario': asignacionOtpUsuario
+ 
 }
 
 function obtenerModelo (nombreModelo,bodyreq){
