@@ -13842,6 +13842,1873 @@
           }
         }
       }
+    },
+    "/actualizaFacultamientoUsuario": {
+      "post": {
+        "tags": [
+          "Sprint f"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación /actualizaFacultamientoUsuario del servicio /facultamiento requerida para la integración de Multivanet con Facultamiento.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "actualizaUsuario",
+            "description": "Diseño de la operación para actualizaUsuario",
+            "required": true,
+            "schema": {
+              "required": [
+                "usuario",
+                "ticket",
+                "canal",
+                "otp",
+                "usuarioUltimaModificacion",
+                "isActivo",
+                "limiteIndividual",
+                "limiteMancomunado",
+                "limiteOperable",
+                "rangoOperable",
+                "firmantes",
+                "firmantesFacultades",
+                "perfiles",
+                "cuentas"
+              ],
+              "properties": {
+                "usuario": {
+                  "description": "Id del usuario al que se le van a crear las facultades.",
+                  "type": "integer",
+                  "example": 123456
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "otp": {
+                  "type": "string",
+                  "example": "1234567"
+                },
+                "usuarioUltimaModificacion": {
+                  "description": "Id usuario que realizo la última modificación.",
+                  "type": "integer",
+                  "example": 0
+                },
+                "isActivo": {
+                  "description": "Bandera que indica si el usuario está activo.",
+                  "type": "boolean",
+                  "example": "true"
+                },
+                "limiteIndividual": {
+                  "description": "Limite individual que puede operar el usuario.",
+                  "type": "string",
+                  "example": "0.0"
+                },
+                "limiteMancomunado": {
+                  "description": "Limite mancomunado que puede operar el usuario.",
+                  "type": "string",
+                  "example": "0.0"
+                },
+                "limiteOperable": {
+                  "description": "Limite operable que puede operar el usuario.",
+                  "type": "string",
+                  "example": "0.0"
+                },
+                "rangoOperable": {
+                  "description": "Rango de operación del usuario de operar el limite operable (semanal, quincenal, mensual).",
+                  "type": "string",
+                  "example": "true"
+                },
+                "firmantes": {
+                  "required": [
+                    "usuarios",
+                    "votos"
+                  ],
+                  "properties": {
+                    "usuarios": {
+                      "description": "usuarios que participaran en la firma",
+                      "type": "string",
+                      "example": "[0]"
+                    },
+                    "votos": {
+                      "description": "Cantidad de firmantes que se requieren para una autorización.",
+                      "type": "integer",
+                      "example": "0"
+                    }
+                  }
+                },
+                "firmantesFacultades": {
+                  "description": "Listado de configuración de los firmantes para las operaciones que ejecute este usuario.",
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "nombre",
+                      "firmantes"
+                    ],
+                    "properties": {
+                      "nombre": {
+                        "description": "Nombre de la facultad",
+                        "type": "string",
+                        "example": "string"
+                      },
+                      "firmantes": {
+                        "required": [
+                          "usuarios",
+                          "votos"
+                        ],
+                        "properties": {
+                          "usuarios": {
+                            "description": "usuarios que participaran en la firma",
+                            "type": "string",
+                            "example": "[0]"
+                          },
+                          "votos": {
+                            "description": "Cantidad de firmantes que se requieren para una autorización.",
+                            "type": "integer",
+                            "example": "0"
+                          }
+                        }
+                      },
+                      "cuentas": {
+                        "type": "array",
+                        "items": {
+                          "required": [
+                            "noCuenta",
+                            "limiteIndividual",
+                            "limiteMancomunado",
+                            "limiteOperable",
+                            "rangoOperable"
+                          ],
+                          "properties": {
+                            "noCuenta": {
+                              "description": "Número de cuenta",
+                              "type": "string",
+                              "example": "string"
+                            },
+                            "limiteIndividual": {
+                              "description": "Limite individual que puede operar el usuario.",
+                              "type": "string",
+                              "example": "0.0"
+                            },
+                            "limiteMancomunado": {
+                              "description": "Limite mancomunado que puede operar el usuario.",
+                              "type": "string",
+                              "example": "0.0"
+                            },
+                            "limiteOperable": {
+                              "description": "Limite operable que puede operar el usuario.",
+                              "type": "string",
+                              "example": "0.0"
+                            },
+                            "rangoOperable": {
+                              "description": "Rango de operación del usuario de operar el limite operable (semanal, quincenal, mensual).",
+                              "type": "string",
+                              "example": "true"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "perfiles": {
+                  "description": "Número de cuenta",
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "id",
+                      "grupos"
+                    ],
+                    "properties": {
+                      "id": {
+                        "description": "Identificador del perfil.",
+                        "type": "integer",
+                        "example": 0
+                      },
+                      "grupos": {
+                        "type": "array",
+                        "items": {
+                          "required": [
+                            "id",
+                            "facultades"
+                          ],
+                          "properties": {
+                            "id": {
+                              "description": "Identificador del perfil.",
+                              "type": "integer",
+                              "example": 0
+                            },
+                            "facultades": {
+                              "type": "string",
+                              "example": "[string]"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "cuentas": {
+                  "description": "Lista de cuentas relacionadas con el usuario que no tienen una  configuración particular de facultades (todas las facultades del perfil aplicarán para estas cuentas).",
+                  "type": "string",
+                  "example": "[string]"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "required": [
+                "responseError",
+                "responseStatus"
+              ],
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 1204
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "No se pudo actualizar el perfil facultamiento del usuario"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/consultaPerfilesPatronConGruposFacultades": {
+      "post": {
+        "tags": [
+          "Sprint f"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación /consultaPerfilesPatronConGruposFacultades del servicio /facultamiento requerida para la integración de Multivanet con Facultamiento.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "consultaPerfilesPatron",
+            "description": "Diseño de la operación para consultaPerfilesPatron",
+            "required": true,
+            "schema": {
+              "required": [
+                "idPersona",
+                "ticket",
+                "canal"
+              ],
+              "properties": {
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "id": {
+                  "description": "Id del perfil patrón del cual se quiere obtener el detalle.",
+                  "type": "integer",
+                  "example": 123456
+                },
+                "perfil": {
+                  "description": "Descripción del perfil patrón del cual se quiere obtener el detalle (Administrador, Operador, Capturista y Consulta).",
+                  "type": "string",
+                  "example": "ejemplo"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "required": [
+                "result"
+              ],
+              "properties": {
+                "result": {
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "id",
+                      "nombre",
+                      "descripcion",
+                      "titular",
+                      "fechaModificacion",
+                      "isActivo",
+                      "empresaPropietaria",
+                      "usuarioUltimaMoficacion",
+                      "listaGrupos"
+                    ],
+                    "properties": {
+                      "id": {
+                        "description": "Id de la facultad",
+                        "type": "integer",
+                        "example": 12345
+                      },
+                      "nombre": {
+                        "description": "Nombre de la facultad",
+                        "type": "string",
+                        "example": "string"
+                      },
+                      "descripcion": {
+                        "description": "Descripción de la facultad",
+                        "type": "string",
+                        "example": ""
+                      },
+                      "titular": {
+                        "type": "integer",
+                        "example": 12345
+                      },
+                      "fechaModificacion": {
+                        "description": "Fecha de modificación de la facultad",
+                        "type": "string",
+                        "example": "23032017"
+                      },
+                      "isActivo": {
+                        "description": "Bandera que indica si la facultad esta activa o no",
+                        "type": "boolean",
+                        "example": true
+                      },
+                      "empresaPropietaria": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "jerarquiaFacultamiento": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "usuarioUltimaModificacion": {
+                        "type": "integer",
+                        "example": "0"
+                      },
+                      "listaGrupos": {
+                        "type": "array",
+                        "items": {
+                          "required": [
+                            "id",
+                            "nombre",
+                            "descripcion",
+                            "firmantes"
+                          ],
+                          "properties": {
+                            "nombre": {
+                              "type": "string",
+                              "example": "string"
+                            },
+                            "id": {
+                              "type": "integer",
+                              "example": ""
+                            },
+                            "descripcion": {
+                              "type": "string",
+                              "example": "string"
+                            },
+                            "listaFacultades": {
+                              "type": "array",
+                              "items": {
+                                "required": [
+                                  "id",
+                                  "nombre",
+                                  "descripcion",
+                                  "fechaModificacion",
+                                  "isActivo",
+                                  "usuarioUltimaModificacion",
+                                  "cuenta",
+                                  "tipoFacultad",
+                                  "montoRestriccion",
+                                  "nombrePortlet",
+                                  "isPortlet",
+                                  "isComponenteHabilitado",
+                                  "isComponenteVisible",
+                                  "isLayout",
+                                  "urlLayout",
+                                  "isGrupoBpm"
+                                ],
+                                "properties": {
+                                  "id": {
+                                    "description": "Id de la facultad",
+                                    "type": "integer",
+                                    "example": 12345
+                                  },
+                                  "nombre": {
+                                    "description": "Nombre de la facultad",
+                                    "type": "string",
+                                    "example": "string"
+                                  },
+                                  "descripcion": {
+                                    "description": "Descripción de la facultad",
+                                    "type": "string",
+                                    "example": ""
+                                  },
+                                  "fechaModificacion": {
+                                    "description": "Fecha de modificación de la facultad",
+                                    "type": "string",
+                                    "example": "23032017"
+                                  },
+                                  "isActivo": {
+                                    "description": "Bandera que indica si la facultad esta activa o no",
+                                    "type": "boolean",
+                                    "example": true
+                                  },
+                                  "usuarioUltimaModificacion": {
+                                    "description": "Usuario que modifico por última vez la facultad",
+                                    "type": "integer",
+                                    "example": 23032017
+                                  },
+                                  "cuenta": {
+                                    "description": "Número de cuenta (FACULTAD_CUENTA y FACULTAD_CUENTA_MONTO)",
+                                    "type": "string",
+                                    "example": ""
+                                  },
+                                  "tipoFacultad": {
+                                    "description": "Tipos de facultad(FACULTAD_SIMPLE, FACULTAD_CUENTA, FACULTAD_CUENTA_MONTO)",
+                                    "type": "string",
+                                    "example": ""
+                                  },
+                                  "montoRestriccion": {
+                                    "description": "Monto restricción (FACULTAD_CUENTA_MONTO)",
+                                    "type": "string",
+                                    "example": ""
+                                  },
+                                  "nombrePortlet": {
+                                    "description": "Nombre del portlet (FACULTAD_SIMPLE)",
+                                    "type": "string",
+                                    "example": ""
+                                  },
+                                  "isPortlet": {
+                                    "description": "Bandera que indica si es portlet el tipo de facultad (FACULTAD_SIMPLE)",
+                                    "type": "boolean",
+                                    "example": true
+                                  },
+                                  "isComponenteHabilitado": {
+                                    "description": "Bandera que indica si el componente está habilitado (FACULTAD_SIMPLE)",
+                                    "type": "boolean",
+                                    "example": true
+                                  },
+                                  "isComponenteVisible": {
+                                    "description": "Bandera que indica si el componente el visible (FACULTAD_SIMPLE)",
+                                    "type": "boolean",
+                                    "example": true
+                                  },
+                                  "isLayout": {
+                                    "description": "Bandera que indica si es layout (FACULTAD_SIMPLE)",
+                                    "type": "boolean",
+                                    "example": true
+                                  },
+                                  "urlLayout": {
+                                    "description": "url del layout (FACULTAD_SIMPLE)",
+                                    "type": "string",
+                                    "example": ""
+                                  },
+                                  "isGrupoBpm": {
+                                    "description": "Bandera que indica si es grupo bpm (FACULTAD_SIMPLE).",
+                                    "type": "boolean",
+                                    "example": true
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "responseStatus": {
+                        "type": "number",
+                        "example": 200
+                      },
+                      "responseError": {
+                        "type": "string",
+                        "example": ""
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 1204
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "No se encontraron registros"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/modificaPassword": {
+      "post": {
+        "tags": [
+          "Sprint f"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación /modificaPasswordUsuario del servicio /facultamiento requerida para la integración de Multivanet con TAM.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "modificaPasswordUsuario",
+            "description": "Diseño de la operación para modificaPasswordUsuario",
+            "required": true,
+            "schema": {
+              "required": [
+                "idUsuario",
+                "ticket",
+                "canal",
+                "idUsuarioCambio",
+                "otp",
+                "oldPassword",
+                "newPassword",
+                "confirmNewPassword"
+              ],
+              "properties": {
+                "idUsuario": {
+                  "description": "Identificador único de la persona en los sistemas institucionales.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 0
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "idUsuarioCambio": {
+                  "description": "Id del usuario al cual se le quiere modificar la contraseña",
+                  "type": "integer",
+                  "example": 1000104701
+                },
+                "otp": {
+                  "type": "string",
+                  "example": "1234567"
+                },
+                "oldPassword": {
+                  "description": "Password anterior",
+                  "type": "string",
+                  "example": "multiva2020"
+                },
+                "newPassword": {
+                  "description": "Password nuevo que se guardara para el usuario enviado",
+                  "type": "string",
+                  "example": "multiva2021"
+                },
+                "confirmNewPassword": {
+                  "description": "Confirmación del nuevo Password nuevo que se guardara para el usuario enviado",
+                  "type": "string",
+                  "example": "multiva2021"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "required": [
+                "responseError",
+                "responseStatus"
+              ],
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 1204
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "No se pudo actualizar el registro"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/consultaFacultamientoUsuario": {
+      "post": {
+        "tags": [
+          "Sprint f"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación /consultaFacultamientoUsuario del servicio /facultamiento requerida para la integración de Multivanet con Facultamiento.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "consultaFacultamientoUsuario",
+            "description": "Diseño de la operación para consultaFacultamientoUsuario",
+            "required": true,
+            "schema": {
+              "required": [
+                "idUsuario",
+                "ticket",
+                "canal"
+              ],
+              "properties": {
+                "idUsuario": {
+                  "description": "Identificador único de la persona en los sistemas institucionales.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 0
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "required": [
+                "result"
+              ],
+              "properties": {
+                "result": {
+                  "required": [
+                    "usuario",
+                    "ticket",
+                    "canal",
+                    "usuarioUltimaModificacion",
+                    "isActivo",
+                    "limiteIndividual",
+                    "limiteMancomunado",
+                    "limiteOperable",
+                    "rangoOperable",
+                    "firmantes",
+                    "firmantesFacultades",
+                    "perfiles",
+                    "cuentas",
+                    "listaGrupos"
+                  ],
+                  "properties": {
+                    "idusuario": {
+                      "description": "Id de la facultad",
+                      "type": "integer",
+                      "example": 12345
+                    },
+                    "ticket": {
+                      "required": [
+                        "id_user",
+                        "id_creds"
+                      ],
+                      "properties": {
+                        "id_user": {
+                          "type": "string",
+                          "example": "123456"
+                        },
+                        "id_creds": {
+                          "type": "string",
+                          "example": "12345678"
+                        }
+                      }
+                    },
+                    "canal": {
+                      "type": "string",
+                      "minLength": 1,
+                      "example": "WEB"
+                    },
+                    "usuarioUltimaModificacion": {
+                      "description": "Id usuario que realizo la última modificación.",
+                      "type": "integer",
+                      "example": 0
+                    },
+                    "isActivo": {
+                      "description": "Bandera que indica si el usuario está activo.",
+                      "type": "boolean",
+                      "example": "true"
+                    },
+                    "limiteIndividual": {
+                      "description": "Limite individual que puede operar el usuario.",
+                      "type": "string",
+                      "example": "0.0"
+                    },
+                    "limiteMancomunado": {
+                      "description": "Limite mancomunado que puede operar el usuario.",
+                      "type": "string",
+                      "example": "0.0"
+                    },
+                    "limiteOperable": {
+                      "description": "Limite operable que puede operar el usuario.",
+                      "type": "string",
+                      "example": "0.0"
+                    },
+                    "rangoOperable": {
+                      "description": "Rango de operación del usuario de operar el limite operable (semanal, quincenal, mensual).",
+                      "type": "string",
+                      "example": "true"
+                    },
+                    "firmantes": {
+                      "required": [
+                        "usuarios",
+                        "votos"
+                      ],
+                      "properties": {
+                        "usuarios": {
+                          "description": "Usuarios que participaran en la firma",
+                          "type": "string",
+                          "example": "[0]"
+                        },
+                        "votos": {
+                          "description": "Cantidad de firmantes que se requieren para una autorización.",
+                          "type": "integer",
+                          "example": "0"
+                        }
+                      }
+                    },
+                    "firmantesFacultades": {
+                      "type": "array",
+                      "items": {
+                        "required": [
+                          "nombre",
+                          "firmantes",
+                          "cuentas"
+                        ],
+                        "properties": {
+                          "nombre": {
+                            "type": "string",
+                            "example": "string"
+                          },
+                          "firmantes": {
+                            "required": [
+                              "usuarios",
+                              "votos"
+                            ],
+                            "properties": {
+                              "usuarios": {
+                                "type": "string",
+                                "example": "[0]"
+                              },
+                              "votos": {
+                                "type": "integer",
+                                "example": "0"
+                              }
+                            }
+                          },
+                          "cuentas": {
+                            "type": "array",
+                            "items": {
+                              "required": [
+                                "noCuenta",
+                                "limiteIndividual",
+                                "limiteMancomunado",
+                                "limiteOperable",
+                                "rangoOperable"
+                              ],
+                              "properties": {
+                                "noCuenta": {
+                                  "desccription": "Número de cuenta",
+                                  "type": "string",
+                                  "example": "string"
+                                },
+                                "limiteIndividual": {
+                                  "description": "Limite individual que puede operar el usuario.",
+                                  "type": "string",
+                                  "example": "0.0"
+                                },
+                                "limiteMancomunado": {
+                                  "description": "Limite mancomunado que puede operar el usuario.",
+                                  "type": "string",
+                                  "example": "0.0"
+                                },
+                                "limiteOperable": {
+                                  "description": "Limite operable que puede operar el usuario.",
+                                  "type": "string",
+                                  "example": "0.0"
+                                },
+                                "rangoOperable": {
+                                  "description": "Rango de operación del usuario de operar el limite operable (semanal, quincenal, mensual).",
+                                  "type": "string",
+                                  "example": "true"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "perfiles": {
+                      "type": "array",
+                      "items": {
+                        "required": [
+                          "id",
+                          "nombre",
+                          "patronOrigen",
+                          "grupos"
+                        ],
+                        "properties": {
+                          "id": {
+                            "description": "Identificador del perfil.",
+                            "type": "integer",
+                            "example": 0
+                          },
+                          "nombre": {
+                            "description": "Nombre del perfil",
+                            "type": "string",
+                            "example": "string"
+                          },
+                          "patronOrigen": {
+                            "description": null,
+                            "type": "string",
+                            "example": "string"
+                          },
+                          "grupos": {
+                            "type": "array",
+                            "items": {
+                              "required": [
+                                "id",
+                                "facultades",
+                                "nombre"
+                              ],
+                              "properties": {
+                                "id": {
+                                  "description": "Identificador del perfil.",
+                                  "type": "integer",
+                                  "example": 0
+                                },
+                                "nombre": {
+                                  "description": "Nombre del grupo, corresponde con el módulo en la pantalla.",
+                                  "type": "string",
+                                  "example": "string"
+                                },
+                                "facultades": {
+                                  "type": "string",
+                                  "example": "[string]"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "cuentas": {
+                      "type": "string",
+                      "example": "[strings]"
+                    }
+                  }
+                },
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 1204
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "No se encontraron registros"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bloqueoDesbloqueoUsuario": {
+      "post": {
+        "tags": [
+          "Sprint f"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación /BloqueoDesbloqueoUsuario del servicio /facultamiento requerida para la integración de Multivanet con el core Facultamiento.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "bloqueoDesbloqueoUsuario",
+            "description": "Diseño de la operación para actualizaUsuario",
+            "required": true,
+            "schema": {
+              "required": [
+                "idUsuario",
+                "listaUsuarios",
+                "ticket",
+                "canal",
+                "otp"
+              ],
+              "properties": {
+                "idUsuario": {
+                  "description": "Identificador único de la persona en los sistemas institucionales.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 0
+                },
+                "listaUsuarios": {
+                  "description": "Lista de usuario para verificar ",
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "id"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "example": 1
+                      }
+                    }
+                  }
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "otp": {
+                  "type": "string",
+                  "example": "1234567"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "required": [
+                "responseError",
+                "responseStatus",
+                "listaUsuarios"
+              ],
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                },
+                "listaUsuarios": {
+                  "description": "Lista de usuario para verificar ",
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "id",
+                      "isActivo"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "example": 1
+                      },
+                      "isActivo": {
+                        "description": "Bandera que indica si el usuario terminó bloqueado o desbloqueado después de la operación.",
+                        "type": "boolean",
+                        "example": true
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 1204
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Usuario solicitado no existe"
+                },
+                "result": {
+                  "type": "string",
+                  "example": "[]"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/consultaFirmantesPotenciales": {
+      "post": {
+        "tags": [
+          "Sprint f"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación /consultaFirmantesPotenciales  del servicio /facultamiento requerida para la integración de Multivanet con Facultamiento",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "consultaFirmantesPotenciales",
+            "description": "Diseño de la operación para consultaFirmantesPotenciales",
+            "required": true,
+            "schema": {
+              "required": [
+                "idFacultad",
+                "cuenta",
+                "montoMancomunado"
+              ],
+              "properties": {
+                "idFacultad": {
+                  "description": "Id de la facultad u operación",
+                  "type": "integer",
+                  "example": 123456
+                },
+                "cuenta": {
+                  "description": "Número de cuenta a validar",
+                  "type": "string",
+                  "example": "1234567"
+                },
+                "montoMancomunado": {
+                  "description": "Monto mancomunado a validar",
+                  "type": "string",
+                  "example": "100000.00"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "required": [
+                "responseError",
+                "responseStatus",
+                "firmantes"
+              ],
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                },
+                "firmantes": {
+                  "description": "Listado de firmantes potenciales",
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "idUsuario",
+                      "nombre"
+                    ],
+                    "properties": {
+                      "id": {
+                        "description": "Identificador único de la persona en los sistemas institucionales.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 0
+                      },
+                      "nombre": {
+                        "description": "Nombre del firmante",
+                        "type": "string",
+                        "example": "Waldo Terry"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 1204
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "No se encontraron registros"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/creaUsuarioAdicional": {
+      "post": {
+        "tags": [
+          "Sprint f"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación /creaUsuarioAdicional del servicio /facultamiento requerida para la integración de Multivanet con Facultamiento.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "creaUsuarioAdicional",
+            "description": "Diseño de la operación para creaUsuarioAdicional",
+            "required": true,
+            "schema": {
+              "required": [
+                "idUsuario",
+                "ticket",
+                "empresaPropietaria",
+                "nombre",
+                "apellidoPaterno",
+                "alias",
+                "rfc",
+                "relacion",
+                "correo",
+                "telefono",
+                "direccion",
+                "idDispositivo",
+                "canal"
+              ],
+              "properties": {
+                "idUsuario": {
+                  "description": "Identificador único de la persona en los sistemas institucionales.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 0
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
+                },
+                "empresaPropietaria": {
+                  "description": "Id de la empresa propietaria del adicional",
+                  "type": "integer",
+                  "example": 12345
+                },
+                "nombre": {
+                  "description": "Nombre de la persona adicional",
+                  "type": "string",
+                  "example": "Carlos"
+                },
+                "apellidoPaterno": {
+                  "description": "Apellido paterno de la persona adicional",
+                  "type": "string",
+                  "example": "de la Teja"
+                },
+                "apellidoMaterno": {
+                  "description": "Apellido materno de la persona adicional",
+                  "type": "string",
+                  "example": "Peñaloza"
+                },
+                "nombreCompleto": {
+                  "description": "Nombre completo de la persona adicional",
+                  "type": "string",
+                  "example": ""
+                },
+                "alias": {
+                  "description": "Alias que es guardara para la persona adicional",
+                  "type": "string",
+                  "example": ""
+                },
+                "rfc": {
+                  "description": "Rfc de la persona adicional",
+                  "type": "string",
+                  "example": "TEPC871202F82"
+                },
+                "curp": {
+                  "description": "Curp de la persona adicional",
+                  "type": "string",
+                  "example": ""
+                },
+                "relacion": {
+                  "description": "Relación que se dará de alta (ADICIONAL) en este caso",
+                  "type": "string",
+                  "example": "Adicional"
+                },
+                "correo": {
+                  "required": [
+                    "correo",
+                    "idEmpresaPropietaria"
+                  ],
+                  "properties": {
+                    "correo": {
+                      "description": "Identificador único de la persona o empresa que extiende este correo electrónico al usuario.",
+                      "type": "string",
+                      "example": "c.delateja@hotmail.com"
+                    },
+                    "idEmpresaPropietaria": {
+                      "description": "Identificador único de la persona o empresa que extiende este teléfono al usuario.",
+                      "type": "integer",
+                      "example": 123456
+                    }
+                  }
+                },
+                "telefono": {
+                  "required": [
+                    "telefono",
+                    "idEmpresaPropietaria"
+                  ],
+                  "properties": {
+                    "telefono": {
+                      "description": "Telefono del   usuario adicional.",
+                      "type": "string",
+                      "example": "5512345678"
+                    },
+                    "idEmpresaPropietaria": {
+                      "description": "Identificador único de la persona o empresa que extiende este teléfono al usuario.",
+                      "type": "integer",
+                      "example": 123456
+                    }
+                  }
+                },
+                "direccion": {
+                  "required": [
+                    "tipoDireccion",
+                    "pais",
+                    "estado",
+                    "municipio",
+                    "colonia",
+                    "codigoPostal",
+                    "calle",
+                    "noExterior"
+                  ],
+                  "properties": {
+                    "tipoDireccion": {
+                      "description": "Objeto que indica que tipo de dirección es la que se guarda.",
+                      "required": [
+                        "id",
+                        "descripcion"
+                      ],
+                      "properties": {
+                        "id": {
+                          "description": "Id del tipo de dirección.",
+                          "type": "integer",
+                          "example": 1
+                        },
+                        "descripcion": {
+                          "description": "Descripcion del tipo de direccion",
+                          "type": "string",
+                          "example": "Fiscal"
+                        }
+                      }
+                    },
+                    "pais": {
+                      "description": "Objeto que indica el país de  la dirección de la persona adicional.",
+                      "required": [
+                        "id",
+                        "descripcion"
+                      ],
+                      "properties": {
+                        "id": {
+                          "description": "Id del tipo de pais.",
+                          "type": "integer",
+                          "example": 1
+                        },
+                        "descripcion": {
+                          "description": "Descripcion del pais",
+                          "type": "string",
+                          "example": "México"
+                        }
+                      }
+                    },
+                    "estado": {
+                      "description": "Objeto que indica el estado de la dirección de la persona adicional",
+                      "required": [
+                        "id",
+                        "descripcion"
+                      ],
+                      "properties": {
+                        "id": {
+                          "description": "Id del tipo de estado.",
+                          "type": "integer",
+                          "example": 1
+                        },
+                        "descripcion": {
+                          "description": "Descripcion del estado",
+                          "type": "string",
+                          "example": "Ciudad de México"
+                        }
+                      }
+                    },
+                    "municipio": {
+                      "description": "Municipio o delegacion de la  dirección de la persona adicional",
+                      "type": "string",
+                      "example": ""
+                    },
+                    "colonia": {
+                      "description": "Colonia de la dirección de la persona adicional",
+                      "type": "string",
+                      "example": "as"
+                    },
+                    "codigoPostal": {
+                      "description": "Código postal de la dirección de la persona adicional",
+                      "type": "string",
+                      "example": "03100"
+                    },
+                    "calle": {
+                      "description": "Calle de la dirección de la persona adicional",
+                      "type": "string",
+                      "example": "as"
+                    },
+                    "noInterior": {
+                      "description": "Numero interior de la dirección de la persona adicional",
+                      "type": "string",
+                      "example": "1"
+                    },
+                    "noExterior": {
+                      "description": "Numero exterior de la dirección  de la persona  adicional adicional",
+                      "type": "string",
+                      "example": ""
+                    }
+                  }
+                },
+                "tokenAsignar": {
+                  "requiered": [
+                    "idDispositivo"
+                  ],
+                  "properties": {
+                    "idDispositivo": {
+                      "description": "Identificador único del dispositivo a asignar.",
+                      "type": "integer",
+                      "example": 1
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "required": [
+                "responseError",
+                "responseStatus",
+                "idUsuario"
+              ],
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                },
+                "idUsuario": {
+                  "description": "Identificador único de la persona en los sistemas institucionales.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 0
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 1204
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "No se pudo actualizar el perfil facultamiento del usuario"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/consultaOperacionesActivasUsuario": {
+      "post": {
+        "tags": [
+          "Sprint f"
+        ],
+        "description": "onsolidar la información relevante respecto al diseño de la operación /consultaOperacionesActivasUsuario del servicio /bup requerida para la integración de Multivanet con BUP.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "consultaOperacionesActivasUsuario",
+            "description": "Diseño de la operación para consultaOperacionesActivasUsuario",
+            "required": true,
+            "schema": {
+              "required": [
+                "idUsuario",
+                "ticket",
+                "canal"
+              ],
+              "properties": {
+                "idUsuario": {
+                  "description": "Identificador único de la persona en los sistemas institucionales.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 0
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "required": [
+                "tieneOperacionesActivas"
+              ],
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                },
+                "tieneOperacionesActivas": {
+                  "type": "boolean",
+                  "example": true
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 1204
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "No se encontrarón registros"
+                }
+              }
+            }
+          },
+          "202": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 1500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Error interno del servidor"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/creaFacultamientoUsuario": {
+      "post": {
+        "tags": [
+          "Sprint f"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación /creaFacultamientoUsuario del servicio /facultamiento.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "creaFacultamientoUsuario",
+            "description": "Diseño de la operación para creaFacultamientoUsuario",
+            "required": true,
+            "schema": {
+              "required": [
+                "usuario",
+                "ticket",
+                "canal",
+                "otp",
+                "usuarioUltimaModificacion",
+                "isActivo",
+                "limiteIndividual",
+                "limiteMancomunado",
+                "limiteOperable",
+                "rangoOperable",
+                "firmantes",
+                "firmantesFacultades",
+                "perfiles",
+                "cuentas"
+              ],
+              "properties": {
+                "usuario": {
+                  "type": "integer",
+                  "example": 123456
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
+                },
+                "canal": {
+                  "description": "Identificador del canal a través del cual se recibió la peticion.",
+                  "type": "string",
+                  "example": ""
+                },
+                "otp": {
+                  "type": "string",
+                  "example": "1234567"
+                },
+                "usuarioUltimaModificacion": {
+                  "description": "Id usuario que realizo la última midufucación.",
+                  "type": "integer",
+                  "example": 0
+                },
+                "isActivo": {
+                  "description": "Bandera que indica si el usuario esta activo.",
+                  "type": "boolean",
+                  "example": "true"
+                },
+                "limiteIndividual": {
+                  "description": "Limite individual que puede operar el usuario.",
+                  "type": "string",
+                  "example": "0.0"
+                },
+                "limiteMancomunado": {
+                  "description": "Limite mancomunado que puede operar el usuario.",
+                  "type": "string",
+                  "example": "0.0"
+                },
+                "limiteOperable": {
+                  "description": "Limite operable que puede operar el usuario.",
+                  "type": "string",
+                  "example": "0.0"
+                },
+                "rangoOperable": {
+                  "description": "Rango de operación del usuario de operar el limite operable.",
+                  "type": "string",
+                  "example": "string"
+                },
+                "firmantes": {
+                  "required": [
+                    "usuarios",
+                    "votos"
+                  ],
+                  "properties": {
+                    "usuarios": {
+                      "type": "integer",
+                      "example": 0
+                    },
+                    "votos": {
+                      "type": "integer",
+                      "example": 0
+                    }
+                  }
+                },
+                "firmantesFacultades": {
+                  "required": [
+                    "nombre",
+                    "cuentas"
+                  ],
+                  "properties": {
+                    "nombre": {
+                      "type": "string",
+                      "example": "string"
+                    },
+                    "cuentas": {
+                      "required": [
+                        "noCuenta",
+                        "limiteIndividual",
+                        "limiteOperable",
+                        "rangoOperable"
+                      ],
+                      "properties": {
+                        "noCuenta": {
+                          "description": "Número de cuenta",
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "limiteIndividual": {
+                          "description": "Limite individual que puede operar el usuario.",
+                          "type": "string",
+                          "example": "0.0"
+                        },
+                        "limiteMancomunado": {
+                          "description": "Limite mancomunado que puede operar el usuario.",
+                          "type": "string",
+                          "example": "0.0"
+                        },
+                        "limiteOperable": {
+                          "description": "Limite operable que puede operar el usuario.",
+                          "type": "string",
+                          "example": "0.0"
+                        },
+                        "rangoOperable": {
+                          "description": "Rango de operación del usuario de operar el limite operable.",
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "firmantes2": {
+                          "required": [
+                            "usuarios",
+                            "votos"
+                          ],
+                          "properties": {
+                            "usuarios": {
+                              "type": "integer",
+                              "example": 0
+                            },
+                            "votos": {
+                              "type": "integer",
+                              "example": 0
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "perfiles": {
+                  "required": [
+                    "id",
+                    "grupos"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "example": 0
+                    },
+                    "grupos": {
+                      "required": [
+                        "id",
+                        "facultades"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "integer",
+                          "example": 0
+                        },
+                        "facultades": {
+                          "type": "string",
+                          "example": "[string]"
+                        }
+                      }
+                    }
+                  }
+                },
+                "cuentas": {
+                  "description": "istado de cuentas con un comportamiento de facultades default.",
+                  "type": "string",
+                  "example": "[string]"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "required": [
+                "responseStatus",
+                "responseError",
+                "idPerfil"
+              ],
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                },
+                "idPerfil": {
+                  "description": "Id de perfil creado.",
+                  "type": "integer",
+                  "example": 0
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 1204
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "No se pudo crear el perfil facultamiento del usuario."
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
