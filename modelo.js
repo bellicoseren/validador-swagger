@@ -3644,6 +3644,119 @@ function consultaFoliosGdf(bodyreq){
   return respuesta;
 }
 
+ /////////// Sprint F  /////////////
+
+const busquedaPorRFC = {
+  "responseStatus": 200,
+  "responseError": "",
+  "result": {
+    "Id": "9",
+    "regimenFiscal": "Persona Moral",
+    "nombre": "nombre",
+    "razonSocial": "VASCO",
+    "apellidoPaterno": "apellidoPaterno",
+    "apellidoMaterno": "apellidoMaterno",
+    "nombreCompleto": "nombreCompleto",
+    "rfc": "VAS647909",
+    "curp": "curp",
+    "direccion": [
+      {
+        "tipoDireccion": {
+          "id": 1,
+          "descripcion": "Fiscal"
+        },
+        "pais": {
+          "id": 1,
+          "descripcion": "México"
+        },
+        "estado": {
+          "id": 1,
+          "descripcion": "Distrito Federal"
+        },
+        "municipio": "municipio",
+        "ciudad": "ciudad",
+        "colonia": "colonia",
+        "codigoPostal": "codigoPostal",
+        "calle": "Calle",
+        "noExterior": "182",
+        "noInterior": "2",
+        "entreCalles": "Pensamiento y laureles",
+        "esPrincipal": true
+      }
+    ],
+    "activo": true,
+    "telefonos": [
+      {
+        "telefono": "12345678",
+        "descTipoTelefono": "Casa",
+        "esPrincipal": true
+      }
+    ],
+    "correos": [
+      {
+        "correo": "ejemplo@ejemplo.com",
+        "esPrincipal": true
+      }
+    ],
+    "contactos": [
+      {
+        "tipoRelacion": {
+          "id": 3,
+          "descripcion": "Contacto"
+        },
+        "telefonos": [
+          {
+            "telefono": "5537136838",
+            "descTipoTelefono": "Casa",
+            "esPrincipal": true
+          }
+        ],
+        "correos": [
+          {
+            "correo": "shernandez@mail.com.mx",
+            "esPrincipal": true
+          }
+        ],
+        "idContacto": 12,
+        "nombre": "Silvano Ruiz Lopez",
+        "email": "shernandez@mail.com.mx",
+        "rfc": "SRLP654321ZA5",
+        "isNomina": true
+      }
+    ]
+  }
+}
+
+const consultaEstados = {
+  "responseStatus": 200,
+  "responseError": "",
+  "estados": [
+    {
+      "id": 5,
+      "descripcion": 5
+    }
+  ]
+}
+
+const consultaMunicipioDelegacion = {
+  "responseStatus": 200,
+  "responseError": "",
+  "municipiosDelegaciones": [
+    {
+      "id": 5,
+      "nombre": "Venustiano C.",
+      "claveMunicipioDelegacion": 5,
+      "idEstado": 5
+    }
+  ]
+}
+
+const consultaOperacionesActivasUsuario = {	
+	"responseStatus": 200,
+	"responseError": "",
+    "tieneOperacionesActivas": true		
+}
+
 var mapaModelo = {
    //### ESB ####//
    /////////// Sprint 1  /////////////
@@ -3739,7 +3852,12 @@ var mapaModelo = {
  'movimientosCFE':movimientosCFE,
  'consultaPdfGdf':consultaPdfGdf,
  'solicitaOTPVirtual':solicitaOTPVirtual,
- 'consultaFoliosGdf':consultaFoliosGdf
+ 'consultaFoliosGdf':consultaFoliosGdf,
+//////////// Sprint F ////////////////////////
+ 'busquedaPorRFC':busquedaPorRFC,
+ 'consultaEstados':consultaEstados,
+ 'consultaMunicipioDelegacion':consultaMunicipioDelegacion,
+'consultaOperacionesActivasUsuario': consultaOperacionesActivasUsuario
 }
 
 function obtenerModelo (nombreModelo,bodyreq){
