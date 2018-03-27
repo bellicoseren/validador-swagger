@@ -4033,6 +4033,32 @@ const creaFacultamientoUsuario={
  "idPerfil": 0
 }
 
+const consultaAliasPorUsuario = {
+  "existeAlias": false,
+  "responseStatus": 200,
+  "responseError": ""
+}
+
+const consultaLimitesUsuario = {
+  "responseStatus": 200,
+  "responseError": "",
+  "result": [
+    {
+      "nombre": "",
+      "limiteIndividual": "",
+      "limiteMancomunado": "",
+      "limiteOperable": "",
+      "rangoOperable": "",
+      "activo": true,
+      "dispositivo": {
+        "idDispositivo": 1,
+        "noSerie": "",
+        "noCaja": 10
+      }
+    }
+  ]
+}
+
  
 var mapaModelo = {
    //### ESB ####//
@@ -4150,7 +4176,9 @@ var mapaModelo = {
  'consultaFirmantesPotenciales':consultaFirmantesPotenciales,
  'creaUsuarioAdicional':creaUsuarioAdicional,
  'consultaOperacionesActivasUsuario': consultaOperacionesActivasUsuario,
- 'creaFacultamientoUsuario': creaFacultamientoUsuario
+ 'creaFacultamientoUsuario': creaFacultamientoUsuario,
+ 'consultaAliasPorUsuario':consultaAliasPorUsuario,
+ 'consultaLimitesUsuario':consultaLimitesUsuario
  
 }
 
