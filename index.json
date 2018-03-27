@@ -12247,7 +12247,7 @@
         }
       }
     },
-    "/busquedaPorRFC": {
+    "/buscar/PersonaFisicaPorFiltro": {
       "post": {
         "tags": [
           "Sprint f"
@@ -12256,8 +12256,8 @@
         "parameters": [
           {
             "in": "body",
-            "name": "busquedaPorRFC",
-            "description": "Diseño de la operación para busquedaPorRFC",
+            "name": "/buscar/personaFisicaPorFiltro",
+            "description": "Diseño de la operación para /buscar/personaFisicaPorFiltro",
             "required": true,
             "schema": {
               "required": [

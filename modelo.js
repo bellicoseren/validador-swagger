@@ -3733,12 +3733,10 @@ const direccionesPorPersona = {
   "responseError": ""
 }
 
-<<<<<<< HEAD
- /////////// Sprint F  /////////////
-=======
->>>>>>> upstream/master
 
-const busquedaPorRFC = {
+ /////////// Sprint f  /////////////
+
+const buscarPersonaFisicaPorFiltro = {
   "responseStatus": 200,
   "responseError": "",
   "result": {
@@ -3997,7 +3995,7 @@ var mapaModelo = {
  'consultaCuentasCliente':consultaCuentasCliente,
  'consultaSucursales':consultaSucursales,
  'direccionesPorPersona':direccionesPorPersona,
- 'busquedaPorRFC':busquedaPorRFC,
+ '/buscar/personaFisicaPorFiltro':buscarPersonaFisicaPorFiltro,
  'consultaEstados':consultaEstados,
  'consultaMunicipioDelegacion':consultaMunicipioDelegacion,
  'crearAbastecimientoTokensCliente': crearAbastecimientoTokensCliente,
