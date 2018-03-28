@@ -3995,7 +3995,7 @@ var mapaModelo = {
  'consultaCuentasCliente':consultaCuentasCliente,
  'consultaSucursales':consultaSucursales,
  'direccionesPorPersona':direccionesPorPersona,
- '/buscar/personaFisicaPorFiltro':buscarPersonaFisicaPorFiltro,
+ 'buscarPersonaFisicaPorFiltro':buscarPersonaFisicaPorFiltro,
  'consultaEstados':consultaEstados,
  'consultaMunicipioDelegacion':consultaMunicipioDelegacion,
  'crearAbastecimientoTokensCliente': crearAbastecimientoTokensCliente,
