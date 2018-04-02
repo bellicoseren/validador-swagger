@@ -3679,7 +3679,6 @@ const consultaSucursales = {
       "id": "11",
       "calle": "",
       "noExterior": "",
-      "noInterior": "",
       "nombre": "",
       "estado": "",
       "entrecalles": "",
@@ -3724,9 +3723,7 @@ const direccionesPorPersona = {
       "colonia": "",
       "codigoPostal": "",
       "esPrincipal": true,
-      "municipio": "",
-      "responseStatus": 200,
-      "responseError": ""
+      "municipio": ""
     }
   ],
   "responseStatus": 200,
@@ -3874,11 +3871,7 @@ const consultaMunicipioDelegacion = {
   ]
 }
 
-const consultaOperacionesActivasUsuario = {	
-	"responseStatus": 200,
-	"responseError": "",
-    "tieneOperacionesActivas": true		
-}
+
 
 
 const crearAbastecimientoTokensCliente = {
@@ -3891,6 +3884,185 @@ const crearAbastecimientoTokensCliente = {
     }
   ]
 }
+
+const actualizaFacultamientoUsuario={
+  "responseStatus": 200,
+  "responseError": ""
+}
+
+const consultaPerfilesPatronConGruposFacultades={
+    "result": [
+   {
+     "id": 12345,
+     "nombre": "string",
+     "descripcion": "",
+     "titular": 12345,
+     "fechaModificacion": "23032017",
+     "isActivo": true,
+     "empresaPropietaria": "",
+     "jerarquiaFacultamiento": "",
+     "usuarioUltimaModificacion": 0,
+     "listaGrupos": [
+       {
+         "nombre": "string",
+         "id": "",
+         "descripcion": "string",
+         "listaFacultades": [
+           {
+             "id": 12345,
+             "nombre": "string",
+             "descripcion": "",
+             "fechaModificacion": "23032017",
+             "isActivo": true,
+             "usuarioUltimaModificacion": 23032017,
+             "cuenta": "",
+             "tipoFacultad": "",
+             "montoRestriccion": "",
+             "nombrePortlet": "",
+             "isPortlet": true,
+             "isComponenteHabilitado": true,
+             "isComponenteVisible": true,
+             "isLayout": true,
+             "urlLayout": "",
+             "isGrupoBpm": true
+           }
+         ]
+       }
+     ]
+   }
+ ],
+     "responseStatus": 200,
+     "responseError": ""
+}
+
+const modificaPassword={
+  "responseStatus": 200,
+  "responseError": ""
+}
+
+const consultaFacultamientoUsuario={
+  "result": {
+   "idusuario": 12345,
+   "ticket": {
+     "id_user": "123456",
+     "id_creds": "12345678"
+   },
+   "canal": "WEB",
+   "usuarioUltimaModificacion": 0,
+   "isActivo": true,
+   "limiteIndividual": "0.0",
+   "limiteMancomunado": "0.0",
+   "limiteOperable": "0.0",
+   "rangoOperable": "true",
+   "firmantes": {
+     "usuarios": "[0]",
+     "votos": 0
+   },
+   "firmantesFacultades": [
+     {
+       "nombre": "string",
+       "firmantes": {
+         "usuarios": "[0]",
+         "votos": 0
+       },
+       "cuentas": [
+         {
+           "noCuenta": "string",
+           "limiteIndividual": "0.0",
+           "limiteMancomunado": "0.0",
+           "limiteOperable": "0.0",
+           "rangoOperable": "true"
+         }
+       ]
+     }
+   ],
+   "perfiles": [
+     {
+       "id": 0,
+       "nombre": "string",
+       "patronOrigen": "string",
+       "grupos": [
+         {
+           "id": 0,
+           "nombre": "string",
+           "facultades": "[string]"
+         }
+       ]
+     }
+   ],
+   "cuentas": "[strings]"
+ },
+ "responseStatus": 200,
+ "responseError": ""
+}
+
+const bloqueoDesbloqueoUsuario={
+ "responseStatus": 200,
+ "responseError": "",
+ "listaUsuarios": [
+   {
+     "id": 1,
+     "isActivo": true
+   }
+ ]
+}
+
+const consultaFirmantesPotenciales={
+ "responseStatus": 200,
+ "responseError": "",
+ "firmantes": [
+   {
+     "id": 0,
+     "nombre": "Waldo Terry"
+   }
+ ]
+}
+
+const creaUsuarioAdicional={
+  "responseStatus": 200,
+  "responseError": "",
+  "idUsuario": 0
+}
+
+const consultaOperacionesActivasUsuario = { 
+ "responseStatus": 200,
+ "responseError": "",
+   "tieneOperacionesActivas": true   
+}
+
+
+const creaFacultamientoUsuario={
+ "responseStatus": 200,
+ "responseError": "",
+ "idPerfil": 0
+}
+
+const consultaAliasPorUsuario = {
+  "existeAlias": false,
+  "responseStatus": 200,
+  "responseError": ""
+}
+
+const consultaLimitesUsuario = {
+  "responseStatus": 200,
+  "responseError": "",
+  "result": [
+    {
+      "nombre": "",
+      "limiteIndividual": "",
+      "limiteMancomunado": "",
+      "limiteOperable": "",
+      "rangoOperable": "",
+      "activo": true,
+      "dispositivo": {
+        "idDispositivo": 1,
+        "noSerie": "",
+        "noCaja": 10
+      }
+    }
+  ]
+}
+
  
 var mapaModelo = {
    //### ESB ####//
@@ -3990,7 +4162,7 @@ var mapaModelo = {
  'consultaFoliosGdf':consultaFoliosGdf,
 
  
-//////////Sprint f//////////////////
+//////////Sprint F//////////////////
  'actualizaDatosPersona':actualizaDatosPersona,
  'consultaCuentasCliente':consultaCuentasCliente,
  'consultaSucursales':consultaSucursales,
@@ -4001,7 +4173,17 @@ var mapaModelo = {
  'crearAbastecimientoTokensCliente': crearAbastecimientoTokensCliente,
  'consultaOperacionesActivasUsuario': consultaOperacionesActivasUsuario,
  'consultaStockTokens': consultaStockTokens,
- 'asignacionOtpUsuario': asignacionOtpUsuario
+ 'asignacionOtpUsuario': asignacionOtpUsuario,
+ 'actualizaFacultamientoUsuario': actualizaFacultamientoUsuario,
+ 'consultaPerfilesPatronConGruposFacultades':consultaPerfilesPatronConGruposFacultades,
+ 'modificaPassword':modificaPassword,
+ 'consultaFacultamientoUsuario':consultaFacultamientoUsuario,
+ 'bloqueoDesbloqueoUsuario':bloqueoDesbloqueoUsuario,
+ 'consultaFirmantesPotenciales':consultaFirmantesPotenciales,
+ 'creaUsuarioAdicional':creaUsuarioAdicional,
+ 'creaFacultamientoUsuario': creaFacultamientoUsuario,
+ 'consultaAliasPorUsuario':consultaAliasPorUsuario,
+ 'consultaLimitesUsuario':consultaLimitesUsuario
  
 }
 
