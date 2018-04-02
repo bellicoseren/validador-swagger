@@ -3731,7 +3731,7 @@ const direccionesPorPersona = {
 }
 
 
- /////////// Sprint f  /////////////
+ /////////// Sprint F  /////////////
 
 const buscarPersonaFisicaPorFiltro = {
   "responseStatus": 200,
