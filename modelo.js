@@ -3679,7 +3679,6 @@ const consultaSucursales = {
       "id": "11",
       "calle": "",
       "noExterior": "",
-      "noInterior": "",
       "nombre": "",
       "estado": "",
       "entrecalles": "",
@@ -3724,9 +3723,7 @@ const direccionesPorPersona = {
       "colonia": "",
       "codigoPostal": "",
       "esPrincipal": true,
-      "municipio": "",
-      "responseStatus": 200,
-      "responseError": ""
+      "municipio": ""
     }
   ],
   "responseStatus": 200,
@@ -3734,7 +3731,9 @@ const direccionesPorPersona = {
 }
 
 
-const busquedaPorRFC = {
+ /////////// Sprint F  /////////////
+
+const buscarPersonaFisicaPorFiltro = {
   "responseStatus": 200,
   "responseError": "",
   "result": {
@@ -3825,6 +3824,7 @@ const consultaEstados = {
     }
   ]
 }
+
 const consultaStockTokens = {
   "responseStatus": 200,
   "responseError": "",
@@ -3870,6 +3870,10 @@ const consultaMunicipioDelegacion = {
     }
   ]
 }
+
+
+
+
 const crearAbastecimientoTokensCliente = {
   "responseStatus": 200,
   "responseError": "",
@@ -4156,16 +4160,18 @@ var mapaModelo = {
  'consultaPdfGdf':consultaPdfGdf,
  'solicitaOTPVirtual':solicitaOTPVirtual,
  'consultaFoliosGdf':consultaFoliosGdf,
+
  
-//////////Sprint f//////////////////
+//////////Sprint F//////////////////
  'actualizaDatosPersona':actualizaDatosPersona,
  'consultaCuentasCliente':consultaCuentasCliente,
  'consultaSucursales':consultaSucursales,
  'direccionesPorPersona':direccionesPorPersona,
- 'busquedaPorRFC':busquedaPorRFC,
+ 'buscarPersonaFisicaPorFiltro':buscarPersonaFisicaPorFiltro,
  'consultaEstados':consultaEstados,
  'consultaMunicipioDelegacion':consultaMunicipioDelegacion,
  'crearAbastecimientoTokensCliente': crearAbastecimientoTokensCliente,
+ 'consultaOperacionesActivasUsuario': consultaOperacionesActivasUsuario,
  'consultaStockTokens': consultaStockTokens,
  'asignacionOtpUsuario': asignacionOtpUsuario,
  'actualizaFacultamientoUsuario': actualizaFacultamientoUsuario,
@@ -4175,7 +4181,6 @@ var mapaModelo = {
  'bloqueoDesbloqueoUsuario':bloqueoDesbloqueoUsuario,
  'consultaFirmantesPotenciales':consultaFirmantesPotenciales,
  'creaUsuarioAdicional':creaUsuarioAdicional,
- 'consultaOperacionesActivasUsuario': consultaOperacionesActivasUsuario,
  'creaFacultamientoUsuario': creaFacultamientoUsuario,
  'consultaAliasPorUsuario':consultaAliasPorUsuario,
  'consultaLimitesUsuario':consultaLimitesUsuario
