@@ -3427,7 +3427,7 @@ const tasasIntegra = {
 const aperturaCede = {
   "folioInversion": "ABC123456",
   "responseStatus": 200,
-  "responseError": "Problema con la peticion"
+  "responseError": ""
 }
 
 const tasasCede = {
