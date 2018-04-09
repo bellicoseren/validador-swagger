@@ -9,6 +9,8 @@ var swagger = require('./index.json');
 var modelo = require('./modelo');
 var Buffer1=require("Buffer");
 
+const util =require('util');
+
 var port
 var basePath=""
 var app = express();
@@ -47,12 +49,13 @@ function validateArray(arrayBody, arrayDefinition, errors)
     //   var type= typeof(itemArray[propertyDef])
     //   console.log();
     // }
-  }
+  }parameters
 
 }
 
 function validateRequired(bodyreq, propertiesRequired, errors)
 {
+
   for(var property in propertiesRequired )
   {
     if( bodyreq[propertiesRequired[property]] == null )
@@ -69,6 +72,8 @@ function validate(bodyreq, schemaDefinition, errors)
   errors["required"]= {};
   errors["type"]= {};
   errors["logic"]={};
+
+
   validateRequired(bodyreq, schemaDefinition.required,errors);
   validateObject(bodyreq, schemaDefinition, errors);
 }
@@ -178,9 +183,20 @@ function validateProperty(type, typeDefinition, formatDefinition, propertyName, 
 // ruteo
 app.set('json spaces', 0);
 app.post('/:path', function(req, res){
+ 
   try {
-    var errors={};
+    var errors={}; 
     var path= swagger.paths[req.originalUrl];
+    var body = path.post.parameters;
+
+    var bodyInterno = "";
+    for(var propiedades in body){
+        bodyInterno = body[propiedades].schema;
+
+        //console.log("propiedades---------------------------------------"+body[propiedades].schema);
+    }
+    var requeridos = bodyInterno.properties;
+  
     if(path == null)
     {
       //throw new Error("No existe la deficion en Swagger para validar el path: "+ req.originalUrl);
@@ -190,6 +206,25 @@ app.post('/:path', function(req, res){
       return;
     }
     var bodyreq= req.body;
+    var bandera = 0;
+
+      console.log("bodyreq---------------------------" + util.inspect(bodyreq,false,null) );
+         console.log("requeridos---------------------------" + util.inspect(requeridos,false,null));
+
+
+    for (var clave in bodyreq){
+  // Controlando que json realmente tenga esa propiedad
+      if (requeridos.hasOwnProperty(clave)) {
+          console.log("VALOR ENCONTRADO-------------------- "+bodyreq);
+      }else{
+             console.log("Este dato esta de mas "+bodyreq);
+                 res.status(200).send({"errors":"Este dato esta de mas "+bodyreq});
+       }
+ 
+    }
+
+ 
+
     errors["required"]={};
     errors["type"]={};
     errors["logic"]={};
