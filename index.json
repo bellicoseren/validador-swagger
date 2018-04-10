@@ -4518,7 +4518,7 @@
         }
       }
     },
-    "/actualizaBarrido": {
+    "/barrido/actualizaBarrido": {
       "post": {
         "tags": [
           "Sprint 3"
@@ -12642,7 +12642,7 @@
         }
       }
     },
-    "/busquedaPorRFC": {
+    "/buscarPersonaFisicaPorFiltro": {
       "post": {
         "tags": [
           "Sprint F"
@@ -12651,8 +12651,8 @@
         "parameters": [
           {
             "in": "body",
-            "name": "busquedaPorRFC",
-            "description": "Diseño de la operación para busquedaPorRFC",
+            "name": "/buscar/personaFisicaPorFiltro",
+            "description": "Diseño de la operación para /buscar/personaFisicaPorFiltro",
             "required": true,
             "schema": {
               "required": [
@@ -13104,33 +13104,26 @@
             "required": true,
             "schema": {
               "required": [
-                "idUsuario",
                 "idPersonaCliente",
                 "canal",
                 "ticket"
               ],
               "properties": {
-                "idUsuario": {
-                  "description": "Identificador único de la persona en los sistemas institucionales.",
-                  "type": "integer",
-                  "format": "int64",
-                  "example": 1
-                },
                 "idPersonaCliente": {
-                  "description": "Id de la persona moral de la cual se quieren extraer las cuentas y las cuentas de sus empresas relacionadas.",
                   "type": "integer",
                   "format": "int64",
-                  "example": 1
+                  "example": 123546345
                 },
                 "ticket": {
                   "required": [
-                    "id_user",
+                    "idUsuario",
                     "id_creds"
                   ],
                   "properties": {
-                    "id_user": {
-                      "type": "string",
-                      "example": "123456"
+                    "idUsuario": {
+                      "type": "integer",
+                      "format": "int64",
+                      "example": 1
                     },
                     "id_creds": {
                       "type": "string",
@@ -14592,11 +14585,6 @@
                         "type": "string",
                         "example": ""
                       },
-                      "noInterior": {
-                        "description": "Numero interior de la sucursal",
-                        "type": "string",
-                        "example": ""
-                      },
                       "nombre": {
                         "description": "Nombre de la sucursal",
                         "type": "string",
@@ -15515,14 +15503,6 @@
                       },
                       "municipio": {
                         "description": "Municipio de la dirección",
-                        "type": "string",
-                        "example": ""
-                      },
-                      "responseStatus": {
-                        "type": "number",
-                        "example": 200
-                      },
-                      "responseError": {
                         "type": "string",
                         "example": ""
                       }
