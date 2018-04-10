@@ -206,13 +206,8 @@ app.post('*', function(req, res){
     console.log("*****************************************************************");
     if(isEmpty(errors.required) && isEmpty(errors.type) && isEmpty(errors.logic)){
 
-      //var nombreModelo= req.path.replace(basePath,"")
-        // req.path = /barrido/actualizaBarrido
-        // req.path.split['/']
       var ruta = req.path.split("/");
       var nombreModelo= "/" + ruta[ruta.length-1];
-    
-      console.log("Path++++++++++ " + nombreModelo);
 
       var respuesta = modelo.obtenerModelo(nombreModelo.substring(1), bodyreq);
       console.log("Respuesta:  ", respuesta)
