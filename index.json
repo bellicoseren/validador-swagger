@@ -4518,7 +4518,7 @@
         }
       }
     },
-    "/barrido/actualizaBarrido": {
+    "/actualizaBarrido": {
       "post": {
         "tags": [
           "Sprint 3"
