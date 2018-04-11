@@ -69,6 +69,7 @@ function validateRequired(bodyreq, propertiesRequired, errors)
 
 function validate(bodyreq, schemaDefinition, errors)
 {
+ 
   errors["required"]= {};
   errors["type"]= {};
   errors["logic"]={};
@@ -78,14 +79,20 @@ function validate(bodyreq, schemaDefinition, errors)
   validateObject(bodyreq, schemaDefinition, errors);
 }
 
+ 
 function validateObject(bodyreq, schemaDefinition, errors)
 {
 
+   
+
+
   var properties= schemaDefinition.properties;
   validateRequired(bodyreq, schemaDefinition.required, errors)
+ 
 
   for( property in properties )
   {
+ 
     //Significa que ya pasamos la validacion de requeridos, podriamos encontrarnos con una
     // propiedad que no esta en el body
     if(bodyreq[property] == null)
@@ -98,26 +105,159 @@ function validateObject(bodyreq, schemaDefinition, errors)
     {
       var typeDef= properties[property].type;
       var format= properties[property].format;
-      console.log("-------------------***************-----------------");
-      console.log(properties[property]);
+      //console.log("-------------------***************-----------------");
+      //console.log(properties[property]);
       validateProperty(type,typeDef, format, property,properties[property],bodyreq[property], errors );
     }
     else
     {
       if(!Array.isArray(bodyreq[property]))
       {
-        console.log("VALIDANDO OBJECT "+ bodyreq[property]);
+       // console.log("VALIDANDO OBJECT "+ bodyreq[property]);
         validateObject(bodyreq[property], properties[property], errors);
       }
       else
       {
-        console.log("VALIDANDO ARRAY "+ bodyreq[property].length);
+        //console.log("VALIDANDO ARRAY "+ bodyreq[property].length);
         validateArray(bodyreq[property], properties[property], errors);
       }
 
     }
   }
 }
+
+ 
+function validaciones(bodyreq, schemaDefinition, errors)
+{
+
+  l = [];
+  l1 = [];
+
+ errors["required"]= {};
+  errors["type"]= {};
+  errors["logic"]={};
+
+
+  validateRequired(bodyreq, schemaDefinition.required,errors);
+    
+    var from = validateFrom(bodyreq, schemaDefinition, errors);
+
+    var swagger=  validateSwagger(bodyreq, schemaDefinition, errors);
+
+    console.log("from--------------------"+util.inspect(from,false,null));
+
+   var bandera = 0;
+   var resultado = "";
+    for (var valor in from){
+ 
+        for(var reqFrom in swagger){ 
+           if(from[valor] == swagger[reqFrom]){
+               bandera = 1;
+                break;
+            }
+        }
+          if(bandera == 1){
+            bandera = 0;
+            console.log("VALOR ENCONTRADO-------------------- "+from[valor]);
+          }else{
+            bandera = 0;
+            console.log("Este dato esta de mas "+from[valor]);
+            resultado = "Este dato esta de mas "+from[valor];
+            
+                     //res.status(200).send({"errors":"Este dato esta de mas "+valor});
+          }
+    }
+ 
+  return resultado;
+
+}
+ 
+
+
+   var l1 = []; 
+
+function validateSwagger(bodyreq, schemaDefinition, errors)
+{ 
+  var properties= schemaDefinition.properties;
+  validateRequired(bodyreq, schemaDefinition.required, errors)
+ 
+
+  for( property in properties )
+  { 
+
+    l1.push(property);
+    
+   
+    //Significa que ya pasamos la validacion de requeridos, podriamos encontrarnos con una
+    // propiedad que no esta en el body
+    if(bodyreq[property] == null)
+    {
+      continue;
+    }
+    var type= typeof(bodyreq[property]);
+
+    if(type !=  "object")
+    { 
+    }
+    else
+    {
+      if(!Array.isArray(bodyreq[property]))
+      { 
+        validateSwagger(bodyreq[property], properties[property], errors);
+      }
+      else
+      { 
+        validateArray(bodyreq[property], properties[property], errors);
+      }
+
+    }
+  }
+ return l1;
+}
+
+
+   var l = []; 
+function validateFrom(bodyreq, schemaDefinition, errors)
+{ 
+  var properties= schemaDefinition.properties;
+  validateRequired(bodyreq, schemaDefinition.required, errors)
+ 
+
+  for( property in bodyreq )
+  { 
+
+    l.push(property);
+    
+   
+    //Significa que ya pasamos la validacion de requeridos, podriamos encontrarnos con una
+    // propiedad que no esta en el body
+    if(bodyreq[property] == null)
+    {
+      continue;
+    }
+    var type= typeof(bodyreq[property]);
+
+    if(type !=  "object")
+    { 
+    }
+    else
+    {
+      if(!Array.isArray(bodyreq[property]))
+      { 
+        validateFrom(bodyreq[property], properties[property], errors);
+      }
+      else
+      { 
+        validateArray(bodyreq[property], properties[property], errors);
+      }
+
+    }
+  }
+ return l;
+}
+ 
+
+
 function validateProperty(type, typeDefinition, formatDefinition, propertyName, propertyDef, propertyBody , errors)
 {
   var typeTemp= type;
@@ -193,7 +333,6 @@ app.post('/:path', function(req, res){
     for(var propiedades in body){
         bodyInterno = body[propiedades].schema;
 
-        //console.log("propiedades---------------------------------------"+body[propiedades].schema);
     }
     var requeridos = bodyInterno.properties;
   
@@ -208,33 +347,35 @@ app.post('/:path', function(req, res){
     var bodyreq= req.body;
     var bandera = 0;
 
-      console.log("bodyreq---------------------------" + util.inspect(bodyreq,false,null) );
-         console.log("requeridos---------------------------" + util.inspect(requeridos,false,null));
-
-
-    for (var clave in bodyreq){
-  // Controlando que json realmente tenga esa propiedad
-      if (requeridos.hasOwnProperty(clave)) {
-          console.log("VALOR ENCONTRADO-------------------- "+bodyreq);
-      }else{
-             console.log("Este dato esta de mas "+bodyreq);
-                 res.status(200).send({"errors":"Este dato esta de mas "+bodyreq});
-       }
+      //console.log("bodyreq---------------------------" + util.inspect(bodyreq,false,null) );
+      //console.log("requeridos---------------------------" + util.inspect(requeridos,false,null));
  
-    }
-
  
-
     errors["required"]={};
     errors["type"]={};
     errors["logic"]={};
     console.log("Path " + req.originalUrl + " validando...");
 
 
-    validate(bodyreq, path.post.parameters[0].schema, errors);
+    validate(bodyreq, path.post.parameters[0].schema, errors); 
+
+    var l = validaciones(bodyreq, path.post.parameters[0].schema, errors);
+
+
+    
+    if(l !=""){
+        res.status(200).send({"errors":l});
+    }
+    
+
+    console.log("llll------------------------------------------------" + l);
+
     console.log("-------------FIN VALIDACION------------");
     console.log("*****************************************************************");
     if(isEmpty(errors.required) && isEmpty(errors.type) && isEmpty(errors.logic)){
+
+    console.log("URL-------------------------------------------------"+req.path);
+
       var nombreModelo= req.path.replace(basePath,"")
       var respuesta = modelo.obtenerModelo(nombreModelo.substring(1), bodyreq);
       console.log("Respuesta:  ", respuesta)
