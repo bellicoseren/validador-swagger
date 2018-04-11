@@ -9,6 +9,7 @@ var swagger = require('./index.json');
 var modelo = require('./modelo');
 var Buffer1=require("Buffer");
 
+
 const util =require('util');
 
 var port
@@ -143,8 +144,7 @@ function validaciones(bodyreq, schemaDefinition, errors)
     var from = validateFrom(bodyreq, schemaDefinition, errors);
 
     var swagger=  validateSwagger(bodyreq, schemaDefinition, errors);
-
-    console.log("from--------------------"+util.inspect(from,false,null));
+ 
 
    var bandera = 0;
    var resultado = "";
@@ -157,8 +157,7 @@ function validaciones(bodyreq, schemaDefinition, errors)
             }
         }
           if(bandera == 1){
-            bandera = 0;
-            console.log("VALOR ENCONTRADO-------------------- "+from[valor]);
+            bandera = 0; 
           }else{
             bandera = 0;
             console.log("Este dato esta de mas "+from[valor]);
@@ -322,20 +321,15 @@ function validateProperty(type, typeDefinition, formatDefinition, propertyName, 
 }
 // ruteo
 app.set('json spaces', 0);
-app.post('/:path', function(req, res){
+
  
+app.post('*', function(req, res){
   try {
-    var errors={}; 
+    console.log("Request incoming");
+    var errors={};
     var path= swagger.paths[req.originalUrl];
-    var body = path.post.parameters;
+    
 
-    var bodyInterno = "";
-    for(var propiedades in body){
-        bodyInterno = body[propiedades].schema;
-
-    }
-    var requeridos = bodyInterno.properties;
-  
     if(path == null)
     {
       //throw new Error("No existe la deficion en Swagger para validar el path: "+ req.originalUrl);
@@ -357,6 +351,7 @@ app.post('/:path', function(req, res){
     console.log("Path " + req.originalUrl + " validando...");
 
 
+
     validate(bodyreq, path.post.parameters[0].schema, errors); 
 
     var l = validaciones(bodyreq, path.post.parameters[0].schema, errors);
@@ -370,13 +365,20 @@ app.post('/:path', function(req, res){
 
     console.log("llll------------------------------------------------" + l);
 
+    validate(bodyreq, path.post.parameters[0].schema, errors);
+
+
     console.log("-------------FIN VALIDACION------------");
     console.log("*****************************************************************");
     if(isEmpty(errors.required) && isEmpty(errors.type) && isEmpty(errors.logic)){
-
-    console.log("URL-------------------------------------------------"+req.path);
+ 
 
       var nombreModelo= req.path.replace(basePath,"")
+
+      var ruta = req.path.split("/");
+      var nombreModelo= "/" + ruta[ruta.length-1];
+
+
       var respuesta = modelo.obtenerModelo(nombreModelo.substring(1), bodyreq);
       console.log("Respuesta:  ", respuesta)
       if(respuesta._downloadFile){
