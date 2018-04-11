@@ -5930,8 +5930,7 @@
             "required": true,
             "schema": {
               "required": [
-                "ticket",
-                "idPersona"
+                "ticket"
               ],
               "properties": {
                 "ticket": {
@@ -5949,11 +5948,6 @@
                       "example": "12345678"
                     }
                   }
-                },
-                "idPersona": {
-                  "type": "integer",
-                  "format": "int64",
-                  "example": 123546345
                 }
               }
             }

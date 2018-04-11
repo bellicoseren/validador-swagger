@@ -8,6 +8,7 @@ var express = require('express');
 var swagger = require('./index.json');
 var modelo = require('./modelo');
 var Buffer1=require("Buffer");
+var util = require('util');
 
 var port
 var basePath=""
@@ -177,10 +178,12 @@ function validateProperty(type, typeDefinition, formatDefinition, propertyName, 
 }
 // ruteo
 app.set('json spaces', 0);
-app.post('/:path', function(req, res){
+app.post('*', function(req, res){
   try {
+    console.log("Request incoming");
     var errors={};
     var path= swagger.paths[req.originalUrl];
+    
     if(path == null)
     {
       //throw new Error("No existe la deficion en Swagger para validar el path: "+ req.originalUrl);
@@ -197,10 +200,15 @@ app.post('/:path', function(req, res){
 
 
     validate(bodyreq, path.post.parameters[0].schema, errors);
+
+
     console.log("-------------FIN VALIDACION------------");
     console.log("*****************************************************************");
     if(isEmpty(errors.required) && isEmpty(errors.type) && isEmpty(errors.logic)){
-      var nombreModelo= req.path.replace(basePath,"")
+
+      var ruta = req.path.split("/");
+      var nombreModelo= "/" + ruta[ruta.length-1];
+
       var respuesta = modelo.obtenerModelo(nombreModelo.substring(1), bodyreq);
       console.log("Respuesta:  ", respuesta)
       if(respuesta._downloadFile){
