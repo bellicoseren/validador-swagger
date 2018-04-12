@@ -2512,9 +2512,9 @@ function activacionPaperless(bodyreq){
 
     if( bodyreq.otp != "999"){
         var respuesta = {
-             "responseStatus": 200,
-              "responseError": ""
-            };
+          "responseStatus": 200,
+          "responseError": ""
+        };
     }else{
         var respuesta = {
             "responseStatus": 2431,
@@ -2755,7 +2755,7 @@ function consultaRetenciones(bodyreq){
   }
 
   const estadoPaperless = {
-    "opcionImpresion": "CONSULTA MULTIVANET",
+    "opcionImpresion": "ACTIVA",
     "omitirNombre": true,
     "noCuentaParcialmente": true,
     "responseStatus": 200,
@@ -3668,8 +3668,8 @@ var mapaModelo = {
   'consultaSaldosMultiT':consultaSaldosMultiT,
   'consultaMovimientosMultiT':consultaMovimientosMultiT,
   'consultaCtasServMultiT':consultaCtasServMultiT,
-  'estadoPaperless':estadoPaperless,
-  'activacionPaperless':activacionPaperless,
+  'persona/estadoPaperless':estadoPaperless,
+  'persona/activacionPaperless':activacionPaperless,
   'consultaMovimientos':consultaMovimientos,
   'consultaMesaDinero':consultaMesaDinero,
   'consultaMovsMesaDinero':consultaMovsMesaDinero,
