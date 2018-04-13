@@ -12431,6 +12431,15 @@
                 "responseError": {
                   "type": "string",
                   "example": ""
+                },
+                "result": {
+                  "properties": {
+                    "folio": {
+                      "description": "Folio único para la operación.",
+                      "type": "string",
+                      "example": "12345678910"
+                    }
+                  }
                 }
               }
             }
@@ -12450,7 +12459,7 @@
               }
             }
           },
-          "500": {
+          "202": {
             "description": "Error interno en el servidor.",
             "schema": {
               "properties": {
@@ -13999,11 +14008,38 @@
             "required": true,
             "schema": {
               "required": [
-                "idFacultad",
-                "cuenta",
-                "montoMancomunado"
+                "idUsuario",
+                "ticket",
+                "canal"
               ],
               "properties": {
+                "idUsuario": {
+                  "description": "Identificador único de la persona en los sistemas institucionales.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 0
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
                 "idFacultad": {
                   "description": "Id de la facultad u operación",
                   "type": "integer",
@@ -14047,16 +14083,16 @@
                   "items": {
                     "required": [
                       "idUsuario",
-                      "nombre"
+                      "Nombre"
                     ],
                     "properties": {
-                      "id": {
+                      "idUsuario": {
                         "description": "Identificador único de la persona en los sistemas institucionales.",
                         "type": "integer",
                         "format": "int64",
                         "example": 0
                       },
-                      "nombre": {
+                      "Nombre": {
                         "description": "Nombre del firmante",
                         "type": "string",
                         "example": "Waldo Terry"
@@ -15017,7 +15053,7 @@
             "required": true,
             "schema": {
               "required": [
-                "idUsuario",
+                "idPersonaPropietaria",
                 "ticket",
                 "empresaPropietaria",
                 "nombre",
@@ -15027,17 +15063,9 @@
                 "relacion",
                 "correo",
                 "telefono",
-                "direccion",
-                "idDispositivo",
                 "canal"
               ],
               "properties": {
-                "idUsuario": {
-                  "description": "Identificador único de la persona en los sistemas institucionales.",
-                  "type": "integer",
-                  "format": "int64",
-                  "example": 0
-                },
                 "ticket": {
                   "required": [
                     "id_user",
@@ -15053,6 +15081,12 @@
                       "example": "12345678"
                     }
                   }
+                },
+                "idPersonaPropietaria": {
+                  "description": "Identificador único de la persona a quien pertenecerá el nuevo usuario en los sistemas institucionales.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 0
                 },
                 "empresaPropietaria": {
                   "description": "Id de la empresa propietaria del adicional",
@@ -15076,6 +15110,16 @@
                 },
                 "nombreCompleto": {
                   "description": "Nombre completo de la persona adicional",
+                  "type": "string",
+                  "example": ""
+                },
+                "password": {
+                  "description": "Password a asignar al nuevo usuario adicional.",
+                  "type": "string",
+                  "example": ""
+                },
+                "tipoPassword": {
+                  "description": "Este campo indica el tipo de generación de password que se usará para crear el usuario adicional.",
                   "type": "string",
                   "example": ""
                 },
@@ -15113,6 +15157,7 @@
                     "idEmpresaPropietaria": {
                       "description": "Identificador único de la persona o empresa que extiende este teléfono al usuario.",
                       "type": "integer",
+                      "format": "int64",
                       "example": 123456
                     }
                   }
@@ -15131,6 +15176,7 @@
                     "idEmpresaPropietaria": {
                       "description": "Identificador único de la persona o empresa que extiende este teléfono al usuario.",
                       "type": "integer",
+                      "format": "int64",
                       "example": 123456
                     }
                   }
@@ -15157,6 +15203,7 @@
                         "id": {
                           "description": "Id del tipo de dirección.",
                           "type": "integer",
+                          "format": "int64",
                           "example": 1
                         },
                         "descripcion": {
@@ -15176,6 +15223,7 @@
                         "id": {
                           "description": "Id del tipo de pais.",
                           "type": "integer",
+                          "format": "int64",
                           "example": 1
                         },
                         "descripcion": {
@@ -15195,6 +15243,7 @@
                         "id": {
                           "description": "Id del tipo de estado.",
                           "type": "integer",
+                          "format": "int64",
                           "example": 1
                         },
                         "descripcion": {
@@ -15244,6 +15293,7 @@
                     "idDispositivo": {
                       "description": "Identificador único del dispositivo a asignar.",
                       "type": "integer",
+                      "format": "int64",
                       "example": 1
                     }
                   }
@@ -15263,8 +15313,7 @@
             "schema": {
               "required": [
                 "responseError",
-                "responseStatus",
-                "idUsuario"
+                "responseStatus"
               ],
               "properties": {
                 "responseStatus": {
@@ -15275,11 +15324,20 @@
                   "type": "string",
                   "example": ""
                 },
-                "idUsuario": {
-                  "description": "Identificador único de la persona en los sistemas institucionales.",
-                  "type": "integer",
-                  "format": "int64",
-                  "example": 0
+                "result": {
+                  "properties": {
+                    "idUsuario": {
+                      "description": "Identificador único de la persona en los sistemas institucionales.",
+                      "type": "integer",
+                      "format": "int64",
+                      "example": 0
+                    },
+                    "folio": {
+                      "description": "Folio único asociado con la operación.",
+                      "type": "string",
+                      "example": "12345678910"
+                    }
+                  }
                 }
               }
             }
@@ -15513,8 +15571,7 @@
             "schema": {
               "required": [
                 "responseStatus",
-                "responseError",
-                "idPerfil"
+                "responseError"
               ],
               "properties": {
                 "responseStatus": {
@@ -15525,10 +15582,14 @@
                   "type": "string",
                   "example": ""
                 },
-                "idPerfil": {
-                  "description": "Id de perfil creado.",
-                  "type": "integer",
-                  "example": 0
+                "result": {
+                  "properties": {
+                    "folio": {
+                      "description": "Folio único para la operación.",
+                      "type": "string",
+                      "example": "12345678910"
+                    }
+                  }
                 }
               }
             }
@@ -15895,7 +15956,7 @@
         }
       }
     },
-    "/modificaPassword": {
+    "/modificaPasswordUsuario": {
       "post": {
         "tags": [
           "Sprint F"
@@ -15990,6 +16051,15 @@
                 "responseError": {
                   "type": "string",
                   "example": ""
+                },
+                "result": {
+                  "properties": {
+                    "folio": {
+                      "description": "Folio único asociado con la operación.",
+                      "type": "string",
+                      "example": "12345678910"
+                    }
+                  }
                 }
               }
             }

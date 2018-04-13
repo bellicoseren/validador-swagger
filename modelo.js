@@ -613,10 +613,34 @@ const errorServicio = {
 }
 
 
-const Validaotp = {
+/**const Validaotp = {
   "Antiphishing": 989999,
   "responseStatus": 200,
   "responseError": "Usuario correcto y token correcto"
+}**/
+
+
+function Validaotp(bodyreq){
+
+console.log("USUARIO--------------"+bodyreq.otp);
+
+
+  if( bodyreq.otp == "999"){
+        var  respuesta =  {
+          "responseStatus": 400,
+          "responseError": ""
+        };
+
+   }else{
+    var respuesta = {
+          "Antiphishing": 989999,
+          "responseStatus": 200,
+          "responseError": "Usuario correcto y token correcto"
+        };
+
+    }
+console.log("RESPUESTA-------------------------"+respuesta);
+    return respuesta;
 }
 
 
@@ -2620,19 +2644,19 @@ const consultaCfdCfdiRetenciones = {
   }
 
   function consultaCfdCfdi(bodyreq) {
-	  console.log("COnsulta de numero de cuenta---------  "+bodyreq.numeroDeCuenta);
+	  console.log("COnsulta de numero de cuenta---------  "+bodyreq.canal);
 	  
-	if (bodyreq.numeroDeCuenta == "1234") {
+	if (bodyreq.canal == "1234") {
       var respuesta = {
          //Es un archivo
     	"_downloadFile":true
 	  };
-	}else if(bodyreq.numeroDeCuenta == "4321"){
+	}else if(bodyreq.canal == "4321"){
 	var respuesta = {
 	"responseStatus": 4400,
 	"responseError": ""
 };
-	}else if(bodyreq.numeroDeCuenta == "1111") {
+	}else if(bodyreq.canal == "1111") {
     var respuesta = {
 	"responseStatus": 500,
 	"responseError": "Internal Server Error"
@@ -2719,17 +2743,17 @@ function consultaRetenciones(bodyreq){
   }**/
   
     function estadoCuentaPDF(bodyreq){
-	if (bodyreq.numeroDeCuenta == "1234") {
+	if (bodyreq.canal == "1234") {
       var respuesta = {
          //Es un archivo
     	"_downloadFile":true
 	  };
-	}else if(bodyreq.numeroDeCuenta == "4321"){
+	}else if(bodyreq.canal == "4321"){
 	var respuesta = {
 	"responseStatus": 4400,
 	"responseError": ""
 };
-	}else if(bodyreq.numeroDeCuenta == "1111") {
+	}else if(bodyreq.canal == "1111") {
     var respuesta = {
 	"responseStatus": 500,
 	"responseError": "Internal Server Error"
@@ -3643,6 +3667,442 @@ function consultaFoliosGdf(bodyreq){
   }
   return respuesta;
 }
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////77
+
+
+////////////////////////////////////////////////////////////
+
+
+const actualizaDatosPersona = {
+  "responseStatus": 200,
+  "responseError": "",
+  "result": {
+    "folio": "12345678910"
+  }
+}
+ 
+const asignacionOtpUsuario = { 
+  "responseStatus": 200,
+  "responseError": ""
+}
+ 
+
+const consultaCuentasCliente = {
+  "result": [
+    {
+      "idPersona": "11",
+      "noCuenta": "0000000009",
+      "tipoCuenta": "cheques",
+      "alias": ""
+    }
+  ],
+  "responseStatus": 200,
+  "responseError": ""
+}
+
+
+const consultaSucursales = {
+  "sucursales": [
+    {
+      "id": "11",
+      "calle": "",
+      "noExterior": "",
+      "nombre": "",
+      "estado": "",
+      "entrecalles": "",
+      "país": "",
+      "ciudad": "",
+      "colonia": "",
+      "codigoPostal": "",
+      "municipio": ""
+    }
+  ],
+  "responseStatus": 200,
+  "responseError": ""
+}
+
+
+
+
+const direccionesPorPersona = {
+  "id": "11",
+  "nombre": "",
+  "listaDirecciones": [
+    {
+      "tipoDireccion": {
+        "id": "11",
+        "descripcion": ""
+      },
+      "pais": {
+        "id": "11",
+        "descripcion": "",
+        "nacionalidad": ""
+      },
+      "estado": {
+        "id": "11",
+        "descripcion": ""
+      },
+      "id": "11",
+      "calle": "",
+      "noExterior": "",
+      "noInterior": "",
+      "entreCalles": "",
+      "ciudad": "",
+      "colonia": "",
+      "codigoPostal": "",
+      "esPrincipal": true,
+      "municipio": ""
+    }
+  ],
+  "responseStatus": 200,
+  "responseError": ""
+}
+
+
+
+
+
+ /////////// Sprint F  /////////////
+
+const buscarPersonaFisicaPorFiltro = {
+  "responseStatus": 200,
+  "responseError": "",
+  "result": {
+    "Id": "9",
+    "regimenFiscal": "Persona Moral",
+    "nombre": "nombre",
+    "razonSocial": "VASCO",
+    "apellidoPaterno": "apellidoPaterno",
+    "apellidoMaterno": "apellidoMaterno",
+    "nombreCompleto": "nombreCompleto",
+    "rfc": "VAS647909",
+    "curp": "curp",
+    "direccion": [
+      {
+        "tipoDireccion": {
+          "id": 1,
+          "descripcion": "Fiscal"
+        },
+        "pais": {
+          "id": 1,
+          "descripcion": "México"
+        },
+        "estado": {
+          "id": 1,
+          "descripcion": "Distrito Federal"
+        },
+        "municipio": "municipio",
+        "ciudad": "ciudad",
+        "colonia": "colonia",
+        "codigoPostal": "codigoPostal",
+        "calle": "Calle",
+        "noExterior": "182",
+        "noInterior": "2",
+        "entreCalles": "Pensamiento y laureles",
+        "esPrincipal": true
+      }
+    ],
+    "activo": true,
+    "telefonos": [
+      {
+        "telefono": "12345678",
+        "descTipoTelefono": "Casa",
+        "esPrincipal": true
+      }
+    ],
+    "correos": [
+      {
+        "correo": "ejemplo@ejemplo.com",
+        "esPrincipal": true
+      }
+    ],
+    "contactos": [
+      {
+        "tipoRelacion": {
+          "id": 3,
+          "descripcion": "Contacto"
+        },
+        "telefonos": [
+          {
+            "telefono": "5537136838",
+            "descTipoTelefono": "Casa",
+            "esPrincipal": true
+          }
+        ],
+        "correos": [
+          {
+            "correo": "shernandez@mail.com.mx",
+            "esPrincipal": true
+          }
+        ],
+        "idContacto": 12,
+        "nombre": "Silvano Ruiz Lopez",
+        "email": "shernandez@mail.com.mx",
+        "rfc": "SRLP654321ZA5",
+        "isNomina": true
+      }
+    ]
+  }
+}
+
+const consultaEstados = {
+  "responseStatus": 200,
+  "responseError": "",
+  "estados": [
+    {
+      "id": 5,
+      "descripcion": 5
+    }
+  ]
+}
+
+const consultaStockTokens = {
+  "responseStatus": 200,
+  "responseError": "",
+  "result": [
+    {
+      "idDispositivo": 12345,
+      "numeroSerie": "MXS-9087-HDF",
+      "numeroCaja": 1,
+      "estatusCliente": "ASIGNADO",
+      "fechaRegistro": "07/12/2017 06:12:42",
+      "fechaAsignacion": "09/01/2018 12:30:42",
+      "usuarioAdicional": {
+        "id": 4,
+        "nombre": "Juan",
+        "apellidoMaterno": "Lopez",
+        "apellidoPaterno": "Lopez",
+        "perfil": "Adicional"
+      },
+      "sucursal": {
+        "id": 3,
+        "nombre": "Tecamachalco"
+      },
+      "solicitud": {
+        "id": 1,
+        "proveedor": {
+          "id": 11,
+          "nombre": "VASCO"
+        }
+      }
+    }
+  ]
+}
+ 
+const consultaMunicipioDelegacion = {
+  "responseStatus": 200,
+  "responseError": "",
+  "municipiosDelegaciones": [
+    {
+      "id": 5,
+      "nombre": "Venustiano C.",
+      "claveMunicipioDelegacion": 5,
+      "idEstado": 5
+    }
+  ]
+}
+
+
+
+
+const crearAbastecimientoTokensCliente = {
+  "responseStatus": 200,
+  "responseError": "",
+  "result": [
+    {
+      "idSolicitud": 8,
+      "fechaRegistro": "09-01-2018T15:42:00" 
+    }
+  ]
+}
+
+const actualizaFacultamientoUsuario={
+  "responseStatus": 200,
+  "responseError": ""
+}
+
+const consultaPerfilesPatronConGruposFacultades={
+    "result": [
+   {
+     "id": 12345,
+     "nombre": "string",
+     "descripcion": "",
+     "titular": 12345,
+     "fechaModificacion": "23032017",
+     "isActivo": true,
+     "empresaPropietaria": "",
+     "jerarquiaFacultamiento": "",
+     "usuarioUltimaModificacion": 0,
+     "listaGrupos": [
+       {
+         "nombre": "string",
+         "id": "",
+         "descripcion": "string",
+         "listaFacultades": [
+           {
+             "id": 12345,
+             "nombre": "string",
+             "descripcion": "",
+             "fechaModificacion": "23032017",
+             "isActivo": true,
+             "usuarioUltimaModificacion": 23032017,
+             "cuenta": "",
+             "tipoFacultad": "",
+             "montoRestriccion": "",
+             "nombrePortlet": "",
+             "isPortlet": true,
+             "isComponenteHabilitado": true,
+             "isComponenteVisible": true,
+             "isLayout": true,
+             "urlLayout": "",
+             "isGrupoBpm": true
+           }
+         ]
+       }
+     ]
+   }
+ ],
+     "responseStatus": 200,
+     "responseError": ""
+}
+
+const modificaPasswordUsuario={
+  "responseStatus": 200,
+  "responseError": "",
+  "result": {
+    "folio": "12345678910"
+  }
+}
+
+const consultaFacultamientoUsuario={
+  "result": {
+   "idusuario": 12345,
+   "ticket": {
+     "id_user": "123456",
+     "id_creds": "12345678"
+   },
+   "canal": "WEB",
+   "usuarioUltimaModificacion": 0,
+   "isActivo": true,
+   "limiteIndividual": "0.0",
+   "limiteMancomunado": "0.0",
+   "limiteOperable": "0.0",
+   "rangoOperable": "true",
+   "firmantes": {
+     "usuarios": "[0]",
+     "votos": 0
+   },
+   "firmantesFacultades": [
+     {
+       "nombre": "string",
+       "firmantes": {
+         "usuarios": "[0]",
+         "votos": 0
+       },
+       "cuentas": [
+         {
+           "noCuenta": "string",
+           "limiteIndividual": "0.0",
+           "limiteMancomunado": "0.0",
+           "limiteOperable": "0.0",
+           "rangoOperable": "true"
+         }
+       ]
+     }
+   ],
+   "perfiles": [
+     {
+       "id": 0,
+       "nombre": "string",
+       "patronOrigen": "string",
+       "grupos": [
+         {
+           "id": 0,
+           "nombre": "string",
+           "facultades": "[string]"
+         }
+       ]
+     }
+   ],
+   "cuentas": "[strings]"
+ },
+ "responseStatus": 200,
+ "responseError": ""
+}
+
+const bloqueoDesbloqueoUsuario={
+ "responseStatus": 200,
+ "responseError": "",
+ "listaUsuarios": [
+   {
+     "id": 1,
+     "isActivo": true
+   }
+ ]
+}
+
+const consultaFirmantesPotenciales={
+  "responseStatus": 200,
+  "responseError": "",
+  "firmantes": [
+    {
+      "idUsuario": 0,
+      "Nombre": "Waldo Terry"
+    }
+  ]
+}
+
+const creaUsuarioAdicional={
+  "responseStatus": 200,
+  "responseError": "",
+  "result": {
+    "idUsuario": 0,
+    "folio": "12345678910"
+  }
+}
+
+const consultaOperacionesActivasUsuario = { 
+ "responseStatus": 200,
+ "responseError": "",
+   "tieneOperacionesActivas": true   
+}
+
+
+const creaFacultamientoUsuario={
+ "responseStatus": 200,
+ "responseError": "",
+ "idPerfil": 0
+}
+
+const consultaAliasPorUsuario = {
+  "existeAlias": false,
+  "responseStatus": 200,
+  "responseError": ""
+}
+
+const consultaLimitesUsuario = {
+  "responseStatus": 200,
+  "responseError": "",
+  "result": [
+    {
+      "nombre": "",
+      "limiteIndividual": "",
+      "limiteMancomunado": "",
+      "limiteOperable": "",
+      "rangoOperable": "",
+      "activo": true,
+      "dispositivo": {
+        "idDispositivo": 1,
+        "noSerie": "",
+        "noCaja": 10
+      }
+    }
+  ]
+}
+
+
+
+
 
 
 const resetPasswordUsuario = {
@@ -3752,7 +4212,31 @@ var mapaModelo = {
  'solicitaOTPVirtual':solicitaOTPVirtual,
  'consultaFoliosGdf':consultaFoliosGdf,
 
+
+//////////Sprint F//////////////////
+ 'actualizaDatosPersona':actualizaDatosPersona,
+ 'consultaCuentasCliente':consultaCuentasCliente,
+ 'consultaSucursales':consultaSucursales,
+ 'direccionesPorPersona':direccionesPorPersona,
+ 'buscarPersonaFisicaPorFiltro':buscarPersonaFisicaPorFiltro,
+ 'consultaEstados':consultaEstados,
+ 'consultaMunicipioDelegacion':consultaMunicipioDelegacion,
+ 'crearAbastecimientoTokensCliente': crearAbastecimientoTokensCliente,
+ 'consultaOperacionesActivasUsuario': consultaOperacionesActivasUsuario,
+ 'consultaStockTokens': consultaStockTokens,
+ 'asignacionOtpUsuario': asignacionOtpUsuario,
+ 'actualizaFacultamientoUsuario': actualizaFacultamientoUsuario,
+ 'consultaPerfilesPatronConGruposFacultades':consultaPerfilesPatronConGruposFacultades,
+ 'modificaPasswordUsuario':modificaPasswordUsuario,
+ 'consultaFacultamientoUsuario':consultaFacultamientoUsuario,
+ 'bloqueoDesbloqueoUsuario':bloqueoDesbloqueoUsuario,
+ 'consultaFirmantesPotenciales':consultaFirmantesPotenciales,
+ 'creaUsuarioAdicional':creaUsuarioAdicional,
+ 'creaFacultamientoUsuario': creaFacultamientoUsuario,
+ 'consultaAliasPorUsuario':consultaAliasPorUsuario,
+ 'consultaLimitesUsuario':consultaLimitesUsuario,
  'resetPasswordUsuario': resetPasswordUsuario
+
 }
 
 function obtenerModelo (nombreModelo,bodyreq){
