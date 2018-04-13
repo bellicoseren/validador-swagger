@@ -1394,7 +1394,7 @@
         }
       }
     },
-    "/activacionPaperless": {
+    "/persona/activacionPaperless": {
       "post": {
         "tags": [
           "Sprint 2"
@@ -1656,8 +1656,8 @@
                         "type": "string",
                         "example": "123456"
                       },
-                      "numeroDeCuenta": {
-                        "description": "Número de cuenta",
+                      "cuentaMultiva": {
+                        "description": "Cuenta de cheques asociada con el crédito.",
                         "type": "string",
                         "example": "7894560"
                       },
@@ -1775,11 +1775,6 @@
                   "type": "array",
                   "items": {
                     "properties": {
-                      "numeroDeCuenta": {
-                        "description": "Número de la cuenta del cliente",
-                        "type": "string",
-                        "example": "789456"
-                      },
                       "idProducto": {
                         "description": "Identificador del producto",
                         "type": "string",
@@ -1856,10 +1851,10 @@
                   "type": "array",
                   "items": {
                     "properties": {
-                      "numeroDeCuenta": {
-                        "description": "Número de cuenta asociada con esta cuenta de inversión",
+                      "cuentaMultiva": {
+                        "description": "Número de cuenta eje del cliente para esta cuenta de multiva integra.",
                         "type": "string",
-                        "example": "0123456"
+                        "example": "78984560"
                       },
                       "idProducto": {
                         "description": "Identificador del producto",
@@ -1886,6 +1881,11 @@
                         "description": "Alias asociado con la cuenta en el core bancario",
                         "type": "string",
                         "example": "MULTIVA INTEGRA DE PRUEBA"
+                      },
+                      "numeroDeCuenta": {
+                        "description": "Número de cuenta asociada con esta cuenta de inversión",
+                        "type": "string",
+                        "example": "0123456"
                       }
                     }
                   }
@@ -1894,11 +1894,6 @@
                   "type": "array",
                   "items": {
                     "properties": {
-                      "numeroDeCuenta": {
-                        "description": "Número de cuenta asociada con esta cuenta de inversión",
-                        "type": "string",
-                        "example": "456789"
-                      },
                       "idProducto": {
                         "description": "Identificador del producto",
                         "type": "string",
@@ -1968,103 +1963,391 @@
             "schema": {
               "properties": {
                 "listCuentasCliente": {
+                  "example": [],
                   "type": "array",
                   "items": {
                     "properties": {
                       "nombreCuenta": {
                         "description": "Nombre asignado a la cuenta",
-                        "type": "string"
+                        "type": "string",
+                        "example": "CUENTA DE PRUEBA"
                       },
                       "numeroDeCuenta": {
                         "description": "Número de cuenta",
-                        "type": "string"
+                        "type": "string",
+                        "example": "123456"
                       },
                       "idProducto": {
                         "description": "Identificador del producto",
-                        "type": "string"
+                        "type": "string",
+                        "example": "CHQ"
                       },
                       "descripcionProducto": {
                         "description": "Nombre comercial del producto",
-                        "type": "string"
+                        "type": "string",
+                        "example": "Cuenta de Cheques"
                       },
                       "divisa": {
                         "description": "Clave de 3 letras de la divisa. Pesos Mexicanos será MXN",
-                        "type": "string"
+                        "type": "string",
+                        "example": "MXN"
                       },
                       "depositosPendientes": {
                         "description": "Monto acumulado de depósitos pendientes registrados en la cuenta",
                         "type": "number",
-                        "format": "double"
+                        "format": "double",
+                        "example": "10000.00"
                       },
                       "depositosSBC": {
                         "description": "Monto acumulado de depósitos salvo buen cobro registrados en la cuenta",
                         "type": "number",
-                        "format": "double"
+                        "format": "double",
+                        "example": "15000.00"
                       },
                       "saldoMovimientosDia": {
                         "description": "Contador de movimientos registrados en la cuenta durante el día",
                         "type": "number",
-                        "format": "double"
+                        "format": "double",
+                        "example": "1989.50"
                       },
                       "movimientos": {
                         "description": "Contador de movimientos completados registrados en la cuenta durante el día",
                         "type": "integer",
-                        "format": "int32"
+                        "format": "int32",
+                        "example": "1"
                       },
                       "lineaSobregiro": {
                         "description": "Monto autorizado de sobregiro en la cuenta. Solo se devolverá un valor si la cuenta permite esta opción",
                         "type": "number",
-                        "format": "double"
+                        "format": "double",
+                        "example": "5000.00"
                       },
                       "interesesGenerados": {
                         "description": "Monto de intereses devengados por el saldo actual en la cuenta. Este valor sólo se incluirá si el producto de la cuenta permite la generación de intereses",
                         "type": "number",
-                        "format": "double"
+                        "format": "double",
+                        "example": "2000.00"
                       },
                       "CLABE": {
                         "description": "Clave para transferencias electrónicas interbancarias. Este campo se recibe en mayúsculas",
-                        "type": "string"
+                        "type": "string",
+                        "example": "123456789012345"
                       },
                       "saldo": {
                         "description": "Saldo de la cuenta",
                         "type": "number",
-                        "format": "double"
+                        "format": "double",
+                        "example": "1532.00"
                       },
                       "alias": {
                         "description": "Alias asociado con la cuenta en el core bancario",
-                        "type": "string"
+                        "type": "string",
+                        "example": "CUENTA DE PRUEBA"
                       }
                     }
                   }
                 },
                 "listCreditosCliente": {
+                  "example": [],
                   "type": "array",
                   "items": {
                     "properties": {
                       "contrato": {
                         "description": "Número del crédito, LD",
-                        "type": "string"
+                        "type": "string",
+                        "example": "123456"
                       },
-                      "numeroDeCuenta": {
-                        "description": "Número de cuenta",
-                        "type": "string"
+                      "cuentaMultiva": {
+                        "description": "Cuenta de cheques asociada con el crédito.",
+                        "type": "string",
+                        "example": "7894560"
                       },
                       "idProducto": {
                         "description": "Identificador del producto",
-                        "type": "string"
+                        "type": "string",
+                        "example": "CRED"
                       },
                       "descripcionProducto": {
                         "description": "Nombre comercial del producto",
-                        "type": "string"
+                        "type": "string",
+                        "example": "CREDITO DE PRUEBA"
                       },
                       "saldoTotal": {
                         "description": "Monto total de deuda en este crédito",
                         "type": "number",
-                        "format": "double"
+                        "format": "double",
+                        "example": "1000000.00"
                       },
                       "alias": {
                         "description": "Alias asociado con la cuenta en el core bancario",
-                        "type": "string"
+                        "type": "string",
+                        "example": "HIPOTECA CASA"
+                      }
+                    }
+                  }
+                },
+                "listInversionesPagareCliente": {
+                  "example": [],
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "numeroDeCuenta": {
+                        "description": "Número de cuenta",
+                        "type": "string",
+                        "example": "789456"
+                      },
+                      "idProducto": {
+                        "description": "Identificador del producto",
+                        "type": "string",
+                        "example": "PGR"
+                      },
+                      "descripcionProducto": {
+                        "description": "Nombre comercial del producto",
+                        "type": "string",
+                        "example": "Inversion Pagare"
+                      },
+                      "plazo": {
+                        "description": "Plazo de la inversión en días",
+                        "type": "integer",
+                        "format": "int32",
+                        "example": "30"
+                      },
+                      "tasa": {
+                        "description": "Tasa de la inversión",
+                        "type": "number",
+                        "format": "double",
+                        "example": "5.21"
+                      },
+                      "saldo": {
+                        "description": "Monto de la inversión sin contar intereses ni im",
+                        "type": "number",
+                        "format": "double",
+                        "example": "100000.50"
+                      },
+                      "interesDevengado": {
+                        "description": "Intereses generados por el pagaré al día de consulta",
+                        "type": "number",
+                        "format": "double",
+                        "example": "100.00"
+                      },
+                      "interesPagar": {
+                        "description": "Intereses a pagar al vencimiento del pagaré",
+                        "type": "number",
+                        "format": "double",
+                        "example": "100.00"
+                      },
+                      "fechaVencimiento": {
+                        "description": "Fecha de vencimiento del pagaré en formato dd-MM-yyyy",
+                        "type": "string",
+                        "format": "date",
+                        "example": "19-07-2017"
+                      },
+                      "instruccionesVencimiento": {
+                        "description": "Instrucciones a ejecutar al vencimiento del pagaré",
+                        "type": "string",
+                        "example": "instruccionesVencimiento"
+                      },
+                      "alias": {
+                        "description": "Alias asociado con la cuenta en el core bancario",
+                        "type": "string",
+                        "example": "PAGARE DE PRUEBA"
+                      },
+                      "ISRRetenido": {
+                        "description": "Impuesto retenido",
+                        "type": "number",
+                        "format": "double",
+                        "example": "14000.00"
+                      },
+                      "saldoNeto": {
+                        "description": "Monto de la inversión más los intereses menos el ISR",
+                        "type": "number",
+                        "format": "double",
+                        "example": "15.02"
+                      },
+                      "apertura": {
+                        "description": "Fecha de apertura del contrato. dd-MM-yyyyThh:mm:ss",
+                        "type": "string",
+                        "format": "date",
+                        "example": "13-05-2017T00:57:00"
+                      }
+                    }
+                  }
+                },
+                "listInversionesCedeCliente": {
+                  "example": [],
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "idProducto": {
+                        "description": "Identificador del producto",
+                        "type": "string",
+                        "example": "CEDE"
+                      },
+                      "descripcionProducto": {
+                        "description": "Nombre comercial del producto",
+                        "type": "string",
+                        "example": "Inversion CEDE"
+                      },
+                      "plazo": {
+                        "description": "Plazo de la inversión en días",
+                        "type": "integer",
+                        "format": "int32",
+                        "example": "30"
+                      },
+                      "tasa": {
+                        "description": "Tasa de la inversión",
+                        "type": "number",
+                        "format": "double",
+                        "example": "5.21"
+                      },
+                      "saldo": {
+                        "description": "Saldo de la inversión",
+                        "type": "number",
+                        "format": "double",
+                        "example": "100000.50"
+                      },
+                      "interesesDevengados": {
+                        "description": "Intereses devengados por el CEDE",
+                        "type": "number",
+                        "format": "double",
+                        "example": "1000.00"
+                      },
+                      "fechaVencimiento": {
+                        "description": "Fecha de vencimiento del CEDE en formato dd-MM-yyyy",
+                        "type": "string",
+                        "format": "date",
+                        "example": "19-07-2017"
+                      },
+                      "fechaProximoPago": {
+                        "description": "Fecha del próximo pago recibido en el CEDE en formato dd-MM-yyyyThh:mm:ss",
+                        "type": "string",
+                        "format": "date",
+                        "example": "19-07-2017T09:00:00"
+                      },
+                      "alias": {
+                        "description": "Alias asociado con la cuenta en el core bancario",
+                        "type": "string",
+                        "example": "CEDE DE PRUEBA"
+                      },
+                      "ISRRetenido": {
+                        "description": "Impuesto retenido",
+                        "type": "number",
+                        "format": "double",
+                        "example": "14000.00"
+                      },
+                      "saldoNeto": {
+                        "description": "Monto de la inversion mas los intereses menos el ISR",
+                        "type": "number",
+                        "format": "double",
+                        "example": "15.02"
+                      },
+                      "apertura": {
+                        "description": "Fecha de apertura del contrato. En formato dd-MM-yyyyThh:mm:ss",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "13-05-2017T:01:00:00"
+                      }
+                    }
+                  }
+                },
+                "listInversionesVistaCliente": {
+                  "example": [],
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "cuentaMultiva": {
+                        "description": "Número de cuenta eje del cliente para esta cuenta de multiva integra.",
+                        "type": "string",
+                        "example": "78984560"
+                      },
+                      "idProducto": {
+                        "description": "Identificador del producto",
+                        "type": "string",
+                        "example": "INT"
+                      },
+                      "descripcionProducto": {
+                        "description": "Nombre comercial del producto",
+                        "type": "string",
+                        "example": "Multiva Integra"
+                      },
+                      "cuentaIntegra": {
+                        "description": "Número de la cuenta MultivaIntegra que constituye esta inversión",
+                        "type": "string",
+                        "example": "789456"
+                      },
+                      "saldo": {
+                        "description": "Saldo de la cuenta",
+                        "type": "number",
+                        "format": "double",
+                        "example": "780000.00"
+                      },
+                      "alias": {
+                        "description": "Alias asociado con la cuenta en el core bancario",
+                        "type": "string",
+                        "example": "MULTIVA INTEGRA DE PRUEBA"
+                      },
+                      "numeroDeCuenta": {
+                        "description": "Número de cuenta asociada con esta cuenta de inversión",
+                        "type": "string",
+                        "example": "0123456"
+                      }
+                    }
+                  }
+                },
+                "listFondosCliente": {
+                  "example": [],
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "idProducto": {
+                        "description": "Identificador del producto",
+                        "type": "string",
+                        "example": "FND"
+                      },
+                      "descripcionProducto": {
+                        "description": "Nombre comercial del producto",
+                        "type": "string",
+                        "example": "Fondos"
+                      },
+                      "saldo": {
+                        "description": "Saldo del fondo",
+                        "type": "number",
+                        "format": "double",
+                        "example": "1000000.00"
+                      },
+                      "alias": {
+                        "description": "Alias asociado con la cuenta en el core bancario",
+                        "type": "string",
+                        "example": "FONDO DE PRUEBA"
+                      },
+                      "emisora": {
+                        "description": "Emisora del fondo",
+                        "type": "string",
+                        "example": "ABC-1234-AC1"
+                      },
+                      "titulos": {
+                        "description": "Número de títulos adquiridos de este fondo",
+                        "type": "integer",
+                        "format": "int32",
+                        "example": "100"
+                      },
+                      "precioMercado": {
+                        "description": "Precio de mercado de cada título de este fondo",
+                        "type": "number",
+                        "format": "double",
+                        "example": "120.00"
+                      },
+                      "valuacion": {
+                        "description": "Valor total de la cartera de títulos de este fondo",
+                        "type": "number",
+                        "format": "double",
+                        "example": "12000.00"
+                      },
+                      "valia": {
+                        "description": "Un número positivo o negativo que indica la plusvalía o minusvalía de los títulos de este fondo, respectivamente",
+                        "type": "number",
+                        "format": "double",
+                        "example": "-1.03"
                       }
                     }
                   }
@@ -2191,6 +2474,7 @@
             "required": true,
             "schema": {
               "required": [
+                "otp",
                 "idPersona",
                 "tipoDeConstancia",
                 "noDeCliente",
@@ -2203,6 +2487,10 @@
                 "canal"
               ],
               "properties": {
+                "otp": {
+                  "type": "string",
+                  "example": "1234567"
+                },
                 "idPersona": {
                   "type": "integer",
                   "format": "int64",
@@ -2300,7 +2588,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "No hay información para esta consulta."
+                  "example": "hay información disponible para esta consulta."
                 }
               }
             }
@@ -2350,7 +2638,7 @@
         }
       }
     },
-    "/consultaCtasServMultiT": {
+    "/persona/consultaCtasServMultiT": {
       "post": {
         "tags": [
           "Sprint 2"
@@ -2534,7 +2822,7 @@
         }
       }
     },
-    "/consultaDetalleCredito": {
+    "/persona/consultaDetalleCredito": {
       "post": {
         "tags": [
           "Sprint 2"
@@ -2597,21 +2885,6 @@
                   "type": "string",
                   "example": "123456789"
                 },
-                "fechaDisposicion": {
-                  "description": "Fecha de la disposición en formato dd-MM-yyyy",
-                  "type": "string",
-                  "example": "17-07-2017"
-                },
-                "fechaVencimiento": {
-                  "description": "Fecha de vencimiento del contrato, en formato dd-MM-yyyy",
-                  "type": "string",
-                  "example": "18-07-2018"
-                },
-                "importe": {
-                  "description": "Importe de la disposición",
-                  "type": "string",
-                  "example": "200000.00"
-                },
                 "tipoCredito": {
                   "description": "Tipo de línea de crédito",
                   "type": "string",
@@ -2646,16 +2919,34 @@
                   "format": "int32",
                   "example": "12"
                 },
-                "tasa": {
-                  "description": "Tasa de interés de la disposición, anual",
+                "fechaDisposicion": {
+                  "description": "Fecha de la disposición en formato dd-MM-yyyy",
+                  "type": "string",
+                  "format": "date",
+                  "example": "17-07-2017"
+                },
+                "fechaVencimiento": {
+                  "description": "Fecha de vencimiento del contrato, en formato dd-MM-yyyy",
+                  "type": "string",
+                  "format": "date",
+                  "example": "18-07-2018"
+                },
+                "importe": {
+                  "description": "Importe de la disposición",
                   "type": "number",
                   "format": "double",
-                  "example": "12.5"
+                  "example": "200000.00"
                 },
                 "periodicidadPago": {
                   "description": "Frecuencia de cobro en la disposición",
                   "type": "string",
                   "example": "MENSUAL"
+                },
+                "tasa": {
+                  "description": "Tasa de interés de la disposición, anual",
+                  "type": "number",
+                  "format": "double",
+                  "example": "12.5"
                 },
                 "proximoPago": {
                   "properties": {
@@ -2802,7 +3093,7 @@
         }
       }
     },
-    "/consultaMesaDinero": {
+    "/persona/consultaMesaDinero": {
       "post": {
         "tags": [
           "Sprint 2"
@@ -2828,7 +3119,8 @@
                 },
                 "periodo": {
                   "description": "Indica la consulta de mesa de dinero que se desea realizar. 2 devuelve la posición y 3 el portafolio del día.",
-                  "type": "number",
+                  "type": "integer",
+                  "format": "int32",
                   "example": 2
                 },
                 "ticket": {
@@ -2863,19 +3155,19 @@
               "properties": {
                 "efectivoDisponible": {
                   "description": "Total de efectivo disponible en la cartera.",
-                  "type": "integer",
+                  "type": "number",
                   "format": "double",
                   "example": 20000
                 },
                 "totalCartera": {
                   "description": "Total de efectivo disponible en la cartera.",
-                  "type": "integer",
+                  "type": "number",
                   "format": "double",
                   "example": 20000
                 },
                 "valuacionPortafolio": {
                   "description": "Valor total de la cartera.",
-                  "type": "integer",
+                  "type": "number",
                   "format": "double",
                   "example": 30000
                 },
@@ -2900,8 +3192,8 @@
                       },
                       "titulos": {
                         "description": "Valor individual  de los títulos de inversión.",
-                        "type": "number",
-                        "format": "double",
+                        "type": "integer",
+                        "format": "int32",
                         "example": 100
                       },
                       "precio": {
@@ -2954,7 +3246,7 @@
         }
       }
     },
-    "/consultaMovimientos": {
+    "/persona/consultaMovimientos": {
       "post": {
         "tags": [
           "Sprint 2"
@@ -3068,6 +3360,11 @@
                         "format": "double",
                         "example": "21.50"
                       },
+                      "naturaleza": {
+                        "description": "CARGO o ABONO.",
+                        "type": "string",
+                        "example": "CARGO"
+                      },
                       "divisa": {
                         "description": "Divisa de la transacción",
                         "type": "string",
@@ -3099,6 +3396,11 @@
                         "type": "string",
                         "example": "789456"
                       },
+                      "claveRastreo": {
+                        "description": "Clave de rastreo del movimiento SPEI en BANXICO.",
+                        "type": "string",
+                        "example": " "
+                      },
                       "canal": {
                         "description": "Canal por el que se generó el movimiento",
                         "type": "string",
@@ -3123,6 +3425,7 @@
             "schema": {
               "properties": {
                 "listMovimientos": {
+                  "example": [],
                   "type": "array",
                   "items": {
                     "properties": {
@@ -3190,7 +3493,7 @@
         }
       }
     },
-    "/consultaMovimientosMultiT": {
+    "/persona/consultaMovimientosMultiT": {
       "post": {
         "tags": [
           "Sprint 2"
@@ -3370,6 +3673,7 @@
             "schema": {
               "properties": {
                 "listMovimientos": {
+                  "example": [],
                   "type": "array",
                   "items": {
                     "required": [
@@ -3464,11 +3768,11 @@
                 },
                 "responseStatus": {
                   "type": "number",
-                  "example": 500
+                  "example": 4500
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Internal Error Server"
+                  "example": "SISTEMA T24 FUERA DE LINEA"
                 }
               }
             }
@@ -3476,7 +3780,7 @@
         }
       }
     },
-    "/consultaMovsMesaDinero": {
+    "/persona/consultaMovsMesaDinero": {
       "post": {
         "tags": [
           "Sprint 2"
@@ -3492,7 +3796,6 @@
               "required": [
                 "idPersona",
                 "fechaInicio",
-                "fechaFin",
                 "ticket",
                 "canal"
               ],
@@ -3658,7 +3961,7 @@
         }
       }
     },
-    "/consultaSaldosMultiT": {
+    "/persona/consultaSaldosMultiT": {
       "post": {
         "tags": [
           "Sprint 2"
@@ -3801,7 +4104,7 @@
         }
       }
     },
-    "/consultaRetenciones": {
+    "/persona/consultaRetenciones": {
       "post": {
         "tags": [
           "Sprint 2"
@@ -3871,6 +4174,13 @@
                   "description": "lista de retenciones",
                   "type": "array",
                   "items": {
+                    "required": [
+                      "tipoDeConstancia",
+                      "noDeCliente",
+                      "noDeContrato",
+                      "RFCReceptor",
+                      "uuid"
+                    ],
                     "properties": {
                       "tipoDeConstancia": {
                         "description": "Tipo de constancia de la retención.",
@@ -3885,7 +4195,7 @@
                       "noDeContrato": {
                         "description": "Número de contrato que genera la retención.",
                         "type": "integer",
-                        "format": "int32",
+                        "format": "int64",
                         "example": 543210987654321
                       },
                       "RFCReceptor": {
@@ -3965,7 +4275,7 @@
         }
       }
     },
-    "/estadoCuentaPDF": {
+    "/persona/estadoCuentaPDF": {
       "post": {
         "tags": [
           "Sprint 2"
@@ -4060,7 +4370,7 @@
         }
       }
     },
-    "/estadoPaperless": {
+    "/persona/estadoPaperless": {
       "post": {
         "tags": [
           "Sprint 2"
@@ -4155,8 +4465,8 @@
             "schema": {
               "properties": {
                 "opcionImpresion": {
-                  "type": "boolean",
-                  "example": false
+                  "type": "string",
+                  "example": " "
                 },
                 "omitirNombre": {
                   "type": "boolean",
@@ -4180,7 +4490,7 @@
         }
       }
     },
-    "/movimientosDonaciones": {
+    "/persona/movimientosDonaciones": {
       "post": {
         "tags": [
           "Sprint 2"
@@ -4256,7 +4566,7 @@
                       "folio": {
                         "description": "Folio del donativo correspondiente.",
                         "type": "integer",
-                        "format": "int32",
+                        "format": "int64",
                         "example": 123870212
                       },
                       "fecha": {
@@ -4410,6 +4720,21 @@
                   "description": "Mensaje de error, si aplica. Si se trata de una ejecución exitosa, este mensaje va vacío en la respuesta.",
                   "type": "string",
                   "example": "string"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 2402
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "OTP BLOQUEADO POR INACTIVIDAD"
                 }
               }
             }
@@ -9921,7 +10246,7 @@
         }
       }
     },
-    "/aperturaCede": {
+    "/persona/aperturaCede": {
       "post": {
         "tags": [
           "Sprint 5"
@@ -10038,172 +10363,25 @@
         }
       }
     },
-    "/consultaFoliosGdf": {
+    "/persona/aperturaFondo": {
       "post": {
         "tags": [
           "Sprint 5"
         ],
-        "description": "Consultar un listado de los folios de operaciones de GDF que se han ejecutado por el cliente. El cliente a utilizar para la consulta se obtendrá a partir del usuario que esté logueado.",
+        "description": "Este servicio solicita al core bancario T24 hacer el registro la apertura para un nuevo fondo de inversion local.",
         "parameters": [
           {
             "in": "body",
-            "name": "consultaFoliosGdf",
-            "description": "Diseño de la operación para consultaFoliosGdf",
-            "required": true,
-            "schema": {
-              "required": [
-                "ticket",
-                "canal"
-              ],
-              "properties": {
-                "idPersona": {
-                  "description": "Identificador del usuario logueado en la sesión. A partir de este dato se obtendrá el idPersona cuyos folios se consultarán.",
-                  "type": "integer",
-                  "format": "int64",
-                  "example": 123456
-                },
-                "ticket": {
-                  "required": [
-                    "id_user",
-                    "id_creds"
-                  ],
-                  "properties": {
-                    "id_user": {
-                      "type": "string",
-                      "example": "123456"
-                    },
-                    "id_creds": {
-                      "type": "string",
-                      "example": "12345678"
-                    }
-                  }
-                },
-                "canal": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": "WEB"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Listado de Folios operaciones de GDF",
-            "schema": {
-              "required": [
-                "result"
-              ],
-              "properties": {
-                "result": {
-                  "type": "array",
-                  "items": {
-                    "properties": {
-                      "folioOperacion": {
-                        "description": "El folio asignado por el ESB a la operación.",
-                        "type": "integer",
-                        "example": 12345678
-                      },
-                      "folioGDF": {
-                        "description": "El folio asignado por el sistema de GDF a la operación.",
-                        "type": "integer",
-                        "example": 8965433
-                      }
-                    }
-                  }
-                },
-                "responseStatus": {
-                  "type": "number",
-                  "example": 200
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": ""
-                }
-              }
-            }
-          },
-          "201": {
-            "description": "Error controlado, el codigo http real es 200",
-            "schema": {
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 500
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": "Internal Server Error."
-                }
-              }
-            }
-          },
-          "202": {
-            "description": "Error controlado, el codigo http real es 200",
-            "schema": {
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 4500
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": "Ocurrió un error en T24."
-                }
-              }
-            }
-          },
-          "203": {
-            "description": "Error controlado, el codigo http real es 200",
-            "schema": {
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 2003
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": "Ticket invalido."
-                }
-              }
-            }
-          },
-          "204": {
-            "description": "Error controlado, el codigo http real es 200",
-            "schema": {
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 2004
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": "Ticket duplicado."
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/impuestosLocales": {
-      "post": {
-        "tags": [
-          "Sprint 5"
-        ],
-        "description": "Este servicio solicita al core bancario T24 hacer el registro de los impuestos locales.",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "impuestosLocales",
-            "description": "impuestos locales",
+            "name": "aperturaFondo",
+            "description": "apertura Fondo",
             "required": true,
             "schema": {
               "required": [
                 "idPersona",
-                "ticket",
                 "canal",
-                "impuestosLocales"
+                "ticket",
+                "otp",
+                "fondosInversion"
               ],
               "properties": {
                 "idPersona": {
@@ -10211,6 +10389,11 @@
                   "format": "int64",
                   "example": 123546345
                 },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
                 "ticket": {
                   "required": [
                     "id_user",
@@ -10227,46 +10410,18 @@
                     }
                   }
                 },
-                "canal": {
+                "otp": {
                   "type": "string",
-                  "minLength": 1,
-                  "example": "WEB"
+                  "example": "1234567"
                 },
-                "impuestosLocales": {
+                "fondosInversion": {
                   "required": [
-                    "numeroCliente",
-                    "usuarioId",
-                    "direccionIp",
-                    "lineaCaptura",
-                    "importeLineaCaptura"
+                    "numeroCuenta"
                   ],
                   "properties": {
-                    "numeroCliente": {
-                      "type": "integer",
-                      "format": "int64",
-                      "example": "987654321",
-                      "description": "Numero de cliente que va a generar los impuestos"
-                    },
-                    "usuarioId": {
+                    "numeroCuenta": {
                       "type": "string",
-                      "example": "987654321",
-                      "description": "Id del usuario que se va a generar los impuestos"
-                    },
-                    "direccionIp": {
-                      "type": "string",
-                      "example": "192.168.99.102",
-                      "description": "Dirección solicitante del request"
-                    },
-                    "lineaCaptura": {
-                      "type": "string",
-                      "example": "ASDSAD-ASDASD-ASDASD-ASDSAD-KIOIJ",
-                      "description": "Línea de captura que se procesará."
-                    },
-                    "importeLineaCaptura": {
-                      "type": "number",
-                      "format": "double",
-                      "example": 5862.8,
-                      "description": "Monto de la línea de captura."
+                      "example": "1000585654"
                     }
                   }
                 }
@@ -10276,13 +10431,9 @@
         ],
         "responses": {
           "200": {
-            "description": "impuestos locales",
+            "description": "apertura Fondo",
             "schema": {
               "properties": {
-                "htmlGdf": {
-                  "type": "string",
-                  "example": "<table><tr><td></td></tr></table>"
-                },
                 "responseStatus": {
                   "type": "number",
                   "example": 200
@@ -10312,21 +10463,26 @@
         }
       }
     },
-    "/tasasCede": {
+    "/persona/aperturaIntegra": {
       "post": {
         "tags": [
           "Sprint 5"
         ],
-        "description": "Consolidar la información relevante respecto al diseño de la operación tasasCede del servicio requerido para la integración de Multivanet con T24.",
+        "description": "Este servicio permite solicitar la apertura de una inversión de tipo Multiva Integra para un cliente.",
         "parameters": [
           {
             "in": "body",
-            "name": "tasasCede",
-            "description": "Diseño de la operación para tasasCede.",
+            "name": "aperturaIntegra",
+            "description": "Apertura Integra",
             "required": true,
             "schema": {
               "required": [
-                "ticket"
+                "ticket",
+                "cuentaEje",
+                "idPersona",
+                "canal",
+                "monto",
+                "otp"
               ],
               "properties": {
                 "ticket": {
@@ -10344,6 +10500,31 @@
                       "example": "12345678"
                     }
                   }
+                },
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "otp": {
+                  "type": "string",
+                  "example": "1234567"
+                },
+                "cuentaEje": {
+                  "description": "Número de cuenta que alimentará esta cuenta integra.",
+                  "type": "string",
+                  "example": "123456"
+                },
+                "monto": {
+                  "description": "Monto con el que se abrirá la inversión inicialmente.",
+                  "type": "number",
+                  "format": "double",
+                  "example": 100000.1
                 }
               }
             }
@@ -10354,39 +10535,13 @@
             "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
             "schema": {
               "required": [
+                "folioInversion",
                 "responseStatus"
               ],
               "properties": {
-                "tasas": {
-                  "type": "array",
-                  "items": {
-                    "properties": {
-                      "tasa": {
-                        "description": "Tasa registrada para este monto.",
-                        "type": "number",
-                        "format": "double",
-                        "example": 0.3
-                      },
-                      "montoInicial": {
-                        "description": "Monto inicial del rango requerido para que esta tasa aplique.",
-                        "type": "number",
-                        "format": "double",
-                        "example": 0
-                      },
-                      "montoFinal": {
-                        "description": "Monto final del rango requerido para que aplique esta tasa.",
-                        "type": "number",
-                        "format": "double",
-                        "example": 1000000
-                      },
-                      "plazo": {
-                        "description": "Plazo aplicable para esta tasa.",
-                        "type": "integer",
-                        "format": "int32",
-                        "example": 30
-                      }
-                    }
-                  }
+                "folioInversion": {
+                  "type": "string",
+                  "example": "123456"
                 },
                 "responseStatus": {
                   "type": "number",
@@ -10405,11 +10560,11 @@
               "properties": {
                 "responseStatus": {
                   "type": "number",
-                  "example": 500
+                  "example": 4500
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Internal Error Server"
+                  "example": "T24 FUERA DE LINEA"
                 }
               }
             }
@@ -10417,23 +10572,43 @@
         }
       }
     },
-    "/tasasPagare": {
+    "/persona/aperturaPagare": {
       "post": {
         "tags": [
           "Sprint 5"
         ],
-        "description": "Consolidar la información relevante respecto al diseño de la operación tasasPagare del servicio requerido para la integración de Multivanet con T24.",
+        "description": "Este servicio solicita al core bancario T24 hacer la apertura de pagares.",
         "parameters": [
           {
             "in": "body",
-            "name": "tasasPagare",
-            "description": "Diseño de la operación para tasasPagare.",
+            "name": "aperturaPagare",
+            "description": "apertura Pagare",
             "required": true,
             "schema": {
               "required": [
-                "ticket"
+                "ticket",
+                "cuentaAsociada",
+                "idPersona",
+                "monto",
+                "canal",
+                "otp",
+                "plazo"
               ],
               "properties": {
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "otp": {
+                  "type": "string",
+                  "example": "1234567"
+                },
                 "ticket": {
                   "required": [
                     "id_user",
@@ -10449,6 +10624,33 @@
                       "example": "12345678"
                     }
                   }
+                },
+                "monto": {
+                  "description": "Monto de apertura para el pagaré.",
+                  "type": "number",
+                  "format": "double",
+                  "example": 1000000
+                },
+                "cuentaAsociada": {
+                  "description": "Número de la cuenta que se asociará con la nueva inversión. Las transferencias desde y hacia la inversión resultante sólo se podrán ejecutar a esta cuenta.",
+                  "type": "string",
+                  "example": "123456"
+                },
+                "plazo": {
+                  "description": "Plazo de la inversión en días.",
+                  "type": "integer",
+                  "format": "int32",
+                  "example": 3
+                },
+                "reinversionIntereses": {
+                  "description": "Esta bandera indica si  al vencimiento del plazo los intereses deberán moverse a la cuenta asociada con la inversión o reinvertirse en la inversión como capital.",
+                  "type": "boolean",
+                  "example": true
+                },
+                "recreacionAlVencimiento": {
+                  "description": "Esta bandera indica que el pagaré regenerará con las mismas características al vencimiento del plazo.",
+                  "type": "boolean",
+                  "example": true
                 }
               }
             }
@@ -10459,39 +10661,13 @@
             "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
             "schema": {
               "required": [
+                "folioInversion",
                 "responseStatus"
               ],
               "properties": {
-                "tasas": {
-                  "type": "array",
-                  "items": {
-                    "properties": {
-                      "tasa": {
-                        "description": "Tasa registrada para este monto.",
-                        "type": "number",
-                        "format": "double",
-                        "example": 0.3
-                      },
-                      "montoInicial": {
-                        "description": "Monto inicial del rango requerido para que esta tasa aplique.",
-                        "type": "number",
-                        "format": "double",
-                        "example": 0
-                      },
-                      "montoFinal": {
-                        "description": "Monto final del rango requerido para que aplique esta tasa.",
-                        "type": "number",
-                        "format": "double",
-                        "example": 1000000
-                      },
-                      "plazo": {
-                        "description": "Plazo aplicable para esta tasa.",
-                        "type": "integer",
-                        "format": "int32",
-                        "example": 30
-                      }
-                    }
-                  }
+                "folioInversion": {
+                  "type": "string",
+                  "example": "ABC123456"
                 },
                 "responseStatus": {
                   "type": "number",
@@ -10510,11 +10686,11 @@
               "properties": {
                 "responseStatus": {
                   "type": "number",
-                  "example": 500
+                  "example": 4500
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Internal Error Server"
+                  "example": "T24 FUERA DE LINEA"
                 }
               }
             }
@@ -10522,21 +10698,27 @@
         }
       }
     },
-    "/tasasIntegra": {
+    "/persona/cambioInstruccion": {
       "post": {
         "tags": [
           "Sprint 5"
         ],
-        "description": "Consolidar la información relevante respecto al diseño de la operación tasasIntegra del servicio requerido para la integración de Multivanet con T24.",
+        "description": "Este servicio permite cambiar el comportamiento de la inversión proporcionada al vencimiento.",
         "parameters": [
           {
             "in": "body",
-            "name": "tasasIntegra",
-            "description": "Tasas Integra",
+            "name": "cambioInstruccion",
+            "description": "cambioInstruccion",
             "required": true,
             "schema": {
               "required": [
-                "ticket"
+                "ticket",
+                "folioInversion",
+                "idPersona",
+                "canal",
+                "reinversionIntereses",
+                "recreacionAlVencimiento",
+                "otp"
               ],
               "properties": {
                 "ticket": {
@@ -10554,6 +10736,32 @@
                       "example": "12345678"
                     }
                   }
+                },
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "otp": {
+                  "type": "string",
+                  "example": "1234567"
+                },
+                "folioInversion": {
+                  "type": "string",
+                  "example": "123456"
+                },
+                "reinversionIntereses": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "recreacionAlVencimiento": {
+                  "type": "boolean",
+                  "example": true
                 }
               }
             }
@@ -10567,43 +10775,6 @@
                 "responseStatus"
               ],
               "properties": {
-                "tasas": {
-                  "type": "array",
-                  "items": {
-                    "properties": {
-                      "tasa": {
-                        "description": "Tasa registrada para este monto.",
-                        "type": "number",
-                        "format": "double",
-                        "example": 0.3
-                      },
-                      "rangoInicial": {
-                        "description": "Monto inicial del rango requerido para que esta tasa aplique.",
-                        "type": "number",
-                        "format": "double",
-                        "example": 0
-                      },
-                      "rangoFinal": {
-                        "description": "Monto final del rango requerido para que aplique esta tasa.",
-                        "type": "number",
-                        "format": "double",
-                        "example": 1000000
-                      },
-                      "montoMensual": {
-                        "description": "Monto mensual requerido para que aplique esta tasa.",
-                        "type": "number",
-                        "format": "double",
-                        "example": 50000
-                      },
-                      "tasaMensual": {
-                        "description": "Tasa mensual aplicable si se cumplen estas condiciones.",
-                        "type": "number",
-                        "format": "double",
-                        "example": 0.3
-                      }
-                    }
-                  }
-                },
                 "responseStatus": {
                   "type": "number",
                   "example": 200
@@ -10621,11 +10792,11 @@
               "properties": {
                 "responseStatus": {
                   "type": "number",
-                  "example": 500
+                  "example": 4500
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Internal Error Server"
+                  "example": "T24 FUERA DE LINEA"
                 }
               }
             }
@@ -10633,7 +10804,140 @@
         }
       }
     },
-    "/depositoIntegra": {
+    "/persona/consultaPdfGdf": {
+      "post": {
+        "tags": [
+          "Sprint 5"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación /consultaPdfGdf del servicio requerido para la integración de Multivanet con T24.",
+        "produces": [
+          "application/octet-stream"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "consultaPdfGdf",
+            "description": "Diseño de la operación para consultaPdfGdf",
+            "required": true,
+            "schema": {
+              "required": [
+                "idPersona",
+                "ticket",
+                "canal",
+                "consultaPdfGdf"
+              ],
+              "properties": {
+                "consultaPdfGdf": {
+                  "required": [
+                    "numeroCliente",
+                    "folio"
+                  ],
+                  "properties": {
+                    "numeroCliente": {
+                      "description": "Número de cliente del cual se esta consultando el PDF",
+                      "type": "integer",
+                      "format": "int64",
+                      "example": 987654321
+                    },
+                    "folio": {
+                      "description": "Es el folio de la operación de pago de impuestos cuyo comprobante se desea consultar.",
+                      "type": "string",
+                      "example": ""
+                    }
+                  }
+                },
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Archivo en stream de bytes",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                },
+                "archivoStream": {
+                  "description": "Devuelve el comprobante de pago de un impuesto local (GDF).",
+                  "type": "string",
+                  "format": "binary",
+                  "example": "Archivo Stream"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Internal Server Error."
+                },
+                "archivoStream": {
+                  "description": "Devuelve el comprobante de pago de un impuesto local (GDF).",
+                  "type": "string",
+                  "format": "binary",
+                  "example": ""
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Error no existe Archivo",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 404
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Error al obtener los datos del archivo"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/persona/depositoIntegra": {
       "post": {
         "tags": [
           "Sprint 5"
@@ -10743,28 +11047,31 @@
         }
       }
     },
-    "/aperturaIntegra": {
+    "/foliosGDF": {
       "post": {
         "tags": [
           "Sprint 5"
         ],
-        "description": "Este servicio permite solicitar la apertura de una inversión de tipo Multiva Integra para un cliente.",
+        "description": "Consultar un listado de los folios de operaciones de GDF que se han ejecutado por el cliente. El cliente a utilizar para la consulta se obtendrá a partir del usuario que esté logueado.",
         "parameters": [
           {
             "in": "body",
-            "name": "aperturaIntegra",
-            "description": "Apertura Integra",
+            "name": "foliosGDF",
+            "description": "Diseño de la operación para foliosGDF",
             "required": true,
             "schema": {
               "required": [
                 "ticket",
-                "cuentaEje",
-                "idPersona",
-                "canal",
-                "monto",
-                "otp"
+                "idUsuario",
+                "canal"
               ],
               "properties": {
+                "idUsuario": {
+                  "description": "Identificador del usuario logueado en la sesión. A partir de este dato se obtendrá el idPersona cuyos folios se consultarán.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123456
+                },
                 "ticket": {
                   "required": [
                     "id_user",
@@ -10781,30 +11088,283 @@
                     }
                   }
                 },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Listado de Folios operaciones de GDF",
+            "schema": {
+              "properties": {
+                "result": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "folioOperacion": {
+                        "description": "El folio asignado por el ESB a la operación.",
+                        "type": "string",
+                        "example": "123456ABCD"
+                      },
+                      "folioGDF": {
+                        "description": "El folio asignado por el sistema de GDF a la operación.",
+                        "type": "string",
+                        "example": "123456ABCD"
+                      }
+                    }
+                  }
+                },
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Internal Server Error."
+                }
+              }
+            }
+          },
+          "202": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 4500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Ocurrió un error en T24."
+                }
+              }
+            }
+          },
+          "203": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 2003
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Ticket invalido."
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 2004
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Ticket duplicado."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/persona/impuestosLocales": {
+      "post": {
+        "tags": [
+          "Sprint 5"
+        ],
+        "description": "Este servicio solicita al core bancario T24 hacer el registro de los impuestos locales.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "impuestosLocales",
+            "description": "impuestos locales",
+            "required": true,
+            "schema": {
+              "required": [
+                "idPersona",
+                "ticket",
+                "canal",
+                "impuestosLocales"
+              ],
+              "properties": {
                 "idPersona": {
                   "type": "integer",
                   "format": "int64",
                   "example": 123546345
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
                 },
                 "canal": {
                   "type": "string",
                   "minLength": 1,
                   "example": "WEB"
                 },
-                "otp": {
+                "impuestosLocales": {
+                  "required": [
+                    "numeroCliente",
+                    "usuarioId",
+                    "direccionIp",
+                    "lineaCaptura",
+                    "importeLineaCaptura"
+                  ],
+                  "properties": {
+                    "numeroCliente": {
+                      "type": "integer",
+                      "format": "int64",
+                      "example": "987654321",
+                      "description": "Numero de cliente que va a generar los impuestos"
+                    },
+                    "usuarioId": {
+                      "type": "string",
+                      "example": "987654321",
+                      "description": "Id del usuario que se va a generar los impuestos"
+                    },
+                    "direccionIp": {
+                      "type": "string",
+                      "example": "192.168.99.102",
+                      "description": "Dirección solicitante del request"
+                    },
+                    "lineaCaptura": {
+                      "type": "string",
+                      "example": "ASDSAD-ASDASD-ASDASD-ASDSAD-KIOIJ",
+                      "description": "Línea de captura que se procesará."
+                    },
+                    "importeLineaCaptura": {
+                      "type": "number",
+                      "format": "double",
+                      "example": 5862.8,
+                      "description": "Monto de la línea de captura."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "impuestos locales",
+            "schema": {
+              "properties": {
+                "htmlGdf": {
+                  "description": "Html de la línea de captura.",
                   "type": "string",
-                  "example": "1234567"
+                  "example": "<table><tr><td></td></tr></table>"
                 },
-                "cuentaEje": {
-                  "description": "Número de cuenta que alimentará esta cuenta integra.",
-                  "type": "string",
-                  "example": "123456"
-                },
-                "monto": {
-                  "description": "Monto con el que se abrirá la inversión inicialmente.",
+                "responseStatus": {
                   "type": "number",
-                  "format": "double",
-                  "example": 100000.1
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Internal Server Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/persona/movimientosCFE": {
+      "post": {
+        "tags": [
+          "Sprint 5"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación movimientosCFE del servicio requerido para la integración de Multivanet con T24.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "movimientosCFE",
+            "description": "Diseño de la operación para movimientosCFE.",
+            "required": true,
+            "schema": {
+              "required": [
+                "ticket",
+                "fechaInicio"
+              ],
+              "properties": {
+                "fechaInicio": {
+                  "description": "Fecha de inicio del rango de búsqueda de movimientos. En formato dd-MM-yyyy.",
+                  "type": "string",
+                  "format": "date",
+                  "example": "10-10-2017"
+                },
+                "fechaFin": {
+                  "description": "La fecha fin del rango de búsqueda de movimientos. En formato dd-MM-yyyy.",
+                  "type": "string",
+                  "format": "date",
+                  "example": "30-30-2017"
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
                 }
               }
             }
@@ -10815,139 +11375,38 @@
             "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
             "schema": {
               "required": [
-                "folioInversion",
                 "responseStatus"
               ],
               "properties": {
-                "folioInversion": {
-                  "type": "string",
-                  "example": "123456"
-                },
-                "responseStatus": {
-                  "type": "number",
-                  "example": 200
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": ""
-                }
-              }
-            }
-          },
-          "201": {
-            "description": "Error controlado, el codigo http real es 200",
-            "schema": {
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 4500
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": "T24 FUERA DE LINEA"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/aperturaPagare": {
-      "post": {
-        "tags": [
-          "Sprint 5"
-        ],
-        "description": "Este servicio solicita al core bancario T24 hacer la apertura de pagares.",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "aperturaPagare",
-            "description": "apertura Pagare",
-            "required": true,
-            "schema": {
-              "required": [
-                "ticket",
-                "cuentaAsociada",
-                "idPersona",
-                "monto",
-                "canal",
-                "otp",
-                "plazo"
-              ],
-              "properties": {
-                "idPersona": {
-                  "type": "integer",
-                  "format": "int64",
-                  "example": 123546345
-                },
-                "canal": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": "WEB"
-                },
-                "otp": {
-                  "type": "string",
-                  "example": "1234567"
-                },
-                "ticket": {
-                  "required": [
-                    "id_user",
-                    "id_creds"
-                  ],
-                  "properties": {
-                    "id_user": {
-                      "type": "string",
-                      "example": "123456"
-                    },
-                    "id_creds": {
-                      "type": "string",
-                      "example": "12345678"
+                "movimientos": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "fecha": {
+                        "description": "Fecha en que se aplicó el movimiento.",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "10-10-2017"
+                      },
+                      "monto": {
+                        "description": "Monto del movimiento registrado.",
+                        "type": "number",
+                        "format": "double",
+                        "example": 1000000.1
+                      },
+                      "referencia": {
+                        "description": "Referencia del movimiento.",
+                        "type": "string",
+                        "example": "1234567989"
+                      },
+                      "canal": {
+                        "description": "Canal por el que se registró el movimiento.",
+                        "type": "string",
+                        "example": "MULTIVANET"
+                      }
                     }
                   }
                 },
-                "monto": {
-                  "description": "Monto de apertura para el pagaré.",
-                  "type": "number",
-                  "format": "double",
-                  "example": 1000000
-                },
-                "cuentaAsociada": {
-                  "description": "Número de la cuenta que se asociará con la nueva inversión. Las transferencias desde y hacia la inversión resultante sólo se podrán ejecutar a esta cuenta.",
-                  "type": "string",
-                  "example": "123456"
-                },
-                "plazo": {
-                  "description": "Plazo de la inversión en días.",
-                  "type": "integer",
-                  "example": 3
-                },
-                "reinversionIntereses": {
-                  "description": "Esta bandera indica si  al vencimiento del plazo los intereses deberán moverse a la cuenta asociada con la inversión o reinvertirse en la inversión como capital.",
-                  "type": "boolean",
-                  "example": true
-                },
-                "recreacionAlVencimiento": {
-                  "description": "Esta bandera indica que el pagaré regenerará con las mismas características al vencimiento del plazo.",
-                  "type": "boolean",
-                  "example": true
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "impuestos locales",
-            "schema": {
-              "required": [
-                "folioInversion",
-                "responseStatus"
-              ],
-              "properties": {
-                "folioInversion": {
-                  "type": "string",
-                  "example": "ABC123456"
-                },
                 "responseStatus": {
                   "type": "number",
                   "example": 200
@@ -10965,11 +11424,11 @@
               "properties": {
                 "responseStatus": {
                   "type": "number",
-                  "example": 4500
+                  "example": 500
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "T24 FUERA DE LINEA"
+                  "example": "Internal Error Server"
                 }
               }
             }
@@ -11107,113 +11566,7 @@
         }
       }
     },
-    "/cambioInstruccion": {
-      "post": {
-        "tags": [
-          "Sprint 5"
-        ],
-        "description": "Este servicio permite cambiar el comportamiento de la inversión proporcionada al vencimiento.",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "cambioInstruccion",
-            "description": "cambioInstruccion",
-            "required": true,
-            "schema": {
-              "required": [
-                "ticket",
-                "folioInversion",
-                "idPersona",
-                "canal",
-                "reinversionIntereses",
-                "recreacionAlVencimiento",
-                "otp"
-              ],
-              "properties": {
-                "ticket": {
-                  "required": [
-                    "id_user",
-                    "id_creds"
-                  ],
-                  "properties": {
-                    "id_user": {
-                      "type": "string",
-                      "example": "123456"
-                    },
-                    "id_creds": {
-                      "type": "string",
-                      "example": "12345678"
-                    }
-                  }
-                },
-                "idPersona": {
-                  "type": "integer",
-                  "format": "int64",
-                  "example": 123546345
-                },
-                "canal": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": "WEB"
-                },
-                "otp": {
-                  "type": "string",
-                  "example": "1234567"
-                },
-                "folioInversion": {
-                  "type": "string",
-                  "example": "123456"
-                },
-                "reinversionIntereses": {
-                  "type": "boolean",
-                  "example": true
-                },
-                "recreacionAlVencimiento": {
-                  "type": "boolean",
-                  "example": true
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "cambio Instruccion",
-            "schema": {
-              "required": [
-                "responseStatus"
-              ],
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 200
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": ""
-                }
-              }
-            }
-          },
-          "201": {
-            "description": "Error controlado, el codigo http real es 200",
-            "schema": {
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 4500
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": "T24 FUERA DE LINEA"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/pagoImpuestosGdf": {
+    "/persona/pagoImpuestosGdf": {
       "post": {
         "tags": [
           "Sprint 5"
@@ -11230,7 +11583,9 @@
             "required": true,
             "schema": {
               "required": [
-                "ticket"
+                "ticket",
+                "canal",
+                "idPersona"
               ],
               "properties": {
                 "ticket": {
@@ -11297,7 +11652,7 @@
                     "fechaCaptura": {
                       "description": "Fecha de captura del pago, en formato dd-MM-yyyyThh:mm:ss.",
                       "type": "string",
-                      "format": "date",
+                      "format": "date-time",
                       "example": "2017-10-12"
                     },
                     "usuarioCaptura": {
@@ -11334,7 +11689,7 @@
                     "domicilio": {
                       "description": "Domicilio del titular del pago.",
                       "type": "string",
-                      "example": "BANAMEX"
+                      "example": "Domicilio"
                     },
                     "colonia": {
                       "description": "Colonia de la dirección.",
@@ -11482,6 +11837,7 @@
                   "example": "Internal Server Error"
                 },
                 "pagoImpuestosGdf": {
+                  "example": {},
                   "required": [
                     "ctaOrigen",
                     "CLABE",
@@ -11670,136 +12026,23 @@
         }
       }
     },
-    "/aperturaFondo": {
+    "/persona/tasasCede": {
       "post": {
         "tags": [
           "Sprint 5"
         ],
-        "description": "Este servicio solicita al core bancario T24 hacer el registro la apertura para un nuevo fondo de inversion local.",
+        "description": "Consolidar la información relevante respecto al diseño de la operación tasasCede del servicio requerido para la integración de Multivanet con T24.",
         "parameters": [
           {
             "in": "body",
-            "name": "aperturaFondo",
-            "description": "apertura Fondo",
+            "name": "tasasCede",
+            "description": "Diseño de la operación para tasasCede.",
             "required": true,
             "schema": {
               "required": [
-                "idPersona",
-                "canal",
-                "ticket",
-                "otp",
-                "fondosInversion"
+                "ticket"
               ],
               "properties": {
-                "idPersona": {
-                  "type": "integer",
-                  "format": "int64",
-                  "example": 123546345
-                },
-                "canal": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": "WEB"
-                },
-                "ticket": {
-                  "required": [
-                    "id_user",
-                    "id_creds"
-                  ],
-                  "properties": {
-                    "id_user": {
-                      "type": "string",
-                      "example": "123456"
-                    },
-                    "id_creds": {
-                      "type": "string",
-                      "example": "12345678"
-                    }
-                  }
-                },
-                "otp": {
-                  "type": "string",
-                  "example": "1234567"
-                },
-                "fondosInversion": {
-                  "required": [
-                    "numeroCuenta"
-                  ],
-                  "properties": {
-                    "numeroCuenta": {
-                      "type": "string",
-                      "example": "1000585654"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "apertura Fondo",
-            "schema": {
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 200
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": ""
-                }
-              }
-            }
-          },
-          "201": {
-            "description": "Error controlado, el codigo http real es 200",
-            "schema": {
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 500
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": "Internal Server Error"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/movimientosCFE": {
-      "post": {
-        "tags": [
-          "Sprint 5"
-        ],
-        "description": "Consolidar la información relevante respecto al diseño de la operación movimientosCFE del servicio requerido para la integración de Multivanet con T24.",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "movimientosCFE",
-            "description": "Diseño de la operación para movimientosCFE.",
-            "required": true,
-            "schema": {
-              "required": [
-                "ticket",
-                "fechaInicio"
-              ],
-              "properties": {
-                "fechaInicio": {
-                  "description": "Fecha de inicio del rango de búsqueda de movimientos. En formato dd-MM-yyyy.",
-                  "type": "string",
-                  "format": "date",
-                  "example": "10-10-2017"
-                },
-                "fechaFin": {
-                  "description": "La fecha fin del rango de búsqueda de movimientos. En formato dd-MM-yyyy.",
-                  "type": "string",
-                  "format": "date",
-                  "example": "30-30-2017"
-                },
                 "ticket": {
                   "required": [
                     "id_user",
@@ -11828,31 +12071,33 @@
                 "responseStatus"
               ],
               "properties": {
-                "movimientos": {
+                "tasas": {
                   "type": "array",
                   "items": {
                     "properties": {
-                      "fecha": {
-                        "description": "Fecha en que se aplicó el movimiento.",
-                        "type": "string",
-                        "format": "date-time",
-                        "example": "10-10-2017"
-                      },
-                      "monto": {
-                        "description": "Monto del movimiento registrado.",
+                      "tasa": {
+                        "description": "Tasa registrada para este monto.",
                         "type": "number",
                         "format": "double",
-                        "example": 1000000.1
+                        "example": 0.3
                       },
-                      "referencia": {
-                        "description": "Referencia del movimiento.",
-                        "type": "string",
-                        "example": "1234567989"
+                      "montoInicial": {
+                        "description": "Monto inicial del rango requerido para que esta tasa aplique.",
+                        "type": "number",
+                        "format": "double",
+                        "example": 0
                       },
-                      "canal": {
-                        "description": "Canal por el que se registró el movimiento.",
-                        "type": "string",
-                        "example": "MULTIVANET"
+                      "montoFinal": {
+                        "description": "Monto final del rango requerido para que aplique esta tasa.",
+                        "type": "number",
+                        "format": "double",
+                        "example": 1000000
+                      },
+                      "plazo": {
+                        "description": "Plazo aplicable para esta tasa.",
+                        "type": "integer",
+                        "format": "int32",
+                        "example": 30
                       }
                     }
                   }
@@ -11886,53 +12131,23 @@
         }
       }
     },
-    "/consultaPdfGdf": {
+    "/persona/tasasIntegra": {
       "post": {
         "tags": [
           "Sprint 5"
         ],
-        "description": "Consolidar la información relevante respecto al diseño de la operación /consultaPdfGdf del servicio requerido para la integración de Multivanet con T24.",
-        "produces": [
-          "application/octet-stream"
-        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación tasasIntegra del servicio requerido para la integración de Multivanet con T24.",
         "parameters": [
           {
             "in": "body",
-            "name": "consultaPdfGdf",
-            "description": "Diseño de la operación para consultaPdfGdf",
+            "name": "tasasIntegra",
+            "description": "Tasas Integra",
             "required": true,
             "schema": {
               "required": [
-                "idPersona",
-                "ticket",
-                "canal",
-                "consultaPdfGdf"
+                "ticket"
               ],
               "properties": {
-                "consultaPdfGdf": {
-                  "required": [
-                    "numeroCliente",
-                    "folio"
-                  ],
-                  "properties": {
-                    "numeroCliente": {
-                      "description": "Número de cliente del cual se esta consultando el PDF",
-                      "type": "integer",
-                      "format": "int64",
-                      "example": 987654321
-                    },
-                    "folio": {
-                      "description": "Es el folio de la operación de pago de impuestos cuyo comprobante se desea consultar.",
-                      "type": "string",
-                      "example": ""
-                    }
-                  }
-                },
-                "idPersona": {
-                  "type": "integer",
-                  "format": "int64",
-                  "example": 123546345
-                },
                 "ticket": {
                   "required": [
                     "id_user",
@@ -11948,11 +12163,6 @@
                       "example": "12345678"
                     }
                   }
-                },
-                "canal": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": "WEB"
                 }
               }
             }
@@ -11960,9 +12170,49 @@
         ],
         "responses": {
           "200": {
-            "description": "Archivo en stream de bytes",
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
             "schema": {
+              "required": [
+                "responseStatus"
+              ],
               "properties": {
+                "tasas": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "tasa": {
+                        "description": "Tasa registrada para este monto.",
+                        "type": "number",
+                        "format": "double",
+                        "example": 0.3
+                      },
+                      "rangoInicial": {
+                        "description": "Monto inicial del rango requerido para que esta tasa aplique.",
+                        "type": "number",
+                        "format": "double",
+                        "example": 0
+                      },
+                      "rangoFinal": {
+                        "description": "Monto final del rango requerido para que aplique esta tasa.",
+                        "type": "number",
+                        "format": "double",
+                        "example": 1000000
+                      },
+                      "montoMensual": {
+                        "description": "Monto mensual requerido para que aplique esta tasa.",
+                        "type": "number",
+                        "format": "double",
+                        "example": 50000
+                      },
+                      "tasaMensual": {
+                        "description": "Tasa mensual aplicable si se cumplen estas condiciones.",
+                        "type": "number",
+                        "format": "double",
+                        "example": 0.3
+                      }
+                    }
+                  }
+                },
                 "responseStatus": {
                   "type": "number",
                   "example": 200
@@ -11970,12 +12220,6 @@
                 "responseError": {
                   "type": "string",
                   "example": ""
-                },
-                "archivoStream": {
-                  "description": "Devuelve el comprobante de pago de un impuesto local (GDF).",
-                  "type": "string",
-                  "format": "binary",
-                  "example": "Archivo Stream"
                 }
               }
             }
@@ -11990,28 +12234,112 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Internal Server Error."
+                  "example": "Internal Error Server"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/persona/tasasPagare": {
+      "post": {
+        "tags": [
+          "Sprint 5"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación tasasPagare del servicio requerido para la integración de Multivanet con T24.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "tasasPagare",
+            "description": "Diseño de la operación para tasasPagare.",
+            "required": true,
+            "schema": {
+              "required": [
+                "ticket"
+              ],
+              "properties": {
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "required": [
+                "responseStatus"
+              ],
+              "properties": {
+                "tasas": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "tasa": {
+                        "description": "Tasa registrada para este monto.",
+                        "type": "number",
+                        "format": "double",
+                        "example": 0.3
+                      },
+                      "montoInicial": {
+                        "description": "Monto inicial del rango requerido para que esta tasa aplique.",
+                        "type": "number",
+                        "format": "double",
+                        "example": 0
+                      },
+                      "montoFinal": {
+                        "description": "Monto final del rango requerido para que aplique esta tasa.",
+                        "type": "number",
+                        "format": "double",
+                        "example": 1000000
+                      },
+                      "plazo": {
+                        "description": "Plazo aplicable para esta tasa.",
+                        "type": "integer",
+                        "format": "int32",
+                        "example": 30
+                      }
+                    }
+                  }
                 },
-                "archivoStream": {
-                  "description": "Devuelve el comprobante de pago de un impuesto local (GDF).",
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
                   "type": "string",
-                  "format": "binary",
                   "example": ""
                 }
               }
             }
           },
-          "404": {
-            "description": "Error no existe Archivo",
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
             "schema": {
               "properties": {
                 "responseStatus": {
                   "type": "number",
-                  "example": 404
+                  "example": 500
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Error al obtener los datos del archivo"
+                  "example": "Internal Error Server"
                 }
               }
             }
@@ -12103,6 +12431,15 @@
                 "responseError": {
                   "type": "string",
                   "example": ""
+                },
+                "result": {
+                  "properties": {
+                    "folio": {
+                      "description": "Folio único para la operación.",
+                      "type": "string",
+                      "example": "12345678910"
+                    }
+                  }
                 }
               }
             }
@@ -12122,7 +12459,7 @@
               }
             }
           },
-          "500": {
+          "202": {
             "description": "Error interno en el servidor.",
             "schema": {
               "properties": {
@@ -13671,11 +14008,38 @@
             "required": true,
             "schema": {
               "required": [
-                "idFacultad",
-                "cuenta",
-                "montoMancomunado"
+                "idUsuario",
+                "ticket",
+                "canal"
               ],
               "properties": {
+                "idUsuario": {
+                  "description": "Identificador único de la persona en los sistemas institucionales.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 0
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
                 "idFacultad": {
                   "description": "Id de la facultad u operación",
                   "type": "integer",
@@ -13719,16 +14083,16 @@
                   "items": {
                     "required": [
                       "idUsuario",
-                      "nombre"
+                      "Nombre"
                     ],
                     "properties": {
-                      "id": {
+                      "idUsuario": {
                         "description": "Identificador único de la persona en los sistemas institucionales.",
                         "type": "integer",
                         "format": "int64",
                         "example": 0
                       },
-                      "nombre": {
+                      "Nombre": {
                         "description": "Nombre del firmante",
                         "type": "string",
                         "example": "Waldo Terry"
@@ -14689,7 +15053,7 @@
             "required": true,
             "schema": {
               "required": [
-                "idUsuario",
+                "idPersonaPropietaria",
                 "ticket",
                 "empresaPropietaria",
                 "nombre",
@@ -14699,17 +15063,9 @@
                 "relacion",
                 "correo",
                 "telefono",
-                "direccion",
-                "idDispositivo",
                 "canal"
               ],
               "properties": {
-                "idUsuario": {
-                  "description": "Identificador único de la persona en los sistemas institucionales.",
-                  "type": "integer",
-                  "format": "int64",
-                  "example": 0
-                },
                 "ticket": {
                   "required": [
                     "id_user",
@@ -14725,6 +15081,12 @@
                       "example": "12345678"
                     }
                   }
+                },
+                "idPersonaPropietaria": {
+                  "description": "Identificador único de la persona a quien pertenecerá el nuevo usuario en los sistemas institucionales.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 0
                 },
                 "empresaPropietaria": {
                   "description": "Id de la empresa propietaria del adicional",
@@ -14748,6 +15110,16 @@
                 },
                 "nombreCompleto": {
                   "description": "Nombre completo de la persona adicional",
+                  "type": "string",
+                  "example": ""
+                },
+                "password": {
+                  "description": "Password a asignar al nuevo usuario adicional.",
+                  "type": "string",
+                  "example": ""
+                },
+                "tipoPassword": {
+                  "description": "Este campo indica el tipo de generación de password que se usará para crear el usuario adicional.",
                   "type": "string",
                   "example": ""
                 },
@@ -14785,6 +15157,7 @@
                     "idEmpresaPropietaria": {
                       "description": "Identificador único de la persona o empresa que extiende este teléfono al usuario.",
                       "type": "integer",
+                      "format": "int64",
                       "example": 123456
                     }
                   }
@@ -14803,6 +15176,7 @@
                     "idEmpresaPropietaria": {
                       "description": "Identificador único de la persona o empresa que extiende este teléfono al usuario.",
                       "type": "integer",
+                      "format": "int64",
                       "example": 123456
                     }
                   }
@@ -14829,6 +15203,7 @@
                         "id": {
                           "description": "Id del tipo de dirección.",
                           "type": "integer",
+                          "format": "int64",
                           "example": 1
                         },
                         "descripcion": {
@@ -14848,6 +15223,7 @@
                         "id": {
                           "description": "Id del tipo de pais.",
                           "type": "integer",
+                          "format": "int64",
                           "example": 1
                         },
                         "descripcion": {
@@ -14867,6 +15243,7 @@
                         "id": {
                           "description": "Id del tipo de estado.",
                           "type": "integer",
+                          "format": "int64",
                           "example": 1
                         },
                         "descripcion": {
@@ -14916,6 +15293,7 @@
                     "idDispositivo": {
                       "description": "Identificador único del dispositivo a asignar.",
                       "type": "integer",
+                      "format": "int64",
                       "example": 1
                     }
                   }
@@ -14935,8 +15313,7 @@
             "schema": {
               "required": [
                 "responseError",
-                "responseStatus",
-                "idUsuario"
+                "responseStatus"
               ],
               "properties": {
                 "responseStatus": {
@@ -14947,11 +15324,20 @@
                   "type": "string",
                   "example": ""
                 },
-                "idUsuario": {
-                  "description": "Identificador único de la persona en los sistemas institucionales.",
-                  "type": "integer",
-                  "format": "int64",
-                  "example": 0
+                "result": {
+                  "properties": {
+                    "idUsuario": {
+                      "description": "Identificador único de la persona en los sistemas institucionales.",
+                      "type": "integer",
+                      "format": "int64",
+                      "example": 0
+                    },
+                    "folio": {
+                      "description": "Folio único asociado con la operación.",
+                      "type": "string",
+                      "example": "12345678910"
+                    }
+                  }
                 }
               }
             }
@@ -15185,8 +15571,7 @@
             "schema": {
               "required": [
                 "responseStatus",
-                "responseError",
-                "idPerfil"
+                "responseError"
               ],
               "properties": {
                 "responseStatus": {
@@ -15197,10 +15582,14 @@
                   "type": "string",
                   "example": ""
                 },
-                "idPerfil": {
-                  "description": "Id de perfil creado.",
-                  "type": "integer",
-                  "example": 0
+                "result": {
+                  "properties": {
+                    "folio": {
+                      "description": "Folio único para la operación.",
+                      "type": "string",
+                      "example": "12345678910"
+                    }
+                  }
                 }
               }
             }
@@ -15567,7 +15956,7 @@
         }
       }
     },
-    "/modificaPassword": {
+    "/modificaPasswordUsuario": {
       "post": {
         "tags": [
           "Sprint F"
@@ -15662,6 +16051,15 @@
                 "responseError": {
                   "type": "string",
                   "example": ""
+                },
+                "result": {
+                  "properties": {
+                    "folio": {
+                      "description": "Folio único asociado con la operación.",
+                      "type": "string",
+                      "example": "12345678910"
+                    }
+                  }
                 }
               }
             }
@@ -15918,7 +16316,198 @@
           }
         }
       }
+    },
+    "/resetPasswordUsuario": {
+      "post": {
+        "tags": [
+          "Sprint F"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación /resetPasswordUsuario del servicio /facultamiento requerida para la integración de Multivanet con TAM.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "resetPasswordUsuario",
+            "description": "Diseño de la operación para resetPasswordUsuario",
+            "required": true,
+            "schema": {
+              "required": [
+                "idUsuario",
+                "ticket",
+                "canal",
+                "idUsuarioCambio",
+                "otp",
+                "newPassword",
+                "confirmNewPassword"
+              ],
+              "properties": {
+                "idUsuario": {
+                  "description": "Identificador único de la persona en los sistemas institucionales.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 0
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "idUsuarioCambio": {
+                  "description": "Id del usuario al cual se le quiere modificar la contraseña.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 1000104701
+                },
+                "otp": {
+                  "type": "string",
+                  "example": "1234567"
+                },
+                "newPassword": {
+                  "description": "Password nuevo que se guardara para el usuario enviado",
+                  "type": "string",
+                  "example": "multiva2021"
+                },
+                "confirmNewPassword": {
+                  "description": "Confirmación del nuevo Password nuevo que se guardara para el usuario enviado",
+                  "type": "string",
+                  "example": "multiva2021"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                },
+                "result": {
+                  "properties": {
+                    "folio": {
+                      "description": "Folio único asociado con la operación.",
+                      "type": "string",
+                      "example": "12345678910"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 1204
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "No se pudo actualizar el registro"
+                }
+              }
+            }
+          },
+          "202": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 2450
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "No coinciden las contraseñas"
+                }
+              }
+            }
+          },
+          "203": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 2500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "TAM fuera de línea"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 2419
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Nuevo password inválido"
+                }
+              }
+            }
+          },
+          "205": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 2449
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Usuario no existe"
+                }
+              }
+            }
+          },
+          "206": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 2441
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "OTP Inválido"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
-

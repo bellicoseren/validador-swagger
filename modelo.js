@@ -2536,9 +2536,9 @@ function activacionPaperless(bodyreq){
 
     if( bodyreq.otp != "999"){
         var respuesta = {
-             "responseStatus": 200,
-              "responseError": ""
-            };
+          "responseStatus": 200,
+          "responseError": ""
+        };
     }else{
         var respuesta = {
             "responseStatus": 2431,
@@ -2779,7 +2779,7 @@ function consultaRetenciones(bodyreq){
   }
 
   const estadoPaperless = {
-    "opcionImpresion": "CONSULTA MULTIVANET",
+    "opcionImpresion": "ACTIVA",
     "omitirNombre": true,
     "noCuentaParcialmente": true,
     "responseStatus": 200,
@@ -3675,7 +3675,10 @@ function consultaFoliosGdf(bodyreq){
 
 const actualizaDatosPersona = {
   "responseStatus": 200,
-  "responseError": ""
+  "responseError": "",
+  "result": {
+    "folio": "12345678910"
+  }
 }
  
 const asignacionOtpUsuario = { 
@@ -3963,9 +3966,12 @@ const consultaPerfilesPatronConGruposFacultades={
      "responseError": ""
 }
 
-const modificaPassword={
+const modificaPasswordUsuario={
   "responseStatus": 200,
-  "responseError": ""
+  "responseError": "",
+  "result": {
+    "folio": "12345678910"
+  }
 }
 
 const consultaFacultamientoUsuario={
@@ -4036,20 +4042,23 @@ const bloqueoDesbloqueoUsuario={
 }
 
 const consultaFirmantesPotenciales={
- "responseStatus": 200,
- "responseError": "",
- "firmantes": [
-   {
-     "id": 0,
-     "nombre": "Waldo Terry"
-   }
- ]
+  "responseStatus": 200,
+  "responseError": "",
+  "firmantes": [
+    {
+      "idUsuario": 0,
+      "Nombre": "Waldo Terry"
+    }
+  ]
 }
 
 const creaUsuarioAdicional={
   "responseStatus": 200,
   "responseError": "",
-  "idUsuario": 0
+  "result": {
+    "idUsuario": 0,
+    "folio": "12345678910"
+  }
 }
 
 const consultaOperacionesActivasUsuario = { 
@@ -4095,6 +4104,17 @@ const consultaLimitesUsuario = {
 
 
 
+
+const resetPasswordUsuario = {
+      "responseStatus": 200,
+      "responseError": "",
+      "result": {
+        "folio": "12345678910"
+      }
+    }
+
+
+
 var mapaModelo = {
    //### ESB ####//
    /////////// Sprint 1  /////////////
@@ -4119,8 +4139,8 @@ var mapaModelo = {
   'consultaSaldosMultiT':consultaSaldosMultiT,
   'consultaMovimientosMultiT':consultaMovimientosMultiT,
   'consultaCtasServMultiT':consultaCtasServMultiT,
-  'estadoPaperless':estadoPaperless,
-  'activacionPaperless':activacionPaperless,
+  'persona/estadoPaperless':estadoPaperless,
+  'persona/activacionPaperless':activacionPaperless,
   'consultaMovimientos':consultaMovimientos,
   'consultaMesaDinero':consultaMesaDinero,
   'consultaMovsMesaDinero':consultaMovsMesaDinero,
@@ -4192,6 +4212,7 @@ var mapaModelo = {
  'solicitaOTPVirtual':solicitaOTPVirtual,
  'consultaFoliosGdf':consultaFoliosGdf,
 
+
 //////////Sprint F//////////////////
  'actualizaDatosPersona':actualizaDatosPersona,
  'consultaCuentasCliente':consultaCuentasCliente,
@@ -4206,14 +4227,15 @@ var mapaModelo = {
  'asignacionOtpUsuario': asignacionOtpUsuario,
  'actualizaFacultamientoUsuario': actualizaFacultamientoUsuario,
  'consultaPerfilesPatronConGruposFacultades':consultaPerfilesPatronConGruposFacultades,
- 'modificaPassword':modificaPassword,
+ 'modificaPasswordUsuario':modificaPasswordUsuario,
  'consultaFacultamientoUsuario':consultaFacultamientoUsuario,
  'bloqueoDesbloqueoUsuario':bloqueoDesbloqueoUsuario,
  'consultaFirmantesPotenciales':consultaFirmantesPotenciales,
  'creaUsuarioAdicional':creaUsuarioAdicional,
  'creaFacultamientoUsuario': creaFacultamientoUsuario,
  'consultaAliasPorUsuario':consultaAliasPorUsuario,
- 'consultaLimitesUsuario':consultaLimitesUsuario
+ 'consultaLimitesUsuario':consultaLimitesUsuario,
+ 'resetPasswordUsuario': resetPasswordUsuario
 
 }
 
