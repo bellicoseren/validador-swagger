@@ -3644,6 +3644,17 @@ function consultaFoliosGdf(bodyreq){
   return respuesta;
 }
 
+
+const resetPasswordUsuario = {
+      "responseStatus": 200,
+      "responseError": "",
+      "result": {
+        "folio": "12345678910"
+      }
+    }
+
+
+
 var mapaModelo = {
    //### ESB ####//
    /////////// Sprint 1  /////////////
@@ -3739,7 +3750,9 @@ var mapaModelo = {
  'movimientosCFE':movimientosCFE,
  'consultaPdfGdf':consultaPdfGdf,
  'solicitaOTPVirtual':solicitaOTPVirtual,
- 'consultaFoliosGdf':consultaFoliosGdf
+ 'consultaFoliosGdf':consultaFoliosGdf,
+
+ 'resetPasswordUsuario': resetPasswordUsuario
 }
 
 function obtenerModelo (nombreModelo,bodyreq){

@@ -16246,6 +16246,198 @@
           }
         }
       }
+    },
+    "/resetPasswordUsuario": {
+      "post": {
+        "tags": [
+          "Sprint F"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación /resetPasswordUsuario del servicio /facultamiento requerida para la integración de Multivanet con TAM.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "resetPasswordUsuario",
+            "description": "Diseño de la operación para resetPasswordUsuario",
+            "required": true,
+            "schema": {
+              "required": [
+                "idUsuario",
+                "ticket",
+                "canal",
+                "idUsuarioCambio",
+                "otp",
+                "newPassword",
+                "confirmNewPassword"
+              ],
+              "properties": {
+                "idUsuario": {
+                  "description": "Identificador único de la persona en los sistemas institucionales.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 0
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "idUsuarioCambio": {
+                  "description": "Id del usuario al cual se le quiere modificar la contraseña.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 1000104701
+                },
+                "otp": {
+                  "type": "string",
+                  "example": "1234567"
+                },
+                "newPassword": {
+                  "description": "Password nuevo que se guardara para el usuario enviado",
+                  "type": "string",
+                  "example": "multiva2021"
+                },
+                "confirmNewPassword": {
+                  "description": "Confirmación del nuevo Password nuevo que se guardara para el usuario enviado",
+                  "type": "string",
+                  "example": "multiva2021"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                },
+                "result": {
+                  "properties": {
+                    "folio": {
+                      "description": "Folio único asociado con la operación.",
+                      "type": "string",
+                      "example": "12345678910"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 1204
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "No se pudo actualizar el registro"
+                }
+              }
+            }
+          },
+          "202": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 2450
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "No coinciden las contraseñas"
+                }
+              }
+            }
+          },
+          "203": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 2500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "TAM fuera de línea"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 2419
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Nuevo password inválido"
+                }
+              }
+            }
+          },
+          "205": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 2449
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Usuario no existe"
+                }
+              }
+            }
+          },
+          "206": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 2441
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "OTP Inválido"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
