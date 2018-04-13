@@ -613,10 +613,34 @@ const errorServicio = {
 }
 
 
-const Validaotp = {
+/**const Validaotp = {
   "Antiphishing": 989999,
   "responseStatus": 200,
   "responseError": "Usuario correcto y token correcto"
+}**/
+
+
+function Validaotp(bodyreq){
+
+console.log("USUARIO--------------"+bodyreq.otp);
+
+
+  if( bodyreq.otp == "999"){
+        var  respuesta =  {
+          "responseStatus": 400,
+          "responseError": ""
+        };
+
+   }else{
+    var respuesta = {
+          "Antiphishing": 989999,
+          "responseStatus": 200,
+          "responseError": "Usuario correcto y token correcto"
+        };
+
+    }
+console.log("RESPUESTA-------------------------"+respuesta);
+    return respuesta;
 }
 
 
@@ -2620,19 +2644,19 @@ const consultaCfdCfdiRetenciones = {
   }
 
   function consultaCfdCfdi(bodyreq) {
-	  console.log("COnsulta de numero de cuenta---------  "+bodyreq.numeroDeCuenta);
+	  console.log("COnsulta de numero de cuenta---------  "+bodyreq.canal);
 	  
-	if (bodyreq.numeroDeCuenta == "1234") {
+	if (bodyreq.canal == "1234") {
       var respuesta = {
          //Es un archivo
     	"_downloadFile":true
 	  };
-	}else if(bodyreq.numeroDeCuenta == "4321"){
+	}else if(bodyreq.canal == "4321"){
 	var respuesta = {
 	"responseStatus": 4400,
 	"responseError": ""
 };
-	}else if(bodyreq.numeroDeCuenta == "1111") {
+	}else if(bodyreq.canal == "1111") {
     var respuesta = {
 	"responseStatus": 500,
 	"responseError": "Internal Server Error"
@@ -2719,17 +2743,17 @@ function consultaRetenciones(bodyreq){
   }**/
   
     function estadoCuentaPDF(bodyreq){
-	if (bodyreq.numeroDeCuenta == "1234") {
+	if (bodyreq.canal == "1234") {
       var respuesta = {
          //Es un archivo
     	"_downloadFile":true
 	  };
-	}else if(bodyreq.numeroDeCuenta == "4321"){
+	}else if(bodyreq.canal == "4321"){
 	var respuesta = {
 	"responseStatus": 4400,
 	"responseError": ""
 };
-	}else if(bodyreq.numeroDeCuenta == "1111") {
+	}else if(bodyreq.canal == "1111") {
     var respuesta = {
 	"responseStatus": 500,
 	"responseError": "Internal Server Error"
