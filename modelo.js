@@ -114,6 +114,20 @@ const activacionOTP = {
 
 const listarTokensOTP = {
   "listTokens": [
+    {
+      "usuario": "string",
+      "tokenSerial": "string",
+      "nombreUsuario": "string",
+      "fechaAlta": "date",
+      "tokenStatus": "string"
+    }
+  ],
+  "responseStatus": 200,
+  "responseError": ""
+}
+/** 
+{
+  "listTokens": [
   {
     "usuario": 4349121927,
     "tokenSerial": "500745HOSTVER",
@@ -468,6 +482,7 @@ const listarTokensOTP = {
   "responseStatus": 200,
   "responseError": ""
 }
+**/
 
 const autentificacion = {
   fechaUltimoAcceso: "20170322163223.0Z",
@@ -3651,12 +3666,12 @@ var mapaModelo = {
    'consultaServiciosContratados':consultaServiciosContratados,
    'consultaProductosContratados':consultaProductosContratados,
    'modificaContrato':modificaContrato,
-   'cambioContrasena':cambioContrasena,
+   'autenticacion/cambioContrasena':cambioContrasena,
   //'consultaCuentasAgregadasCliente':consultaCuentasAgregadasCliente,
   'envioNotificaciones':envioNotificaciones,
-  'listarTokensOTP':listarTokensOTP,
-  'activacionOTP':activacionOTP,
-  'bloqueoOTP':bloqueoOTP,
+  'autenticacion/listarTokensOTP':listarTokensOTP,
+  'autenticacion/activacionOTP':activacionOTP,
+  'autenticacion/bloqueoOTP':bloqueoOTP,
   'consultaPerfiles': consultaPerfiles,
   'login':login,
   'autentificacion':autentificacion,
@@ -3681,7 +3696,7 @@ var mapaModelo = {
   'estadoCuentaPDF':estadoCuentaPDF,
   'validaOTP': validaOTP,
  /////////// Sprint 3  /////////////
- 'sincronizaOTP':sincronizaOTP,
+ 'persona/sincronizaOTP':sincronizaOTP,
  'asociaMovil':asociaMovil,
  'consultaBancos':consultaBancos,
  'obtenerCatalogoTipoTxn':obtenerCatalogoTipoTxn,
