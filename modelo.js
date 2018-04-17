@@ -4136,8 +4136,8 @@ var mapaModelo = {
   'consultaContratoerror':consultaContratoerror,
   /////////// Sprint 2  /////////////
   'consultaCuentasAgregadasCliente':consultaCuentasAgregadasCliente,
-  'consultaSaldosMultiT':consultaSaldosMultiT,
-  'consultaMovimientosMultiT':consultaMovimientosMultiT,
+  'persona/consultaSaldosMultiT':consultaSaldosMultiT,
+  'persona/consultaMovimientosMultiT':consultaMovimientosMultiT,
   'consultaCtasServMultiT':consultaCtasServMultiT,
   'persona/estadoPaperless':estadoPaperless,
   'persona/activacionPaperless':activacionPaperless,
