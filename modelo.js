@@ -4113,6 +4113,18 @@ const resetPasswordUsuario = {
       }
     }
 
+const consultaEmpresasPorHolding = {
+  "result": [
+    {
+      "idEmpresa": 1,
+      "nombre": "EmpresaX"
+    }
+
+  ],
+  "responseStatus": 200,
+  "responseError": ""
+}
+
 
 
 var mapaModelo = {
@@ -4235,9 +4247,10 @@ var mapaModelo = {
  'creaFacultamientoUsuario': creaFacultamientoUsuario,
  'consultaAliasPorUsuario':consultaAliasPorUsuario,
  'consultaLimitesUsuario':consultaLimitesUsuario,
- 'resetPasswordUsuario': resetPasswordUsuario
-
+ 'resetPasswordUsuario': resetPasswordUsuario,
+ 'consultaEmpresasPorHolding': consultaEmpresasPorHolding
 }
+
 
 function obtenerModelo (nombreModelo,bodyreq){
 
