@@ -890,7 +890,7 @@
         "parameters": [
           {
             "in": "body",
-            "name": "consultaPerfiles,",
+            "name": "consultaPerfiles",
             "description": "Nos va a traer facultades Simples",
             "required": true,
             "schema": {
@@ -1203,6 +1203,14 @@
                   "type": "string",
                   "example": "notificacion"
                 },
+                "from": {
+                  "type": "string",
+                  "example": "from"
+                },
+                "subject": {
+                  "type": "string",
+                  "example": "subject"
+                },
                 "to": {
                   "type": "string",
                   "example": "cliente@mail.com"
@@ -1479,6 +1487,9 @@
           "200": {
             "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
             "schema": {
+              "required": [
+                "responseStatus"
+              ],
               "properties": {
                 "responseStatus": {
                   "type": "number",
@@ -3327,6 +3338,10 @@
           "200": {
             "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
             "schema": {
+              "required": [
+                "responseStatus",
+                "responseError"
+              ],
               "properties": {
                 "saldoInicial": {
                   "description": "Saldo inicial en la cuenta para el periodo consultado",
@@ -4433,6 +4448,9 @@
           "200": {
             "description": "Estado paperless",
             "schema": {
+              "required": [
+                "responseStatus"
+              ],
               "properties": {
                 "opcionImpresion": {
                   "description": "Activar o desactivar la impresión del estado de cuenta. Puede tomar los valores CONSULTA MULTIVANET, ENVIAR DOMICILIO o  RETIENE SUCURSAL.",
@@ -15039,7 +15057,7 @@
         }
       }
     },
-    "/creaUsuarioAdicional": {
+    "/facultamiento/creaUsuarioAdicional": {
       "post": {
         "tags": [
           "Sprint F"
@@ -15091,6 +15109,7 @@
                 "empresaPropietaria": {
                   "description": "Id de la empresa propietaria del adicional",
                   "type": "integer",
+                  "format": "int64",
                   "example": 12345
                 },
                 "nombre": {
@@ -15343,7 +15362,22 @@
             }
           },
           "201": {
-            "description": "Error controlado, el codigo http real es 200",
+            "description": "Error controlado, el codigo http real es 200. Estos errores pertenecen a FacultamientoException: 1204: No se pudo guardar el registro,  1500 : Error interno del servidor.",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 1204
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "No se pudo actualizar el perfil facultamiento del usuario"
+                }
+              }
+            }
+          },
+          "202": {
+            "description": "Error controlado, el codigo http real es 200. Estos errores pertenecen a BupException : 5500 : Error interno del servidor, 5409 : No se pudo realizar la operación, 5204 : No se encontraron registros, 5300 : No se puede insertar el valor NULL.",
             "schema": {
               "properties": {
                 "responseStatus": {
@@ -15724,7 +15758,7 @@
         }
       }
     },
-    "/direccionesPorPersona": {
+    "/bup/direccionesPorPersona": {
       "post": {
         "tags": [
           "Sprint F"
@@ -15778,6 +15812,10 @@
           "200": {
             "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
             "schema": {
+              "required": [
+                "id",
+                "nombre"
+              ],
               "properties": {
                 "id": {
                   "description": "Lista de sucursales.",
@@ -15793,6 +15831,21 @@
                 "listaDirecciones": {
                   "type": "array",
                   "items": {
+                    "required": [
+                      "id",
+                      "calle",
+                      "noExterior",
+                      "noInterior",
+                      "entreCalles",
+                      "ciudad",
+                      "colonia",
+                      "codigoPostal",
+                      "esPrincipal",
+                      "municipio",
+                      "tipoDireccion",
+                      "pais",
+                      "estado"
+                    ],
                     "properties": {
                       "tipoDireccion": {
                         "properties": {
@@ -15910,7 +15963,7 @@
             }
           },
           "201": {
-            "description": "No se encontraron registros",
+            "description": "Error controlado, el codigo http real es 200. Estos errores pertenecen a BupException: 5204: No se encontraron registros,  5500 : Error interno del servidor.",
             "schema": {
               "properties": {
                 "id": {
@@ -15925,7 +15978,128 @@
                   "example": ""
                 },
                 "listaDirecciones": {
-                  "example": []
+                  "example": [],
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "id",
+                      "calle",
+                      "noExterior",
+                      "noInterior",
+                      "entreCalles",
+                      "ciudad",
+                      "colonia",
+                      "codigoPostal",
+                      "esPrincipal",
+                      "municipio",
+                      "tipoDireccion",
+                      "pais",
+                      "estado"
+                    ],
+                    "properties": {
+                      "tipoDireccion": {
+                        "properties": {
+                          "id": {
+                            "description": "Descripción del tipo de dirección.",
+                            "type": "integer",
+                            "format": "int64",
+                            "example": 1
+                          },
+                          "descripcion": {
+                            "description": "Descripción del país.",
+                            "type": "string",
+                            "example": ""
+                          }
+                        }
+                      },
+                      "pais": {
+                        "properties": {
+                          "id": {
+                            "description": "Id del país.",
+                            "type": "integer",
+                            "format": "int64",
+                            "example": 1
+                          },
+                          "descripcion": {
+                            "description": "Descripción del país.",
+                            "type": "string",
+                            "example": ""
+                          },
+                          "nacionalidad": {
+                            "description": "Descripción de la nacionalidad por país",
+                            "type": "string",
+                            "example": ""
+                          }
+                        }
+                      },
+                      "estado": {
+                        "properties": {
+                          "id": {
+                            "description": "Descripción del tipo de dirección.",
+                            "type": "integer",
+                            "format": "int64",
+                            "example": 1
+                          },
+                          "descripcion": {
+                            "description": "Descripción del país.",
+                            "type": "string",
+                            "example": ""
+                          }
+                        }
+                      },
+                      "id": {
+                        "description": "Id de la dirección",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "11"
+                      },
+                      "calle": {
+                        "description": "Calle de la dirección",
+                        "type": "string",
+                        "example": ""
+                      },
+                      "noExterior": {
+                        "description": "Numero exterior",
+                        "type": "string",
+                        "example": ""
+                      },
+                      "noInterior": {
+                        "description": "Numero interior",
+                        "type": "string",
+                        "example": ""
+                      },
+                      "entreCalles": {
+                        "description": "Entre calles",
+                        "type": "string",
+                        "example": ""
+                      },
+                      "ciudad": {
+                        "description": "Ciudad de la dirección",
+                        "type": "string",
+                        "example": ""
+                      },
+                      "colonia": {
+                        "description": "Colonia de la dirección",
+                        "type": "string",
+                        "example": ""
+                      },
+                      "codigoPostal": {
+                        "description": "Código postal de la dirección",
+                        "type": "string",
+                        "example": ""
+                      },
+                      "esPrincipal": {
+                        "description": "Bandera que indica si la dirección es la principal",
+                        "type": "boolean",
+                        "example": true
+                      },
+                      "municipio": {
+                        "description": "Municipio de la dirección",
+                        "type": "string",
+                        "example": ""
+                      }
+                    }
+                  }
                 },
                 "responseStatus": {
                   "type": "number",
@@ -15937,26 +16111,11 @@
                 }
               }
             }
-          },
-          "500": {
-            "description": "Error interno en el servidor.",
-            "schema": {
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 5500
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": "Error interno en el servidor."
-                }
-              }
-            }
           }
         }
       }
     },
-    "/modificaPasswordUsuario": {
+    "/facultamiento/modificaPasswordUsuario": {
       "post": {
         "tags": [
           "Sprint F"
@@ -16010,6 +16169,7 @@
                 "idUsuarioCambio": {
                   "description": "Id del usuario al cual se le quiere modificar la contraseña",
                   "type": "integer",
+                  "format": "int64",
                   "example": 1000104701
                 },
                 "otp": {
@@ -16065,16 +16225,16 @@
             }
           },
           "201": {
-            "description": "Error controlado, el codigo http real es 200",
+            "description": "Error controlado, el codigo http real es 200. Estos errores pertenecen a TAMException: 2450 : No coinciden las contraseñas,  2500 : TAM fuera de línea, 2419 : Nuevo password inválido, 2449 : Usuario no existe, 2441 : OTP Inválido.",
             "schema": {
               "properties": {
                 "responseStatus": {
                   "type": "number",
-                  "example": 1204
+                  "example": 2450
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "No se pudo actualizar el registro"
+                  "example": "No coinciden las contraseñas"
                 }
               }
             }
@@ -16317,7 +16477,7 @@
         }
       }
     },
-    "/resetPasswordUsuario": {
+    "/facultamiento/resetPasswordUsuario": {
       "post": {
         "tags": [
           "Sprint F"
@@ -16335,9 +16495,7 @@
                 "ticket",
                 "canal",
                 "idUsuarioCambio",
-                "otp",
-                "newPassword",
-                "confirmNewPassword"
+                "otp"
               ],
               "properties": {
                 "idUsuario": {
@@ -16417,22 +16575,7 @@
             }
           },
           "201": {
-            "description": "Error controlado, el codigo http real es 200",
-            "schema": {
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 1204
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": "No se pudo actualizar el registro"
-                }
-              }
-            }
-          },
-          "202": {
-            "description": "Error controlado, el codigo http real es 200",
+            "description": "Error controlado, el codigo http real es 200. Estos errores pertenecen a TAMException: 2450: No coinciden las contraseñas,  2500 : TAM fuera de línea, 2419 : Nuevo password inválido, 2449 : Usuario no existe, 2441 : OTP Inválido.",
             "schema": {
               "properties": {
                 "responseStatus": {
@@ -16442,66 +16585,6 @@
                 "responseError": {
                   "type": "string",
                   "example": "No coinciden las contraseñas"
-                }
-              }
-            }
-          },
-          "203": {
-            "description": "Error controlado, el codigo http real es 200",
-            "schema": {
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 2500
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": "TAM fuera de línea"
-                }
-              }
-            }
-          },
-          "204": {
-            "description": "Error controlado, el codigo http real es 200",
-            "schema": {
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 2419
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": "Nuevo password inválido"
-                }
-              }
-            }
-          },
-          "205": {
-            "description": "Error controlado, el codigo http real es 200",
-            "schema": {
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 2449
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": "Usuario no existe"
-                }
-              }
-            }
-          },
-          "206": {
-            "description": "Error controlado, el codigo http real es 200",
-            "schema": {
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 2441
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": "OTP Inválido"
                 }
               }
             }
