@@ -4993,6 +4993,9 @@
           "200": {
             "description": "Movimientos de donaciones",
             "schema": {
+              "required": [
+                "responseStatus"
+              ],
               "properties": {
                 "listDonaciones": {
                   "description": "lista de donaciones",
@@ -5097,7 +5100,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "No hay información para esta consulta."
+                  "example": "RESPUESTA DE ERROR."
                 }
               }
             }
