@@ -16591,6 +16591,127 @@
           }
         }
       }
+    },
+    "/consultaEmpresasPorHolding": {
+      "post": {
+        "tags": [
+          "Sprint F"
+        ],
+        "description": "Interfaz  que le permitirá consultar empresas, de la empresa propietaria del usuario logueado.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "consultaEmpresasPorHolding",
+            "description": "Diseño de la operación para consultaCuentasCliente",
+            "required": true,
+            "schema": {
+              "required": [
+                "idUsuario",
+                "canal",
+                "ticket"
+              ],
+              "properties": {
+                "idUsuario": {
+                  "description": "Identificador único de la persona en los sistemas institucionales.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 0
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "properties": {
+                "result": {
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "idEmpresa",
+                      "nombre"
+                    ],
+                    "properties": {
+                      "idEmpresa": {
+                        "description": "id de la empresa",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                      },
+                      "nombre": {
+                        "description": "Nombre de la empresa",
+                        "type": "string",
+                        "example": "EmpresaX"
+                      }
+                    }
+                  }
+                },
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "No se encontraron registros",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 5204
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "No se encontraron registros"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error interno en el servidor.",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 5500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Error interno en el servidor."
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
