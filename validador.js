@@ -342,7 +342,8 @@ app.post('*', function(req, res){
     var bandera = 0;
 
       //console.log("bodyreq---------------------------" + util.inspect(bodyreq,false,null) );
-      //console.log("requeridos---------------------------" + util.inspect(path.post.parameters[0],false,null));
+      //console.log("requeridos---------------------------" + util.inspect(requeridos,false,null)); 
+
  
  
     errors["required"]={};
@@ -375,7 +376,7 @@ app.post('*', function(req, res){
       var nombreModelo= "/" + ruta[ruta.length-1];
 
 
-      console.log("que es lo que llevo-----------------------"+nombreModelo.substring(1));
+ // console.log("que es lo que llevo-----------------------"+nombreModelo.substring(1));
       var respuesta = modelo.obtenerModelo(nombreModelo.substring(1), bodyreq);
       console.log("Respuesta:  ", respuesta)
       if(respuesta._downloadFile){
