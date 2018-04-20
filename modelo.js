@@ -2492,7 +2492,7 @@ const consultaCuentasAgregadasCliente = {
     "atraso": 10
   },
   "responseStatus": 200,
-  "responseError": "P"
+  "responseError": ""
 }
 
 function activacionPaperless(bodyreq){
