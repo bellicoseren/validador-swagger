@@ -1938,7 +1938,7 @@
         }
       }
     },
-    "/consultaCuentasAgregadasCliente": {
+    "/persona/consultaCuentasAgregadasCliente": {
       "post": {
         "tags": [
           "Sprint 2"
@@ -2795,7 +2795,7 @@
         }
       }
     },
-    "/consultaCfdCfdi": {
+    "/persona/consultaCfdCfdi": {
       "post": {
         "tags": [
           "Sprint 2"
@@ -2885,7 +2885,7 @@
         }
       }
     },
-    "/consultaCfdCfdiRetenciones": {
+    "/persona/consultaCfdCfdiRetenciones": {
       "post": {
         "tags": [
           "Sprint 2"
@@ -5108,7 +5108,7 @@
         }
       }
     },
-    "/validaOTP": {
+    "/autenticacion/validaOTP": {
       "post": {
         "tags": [
           "Sprint 2"
@@ -11736,7 +11736,7 @@
         }
       }
     },
-    "/foliosGDF": {
+    "/persona/foliosGDF": {
       "post": {
         "tags": [
           "Sprint 5"
@@ -12125,7 +12125,7 @@
         }
       }
     },
-    "/movimientosDiputados": {
+    "/persona/movimientosDiputados": {
       "post": {
         "tags": [
           "Sprint 5"
