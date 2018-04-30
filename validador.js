@@ -378,7 +378,6 @@ app.post('*', function(req, res){
       var ruta = req.path.split("/");
       var nombreModelo= "/" + ruta[ruta.length-1];
 
-
       var respuesta = modelo.obtenerModelo(nombreModelo.substring(1), bodyreq);
       console.log("Respuesta:  ", respuesta)
       if(respuesta._downloadFile){

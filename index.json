@@ -5,7 +5,7 @@
     "title": "ESB Fuse"
   },
   "paths": {
-    "/activacionOTP": {
+    "/autenticacion/activacionOTP": {
       "post": {
         "tags": [
           "Sprint 1"
@@ -130,7 +130,7 @@
         }
       }
     },
-    "/bloqueoOTP": {
+    "/autenticacion/bloqueoOTP": {
       "post": {
         "tags": [
           "Sprint 1"
@@ -255,7 +255,7 @@
         }
       }
     },
-    "/cambioContrasena": {
+    "/autenticacion/cambioContrasena": {
       "post": {
         "tags": [
           "Sprint 1"
@@ -273,7 +273,9 @@
                 "idPersona",
                 "newPassword",
                 "oldPassword",
-                "otp"
+                "confirmNewPassword",
+                "otp",
+                "ticket"
               ],
               "properties": {
                 "idPersona": {
@@ -358,11 +360,44 @@
                 }
               }
             }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 404
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Servicio no disponible"
+                },
+                "listCambioContrasena": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "codigo": {
+                        "description": "Codigo que regresa TAM con el tipo de respuesta si fue exitoso o no",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "integer"
+                      },
+                      "mensaje": {
+                        "description": "Mensaje que representa el codigo de TAM",
+                        "type": "string",
+                        "example": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
     },
-    "/consultaCuentasAgregadasClienteV1": {
+    "/persona/consultaCuentasAgregadasClienteV1": {
       "post": {
         "tags": [
           "Sprint 1"
@@ -523,7 +558,7 @@
                       },
                       "plazo": {
                         "description": "Plazo de la inversión en días",
-                        "type": "string",
+                        "type": "number",
                         "example": "integer"
                       },
                       "tasa": {
@@ -682,7 +717,7 @@
         }
       }
     },
-    "/consultaDatosBasicos": {
+    "/persona/consultaDatosBasicos": {
       "post": {
         "tags": [
           "Sprint 1"
@@ -877,11 +912,156 @@
                 }
               }
             }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "numCliente": {
+                  "description": "Número de cliente de T24",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": "Long"
+                },
+                "nombre": {
+                  "description": "Nombre del cliente (agrega apellidos)",
+                  "type": "string",
+                  "example": "String"
+                },
+                "listaDirecciones": {
+                  "example": [],
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "direccion": {
+                        "description": "Dirección del cliente, agrega calle y número",
+                        "type": "string",
+                        "example": "String"
+                      },
+                      "poblacion": {
+                        "description": "Delegación o municipio.",
+                        "type": "string",
+                        "example": "String"
+                      },
+                      "ciudad": {
+                        "description": "Ciudad.",
+                        "type": "string",
+                        "example": "String"
+                      },
+                      "estado": {
+                        "description": "Estado",
+                        "type": "string",
+                        "example": "String"
+                      },
+                      "cp": {
+                        "description": "Código postal.",
+                        "type": "string",
+                        "example": "String"
+                      },
+                      "tipoDireccion": {
+                        "description": "Indica el tipo de dirección (fiscal, jurídica, de mensajes, etc.).",
+                        "type": "string",
+                        "example": "String"
+                      }
+                    }
+                  }
+                },
+                "rfc": {
+                  "description": "RFC del cliente",
+                  "type": "string",
+                  "example": "String"
+                },
+                "listaTelefonos": {
+                  "example": [],
+                  "type": "array",
+                  "items": {
+                    "description": "Solo se tomara el primer numero telefonico",
+                    "properties": {
+                      "cvePais": {
+                        "description": "Clave Pais",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "integer"
+                      },
+                      "codArea": {
+                        "description": "Codigo de Area",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "integer"
+                      },
+                      "telefono": {
+                        "description": "Número de teléfono",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "Long"
+                      },
+                      "tipoTelefono": {
+                        "description": "Indica el tipo de este teléfono (casa, oficina, fax, móvil, etc.).",
+                        "type": "string",
+                        "example": "String"
+                      }
+                    }
+                  }
+                },
+                "listaEmails": {
+                  "example": [],
+                  "type": "array",
+                  "items": {
+                    "description": "Solo se tomara el primer numero telefonico",
+                    "properties": {
+                      "mail": {
+                        "description": "Correo electrónico.",
+                        "type": "string",
+                        "example": "String"
+                      },
+                      "activo": {
+                        "description": "Bandera que indica si el correo en cuestión está activo o no.",
+                        "type": "boolean",
+                        "example": "Boolena"
+                      },
+                      "tipoEmail": {
+                        "description": "Indica el uso que se le da al correo del cliente.",
+                        "type": "string",
+                        "example": "String"
+                      }
+                    }
+                  }
+                },
+                "tipoPersona": {
+                  "description": "Régimen fiscal de la persona, PM, PF o PFAE.",
+                  "type": "string",
+                  "example": "String"
+                },
+                "estatus": {
+                  "description": "Estatus del cliente.",
+                  "type": "string",
+                  "example": "String"
+                },
+                "sucursal": {
+                  "description": "Identificador de la sucursal asociada con el cliente.",
+                  "type": "string",
+                  "example": "String"
+                },
+                "vip": {
+                  "description": "Indica si el cliente es VIP",
+                  "type": "string",
+                  "example": "String"
+                },
+                "responseStatus": {
+                  "type": "number",
+                  "example": 404
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Cliente solicitado no exitse"
+                }
+              }
+            }
           }
         }
       }
     },
-    "/consultaPerfiles": {
+    "/facultamiento/consultaPerfilesPerf": {
       "post": {
         "tags": [
           "Sprint 1"
@@ -890,7 +1070,7 @@
         "parameters": [
           {
             "in": "body",
-            "name": "consultaPerfiles,",
+            "name": "consultaPerfiles",
             "description": "Nos va a traer facultades Simples",
             "required": true,
             "schema": {
@@ -940,15 +1120,12 @@
           "200": {
             "description": "Nos va a traer facultades Simples",
             "schema": {
+              "required": [
+                "facultadesSimples",
+                "responseStatus",
+                "responseError"
+              ],
               "properties": {
-                "facultadesSimples": {
-                  "type": "array",
-                  "items": {
-                    "type": "string",
-                    "example": "String",
-                    "description": "Lista de nombres de facultades simples asociadas con el usuario consultado."
-                  }
-                },
                 "responseStatus": {
                   "type": "number",
                   "example": 200
@@ -956,6 +1133,116 @@
                 "responseError": {
                   "type": "string",
                   "example": ""
+                },
+                "facultadesSimples": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "nombre": {
+                        "type": "string",
+                        "example": "FACULTAD 1"
+                      },
+                      "activa": {
+                        "type": "boolean",
+                        "example": true
+                      },
+                      "restriccionHorario": {
+                        "type": "boolean",
+                        "example": true
+                      },
+                      "horaInicio": {
+                        "type": "string",
+                        "example": "15:30:00"
+                      },
+                      "horaFin": {
+                        "type": "string",
+                        "example": "17:30:00"
+                      },
+                      "tipoFacultad": {
+                        "type": "string",
+                        "example": "FACULTAD_SIMPLE"
+                      },
+                      "isComponenteVisible": {
+                        "type": "boolean",
+                        "example": true
+                      },
+                      "isComponenteHabilitado": {
+                        "type": "boolean",
+                        "example": true
+                      },
+                      "portlet": {
+                        "type": "boolean",
+                        "example": true
+                      },
+                      "nombrePortlet": {
+                        "type": "string",
+                        "example": "PORTLET 1"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "facultadesSimples": {
+                  "example": [],
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "nombre": {
+                        "type": "string",
+                        "example": "FACULTAD 1"
+                      },
+                      "activa": {
+                        "type": "boolean",
+                        "example": true
+                      },
+                      "restriccionHorario": {
+                        "type": "boolean",
+                        "example": true
+                      },
+                      "horaInicio": {
+                        "type": "string",
+                        "example": "15:30:00"
+                      },
+                      "horaFin": {
+                        "type": "string",
+                        "example": "17:30:00"
+                      },
+                      "tipoFacultad": {
+                        "type": "string",
+                        "example": "FACULTAD_SIMPLE"
+                      },
+                      "isComponenteVisible": {
+                        "type": "boolean",
+                        "example": true
+                      },
+                      "isComponenteHabilitado": {
+                        "type": "boolean",
+                        "example": true
+                      },
+                      "portlet": {
+                        "type": "boolean",
+                        "example": true
+                      },
+                      "nombrePortlet": {
+                        "type": "string",
+                        "example": "PORTLET 1"
+                      }
+                    }
+                  }
+                },
+                "responseStatus": {
+                  "type": "number",
+                  "example": 6500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Sistema fuera de linea"
                 }
               }
             }
@@ -963,7 +1250,7 @@
         }
       }
     },
-    "/consultaProductosContratados": {
+    "/persona/consultaProductosContratados": {
       "post": {
         "tags": [
           "Sprint 1"
@@ -1047,11 +1334,44 @@
                 }
               }
             }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "ListaProductos": {
+                  "example": [],
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "nombre": {
+                        "description": "Nombre del servicio",
+                        "type": "string",
+                        "example": "String"
+                      },
+                      "idProducto": {
+                        "description": "",
+                        "type": "string",
+                        "example": "String"
+                      }
+                    }
+                  }
+                },
+                "responseStatus": {
+                  "type": "number",
+                  "example": 404
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Persona proporcionada no existe"
+                }
+              }
+            }
           }
         }
       }
     },
-    "/consultaServiciosContratados": {
+    "/persona/consultaServiciosContratados": {
       "post": {
         "tags": [
           "Sprint 1"
@@ -1109,12 +1429,6 @@
                   "type": "array",
                   "items": {
                     "properties": {
-                      "id": {
-                        "description": "Identificador del servicio contratado",
-                        "type": "integer",
-                        "format": "int32",
-                        "example": 3
-                      },
                       "nombre": {
                         "description": "Nombre del servicio",
                         "type": "string",
@@ -1124,12 +1438,6 @@
                         "description": "Bandera que indica si el servicio ha sido contratado por la persona",
                         "type": "boolean",
                         "example": true
-                      },
-                      "montoMaximoAutorizado": {
-                        "description": "Monto máximo autorizado por el cliente",
-                        "type": "number",
-                        "format": "double",
-                        "example": 10000.1
                       }
                     }
                   }
@@ -1144,11 +1452,44 @@
                 }
               }
             }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "listaServicios": {
+                  "example": [],
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "nombre": {
+                        "description": "Nombre del servicio",
+                        "type": "string",
+                        "example": "BANCA ELECTRONICA"
+                      },
+                      "contratado": {
+                        "description": "Bandera que indica si el servicio ha sido contratado por la persona",
+                        "type": "boolean",
+                        "example": true
+                      }
+                    }
+                  }
+                },
+                "responseStatus": {
+                  "type": "number",
+                  "example": 404
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Persona proporcionada no existe"
+                }
+              }
+            }
           }
         }
       }
     },
-    "/envioNotificaciones": {
+    "/persona/envioNotificaciones": {
       "post": {
         "tags": [
           "Sprint 1"
@@ -1163,10 +1504,14 @@
             "schema": {
               "required": [
                 "canal",
+                "ticket",
                 "idPersona",
                 "tipoMensaje",
                 "tipoNotificacion",
-                "to"
+                "from",
+                "subject",
+                "to",
+                "mapParameters"
               ],
               "properties": {
                 "idPersona": {
@@ -1203,6 +1548,14 @@
                   "type": "string",
                   "example": "notificacion"
                 },
+                "from": {
+                  "type": "string",
+                  "example": "from"
+                },
+                "subject": {
+                  "type": "string",
+                  "example": "subject"
+                },
                 "to": {
                   "type": "string",
                   "example": "cliente@mail.com"
@@ -1235,11 +1588,26 @@
                 }
               }
             }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 404
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Imposible mandar el mensaje"
+                }
+              }
+            }
           }
         }
       }
     },
-    "/listarTokensOTP": {
+    "/autenticacion/listarTokensOTP": {
       "post": {
         "tags": [
           "Sprint 1"
@@ -1342,6 +1710,64 @@
                 "responseError": {
                   "type": "string",
                   "example": ""
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "listTokens": {
+                  "example": [],
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "usuario",
+                      "tokenSerial",
+                      "nombreUsuario",
+                      "fechaAlta",
+                      "tokenStatus"
+                    ],
+                    "properties": {
+                      "usuario": {
+                        "description": "Clave de usuario asociado al token.",
+                        "maxLength": 14,
+                        "type": "string",
+                        "example": "string"
+                      },
+                      "tokenSerial": {
+                        "description": "Número de serie que viene en el Token Físico.",
+                        "maxLength": 21,
+                        "type": "string",
+                        "example": "string"
+                      },
+                      "nombreUsuario": {
+                        "description": "Nombre del usuario asociado al token.",
+                        "type": "string",
+                        "example": "string"
+                      },
+                      "fechaAlta": {
+                        "description": "Fecha de alta del usuario en LDAP en formato dd-MM-yyyy’T’hh:mm:ss",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "date"
+                      },
+                      "tokenStatus": {
+                        "description": "Bandera de estado del Token.",
+                        "type": "string",
+                        "example": "string"
+                      }
+                    }
+                  }
+                },
+                "responseStatus": {
+                  "type": "number",
+                  "example": 5500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Sistema TAM fuera de linea"
                 }
               }
             }
@@ -4742,7 +5168,7 @@
         }
       }
     },
-    "/actualizaAliasCuenta": {
+    "/persona/actualizaAliasCuenta": {
       "post": {
         "tags": [
           "Sprint 3"
@@ -4757,7 +5183,6 @@
             "schema": {
               "required": [
                 "idPersona",
-                "alias",
                 "noCuenta",
                 "otp",
                 "canal",
@@ -4843,7 +5268,7 @@
         }
       }
     },
-    "/actualizaBarrido": {
+    "/persona/actualizaBarrido": {
       "post": {
         "tags": [
           "Sprint 3"
@@ -4859,7 +5284,9 @@
               "required": [
                 "otp",
                 "folio",
-                "ticket"
+                "ticket",
+                "canal",
+                "barrido"
               ],
               "properties": {
                 "folio": {
@@ -4875,7 +5302,7 @@
                   ],
                   "properties": {
                     "horaEjecucion": {
-                      "description": "Horas en las que se realizará la ejecución del barrido. En formato hh:mm:ss. Es de especial importancia notar que el servicio NO se hará responsable por verificar que los horarios solicitados  para los barridos no choquen con cualquier otro barrido previamente programado.",
+                      "description": "Horas en las que se realizará la ejecución del barrido. En formato hh:mm:ss. Es de especial importancia notar que el servicio NO se hará     responsable por verificar que los horarios solicitados  para los barridos no choquen con cualquier otro barrido previamente programado.",
                       "type": "array",
                       "items": {
                         "type": "string"
@@ -4974,7 +5401,7 @@
         }
       }
     },
-    "/actualizaDispersionFondos": {
+    "/persona/actualizaDispersionFondos": {
       "post": {
         "tags": [
           "Sprint 3"
@@ -5107,7 +5534,7 @@
         }
       }
     },
-    "/actualizaMovil": {
+    "/persona/actualizaMovil": {
       "post": {
         "tags": [
           "Sprint 3"
@@ -5141,7 +5568,8 @@
                 "numeroMovil": {
                   "description": "Número de teléfono móvil a asociar la cuenta.",
                   "type": "string",
-                  "example": "String"
+                  "example": "String",
+                  "maxLength": 20
                 },
                 "otp": {
                   "description": "OTP del dispositivo para la autenticación del usuario.",
@@ -5207,7 +5635,7 @@
         }
       }
     },
-    "/actualizaPreregistro": {
+    "/persona/actualizaPreregistro": {
       "post": {
         "tags": [
           "Sprint 3"
@@ -5333,7 +5761,7 @@
         }
       }
     },
-    "/actualizaReporteCobranza": {
+    "/persona/actualizaReporteCobranza": {
       "post": {
         "tags": [
           "Sprint 3"
@@ -5379,6 +5807,11 @@
                       "example": "12345678"
                     }
                   }
+                },
+                "responseError": {
+                  "description": "Mensaje de error asociado con el código",
+                  "type": "string",
+                  "example": " "
                 },
                 "reporteCobranza": {
                   "type": "array",
@@ -5479,7 +5912,7 @@
         }
       }
     },
-    "/actualizarDatosBE": {
+    "/persona/actualizarDatosBE": {
       "post": {
         "tags": [
           "Sprint 3"
@@ -5539,7 +5972,8 @@
                 },
                 "telefono": {
                   "type": "string",
-                  "example": "1234567489"
+                  "example": "1234567489",
+                  "maxLength": 20
                 }
               }
             }
@@ -5579,7 +6013,7 @@
         }
       }
     },
-    "/actualizarNIP": {
+    "/persona/actualizarNIP": {
       "post": {
         "tags": [
           "Sprint 3"
@@ -5673,7 +6107,7 @@
         }
       }
     },
-    "/asociaMovil": {
+    "/persona/asociaMovil": {
       "post": {
         "tags": [
           "Sprint 3"
@@ -5772,7 +6206,7 @@
         }
       }
     },
-    "/barrerCuentas": {
+    "/persona/barrerCuentas": {
       "post": {
         "tags": [
           "Sprint 3"
@@ -5921,7 +6355,7 @@
         }
       }
     },
-    "/cancelaOpProg": {
+    "/persona/cancelaOpProg": {
       "post": {
         "tags": [
           "Sprint 3"
@@ -5935,7 +6369,10 @@
             "required": true,
             "schema": {
               "required": [
-                "folio"
+                "folio",
+                "ticket",
+                "otp",
+                "canal"
               ],
               "properties": {
                 "idPersona": {
@@ -5945,8 +6382,8 @@
                 },
                 "folio": {
                   "description": "folio que tiene la operación a cancelar.",
-                  "type": "integer",
-                  "format": "long",
+                  "type": "string",
+                  "format": "string",
                   "example": "1234567"
                 },
                 "otp": {
@@ -6012,7 +6449,7 @@
         }
       }
     },
-    "/catCreditos": {
+    "/persona/catCreditos": {
       "post": {
         "tags": [
           "Sprint 3"
@@ -6053,6 +6490,10 @@
           "200": {
             "description": "Catálogo de créditos",
             "schema": {
+              "required": [
+                "catTiposCreditos",
+                "responseStatus"
+              ],
               "properties": {
                 "responseStatus": {
                   "type": "number",
@@ -6105,7 +6546,7 @@
         }
       }
     },
-    "/catTipoCuenta": {
+    "/persona/catTipoCuenta": {
       "post": {
         "tags": [
           "Sprint 3"
@@ -6147,6 +6588,7 @@
             "description": "Representa una ejecución exitosa. Para efectos de este servicio, será indicativo de que la notificación solicitada se envió correctamente.",
             "schema": {
               "required": [
+                "catTipoCuentas",
                 "responseStatus"
               ],
               "properties": {
@@ -6241,7 +6683,7 @@
         }
       }
     },
-    "/catDispositivosMoviles": {
+    "/persona/catDispositivosMoviles": {
       "post": {
         "tags": [
           "Sprint 3"
@@ -6290,6 +6732,7 @@
                       "idDispositivo": {
                         "description": "Número de serie del dispositivo móvil.",
                         "type": "integer",
+                        "format": "int64",
                         "example": "1"
                       },
                       "descripcion": {
@@ -6334,7 +6777,7 @@
         }
       }
     },
-    "/consultaArchivoLote": {
+    "/persona/consultaArchivoLote": {
       "post": {
         "tags": [
           "Sprint 3"
@@ -6446,7 +6889,7 @@
         }
       }
     },
-    "/consultaBancos": {
+    "/persona/consultaBancos": {
       "post": {
         "tags": [
           "Sprint 3"
@@ -6505,6 +6948,9 @@
           "200": {
             "description": "Consulta Bancos",
             "schema": {
+              "required": [
+                "responseStatus"
+              ],
               "properties": {
                 "responseStatus": {
                   "type": "number",
@@ -6518,9 +6964,6 @@
                   "type": "array",
                   "items": {
                     "required": [
-                      "CASFIM",
-                      "nombreCorto",
-                      "nombre",
                       "participaCECOBAN",
                       "participaPROSA",
                       "participaSPEI",
@@ -6598,7 +7041,7 @@
         }
       }
     },
-    "/consultaBarridoCuentas": {
+    "/persona/consultaBarridoCuentas": {
       "post": {
         "tags": [
           "Sprint 3"
@@ -6614,7 +7057,7 @@
               "required": [
                 "canal",
                 "ticket",
-                "cuentaConcentradora"
+                "idPersona"
               ],
               "properties": {
                 "canal": {
@@ -6638,11 +7081,10 @@
                     }
                   }
                 },
-                "cuentaConcentradora": {
-                  "description": "Número de cuenta a la cual se va a ir a dejar el monto total acumulado.",
+                "idPersona": {
                   "type": "integer",
                   "format": "int64",
-                  "example": "5642312345"
+                  "example": 123546345
                 }
               }
             }
@@ -6666,17 +7108,27 @@
                   "items": {
                     "required": [
                       "folioBarrido",
+                      "nombreBarrido",
                       "cuentaConcentradora",
                       "nombreCuentaConcentradora",
                       "horasEjecucion",
-                      "cuentasBarrer"
+                      "cuentasBarrer",
+                      "cuenta",
+                      "montoMinDejar",
+                      "nombre"
                     ],
                     "properties": {
                       "folioBarrido": {
                         "description": "Identificador único del registro de barrido.",
-                        "type": "integer",
-                        "format": "int64",
+                        "type": "string",
+                        "format": "string",
                         "example": "265"
+                      },
+                      "nombreBarrido": {
+                        "description": "Nombre identificatorio para el barrido.",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Barrido Test"
                       },
                       "cuentaConcentradora": {
                         "description": "Número de cuenta a la cual se va a ir a dejar el monto total acumulado.",
@@ -6753,7 +7205,7 @@
         }
       }
     },
-    "/consultaBines": {
+    "/persona/consultaBines": {
       "post": {
         "tags": [
           "Sprint 3"
@@ -6834,7 +7286,7 @@
         }
       }
     },
-    "/consultaCuentahabiente": {
+    "/persona/consultaCuentahabiente": {
       "post": {
         "tags": [
           "Sprint 3"
@@ -6849,7 +7301,8 @@
             "schema": {
               "required": [
                 "numeroDeCuenta",
-                "ticket"
+                "ticket",
+                "canal"
               ],
               "properties": {
                 "canal": {
@@ -6921,7 +7374,7 @@
         }
       }
     },
-    "/consultaDispersionFondos": {
+    "/persona/consultaDispersionFondos": {
       "post": {
         "tags": [
           "Sprint 3"
@@ -6935,16 +7388,15 @@
             "required": true,
             "schema": {
               "required": [
-                "cuentaDispersora",
+                "idPersona",
                 "ticket",
                 "canal"
               ],
               "properties": {
-                "cuentaDispersora": {
-                  "description": "Número de cuenta cuyas dispersiones programadas se desea conocer.",
+                "idPersona": {
                   "type": "integer",
                   "format": "int64",
-                  "example": 5642312345
+                  "example": 123546345
                 },
                 "ticket": {
                   "required": [
@@ -6975,6 +7427,12 @@
           "200": {
             "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
             "schema": {
+              "required": [
+                "cuentaDispersion",
+                "nombreCuentaDispersion",
+                "horasEjecucion",
+                "cuentasDestino"
+              ],
               "properties": {
                 "responseStatus": {
                   "type": "number",
@@ -6987,6 +7445,12 @@
                 "dispersiones": {
                   "type": "array",
                   "items": {
+                    "required": [
+                      "cuentaDispersion",
+                      "nombreCuentaDispersion",
+                      "horasEjecucion",
+                      "cuentasDestino"
+                    ],
                     "properties": {
                       "folio": {
                         "description": "El folio asignado a la dispersión.",
@@ -6997,6 +7461,11 @@
                         "type": "integer",
                         "format": "int64",
                         "example": 5642312345
+                      },
+                      "nombreDispersion": {
+                        "description": "Cadena identificatoria para esta particular dispersión.",
+                        "type": "string",
+                        "example": "DISPERSION TEST"
                       },
                       "nombreCuentaDispersion": {
                         "type": "string",
@@ -7076,7 +7545,7 @@
         }
       }
     },
-    "/consultaLotes": {
+    "/persona/consultaLotes": {
       "post": {
         "tags": [
           "Sprint 3"
@@ -7093,7 +7562,8 @@
                 "idPersona",
                 "fechaInicio",
                 "ticket",
-                "canal"
+                "canal",
+                "operacion"
               ],
               "properties": {
                 "idPersona": {
@@ -7104,11 +7574,13 @@
                 "fechaInicio": {
                   "description": "Fecha de inicio del rango de fechas de consulta.",
                   "type": "string",
+                  "format": "date",
                   "example": "01-09-2017"
                 },
                 "fechaFin": {
                   "description": "Fecha de inicio del rango de fechas de consulta. En formato dd-MM-yyyy.",
                   "type": "string",
+                  "format": "date",
                   "example": "10-09-2017"
                 },
                 "operacion": {
@@ -7215,7 +7687,7 @@
         }
       }
     },
-    "/consultaMovilesCliente": {
+    "/persona/consultaMovilesCliente": {
       "post": {
         "tags": [
           "Sprint 3"
@@ -7290,6 +7762,27 @@
                         "description": "IMEI asociado al dispositivo móvil.",
                         "type": "string",
                         "example": "12346"
+                      },
+                      "estatusOTPVirtual": {
+                        "description": "Estatus del OTP virtual asociado con este dispositivo.",
+                        "type": "boolean",
+                        "example": "12346"
+                      },
+                      "fechaAsignacion": {
+                        "description": "Fecha de asociación del dispositivo en formato dd-MM.",
+                        "type": "string",
+                        "format": "date",
+                        "example": "12346"
+                      },
+                      "codigoActivacion": {
+                        "description": "Código de activación generado para la asociación de dispositivo móvil al servicio de multiva touch.",
+                        "type": "string",
+                        "example": "12346"
+                      },
+                      "tipoDispositivo": {
+                        "description": "Tipo de dispositivo asociado.",
+                        "type": "string",
+                        "example": "12346"
                       }
                     }
                   }
@@ -7315,7 +7808,7 @@
         }
       }
     },
-    "/consultaReporteCobranza": {
+    "/persona/consultaReporteCobranza": {
       "post": {
         "tags": [
           "Sprint 3"
@@ -7391,7 +7884,7 @@
                         "type": "string",
                         "example": "12131313113"
                       },
-                      "tipoCuenta": {
+                      "tipoReporte": {
                         "description": "Tipo de reporte de cobranza solicitado. Este campo determina el servicio que se ejecutará para generar el reporte, así como el layout que se obtendrá como respuesta. Puede tomar uno de los siguientes valores:TBP, COBRANZA_REFERENCIADA o CONCILIACION_EMPRESA",
                         "type": "string",
                         "format": "date",
@@ -7406,11 +7899,13 @@
                       "fechaFin": {
                         "description": "Fecha final para la búsqueda por rango en formato dd-MM- yyyy. Si se proporciona un rango de fecha para la consulta, el reporte se generará en línea y no se ejecutará una programación.",
                         "type": "string",
+                        "format": "date",
                         "example": "26-07-2017"
                       },
                       "horaProgramacion": {
                         "description": "Hora de ejecución DIARIA de la generación de reporte de manera automática en la",
                         "type": "string",
+                        "format": "time",
                         "example": "09:09:09"
                       },
                       "separador": {
@@ -7460,7 +7955,7 @@
         }
       }
     },
-    "/consultarAutorizaciones": {
+    "/persona/consultarAutorizaciones": {
       "post": {
         "tags": [
           "Sprint 3"
@@ -7525,16 +8020,6 @@
                 "autorizaciones": {
                   "type": "array",
                   "items": {
-                    "required": [
-                      "taskId",
-                      "idPersona",
-                      "nombreRazonSocial",
-                      "idPersonaSolicitante",
-                      "nombreSolicitante",
-                      "folio",
-                      "descripcionOperacion",
-                      "montoOperacion"
-                    ],
                     "properties": {
                       "taskId": {
                         "description": "Identificador único de la tarea consultada en la BPM. Este valor será necesario para completar la tarea cuando se haya emitido el voto.",
@@ -7603,7 +8088,7 @@
         }
       }
     },
-    "/desregistraMovil": {
+    "/persona/desregistraMovil": {
       "post": {
         "tags": [
           "Sprint 3"
@@ -7619,7 +8104,8 @@
               "required": [
                 "idPersona",
                 "otp",
-                "ticket"
+                "ticket",
+                "canal"
               ],
               "properties": {
                 "otp": {
@@ -7701,7 +8187,7 @@
         }
       }
     },
-    "/dispersaFondos": {
+    "/persona/dispersaFondos": {
       "post": {
         "tags": [
           "Sprint 3"
@@ -7788,6 +8274,12 @@
                 "cuentasDestino": {
                   "type": "array",
                   "items": {
+                    "required": [
+                      "cuenta",
+                      "nombre",
+                      "orden",
+                      "montoTransferencia"
+                    ],
                     "properties": {
                       "cuenta": {
                         "description": "Número de cuenta donde se realizará la recolección del efectivo.",
@@ -7867,7 +8359,7 @@
         }
       }
     },
-    "/ejecutaOperacionLote": {
+    "/persona/ejecutaOperacionLote": {
       "post": {
         "tags": [
           "Sprint 3"
@@ -7882,7 +8374,6 @@
             "schema": {
               "required": [
                 "idPersona",
-                "fechaEjecucion",
                 "rutaDocumento",
                 "tipoOperacion",
                 "otp",
@@ -7898,6 +8389,7 @@
                 "fechaEjecucion": {
                   "description": "Fecha en la que se ejecutará el procesamiento de este archivo de operaciones. En formato dd-MM-yyyy.",
                   "type": "string",
+                  "formaat": "date",
                   "example": "01-01-2018"
                 },
                 "rutaDocumento": {
@@ -7983,7 +8475,7 @@
         }
       }
     },
-    "/ejecutaTransaccion": {
+    "/persona/ejecutaTransaccion": {
       "post": {
         "tags": [
           "Sprint 3"
@@ -7997,14 +8489,17 @@
             "required": true,
             "schema": {
               "required": [
+                "idPersona",
                 "ipOrigen",
                 "numeroCuentaCargo",
                 "idTipoTxn",
                 "usuarioCaptura",
                 "moneda",
                 "importeTransaccion",
-                "fechaProgramacion",
-                "concepto"
+                "concepto",
+                "otp",
+                "ticket",
+                "canal"
               ],
               "properties": {
                 "idPersona": {
@@ -8065,6 +8560,12 @@
                   "type": "string",
                   "format": "string",
                   "example": "PAGO DE LUZ"
+                },
+                "agente": {
+                  "description": "Identificador del agente de IVR, utilizado en caso de que la transacción se haya recibido por medio de este canal.",
+                  "type": "string",
+                  "format": "string",
+                  "example": " "
                 },
                 "cuentaTerceros": {
                   "required": [
@@ -8138,6 +8639,10 @@
                       "description": "Número de RFC o curp del Titular de la cuenta",
                       "type": "string",
                       "example": "GUMR880723BJ2"
+                    },
+                    "iva": {
+                      "type": "number",
+                      "example": "100.00"
                     }
                   }
                 },
@@ -8169,6 +8674,10 @@
                       "description": "Número de RFC o curp del Titular de la cuenta",
                       "type": "string",
                       "example": "GUMR880723BJ2"
+                    },
+                    "iva": {
+                      "type": "number",
+                      "example": "100.00"
                     }
                   }
                 },
@@ -8194,6 +8703,10 @@
                       "description": "Número de RFC o curp del Titular de la cuenta",
                       "type": "string",
                       "example": "TEDW112233445566"
+                    },
+                    "iva": {
+                      "type": "number",
+                      "example": "100.00"
                     }
                   }
                 },
@@ -8234,6 +8747,10 @@
                     }
                   }
                 },
+                "otp": {
+                  "type": "string",
+                  "example": "1234567"
+                },
                 "ticket": {
                   "required": [
                     "id_user",
@@ -8249,6 +8766,11 @@
                       "example": "12345678"
                     }
                   }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
                 }
               }
             }
@@ -8258,22 +8780,12 @@
           "200": {
             "description": "ejecuta Transaccion",
             "schema": {
+              "required": [
+                "result",
+                "responseStatus",
+                "responseError"
+              ],
               "properties": {
-                "folio": {
-                  "type": "string",
-                  "format": "string",
-                  "example": "A-545445"
-                },
-                "importeComision": {
-                  "type": "number",
-                  "format": "double",
-                  "example": "14"
-                },
-                "importeIva": {
-                  "type": "number",
-                  "format": "double",
-                  "example": "15.12"
-                },
                 "responseStatus": {
                   "type": "number",
                   "example": 200
@@ -8281,6 +8793,127 @@
                 "responseError": {
                   "type": "string",
                   "example": ""
+                },
+                "result": {
+                  "required": [
+                    "estatus",
+                    "folioMultivanet",
+                    "folio",
+                    "monto",
+                    "montoComision",
+                    "ivaComision",
+                    "iva",
+                    "rfc",
+                    "fecha",
+                    "hora",
+                    "moneda",
+                    "cuentaOrigen",
+                    "beneficiario",
+                    "cuentaDestino",
+                    "referencia"
+                  ],
+                  "properties": {
+                    "estatus": {
+                      "description": "Estado final de la transacción en el core bancario que la ejecuta.",
+                      "type": "string",
+                      "format": "string",
+                      "example": "NOT_APPLIED"
+                    },
+                    "folioMultivanet": {
+                      "description": "Folio identificador de la transacción generado por el bus de servicios.",
+                      "type": "string",
+                      "format": "string",
+                      "example": "1234567896"
+                    },
+                    "folio": {
+                      "description": "Folio generado para la transacción por el core bancario.",
+                      "type": "string",
+                      "format": "string",
+                      "example": " "
+                    },
+                    "monto": {
+                      "description": "Monto de la transacción.",
+                      "type": "number",
+                      "format": "double",
+                      "example": "123456.10"
+                    },
+                    "montoComision": {
+                      "description": "Monto de la transacción.",
+                      "type": "number",
+                      "format": "double",
+                      "example": "12345670.10"
+                    },
+                    "ivaComision": {
+                      "type": "number",
+                      "format": "double",
+                      "example": "0.10"
+                    },
+                    "iva": {
+                      "type": "number",
+                      "format": "double",
+                      "example": "00.12"
+                    },
+                    "rfc": {
+                      "description": "RFC del cliente.",
+                      "type": "string",
+                      "format": "string",
+                      "example": "ABCD123456AB9"
+                    },
+                    "fecha": {
+                      "description": "Fecha de aplicación en formato yyyy-MM-dd.",
+                      "type": "string",
+                      "format": "date",
+                      "example": "YYYY-MM- DD"
+                    },
+                    "hora": {
+                      "description": "Hora de aplicación en formato hh:mm:ss.",
+                      "type": "string",
+                      "format": "time",
+                      "example": "hh:mm:ss"
+                    },
+                    "moneda": {
+                      "description": "Moneda de la transacción a 3 caracteres.",
+                      "type": "string",
+                      "format": "string",
+                      "example": "MXP"
+                    },
+                    "cuentaOrigen": {
+                      "description": "Cuenta origen de la transacción.",
+                      "type": "string",
+                      "format": "string",
+                      "example": "1234567890"
+                    },
+                    "beneficiario": {
+                      "description": "Alias del beneficiario de la transacción en la configuración del cliente.",
+                      "type": "string",
+                      "format": "string",
+                      "example": "CUENTA PRUEBA"
+                    },
+                    "cuentaDestino": {
+                      "description": "Cuenta destino de la transacción.",
+                      "type": "string",
+                      "format": "string",
+                      "example": "123456789012345678"
+                    },
+                    "referencia": {
+                      "description": "Referencia generada para la transacción.",
+                      "type": "string",
+                      "format": "string",
+                      "example": "1"
+                    },
+                    "claveRastreo": {
+                      "description": "Clave de rastreo generada para transacciones SPEI.",
+                      "type": "string",
+                      "format": "string",
+                      "example": "12345"
+                    },
+                    "concepto": {
+                      "description": "Concepto capturado por el cliente para la transacción. Aplica para SPEI.",
+                      "type": "string",
+                      "format": "string",
+                      "example": "RESULTADO EJEMPLO"
+                    }
+                  }
                 }
               }
             }
@@ -8303,7 +8936,7 @@
         }
       }
     },
-    "/eliminaBarrido": {
+    "/persona/eliminaBarrido": {
       "post": {
         "tags": [
           "Sprint 3"
@@ -8392,7 +9025,7 @@
         }
       }
     },
-    "/eliminaDispersion": {
+    "/persona/eliminaDispersion": {
       "post": {
         "tags": [
           "Sprint 3"
@@ -8481,7 +9114,7 @@
         }
       }
     },
-    "/eliminaMovil": {
+    "/persona/eliminaMovil": {
       "post": {
         "tags": [
           "Sprint 3"
@@ -8575,7 +9208,7 @@
         }
       }
     },
-    "/eliminaPreregistro": {
+    "/persona/eliminaPreregistro": {
       "post": {
         "tags": [
           "Sprint 3"
@@ -8664,7 +9297,7 @@
         }
       }
     },
-    "/eliminaReporteCobranza": {
+    "/persona/eliminaReporteCobranza": {
       "post": {
         "tags": [
           "Sprint 3"
@@ -8759,7 +9392,7 @@
         }
       }
     },
-    "/emiteVoto": {
+    "/persona/emiteVoto": {
       "post": {
         "tags": [
           "Sprint 3"
@@ -8860,7 +9493,7 @@
         }
       }
     },
-    "/guardaPreregistro": {
+    "/persona/guardaPreregistro": {
       "post": {
         "tags": [
           "Sprint 3"
@@ -8958,6 +9591,10 @@
                   "example": "MVNET"
                 },
                 "terceroMultiva": {
+                  "required": [
+                    "idProducto",
+                    "beneficiario"
+                  ],
                   "properties": {
                     "idProducto": {
                       "type": "string",
@@ -8978,6 +9615,10 @@
                   }
                 },
                 "interbancario": {
+                  "required": [
+                    "banco",
+                    "beneficiario"
+                  ],
                   "properties": {
                     "banco": {
                       "type": "string",
@@ -8998,6 +9639,10 @@
                   }
                 },
                 "credito": {
+                  "required": [
+                    "banco",
+                    "tipoCredito"
+                  ],
                   "properties": {
                     "banco": {
                       "type": "string",
@@ -9011,6 +9656,9 @@
                   }
                 },
                 "servicio": {
+                  "required": [
+                    "noEstablecimiento"
+                  ],
                   "properties": {
                     "noEstablecimiento": {
                       "type": "integer",
@@ -9020,6 +9668,10 @@
                   }
                 },
                 "pagoTDC": {
+                  "required": [
+                    "noEstablecimiento",
+                    "banco"
+                  ],
                   "properties": {
                     "noEstablecimiento": {
                       "type": "integer",
@@ -9040,6 +9692,9 @@
           "200": {
             "description": "Representa una ejecución exitosa. Para efectos de este servicio, será indicativo de que la notificación solicitada se envió correctamente.",
             "schema": {
+              "required": [
+                "responseStatus"
+              ],
               "properties": {
                 "idPreregistro": {
                   "type": "string",
@@ -9074,7 +9729,7 @@
         }
       }
     },
-    "/obtenerCatalogoConvenios": {
+    "/persona/obtenerCatalogoConvenios": {
       "post": {
         "tags": [
           "Sprint 3"
@@ -9163,7 +9818,7 @@
         }
       }
     },
-    "/obtenerCatalogoTipoTxn": {
+    "/persona/obtenerCatalogoTipoTxn": {
       "post": {
         "tags": [
           "Sprint 3"
@@ -9262,7 +9917,7 @@
         }
       }
     },
-    "/obtenerPreregistroPorCliente": {
+    "/persona/obtenerPreregistroPorCliente": {
       "post": {
         "tags": [
           "Sprint 3"
@@ -9304,7 +9959,8 @@
                 },
                 "canal": {
                   "type": "string",
-                  "example": "MVNET"
+                  "minLength": 1,
+                  "example": "WEB"
                 }
               }
             }
@@ -9515,7 +10171,7 @@
         }
       }
     },
-    "/obtenerPreregistroPorClienteTransaccion": {
+    "/persona/obtenerPreregistroPorClienteTransaccion": {
       "post": {
         "tags": [
           "Sprint 3"
@@ -9600,7 +10256,10 @@
                       "celularNotificacion",
                       "email",
                       "periodo",
-                      "moneda"
+                      "moneda",
+                      "otp",
+                      "ticket",
+                      "canal"
                     ],
                     "properties": {
                       "idPreregistro": {
@@ -9751,19 +10410,13 @@
                       },
                       "servicio": {
                         "required": [
-                          "noEstablecimiento",
-                          "razonSocial"
+                          "noEstablecimiento"
                         ],
                         "properties": {
                           "noEstablecimiento": {
                             "description": "Identificador del convenio del servicio que corresponde a este preregistro. Este valor puede ser uno de los siguientes; 1; Teléfono 12; CFE 14; Cablevisión 15; Sky",
                             "type": "integer",
                             "format": "int32",
-                            "example": 1
-                          },
-                          "razonSocial": {
-                            "description": "Razón social de la empresa proveedora del servicio.",
-                            "type": "string",
                             "example": 1
                           }
                         }
@@ -9792,6 +10445,31 @@
                             "example": "123456"
                           }
                         }
+                      },
+                      "otp": {
+                        "type": "string",
+                        "example": "1234567"
+                      },
+                      "ticket": {
+                        "required": [
+                          "id_user",
+                          "id_creds"
+                        ],
+                        "properties": {
+                          "id_user": {
+                            "type": "string",
+                            "example": "123456"
+                          },
+                          "id_creds": {
+                            "type": "string",
+                            "example": "12345678"
+                          }
+                        }
+                      },
+                      "canal": {
+                        "type": "string",
+                        "minLength": 1,
+                        "example": "WEB"
                       }
                     }
                   }
@@ -9817,7 +10495,7 @@
         }
       }
     },
-    "/obtenerReporteCobranza": {
+    "/persona/obtenerReporteCobranza": {
       "post": {
         "tags": [
           "Sprint 3"
@@ -9831,7 +10509,7 @@
             "required": true,
             "schema": {
               "required": [
-                "idPersona",
+                "otp",
                 "canal",
                 "noCuenta",
                 "tipoReporte",
@@ -9839,11 +10517,6 @@
                 "email"
               ],
               "properties": {
-                "idPersona": {
-                  "type": "integer",
-                  "format": "int64",
-                  "example": 123546345
-                },
                 "canal": {
                   "type": "string",
                   "minLength": 1,
@@ -9852,6 +10525,10 @@
                 "noCuenta": {
                   "type": "string",
                   "example": 12342456423985
+                },
+                "otp": {
+                  "type": "string",
+                  "example": "1234567"
                 },
                 "tipoReporte": {
                   "description": "Tipo de cuenta de cobranza solicitado. Este campo determina el servicio que se ejecutará para generar el reporte, así como el layout que se obtendrá como respuesta. Puede tomar uno de los siguientes valores TBP, COBRANZA_REFERENCIADA o CONCILIACION_EMPRESA",
@@ -9964,7 +10641,7 @@
         }
       }
     },
-    "/registraMovilTouch": {
+    "/persona/registraMovilTouch": {
       "post": {
         "tags": [
           "Sprint 3"
@@ -9981,18 +10658,13 @@
                 "otp",
                 "canal",
                 "ticket",
-                "idPersona",
-                "noSerie"
+                "idPersona"
               ],
               "properties": {
-                "otp": {
-                  "type": "string",
-                  "example": "1234567"
-                },
-                "canal": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": "WEB"
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
                 },
                 "ticket": {
                   "required": [
@@ -10010,13 +10682,12 @@
                     }
                   }
                 },
-                "idPersona": {
-                  "type": "integer",
-                  "format": "int64",
-                  "example": 123546345
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
                 },
-                "noSerie": {
-                  "description": "Número de serie del dispositivo a asignar.",
+                "otp": {
                   "type": "string",
                   "example": "1234567"
                 },
@@ -10024,6 +10695,11 @@
                   "description": "IMEI asociado con el teléfono",
                   "type": "string",
                   "example": "123456"
+                },
+                "noSerie": {
+                  "description": "Número de serie del dispositivo a asignar.",
+                  "type": "string",
+                  "example": "123456ABC"
                 }
               }
             }
@@ -10063,7 +10739,7 @@
         }
       }
     },
-    "/sincronizaOTP": {
+    "/autenticacion/sincronizaOTP": {
       "post": {
         "tags": [
           "Sprint 3"
@@ -10140,7 +10816,7 @@
         }
       }
     },
-    "/solicitaOTPVirtual": {
+    "/persona/solicitaOTPVirtual": {
       "post": {
         "tags": [
           "Sprint 3"
@@ -12347,7 +13023,7 @@
         }
       }
     },
-    "/actualizaDatosPersona": {
+    "/bup/actualizaDatosPersona": {
       "post": {
         "tags": [
           "Sprint F"
@@ -12445,7 +13121,7 @@
             }
           },
           "201": {
-            "description": "El registro no se pudo actualizar.",
+            "description": "Error controlado, el codigo http real es 200",
             "schema": {
               "properties": {
                 "responseStatus": {
@@ -12455,12 +13131,22 @@
                 "responseError": {
                   "type": "string",
                   "example": "registro no se pudo actualizar"
+                },
+                "result": {
+                  "example": {},
+                  "properties": {
+                    "folio": {
+                      "description": "Folio único para la operación.",
+                      "type": "string",
+                      "example": "12345678910"
+                    }
+                  }
                 }
               }
             }
           },
           "202": {
-            "description": "Error interno en el servidor.",
+            "description": "Error controlado, el codigo http real es 200",
             "schema": {
               "properties": {
                 "responseStatus": {
@@ -12477,7 +13163,7 @@
         }
       }
     },
-    "/actualizaFacultamientoUsuario": {
+    "/facultamiento/actualizaFacultamientoUsuario": {
       "post": {
         "tags": [
           "Sprint F"
@@ -12721,6 +13407,15 @@
                 "responseError": {
                   "type": "string",
                   "example": ""
+                },
+                "result": {
+                  "properties": {
+                    "folio": {
+                      "description": "Folio único para la operación.",
+                      "type": "string",
+                      "example": "12345678910"
+                    }
+                  }
                 }
               }
             }
@@ -12743,7 +13438,7 @@
         }
       }
     },
-    "/asignacionOtpUsuario": {
+    "/otp/asignacionOtpUsuario": {
       "post": {
         "tags": [
           "Sprint F"
@@ -12822,6 +13517,12 @@
                 "responseError": {
                   "type": "string",
                   "example": ""
+                },
+                "result": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 }
               }
             }
@@ -12832,11 +13533,33 @@
               "properties": {
                 "responseStatus": {
                   "type": "number",
-                  "example": 2500
+                  "example": 2204
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Internal Server Error"
+                  "example": "No se encontraron registros en la base de OTP."
+                }
+              }
+            }
+          },
+          "202": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 2501
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "OTP fuera de línea"
+                },
+                "result": {
+                  "example": [],
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 }
               }
             }
@@ -12844,7 +13567,7 @@
         }
       }
     },
-    "/bloqueoDesbloqueoUsuario": {
+    "/facultamiento/bloqueoDesbloqueoUsuario": {
       "post": {
         "tags": [
           "Sprint F"
@@ -12933,8 +13656,7 @@
                   "type": "string",
                   "example": ""
                 },
-                "listaUsuarios": {
-                  "description": "Lista de usuario para verificar ",
+                "result": {
                   "type": "array",
                   "items": {
                     "required": [
@@ -12958,7 +13680,7 @@
             }
           },
           "201": {
-            "description": "Error controlado, el codigo http real es 200",
+            "description": "Error controlado, el código HTTP real es 200. Estos errores pertenecen a TAMException: 2449: Usuario no existe, 2441: OTP Invalido",
             "schema": {
               "properties": {
                 "responseStatus": {
@@ -12970,8 +13692,40 @@
                   "example": "Usuario solicitado no existe"
                 },
                 "result": {
+                  "example": [],
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "id",
+                      "isActivo"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "example": 1
+                      },
+                      "isActivo": {
+                        "description": "Bandera que indica si el usuario terminó bloqueado o desbloqueado después de la operación.",
+                        "type": "boolean",
+                        "example": true
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "202": {
+            "description": "Error controlado, el código HTTP real es 200. Estos errores pertenecen a FacultamientoException. 1204: No se encontraron resultados, 1500: Sistema facultamiento fuera de línea.",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 1204
+                },
+                "responseError": {
                   "type": "string",
-                  "example": "[]"
+                  "example": "Usuario solicitado no existe"
                 }
               }
             }
@@ -12979,7 +13733,7 @@
         }
       }
     },
-    "/buscarPersonaFisicaPorFiltro": {
+    "/bup/buscar/personaFisicaPorFiltro": {
       "post": {
         "tags": [
           "Sprint F"
@@ -13057,6 +13811,7 @@
                     "nombreCompleto",
                     "rfc",
                     "curp",
+                    "direccion",
                     "activo",
                     "telefonos",
                     "correos",
@@ -13392,7 +14147,7 @@
             }
           },
           "201": {
-            "description": "Error controlado, el codigo http real es 200",
+            "description": "Error controlado, el código HTTP real es 200. Estos errores pertenece a BUPException. 5204: No se encontraron registros, 5500: Error interno del servidor",
             "schema": {
               "properties": {
                 "responseStatus": {
@@ -13404,22 +14159,348 @@
                   "example": "No se encontraron registros"
                 },
                 "result": {
-                  "example": null
-                }
-              }
-            }
-          },
-          "202": {
-            "description": "Error controlado, el codigo http real es 200",
-            "schema": {
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 5500
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": "Error interno del servidor"
+                  "example": null,
+                  "required": [
+                    "Id",
+                    "regimenFiscal",
+                    "nombre",
+                    "razonSocial",
+                    "apellidoPaterno",
+                    "apellidoMaterno",
+                    "nombreCompleto",
+                    "rfc",
+                    "curp",
+                    "direccion",
+                    "activo",
+                    "telefonos",
+                    "correos",
+                    "contactos"
+                  ],
+                  "properties": {
+                    "Id": {
+                      "description": "Id de la persona consultada.",
+                      "type": "integer",
+                      "format": "int64",
+                      "example": "9"
+                    },
+                    "regimenFiscal": {
+                      "description": "Régimen fiscal de la persona consultada para este caso PF (Persona Fisica).",
+                      "type": "string",
+                      "example": "Persona Moral"
+                    },
+                    "nombre": {
+                      "description": "Nombre de la persona consultada.",
+                      "type": "string",
+                      "example": "null"
+                    },
+                    "razonSocial": {
+                      "description": "Razón social de la persona consultada. Se llena solo para personas morales.",
+                      "type": "string",
+                      "example": "VASCO"
+                    },
+                    "apellidoPaterno": {
+                      "description": "Apellido paterno de la persona consultada. Se llena solo para personas físicas.",
+                      "type": "string",
+                      "example": "null"
+                    },
+                    "apellidoMaterno": {
+                      "description": "Apellido Materno de la persona consultada. Se llena solo para personas físicas.",
+                      "type": "string",
+                      "example": "null"
+                    },
+                    "nombreCompleto": {
+                      "description": "Nombre completo de la persona consultada. Se llena sólo para personas físicas.",
+                      "type": "string",
+                      "example": "null"
+                    },
+                    "rfc": {
+                      "description": "RFC de la persona consultada.",
+                      "type": "string",
+                      "example": "VAS647909"
+                    },
+                    "curp": {
+                      "description": "Curp de la persona consultada.",
+                      "type": "string",
+                      "example": "null"
+                    },
+                    "direccion": {
+                      "type": "array",
+                      "items": {
+                        "required": [
+                          "tipoDireccion",
+                          "pais",
+                          "estado",
+                          "esPrincipal"
+                        ],
+                        "properties": {
+                          "tipoDireccion": {
+                            "required": [
+                              "id",
+                              "descripcion"
+                            ],
+                            "properties": {
+                              "id": {
+                                "description": "Id del tipo de dirección.",
+                                "type": "integer",
+                                "format": "int64",
+                                "example": 1
+                              },
+                              "descripcion": {
+                                "description": "Descripción del tipo de dirección.",
+                                "type": "string",
+                                "example": "Fiscal"
+                              }
+                            }
+                          },
+                          "pais": {
+                            "required": [
+                              "id",
+                              "descripcion"
+                            ],
+                            "properties": {
+                              "id": {
+                                "description": "Id país.",
+                                "type": "integer",
+                                "format": "int64",
+                                "example": 1
+                              },
+                              "descripcion": {
+                                "description": "Descripción del país.",
+                                "type": "string",
+                                "example": "México"
+                              }
+                            }
+                          },
+                          "estado": {
+                            "required": [
+                              "id",
+                              "descripcion"
+                            ],
+                            "properties": {
+                              "id": {
+                                "description": "Id estado.",
+                                "type": "integer",
+                                "format": "int64",
+                                "example": 1
+                              },
+                              "descripcion": {
+                                "description": "Descripción del estado.",
+                                "type": "string",
+                                "example": "Distrito Federal"
+                              }
+                            }
+                          },
+                          "municipio": {
+                            "description": "Municipio de la dirección relacionada.",
+                            "type": "string",
+                            "example": "null"
+                          },
+                          "ciudad": {
+                            "description": "Ciudad de la dirección relacionada.",
+                            "type": "string",
+                            "example": "null"
+                          },
+                          "colonia": {
+                            "description": "Colonia de la dirección relacionada.",
+                            "type": "string",
+                            "example": "null"
+                          },
+                          "codigoPostal": {
+                            "description": "Código postal de la dirección relacionada.",
+                            "type": "string",
+                            "example": "null"
+                          },
+                          "calle": {
+                            "description": "Calle de la dirección relacionada.",
+                            "type": "string",
+                            "example": "Calle"
+                          },
+                          "noExterior": {
+                            "description": "noExterior de la dirección relacionada.",
+                            "type": "string",
+                            "example": "182"
+                          },
+                          "noInterior": {
+                            "description": "noInterior de la dirección relacionada.",
+                            "type": "string",
+                            "example": "2"
+                          },
+                          "entreCalles": {
+                            "description": "Entre calles de la dirección relacionada.",
+                            "type": "string",
+                            "example": "Pensamiento y laureles"
+                          },
+                          "esPrincipal": {
+                            "description": "Bandera que indica si la dirección es principal.",
+                            "type": "boolean",
+                            "example": true
+                          }
+                        }
+                      }
+                    },
+                    "activo": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "telefonos": {
+                      "type": "array",
+                      "items": {
+                        "required": [
+                          "telefono",
+                          "descTipoTelefono",
+                          "esPrincipal"
+                        ],
+                        "properties": {
+                          "telefono": {
+                            "description": "Teléfono relacionado a la persona.",
+                            "type": "string",
+                            "example": "12345678"
+                          },
+                          "descTipoTelefono": {
+                            "description": "Descripción del tipo de teléfono que se muestra (casa, oficina, celular).",
+                            "type": "string",
+                            "example": "Casa"
+                          },
+                          "esPrincipal": {
+                            "description": "Bandera que indica si el teléfono que se muestra es el principal.",
+                            "type": "boolean",
+                            "example": true
+                          }
+                        }
+                      }
+                    },
+                    "correos": {
+                      "type": "array",
+                      "items": {
+                        "required": [
+                          "correo",
+                          "esPrincipal"
+                        ],
+                        "properties": {
+                          "correo": {
+                            "description": "correo relacionado a la persona.",
+                            "type": "string",
+                            "example": "ejemplo@ejemplo.com"
+                          },
+                          "esPrincipal": {
+                            "description": "Bandera que indica si el correo que se muestra es el principal.",
+                            "type": "boolean",
+                            "example": true
+                          }
+                        }
+                      }
+                    },
+                    "contactos": {
+                      "type": "array",
+                      "items": {
+                        "required": [
+                          "tipoRelacion",
+                          "telefonos",
+                          "correos",
+                          "idContacto",
+                          "nombre",
+                          "email",
+                          "rfc",
+                          "isNomina"
+                        ],
+                        "properties": {
+                          "tipoRelacion": {
+                            "required": [
+                              "id",
+                              "descripcion"
+                            ],
+                            "properties": {
+                              "id": {
+                                "description": "Id tipo de relación.",
+                                "type": "integer",
+                                "format": "int64",
+                                "example": 3
+                              },
+                              "descripcion": {
+                                "description": "Descripción de la relación.",
+                                "type": "string",
+                                "example": "Contacto"
+                              }
+                            }
+                          },
+                          "telefonos": {
+                            "type": "array",
+                            "items": {
+                              "required": [
+                                "telefono",
+                                "descTipoTelefono",
+                                "esPrincipal"
+                              ],
+                              "properties": {
+                                "telefono": {
+                                  "description": "Teléfono relacionado a la persona.",
+                                  "type": "string",
+                                  "example": "5537136838"
+                                },
+                                "descTipoTelefono": {
+                                  "description": "Descripción del tipo de teléfono que se muestra (casa, oficina, celular).",
+                                  "type": "string",
+                                  "example": "Casa"
+                                },
+                                "esPrincipal": {
+                                  "description": "Bandera que indica si el teléfono que se muestra es el principal.",
+                                  "type": "boolean",
+                                  "example": true
+                                }
+                              }
+                            }
+                          },
+                          "correos": {
+                            "type": "array",
+                            "items": {
+                              "required": [
+                                "correo",
+                                "esPrincipal"
+                              ],
+                              "properties": {
+                                "correo": {
+                                  "description": "correo relacionado a la persona.",
+                                  "type": "string",
+                                  "example": "shernandez@mail.com.mx"
+                                },
+                                "esPrincipal": {
+                                  "description": "Bandera que indica si el correo que se muestra es el principal.",
+                                  "type": "boolean",
+                                  "example": true
+                                }
+                              }
+                            }
+                          },
+                          "idContacto": {
+                            "description": "Id del contacto.",
+                            "type": "integer",
+                            "format": "int64",
+                            "example": 12
+                          },
+                          "nombre": {
+                            "description": "Nombre completo del contacto.",
+                            "type": "string",
+                            "example": "Silvano Ruiz Lopez"
+                          },
+                          "email": {
+                            "description": "Email del contacto.",
+                            "type": "string",
+                            "example": "shernandez@mail.com.mx"
+                          },
+                          "rfc": {
+                            "description": "Rfc del contacto.",
+                            "type": "string",
+                            "example": "SRLP654321ZA5"
+                          },
+                          "isNomina": {
+                            "description": "Bandera que indica si el contacto es de tipo nomina.",
+                            "type": "boolean",
+                            "example": true
+                          }
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -13427,7 +14508,466 @@
         }
       }
     },
-    "/consultaCuentasCliente": {
+    "/bup/consultaBitacoraOperaciones": {
+      "post": {
+        "tags": [
+          "Sprint F"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación /consultaBitacoraOperaciones del servicio /bup requerida para la integración de Multivanet con BUP.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "consultaBitacoraOperaciones",
+            "description": "Interfaz que permite consultar la bitácora de operaciones realizadas por un USUARIO en un periodo de tiempo.",
+            "required": true,
+            "schema": {
+              "required": [
+                "idUsuario",
+                "canal",
+                "ticket"
+              ],
+              "properties": {
+                "idUsuario": {
+                  "description": "Identificador único de la persona en los sistemas institucionales.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 0
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Consulta de Bitacora Por Usuario",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                },
+                "result": {
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "idBitacora",
+                      "folio",
+                      "fechaSolicitud"
+                    ],
+                    "properties": {
+                      "idBitacora": {
+                        "description": "Identificador único del registro.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1234567
+                      },
+                      "folio": {
+                        "description": "Folio de la operación.",
+                        "type": "string",
+                        "example": "F0123UNASN3123"
+                      },
+                      "fechaSolicitud": {
+                        "description": "Fecha de captura de la operación en formato dd-MM-yyyyThh:mm:ss.",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "21-04-2017 11:03:00"
+                      },
+                      "fechaProgramada": {
+                        "description": "Fecha de programación para la ejecución de la operación en formato dd-MM-yyyyThh:mm:ss.",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": ""
+                      },
+                      "importe": {
+                        "description": "Importe de la operación.",
+                        "type": "number",
+                        "format": "double",
+                        "example": "$37,192.12"
+                      },
+                      "moneda": {
+                        "description": "Moneda de la operación en formato de 3 caracteres.",
+                        "type": "string",
+                        "example": "MXN"
+                      },
+                      "estatus": {
+                        "description": "Estatus de la operación.",
+                        "type": "string",
+                        "example": "APLICADA"
+                      },
+                      "folio2": {
+                        "description": "Folio único de la operación asignado por el ESB a la misma.",
+                        "type": "string",
+                        "example": "F0123UNASN3123"
+                      },
+                      "fechaAutorizacion": {
+                        "description": "Fecha en que la operación fue atorizada en formato dd-MM-yyyyThh:mm:ss.",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "21-04-2017 11:03:00"
+                      },
+                      "folioAutorizacion": {
+                        "description": "Identificador único del proceso de autorización que puede liberar esta operación.",
+                        "type": "string",
+                        "example": "FO2389JDS912"
+                      },
+                      "medio": {
+                        "description": "Canal por el que se capturó la operación.",
+                        "type": "string",
+                        "example": "MultivaNet"
+                      },
+                      "concepto": {
+                        "description": "Concepto de la operación.",
+                        "type": "string",
+                        "example": "Pago de servicios financieros"
+                      },
+                      "referencia": {
+                        "descritpion": "Referencia de la operación.",
+                        "type": "string",
+                        "example": "128362518293"
+                      },
+                      "claveRastreo": {
+                        "description": "Clave de rastreo generada para la operación.",
+                        "type": "string",
+                        "example": "1729HSQA9383712JD"
+                      },
+                      "fechaAplicacion": {
+                        "description": "Fecha de aplicación de la operación en el core que la puede ejecutar, en formato dd-MM-yyyyThh:mm:ss.",
+                        "type": "string",
+                        "format": "timestamp",
+                        "example": "14-10-2017"
+                      },
+                      "fechaLiquidacion": {
+                        "description": "Fecha de la liquidación de la operación en formato dd-MM-yyyyThh:mm:ss.",
+                        "type": "string",
+                        "format": "timestamp",
+                        "example": "14-10-2017"
+                      },
+                      "idDispositivo": {
+                        "description": "dentificador único del dispositivo del usuario desde el que se originó la operación.",
+                        "type": "string",
+                        "example": "AJDH1023731KDAD"
+                      },
+                      "agente": {
+                        "description": "El nombre del agente que capturó la operación, si ésta se originó por IVR. ",
+                        "type": "string",
+                        "example": "Jorge Posadas"
+                      },
+                      "rfc": {
+                        "description": "RFC capturado para el destinatario de la operación. ",
+                        "type": "string",
+                        "example": "ABCD123456ASD"
+                      },
+                      "iva": {
+                        "description": "IVA generado para la operación.",
+                        "type": "number",
+                        "format": "double",
+                        "example": "$123.12"
+                      },
+                      "comision": {
+                        "description": "Monto de la comisión generada por la operación.",
+                        "type": "number",
+                        "format": "double",
+                        "example": "$13.12"
+                      },
+                      "ivaComision": {
+                        "description": "IVA devengado de la aplicación de la comisión para la operación.",
+                        "type": "number",
+                        "format": "double",
+                        "example": "$3.12"
+                      },
+                      "cuentaOrigenTipo": {
+                        "description": "Tipo de la cuenta origen, según el catálogo de productos definido en la BUP.",
+                        "type": "string",
+                        "example": "CHQ"
+                      },
+                      "cuentaOrigenNombre": {
+                        "description": "Nombre de la cuenta origen usada para hacer la operación.",
+                        "type": "string",
+                        "example": "Provedores"
+                      },
+                      "cuentaOrigen": {
+                        "description": "Cuenta origen de la operación.",
+                        "type": "string",
+                        "example": "1237493749"
+                      },
+                      "cuentaDestinoTipo": {
+                        "description": "Tipo de la cuenta destino, según el catálogo de productos definido en la BUP.",
+                        "type": "string",
+                        "example": "Número Celular"
+                      },
+                      "cuentaDestinoNombre": {
+                        "description": "Nombre de la cuenta destino usada para hacer la operación.",
+                        "type": "string",
+                        "example": "Fincomun"
+                      },
+                      "cuentaDestino": {
+                        "description": "Cuenta destino de la operación.",
+                        "type": "string",
+                        "example": "5512345678"
+                      },
+                      "usuarioCaptura": {
+                        "description": "Identificador único del usuario que capturó la operación.",
+                        "type": "string",
+                        "example": "123456"
+                      },
+                      "conceptoEdoCuenta": {
+                        "description": "Si este concepto se capturó en la transacción, este campo muestra la leyenda que aparecerá en el estado de cuenta del cliente para esta operación.",
+                        "type": "string",
+                        "example": "Pago"
+                      },
+                      "celularBeneficiario": {
+                        "description": "Si la operación utilizó un número celular como destinatario, se mostrará en este campo.",
+                        "type": "string",
+                        "example": "1234567890"
+                      },
+                      "tipoPago": {
+                        "description": "Clave que identifica el tipo de pago que esta transacción representa.",
+                        "type": "string",
+                        "example": "2"
+                      },
+                      "tipoCredito": {
+                        "description": "Clave que identifica el tipo de crédito para el que se generó esta transacción.",
+                        "type": "string",
+                        "example": "1"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el código HTTP real es 200. Estos errores pertenecen a BUPException. 5204: No se encontraron registros, 5500: Error interno del servidor.",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 5204
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "No se encontraron registros."
+                },
+                "result": {
+                  "example": [],
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "idBitacora",
+                      "folio",
+                      "fechaSolicitud"
+                    ],
+                    "properties": {
+                      "idBitacora": {
+                        "description": "Identificador único del registro.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1234567
+                      },
+                      "folio": {
+                        "description": "Folio de la operación.",
+                        "type": "string",
+                        "example": "F0123UNASN3123"
+                      },
+                      "fechaSolicitud": {
+                        "description": "Fecha de captura de la operación en formato dd-MM-yyyyThh:mm:ss.",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "21-04-2017 11:03:00"
+                      },
+                      "fechaProgramada": {
+                        "description": "Fecha de programación para la ejecución de la operación en formato dd-MM-yyyyThh:mm:ss.",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": ""
+                      },
+                      "importe": {
+                        "description": "Importe de la operación.",
+                        "type": "number",
+                        "format": "double",
+                        "example": "$37,192.12"
+                      },
+                      "moneda": {
+                        "description": "Moneda de la operación en formato de 3 caracteres.",
+                        "type": "string",
+                        "example": "MXN"
+                      },
+                      "estatus": {
+                        "description": "Estatus de la operación.",
+                        "type": "string",
+                        "example": "APLICADA"
+                      },
+                      "folio2": {
+                        "description": "Folio único de la operación asignado por el ESB a la misma.",
+                        "type": "string",
+                        "example": "F0123UNASN3123"
+                      },
+                      "fechaAutorizacion": {
+                        "description": "Fecha en que la operación fue atorizada en formato dd-MM-yyyyThh:mm:ss.",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "21-04-2017 11:03:00"
+                      },
+                      "folioAutorizacion": {
+                        "description": "Identificador único del proceso de autorización que puede liberar esta operación.",
+                        "type": "string",
+                        "example": "FO2389JDS912"
+                      },
+                      "medio": {
+                        "description": "Canal por el que se capturó la operación.",
+                        "type": "string",
+                        "example": "MultivaNet"
+                      },
+                      "concepto": {
+                        "description": "Concepto de la operación.",
+                        "type": "string",
+                        "example": "Pago de servicios financieros"
+                      },
+                      "referencia": {
+                        "descritpion": "Referencia de la operación.",
+                        "type": "string",
+                        "example": "128362518293"
+                      },
+                      "claveRastreo": {
+                        "description": "Clave de rastreo generada para la operación.",
+                        "type": "string",
+                        "example": "1729HSQA9383712JD"
+                      },
+                      "fechaAplicacion": {
+                        "description": "Fecha de aplicación de la operación en el core que la puede ejecutar, en formato dd-MM-yyyyThh:mm:ss.",
+                        "type": "string",
+                        "format": "timestamp",
+                        "example": "14-10-2017"
+                      },
+                      "fechaLiquidacion": {
+                        "description": "Fecha de la liquidación de la operación en formato dd-MM-yyyyThh:mm:ss.",
+                        "type": "string",
+                        "format": "timestamp",
+                        "example": "14-10-2017"
+                      },
+                      "idDispositivo": {
+                        "description": "dentificador único del dispositivo del usuario desde el que se originó la operación.",
+                        "type": "string",
+                        "example": "AJDH1023731KDAD"
+                      },
+                      "agente": {
+                        "description": "El nombre del agente que capturó la operación, si ésta se originó por IVR. ",
+                        "type": "string",
+                        "example": "Jorge Posadas"
+                      },
+                      "rfc": {
+                        "description": "RFC capturado para el destinatario de la operación. ",
+                        "type": "string",
+                        "example": "ABCD123456ASD"
+                      },
+                      "iva": {
+                        "description": "IVA generado para la operación.",
+                        "type": "number",
+                        "format": "double",
+                        "example": "$123.12"
+                      },
+                      "comision": {
+                        "description": "Monto de la comisión generada por la operación.",
+                        "type": "number",
+                        "format": "double",
+                        "example": "$13.12"
+                      },
+                      "ivaComision": {
+                        "description": "IVA devengado de la aplicación de la comisión para la operación.",
+                        "type": "number",
+                        "format": "double",
+                        "example": "$3.12"
+                      },
+                      "cuentaOrigenTipo": {
+                        "description": "Tipo de la cuenta origen, según el catálogo de productos definido en la BUP.",
+                        "type": "string",
+                        "example": "CHQ"
+                      },
+                      "cuentaOrigenNombre": {
+                        "description": "Nombre de la cuenta origen usada para hacer la operación.",
+                        "type": "string",
+                        "example": "Provedores"
+                      },
+                      "cuentaOrigen": {
+                        "description": "Cuenta origen de la operación.",
+                        "type": "string",
+                        "example": "1237493749"
+                      },
+                      "cuentaDestinoTipo": {
+                        "description": "Tipo de la cuenta destino, según el catálogo de productos definido en la BUP.",
+                        "type": "string",
+                        "example": "Número Celular"
+                      },
+                      "cuentaDestinoNombre": {
+                        "description": "Nombre de la cuenta destino usada para hacer la operación.",
+                        "type": "string",
+                        "example": "Fincomun"
+                      },
+                      "cuentaDestino": {
+                        "description": "Cuenta destino de la operación.",
+                        "type": "string",
+                        "example": "5512345678"
+                      },
+                      "usuarioCaptura": {
+                        "description": "Identificador único del usuario que capturó la operación.",
+                        "type": "string",
+                        "example": "123456"
+                      },
+                      "conceptoEdoCuenta": {
+                        "description": "Si este concepto se capturó en la transacción, este campo muestra la leyenda que aparecerá en el estado de cuenta del cliente para esta operación.",
+                        "type": "string",
+                        "example": "Pago"
+                      },
+                      "celularBeneficiario": {
+                        "description": "Si la operación utilizó un número celular como destinatario, se mostrará en este campo.",
+                        "type": "string",
+                        "example": "1234567890"
+                      },
+                      "tipoPago": {
+                        "description": "Clave que identifica el tipo de pago que esta transacción representa.",
+                        "type": "string",
+                        "example": "2"
+                      },
+                      "tipoCredito": {
+                        "description": "Clave que identifica el tipo de crédito para el que se generó esta transacción.",
+                        "type": "string",
+                        "example": "1"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bup/consultaCuentasCliente": {
       "post": {
         "tags": [
           "Sprint F"
@@ -13528,7 +15068,7 @@
             }
           },
           "201": {
-            "description": "No se encontraron registros",
+            "description": "Error controlado, el código HTTP real es 200. Estos errores pertenecen a BUPException. 5204: No se encontraron registros, 5500: Error interno del servidor.",
             "schema": {
               "properties": {
                 "responseStatus": {
@@ -13541,26 +15081,11 @@
                 }
               }
             }
-          },
-          "500": {
-            "description": "Error interno en el servidor.",
-            "schema": {
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 5500
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": "Error interno en el servidor."
-                }
-              }
-            }
           }
         }
       }
     },
-    "/consultaEstados": {
+    "/bup/consultaEstados": {
       "post": {
         "tags": [
           "Sprint F"
@@ -13649,7 +15174,7 @@
             }
           },
           "201": {
-            "description": "Error controlado, el codigo http real es 200",
+            "description": "Error controlado, el código HTTP real es 200. Estos errores pertenecen a BUPException. 5204: No se encontraron registros, 5500: Error interno del servidor.",
             "schema": {
               "properties": {
                 "responseStatus": {
@@ -13661,22 +15186,27 @@
                   "example": "No se encontrarón registros"
                 },
                 "estados": {
-                  "example": []
-                }
-              }
-            }
-          },
-          "202": {
-            "description": "Error controlado, el codigo http real es 200",
-            "schema": {
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 5500
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": "Error interno del servidor"
+                  "example": [],
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "id",
+                      "descripcion"
+                    ],
+                    "properties": {
+                      "id": {
+                        "description": "Id del estado.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 5
+                      },
+                      "descripcion": {
+                        "description": "Descripción del estado.",
+                        "type": "string",
+                        "example": 5
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -13684,7 +15214,7 @@
         }
       }
     },
-    "/consultaFacultamientoUsuario": {
+    "/facultamiento/consultaFacultamientoUsuario": {
       "post": {
         "tags": [
           "Sprint F"
@@ -13756,14 +15286,14 @@
                     "firmantes",
                     "firmantesFacultades",
                     "perfiles",
-                    "cuentas",
-                    "listaGrupos"
+                    "cuentas"
                   ],
                   "properties": {
                     "idusuario": {
-                      "description": "Id de la facultad",
+                      "description": "Identificador único de la persona en los sistemas institucionales.",
                       "type": "integer",
-                      "example": 12345
+                      "format": "int64",
+                      "example": 0
                     },
                     "ticket": {
                       "required": [
@@ -13977,7 +15507,7 @@
             }
           },
           "201": {
-            "description": "Error controlado, el codigo http real es 200",
+            "description": "Error controlado, el código HTTP real es 200. Estos errores pertenecen a FacultamientoException. 1204: No se encontraron registros, 1500: Error interno del servidor.",
             "schema": {
               "properties": {
                 "responseStatus": {
@@ -13994,7 +15524,7 @@
         }
       }
     },
-    "/consultaFirmantesPotenciales": {
+    "/facultamiento/consultaFirmantesPotenciales": {
       "post": {
         "tags": [
           "Sprint F"
@@ -14104,7 +15634,7 @@
             }
           },
           "201": {
-            "description": "Error controlado, el codigo http real es 200",
+            "description": "Error controlado, el código HTTP real es 200. Estos errores pertenecen a FacultamientoException. 1204: No se encontraron registros, 1500: Error interno del servidor.",
             "schema": {
               "properties": {
                 "responseStatus": {
@@ -14121,7 +15651,7 @@
         }
       }
     },
-    "/consultaMunicipioDelegacion": {
+    "/bup/consultaMunicipioDelegacion": {
       "post": {
         "tags": [
           "Sprint F"
@@ -14236,7 +15766,7 @@
             }
           },
           "201": {
-            "description": "Error controlado, el codigo http real es 200",
+            "description": "Error controlado, el código HTTP real es 200. Estos errores pertenecen a BUPException. 5204: No se encontraron registros, 5500: Error interno del servidor.",
             "schema": {
               "properties": {
                 "responseStatus": {
@@ -14248,7 +15778,41 @@
                   "example": "No se encontrarón registros"
                 },
                 "municipiosDelegaciones": {
-                  "example": []
+                  "example": [],
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "id",
+                      "nombre",
+                      "claveMunicipioDelegacion",
+                      "idEstado"
+                    ],
+                    "properties": {
+                      "id": {
+                        "description": "Id del municipio o delegación.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 5
+                      },
+                      "nombre": {
+                        "description": "Nombre del municipio o delegación.",
+                        "type": "string",
+                        "example": "Venustiano C."
+                      },
+                      "claveMunicipioDelegacion": {
+                        "description": "Clave del municipio o delegación en catálogo SEPOMEX.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 5
+                      },
+                      "idEstado": {
+                        "description": "Id del estado al que pertenece el municipio o la delegación.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 5
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -14271,7 +15835,7 @@
         }
       }
     },
-    "/consultaOperacionesActivasUsuario": {
+    "/facultamiento/consultaOperacionesActivasUsuario": {
       "post": {
         "tags": [
           "Sprint F"
@@ -14345,7 +15909,7 @@
             }
           },
           "201": {
-            "description": "Error controlado, el codigo http real es 200",
+            "description": "Error controlado, el código HTTP real es 200. Estos errores pertenecen a BUPException. 1204: No se encontraron registros, 1500: Error interno del servidor.",
             "schema": {
               "properties": {
                 "responseStatus": {
@@ -14358,26 +15922,11 @@
                 }
               }
             }
-          },
-          "202": {
-            "description": "Error controlado, el codigo http real es 200",
-            "schema": {
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 1500
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": "Error interno del servidor"
-                }
-              }
-            }
           }
         }
       }
     },
-    "/consultaPerfilesPatronConGruposFacultades": {
+    "/facultamiento/consultaPerfilesPatronConGruposFacultades": {
       "post": {
         "tags": [
           "Sprint F"
@@ -14492,10 +16041,6 @@
                         "type": "string",
                         "example": ""
                       },
-                      "jerarquiaFacultamiento": {
-                        "type": "string",
-                        "example": ""
-                      },
                       "usuarioUltimaModificacion": {
                         "type": "integer",
                         "example": "0"
@@ -14507,7 +16052,7 @@
                             "id",
                             "nombre",
                             "descripcion",
-                            "firmantes"
+                            "listaFacultades"
                           ],
                           "properties": {
                             "nombre": {
@@ -14654,7 +16199,22 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "No se encontraron registros"
+                  "example": "No se encontraron registros."
+                }
+              }
+            }
+          },
+          "202": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 1500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Error interno en el servidor."
                 }
               }
             }
@@ -14662,7 +16222,7 @@
         }
       }
     },
-    "/consultaStockTokens": {
+    "/otp/consultaStockTokens": {
       "post": {
         "tags": [
           "Sprint F"
@@ -14755,10 +16315,12 @@
                       },
                       "fechaRegistro": {
                         "type": "string",
+                        "formato": "date",
                         "example": "07/12/2017 06:12:42"
                       },
                       "fechaAsignacion": {
                         "type": "string",
+                        "format": "date",
                         "example": "09/01/2018 12:30:42"
                       },
                       "usuarioAdicional": {
@@ -14837,7 +16399,118 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "No se encontraron registros"
+                  "example": "No se encontraron registros en la base de OTP."
+                },
+                "result": {
+                  "example": [],
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "idDispositivo": {
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 12345
+                      },
+                      "numeroSerie": {
+                        "type": "string",
+                        "example": "MXS-9087-HDF"
+                      },
+                      "numeroCaja": {
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                      },
+                      "estatusCliente": {
+                        "type": "string",
+                        "example": "ASIGNADO"
+                      },
+                      "fechaRegistro": {
+                        "type": "string",
+                        "formato": "date",
+                        "example": "07/12/2017 06:12:42"
+                      },
+                      "fechaAsignacion": {
+                        "type": "string",
+                        "format": "date",
+                        "example": "09/01/2018 12:30:42"
+                      },
+                      "usuarioAdicional": {
+                        "properties": {
+                          "id": {
+                            "type": "integer",
+                            "format": "int64",
+                            "example": 4
+                          },
+                          "nombre": {
+                            "type": "string",
+                            "example": "Juan"
+                          },
+                          "apellidoMaterno": {
+                            "type": "string",
+                            "example": "Lopez"
+                          },
+                          "apellidoPaterno": {
+                            "type": "string",
+                            "example": "Lopez"
+                          },
+                          "perfil": {
+                            "type": "string",
+                            "example": "Adicional"
+                          }
+                        }
+                      },
+                      "sucursal": {
+                        "properties": {
+                          "id": {
+                            "type": "integer",
+                            "format": "int64",
+                            "example": 3
+                          },
+                          "nombre": {
+                            "type": "string",
+                            "example": "Tecamachalco"
+                          }
+                        }
+                      },
+                      "solicitud": {
+                        "properties": {
+                          "id": {
+                            "type": "integer",
+                            "format": "int64",
+                            "example": 1
+                          },
+                          "proveedor": {
+                            "properties": {
+                              "id": {
+                                "type": "integer",
+                                "format": "int64",
+                                "example": 11
+                              },
+                              "nombre": {
+                                "type": "string",
+                                "example": "VASCO"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "202": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 2501
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "OTP fuera de línea."
                 }
               }
             }
@@ -14845,7 +16518,7 @@
         }
       }
     },
-    "/consultaSucursales": {
+    "/bup/consultaSucursales": {
       "post": {
         "tags": [
           "Sprint F"
@@ -14889,7 +16562,7 @@
                   "description": "Identificador único de la persona en los sistemas institucionales.",
                   "type": "integer",
                   "format": "int64",
-                  "example": 1
+                  "example": 0
                 },
                 "nombre": {
                   "description": "Nombre de la sucursal que se quiere consultar.",
@@ -15004,11 +16677,85 @@
             }
           },
           "201": {
-            "description": "No se encontraron registros",
+            "description": "Error controlado, el codigo http real es 200",
             "schema": {
               "properties": {
                 "sucursales": {
-                  "example": []
+                  "example": [],
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "id",
+                      "calle",
+                      "noExterior",
+                      "nombre",
+                      "estado",
+                      "entrecalles",
+                      "país",
+                      "ciudad",
+                      "colonia",
+                      "codigoPostal",
+                      "municipio"
+                    ],
+                    "properties": {
+                      "id": {
+                        "description": "Lista de sucursales.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "11"
+                      },
+                      "calle": {
+                        "description": "Calle donde se encuentra la sucursal.",
+                        "type": "string",
+                        "example": ""
+                      },
+                      "noExterior": {
+                        "description": "Numero exterior de la sucursal",
+                        "type": "string",
+                        "example": ""
+                      },
+                      "nombre": {
+                        "description": "Nombre de la sucursal",
+                        "type": "string",
+                        "example": ""
+                      },
+                      "estado": {
+                        "description": "Estado donde se encuentra la sucursal",
+                        "type": "string",
+                        "example": ""
+                      },
+                      "entrecalles": {
+                        "description": "Entre calles en las que se encuentra la sucursal",
+                        "type": "string",
+                        "example": ""
+                      },
+                      "país": {
+                        "description": "Pais donde se encuentra la sucursal",
+                        "type": "string",
+                        "example": ""
+                      },
+                      "ciudad": {
+                        "description": "Ciudad donde se encuentra la sucursal",
+                        "type": "string",
+                        "example": ""
+                      },
+                      "colonia": {
+                        "description": "Colonia donde se encuentra la sucursal",
+                        "type": "string",
+                        "example": ""
+                      },
+                      "codigoPostal": {
+                        "description": "Código postal donde se encuentra la sucursal",
+                        "type": "string",
+                        "example": ""
+                      },
+                      "municipio": {
+                        "description": "Municipio donde se encuentra la sucursal",
+                        "type": "string",
+                        "example": ""
+                      }
+                    }
+                  }
                 },
                 "responseStatus": {
                   "type": "number",
@@ -15021,8 +16768,8 @@
               }
             }
           },
-          "500": {
-            "description": "Error interno en el servidor.",
+          "202": {
+            "description": "Error controlado, el codigo http real es 200",
             "schema": {
               "properties": {
                 "responseStatus": {
@@ -15039,7 +16786,7 @@
         }
       }
     },
-    "/creaUsuarioAdicional": {
+    "/facultamiento/creaUsuarioAdicional": {
       "post": {
         "tags": [
           "Sprint F"
@@ -15360,7 +17107,7 @@
         }
       }
     },
-    "/creaFacultamientoUsuario": {
+    "/facultamiento/creaFacultamientoUsuario": {
       "post": {
         "tags": [
           "Sprint F"
@@ -15450,107 +17197,126 @@
                   "example": "string"
                 },
                 "firmantes": {
-                  "required": [
-                    "usuarios",
-                    "votos"
-                  ],
-                  "properties": {
-                    "usuarios": {
-                      "type": "integer",
-                      "example": 0
-                    },
-                    "votos": {
-                      "type": "integer",
-                      "example": 0
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "usuarios",
+                      "votos"
+                    ],
+                    "properties": {
+                      "usuarios": {
+                        "type": "integer",
+                        "example": 0
+                      },
+                      "votos": {
+                        "type": "integer",
+                        "example": 0
+                      }
                     }
                   }
                 },
                 "firmantesFacultades": {
-                  "required": [
-                    "nombre",
-                    "cuentas"
-                  ],
-                  "properties": {
-                    "nombre": {
-                      "type": "string",
-                      "example": "string"
-                    },
-                    "cuentas": {
-                      "required": [
-                        "noCuenta",
-                        "limiteIndividual",
-                        "limiteOperable",
-                        "rangoOperable"
-                      ],
-                      "properties": {
-                        "noCuenta": {
-                          "description": "Número de cuenta",
-                          "type": "string",
-                          "example": "string"
-                        },
-                        "limiteIndividual": {
-                          "description": "Limite individual que puede operar el usuario.",
-                          "type": "string",
-                          "example": "0.0"
-                        },
-                        "limiteMancomunado": {
-                          "description": "Limite mancomunado que puede operar el usuario.",
-                          "type": "string",
-                          "example": "0.0"
-                        },
-                        "limiteOperable": {
-                          "description": "Limite operable que puede operar el usuario.",
-                          "type": "string",
-                          "example": "0.0"
-                        },
-                        "rangoOperable": {
-                          "description": "Rango de operación del usuario de operar el limite operable.",
-                          "type": "string",
-                          "example": "string"
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "nombre",
+                      "cuentas"
+                    ],
+                    "properties": {
+                      "nombre": {
+                        "type": "string",
+                        "example": "string"
+                      },
+                      "cuentas": {
+                        "type": "array",
+                        "items": {
+                          "required": [
+                            "noCuenta",
+                            "limiteIndividual",
+                            "limiteMancomunado",
+                            "limiteOperable",
+                            "rangoOperable"
+                          ],
+                          "properties": {
+                            "noCuenta": {
+                              "description": "Número de cuenta",
+                              "type": "string",
+                              "example": "string"
+                            },
+                            "limiteIndividual": {
+                              "description": "Limite individual que puede operar el usuario.",
+                              "type": "string",
+                              "example": "0.0"
+                            },
+                            "limiteMancomunado": {
+                              "description": "Limite mancomunado que puede operar el usuario.",
+                              "type": "string",
+                              "example": "0.0"
+                            },
+                            "limiteOperable": {
+                              "description": "Limite operable que puede operar el usuario.",
+                              "type": "string",
+                              "example": "0.0"
+                            },
+                            "rangoOperable": {
+                              "description": "Rango de operación del usuario de operar el limite operable.",
+                              "type": "string",
+                              "example": "string"
+                            }
+                          }
                         }
-                      }
-                    },
-                    "firmantes": {
-                      "required": [
-                        "usuarios",
-                        "votos"
-                      ],
-                      "properties": {
-                        "usuarios": {
-                          "type": "integer",
-                          "example": 0
-                        },
-                        "votos": {
-                          "type": "integer",
-                          "example": 0
+                      },
+                      "firmantes": {
+                        "type": "array",
+                        "items": {
+                          "required": [
+                            "usuarios",
+                            "votos"
+                          ],
+                          "properties": {
+                            "usuarios": {
+                              "type": "integer",
+                              "example": 0
+                            },
+                            "votos": {
+                              "type": "integer",
+                              "example": 0
+                            }
+                          }
                         }
                       }
                     }
                   }
                 },
                 "perfiles": {
-                  "required": [
-                    "id",
-                    "grupos"
-                  ],
-                  "properties": {
-                    "id": {
-                      "type": "integer",
-                      "example": 0
-                    },
-                    "grupos": {
-                      "required": [
-                        "id",
-                        "facultades"
-                      ],
-                      "properties": {
-                        "id": {
-                          "type": "integer",
-                          "example": 0
-                        },
-                        "facultades": {
-                          "type": "string",
-                          "example": "[string]"
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "id",
+                      "grupos"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "example": 0
+                      },
+                      "grupos": {
+                        "type": "array",
+                        "items": {
+                          "required": [
+                            "id",
+                            "facultades"
+                          ],
+                          "properties": {
+                            "id": {
+                              "type": "integer",
+                              "example": 0
+                            },
+                            "facultades": {
+                              "type": "string",
+                              "example": "[string]"
+                            }
+                          }
                         }
                       }
                     }
@@ -15614,7 +17380,7 @@
         }
       }
     },
-    "/crearAbastecimientoTokensCliente": {
+    "/otp/crearAbastecimientoTokensCliente": {
       "post": {
         "tags": [
           "Sprint F"
@@ -15726,7 +17492,7 @@
         }
       }
     },
-    "/direccionesPorPersona": {
+    "/bup/direccionesPorPersona": {
       "post": {
         "tags": [
           "Sprint F"
@@ -15958,7 +17724,7 @@
         }
       }
     },
-    "/modificaPasswordUsuario": {
+    "/facultamiento/modificaPassword": {
       "post": {
         "tags": [
           "Sprint F"
@@ -16084,7 +17850,7 @@
         }
       }
     },
-    "/consultaAliasPorUsuario": {
+    "/facultamiento/consultaAliasPorUsuario": {
       "post": {
         "tags": [
           "Sprint F"
@@ -16177,7 +17943,7 @@
         }
       }
     },
-    "/consultaLimitesUsuario": {
+    "/facultamiento/consultaLimitesUsuario": {
       "post": {
         "tags": [
           "Sprint F"
@@ -16332,7 +18098,7 @@
         }
       }
     },
-    "/resetPasswordUsuario": {
+    "/facultamiento/resetPasswordUsuario": {
       "post": {
         "tags": [
           "Sprint F"
