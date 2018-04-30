@@ -3631,6 +3631,21 @@ function consultaFoliosGdf(bodyreq){
   }
   return respuesta;
 }
+
+const consultaInfoRECA = {
+
+  "result": {
+    "descripcion": "CEDE Fijo",
+    "tasa": 5.93,
+    "GATNominal": 6.09,
+    "GATReal": 2.16,
+    "saldoMinimo": 1000000.22,
+    "reca": "1234568-ABCD"
+  },
+  "responseStatus": 200,
+  "responseError": ""
+
+}
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////77
 
 
@@ -4187,6 +4202,8 @@ var mapaModelo = {
  'consultaPdfGdf':consultaPdfGdf,
  'solicitaOTPVirtual':solicitaOTPVirtual,
  'consultaFoliosGdf':consultaFoliosGdf,
+ 'consultaInfoRECA':consultaInfoRECA,
+
 
 
 //////////Sprint F//////////////////
