@@ -11493,6 +11493,144 @@
         }
       }
     },
+    "/persona/consultaInfoRECA": {
+      "post": {
+        "tags": [
+          "Sprint 5"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación /consultaInfoRECA del servicio requerido para la integración de Multivanet con T24.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "consultaInfoRECA",
+            "description": "Diseño de la operación para consultaInfoRECA.",
+            "required": true,
+            "schema": {
+              "required": [
+                "ticket",
+                "cuenta",
+                "categoria",
+                "monto",
+                "plazo"
+              ],
+              "properties": {
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
+                },
+                "cuenta": {
+                  "description": "Número de cuenta con la que se creará el pagaré o CEDE.",
+                  "type": "string",
+                  "example": "123456"
+                },
+                "categoria": {
+                  "description": "21020 para pagarés o 21003 para CEDE.",
+                  "type": "string",
+                  "example": "123456"
+                },
+                "monto": {
+                  "description": "Monto de la inversión a abrir.",
+                  "type": "number",
+                  "format": "double",
+                  "example": 1000000.22
+                },
+                "plazo": {
+                  "description": "Plazo de la inversión.",
+                  "type": "integer",
+                  "format": "int32",
+                  "example": 36
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "required": [
+                "responseStatus"
+              ],
+              "properties": {
+                "result": {
+                  "properties": {
+                    "descripcion": {
+                      "description": "Descripción del producto.",
+                      "type": "string",
+                      "example": "CEDE Fijo"
+                    },
+                    "tasa": {
+                      "description": "Tasa de la inversión.",
+                      "type": "number",
+                      "format": "double",
+                      "example": 5.93
+                    },
+                    "GATNominal": {
+                      "description": "GAT Nominal.",
+                      "type": "number",
+                      "format": "double",
+                      "example": 6.09
+                    },
+                    "GATReal": {
+                      "description": "GAT Real",
+                      "type": "number",
+                      "format": "double",
+                      "example": 2.16
+                    },
+                    "saldoMinimo": {
+                      "description": "Saldo mínimo para la inversión.",
+                      "type": "number",
+                      "format": "double",
+                      "example": 1000000.22
+                    },
+                    "reca": {
+                      "description": "RECA para el nuevo contrato.",
+                      "type": "string",
+                      "example": "1234568-ABCD"
+                    }
+                  }
+                },
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el código HTTP real es 200. Estos errores pertenece a Ticket: 2003: Ticket invalido ,  2004: Ticket duplicado.",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 4500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Error de T24."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/persona/consultaPdfGdf": {
       "post": {
         "tags": [
