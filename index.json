@@ -1061,7 +1061,7 @@
         }
       }
     },
-    "/facultamiento/consultaPerfilesPerf": {
+    "/facultamiento/consultaPerfiles": {
       "post": {
         "tags": [
           "Sprint 1"
@@ -1905,6 +1905,9 @@
           "200": {
             "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
             "schema": {
+              "required": [
+                "responseStatus"
+              ],
               "properties": {
                 "responseStatus": {
                   "type": "number",
@@ -1935,7 +1938,7 @@
         }
       }
     },
-    "/consultaCuentasAgregadasCliente": {
+    "/persona/consultaCuentasAgregadasCliente": {
       "post": {
         "tags": [
           "Sprint 2"
@@ -1944,7 +1947,7 @@
         "parameters": [
           {
             "in": "body",
-            "name": "consultaDatosBasicos,",
+            "name": "consultaCuentasAgregadasCliente",
             "description": "Consumidor que dibuja encabezado con datos de cliente",
             "required": true,
             "schema": {
@@ -2059,6 +2062,11 @@
                         "type": "string",
                         "example": "123456789012345"
                       },
+                      "telefono": {
+                        "description": "Teléfono móvil asociado con esta cuenta",
+                        "type": "string",
+                        "example": "1234556789"
+                      },
                       "saldo": {
                         "description": "Saldo de la cuenta",
                         "type": "number",
@@ -2117,6 +2125,11 @@
                     "properties": {
                       "numeroDeCuenta": {
                         "description": "Número de cuenta",
+                        "type": "string",
+                        "example": "789456"
+                      },
+                      "folioInversion": {
+                        "description": "Folio único creado para la inversión por T24.",
                         "type": "string",
                         "example": "789456"
                       },
@@ -2205,6 +2218,11 @@
                         "description": "Identificador del producto",
                         "type": "string",
                         "example": "CEDE"
+                      },
+                      "folioInversion": {
+                        "description": "Identificador único generado por T24 para la inversión creada.",
+                        "type": "string",
+                        "example": "1234567"
                       },
                       "descripcionProducto": {
                         "description": "Nombre comercial del producto",
@@ -2459,6 +2477,11 @@
                         "type": "string",
                         "example": "123456789012345"
                       },
+                      "telefono": {
+                        "description": "Teléfono móvil asociado con esta cuenta",
+                        "type": "string",
+                        "example": "1234556789"
+                      },
                       "saldo": {
                         "description": "Saldo de la cuenta",
                         "type": "number",
@@ -2519,6 +2542,11 @@
                     "properties": {
                       "numeroDeCuenta": {
                         "description": "Número de cuenta",
+                        "type": "string",
+                        "example": "123456"
+                      },
+                      "folioInversion": {
+                        "description": "Folio único creado para la inversión por T24.",
                         "type": "string",
                         "example": "789456"
                       },
@@ -2608,6 +2636,11 @@
                         "description": "Identificador del producto",
                         "type": "string",
                         "example": "CEDE"
+                      },
+                      "folioInversion": {
+                        "description": "Identificador único generado por T24 para la inversión creada.",
+                        "type": "string",
+                        "example": "1234567"
                       },
                       "descripcionProducto": {
                         "description": "Nombre comercial del producto",
@@ -2792,7 +2825,7 @@
         }
       }
     },
-    "/consultaCfdCfdi": {
+    "/persona/consultaCfdCfdi": {
       "post": {
         "tags": [
           "Sprint 2"
@@ -2882,7 +2915,7 @@
         }
       }
     },
-    "/consultaCfdCfdiRetenciones": {
+    "/persona/consultaCfdCfdiRetenciones": {
       "post": {
         "tags": [
           "Sprint 2"
@@ -3753,6 +3786,10 @@
           "200": {
             "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
             "schema": {
+              "required": [
+                "responseStatus",
+                "responseError"
+              ],
               "properties": {
                 "saldoInicial": {
                   "description": "Saldo inicial en la cuenta para el periodo consultado",
@@ -4859,6 +4896,9 @@
           "200": {
             "description": "Estado paperless",
             "schema": {
+              "required": [
+                "responseStatus"
+              ],
               "properties": {
                 "opcionImpresion": {
                   "description": "Activar o desactivar la impresión del estado de cuenta. Puede tomar los valores CONSULTA MULTIVANET, ENVIAR DOMICILIO o  RETIENE SUCURSAL.",
@@ -4983,6 +5023,9 @@
           "200": {
             "description": "Movimientos de donaciones",
             "schema": {
+              "required": [
+                "responseStatus"
+              ],
               "properties": {
                 "listDonaciones": {
                   "description": "lista de donaciones",
@@ -5087,7 +5130,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "No hay información para esta consulta."
+                  "example": "RESPUESTA DE ERROR."
                 }
               }
             }
@@ -5095,7 +5138,7 @@
         }
       }
     },
-    "/validaOTP": {
+    "/autenticacion/validaOTP": {
       "post": {
         "tags": [
           "Sprint 2"
@@ -10739,7 +10782,7 @@
         }
       }
     },
-    "/autenticacion/sincronizaOTP": {
+    "/persona/sincronizaOTP": {
       "post": {
         "tags": [
           "Sprint 3"
@@ -11480,6 +11523,144 @@
         }
       }
     },
+    "/persona/consultaInfoRECA": {
+      "post": {
+        "tags": [
+          "Sprint 5"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación /consultaInfoRECA del servicio requerido para la integración de Multivanet con T24.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "consultaInfoRECA",
+            "description": "Diseño de la operación para consultaInfoRECA.",
+            "required": true,
+            "schema": {
+              "required": [
+                "ticket",
+                "cuenta",
+                "categoria",
+                "monto",
+                "plazo"
+              ],
+              "properties": {
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
+                },
+                "cuenta": {
+                  "description": "Número de cuenta con la que se creará el pagaré o CEDE.",
+                  "type": "string",
+                  "example": "123456"
+                },
+                "categoria": {
+                  "description": "21020 para pagarés o 21003 para CEDE.",
+                  "type": "string",
+                  "example": "123456"
+                },
+                "monto": {
+                  "description": "Monto de la inversión a abrir.",
+                  "type": "number",
+                  "format": "double",
+                  "example": 1000000.22
+                },
+                "plazo": {
+                  "description": "Plazo de la inversión.",
+                  "type": "integer",
+                  "format": "int32",
+                  "example": 36
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "required": [
+                "responseStatus"
+              ],
+              "properties": {
+                "result": {
+                  "properties": {
+                    "descripcion": {
+                      "description": "Descripción del producto.",
+                      "type": "string",
+                      "example": "CEDE Fijo"
+                    },
+                    "tasa": {
+                      "description": "Tasa de la inversión.",
+                      "type": "number",
+                      "format": "double",
+                      "example": 5.93
+                    },
+                    "GATNominal": {
+                      "description": "GAT Nominal.",
+                      "type": "number",
+                      "format": "double",
+                      "example": 6.09
+                    },
+                    "GATReal": {
+                      "description": "GAT Real",
+                      "type": "number",
+                      "format": "double",
+                      "example": 2.16
+                    },
+                    "saldoMinimo": {
+                      "description": "Saldo mínimo para la inversión.",
+                      "type": "number",
+                      "format": "double",
+                      "example": 1000000.22
+                    },
+                    "reca": {
+                      "description": "RECA para el nuevo contrato.",
+                      "type": "string",
+                      "example": "1234568-ABCD"
+                    }
+                  }
+                },
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el código HTTP real es 200. Estos errores pertenece a Ticket: 2003: Ticket invalido ,  2004: Ticket duplicado.",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 4500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Error de T24."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/persona/consultaPdfGdf": {
       "post": {
         "tags": [
@@ -11723,7 +11904,7 @@
         }
       }
     },
-    "/foliosGDF": {
+    "/persona/foliosGDF": {
       "post": {
         "tags": [
           "Sprint 5"
@@ -12112,7 +12293,7 @@
         }
       }
     },
-    "/movimientosDiputados": {
+    "/persona/movimientosDiputados": {
       "post": {
         "tags": [
           "Sprint 5"
@@ -14981,11 +15162,18 @@
             "required": true,
             "schema": {
               "required": [
+                "idUsuario",
                 "idPersonaCliente",
                 "canal",
                 "ticket"
               ],
               "properties": {
+                "idUsuario": {
+                  "description": "Identificador único de la persona en los sistemas institucionales.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 0
+                },
                 "idPersonaCliente": {
                   "type": "integer",
                   "format": "int64",
@@ -16838,6 +17026,7 @@
                 "empresaPropietaria": {
                   "description": "Id de la empresa propietaria del adicional",
                   "type": "integer",
+                  "format": "int64",
                   "example": 12345
                 },
                 "nombre": {
@@ -17090,7 +17279,22 @@
             }
           },
           "201": {
-            "description": "Error controlado, el codigo http real es 200",
+            "description": "Error controlado, el codigo http real es 200. Estos errores pertenecen a FacultamientoException: 1204: No se pudo guardar el registro,  1500 : Error interno del servidor.",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 1204
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "No se pudo actualizar el perfil facultamiento del usuario"
+                }
+              }
+            }
+          },
+          "202": {
+            "description": "Error controlado, el codigo http real es 200. Estos errores pertenecen a BupException : 5500 : Error interno del servidor, 5409 : No se pudo realizar la operación, 5204 : No se encontraron registros, 5300 : No se puede insertar el valor NULL.",
             "schema": {
               "properties": {
                 "responseStatus": {
@@ -17546,6 +17750,10 @@
           "200": {
             "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
             "schema": {
+              "required": [
+                "id",
+                "nombre"
+              ],
               "properties": {
                 "id": {
                   "description": "Lista de sucursales.",
@@ -17561,6 +17769,21 @@
                 "listaDirecciones": {
                   "type": "array",
                   "items": {
+                    "required": [
+                      "id",
+                      "calle",
+                      "noExterior",
+                      "noInterior",
+                      "entreCalles",
+                      "ciudad",
+                      "colonia",
+                      "codigoPostal",
+                      "esPrincipal",
+                      "municipio",
+                      "tipoDireccion",
+                      "pais",
+                      "estado"
+                    ],
                     "properties": {
                       "tipoDireccion": {
                         "properties": {
@@ -17678,7 +17901,7 @@
             }
           },
           "201": {
-            "description": "No se encontraron registros",
+            "description": "Error controlado, el codigo http real es 200. Estos errores pertenecen a BupException: 5204: No se encontraron registros,  5500 : Error interno del servidor.",
             "schema": {
               "properties": {
                 "id": {
@@ -17693,7 +17916,128 @@
                   "example": ""
                 },
                 "listaDirecciones": {
-                  "example": []
+                  "example": [],
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "id",
+                      "calle",
+                      "noExterior",
+                      "noInterior",
+                      "entreCalles",
+                      "ciudad",
+                      "colonia",
+                      "codigoPostal",
+                      "esPrincipal",
+                      "municipio",
+                      "tipoDireccion",
+                      "pais",
+                      "estado"
+                    ],
+                    "properties": {
+                      "tipoDireccion": {
+                        "properties": {
+                          "id": {
+                            "description": "Descripción del tipo de dirección.",
+                            "type": "integer",
+                            "format": "int64",
+                            "example": 1
+                          },
+                          "descripcion": {
+                            "description": "Descripción del país.",
+                            "type": "string",
+                            "example": ""
+                          }
+                        }
+                      },
+                      "pais": {
+                        "properties": {
+                          "id": {
+                            "description": "Id del país.",
+                            "type": "integer",
+                            "format": "int64",
+                            "example": 1
+                          },
+                          "descripcion": {
+                            "description": "Descripción del país.",
+                            "type": "string",
+                            "example": ""
+                          },
+                          "nacionalidad": {
+                            "description": "Descripción de la nacionalidad por país",
+                            "type": "string",
+                            "example": ""
+                          }
+                        }
+                      },
+                      "estado": {
+                        "properties": {
+                          "id": {
+                            "description": "Descripción del tipo de dirección.",
+                            "type": "integer",
+                            "format": "int64",
+                            "example": 1
+                          },
+                          "descripcion": {
+                            "description": "Descripción del país.",
+                            "type": "string",
+                            "example": ""
+                          }
+                        }
+                      },
+                      "id": {
+                        "description": "Id de la dirección",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "11"
+                      },
+                      "calle": {
+                        "description": "Calle de la dirección",
+                        "type": "string",
+                        "example": ""
+                      },
+                      "noExterior": {
+                        "description": "Numero exterior",
+                        "type": "string",
+                        "example": ""
+                      },
+                      "noInterior": {
+                        "description": "Numero interior",
+                        "type": "string",
+                        "example": ""
+                      },
+                      "entreCalles": {
+                        "description": "Entre calles",
+                        "type": "string",
+                        "example": ""
+                      },
+                      "ciudad": {
+                        "description": "Ciudad de la dirección",
+                        "type": "string",
+                        "example": ""
+                      },
+                      "colonia": {
+                        "description": "Colonia de la dirección",
+                        "type": "string",
+                        "example": ""
+                      },
+                      "codigoPostal": {
+                        "description": "Código postal de la dirección",
+                        "type": "string",
+                        "example": ""
+                      },
+                      "esPrincipal": {
+                        "description": "Bandera que indica si la dirección es la principal",
+                        "type": "boolean",
+                        "example": true
+                      },
+                      "municipio": {
+                        "description": "Municipio de la dirección",
+                        "type": "string",
+                        "example": ""
+                      }
+                    }
+                  }
                 },
                 "responseStatus": {
                   "type": "number",
@@ -17705,26 +18049,11 @@
                 }
               }
             }
-          },
-          "500": {
-            "description": "Error interno en el servidor.",
-            "schema": {
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 5500
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": "Error interno en el servidor."
-                }
-              }
-            }
           }
         }
       }
     },
-    "/facultamiento/modificaPassword": {
+    "/facultamiento/modificaPasswordUsuario": {
       "post": {
         "tags": [
           "Sprint F"
@@ -17778,6 +18107,7 @@
                 "idUsuarioCambio": {
                   "description": "Id del usuario al cual se le quiere modificar la contraseña",
                   "type": "integer",
+                  "format": "int64",
                   "example": 1000104701
                 },
                 "otp": {
@@ -17833,16 +18163,16 @@
             }
           },
           "201": {
-            "description": "Error controlado, el codigo http real es 200",
+            "description": "Error controlado, el codigo http real es 200. Estos errores pertenecen a TAMException: 2450 : No coinciden las contraseñas,  2500 : TAM fuera de línea, 2419 : Nuevo password inválido, 2449 : Usuario no existe, 2441 : OTP Inválido.",
             "schema": {
               "properties": {
                 "responseStatus": {
                   "type": "number",
-                  "example": 1204
+                  "example": 2450
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "No se pudo actualizar el registro"
+                  "example": "No coinciden las contraseñas"
                 }
               }
             }
@@ -18116,9 +18446,7 @@
                 "ticket",
                 "canal",
                 "idUsuarioCambio",
-                "otp",
-                "newPassword",
-                "confirmNewPassword"
+                "otp"
               ],
               "properties": {
                 "idUsuario": {
@@ -18198,22 +18526,7 @@
             }
           },
           "201": {
-            "description": "Error controlado, el codigo http real es 200",
-            "schema": {
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 1204
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": "No se pudo actualizar el registro"
-                }
-              }
-            }
-          },
-          "202": {
-            "description": "Error controlado, el codigo http real es 200",
+            "description": "Error controlado, el codigo http real es 200. Estos errores pertenecen a TAMException: 2450: No coinciden las contraseñas,  2500 : TAM fuera de línea, 2419 : Nuevo password inválido, 2449 : Usuario no existe, 2441 : OTP Inválido.",
             "schema": {
               "properties": {
                 "responseStatus": {
@@ -18223,66 +18536,6 @@
                 "responseError": {
                   "type": "string",
                   "example": "No coinciden las contraseñas"
-                }
-              }
-            }
-          },
-          "203": {
-            "description": "Error controlado, el codigo http real es 200",
-            "schema": {
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 2500
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": "TAM fuera de línea"
-                }
-              }
-            }
-          },
-          "204": {
-            "description": "Error controlado, el codigo http real es 200",
-            "schema": {
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 2419
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": "Nuevo password inválido"
-                }
-              }
-            }
-          },
-          "205": {
-            "description": "Error controlado, el codigo http real es 200",
-            "schema": {
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 2449
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": "Usuario no existe"
-                }
-              }
-            }
-          },
-          "206": {
-            "description": "Error controlado, el codigo http real es 200",
-            "schema": {
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 2441
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": "OTP Inválido"
                 }
               }
             }
