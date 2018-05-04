@@ -50,7 +50,7 @@ function validateArray(arrayBody, arrayDefinition, errors)
     //   var type= typeof(itemArray[propertyDef])
     //   console.log();
     // }
-  }parameters
+  }
 
 }
 
@@ -342,7 +342,8 @@ app.post('*', function(req, res){
     var bandera = 0;
 
       //console.log("bodyreq---------------------------" + util.inspect(bodyreq,false,null) );
-      //console.log("requeridos---------------------------" + util.inspect(requeridos,false,null));
+      //console.log("requeridos---------------------------" + util.inspect(requeridos,false,null)); 
+
  
  
     errors["required"]={};
@@ -350,13 +351,9 @@ app.post('*', function(req, res){
     errors["logic"]={};
     console.log("Path " + req.originalUrl + " validando...");
 
-
-
     validate(bodyreq, path.post.parameters[0].schema, errors); 
 
     var l = validaciones(bodyreq, path.post.parameters[0].schema, errors);
-
-
     
     if(l !=""){
         res.status(200).send({"errors":l});
