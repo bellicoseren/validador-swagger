@@ -2607,8 +2607,8 @@ const consultaCfdCfdiRetenciones = {
     "_downloadFile":true
   }
 
-  function consultaCfdCfdi(bodyreq) {
-	  console.log("COnsulta de numero de cuenta---------  "+bodyreq.canal);
+function consultaCfdCfdi(bodyreq) {
+	console.log("COnsulta de numero de cuenta---------  "+bodyreq.canal);
 	  
 	if (bodyreq.canal == "1234") {
       var respuesta = {
@@ -2616,15 +2616,15 @@ const consultaCfdCfdiRetenciones = {
     	"_downloadFile":true
 	  };
 	}else if(bodyreq.canal == "4321"){
-	var respuesta = {
-	"responseStatus": 4400,
-	"responseError": ""
-};
+	  var respuesta = {
+	    "responseStatus": 4400,
+	    "responseError": "No hay información disponible para esta consulta"
+      };
 	}else if(bodyreq.canal == "1111") {
-    var respuesta = {
-	"responseStatus": 500,
-	"responseError": "Internal Server Error"
-};
+      var respuesta = {
+	    "responseStatus": 400,
+	    "responseError": "responseError ESB"
+    };
   }
 	  return respuesta;
 }
@@ -2653,7 +2653,7 @@ function consultaRetenciones(bodyreq){
             };
     }
     return respuesta;
-  }
+}
 
   const consultaCtasServMultiT ={
     "servicios": [
@@ -2706,25 +2706,25 @@ function consultaRetenciones(bodyreq){
     "_downloadFile":true
   }**/
   
-    function estadoCuentaPDF(bodyreq){
+function estadoCuentaPDF(bodyreq){
+
 	if (bodyreq.canal == "1234") {
-      var respuesta = {
-         //Es un archivo
-    	"_downloadFile":true
-	  };
+        var respuesta = {
+           //Es un archivo
+    	   "_downloadFile":true
+	    };
 	}else if(bodyreq.canal == "4321"){
-	var respuesta = {
-	"responseStatus": 4400,
-	"responseError": ""
-};
+	    var respuesta = {
+	       "responseStatus": 4400,
+	       "responseError": ""
+        };
 	}else if(bodyreq.canal == "1111") {
-    var respuesta = {
-	"responseStatus": 500,
-	"responseError": "Internal Server Error"
-};
-  }
-	  return respuesta;
-  
+        var respuesta = {
+	       "responseStatus": 400,
+	       "responseError": "responseError ESB"
+        };
+    }
+    return respuesta;  
 }
 
   const movimientosDonaciones = {
