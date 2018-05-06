@@ -1947,7 +1947,7 @@
         "parameters": [
           {
             "in": "body",
-            "name": "consultaDatosBasicos,",
+            "name": "consultaCuentasAgregadasCliente",
             "description": "Consumidor que dibuja encabezado con datos de cliente",
             "required": true,
             "schema": {
@@ -2062,6 +2062,11 @@
                         "type": "string",
                         "example": "123456789012345"
                       },
+                      "telefono": {
+                        "description": "Teléfono móvil asociado con esta cuenta",
+                        "type": "string",
+                        "example": "1234556789"
+                      },
                       "saldo": {
                         "description": "Saldo de la cuenta",
                         "type": "number",
@@ -2120,6 +2125,11 @@
                     "properties": {
                       "numeroDeCuenta": {
                         "description": "Número de cuenta",
+                        "type": "string",
+                        "example": "789456"
+                      },
+                      "folioInversion": {
+                        "description": "Folio único creado para la inversión por T24.",
                         "type": "string",
                         "example": "789456"
                       },
@@ -2208,6 +2218,11 @@
                         "description": "Identificador del producto",
                         "type": "string",
                         "example": "CEDE"
+                      },
+                      "folioInversion": {
+                        "description": "Identificador único generado por T24 para la inversión creada.",
+                        "type": "string",
+                        "example": "1234567"
                       },
                       "descripcionProducto": {
                         "description": "Nombre comercial del producto",
@@ -2462,6 +2477,11 @@
                         "type": "string",
                         "example": "123456789012345"
                       },
+                      "telefono": {
+                        "description": "Teléfono móvil asociado con esta cuenta",
+                        "type": "string",
+                        "example": "1234556789"
+                      },
                       "saldo": {
                         "description": "Saldo de la cuenta",
                         "type": "number",
@@ -2522,6 +2542,11 @@
                     "properties": {
                       "numeroDeCuenta": {
                         "description": "Número de cuenta",
+                        "type": "string",
+                        "example": "123456"
+                      },
+                      "folioInversion": {
+                        "description": "Folio único creado para la inversión por T24.",
                         "type": "string",
                         "example": "789456"
                       },
@@ -2611,6 +2636,11 @@
                         "description": "Identificador del producto",
                         "type": "string",
                         "example": "CEDE"
+                      },
+                      "folioInversion": {
+                        "description": "Identificador único generado por T24 para la inversión creada.",
+                        "type": "string",
+                        "example": "1234567"
                       },
                       "descripcionProducto": {
                         "description": "Nombre comercial del producto",
