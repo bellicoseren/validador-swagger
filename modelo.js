@@ -4048,10 +4048,15 @@ const consultaOperacionesActivasUsuario = {
 
 
 const creaFacultamientoUsuario={
- "responseStatus": 200,
- "responseError": "",
- "idPerfil": 0
+  "responseStatus": 200,
+  "responseError": "",
+  "result": [
+    {
+      "folio": "1234567890"
+    }
+  ]
 }
+
 
 const consultaAliasPorUsuario = {
   "existeAlias": false,
