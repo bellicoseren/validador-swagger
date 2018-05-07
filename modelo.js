@@ -4218,6 +4218,49 @@ const consultaBitacoraOperaciones = {
     }
   ]
 }
+ 
+function consultaGATIntegra(bodyreq){
+
+	if (bodyreq.cuenta == "1234") {
+      var respuesta = {
+          "responseStatus": 2003,
+          "responseError": "Ticket invalido"
+        };
+  }else if(bodyreq.cuenta == "123") {
+    var respuesta = {
+          "responseStatus": 2004,
+          "responseError": "Ticket duplicado"
+        };
+	}else if(bodyreq.cuenta == "12") {
+    var respuesta = {
+          "responseStatus": 4500,
+          "responseError": "Ocurrió un error en T24"
+        };
+	} else {
+    var respuesta ={
+          "result": {
+            "descripcion": "Multiva Integra",
+            "pagoMensual": 10.12,
+            "reca": "1234568-ABCD",
+            "gatNominal": 1.12,
+            "gatReal": 0.12,
+            "tasaMensual": 10.12,
+            "pagoDiario": 20.12,
+            "fecha": "09/01/2018",
+            "montoDesde": 0.12,
+            "monto": 10.12,
+            "montoHasta": 30.12,
+            "gatAproximadoNominal": 10.12,
+            "tasaDiaria": 10.12
+          },
+          "responseError": "",
+          "responseStatus": 200
+        };
+   }
+  return respuesta;
+}
+
+
 
 
 var mapaModelo = {
@@ -4317,6 +4360,7 @@ var mapaModelo = {
  'solicitaOTPVirtual':solicitaOTPVirtual,
  'consultaFoliosGdf':consultaFoliosGdf,
  'consultaInfoRECA':consultaInfoRECA,
+ 'consultaGATIntegra':consultaGATIntegra,
 
 
 
