@@ -528,9 +528,8 @@
                       },
                       "alias": {
                         "description": "Identificador de la sucursal.",
-                        "type": "number",
-                        "format": "double",
-                        "example": "integer"
+                        "type": "string",
+                        "example": "string"
                       }
                     }
                   }
@@ -558,7 +557,8 @@
                       },
                       "plazo": {
                         "description": "Plazo de la inversión en días",
-                        "type": "number",
+                        "type": "integer",
+                        "format": "int32",
                         "example": "integer"
                       },
                       "tasa": {
@@ -1947,7 +1947,7 @@
         "parameters": [
           {
             "in": "body",
-            "name": "consultaCuentasAgregadasCliente",
+            "name": "consultaDatosBasicos,",
             "description": "Consumidor que dibuja encabezado con datos de cliente",
             "required": true,
             "schema": {
@@ -2062,11 +2062,6 @@
                         "type": "string",
                         "example": "123456789012345"
                       },
-                      "telefono": {
-                        "description": "Teléfono móvil asociado con esta cuenta",
-                        "type": "string",
-                        "example": "1234556789"
-                      },
                       "saldo": {
                         "description": "Saldo de la cuenta",
                         "type": "number",
@@ -2125,11 +2120,6 @@
                     "properties": {
                       "numeroDeCuenta": {
                         "description": "Número de cuenta",
-                        "type": "string",
-                        "example": "789456"
-                      },
-                      "folioInversion": {
-                        "description": "Folio único creado para la inversión por T24.",
                         "type": "string",
                         "example": "789456"
                       },
@@ -2218,11 +2208,6 @@
                         "description": "Identificador del producto",
                         "type": "string",
                         "example": "CEDE"
-                      },
-                      "folioInversion": {
-                        "description": "Identificador único generado por T24 para la inversión creada.",
-                        "type": "string",
-                        "example": "1234567"
                       },
                       "descripcionProducto": {
                         "description": "Nombre comercial del producto",
@@ -2477,11 +2462,6 @@
                         "type": "string",
                         "example": "123456789012345"
                       },
-                      "telefono": {
-                        "description": "Teléfono móvil asociado con esta cuenta",
-                        "type": "string",
-                        "example": "1234556789"
-                      },
                       "saldo": {
                         "description": "Saldo de la cuenta",
                         "type": "number",
@@ -2542,11 +2522,6 @@
                     "properties": {
                       "numeroDeCuenta": {
                         "description": "Número de cuenta",
-                        "type": "string",
-                        "example": "123456"
-                      },
-                      "folioInversion": {
-                        "description": "Folio único creado para la inversión por T24.",
                         "type": "string",
                         "example": "789456"
                       },
@@ -2636,11 +2611,6 @@
                         "description": "Identificador del producto",
                         "type": "string",
                         "example": "CEDE"
-                      },
-                      "folioInversion": {
-                        "description": "Identificador único generado por T24 para la inversión creada.",
-                        "type": "string",
-                        "example": "1234567"
                       },
                       "descripcionProducto": {
                         "description": "Nombre comercial del producto",
@@ -3612,65 +3582,138 @@
             "description": "Respuesta correcta.",
             "schema": {
               "properties": {
-                "efectivoDisponible": {
-                  "description": "Total de efectivo disponible en la cartera.",
-                  "type": "number",
-                  "format": "double",
-                  "example": 20000
+                "posicion": {
+                  "type": "object",
+                  "properties": {
+                    "efectivoDisponible": {
+                      "description": "Total de efectivo disponible en la cartera.",
+                      "type": "number",
+                      "format": "double",
+                      "example": 20000
+                    },
+                    "totalCartera": {
+                      "description": "Total de efectivo disponible en la cartera.",
+                      "type": "number",
+                      "format": "double",
+                      "example": 20000
+                    },
+                    "valuacionPortafolio": {
+                      "description": "Valor total de la cartera.",
+                      "type": "number",
+                      "format": "double",
+                      "example": 30000
+                    },
+                    "posiciones": {
+                      "type": "array",
+                      "items": {
+                        "properties": {
+                          "inversion": {
+                            "description": "Nombre de la inversión.",
+                            "type": "string",
+                            "example": "S1-123-456"
+                          },
+                          "emisora": {
+                            "description": "Emisora de los títulos de inversión.",
+                            "type": "string",
+                            "example": "S1"
+                          },
+                          "serie": {
+                            "description": "Serie de los títulos de inversión",
+                            "type": "string",
+                            "example": "123"
+                          },
+                          "titulos": {
+                            "description": "Valor individual  de los títulos de inversión.",
+                            "type": "integer",
+                            "format": "int32",
+                            "example": 100
+                          },
+                          "precio": {
+                            "description": "Valor individual  de los títulos de inversión.",
+                            "type": "number",
+                            "format": "double",
+                            "example": 200
+                          },
+                          "valuacion": {
+                            "description": "Valor total de la inversión.",
+                            "type": "number",
+                            "format": "double",
+                            "example": 20000
+                          },
+                          "numeroCuenta": {
+                            "description": "Número de cuenta de cheques asociada con esta inversión.",
+                            "type": "string",
+                            "example": "123456"
+                          }
+                        }
+                      }
+                    }
+                  }
                 },
-                "totalCartera": {
-                  "description": "Total de efectivo disponible en la cartera.",
-                  "type": "number",
-                  "format": "double",
-                  "example": 20000
-                },
-                "valuacionPortafolio": {
-                  "description": "Valor total de la cartera.",
-                  "type": "number",
-                  "format": "double",
-                  "example": 30000
-                },
-                "posiciones": {
-                  "type": "array",
-                  "items": {
-                    "properties": {
-                      "inversion": {
-                        "description": "Nombre de la inversión.",
-                        "type": "string",
-                        "example": "S1-123-456"
-                      },
-                      "emisora": {
-                        "description": "Emisora de los títulos de inversión.",
-                        "type": "string",
-                        "example": "S1"
-                      },
-                      "serie": {
-                        "description": "Serie de los títulos de inversión",
-                        "type": "string",
-                        "example": "123"
-                      },
-                      "titulos": {
-                        "description": "Valor individual  de los títulos de inversión.",
-                        "type": "integer",
-                        "format": "int32",
-                        "example": 100
-                      },
-                      "precio": {
-                        "description": "Valor individual  de los títulos de inversión.",
-                        "type": "number",
-                        "format": "double",
-                        "example": 200
-                      },
-                      "valuacion": {
-                        "description": "Valor total de la inversión.",
-                        "type": "number",
-                        "format": "double",
-                        "example": 20000
-                      },
-                      "numeroCuenta": {
-                        "description": "Número de cuenta de cheques asociada con esta inversión.",
-                        "type": "string",
-                        "example": "123456"
+                "portafolio": {
+                  "type": "object",
+                  "properties": {
+                    "efectivoDisponible": {
+                      "description": "Total de efectivo disponible en la cartera.",
+                      "type": "number",
+                      "format": "double",
+                      "example": 20000
+                    },
+                    "totalCartera": {
+                      "description": "Total de efectivo disponible en la cartera.",
+                      "type": "number",
+                      "format": "double",
+                      "example": 20000
+                    },
+                    "valuacionPortafolio": {
+                      "description": "Valor total de la cartera.",
+                      "type": "number",
+                      "format": "double",
+                      "example": 30000
+                    },
+                    "posiciones": {
+                      "type": "array",
+                      "items": {
+                        "properties": {
+                          "inversion": {
+                            "description": "Nombre de la inversión.",
+                            "type": "string",
+                            "example": "S1-123-456"
+                          },
+                          "emisora": {
+                            "description": "Emisora de los títulos de inversión.",
+                            "type": "string",
+                            "example": "S1"
+                          },
+                          "serie": {
+                            "description": "Serie de los títulos de inversión",
+                            "type": "string",
+                            "example": "123"
+                          },
+                          "titulos": {
+                            "description": "Valor individual  de los títulos de inversión.",
+                            "type": "integer",
+                            "format": "int32",
+                            "example": 100
+                          },
+                          "precio": {
+                            "description": "Valor individual  de los títulos de inversión.",
+                            "type": "number",
+                            "format": "double",
+                            "example": 200
+                          },
+                          "valuacion": {
+                            "description": "Valor total de la inversión.",
+                            "type": "number",
+                            "format": "double",
+                            "example": 20000
+                          },
+                          "numeroCuenta": {
+                            "description": "Número de cuenta de cheques asociada con esta inversión.",
+                            "type": "string",
+                            "example": "123456"
+                          }
+                        }
                       }
                     }
                   }
@@ -13197,6 +13240,196 @@
                 "responseError": {
                   "type": "string",
                   "example": "Internal Error Server"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/persona/consultaGATIntegra": {
+      "post": {
+        "tags": [
+          "Sprint 5"
+        ],
+        "description": "Este servicio consulta el cuadro informativo del RECA para la apertura de contratos de multiva integra.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "consultaGATIntegra",
+            "description": "consultaGATIntegra",
+            "required": true,
+            "schema": {
+              "required": [
+                "ticket",
+                "cuenta",
+                "monto"
+              ],
+              "properties": {
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
+                },
+                "cuenta": {
+                  "type": "string",
+                  "example": "123456"
+                },
+                "monto": {
+                  "type": "number",
+                  "format": "double",
+                  "example": 5862.8
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                },
+                "result": {
+                  "properties": {
+                    "descripcion": {
+                      "type": "string",
+                      "example": "Multiva Integra"
+                    },
+                    "fecha": {
+                      "description": "Fecha para la inversión dd-MM-yyyy\"",
+                      "type": "string",
+                      "format": "date",
+                      "example": "09/01/2018"
+                    },
+                    "monto": {
+                      "description": "Monto de la inversión\"",
+                      "type": "number",
+                      "format": "double",
+                      "example": 10.12
+                    },
+                    "gatAproximadoNominal": {
+                      "description": "Aproximación del gat nominal.",
+                      "type": "number",
+                      "format": "double",
+                      "example": 10.12
+                    },
+                    "tasaDiaria": {
+                      "description": "Tasa diaria de la inversión",
+                      "type": "number",
+                      "format": "double",
+                      "example": 10.12
+                    },
+                    "tasaMensual": {
+                      "description": "Tasa mensual de la inversión",
+                      "type": "number",
+                      "format": "double",
+                      "example": 10.12
+                    },
+                    "montoDesde": {
+                      "description": "Monto inicial de este rango de tasa.",
+                      "type": "number",
+                      "format": "double",
+                      "example": 0.12
+                    },
+                    "montoHasta": {
+                      "description": "Monto final de este rango de tasa.",
+                      "type": "number",
+                      "format": "double",
+                      "example": 30.12
+                    },
+                    "pagoDiario": {
+                      "description": "Pago diario devengado por esta inversión.",
+                      "type": "number",
+                      "format": "double",
+                      "example": 20.12
+                    },
+                    "pagoMensual": {
+                      "description": "PagoMensual devengado por esta inversión.",
+                      "type": "number",
+                      "format": "double",
+                      "example": 10.12
+                    },
+                    "gatNominal": {
+                      "description": "GAT Nominal",
+                      "type": "number",
+                      "format": "double",
+                      "example": 1.12
+                    },
+                    "gatReal": {
+                      "description": "GAT Real",
+                      "type": "number",
+                      "format": "double",
+                      "example": 0.12
+                    },
+                    "reca": {
+                      "type": "string",
+                      "example": "1234568-ABCD"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "error 400",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 2003
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Ticket invalido"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "error 400",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 2004
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Ticket duplicado"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "error 400",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 4500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Ocurrió un error en T24"
                 }
               }
             }
