@@ -1947,7 +1947,7 @@
         "parameters": [
           {
             "in": "body",
-            "name": "consultaCuentasAgregadasCliente",
+            "name": "consultaDatosBasicos,",
             "description": "Consumidor que dibuja encabezado con datos de cliente",
             "required": true,
             "schema": {
@@ -2062,11 +2062,6 @@
                         "type": "string",
                         "example": "123456789012345"
                       },
-                      "telefono": {
-                        "description": "Teléfono móvil asociado con esta cuenta",
-                        "type": "string",
-                        "example": "1234556789"
-                      },
                       "saldo": {
                         "description": "Saldo de la cuenta",
                         "type": "number",
@@ -2125,11 +2120,6 @@
                     "properties": {
                       "numeroDeCuenta": {
                         "description": "Número de cuenta",
-                        "type": "string",
-                        "example": "789456"
-                      },
-                      "folioInversion": {
-                        "description": "Folio único creado para la inversión por T24.",
                         "type": "string",
                         "example": "789456"
                       },
@@ -2218,11 +2208,6 @@
                         "description": "Identificador del producto",
                         "type": "string",
                         "example": "CEDE"
-                      },
-                      "folioInversion": {
-                        "description": "Identificador único generado por T24 para la inversión creada.",
-                        "type": "string",
-                        "example": "1234567"
                       },
                       "descripcionProducto": {
                         "description": "Nombre comercial del producto",
@@ -2477,11 +2462,6 @@
                         "type": "string",
                         "example": "123456789012345"
                       },
-                      "telefono": {
-                        "description": "Teléfono móvil asociado con esta cuenta",
-                        "type": "string",
-                        "example": "1234556789"
-                      },
                       "saldo": {
                         "description": "Saldo de la cuenta",
                         "type": "number",
@@ -2542,11 +2522,6 @@
                     "properties": {
                       "numeroDeCuenta": {
                         "description": "Número de cuenta",
-                        "type": "string",
-                        "example": "123456"
-                      },
-                      "folioInversion": {
-                        "description": "Folio único creado para la inversión por T24.",
                         "type": "string",
                         "example": "789456"
                       },
@@ -2636,11 +2611,6 @@
                         "description": "Identificador del producto",
                         "type": "string",
                         "example": "CEDE"
-                      },
-                      "folioInversion": {
-                        "description": "Identificador único generado por T24 para la inversión creada.",
-                        "type": "string",
-                        "example": "1234567"
                       },
                       "descripcionProducto": {
                         "description": "Nombre comercial del producto",
@@ -17641,6 +17611,18 @@
                   "type": "string",
                   "minLength": 1,
                   "example": "WEB"
+                },
+                "sucursal": {
+                  "description": "Si se porporciona este identificador, se enviará el abastecimiento de tokens a esta sucursal.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": "10"
+                },
+                "idDireccion": {
+                  "description": "Si este identificador se proporciona, el abastecimiento se entregará en la dirección proporcionada.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": "1"
                 }
               }
             }
@@ -17650,6 +17632,10 @@
           "200": {
             "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
             "schema": {
+              "required": [
+                "responseStatus",
+                "idSolicitud"
+              ],
               "properties": {
                 "responseStatus": {
                   "type": "number",
@@ -17689,6 +17675,36 @@
                 "resposeError": {
                   "type": "string",
                   "example": "Internal Server Error"
+                }
+              }
+            }
+          },
+          "202": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 2204
+                },
+                "resposeError": {
+                  "type": "string",
+                  "example": "No se encontraron registros en la base de OTP."
+                }
+              }
+            }
+          },
+          "203": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 2501
+                },
+                "resposeError": {
+                  "type": "string",
+                  "example": "OTP fuera de línea."
                 }
               }
             }
