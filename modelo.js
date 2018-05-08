@@ -2673,8 +2673,8 @@ const consultaCfdCfdiRetenciones = {
     "_downloadFile":true
   }
 
-  function consultaCfdCfdi(bodyreq) {
-	  console.log("COnsulta de numero de cuenta---------  "+bodyreq.canal);
+function consultaCfdCfdi(bodyreq) {
+	console.log("COnsulta de numero de cuenta---------  "+bodyreq.canal);
 	  
 	if (bodyreq.canal == "1234") {
       var respuesta = {
@@ -2682,15 +2682,15 @@ const consultaCfdCfdiRetenciones = {
     	"_downloadFile":true
 	  };
 	}else if(bodyreq.canal == "4321"){
-	var respuesta = {
-	"responseStatus": 4400,
-	"responseError": ""
-};
+	  var respuesta = {
+	    "responseStatus": 4400,
+	    "responseError": "No hay información disponible para esta consulta"
+      };
 	}else if(bodyreq.canal == "1111") {
-    var respuesta = {
-	"responseStatus": 500,
-	"responseError": "Internal Server Error"
-};
+      var respuesta = {
+	    "responseStatus": 400,
+	    "responseError": "responseError ESB"
+    };
   }
 	  return respuesta;
 }
@@ -2719,7 +2719,7 @@ function consultaRetenciones(bodyreq){
             };
     }
     return respuesta;
-  }
+}
 
   const consultaCtasServMultiT ={
     "servicios": [
@@ -2772,25 +2772,25 @@ function consultaRetenciones(bodyreq){
     "_downloadFile":true
   }**/
   
-    function estadoCuentaPDF(bodyreq){
+function estadoCuentaPDF(bodyreq){
+
 	if (bodyreq.canal == "1234") {
-      var respuesta = {
-         //Es un archivo
-    	"_downloadFile":true
-	  };
+        var respuesta = {
+           //Es un archivo
+    	   "_downloadFile":true
+	    };
 	}else if(bodyreq.canal == "4321"){
-	var respuesta = {
-	"responseStatus": 4400,
-	"responseError": ""
-};
+	    var respuesta = {
+	       "responseStatus": 4400,
+	       "responseError": ""
+        };
 	}else if(bodyreq.canal == "1111") {
-    var respuesta = {
-	"responseStatus": 500,
-	"responseError": "Internal Server Error"
-};
-  }
-	  return respuesta;
-  
+        var respuesta = {
+	       "responseStatus": 400,
+	       "responseError": "responseError ESB"
+        };
+    }
+    return respuesta;  
 }
 
   const movimientosDonaciones = {
@@ -4218,6 +4218,49 @@ const consultaBitacoraOperaciones = {
     }
   ]
 }
+ 
+function consultaGATIntegra(bodyreq){
+
+	if (bodyreq.cuenta == "1234") {
+      var respuesta = {
+          "responseStatus": 2003,
+          "responseError": "Ticket invalido"
+        };
+  }else if(bodyreq.cuenta == "123") {
+    var respuesta = {
+          "responseStatus": 2004,
+          "responseError": "Ticket duplicado"
+        };
+	}else if(bodyreq.cuenta == "12") {
+    var respuesta = {
+          "responseStatus": 4500,
+          "responseError": "Ocurrió un error en T24"
+        };
+	} else {
+    var respuesta ={
+          "result": {
+            "descripcion": "Multiva Integra",
+            "pagoMensual": 10.12,
+            "reca": "1234568-ABCD",
+            "gatNominal": 1.12,
+            "gatReal": 0.12,
+            "tasaMensual": 10.12,
+            "pagoDiario": 20.12,
+            "fecha": "09/01/2018",
+            "montoDesde": 0.12,
+            "monto": 10.12,
+            "montoHasta": 30.12,
+            "gatAproximadoNominal": 10.12,
+            "tasaDiaria": 10.12
+          },
+          "responseError": "",
+          "responseStatus": 200
+        };
+   }
+  return respuesta;
+}
+
+
 
 
 var mapaModelo = {
@@ -4317,6 +4360,7 @@ var mapaModelo = {
  'solicitaOTPVirtual':solicitaOTPVirtual,
  'consultaFoliosGdf':consultaFoliosGdf,
  'consultaInfoRECA':consultaInfoRECA,
+ 'consultaGATIntegra':consultaGATIntegra,
 
 
 
