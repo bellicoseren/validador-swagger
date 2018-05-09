@@ -8475,7 +8475,7 @@
                 "fechaEjecucion": {
                   "description": "Fecha en la que se ejecutará el procesamiento de este archivo de operaciones. En formato dd-MM-yyyy.",
                   "type": "string",
-                  "formaat": "date",
+                  "format": "date",
                   "example": "01-01-2018"
                 },
                 "rutaDocumento": {
@@ -13981,7 +13981,173 @@
         }
       }
     },
-    "/facultamiento/bloqueoDesbloqueoUsuario": {
+    "/facultamiento/bloqueoUsuario": {
+      "post": {
+        "tags": [
+          "Sprint F"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación /bloqueoUsuario del servicio /facultamiento requerida para la integración de Multivanet con el core Facultamiento.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "bloqueoUsuario",
+            "description": "Diseño de la operación para actualizaUsuario",
+            "required": true,
+            "schema": {
+              "required": [
+                "idUsuario",
+                "listaUsuarios",
+                "ticket",
+                "canal",
+                "otp"
+              ],
+              "properties": {
+                "idUsuario": {
+                  "description": "Identificador único de la persona en los sistemas institucionales.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 0
+                },
+                "listaUsuarios": {
+                  "description": "Lista de usuario para verificar ",
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "id"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "example": 1
+                      }
+                    }
+                  }
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "otp": {
+                  "type": "string",
+                  "example": "1234567"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "required": [
+                "responseError",
+                "responseStatus",
+                "listaUsuarios"
+              ],
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                },
+                "result": {
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "id",
+                      "isActivo"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "example": 1
+                      },
+                      "isActivo": {
+                        "description": "Bandera que indica si el usuario terminó bloqueado o desbloqueado después de la operación.",
+                        "type": "boolean",
+                        "example": true
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el código HTTP real es 200. Estos errores pertenecen a TAMException: 2449: Usuario no existe, 2441: OTP Invalido",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 404
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Usuario solicitado no existe"
+                },
+                "result": {
+                  "example": [],
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "id",
+                      "isActivo"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "example": 1
+                      },
+                      "isActivo": {
+                        "description": "Bandera que indica si el usuario terminó bloqueado o desbloqueado después de la operación.",
+                        "type": "boolean",
+                        "example": true
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "202": {
+            "description": "Error controlado, el código HTTP real es 200. Estos errores pertenecen a FacultamientoException. 1204: No se encontraron resultados, 1500: Sistema facultamiento fuera de línea.",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 1204
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Usuario solicitado no existe"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/facultamiento/desbloqueoUsuario": {
       "post": {
         "tags": [
           "Sprint F"
@@ -14099,7 +14265,7 @@
               "properties": {
                 "responseStatus": {
                   "type": "number",
-                  "example": 1204
+                  "example": 404
                 },
                 "responseError": {
                   "type": "string",
@@ -15060,7 +15226,7 @@
                         "example": "Pago de servicios financieros"
                       },
                       "referencia": {
-                        "descritpion": "Referencia de la operación.",
+                        "description": "Referencia de la operación.",
                         "type": "string",
                         "example": "128362518293"
                       },
@@ -15263,7 +15429,7 @@
                         "example": "Pago de servicios financieros"
                       },
                       "referencia": {
-                        "descritpion": "Referencia de la operación.",
+                        "description": "Referencia de la operación.",
                         "type": "string",
                         "example": "128362518293"
                       },
@@ -15826,7 +15992,7 @@
                               ],
                               "properties": {
                                 "noCuenta": {
-                                  "desccription": "Número de cuenta",
+                                  "description": "Número de cuenta",
                                   "type": "string",
                                   "example": "string"
                                 },
@@ -15877,7 +16043,6 @@
                             "example": "string"
                           },
                           "patronOrigen": {
-                            "description": null,
                             "type": "string",
                             "example": "string"
                           },
@@ -16736,7 +16901,7 @@
                       },
                       "fechaRegistro": {
                         "type": "string",
-                        "formato": "date",
+                        "format": "date",
                         "example": "07/12/2017 06:12:42"
                       },
                       "fechaAsignacion": {
@@ -16847,7 +17012,7 @@
                       },
                       "fechaRegistro": {
                         "type": "string",
-                        "formato": "date",
+                        "format": "date",
                         "example": "07/12/2017 06:12:42"
                       },
                       "fechaAsignacion": {
@@ -17231,7 +17396,8 @@
                 "relacion",
                 "correo",
                 "telefono",
-                "canal"
+                "canal",
+                "otp"
               ],
               "properties": {
                 "ticket": {
@@ -17314,20 +17480,13 @@
                 },
                 "correo": {
                   "required": [
-                    "correo",
-                    "idEmpresaPropietaria"
+                    "correo"
                   ],
                   "properties": {
                     "correo": {
                       "description": "Identificador único de la persona o empresa que extiende este correo electrónico al usuario.",
                       "type": "string",
                       "example": "c.delateja@hotmail.com"
-                    },
-                    "idEmpresaPropietaria": {
-                      "description": "Identificador único de la persona o empresa que extiende este teléfono al usuario.",
-                      "type": "integer",
-                      "format": "int64",
-                      "example": 123456
                     }
                   }
                 },
@@ -17455,7 +17614,7 @@
                   }
                 },
                 "tokenAsignar": {
-                  "requiered": [
+                  "required": [
                     "idDispositivo"
                   ],
                   "properties": {
@@ -17468,6 +17627,11 @@
                   }
                 },
                 "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "otp": {
                   "type": "string",
                   "minLength": 1,
                   "example": "WEB"
@@ -17576,6 +17740,7 @@
               "properties": {
                 "usuario": {
                   "type": "integer",
+                  "format": "int64",
                   "example": 123456
                 },
                 "ticket": {
@@ -17595,9 +17760,9 @@
                   }
                 },
                 "canal": {
-                  "description": "Identificador del canal a través del cual se recibió la peticion.",
                   "type": "string",
-                  "example": ""
+                  "minLength": 1,
+                  "example": "WEB"
                 },
                 "otp": {
                   "type": "string",
@@ -17606,6 +17771,7 @@
                 "usuarioUltimaModificacion": {
                   "description": "Id usuario que realizo la última midufucación.",
                   "type": "integer",
+                  "format": "int64",
                   "example": 0
                 },
                 "isActivo": {
@@ -17615,18 +17781,21 @@
                 },
                 "limiteIndividual": {
                   "description": "Limite individual que puede operar el usuario.",
-                  "type": "string",
-                  "example": "0.0"
+                  "type": "number",
+                  "format": "double",
+                  "example": 1200.2
                 },
                 "limiteMancomunado": {
                   "description": "Limite mancomunado que puede operar el usuario.",
-                  "type": "string",
-                  "example": "0.0"
+                  "type": "number",
+                  "format": "double",
+                  "example": 2344.4
                 },
                 "limiteOperable": {
                   "description": "Limite operable que puede operar el usuario.",
-                  "type": "string",
-                  "example": "0.0"
+                  "type": "number",
+                  "format": "double",
+                  "example": 21233.3
                 },
                 "rangoOperable": {
                   "description": "Rango de operación del usuario de operar el limite operable.",
@@ -17643,6 +17812,7 @@
                     "properties": {
                       "usuarios": {
                         "type": "integer",
+                        "format": "int64",
                         "example": 0
                       },
                       "votos": {
@@ -17678,27 +17848,30 @@
                             "noCuenta": {
                               "description": "Número de cuenta",
                               "type": "string",
-                              "example": "string"
+                              "example": "1234567"
                             },
                             "limiteIndividual": {
                               "description": "Limite individual que puede operar el usuario.",
-                              "type": "string",
-                              "example": "0.0"
+                              "type": "number",
+                              "format": "double",
+                              "example": 12345.65
                             },
                             "limiteMancomunado": {
                               "description": "Limite mancomunado que puede operar el usuario.",
-                              "type": "string",
-                              "example": "0.0"
+                              "type": "number",
+                              "format": "double",
+                              "example": 345678.98
                             },
                             "limiteOperable": {
                               "description": "Limite operable que puede operar el usuario.",
-                              "type": "string",
-                              "example": "0.0"
+                              "type": "number",
+                              "format": "double",
+                              "example": 1234.8
                             },
                             "rangoOperable": {
                               "description": "Rango de operación del usuario de operar el limite operable.",
                               "type": "string",
-                              "example": "string"
+                              "example": "3"
                             }
                           }
                         }
@@ -17713,6 +17886,7 @@
                           "properties": {
                             "usuarios": {
                               "type": "integer",
+                              "format": "int64",
                               "example": 0
                             },
                             "votos": {
@@ -17735,6 +17909,7 @@
                     "properties": {
                       "id": {
                         "type": "integer",
+                        "format": "int64",
                         "example": 0
                       },
                       "grupos": {
@@ -17747,11 +17922,20 @@
                           "properties": {
                             "id": {
                               "type": "integer",
+                              "format": "int64",
                               "example": 0
                             },
                             "facultades": {
-                              "type": "string",
-                              "example": "[string]"
+                              "description": "Lista de facultades del usuario.",
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              },
+                              "example": [
+                                "0",
+                                "1",
+                                "2"
+                              ]
                             }
                           }
                         }
@@ -17761,8 +17945,15 @@
                 },
                 "cuentas": {
                   "description": "istado de cuentas con un comportamiento de facultades default.",
-                  "type": "string",
-                  "example": "[string]"
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "example": [
+                    "123456",
+                    "17654321",
+                    "23456789"
+                  ]
                 }
               }
             }
@@ -17874,18 +18065,6 @@
                   "type": "string",
                   "minLength": 1,
                   "example": "WEB"
-                },
-                "sucursal": {
-                  "description": "Si se porporciona este identificador, se enviará el abastecimiento de tokens a esta sucursal.",
-                  "type": "integer",
-                  "format": "int64",
-                  "example": "10"
-                },
-                "idDireccion": {
-                  "description": "Si este identificador se proporciona, el abastecimiento se entregará en la dirección proporcionada.",
-                  "type": "integer",
-                  "format": "int64",
-                  "example": "1"
                 }
               }
             }
@@ -17895,10 +18074,6 @@
           "200": {
             "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
             "schema": {
-              "required": [
-                "responseStatus",
-                "idSolicitud"
-              ],
               "properties": {
                 "responseStatus": {
                   "type": "number",
@@ -17938,36 +18113,6 @@
                 "resposeError": {
                   "type": "string",
                   "example": "Internal Server Error"
-                }
-              }
-            }
-          },
-          "202": {
-            "description": "Error controlado, el codigo http real es 200",
-            "schema": {
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 2204
-                },
-                "resposeError": {
-                  "type": "string",
-                  "example": "No se encontraron registros en la base de OTP."
-                }
-              }
-            }
-          },
-          "203": {
-            "description": "Error controlado, el codigo http real es 200",
-            "schema": {
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 2501
-                },
-                "resposeError": {
-                  "type": "string",
-                  "example": "OTP fuera de línea."
                 }
               }
             }
