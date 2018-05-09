@@ -1,78 +1,150 @@
 'use strict';
 
 
-const consultaPerfiles = {
+const consultaPerfilesPerf = {
   "facultadesSimples": [{
     nombre: 'Mult_Pf_privilege',
+    activa: true,
     restriccionHorario: false,
     horaInicio: '09:00:00',
     horaFin: '18:00:00',
+    tipoFacultad: 'FACULTAD_SIMPLE',
+    isComponenteVisible: true,
+    isComponenteHabilitado: true,
+    portlet: true,
+    nombrePortlet: 'PORTLET 1',
   },
   {
     nombre: 'Mul_Pf_Password_change',
+    activa: true,
     restriccionHorario: false,
     horaInicio: '09:00:00',
     horaFin: '18:00:00',
+    tipoFacultad: 'FACULTAD_SIMPLE',
+    isComponenteVisible: true,
+    isComponenteHabilitado: true,
+    portlet: true,
+    nombrePortlet: 'PORTLET 1',
   },
   {
     nombre: 'Mul_Pf_listAdditional_Otp',
+    activa: true,
     restriccionHorario: false,
     horaInicio: '09:00:00',
     horaFin: '18:00:00',
+    tipoFacultad: 'FACULTAD_SIMPLE',
+    isComponenteVisible: true,
+    isComponenteHabilitado: true,
+    portlet: true,
+    nombrePortlet: 'PORTLET 1',
   },
   {
     nombre: 'Mul_Pf_ActivateAditional_Otp',
+    activa: true,
     restriccionHorario: false,
     horaInicio: '09:00:00',
     horaFin: '18:00:00',
+    tipoFacultad: 'FACULTAD_SIMPLE',
+    isComponenteVisible: true,
+    isComponenteHabilitado: true,
+    portlet: true,
+    nombrePortlet: 'PORTLET 1',
   },
   {
     nombre: 'Mul_BlockAditional_Otp',
+    activa: true,
     restriccionHorario: false,
     horaInicio: '09:00:00',
     horaFin: '18:00:00',
+    tipoFacultad: 'FACULTAD_SIMPLE',
+    isComponenteVisible: true,
+    isComponenteHabilitado: true,
+    portlet: true,
+    nombrePortlet: 'PORTLET 1',
   },
   {
     nombre: 'Mul_Con_privilege',
+    activa: true,
     restriccionHorario: false,
     horaInicio: '09:00:00',
     horaFin: '18:00:00',
+    tipoFacultad: 'FACULTAD_SIMPLE',
+    isComponenteVisible: true,
+    isComponenteHabilitado: true,
+    portlet: true,
+    nombrePortlet: 'PORTLET 1',
   },
   {
     nombre: 'Mul_Con_Balance',
+    activa: true,
     restriccionHorario: false,
     horaInicio: '09:00:00',
     horaFin: '18:00:00',
+    tipoFacultad: 'FACULTAD_SIMPLE',
+    isComponenteVisible: true,
+    isComponenteHabilitado: true,
+    portlet: true,
+    nombrePortlet: 'PORTLET 1',
   },
   {
     nombre: 'Mul_Con_CFDI',
+    activa: true,
     restriccionHorario: false,
     horaInicio: '09:00:00',
     horaFin: '18:00:00',
+    tipoFacultad: 'FACULTAD_SIMPLE',
+    isComponenteVisible: true,
+    isComponenteHabilitado: true,
+    portlet: true,
+    nombrePortlet: 'PORTLET 1',
   },
   {
     nombre: 'Mul_Con_Retenciones_CFDI',
+    activa: true,
     restriccionHorario: false,
     horaInicio: '09:00:00',
     horaFin: '18:00:00',
+    tipoFacultad: 'FACULTAD_SIMPLE',
+    isComponenteVisible: true,
+    isComponenteHabilitado: true,
+    portlet: true,
+    nombrePortlet: 'PORTLET 1',
   },
   {
     nombre: 'Mul_Con_CEP_Recibido',
+    activa: true,
     restriccionHorario: false,
     horaInicio: '09:00:00',
     horaFin: '18:00:00',
+    tipoFacultad: 'FACULTAD_SIMPLE',
+    isComponenteVisible: true,
+    isComponenteHabilitado: true,
+    portlet: true,
+    nombrePortlet: 'PORTLET 1',
   },
   {
     nombre: 'Mul_Con_MoneyMarket',
+    activa: true,
     restriccionHorario: false,
     horaInicio: '09:00:00',
     horaFin: '18:00:00',
+    tipoFacultad: 'FACULTAD_SIMPLE',
+    isComponenteVisible: true,
+    isComponenteHabilitado: true,
+    portlet: true,
+    nombrePortlet: 'PORTLET 1',
   },
   {
     nombre: 'Mul_Con_Transactions',
+    activa: true,
     restriccionHorario: false,
     horaInicio: '09:00:00',
     horaFin: '18:00:00',
+    tipoFacultad: 'FACULTAD_SIMPLE',
+    isComponenteVisible: true,
+    isComponenteHabilitado: true,
+    portlet: true,
+    nombrePortlet: 'PORTLET 1',
   }],
   "responseStatus": 200,
   "responseError": ""
@@ -80,16 +152,11 @@ const consultaPerfiles = {
 
 const bloqueoOTP = {
   "listTokens": [
-  {
-    "usuario": "1234567890",
-    "responseStatus": 200,
-    "responseError": ""
-  },
-  {
-    "usuario": "9876543210",
-    "responseStatus": 200,
-    "responseError": ""
-  }
+    {
+      "usuario": "String",
+      "responseStatus": "Long",
+      "responseError": "String"
+    }
   ],
   "responseStatus": 200,
   "responseError": ""
@@ -97,22 +164,31 @@ const bloqueoOTP = {
 
 const activacionOTP = {
   "listTokens": [
-  {
-    "usuario": "1234567890",
-    "responseStatus": 200,
-    "responseError": ""
-  },
-  {
-    "usuario": "9876543210",
-    "responseStatus": 200,
-    "responseError": ""
-  }
+    {
+      "usuario": "String",
+      "responseStatus": "Long",
+      "responseError": "String"
+    }
   ],
   "responseStatus": 200,
   "responseError": ""
 }
 
 const listarTokensOTP = {
+  "listTokens": [
+    {
+      "usuario": "string",
+      "tokenSerial": "string",
+      "nombreUsuario": "string",
+      "fechaAlta": "date",
+      "tokenStatus": "string"
+    }
+  ],
+  "responseStatus": 200,
+  "responseError": ""
+}
+/** 
+{
   "listTokens": [
   {
     "usuario": 4349121927,
@@ -468,6 +544,7 @@ const listarTokensOTP = {
   "responseStatus": 200,
   "responseError": ""
 }
+**/
 
 const autentificacion = {
   fechaUltimoAcceso: "20170322163223.0Z",
@@ -689,13 +766,15 @@ function cambioContrasena(bodyreq){
 
   if( bodyreq.oldPassword == "999"){
         if( bodyreq.newPassword == "123" &&  bodyreq.confirmNewPassword == "123"){
-        var respuesta = {
-              "listCambioContrasena": {
-                "codigo": 0,
-                "mensaje": ""
-              },
+        var respuesta ={
+              "listCambioContrasena": [
+                {
+                  "codigo": "integer",
+                  "mensaje": "string"
+                }
+              ],
               "responseStatus": 200,
-              "responseError": "OK"
+              "responseError": ""
             };
         }else{
         var respuesta = {
@@ -773,14 +852,11 @@ const consultaCuentasAgregadasCliente = {
   }*/
 
   const consultaProductosContratados = {
-    "listaProductos": [{
-      "nombre": "CUENTA DE CHEQUES",
-      "idProducto": "CHQ"
-    },
-    {
-      "nombre": "TARJETA DE CREDITO",
-      "idProducto": "TDC"
-    }
+    "ListaProductos": [
+      {
+        "nombre": "String",
+        "idProducto": "String"
+      }
     ],
     "responseStatus": 200,
     "responseError": ""
@@ -791,16 +867,13 @@ const consultaCuentasAgregadasCliente = {
       "nombre": "TESORERIA",
       "contratado": true
     },
-    {
-      "id": 2,          
+    {          
       "nombre": "PAGO DE NOMINA",
       "contratado": true
     },
     {
-      "id": 3,
       "nombre": "BANCA ELECTRONICA",
       "contratado": true,
-      "montoMaximoAutorizado": 10000.10
     }
     ],
     "responseStatus": 200,
@@ -823,45 +896,38 @@ const consultaCuentasAgregadasCliente = {
 
 
   const consultaDatosCliente = {
-    "numCliente": "123454354545",
-    "nombre": "Empresa Mexicana de Autopartes A.S",
-    "listaDirecciones": [{
-      "direccion": "Naucalpan #12 colonia maravillas",
-      "poblacion": "Estado de Mexico",
-      "ciudad": "Mexico",
-      "estado": "Estado de Mexico",
-      "cp": "15420",
-      "tipoDireccion": "1"
-    }],
-    "rfc": "DEGA880407HFLNR01",
-    "listaTelefonos": [{
-      "cvePais": 52,
-      "codArea": 55,
-      "telefono": "5529017222",
-      "tipoTelefono": "celular"
-
-    }, {
-      "cvePais": 52,
-      "codArea": 55,
-      "telefono": "5529017223",
-      "tipoTelefono": "celular"
-    }, {
-      "cvePais": 52,
-      "codArea": 55,
-      "telefono": "5529017224",
-      "tipoTelefono": "celular"
-    },
-
+    "numCliente": "Long",
+    "nombre": "String",
+    "listaDirecciones": [
+      {
+        "direccion": "String",
+        "poblacion": "String",
+        "ciudad": "String",
+        "estado": "String",
+        "cp": "String",
+        "tipoDireccion": "String"
+      }
     ],
-    "listaEmails": [{
-      "mail": "enrique@gmail.com",
-      "activo": true,
-      "tipoEmail": "empresa"
-    }],
-    "tipoPersona": "moral",
-    "estatus": "a",
-    "sucursal": "313",
-    "vip": "1",
+    "rfc": "String",
+    "listaTelefonos": [
+      {
+        "cvePais": "integer",
+        "codArea": "integer",
+        "telefono": "Long",
+        "tipoTelefono": "String"
+      }
+    ],
+    "listaEmails": [
+      {
+        "mail": "String",
+        "activo": false,
+        "tipoEmail": "String"
+      }
+    ],
+    "tipoPersona": "String",
+    "estatus": "String",
+    "sucursal": "String",
+    "vip": "String",
     "responseStatus": 200,
     "responseError": ""
   }
@@ -3631,6 +3697,21 @@ function consultaFoliosGdf(bodyreq){
   }
   return respuesta;
 }
+
+const consultaInfoRECA = {
+
+  "result": {
+    "descripcion": "CEDE Fijo",
+    "tasa": 5.93,
+    "GATNominal": 6.09,
+    "GATReal": 2.16,
+    "saldoMinimo": 1000000.22,
+    "reca": "1234568-ABCD"
+  },
+  "responseStatus": 200,
+  "responseError": ""
+
+}
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////77
 
 
@@ -3645,16 +3726,19 @@ const actualizaDatosPersona = {
   }
 }
  
-const asignacionOtpUsuario = { 
+const asignacionOtpUsuario = {
   "responseStatus": 200,
-  "responseError": ""
+  "responseError": "",
+  "result": [
+    "string"
+  ]
 }
  
 
 const consultaCuentasCliente = {
   "result": [
     {
-      "idPersona": "11",
+      "idPersona": 1,
       "noCuenta": "0000000009",
       "tipoCuenta": "cheques",
       "alias": ""
@@ -3668,7 +3752,7 @@ const consultaCuentasCliente = {
 const consultaSucursales = {
   "sucursales": [
     {
-      "id": "11",
+      "id": 11,
       "calle": "",
       "noExterior": "",
       "nombre": "",
@@ -3728,19 +3812,19 @@ const direccionesPorPersona = {
 
  /////////// Sprint F  /////////////
 
-const buscarPersonaFisicaPorFiltro = {
+const personaFisicaPorFiltro = {
   "responseStatus": 200,
   "responseError": "",
   "result": {
-    "Id": "9",
+    "Id": 9,
     "regimenFiscal": "Persona Moral",
-    "nombre": "nombre",
+    "nombre": "null",
     "razonSocial": "VASCO",
-    "apellidoPaterno": "apellidoPaterno",
-    "apellidoMaterno": "apellidoMaterno",
-    "nombreCompleto": "nombreCompleto",
+    "apellidoPaterno": "null",
+    "apellidoMaterno": "null",
+    "nombreCompleto": "null",
     "rfc": "VAS647909",
-    "curp": "curp",
+    "curp": "null",
     "direccion": [
       {
         "tipoDireccion": {
@@ -3755,10 +3839,10 @@ const buscarPersonaFisicaPorFiltro = {
           "id": 1,
           "descripcion": "Distrito Federal"
         },
-        "municipio": "municipio",
-        "ciudad": "ciudad",
-        "colonia": "colonia",
-        "codigoPostal": "codigoPostal",
+        "municipio": "null",
+        "ciudad": "null",
+        "colonia": "null",
+        "codigoPostal": "null",
         "calle": "Calle",
         "noExterior": "182",
         "noInterior": "2",
@@ -3815,10 +3899,11 @@ const consultaEstados = {
   "estados": [
     {
       "id": 5,
-      "descripcion": 5
+      "descripcion": "5"
     }
   ]
 }
+
 
 const consultaStockTokens = {
   "responseStatus": 200,
@@ -3867,67 +3952,67 @@ const consultaMunicipioDelegacion = {
 }
 
 
-
-
 const crearAbastecimientoTokensCliente = {
   "responseStatus": 200,
   "responseError": "",
   "result": [
     {
       "idSolicitud": 8,
-      "fechaRegistro": "09-01-2018T15:42:00" 
+      "fechaRegistro": "09-01-2018T15:42:00"
     }
   ]
 }
 
 const actualizaFacultamientoUsuario={
   "responseStatus": 200,
-  "responseError": ""
+  "responseError": "",
+  "result": {
+    "folio": "12345678910"
+  }
 }
 
 const consultaPerfilesPatronConGruposFacultades={
-    "result": [
-   {
-     "id": 12345,
-     "nombre": "string",
-     "descripcion": "",
-     "titular": 12345,
-     "fechaModificacion": "23032017",
-     "isActivo": true,
-     "empresaPropietaria": "",
-     "jerarquiaFacultamiento": "",
-     "usuarioUltimaModificacion": 0,
-     "listaGrupos": [
-       {
-         "nombre": "string",
-         "id": "",
-         "descripcion": "string",
-         "listaFacultades": [
-           {
-             "id": 12345,
-             "nombre": "string",
-             "descripcion": "",
-             "fechaModificacion": "23032017",
-             "isActivo": true,
-             "usuarioUltimaModificacion": 23032017,
-             "cuenta": "",
-             "tipoFacultad": "",
-             "montoRestriccion": "",
-             "nombrePortlet": "",
-             "isPortlet": true,
-             "isComponenteHabilitado": true,
-             "isComponenteVisible": true,
-             "isLayout": true,
-             "urlLayout": "",
-             "isGrupoBpm": true
-           }
-         ]
-       }
-     ]
-   }
- ],
-     "responseStatus": 200,
-     "responseError": ""
+  "result": [
+    {
+      "id": 12345,
+      "nombre": "string",
+      "descripcion": "",
+      "titular": 12345,
+      "fechaModificacion": "23032017",
+      "isActivo": true,
+      "empresaPropietaria": "",
+      "usuarioUltimaModificacion": 0,
+      "listaGrupos": [
+        {
+          "nombre": "string",
+          "id": "",
+          "descripcion": "string",
+          "listaFacultades": [
+            {
+              "id": 12345,
+              "nombre": "string",
+              "descripcion": "",
+              "fechaModificacion": "23032017",
+              "isActivo": true,
+              "usuarioUltimaModificacion": 23032017,
+              "cuenta": "",
+              "tipoFacultad": "",
+              "montoRestriccion": "",
+              "nombrePortlet": "",
+              "isPortlet": true,
+              "isComponenteHabilitado": true,
+              "isComponenteVisible": true,
+              "isLayout": true,
+              "urlLayout": "",
+              "isGrupoBpm": true
+            }
+          ]
+        }
+      ],
+      "responseStatus": 200,
+      "responseError": ""
+    }
+  ]
 }
 
 const modificaPasswordUsuario={
@@ -3940,58 +4025,58 @@ const modificaPasswordUsuario={
 
 const consultaFacultamientoUsuario={
   "result": {
-   "idusuario": 12345,
-   "ticket": {
-     "id_user": "123456",
-     "id_creds": "12345678"
-   },
-   "canal": "WEB",
-   "usuarioUltimaModificacion": 0,
-   "isActivo": true,
-   "limiteIndividual": "0.0",
-   "limiteMancomunado": "0.0",
-   "limiteOperable": "0.0",
-   "rangoOperable": "true",
-   "firmantes": {
-     "usuarios": "[0]",
-     "votos": 0
-   },
-   "firmantesFacultades": [
-     {
-       "nombre": "string",
-       "firmantes": {
-         "usuarios": "[0]",
-         "votos": 0
-       },
-       "cuentas": [
-         {
-           "noCuenta": "string",
-           "limiteIndividual": "0.0",
-           "limiteMancomunado": "0.0",
-           "limiteOperable": "0.0",
-           "rangoOperable": "true"
-         }
-       ]
-     }
-   ],
-   "perfiles": [
-     {
-       "id": 0,
-       "nombre": "string",
-       "patronOrigen": "string",
-       "grupos": [
-         {
-           "id": 0,
-           "nombre": "string",
-           "facultades": "[string]"
-         }
-       ]
-     }
-   ],
-   "cuentas": "[strings]"
- },
- "responseStatus": 200,
- "responseError": ""
+    "idusuario": 0,
+    "ticket": {
+      "id_user": "123456",
+      "id_creds": "12345678"
+    },
+    "canal": "WEB",
+    "usuarioUltimaModificacion": 0,
+    "isActivo": true,
+    "limiteIndividual": "0.0",
+    "limiteMancomunado": "0.0",
+    "limiteOperable": "0.0",
+    "rangoOperable": "true",
+    "firmantes": {
+      "usuarios": "[0]",
+      "votos": 0
+    },
+    "firmantesFacultades": [
+      {
+        "nombre": "string",
+        "firmantes": {
+          "usuarios": "[0]",
+          "votos": 0
+        },
+        "cuentas": [
+          {
+            "noCuenta": "string",
+            "limiteIndividual": "0.0",
+            "limiteMancomunado": "0.0",
+            "limiteOperable": "0.0",
+            "rangoOperable": "true"
+          }
+        ]
+      }
+    ],
+    "perfiles": [
+      {
+        "id": 0,
+        "nombre": "string",
+        "patronOrigen": "string",
+        "grupos": [
+          {
+            "id": 0,
+            "nombre": "string",
+            "facultades": "[string]"
+          }
+        ]
+      }
+    ],
+    "cuentas": "[strings]"
+  },
+  "responseStatus": 200,
+  "responseError": ""
 }
 
 const bloqueoUsuario={
@@ -4036,17 +4121,21 @@ const creaUsuarioAdicional={
   }
 }
 
-const consultaOperacionesActivasUsuario = { 
- "responseStatus": 200,
- "responseError": "",
-   "tieneOperacionesActivas": true   
+const consultaOperacionesActivasUsuario = {
+  "responseStatus": 200,
+  "responseError": "",
+  "tieneOperacionesActivas": true
 }
 
 
 const creaFacultamientoUsuario={
- "responseStatus": 200,
- "responseError": "",
- "idPerfil": 0
+  "responseStatus": 200,
+  "responseError": "",
+  "result": [
+    {
+      "folio": "1234567890"
+    }
+  ]
 }
 
 const consultaAliasPorUsuario = {
@@ -4061,6 +4150,8 @@ const consultaLimitesUsuario = {
   "result": [
     {
       "nombre": "",
+      "alias": "",
+      "rfc": "",
       "limiteIndividual": "",
       "limiteMancomunado": "",
       "limiteOperable": "",
@@ -4074,10 +4165,6 @@ const consultaLimitesUsuario = {
     }
   ]
 }
-
-
-
-
 
 
 const resetPasswordUsuario = {
@@ -4101,6 +4188,91 @@ const consultaEmpresasPorHolding = {
 }
 
 
+const consultaBitacoraOperaciones = {
+  "responseStatus": 200,
+  "responseError": "",
+  "result": [
+    {
+      "idBitacora": 1234567,
+      "folio": "F0123UNASN3123",
+      "fechaSolicitud": "21-04-2017 11:03:00",
+      "fechaProgramada": "",
+      "importe": "$37,192.12",
+      "moneda": "MXN",
+      "estatus": "APLICADA",
+      "folio2": "F0123UNASN3123",
+      "fechaAutorizacion": "21-04-2017 11:03:00",
+      "folioAutorizacion": "FO2389JDS912",
+      "medio": "MultivaNet",
+      "concepto": "Pago de servicios financieros",
+      "referencia": "128362518293",
+      "claveRastreo": "1729HSQA9383712JD",
+      "fechaAplicacion": "14-10-2017",
+      "fechaLiquidacion": "14-10-2017",
+      "idDispositivo": "AJDH1023731KDAD",
+      "agente": "Jorge Posadas",
+      "rfc": "ABCD123456ASD",
+      "iva": "$123.12",
+      "comision": "$13.12",
+      "ivaComision": "$3.12",
+      "cuentaOrigenTipo": "CHQ",
+      "cuentaOrigenNombre": "Provedores",
+      "cuentaOrigen": "1237493749",
+      "cuentaDestinoTipo": "Número Celular",
+      "cuentaDestinoNombre": "Fincomun",
+      "cuentaDestino": "5512345678",
+      "usuarioCaptura": "123456",
+      "conceptoEdoCuenta": "Pago",
+      "celularBeneficiario": "1234567890",
+      "tipoPago": "2",
+      "tipoCredito": "1"
+    }
+  ]
+}
+ 
+function consultaGATIntegra(bodyreq){
+
+	if (bodyreq.cuenta == "1234") {
+      var respuesta = {
+          "responseStatus": 2003,
+          "responseError": "Ticket invalido"
+        };
+  }else if(bodyreq.cuenta == "123") {
+    var respuesta = {
+          "responseStatus": 2004,
+          "responseError": "Ticket duplicado"
+        };
+	}else if(bodyreq.cuenta == "12") {
+    var respuesta = {
+          "responseStatus": 4500,
+          "responseError": "Ocurrió un error en T24"
+        };
+	} else {
+    var respuesta ={
+          "result": {
+            "descripcion": "Multiva Integra",
+            "pagoMensual": 10.12,
+            "reca": "1234568-ABCD",
+            "gatNominal": 1.12,
+            "gatReal": 0.12,
+            "tasaMensual": 10.12,
+            "pagoDiario": 20.12,
+            "fecha": "09/01/2018",
+            "montoDesde": 0.12,
+            "monto": 10.12,
+            "montoHasta": 30.12,
+            "gatAproximadoNominal": 10.12,
+            "tasaDiaria": 10.12
+          },
+          "responseError": "",
+          "responseStatus": 200
+        };
+   }
+  return respuesta;
+}
+
+
+
 
 var mapaModelo = {
    //### ESB ####//
@@ -4115,7 +4287,7 @@ var mapaModelo = {
   'listarTokensOTP':listarTokensOTP,
   'activacionOTP':activacionOTP,
   'bloqueoOTP':bloqueoOTP,
-  'consultaPerfiles': consultaPerfiles,
+  'consultaPerfilesPerf': consultaPerfilesPerf,
   'login':login,
   'autentificacion':autentificacion,
   'consultaContrato':consultaContrato,
@@ -4198,6 +4370,9 @@ var mapaModelo = {
  'consultaPdfGdf':consultaPdfGdf,
  'solicitaOTPVirtual':solicitaOTPVirtual,
  'consultaFoliosGdf':consultaFoliosGdf,
+ 'consultaInfoRECA':consultaInfoRECA,
+ 'consultaGATIntegra':consultaGATIntegra,
+
 
 
 //////////Sprint F//////////////////
@@ -4205,7 +4380,7 @@ var mapaModelo = {
  'consultaCuentasCliente':consultaCuentasCliente,
  'consultaSucursales':consultaSucursales,
  'direccionesPorPersona':direccionesPorPersona,
- 'buscarPersonaFisicaPorFiltro':buscarPersonaFisicaPorFiltro,
+ 'personaFisicaPorFiltro':personaFisicaPorFiltro,
  'consultaEstados':consultaEstados,
  'consultaMunicipioDelegacion':consultaMunicipioDelegacion,
  'crearAbastecimientoTokensCliente': crearAbastecimientoTokensCliente,
@@ -4224,7 +4399,9 @@ var mapaModelo = {
  'consultaAliasPorUsuario':consultaAliasPorUsuario,
  'consultaLimitesUsuario':consultaLimitesUsuario,
  'resetPasswordUsuario': resetPasswordUsuario,
+ 'consultaBitacoraOperaciones': consultaBitacoraOperaciones,
  'consultaEmpresasPorHolding': consultaEmpresasPorHolding
+
 }
 
 
