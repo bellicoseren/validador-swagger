@@ -17480,7 +17480,7 @@
                         "type": "string",
                         "example": "string"
                       },
-                      "cuentas": {
+                      "cuentas1": {
                         "type": "array",
                         "items": {
                           "required": [
@@ -17522,7 +17522,7 @@
                           }
                         }
                       },
-                      "firmantes": {
+                      "firmantes2": {
                         "type": "array",
                         "items": {
                           "required": [
@@ -17589,7 +17589,7 @@
                     }
                   }
                 },
-                "cuentas": {
+                "cuentas2": {
                   "description": "istado de cuentas con un comportamiento de facultades default.",
                   "type": "array",
                   "items": {
