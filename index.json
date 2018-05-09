@@ -17874,6 +17874,18 @@
                   "type": "string",
                   "minLength": 1,
                   "example": "WEB"
+                },
+                "sucursal": {
+                  "description": "Si se porporciona este identificador, se enviará el abastecimiento de tokens a esta sucursal.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": "10"
+                },
+                "idDireccion": {
+                  "description": "Si este identificador se proporciona, el abastecimiento se entregará en la dirección proporcionada.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": "1"
                 }
               }
             }
@@ -17883,6 +17895,10 @@
           "200": {
             "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
             "schema": {
+              "required": [
+                "responseStatus",
+                "idSolicitud"
+              ],
               "properties": {
                 "responseStatus": {
                   "type": "number",
@@ -17922,6 +17938,36 @@
                 "resposeError": {
                   "type": "string",
                   "example": "Internal Server Error"
+                }
+              }
+            }
+          },
+          "202": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 2204
+                },
+                "resposeError": {
+                  "type": "string",
+                  "example": "No se encontraron registros en la base de OTP."
+                }
+              }
+            }
+          },
+          "203": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 2501
+                },
+                "resposeError": {
+                  "type": "string",
+                  "example": "OTP fuera de línea."
                 }
               }
             }
