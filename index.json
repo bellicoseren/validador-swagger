@@ -13248,199 +13248,6 @@
       }
     },
     "/persona/consultaGATIntegra": {
-<<<<<<< HEAD
-=======
-      "post": {
-        "tags": [
-          "Sprint 5"
-        ],
-        "description": "Este servicio consulta el cuadro informativo del RECA para la apertura de contratos de multiva integra.",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "consultaGATIntegra",
-            "description": "consultaGATIntegra",
-            "required": true,
-            "schema": {
-              "required": [
-                "ticket",
-                "cuenta",
-                "monto"
-              ],
-              "properties": {
-                "ticket": {
-                  "required": [
-                    "id_user",
-                    "id_creds"
-                  ],
-                  "properties": {
-                    "id_user": {
-                      "type": "string",
-                      "example": "123456"
-                    },
-                    "id_creds": {
-                      "type": "string",
-                      "example": "12345678"
-                    }
-                  }
-                },
-                "cuenta": {
-                  "type": "string",
-                  "example": "123456"
-                },
-                "monto": {
-                  "type": "number",
-                  "format": "double",
-                  "example": 5862.8
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
-            "schema": {
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 200
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": ""
-                },
-                "result": {
-                  "properties": {
-                    "descripcion": {
-                      "type": "string",
-                      "example": "Multiva Integra"
-                    },
-                    "fecha": {
-                      "description": "Fecha para la inversión dd-MM-yyyy\"",
-                      "type": "string",
-                      "format": "date",
-                      "example": "09/01/2018"
-                    },
-                    "monto": {
-                      "description": "Monto de la inversión\"",
-                      "type": "number",
-                      "format": "double",
-                      "example": 10.12
-                    },
-                    "gatAproximadoNominal": {
-                      "description": "Aproximación del gat nominal.",
-                      "type": "number",
-                      "format": "double",
-                      "example": 10.12
-                    },
-                    "tasaDiaria": {
-                      "description": "Tasa diaria de la inversión",
-                      "type": "number",
-                      "format": "double",
-                      "example": 10.12
-                    },
-                    "tasaMensual": {
-                      "description": "Tasa mensual de la inversión",
-                      "type": "number",
-                      "format": "double",
-                      "example": 10.12
-                    },
-                    "montoDesde": {
-                      "description": "Monto inicial de este rango de tasa.",
-                      "type": "number",
-                      "format": "double",
-                      "example": 0.12
-                    },
-                    "montoHasta": {
-                      "description": "Monto final de este rango de tasa.",
-                      "type": "number",
-                      "format": "double",
-                      "example": 30.12
-                    },
-                    "pagoDiario": {
-                      "description": "Pago diario devengado por esta inversión.",
-                      "type": "number",
-                      "format": "double",
-                      "example": 20.12
-                    },
-                    "pagoMensual": {
-                      "description": "PagoMensual devengado por esta inversión.",
-                      "type": "number",
-                      "format": "double",
-                      "example": 10.12
-                    },
-                    "gatNominal": {
-                      "description": "GAT Nominal",
-                      "type": "number",
-                      "format": "double",
-                      "example": 1.12
-                    },
-                    "gatReal": {
-                      "description": "GAT Real",
-                      "type": "number",
-                      "format": "double",
-                      "example": 0.12
-                    },
-                    "reca": {
-                      "type": "string",
-                      "example": "1234568-ABCD"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "error 400",
-            "schema": {
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 2003
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": "Ticket invalido"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "error 400",
-            "schema": {
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 2004
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": "Ticket duplicado"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "error 400",
-            "schema": {
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 4500
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": "Ocurrió un error en T24"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/bup/actualizaDatosPersona": {
->>>>>>> upstream/master
       "post": {
         "tags": [
           "Sprint 5"
@@ -18258,18 +18065,6 @@
                   "type": "string",
                   "minLength": 1,
                   "example": "WEB"
-                },
-                "sucursal": {
-                  "description": "Si se porporciona este identificador, se enviará el abastecimiento de tokens a esta sucursal.",
-                  "type": "integer",
-                  "format": "int64",
-                  "example": "10"
-                },
-                "idDireccion": {
-                  "description": "Si este identificador se proporciona, el abastecimiento se entregará en la dirección proporcionada.",
-                  "type": "integer",
-                  "format": "int64",
-                  "example": "1"
                 }
               }
             }
@@ -18279,10 +18074,6 @@
           "200": {
             "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
             "schema": {
-              "required": [
-                "responseStatus",
-                "idSolicitud"
-              ],
               "properties": {
                 "responseStatus": {
                   "type": "number",
@@ -18322,36 +18113,6 @@
                 "resposeError": {
                   "type": "string",
                   "example": "Internal Server Error"
-                }
-              }
-            }
-          },
-          "202": {
-            "description": "Error controlado, el codigo http real es 200",
-            "schema": {
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 2204
-                },
-                "resposeError": {
-                  "type": "string",
-                  "example": "No se encontraron registros en la base de OTP."
-                }
-              }
-            }
-          },
-          "203": {
-            "description": "Error controlado, el codigo http real es 200",
-            "schema": {
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 2501
-                },
-                "resposeError": {
-                  "type": "string",
-                  "example": "OTP fuera de línea."
                 }
               }
             }
