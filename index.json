@@ -1943,11 +1943,11 @@
         "tags": [
           "Sprint 2"
         ],
-        "description": "Consolidar la información relevante respecto al diseño de la operación/consultaCuentasAgregadasCliente del servicio requerido para la integración de Multivanet con T24",
+        "description": "Consolidar la información relevante respecto al diseño de la operación /consultaCuentasAgregadasCliente del servicio requerido para la integración de Multivanet con T24",
         "parameters": [
           {
             "in": "body",
-            "name": "consultaDatosBasicos,",
+            "name": "consultaCuentasAgregadasCliente,",
             "description": "Consumidor que dibuja encabezado con datos de cliente",
             "required": true,
             "schema": {
@@ -2062,6 +2062,11 @@
                         "type": "string",
                         "example": "123456789012345"
                       },
+                      "telefono": {
+                        "description": "eléfono  móvil asociado con esta cuenta.",
+                        "type": "string",
+                        "example": " "
+                      },
                       "saldo": {
                         "description": "Saldo de la cuenta",
                         "type": "number",
@@ -2085,7 +2090,7 @@
                         "type": "string",
                         "example": "123456"
                       },
-                      "cuentaMultiva": {
+                      "numeroDeCuenta": {
                         "description": "Cuenta de cheques asociada con el crédito.",
                         "type": "string",
                         "example": "7894560"
@@ -2120,6 +2125,11 @@
                     "properties": {
                       "numeroDeCuenta": {
                         "description": "Número de cuenta",
+                        "type": "string",
+                        "example": "789456"
+                      },
+                      "folioInversion": {
+                        "description": "Folio único creado para la inversión por T24.",
                         "type": "string",
                         "example": "789456"
                       },
@@ -2209,6 +2219,11 @@
                         "type": "string",
                         "example": "CEDE"
                       },
+                      "folioInversion": {
+                        "description": "Folio único creado para la inversión por T24.",
+                        "type": "string",
+                        "example": "789456"
+                      },
                       "descripcionProducto": {
                         "description": "Nombre comercial del producto",
                         "type": "string",
@@ -2280,11 +2295,6 @@
                   "type": "array",
                   "items": {
                     "properties": {
-                      "cuentaMultiva": {
-                        "description": "Número de cuenta eje del cliente para esta cuenta de multiva integra.",
-                        "type": "string",
-                        "example": "78984560"
-                      },
                       "idProducto": {
                         "description": "Identificador del producto",
                         "type": "string",
@@ -2462,6 +2472,11 @@
                         "type": "string",
                         "example": "123456789012345"
                       },
+                      "telefono": {
+                        "description": "eléfono  móvil asociado con esta cuenta.",
+                        "type": "string",
+                        "example": " "
+                      },
                       "saldo": {
                         "description": "Saldo de la cuenta",
                         "type": "number",
@@ -2486,7 +2501,7 @@
                         "type": "string",
                         "example": "123456"
                       },
-                      "cuentaMultiva": {
+                      "numeroDeCuenta": {
                         "description": "Cuenta de cheques asociada con el crédito.",
                         "type": "string",
                         "example": "7894560"
@@ -2522,6 +2537,11 @@
                     "properties": {
                       "numeroDeCuenta": {
                         "description": "Número de cuenta",
+                        "type": "string",
+                        "example": "789456"
+                      },
+                      "folioInversion": {
+                        "description": "Folio único creado para la inversión por T24.",
                         "type": "string",
                         "example": "789456"
                       },
@@ -2612,6 +2632,11 @@
                         "type": "string",
                         "example": "CEDE"
                       },
+                      "folioInversion": {
+                        "description": "Folio único creado para la inversión por T24.",
+                        "type": "string",
+                        "example": "789456"
+                      },
                       "descripcionProducto": {
                         "description": "Nombre comercial del producto",
                         "type": "string",
@@ -2684,11 +2709,6 @@
                   "type": "array",
                   "items": {
                     "properties": {
-                      "cuentaMultiva": {
-                        "description": "Número de cuenta eje del cliente para esta cuenta de multiva integra.",
-                        "type": "string",
-                        "example": "78984560"
-                      },
                       "idProducto": {
                         "description": "Identificador del producto",
                         "type": "string",
@@ -8475,7 +8495,7 @@
                 "fechaEjecucion": {
                   "description": "Fecha en la que se ejecutará el procesamiento de este archivo de operaciones. En formato dd-MM-yyyy.",
                   "type": "string",
-                  "formaat": "date",
+                  "format": "date",
                   "example": "01-01-2018"
                 },
                 "rutaDocumento": {
@@ -13981,7 +14001,141 @@
         }
       }
     },
-    "/facultamiento/bloqueoDesbloqueoUsuario": {
+    "/facultamiento/bloqueoUsuario": {
+      "post": {
+        "tags": [
+          "Sprint F"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación /bloqueoUsuario del servicio /facultamiento requerida para la integración de Multivanet con el core Facultamiento.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "bloqueoUsuario",
+            "description": "Diseño de la operación para actualizaUsuario",
+            "required": true,
+            "schema": {
+              "required": [
+                "idUsuario",
+                "listaUsuarios",
+                "ticket",
+                "canal",
+                "otp"
+              ],
+              "properties": {
+                "idUsuario": {
+                  "description": "Identificador único de la persona en los sistemas institucionales.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 0
+                },
+                "listaUsuarios": {
+                  "description": "Lista de usuario para verificar ",
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "id"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "example": 1
+                      }
+                    }
+                  }
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "otp": {
+                  "type": "string",
+                  "example": "1234567"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "required": [
+                "responseError",
+                "responseStatus",
+                "listaUsuarios"
+              ],
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                },
+                "result": {
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "id",
+                      "isActivo"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "example": 1
+                      },
+                      "isActivo": {
+                        "description": "Bandera que indica si el usuario terminó bloqueado o desbloqueado después de la operación.",
+                        "type": "boolean",
+                        "example": true
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 1204
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Usuario solicitado no existe"
+                },
+                "result": {
+                  "type": "string",
+                  "example": "[]"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/facultamiento/desbloqueoUsuario": {
       "post": {
         "tags": [
           "Sprint F"
@@ -15060,7 +15214,7 @@
                         "example": "Pago de servicios financieros"
                       },
                       "referencia": {
-                        "descritpion": "Referencia de la operación.",
+                        "description": "Referencia de la operación.",
                         "type": "string",
                         "example": "128362518293"
                       },
@@ -15263,7 +15417,7 @@
                         "example": "Pago de servicios financieros"
                       },
                       "referencia": {
-                        "descritpion": "Referencia de la operación.",
+                        "description": "Referencia de la operación.",
                         "type": "string",
                         "example": "128362518293"
                       },
@@ -15826,7 +15980,7 @@
                               ],
                               "properties": {
                                 "noCuenta": {
-                                  "desccription": "Número de cuenta",
+                                  "description": "Número de cuenta",
                                   "type": "string",
                                   "example": "string"
                                 },
@@ -15877,7 +16031,6 @@
                             "example": "string"
                           },
                           "patronOrigen": {
-                            "description": null,
                             "type": "string",
                             "example": "string"
                           },
@@ -16736,7 +16889,7 @@
                       },
                       "fechaRegistro": {
                         "type": "string",
-                        "formato": "date",
+                        "format": "date",
                         "example": "07/12/2017 06:12:42"
                       },
                       "fechaAsignacion": {
@@ -16847,7 +17000,7 @@
                       },
                       "fechaRegistro": {
                         "type": "string",
-                        "formato": "date",
+                        "format": "date",
                         "example": "07/12/2017 06:12:42"
                       },
                       "fechaAsignacion": {
@@ -17231,6 +17384,7 @@
                 "relacion",
                 "correo",
                 "telefono",
+                "tokenAsignar",
                 "canal"
               ],
               "properties": {
@@ -17455,9 +17609,6 @@
                   }
                 },
                 "tokenAsignar": {
-                  "requiered": [
-                    "idDispositivo"
-                  ],
                   "properties": {
                     "idDispositivo": {
                       "description": "Identificador único del dispositivo a asignar.",
@@ -17576,6 +17727,7 @@
               "properties": {
                 "usuario": {
                   "type": "integer",
+                  "format": "int64",
                   "example": 123456
                 },
                 "ticket": {
@@ -17595,9 +17747,9 @@
                   }
                 },
                 "canal": {
-                  "description": "Identificador del canal a través del cual se recibió la peticion.",
                   "type": "string",
-                  "example": ""
+                  "minLength": 1,
+                  "example": "WEB"
                 },
                 "otp": {
                   "type": "string",
@@ -17606,6 +17758,7 @@
                 "usuarioUltimaModificacion": {
                   "description": "Id usuario que realizo la última midufucación.",
                   "type": "integer",
+                  "format": "int64",
                   "example": 0
                 },
                 "isActivo": {
@@ -17615,18 +17768,21 @@
                 },
                 "limiteIndividual": {
                   "description": "Limite individual que puede operar el usuario.",
-                  "type": "string",
-                  "example": "0.0"
+                  "type": "number",
+                  "format": "double",
+                  "example": 1200.2
                 },
                 "limiteMancomunado": {
                   "description": "Limite mancomunado que puede operar el usuario.",
-                  "type": "string",
-                  "example": "0.0"
+                  "type": "number",
+                  "format": "double",
+                  "example": 2344.4
                 },
                 "limiteOperable": {
                   "description": "Limite operable que puede operar el usuario.",
-                  "type": "string",
-                  "example": "0.0"
+                  "type": "number",
+                  "format": "double",
+                  "example": 21233.3
                 },
                 "rangoOperable": {
                   "description": "Rango de operación del usuario de operar el limite operable.",
@@ -17643,6 +17799,7 @@
                     "properties": {
                       "usuarios": {
                         "type": "integer",
+                        "format": "int64",
                         "example": 0
                       },
                       "votos": {
@@ -17678,27 +17835,30 @@
                             "noCuenta": {
                               "description": "Número de cuenta",
                               "type": "string",
-                              "example": "string"
+                              "example": "1234567"
                             },
                             "limiteIndividual": {
                               "description": "Limite individual que puede operar el usuario.",
-                              "type": "string",
-                              "example": "0.0"
+                              "type": "number",
+                              "format": "double",
+                              "example": 12345.65
                             },
                             "limiteMancomunado": {
                               "description": "Limite mancomunado que puede operar el usuario.",
-                              "type": "string",
-                              "example": "0.0"
+                              "type": "number",
+                              "format": "double",
+                              "example": 345678.98
                             },
                             "limiteOperable": {
                               "description": "Limite operable que puede operar el usuario.",
-                              "type": "string",
-                              "example": "0.0"
+                              "type": "number",
+                              "format": "double",
+                              "example": 1234.8
                             },
                             "rangoOperable": {
                               "description": "Rango de operación del usuario de operar el limite operable.",
                               "type": "string",
-                              "example": "string"
+                              "example": "3"
                             }
                           }
                         }
@@ -17713,6 +17873,7 @@
                           "properties": {
                             "usuarios": {
                               "type": "integer",
+                              "format": "int64",
                               "example": 0
                             },
                             "votos": {
@@ -17735,6 +17896,7 @@
                     "properties": {
                       "id": {
                         "type": "integer",
+                        "format": "int64",
                         "example": 0
                       },
                       "grupos": {
@@ -17747,11 +17909,20 @@
                           "properties": {
                             "id": {
                               "type": "integer",
+                              "format": "int64",
                               "example": 0
                             },
                             "facultades": {
-                              "type": "string",
-                              "example": "[string]"
+                              "description": "Lista de facultades del usuario.",
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              },
+                              "example": [
+                                "0",
+                                "1",
+                                "2"
+                              ]
                             }
                           }
                         }
@@ -17761,8 +17932,15 @@
                 },
                 "cuentas": {
                   "description": "istado de cuentas con un comportamiento de facultades default.",
-                  "type": "string",
-                  "example": "[string]"
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "example": [
+                    "123456",
+                    "17654321",
+                    "23456789"
+                  ]
                 }
               }
             }
