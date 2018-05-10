@@ -1429,6 +1429,11 @@
                   "type": "array",
                   "items": {
                     "properties": {
+                      "idServicio": {
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 3
+                      },
                       "nombre": {
                         "description": "Nombre del servicio",
                         "type": "string",
@@ -1438,6 +1443,12 @@
                         "description": "Bandera que indica si el servicio ha sido contratado por la persona",
                         "type": "boolean",
                         "example": true
+                      },
+                      "montoMaximoAutorizado": {
+                        "description": "Monto máximo autorizado por el cliente para las operaciones que realice a través del servicio. Si no se incluye un monto en la respuesta, no existe límite establecido.",
+                        "type": "number",
+                        "format": "double",
+                        "example": 50000.22
                       }
                     }
                   }
@@ -1462,6 +1473,11 @@
                   "type": "array",
                   "items": {
                     "properties": {
+                      "idServicio": {
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 3
+                      },
                       "nombre": {
                         "description": "Nombre del servicio",
                         "type": "string",
@@ -1471,6 +1487,12 @@
                         "description": "Bandera que indica si el servicio ha sido contratado por la persona",
                         "type": "boolean",
                         "example": true
+                      },
+                      "montoMaximoAutorizado": {
+                        "description": "Monto máximo autorizado por el cliente para las operaciones que realice a través del servicio. Si no se incluye un monto en la respuesta, no existe límite establecido.",
+                        "type": "number",
+                        "format": "double",
+                        "example": 50000.22
                       }
                     }
                   }
@@ -4355,13 +4377,13 @@
                   "description": "Saldo final de la operación",
                   "type": "number",
                   "format": "double",
-                  "example": "1000000.00"
+                  "example": "1000000.33"
                 },
                 "saldo": {
                   "description": "Saldo total de la inversión",
                   "type": "number",
                   "format": "double",
-                  "example": "2000000.00"
+                  "example": "2000000.54"
                 },
                 "movimientos": {
                   "type": "array",
@@ -4409,19 +4431,19 @@
                         "description": "Tasa de rendimiento de la operación",
                         "type": "number",
                         "format": "double",
-                        "example": "1.01"
+                        "example": "1.81"
                       },
                       "precio": {
                         "description": "Precio del título operado",
                         "type": "number",
                         "format": "double",
-                        "example": "1200.00"
+                        "example": "1200.34"
                       },
                       "importe": {
                         "description": "Importe total de la operación",
                         "type": "number",
                         "format": "double",
-                        "example": "12000.00"
+                        "example": "12000.32"
                       },
                       "premio": {
                         "description": "Monto pagado como premio",
@@ -8446,115 +8468,114 @@
       }
     },
     "/persona/ejecutaOperacionLote": {
-      "post": {
-        "tags": [
-          "Sprint 3"
-        ],
-        "description": "Procesar cualquier petición de ejecución de transacciones masivamente por medio de archivos batch.",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "ejecutaOperacionLote",
-            "description": "Valores para la ejecución de operacion Lotes",
-            "required": true,
-            "schema": {
-              "required": [
-                "idPersona",
-                "rutaDocumento",
-                "tipoOperacion",
-                "otp",
-                "ticket",
-                "canal"
-              ],
-              "properties": {
-                "idPersona": {
-                  "type": "integer",
-                  "format": "int64",
-                  "example": 123546345
-                },
-                "fechaEjecucion": {
-                  "description": "Fecha en la que se ejecutará el procesamiento de este archivo de operaciones. En formato dd-MM-yyyy.",
-                  "type": "string",
-                  "formaat": "date",
-                  "example": "01-01-2018"
-                },
-                "rutaDocumento": {
-                  "description": "Ruta donde se encontrará el documento a procesar.",
-                  "type": "string",
-                  "example": "http://10.201.8.1:9000/202020.captura-masiva/pruebaMultipart.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=P7L503WK4UJ4T9VAWZM2%2F20180111%2F%2Fs3%2Faws4_request&X-Amz-Date=20180111T145946Z&X-Amz-Expires=432000&X-Amz-SignedHeaders=host&X-Amz-Signature=6583d3182856994b4893803a605ea63115338bdd918b89941564c58d931a6baa"
-                },
-                "tipoOperacion": {
-                  "description": "Determina el trato que se le dará al documento de operaciones que se recibe.",
-                  "type": "string",
-                  "example": "REGISTRO"
-                },
-                "otp": {
-                  "type": "string",
-                  "example": "1234567"
-                },
-                "ticket": {
-                  "required": [
-                    "id_user",
-                    "id_creds"
-                  ],
-                  "properties": {
-                    "id_user": {
-                      "type": "string",
-                      "example": "123456"
-                    },
-                    "id_creds": {
-                      "type": "string",
-                      "example": "12345678"
-                    }
+      "post": null,
+      "tags": [
+        "Sprint 3"
+      ],
+      "description": "Procesar cualquier petición de ejecución de transacciones masivamente por medio de archivos batch.",
+      "parameters": [
+        {
+          "in": "body",
+          "name": "ejecutaOperacionLote",
+          "description": "Valores para la ejecución de operacion Lotes",
+          "required": true,
+          "schema": {
+            "required": [
+              "idPersona",
+              "rutaDocumento",
+              "tipoOperacion",
+              "otp",
+              "ticket",
+              "canal"
+            ],
+            "properties": {
+              "idPersona": {
+                "type": "integer",
+                "format": "int64",
+                "example": 123546345
+              },
+              "fechaEjecucion": {
+                "description": "Fecha en la que se ejecutará el procesamiento de este archivo de operaciones. En formato dd-MM-yyyy.",
+                "type": "string",
+                "format": "date",
+                "example": "01-01-2018"
+              },
+              "rutaDocumento": {
+                "description": "Ruta donde se encontrará el documento a procesar.",
+                "type": "string",
+                "example": "http://10.201.8.1:9000/202020.captura-masiva/pruebaMultipart.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=P7L503WK4UJ4T9VAWZM2%2F20180111%2F%2Fs3%2Faws4_request&X-Amz-Date=20180111T145946Z&X-Amz-Expires=432000&X-Amz-SignedHeaders=host&X-Amz-Signature=6583d3182856994b4893803a605ea63115338bdd918b89941564c58d931a6baa"
+              },
+              "tipoOperacion": {
+                "description": "Determina el trato que se le dará al documento de operaciones que se recibe.",
+                "type": "string",
+                "example": "REGISTRO"
+              },
+              "otp": {
+                "type": "string",
+                "example": "1234567"
+              },
+              "ticket": {
+                "required": [
+                  "id_user",
+                  "id_creds"
+                ],
+                "properties": {
+                  "id_user": {
+                    "type": "string",
+                    "example": "123456"
+                  },
+                  "id_creds": {
+                    "type": "string",
+                    "example": "12345678"
                   }
-                },
-                "canal": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": "WEB"
                 }
+              },
+              "canal": {
+                "type": "string",
+                "minLength": 1,
+                "example": "WEB"
               }
             }
           }
-        ],
-        "responses": {
-          "200": {
-            "description": "Representa una ejecución exitosa. Para efectos de este servicio, será indicativo de que el archivo se subió correctamente.",
-            "schema": {
-              "required": [
-                "folioOperacion",
-                "responseStatus",
-                "responseError"
-              ],
-              "properties": {
-                "folioOperacion": {
-                  "description": "Folio asignado para la operación por lote, que se utilizará para dar seguimiento a su ejecución",
-                  "type": "string",
-                  "example": 123456
-                },
-                "responseStatus": {
-                  "type": "number",
-                  "example": 200
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": ""
-                }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Representa una ejecución exitosa. Para efectos de este servicio, será indicativo de que el archivo se subió correctamente.",
+          "schema": {
+            "required": [
+              "folioOperacion",
+              "responseStatus",
+              "responseError"
+            ],
+            "properties": {
+              "folioOperacion": {
+                "description": "Folio asignado para la operación por lote, que se utilizará para dar seguimiento a su ejecución",
+                "type": "string",
+                "example": 123456
+              },
+              "responseStatus": {
+                "type": "number",
+                "example": 200
+              },
+              "responseError": {
+                "type": "string",
+                "example": ""
               }
             }
-          },
-          "201": {
-            "description": "Error controlado, el codigo http real es 200",
-            "schema": {
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 500
-                },
-                "resposeError": {
-                  "type": "string",
-                  "example": ""
-                }
+          }
+        },
+        "201": {
+          "description": "Error controlado, el codigo http real es 200",
+          "schema": {
+            "properties": {
+              "responseStatus": {
+                "type": "number",
+                "example": 500
+              },
+              "resposeError": {
+                "type": "string",
+                "example": ""
               }
             }
           }
@@ -13247,6 +13268,196 @@
         }
       }
     },
+    "/persona/consultaGATIntegra": {
+      "post": {
+        "tags": [
+          "Sprint 5"
+        ],
+        "description": "Este servicio consulta el cuadro informativo del RECA para la apertura de contratos de multiva integra.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "consultaGATIntegra",
+            "description": "consultaGATIntegra",
+            "required": true,
+            "schema": {
+              "required": [
+                "ticket",
+                "cuenta",
+                "monto"
+              ],
+              "properties": {
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
+                },
+                "cuenta": {
+                  "type": "string",
+                  "example": "123456"
+                },
+                "monto": {
+                  "type": "number",
+                  "format": "double",
+                  "example": 5862.8
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                },
+                "result": {
+                  "properties": {
+                    "descripcion": {
+                      "type": "string",
+                      "example": "Multiva Integra"
+                    },
+                    "fecha": {
+                      "description": "Fecha para la inversión dd-MM-yyyy\"",
+                      "type": "string",
+                      "format": "date",
+                      "example": "09/01/2018"
+                    },
+                    "monto": {
+                      "description": "Monto de la inversión\"",
+                      "type": "number",
+                      "format": "double",
+                      "example": 10.12
+                    },
+                    "gatAproximadoNominal": {
+                      "description": "Aproximación del gat nominal.",
+                      "type": "number",
+                      "format": "double",
+                      "example": 10.12
+                    },
+                    "tasaDiaria": {
+                      "description": "Tasa diaria de la inversión",
+                      "type": "number",
+                      "format": "double",
+                      "example": 10.12
+                    },
+                    "tasaMensual": {
+                      "description": "Tasa mensual de la inversión",
+                      "type": "number",
+                      "format": "double",
+                      "example": 10.12
+                    },
+                    "montoDesde": {
+                      "description": "Monto inicial de este rango de tasa.",
+                      "type": "number",
+                      "format": "double",
+                      "example": 0.12
+                    },
+                    "montoHasta": {
+                      "description": "Monto final de este rango de tasa.",
+                      "type": "number",
+                      "format": "double",
+                      "example": 30.12
+                    },
+                    "pagoDiario": {
+                      "description": "Pago diario devengado por esta inversión.",
+                      "type": "number",
+                      "format": "double",
+                      "example": 20.12
+                    },
+                    "pagoMensual": {
+                      "description": "PagoMensual devengado por esta inversión.",
+                      "type": "number",
+                      "format": "double",
+                      "example": 10.12
+                    },
+                    "gatNominal": {
+                      "description": "GAT Nominal",
+                      "type": "number",
+                      "format": "double",
+                      "example": 1.12
+                    },
+                    "gatReal": {
+                      "description": "GAT Real",
+                      "type": "number",
+                      "format": "double",
+                      "example": 0.12
+                    },
+                    "reca": {
+                      "type": "string",
+                      "example": "1234568-ABCD"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "error 400",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 2003
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Ticket invalido"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "error 400",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 2004
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Ticket duplicado"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "error 400",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 4500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Ocurrió un error en T24"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/bup/actualizaDatosPersona": {
       "post": {
         "tags": [
@@ -13791,7 +14002,141 @@
         }
       }
     },
-    "/facultamiento/bloqueoDesbloqueoUsuario": {
+    "/facultamiento/bloqueoUsuario": {
+      "post": {
+        "tags": [
+          "Sprint F"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación /bloqueoUsuario del servicio /facultamiento requerida para la integración de Multivanet con el core Facultamiento.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "bloqueoUsuario",
+            "description": "Diseño de la operación para actualizaUsuario",
+            "required": true,
+            "schema": {
+              "required": [
+                "idUsuario",
+                "listaUsuarios",
+                "ticket",
+                "canal",
+                "otp"
+              ],
+              "properties": {
+                "idUsuario": {
+                  "description": "Identificador único de la persona en los sistemas institucionales.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 0
+                },
+                "listaUsuarios": {
+                  "description": "Lista de usuario para verificar ",
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "id"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "example": 1
+                      }
+                    }
+                  }
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "otp": {
+                  "type": "string",
+                  "example": "1234567"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "required": [
+                "responseError",
+                "responseStatus",
+                "listaUsuarios"
+              ],
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                },
+                "result": {
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "id",
+                      "isActivo"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "example": 1
+                      },
+                      "isActivo": {
+                        "description": "Bandera que indica si el usuario terminó bloqueado o desbloqueado después de la operación.",
+                        "type": "boolean",
+                        "example": true
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 1204
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Usuario solicitado no existe"
+                },
+                "result": {
+                  "type": "string",
+                  "example": "[]"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/facultamiento/desbloqueoUsuario": {
       "post": {
         "tags": [
           "Sprint F"
@@ -14870,7 +15215,7 @@
                         "example": "Pago de servicios financieros"
                       },
                       "referencia": {
-                        "descritpion": "Referencia de la operación.",
+                        "description": "Referencia de la operación.",
                         "type": "string",
                         "example": "128362518293"
                       },
@@ -15073,7 +15418,7 @@
                         "example": "Pago de servicios financieros"
                       },
                       "referencia": {
-                        "descritpion": "Referencia de la operación.",
+                        "description": "Referencia de la operación.",
                         "type": "string",
                         "example": "128362518293"
                       },
@@ -15636,7 +15981,7 @@
                               ],
                               "properties": {
                                 "noCuenta": {
-                                  "desccription": "Número de cuenta",
+                                  "description": "Número de cuenta",
                                   "type": "string",
                                   "example": "string"
                                 },
@@ -15687,7 +16032,6 @@
                             "example": "string"
                           },
                           "patronOrigen": {
-                            "description": null,
                             "type": "string",
                             "example": "string"
                           },
@@ -16546,7 +16890,7 @@
                       },
                       "fechaRegistro": {
                         "type": "string",
-                        "formato": "date",
+                        "format": "date",
                         "example": "07/12/2017 06:12:42"
                       },
                       "fechaAsignacion": {
@@ -16657,7 +17001,7 @@
                       },
                       "fechaRegistro": {
                         "type": "string",
-                        "formato": "date",
+                        "format": "date",
                         "example": "07/12/2017 06:12:42"
                       },
                       "fechaAsignacion": {
@@ -17041,6 +17385,7 @@
                 "relacion",
                 "correo",
                 "telefono",
+                "tokenAsignar",
                 "canal"
               ],
               "properties": {
@@ -17265,9 +17610,6 @@
                   }
                 },
                 "tokenAsignar": {
-                  "requiered": [
-                    "idDispositivo"
-                  ],
                   "properties": {
                     "idDispositivo": {
                       "description": "Identificador único del dispositivo a asignar.",
@@ -17379,7 +17721,6 @@
                 "limiteOperable",
                 "rangoOperable",
                 "firmantes",
-                "firmantesFacultades",
                 "perfiles",
                 "cuentas"
               ],
@@ -17480,7 +17821,7 @@
                         "type": "string",
                         "example": "string"
                       },
-                      "cuentas1": {
+                      "cuentas": {
                         "type": "array",
                         "items": {
                           "required": [
@@ -17522,7 +17863,7 @@
                           }
                         }
                       },
-                      "firmantes2": {
+                      "firmantes": {
                         "type": "array",
                         "items": {
                           "required": [
@@ -17589,7 +17930,7 @@
                     }
                   }
                 },
-                "cuentas2": {
+                "cuentas": {
                   "description": "istado de cuentas con un comportamiento de facultades default.",
                   "type": "array",
                   "items": {
@@ -17711,6 +18052,18 @@
                   "type": "string",
                   "minLength": 1,
                   "example": "WEB"
+                },
+                "sucursal": {
+                  "description": "Si se porporciona este identificador, se enviará el abastecimiento de tokens a esta sucursal.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": "10"
+                },
+                "idDireccion": {
+                  "description": "Si este identificador se proporciona, el abastecimiento se entregará en la dirección proporcionada.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": "1"
                 }
               }
             }
@@ -17720,6 +18073,10 @@
           "200": {
             "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
             "schema": {
+              "required": [
+                "responseStatus",
+                "idSolicitud"
+              ],
               "properties": {
                 "responseStatus": {
                   "type": "number",
@@ -17759,6 +18116,36 @@
                 "resposeError": {
                   "type": "string",
                   "example": "Internal Server Error"
+                }
+              }
+            }
+          },
+          "202": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 2204
+                },
+                "resposeError": {
+                  "type": "string",
+                  "example": "No se encontraron registros en la base de OTP."
+                }
+              }
+            }
+          },
+          "203": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 2501
+                },
+                "resposeError": {
+                  "type": "string",
+                  "example": "OTP fuera de línea."
                 }
               }
             }
