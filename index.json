@@ -17733,7 +17733,6 @@
                 "usuario",
                 "ticket",
                 "canal",
-                "otp",
                 "usuarioUltimaModificacion",
                 "isActivo",
                 "limiteIndividual",
@@ -17741,7 +17740,6 @@
                 "limiteOperable",
                 "rangoOperable",
                 "firmantes",
-                "firmantesFacultades",
                 "perfiles",
                 "cuentas"
               ],

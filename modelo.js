@@ -4196,6 +4196,7 @@ const creaFacultamientoUsuario={
   ]
 }
 
+
 const consultaAliasPorUsuario = {
   "existeAlias": false,
   "responseStatus": 200,
@@ -4457,6 +4458,7 @@ var mapaModelo = {
  'consultaAliasPorUsuario':consultaAliasPorUsuario,
  'consultaLimitesUsuario':consultaLimitesUsuario,
  'resetPasswordUsuario': resetPasswordUsuario,
+ 'consultaEmpresasPorHolding': consultaEmpresasPorHolding, 
  'consultaBitacoraOperaciones': consultaBitacoraOperaciones,
  'consultaEmpresasPorHolding': consultaEmpresasPorHolding
 
