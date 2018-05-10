@@ -4234,7 +4234,7 @@ var mapaModelo = {
  'consultaAliasPorUsuario':consultaAliasPorUsuario,
  'consultaLimitesUsuario':consultaLimitesUsuario,
  'resetPasswordUsuario': resetPasswordUsuario,
- 'consultaEmpresasPorHolding': consultaEmpresasPorHolding
+ 'consultaEmpresasPorHolding': consultaEmpresasPorHolding 
 }
 
 
