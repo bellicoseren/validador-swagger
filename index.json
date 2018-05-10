@@ -1111,6 +1111,11 @@
                   "type": "string",
                   "example": "",
                   "description": "Referencia que el código deberá usar para referirse al aplicativo que representa. Multivanet Se utilizará la constante MULTIVANET"
+                },
+                "claveCanal": {
+                  "description": "Clave del canal que actualmente maneja T24",
+                  "type": "string",
+                  "example": ""
                 }
               }
             }
@@ -1134,49 +1139,32 @@
                   "type": "string",
                   "example": ""
                 },
-                "facultadesSimples": {
+                "perfiles": {
                   "type": "array",
                   "items": {
                     "properties": {
+                      "nombrePerfil": {
+                        "type": "string",
+                        "example": "PERFIL_1"
+                      },
                       "nombre": {
                         "type": "string",
-                        "example": "FACULTAD 1"
+                        "example": "NOMBRE"
                       },
-                      "activa": {
-                        "type": "boolean",
-                        "example": true
-                      },
-                      "restriccionHorario": {
-                        "type": "boolean",
-                        "example": true
-                      },
-                      "horaInicio": {
-                        "type": "string",
-                        "example": "15:30:00"
-                      },
-                      "horaFin": {
-                        "type": "string",
-                        "example": "17:30:00"
-                      },
-                      "tipoFacultad": {
-                        "type": "string",
-                        "example": "FACULTAD_SIMPLE"
-                      },
-                      "isComponenteVisible": {
-                        "type": "boolean",
-                        "example": true
-                      },
-                      "isComponenteHabilitado": {
-                        "type": "boolean",
-                        "example": true
-                      },
-                      "portlet": {
-                        "type": "boolean",
-                        "example": true
-                      },
-                      "nombrePortlet": {
-                        "type": "string",
-                        "example": "PORTLET 1"
+                      "facultadesSimples": {
+                        "type": "array",
+                        "items": {
+                          "properties": {
+                            "nombreFacultad": {
+                              "type": "string",
+                              "example": "FACULTAD_1"
+                            },
+                            "restriccionHorario": {
+                              "type": "boolean",
+                              "example": true
+                            }
+                          }
+                        }
                       }
                     }
                   }

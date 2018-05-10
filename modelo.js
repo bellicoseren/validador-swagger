@@ -1,6 +1,5 @@
 'use strict';
 
-
 const consultaPerfilesPerf = {
   "facultadesSimples": [{
     nombre: 'Mult_Pf_privilege',
@@ -761,6 +760,24 @@ const envioNotificaciones = {
   "responseError": ""
 }
 **/
+
+const consultaPerfiles = {
+  "responseError": "",
+  "perfiles": [
+    {
+      "nombrePerfil": "PERFIL_1",
+      "nombre": "NOMBRE",
+      "facultadesSimples": [
+        {
+          "nombreFacultad": "FACULTAD_1",
+          "restriccionHorario": true
+        }
+      ]
+    }
+  ],
+  "responseStatus": 200
+}
+
 
 function cambioContrasena(bodyreq){ 
 
@@ -4341,6 +4358,7 @@ var mapaModelo = {
    'consultaProductosContratados':consultaProductosContratados,
    'modificaContrato':modificaContrato,
    'cambioContrasena':cambioContrasena,
+   'consultaPerfiles':consultaPerfiles,
   //'consultaCuentasAgregadasCliente':consultaCuentasAgregadasCliente,
   'envioNotificaciones':envioNotificaciones,
   'listarTokensOTP':listarTokensOTP,
