@@ -950,6 +950,7 @@ const consultaCuentasAgregadasCliente = {
      "lineaSobregiro":3022,
      "interesesGenerados":2025,
      "CLABE":"6357391630041472",
+     "telefono":"7125656665",
      "saldo":1234567890123456,
      "alias":"RUBY - MAGNA"
    },
@@ -966,6 +967,7 @@ const consultaCuentasAgregadasCliente = {
      "lineaSobregiro":1270,
      "interesesGenerados":1683,
      "CLABE":"2414223241854109",
+     "telefono":"7125652323",
      "saldo":584573,
      "alias":"HOLMES QUIS"
    },
@@ -982,6 +984,7 @@ const consultaCuentasAgregadasCliente = {
      "lineaSobregiro":4162,
      "interesesGenerados":4954,
      "CLABE":"8530758550208450",
+     "telefono":"71256565645",
      "saldo":263062,
      "alias":"MATHEWS ENIM"
    },
@@ -998,6 +1001,7 @@ const consultaCuentasAgregadasCliente = {
      "lineaSobregiro":3070,
      "interesesGenerados":3338,
      "CLABE":"5533138624650534",
+     "telefono":"90995656665",
      "saldo":524595,
      "alias":"ROSANNA FUGIAT"
    },
@@ -1014,6 +1018,7 @@ const consultaCuentasAgregadasCliente = {
      "lineaSobregiro":4515,
      "interesesGenerados":1653,
      "CLABE":"9406411786255546",
+     "telefono":"65545656665",
      "saldo":351250,
      "alias":"JEANNE QUIS"
    },
@@ -1030,6 +1035,7 @@ const consultaCuentasAgregadasCliente = {
      "lineaSobregiro":3728,
      "interesesGenerados":4310,
      "CLABE":"6231961653052986",
+     "telefono":"7987656665",
      "saldo":40795,
      "alias":"GLOVER DESERUNT"
    },
@@ -1046,6 +1052,7 @@ const consultaCuentasAgregadasCliente = {
      "lineaSobregiro":4773,
      "interesesGenerados":5584,
      "CLABE":"9016768587593992",
+     "telefono":"0987656665",
      "saldo":304739,
      "alias":"TAYLOR ALIQUIP"
    },
@@ -1062,6 +1069,7 @@ const consultaCuentasAgregadasCliente = {
      "lineaSobregiro":3912,
      "interesesGenerados":3668,
      "CLABE":"8654073923620344",
+     "telefono":"798798765",
      "saldo":596637,
      "alias":"BEST DOLOR"
    },
@@ -1078,6 +1086,7 @@ const consultaCuentasAgregadasCliente = {
      "lineaSobregiro":4827,
      "interesesGenerados":4836,
      "CLABE":"1141792532062969",
+     "telefono":"1234566665",
      "saldo":808057,
      "alias":"NADIA AD"
    },
@@ -1094,6 +1103,7 @@ const consultaCuentasAgregadasCliente = {
      "lineaSobregiro":2078,
      "interesesGenerados":2360,
      "CLABE":"3024929704405096",
+     "telefono":"716789665",
      "saldo":642845,
      "alias":"DURHAM CONSEQUAT"
    },
@@ -1110,6 +1120,7 @@ const consultaCuentasAgregadasCliente = {
      "lineaSobregiro":1456,
      "interesesGenerados":1420,
      "CLABE":"7383666342713216",
+     "telefono":"71209889665",
      "saldo":891122,
      "alias":"MCINTOSH SINT"
    },
@@ -1126,6 +1137,7 @@ const consultaCuentasAgregadasCliente = {
      "lineaSobregiro":4344,
      "interesesGenerados":1349,
      "CLABE":"9651922496187914",
+     "telefono":"4367656665",
      "saldo":995748,
      "alias":"MACIAS QUI"
    },
@@ -1142,6 +1154,7 @@ const consultaCuentasAgregadasCliente = {
      "lineaSobregiro":4423,
      "interesesGenerados":2149,
      "CLABE":"9838918971754596",
+     "telefono":"9885656665",
      "saldo":624469,
      "alias":"HOLCOMB ULLAMCO"
    },
@@ -1158,6 +1171,7 @@ const consultaCuentasAgregadasCliente = {
      "lineaSobregiro":3830,
      "interesesGenerados":3602,
      "CLABE":"3830704143003909",
+     "telefono":"5645656665",
      "saldo":325111,
      "alias":"RUSSO LABORIS"
    },
@@ -1174,6 +1188,7 @@ const consultaCuentasAgregadasCliente = {
      "lineaSobregiro":3216,
      "interesesGenerados":1128,
      "CLABE":"8775753888969680",
+     "telefono":"6985656665",
      "saldo":955181,
      "alias":"GARZA COMMODO"
    },
@@ -1190,6 +1205,7 @@ const consultaCuentasAgregadasCliente = {
      "lineaSobregiro":3116,
      "interesesGenerados":3387,
      "CLABE":"2338990607011866",
+     "telefono":"4325656665",
      "saldo":243173,
      "alias":"AMALIA AMET"
    },
@@ -1206,6 +1222,7 @@ const consultaCuentasAgregadasCliente = {
      "lineaSobregiro":1541,
      "interesesGenerados":3189,
      "CLABE":"4459625898298295",
+     "telefono":"8765656665",
      "saldo":526986,
      "alias":"KEISHA MOLLIT"
    },
@@ -1222,6 +1239,7 @@ const consultaCuentasAgregadasCliente = {
      "lineaSobregiro":4603,
      "interesesGenerados":5879,
      "CLABE":"8039700793791198",
+     "telefono":"1265656665",
      "saldo":11354,
      "alias":"SANCHEZ INCIDIDUNT"
    },
@@ -1238,6 +1256,7 @@ const consultaCuentasAgregadasCliente = {
      "lineaSobregiro":1439,
      "interesesGenerados":3893,
      "CLABE":"4991615214861048",
+     "telefono":"5435656665",
      "saldo":464938,
      "alias":"SHEPARD REPREHENDERIT"
    },
@@ -1254,6 +1273,7 @@ const consultaCuentasAgregadasCliente = {
      "lineaSobregiro":4513,
      "interesesGenerados":4607,
      "CLABE":"3556933423954500",
+     "telefono":"4395656665",
      "saldo":282733,
      "alias":"BOND REPREHENDERIT"
    },
@@ -1270,6 +1290,7 @@ const consultaCuentasAgregadasCliente = {
      "lineaSobregiro":1272,
      "interesesGenerados":3508,
      "CLABE":"4769920988437920",
+     "telefono":"4655656665",
      "saldo":648424,
      "alias":"LINDSEY NON"
    },
@@ -1286,6 +1307,7 @@ const consultaCuentasAgregadasCliente = {
      "lineaSobregiro":4196,
      "interesesGenerados":5325,
      "CLABE":"9580037845978432",
+     "telefono":"7125988325",
      "saldo":626987,
      "alias":"SANTANA QUI"
    },
@@ -1302,6 +1324,7 @@ const consultaCuentasAgregadasCliente = {
      "lineaSobregiro":1826,
      "interesesGenerados":4637,
      "CLABE":"8730420728195786",
+     "telefono":"65409812",
      "saldo":854894,
      "alias":"LAUREL ESSE"
    },
@@ -1318,6 +1341,7 @@ const consultaCuentasAgregadasCliente = {
      "lineaSobregiro":2761,
      "interesesGenerados":3733,
      "CLABE":"9722548139549464",
+     "telefono":"7125998865",
      "saldo":515910,
      "alias":"PERRY SINT"
    },
@@ -1334,6 +1358,7 @@ const consultaCuentasAgregadasCliente = {
      "lineaSobregiro":3696,
      "interesesGenerados":4396,
      "CLABE":"6250729462506608",
+     "telefono":"7125644885",
      "saldo":224287,
      "alias":"CONWAY EA"
    },
@@ -1350,6 +1375,7 @@ const consultaCuentasAgregadasCliente = {
      "lineaSobregiro":1884,
      "interesesGenerados":1969,
      "CLABE":"2545026892873488",
+     "telefono":"8760921435",
      "saldo":167399,
      "alias":"ROCHA ANIM"
    },
@@ -1366,6 +1392,7 @@ const consultaCuentasAgregadasCliente = {
      "lineaSobregiro":2455,
      "interesesGenerados":4048,
      "CLABE":"9671645391827812",
+     "telefono":"981234875",
      "saldo":659202,
      "alias":"BRYAN MAGNA"
    },
@@ -1382,6 +1409,7 @@ const consultaCuentasAgregadasCliente = {
      "lineaSobregiro":4705,
      "interesesGenerados":2689,
      "CLABE":"8519518733135406",
+     "telefono":"0912873476",
      "saldo":747727,
      "alias":"HAWKINS EIUSMOD"
    },
@@ -1398,6 +1426,7 @@ const consultaCuentasAgregadasCliente = {
      "lineaSobregiro":2435,
      "interesesGenerados":3034,
      "CLABE":"6228474602698788",
+     "telefono":"7129856665",
      "saldo":918327,
      "alias":"ADRIENNE DOLOR"
    },
@@ -1414,6 +1443,7 @@ const consultaCuentasAgregadasCliente = {
      "lineaSobregiro":3928,
      "interesesGenerados":1737,
      "CLABE":"5523201193299208",
+     "telefono":"0912673498",
      "saldo":227970,
      "alias":"DONALDSON PARIATUR"
    },
@@ -1430,6 +1460,7 @@ const consultaCuentasAgregadasCliente = {
      "lineaSobregiro":3113,
      "interesesGenerados":2188,
      "CLABE":"1669199001128238",
+     "telefono":"659823560",
      "saldo":645796,
      "alias":"HERMINIA ULLAMCO"
    }
@@ -1437,7 +1468,7 @@ const consultaCuentasAgregadasCliente = {
    "listCreditosCliente":[  
    {  
      "contrato":"38738",
-     "cuentaMultiva":"5817673423",
+     "numeroDeCuenta":"5817673423",
      "idProducto":"CRED",
      "descripcionProducto":"CREDITO DE OVERFORK",
      "saldoTotal":1696.05,
@@ -1445,7 +1476,7 @@ const consultaCuentasAgregadasCliente = {
    },
    {  
      "contrato":"52756",
-     "cuentaMultiva":"7970353456",
+     "numeroDeCuenta":"7970353456",
      "idProducto":"CRED",
      "descripcionProducto":"CREDITO DE EVENTAGE",
      "saldoTotal":2867.79,
@@ -1453,7 +1484,7 @@ const consultaCuentasAgregadasCliente = {
    },
    {  
      "contrato":"44484",
-     "cuentaMultiva":"2655764356",
+     "numeroDeCuenta":"2655764356",
      "idProducto":"CRED",
      "descripcionProducto":"CREDITO DE ENOMEN",
      "saldoTotal":1257.28,
@@ -1461,7 +1492,7 @@ const consultaCuentasAgregadasCliente = {
    },
    {  
      "contrato":"52756",
-     "cuentaMultiva":"2153824535",
+     "numeroDeCuenta":"2153824535",
      "idProducto":"CRED",
      "descripcionProducto":"CREDITO DE ERSUM",
      "saldoTotal":1869.71,
@@ -1469,7 +1500,7 @@ const consultaCuentasAgregadasCliente = {
    },
    {  
      "contrato":"44484",
-     "cuentaMultiva":"3887873241",
+     "numeroDeCuenta":"3887873241",
      "idProducto":"CRED",
      "descripcionProducto":"CREDITO DE PATHWAYS",
      "saldoTotal":2935.91,
@@ -1477,7 +1508,7 @@ const consultaCuentasAgregadasCliente = {
    },
    {  
      "contrato":"38738",
-     "cuentaMultiva":"3365649876",
+     "numeroDeCuenta":"3365649876",
      "idProducto":"CRED",
      "descripcionProducto":"CREDITO DE MARVANE",
      "saldoTotal":1527.6,
@@ -1485,7 +1516,7 @@ const consultaCuentasAgregadasCliente = {
    },
    {  
      "contrato":"44484",
-     "cuentaMultiva":"8034723245",
+     "numeroDeCuenta":"8034723245",
      "idProducto":"CRED",
      "descripcionProducto":"CREDITO DE ECLIPSENT",
      "saldoTotal":3549.58,
@@ -1493,7 +1524,7 @@ const consultaCuentasAgregadasCliente = {
    },
    {  
      "contrato":"44484",
-     "cuentaMultiva":"8767014356",
+     "numeroDeCuenta":"8767014356",
      "idProducto":"CRED",
      "descripcionProducto":"CREDITO DE ZIDOX",
      "saldoTotal":2401.75,
@@ -1501,7 +1532,7 @@ const consultaCuentasAgregadasCliente = {
    },
    {  
      "contrato":"38738",
-     "cuentaMultiva":"7537432134",
+     "numeroDeCuenta":"7537432134",
      "idProducto":"CRED",
      "descripcionProducto":"CREDITO DE APEXIA",
      "saldoTotal":2865.16,
@@ -1509,7 +1540,7 @@ const consultaCuentasAgregadasCliente = {
    },
    {  
      "contrato":"44484",
-     "cuentaMultiva":"8588843421",
+     "numeroDeCuenta":"8588843421",
      "idProducto":"CRED",
      "descripcionProducto":"CREDITO DE FRANSCENE",
      "saldoTotal":2644.52,
@@ -1517,7 +1548,7 @@ const consultaCuentasAgregadasCliente = {
    },
    {  
      "contrato":"52756",
-     "cuentaMultiva":"8569835698",
+     "numeroDeCuenta":"8569835698",
      "idProducto":"CRED",
      "descripcionProducto":"CREDITO DE XYMONK",
      "saldoTotal":1479.28,
@@ -1525,7 +1556,7 @@ const consultaCuentasAgregadasCliente = {
    },
    {  
      "contrato":"44484",
-     "cuentaMultiva":"8935484356",
+     "numeroDeCuenta":"8935484356",
      "idProducto":"CRED",
      "descripcionProducto":"CREDITO DE CENTREXIN",
      "saldoTotal":3092.77,
@@ -1533,7 +1564,7 @@ const consultaCuentasAgregadasCliente = {
    },
    {  
      "contrato":"38738",
-     "cuentaMultiva":"4583348970",
+     "numeroDeCuenta":"4583348970",
      "idProducto":"CRED",
      "descripcionProducto":"CREDITO DE EXOBLUE",
      "saldoTotal":2111.76,
@@ -1541,7 +1572,7 @@ const consultaCuentasAgregadasCliente = {
    },
    {  
      "contrato":"44484",
-     "cuentaMultiva":"6805468098",
+     "numeroDeCuenta":"6805468098",
      "idProducto":"CRED",
      "descripcionProducto":"CREDITO DE ZILLACON",
      "saldoTotal":3473.18,
@@ -1549,7 +1580,7 @@ const consultaCuentasAgregadasCliente = {
    },
    {  
      "contrato":"44484",
-     "cuentaMultiva":"4367585678",
+     "numeroDeCuenta":"4367585678",
      "idProducto":"CRED",
      "descripcionProducto":"CREDITO DE FANGOLD",
      "saldoTotal":2466.54,
@@ -1559,6 +1590,7 @@ const consultaCuentasAgregadasCliente = {
    "listInversionesPagareCliente":[  
    {  
      "numeroDeCuenta":"2324224356",
+     "folioInversion":"789456",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":90,
@@ -1575,6 +1607,7 @@ const consultaCuentasAgregadasCliente = {
    },
    {  
      "numeroDeCuenta":"4552474356",
+     "folioInversion":"987654",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":60,
@@ -1591,6 +1624,7 @@ const consultaCuentasAgregadasCliente = {
    },
    {  
      "numeroDeCuenta":"6133044356",
+     "folioInversion":"123456",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":60,
@@ -1607,6 +1641,7 @@ const consultaCuentasAgregadasCliente = {
    },
    {  
      "numeroDeCuenta":"6244123245",
+     "folioInversion":"789012",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":90,
@@ -1623,6 +1658,7 @@ const consultaCuentasAgregadasCliente = {
    },
    {  
      "numeroDeCuenta":"7463644563",
+     "folioInversion":"009988",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":90,
@@ -1639,6 +1675,7 @@ const consultaCuentasAgregadasCliente = {
    },
    {  
      "numeroDeCuenta":"2273978970",
+     "folioInversion":"102938",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":90,
@@ -1655,6 +1692,7 @@ const consultaCuentasAgregadasCliente = {
    },
    {  
      "numeroDeCuenta":"7619557689",
+     "folioInversion":"564738",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":120,
@@ -1671,6 +1709,7 @@ const consultaCuentasAgregadasCliente = {
    },
    {  
      "numeroDeCuenta":"3991866579",
+     "folioInversion":"089786",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":30,
@@ -1687,6 +1726,7 @@ const consultaCuentasAgregadasCliente = {
    },
    {  
      "numeroDeCuenta":"7317311234",
+     "folioInversion":"132435",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":120,
@@ -1703,6 +1743,7 @@ const consultaCuentasAgregadasCliente = {
    },
    {  
      "numeroDeCuenta":"5718233425",
+     "folioInversion":"768943",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":120,
@@ -1719,6 +1760,7 @@ const consultaCuentasAgregadasCliente = {
    },
    {  
      "numeroDeCuenta":"3826942314",
+     "folioInversion":"187265",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":60,
@@ -1735,6 +1777,7 @@ const consultaCuentasAgregadasCliente = {
    },
    {  
      "numeroDeCuenta":"7935453245",
+     "folioInversion":"062941",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":90,
@@ -1751,6 +1794,7 @@ const consultaCuentasAgregadasCliente = {
    },
    {  
      "numeroDeCuenta":"2875782314",
+     "folioInversion":"017439",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":60,
@@ -1767,6 +1811,7 @@ const consultaCuentasAgregadasCliente = {
    },
    {  
      "numeroDeCuenta":"3547704567",
+     "folioInversion":"389601",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":120,
@@ -1783,6 +1828,7 @@ const consultaCuentasAgregadasCliente = {
    },
    {  
      "numeroDeCuenta":"7936281287",
+     "folioInversion":"874301",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":90,
@@ -1799,6 +1845,7 @@ const consultaCuentasAgregadasCliente = {
    },
    {  
      "numeroDeCuenta":"5574004567",
+     "folioInversion":"696732",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":30,
@@ -1815,6 +1862,7 @@ const consultaCuentasAgregadasCliente = {
    },
    {  
      "numeroDeCuenta":"1627014356",
+     "folioInversion":"194857",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":90,
@@ -1831,6 +1879,7 @@ const consultaCuentasAgregadasCliente = {
    },
    {  
      "numeroDeCuenta":"8144403245",
+     "folioInversion":"789434",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":120,
@@ -1847,6 +1896,7 @@ const consultaCuentasAgregadasCliente = {
    },
    {  
      "numeroDeCuenta":"5166082345",
+     "folioInversion":"569456",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":60,
@@ -1863,6 +1913,7 @@ const consultaCuentasAgregadasCliente = {
    },
    {  
      "numeroDeCuenta":"4918612313",
+     "folioInversion":"789126",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":120,
@@ -1879,6 +1930,7 @@ const consultaCuentasAgregadasCliente = {
    },
    {  
      "numeroDeCuenta":"6247112346",
+     "folioInversion":"489496",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":120,
@@ -1895,6 +1947,7 @@ const consultaCuentasAgregadasCliente = {
    },
    {  
      "numeroDeCuenta":"3306471232",
+     "folioInversion":"059283",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":90,
@@ -1911,6 +1964,7 @@ const consultaCuentasAgregadasCliente = {
    },
    {  
      "numeroDeCuenta":"2029321245",
+     "folioInversion":"430456",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":120,
@@ -1927,6 +1981,7 @@ const consultaCuentasAgregadasCliente = {
    },
    {  
      "numeroDeCuenta":"4404876789",
+     "folioInversion":"156932",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":60,
@@ -1943,6 +1998,7 @@ const consultaCuentasAgregadasCliente = {
    },
    {  
      "numeroDeCuenta":"5418922345",
+     "folioInversion":"723456",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":120,
@@ -1959,6 +2015,7 @@ const consultaCuentasAgregadasCliente = {
    },
    {  
      "numeroDeCuenta":"3368054563",
+     "folioInversion":"999456",
      "idProducto":"PGR",
      "descripcionProducto":"PGR",
      "plazo":60,
@@ -1977,6 +2034,7 @@ const consultaCuentasAgregadasCliente = {
    "listInversionesCedeCliente":[  
    {  
      "idProducto":"CEDE",
+     "folioInversion":"789456",
      "descripcionProducto":"Inversion CEDE OVATION",
      "plazo":60,
      "tasa":1.15,
@@ -1991,6 +2049,7 @@ const consultaCuentasAgregadasCliente = {
    },
    {  
      "idProducto":"CEDE",
+     "folioInversion":"787856",
      "descripcionProducto":"Inversion CEDE QUALITEX",
      "plazo":30,
      "tasa":3.64,
@@ -2005,6 +2064,7 @@ const consultaCuentasAgregadasCliente = {
    },
    {  
      "idProducto":"CEDE",
+     "folioInversion":"789490",
      "descripcionProducto":"Inversion CEDE CINCYR",
      "plazo":30,
      "tasa":7.24,
@@ -2019,6 +2079,7 @@ const consultaCuentasAgregadasCliente = {
    },
    { 
      "idProducto":"CEDE",
+     "folioInversion":"784556",
      "descripcionProducto":"Inversion CEDE PLASMOX",
      "plazo":30,
      "tasa":7.39,
@@ -2033,6 +2094,7 @@ const consultaCuentasAgregadasCliente = {
    },
    { 
      "idProducto":"CEDE",
+     "folioInversion":"239456",
      "descripcionProducto":"Inversion CEDE VERBUS",
      "plazo":120,
      "tasa":4.08,
@@ -2047,6 +2109,7 @@ const consultaCuentasAgregadasCliente = {
    },
    { 
      "idProducto":"CEDE",
+     "folioInversion":"789236",
      "descripcionProducto":"Inversion CEDE INFOTRIPS",
      "plazo":60,
      "tasa":3.58,
@@ -2061,6 +2124,7 @@ const consultaCuentasAgregadasCliente = {
    },
    { 
      "idProducto":"CEDE",
+     "folioInversion":"789423",
      "descripcionProducto":"Inversion CEDE MICRONAUT",
      "plazo":30,
      "tasa":2.18,
@@ -2075,6 +2139,7 @@ const consultaCuentasAgregadasCliente = {
    },
    { 
      "idProducto":"CEDE",
+     "folioInversion":"789467",
      "descripcionProducto":"Inversion CEDE TEMORAK",
      "plazo":60,
      "tasa":4.76,
@@ -2089,6 +2154,7 @@ const consultaCuentasAgregadasCliente = {
    },
    { 
      "idProducto":"CEDE",
+     "folioInversion":"789467",
      "descripcionProducto":"Inversion CEDE DYMI",
      "plazo":120,
      "tasa":4.76,
@@ -2103,6 +2169,7 @@ const consultaCuentasAgregadasCliente = {
    },
    { 
      "idProducto":"CEDE",
+     "folioInversion":"789445",
      "descripcionProducto":"Inversion CEDE ZOLAR",
      "plazo":30,
      "tasa":7.5,
@@ -2117,6 +2184,7 @@ const consultaCuentasAgregadasCliente = {
    },
    { 
      "idProducto":"CEDE",
+     "folioInversion":"679456",
      "descripcionProducto":"Inversion CEDE SILODYNE",
      "plazo":90,
      "tasa":2.87,
@@ -2131,6 +2199,7 @@ const consultaCuentasAgregadasCliente = {
    },
    { 
      "idProducto":"CEDE",
+     "folioInversion":"459456",
      "descripcionProducto":"Inversion CEDE ZOGAK",
      "plazo":120,
      "tasa":3,
@@ -2145,6 +2214,7 @@ const consultaCuentasAgregadasCliente = {
    },
    { 
      "idProducto":"CEDE",
+     "folioInversion":"909456",
      "descripcionProducto":"Inversion CEDE ELENTRIX",
      "plazo":60,
      "tasa":2.95,
@@ -2159,6 +2229,7 @@ const consultaCuentasAgregadasCliente = {
    },
    { 
      "idProducto":"CEDE",
+     "folioInversion":"789490",
      "descripcionProducto":"Inversion CEDE ZAPHIRE",
      "plazo":30,
      "tasa":6.46,
@@ -2173,6 +2244,7 @@ const consultaCuentasAgregadasCliente = {
    },
    { 
      "idProducto":"CEDE",
+     "folioInversion":"009456",
      "descripcionProducto":"Inversion CEDE GINKOGENE",
      "plazo":60,
      "tasa":6.83,
@@ -2187,6 +2259,7 @@ const consultaCuentasAgregadasCliente = {
    },
    { 
      "idProducto":"CEDE",
+     "folioInversion":"789006",
      "descripcionProducto":"Inversion CEDE VERAQ",
      "plazo":120,
      "tasa":5.1,
@@ -2201,6 +2274,7 @@ const consultaCuentasAgregadasCliente = {
    },
    { 
      "idProducto":"CEDE",
+     "folioInversion":"789400",
      "descripcionProducto":"Inversion CEDE CANOPOLY",
      "plazo":60,
      "tasa":1.04,
@@ -2219,7 +2293,6 @@ const consultaCuentasAgregadasCliente = {
      "numeroDeCuenta":"3883812343",
      "idProducto":"INT",
      "descripcionProducto":"Multiva Integra 0",
-     "cuentaMultiva":5443234474,
      "cuentaIntegra":502751,
      "saldo":458941.66,
      "alias":"MULTIVA INTEGRA DEGROK"
@@ -2228,7 +2301,6 @@ const consultaCuentasAgregadasCliente = {
      "numeroDeCuenta":"4431352314",
      "idProducto":"INT",
      "descripcionProducto":"Multiva Integra 1",
-     "cuentaMultiva":5443436467,
      "cuentaIntegra":539172,
      "saldo":189364.55,
      "alias":"MULTIVA INTEGRA DEMUSAPHICS"
@@ -2237,7 +2309,6 @@ const consultaCuentasAgregadasCliente = {
      "numeroDeCuenta":"3509717689",
      "idProducto":"INT",
      "descripcionProducto":"Multiva Integra 2",
-     "cuentaMultiva":5532235467,
      "cuentaIntegra":324926,
      "saldo":981244.6,
      "alias":"MULTIVA INTEGRA DEINSURON"
@@ -2246,7 +2317,6 @@ const consultaCuentasAgregadasCliente = {
      "numeroDeCuenta":"3234202314",
      "idProducto":"INT",
      "descripcionProducto":"Multiva Integra 3",
-     "cuentaMultiva":5490435467,
      "cuentaIntegra":515222,
      "saldo":558452.26,
      "alias":"MULTIVA INTEGRA DEZILLAR"
@@ -2255,7 +2325,6 @@ const consultaCuentasAgregadasCliente = {
      "numeroDeCuenta":"2175434356",
      "idProducto":"INT",
      "descripcionProducto":"Multiva Integra 4",
-     "cuentaMultiva":5443234354,
      "cuentaIntegra":790001,
      "saldo":624823.08,
      "alias":"MULTIVA INTEGRA DEIPLAX"
@@ -2264,7 +2333,6 @@ const consultaCuentasAgregadasCliente = {
      "numeroDeCuenta":"2350716789",
      "idProducto":"INT",
      "descripcionProducto":"Multiva Integra 5",
-     "cuentaMultiva":5443235467,
      "cuentaIntegra":882727,
      "saldo":264790.26,
      "alias":"MULTIVA INTEGRA DESUREMAX"
@@ -2273,7 +2341,6 @@ const consultaCuentasAgregadasCliente = {
      "numeroDeCuenta":"8851630989",
      "idProducto":"INT",
      "descripcionProducto":"Multiva Integra 6",
-     "cuentaMultiva":5907535467,
      "cuentaIntegra":899391,
      "saldo":888691.78,
      "alias":"MULTIVA INTEGRA DERECRISYS"
@@ -2282,7 +2349,6 @@ const consultaCuentasAgregadasCliente = {
      "numeroDeCuenta":"8491832546",
      "idProducto":"INT",
      "descripcionProducto":"Multiva Integra 7",
-     "cuentaMultiva":6745647895,
      "cuentaIntegra":354362,
      "saldo":169384,
      "alias":"MULTIVA INTEGRA DESPORTAN"
@@ -2291,7 +2357,6 @@ const consultaCuentasAgregadasCliente = {
      "numeroDeCuenta":"3452882546",
      "idProducto":"INT",
      "descripcionProducto":"Multiva Integra 8",
-     "cuentaMultiva":3456785678,
      "cuentaIntegra":131262,
      "saldo":117793.31,
      "alias":"MULTIVA INTEGRA DECOMSTRUCT"
@@ -2300,7 +2365,6 @@ const consultaCuentasAgregadasCliente = {
      "numeroDeCuenta":"5565414678",
      "idProducto":"INT",
      "descripcionProducto":"Multiva Integra 9",
-     "cuentaMultiva":5546734567,
      "cuentaIntegra":751401,
      "saldo":321235.25,
      "alias":"MULTIVA INTEGRA DEOULU"
@@ -2309,7 +2373,6 @@ const consultaCuentasAgregadasCliente = {
      "numeroDeCuenta":"1226443425",
      "idProducto":"INT",
      "descripcionProducto":"Multiva Integra 10",
-     "cuentaMultiva":5443342467,
      "cuentaIntegra":682622,
      "saldo":193185.85,
      "alias":"MULTIVA INTEGRA DEQUIZMO"
@@ -2318,7 +2381,6 @@ const consultaCuentasAgregadasCliente = {
      "numeroDeCuenta":"5345652435",
      "idProducto":"INT",
      "descripcionProducto":"Multiva Integra 11",
-     "cuentaMultiva":6573235467,
      "cuentaIntegra":497980,
      "saldo":475800.5,
      "alias":"MULTIVA INTEGRA DEOPTICON"
@@ -2327,7 +2389,6 @@ const consultaCuentasAgregadasCliente = {
      "numeroDeCuenta":"6158594689",
      "idProducto":"INT",
      "descripcionProducto":"Multiva Integra 12",
-     "cuentaMultiva":6783235467,
      "cuentaIntegra":494675,
      "saldo":537281.51,
      "alias":"MULTIVA INTEGRA DEEXTRO"
@@ -2336,7 +2397,6 @@ const consultaCuentasAgregadasCliente = {
      "numeroDeCuenta":"3477226478",
      "idProducto":"INT",
      "descripcionProducto":"Multiva Integra 13",
-     "cuentaMultiva":5489765467,
      "cuentaIntegra":574135,
      "saldo":510345.24,
      "alias":"MULTIVA INTEGRA DEENTALITY"
@@ -2345,7 +2405,6 @@ const consultaCuentasAgregadasCliente = {
      "numeroDeCuenta":"7041450789",
      "idProducto":"INT",
      "descripcionProducto":"Multiva Integra 14",
-     "cuentaMultiva":5324356767,
      "cuentaIntegra":268920,
      "saldo":752212.47,
      "alias":"MULTIVA INTEGRA DEAPPLIDECK"
@@ -2354,7 +2413,6 @@ const consultaCuentasAgregadasCliente = {
      "numeroDeCuenta":"2275403426",
      "idProducto":"INT",
      "descripcionProducto":"Multiva Integra 15",
-     "cuentaMultiva":8943235467,
      "cuentaIntegra":490821,
      "saldo":987771.85,
      "alias":"MULTIVA INTEGRA DESLAX"

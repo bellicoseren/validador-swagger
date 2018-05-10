@@ -1965,11 +1965,11 @@
         "tags": [
           "Sprint 2"
         ],
-        "description": "Consolidar la información relevante respecto al diseño de la operación/consultaCuentasAgregadasCliente del servicio requerido para la integración de Multivanet con T24",
+        "description": "Consolidar la información relevante respecto al diseño de la operación /consultaCuentasAgregadasCliente del servicio requerido para la integración de Multivanet con T24",
         "parameters": [
           {
             "in": "body",
-            "name": "consultaDatosBasicos,",
+            "name": "consultaCuentasAgregadasCliente,",
             "description": "Consumidor que dibuja encabezado con datos de cliente",
             "required": true,
             "schema": {
@@ -2084,6 +2084,11 @@
                         "type": "string",
                         "example": "123456789012345"
                       },
+                      "telefono": {
+                        "description": "Teléfono  móvil asociado con esta cuenta.",
+                        "type": "string",
+                        "example": " "
+                      },
                       "saldo": {
                         "description": "Saldo de la cuenta",
                         "type": "number",
@@ -2107,7 +2112,7 @@
                         "type": "string",
                         "example": "123456"
                       },
-                      "cuentaMultiva": {
+                      "numeroDeCuenta": {
                         "description": "Cuenta de cheques asociada con el crédito.",
                         "type": "string",
                         "example": "7894560"
@@ -2142,6 +2147,11 @@
                     "properties": {
                       "numeroDeCuenta": {
                         "description": "Número de cuenta",
+                        "type": "string",
+                        "example": "789456"
+                      },
+                      "folioInversion": {
+                        "description": "Folio único creado para la inversión por T24.",
                         "type": "string",
                         "example": "789456"
                       },
@@ -2231,6 +2241,11 @@
                         "type": "string",
                         "example": "CEDE"
                       },
+                      "folioInversion": {
+                        "description": "Folio único creado para la inversión por T24.",
+                        "type": "string",
+                        "example": "789456"
+                      },
                       "descripcionProducto": {
                         "description": "Nombre comercial del producto",
                         "type": "string",
@@ -2302,11 +2317,6 @@
                   "type": "array",
                   "items": {
                     "properties": {
-                      "cuentaMultiva": {
-                        "description": "Número de cuenta eje del cliente para esta cuenta de multiva integra.",
-                        "type": "string",
-                        "example": "78984560"
-                      },
                       "idProducto": {
                         "description": "Identificador del producto",
                         "type": "string",
@@ -2484,6 +2494,11 @@
                         "type": "string",
                         "example": "123456789012345"
                       },
+                      "telefono": {
+                        "description": "eléfono  móvil asociado con esta cuenta.",
+                        "type": "string",
+                        "example": " "
+                      },
                       "saldo": {
                         "description": "Saldo de la cuenta",
                         "type": "number",
@@ -2508,7 +2523,7 @@
                         "type": "string",
                         "example": "123456"
                       },
-                      "cuentaMultiva": {
+                      "numeroDeCuenta": {
                         "description": "Cuenta de cheques asociada con el crédito.",
                         "type": "string",
                         "example": "7894560"
@@ -2544,6 +2559,11 @@
                     "properties": {
                       "numeroDeCuenta": {
                         "description": "Número de cuenta",
+                        "type": "string",
+                        "example": "789456"
+                      },
+                      "folioInversion": {
+                        "description": "Folio único creado para la inversión por T24.",
                         "type": "string",
                         "example": "789456"
                       },
@@ -2634,6 +2654,11 @@
                         "type": "string",
                         "example": "CEDE"
                       },
+                      "folioInversion": {
+                        "description": "Folio único creado para la inversión por T24.",
+                        "type": "string",
+                        "example": "789456"
+                      },
                       "descripcionProducto": {
                         "description": "Nombre comercial del producto",
                         "type": "string",
@@ -2706,11 +2731,6 @@
                   "type": "array",
                   "items": {
                     "properties": {
-                      "cuentaMultiva": {
-                        "description": "Número de cuenta eje del cliente para esta cuenta de multiva integra.",
-                        "type": "string",
-                        "example": "78984560"
-                      },
                       "idProducto": {
                         "description": "Identificador del producto",
                         "type": "string",
