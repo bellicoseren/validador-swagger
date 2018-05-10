@@ -4137,15 +4137,26 @@ const consultaFacultamientoUsuario={
   "responseError": ""
 }
 
-const bloqueoDesbloqueoUsuario={
-  "responseStatus": 200,
-  "responseError": "",
-  "result": [
-    {
-      "id": 1,
-      "isActivo": true
-    }
-  ]
+const bloqueoUsuario={
+ "responseStatus": 200,
+ "responseError": "",
+ "listaUsuarios": [
+   {
+     "id": 1,
+     "isActivo": true
+   }
+ ]
+}
+
+const desbloqueoUsuario={
+ "responseStatus": 200,
+ "responseError": "",
+ "listaUsuarios": [
+   {
+     "id": 1,
+     "isActivo": true
+   }
+ ]
 }
 
 const consultaFirmantesPotenciales={
@@ -4438,7 +4449,8 @@ var mapaModelo = {
  'consultaPerfilesPatronConGruposFacultades':consultaPerfilesPatronConGruposFacultades,
  'modificaPasswordUsuario':modificaPasswordUsuario,
  'consultaFacultamientoUsuario':consultaFacultamientoUsuario,
- 'bloqueoDesbloqueoUsuario':bloqueoDesbloqueoUsuario,
+ 'bloqueoUsuario':bloqueoUsuario,
+ 'desbloqueoUsuario':desbloqueoUsuario,
  'consultaFirmantesPotenciales':consultaFirmantesPotenciales,
  'creaUsuarioAdicional':creaUsuarioAdicional,
  'creaFacultamientoUsuario': creaFacultamientoUsuario,
