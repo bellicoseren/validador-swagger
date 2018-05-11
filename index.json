@@ -1111,11 +1111,6 @@
                   "type": "string",
                   "example": "",
                   "description": "Referencia que el código deberá usar para referirse al aplicativo que representa. Multivanet Se utilizará la constante MULTIVANET"
-                },
-                "claveCanal": {
-                  "description": "Clave del canal que actualmente maneja T24",
-                  "type": "string",
-                  "example": ""
                 }
               }
             }
@@ -1139,32 +1134,49 @@
                   "type": "string",
                   "example": ""
                 },
-                "perfiles": {
+                "facultadesSimples": {
                   "type": "array",
                   "items": {
                     "properties": {
-                      "nombrePerfil": {
-                        "type": "string",
-                        "example": "PERFIL_1"
-                      },
                       "nombre": {
                         "type": "string",
-                        "example": "NOMBRE"
+                        "example": "FACULTAD 1"
                       },
-                      "facultadesSimples": {
-                        "type": "array",
-                        "items": {
-                          "properties": {
-                            "nombreFacultad": {
-                              "type": "string",
-                              "example": "FACULTAD_1"
-                            },
-                            "restriccionHorario": {
-                              "type": "boolean",
-                              "example": true
-                            }
-                          }
-                        }
+                      "activa": {
+                        "type": "boolean",
+                        "example": true
+                      },
+                      "restriccionHorario": {
+                        "type": "boolean",
+                        "example": true
+                      },
+                      "horaInicio": {
+                        "type": "string",
+                        "example": "15:30:00"
+                      },
+                      "horaFin": {
+                        "type": "string",
+                        "example": "17:30:00"
+                      },
+                      "tipoFacultad": {
+                        "type": "string",
+                        "example": "FACULTAD_SIMPLE"
+                      },
+                      "isComponenteVisible": {
+                        "type": "boolean",
+                        "example": true
+                      },
+                      "isComponenteHabilitado": {
+                        "type": "boolean",
+                        "example": true
+                      },
+                      "portlet": {
+                        "type": "boolean",
+                        "example": true
+                      },
+                      "nombrePortlet": {
+                        "type": "string",
+                        "example": "PORTLET 1"
                       }
                     }
                   }
@@ -13881,7 +13893,7 @@
         }
       }
     },
-    "/otp/asignacionOtpUsuario": {
+    "/otp/AsignacionOtpUsuario": {
       "post": {
         "tags": [
           "Sprint F"
@@ -13890,7 +13902,7 @@
         "parameters": [
           {
             "in": "body",
-            "name": "asignacionOtpUsuario",
+            "name": "AsignacionOtpUsuario",
             "description": "Asignacion de Otp a Usuario",
             "required": true,
             "schema": {
@@ -13902,9 +13914,12 @@
               ],
               "properties": {
                 "idUsuario": {
+                  "required": [
+                    "id"
+                  ],
                   "properties": {
                     "id": {
-                      "type": "number",
+                      "type": "integer",
                       "format": "int64",
                       "example": 2
                     },
@@ -13915,9 +13930,12 @@
                   }
                 },
                 "dispositivo": {
+                  "required": [
+                    "idDispositivo"
+                  ],
                   "properties": {
                     "idDispositivo": {
-                      "type": "number",
+                      "type": "integer",
                       "format": "int64",
                       "example": 3
                     }
@@ -14123,7 +14141,43 @@
             }
           },
           "201": {
-            "description": "Error controlado, el codigo http real es 200",
+            "description": "Error controlado, el código HTTP real es 200. Estos errores pertenecen a TAMException: 2449: Usuario no existe, 2441: OTP Invalido",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 404
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Usuario solicitado no existe"
+                },
+                "result": {
+                  "example": [],
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "id",
+                      "isActivo"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "example": 1
+                      },
+                      "isActivo": {
+                        "description": "Bandera que indica si el usuario terminó bloqueado o desbloqueado después de la operación.",
+                        "type": "boolean",
+                        "example": true
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "202": {
+            "description": "Error controlado, el código HTTP real es 200. Estos errores pertenecen a FacultamientoException. 1204: No se encontraron resultados, 1500: Sistema facultamiento fuera de línea.",
             "schema": {
               "properties": {
                 "responseStatus": {
@@ -14133,10 +14187,6 @@
                 "responseError": {
                   "type": "string",
                   "example": "Usuario solicitado no existe"
-                },
-                "result": {
-                  "type": "string",
-                  "example": "[]"
                 }
               }
             }
@@ -14262,7 +14312,7 @@
               "properties": {
                 "responseStatus": {
                   "type": "number",
-                  "example": 1204
+                  "example": 404
                 },
                 "responseError": {
                   "type": "string",
@@ -17393,7 +17443,6 @@
                 "relacion",
                 "correo",
                 "telefono",
-                "tokenAsignar",
                 "canal"
               ],
               "properties": {
@@ -17477,20 +17526,13 @@
                 },
                 "correo": {
                   "required": [
-                    "correo",
-                    "idEmpresaPropietaria"
+                    "correo"
                   ],
                   "properties": {
                     "correo": {
                       "description": "Identificador único de la persona o empresa que extiende este correo electrónico al usuario.",
                       "type": "string",
                       "example": "c.delateja@hotmail.com"
-                    },
-                    "idEmpresaPropietaria": {
-                      "description": "Identificador único de la persona o empresa que extiende este teléfono al usuario.",
-                      "type": "integer",
-                      "format": "int64",
-                      "example": 123456
                     }
                   }
                 },
@@ -17618,6 +17660,9 @@
                   }
                 },
                 "tokenAsignar": {
+                  "required": [
+                    "idDispositivo"
+                  ],
                   "properties": {
                     "idDispositivo": {
                       "description": "Identificador único del dispositivo a asignar.",
@@ -17628,6 +17673,11 @@
                   }
                 },
                 "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "otp": {
                   "type": "string",
                   "minLength": 1,
                   "example": "WEB"
@@ -17677,7 +17727,7 @@
               "properties": {
                 "responseStatus": {
                   "type": "number",
-                  "example": 1204
+                  "example": 5500
                 },
                 "responseError": {
                   "type": "string",
