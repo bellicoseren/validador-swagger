@@ -659,12 +659,12 @@ const login = {
       "contratado": true
     },
     {
-      "id": 2,          
+      "idServicio": 2,          
       "nombre": "PAGO DE NOMINA",
       "contratado": true
     },
     {
-      "id": 3,
+      "idServicio": 3,
       "nombre": "BANCA ELECTRONICA",
       "contratado": true,
       "montoMaximoAutorizado": 10000.10
