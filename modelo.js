@@ -4463,7 +4463,7 @@ var mapaModelo = {
  'crearAbastecimientoTokensCliente': crearAbastecimientoTokensCliente,
  'consultaOperacionesActivasUsuario': consultaOperacionesActivasUsuario,
  'consultaStockTokens': consultaStockTokens,
- 'asignacionOtpUsuario': asignacionOtpUsuario,
+ 'AsignacionOtpUsuario': asignacionOtpUsuario,
  'actualizaFacultamientoUsuario': actualizaFacultamientoUsuario,
  'consultaPerfilesPatronConGruposFacultades':consultaPerfilesPatronConGruposFacultades,
  'modificaPasswordUsuario':modificaPasswordUsuario,
