@@ -13898,7 +13898,8 @@
                 "idUsuario",
                 "dispositivo",
                 "ticket",
-                "canal"
+                "canal",
+                "otp"
               ],
               "properties": {
                 "idUsuario": {
@@ -13946,6 +13947,11 @@
                   }
                 },
                 "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "otp": {
                   "type": "string",
                   "minLength": 1,
                   "example": "WEB"
