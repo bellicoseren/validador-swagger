@@ -1515,11 +1515,8 @@
               "required": [
                 "canal",
                 "ticket",
-                "idPersona",
                 "tipoMensaje",
                 "tipoNotificacion",
-                "from",
-                "subject",
                 "to",
                 "mapParameters"
               ],
@@ -1557,14 +1554,6 @@
                 "tipoNotificacion": {
                   "type": "string",
                   "example": "notificacion"
-                },
-                "from": {
-                  "type": "string",
-                  "example": "from"
-                },
-                "subject": {
-                  "type": "string",
-                  "example": "subject"
                 },
                 "to": {
                   "type": "string",
@@ -17429,6 +17418,7 @@
               "required": [
                 "idPersonaPropietaria",
                 "ticket",
+                "empresaPropietaria",
                 "nombre",
                 "apellidoPaterno",
                 "alias",
@@ -17436,8 +17426,7 @@
                 "relacion",
                 "correo",
                 "telefono",
-                "canal",
-                "otp"
+                "canal"
               ],
               "properties": {
                 "ticket": {
@@ -17461,6 +17450,12 @@
                   "type": "integer",
                   "format": "int64",
                   "example": 0
+                },
+                "empresaPropietaria": {
+                  "description": "Id de la empresa propietaria del adicional",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 12345
                 },
                 "nombre": {
                   "description": "Nombre de la persona adicional",
@@ -17526,13 +17521,20 @@
                 },
                 "telefono": {
                   "required": [
-                    "telefono"
+                    "telefono",
+                    "idEmpresaPropietaria"
                   ],
                   "properties": {
                     "telefono": {
                       "description": "Telefono del   usuario adicional.",
                       "type": "string",
                       "example": "5512345678"
+                    },
+                    "idEmpresaPropietaria": {
+                      "description": "Identificador único de la persona o empresa que extiende este teléfono al usuario.",
+                      "type": "integer",
+                      "format": "int64",
+                      "example": 123456
                     }
                   }
                 },
