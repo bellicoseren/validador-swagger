@@ -15604,14 +15604,13 @@
                 },
                 "ticket": {
                   "required": [
-                    "idUsuario",
+                    "id_user",
                     "id_creds"
                   ],
                   "properties": {
-                    "idUsuario": {
-                      "type": "integer",
-                      "format": "int64",
-                      "example": 1
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
@@ -15680,6 +15679,115 @@
           },
           "201": {
             "description": "Error controlado, el código HTTP real es 200. Estos errores pertenecen a BUPException. 5204: No se encontraron registros, 5500: Error interno del servidor.",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 5204
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "No se encontraron registros"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bup/consultaEmpresasPorHolding": {
+      "post": {
+        "tags": [
+          "Sprint F"
+        ],
+        "description": "Interfaz que le permitirá consultar empresas, de la empresa propietaria del usuario logueado.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "consultaEmpresasPorHolding",
+            "description": "Diseño de la operación para consultaEmpresasPorHolding",
+            "required": true,
+            "schema": {
+              "required": [
+                "idUsuario",
+                "canal",
+                "ticket"
+              ],
+              "properties": {
+                "idUsuario": {
+                  "description": "Identificador único de la persona en los sistemas institucionales.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 0
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "required": [
+                "result"
+              ],
+              "properties": {
+                "result": {
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "idEmpresa",
+                      "nombre"
+                    ],
+                    "properties": {
+                      "idEmpresa": {
+                        "description": "Id de la empresa.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                      },
+                      "nombre": {
+                        "description": "Nombre de la empresa",
+                        "type": "string",
+                        "example": "Empresa"
+                      }
+                    }
+                  }
+                },
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el código HTTP real es 200.  Estos errores pertenecen a BUPException.  5204: No se encontraron registros,  5500: Error interno en el servidor.",
             "schema": {
               "properties": {
                 "responseStatus": {
