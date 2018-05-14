@@ -3801,7 +3801,7 @@ const actualizaDatosPersona = {
   }
 }
  
-const asignacionOtpUsuario = {
+const AsignacionOtpUsuario = {
   "responseStatus": 200,
   "responseError": "",
   "result": [
@@ -4463,7 +4463,7 @@ var mapaModelo = {
  'crearAbastecimientoTokensCliente': crearAbastecimientoTokensCliente,
  'consultaOperacionesActivasUsuario': consultaOperacionesActivasUsuario,
  'consultaStockTokens': consultaStockTokens,
- 'AsignacionOtpUsuario': asignacionOtpUsuario,
+ 'AsignacionOtpUsuario': AsignacionOtpUsuario,
  'actualizaFacultamientoUsuario': actualizaFacultamientoUsuario,
  'consultaPerfilesPatronConGruposFacultades':consultaPerfilesPatronConGruposFacultades,
  'modificaPasswordUsuario':modificaPasswordUsuario,
