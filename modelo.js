@@ -4348,6 +4348,18 @@ function consultaGATIntegra(bodyreq){
 }
 
 
+const consultaOpsFrecuentes = {
+  "result": [
+    {
+      "tipoOperacion": "MUL_EJECUTA_SPEI",
+      "aliasPreregistro": "alias",
+      "cuentaOrigen": "124567891",
+      "cuentaDestino": "98765432"
+    }
+  ],
+  "responseStatus": 200,
+  "responseError": ""
+}
 
 
 var mapaModelo = {
@@ -4449,7 +4461,7 @@ var mapaModelo = {
  'consultaFoliosGdf':consultaFoliosGdf,
  'consultaInfoRECA':consultaInfoRECA,
  'consultaGATIntegra':consultaGATIntegra,
-
+ 'consultaOpsFrecuentes':consultaOpsFrecuentes,
 
 
 //////////Sprint F//////////////////
