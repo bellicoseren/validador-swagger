@@ -3881,6 +3881,11 @@ const direccionesPorPersona = {
   "responseError": ""
 }
 
+const impresionComprobantes = {
+  "responseStatus": 200,
+  "responseError": ""
+}
+
 
 
 
@@ -4449,6 +4454,7 @@ var mapaModelo = {
  'consultaFoliosGdf':consultaFoliosGdf,
  'consultaInfoRECA':consultaInfoRECA,
  'consultaGATIntegra':consultaGATIntegra,
+ 'impresionComprobantes':impresionComprobantes,
 
 
 

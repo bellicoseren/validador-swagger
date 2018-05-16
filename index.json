@@ -13455,6 +13455,98 @@
         }
       }
     },
+    "/persona/impresionComprobantes": {
+      "post": {
+        "tags": [
+          "Sprint 5"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación /impresionComprobantes del servicio requerido para la reimpresión de comprobantes de Transacción.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "impresionComprobantes",
+            "description": "Operacion Impresion de Comprobantes",
+            "required": true,
+            "schema": {
+              "required": [
+                "ticket",
+                "canal",
+                "formato"
+              ],
+              "properties": {
+                "idTransaccion": {
+                  "description": "Identificador de la transacción que se requiere imprimir el contrato (este campo es mutuamente excluyente con folio en caso contrario provoca error 15400)",
+                  "type": "string",
+                  "example": 123456789
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "folio": {
+                  "description": "Identificador del folio correspondiente las transacciones que se requiere imprimir (este campo es mutuamente excluyente con idTransaccion en caso contrario provoca error 15400)"
+                },
+                "formato": {
+                  "description": "Formato del archivo de Response, solo pueden ser 2 valores aceptados “HTML” y “PDF”, en caso de que el valor de folio este establecido se ignorará este valor",
+                  "type": "string",
+                  "example": "PDF"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Entrega de respuesta erronea",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 15204
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Archivo no encontrado"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/bup/actualizaDatosPersona": {
       "post": {
         "tags": [
@@ -17418,7 +17510,6 @@
               "required": [
                 "idPersonaPropietaria",
                 "ticket",
-                "empresaPropietaria",
                 "nombre",
                 "apellidoPaterno",
                 "alias",
@@ -17426,7 +17517,8 @@
                 "relacion",
                 "correo",
                 "telefono",
-                "canal"
+                "canal",
+                "otp"
               ],
               "properties": {
                 "ticket": {
@@ -17450,12 +17542,6 @@
                   "type": "integer",
                   "format": "int64",
                   "example": 0
-                },
-                "empresaPropietaria": {
-                  "description": "Id de la empresa propietaria del adicional",
-                  "type": "integer",
-                  "format": "int64",
-                  "example": 12345
                 },
                 "nombre": {
                   "description": "Nombre de la persona adicional",
@@ -17521,20 +17607,13 @@
                 },
                 "telefono": {
                   "required": [
-                    "telefono",
-                    "idEmpresaPropietaria"
+                    "telefono"
                   ],
                   "properties": {
                     "telefono": {
                       "description": "Telefono del   usuario adicional.",
                       "type": "string",
                       "example": "5512345678"
-                    },
-                    "idEmpresaPropietaria": {
-                      "description": "Identificador único de la persona o empresa que extiende este teléfono al usuario.",
-                      "type": "integer",
-                      "format": "int64",
-                      "example": 123456
                     }
                   }
                 },
