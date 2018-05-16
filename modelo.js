@@ -3801,7 +3801,7 @@ const actualizaDatosPersona = {
   }
 }
  
-const asignacionOtpUsuario = {
+const AsignacionOtpUsuario = {
   "responseStatus": 200,
   "responseError": "",
   "result": [
@@ -3877,6 +3877,11 @@ const direccionesPorPersona = {
       "municipio": ""
     }
   ],
+  "responseStatus": 200,
+  "responseError": ""
+}
+
+const impresionComprobantes = {
   "responseStatus": 200,
   "responseError": ""
 }
@@ -4462,6 +4467,7 @@ var mapaModelo = {
  'consultaInfoRECA':consultaInfoRECA,
  'consultaGATIntegra':consultaGATIntegra,
  'consultaOpsFrecuentes':consultaOpsFrecuentes,
+ 'impresionComprobantes':impresionComprobantes,
 
 
 //////////Sprint F//////////////////
@@ -4475,7 +4481,7 @@ var mapaModelo = {
  'crearAbastecimientoTokensCliente': crearAbastecimientoTokensCliente,
  'consultaOperacionesActivasUsuario': consultaOperacionesActivasUsuario,
  'consultaStockTokens': consultaStockTokens,
- 'AsignacionOtpUsuario': asignacionOtpUsuario,
+ 'AsignacionOtpUsuario': AsignacionOtpUsuario,
  'actualizaFacultamientoUsuario': actualizaFacultamientoUsuario,
  'consultaPerfilesPatronConGruposFacultades':consultaPerfilesPatronConGruposFacultades,
  'modificaPasswordUsuario':modificaPasswordUsuario,
