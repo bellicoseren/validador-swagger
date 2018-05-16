@@ -11026,6 +11026,117 @@
         }
       }
     },
+    "/bup/consultaOpsFrecuentes": {
+      "post": {
+        "tags": [
+          "Sprint 5"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación /consultaOpsFrecuentes del servicio /bup requerida para la integración de Multivanet con Facultamiento.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "consultaOpsFrecuentes",
+            "description": "Diseño de la operación para consultaOpsFrecuentes",
+            "required": true,
+            "schema": {
+              "required": [
+                "usuario",
+                "ticket",
+                "canal"
+              ],
+              "properties": {
+                "usuario": {
+                  "description": "Usuario logueado, cuyas operaciones frecuentes se consultarán. Si el usuario que se recibe como parámetro no tiene la facultad necesaria para poder ejecutar la operación frecuente, esta operación se deberá descartar de la consulta.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123456
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "properties": {
+                "result": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "tipoOperacion": {
+                        "description": "Identificador único del tipo de operación según el catálogo de operaciones.",
+                        "type": "string",
+                        "example": "MUL_EJECUTA_SPEI"
+                      },
+                      "aliasPreregistro": {
+                        "description": "El alias que se registró para el preregistro utilizado para hacer la operación.",
+                        "type": "string",
+                        "example": "alias"
+                      },
+                      "cuentaOrigen": {
+                        "description": "Cuenta origen frecuentemente registrada.",
+                        "type": "string",
+                        "example": "124567891"
+                      },
+                      "cuentaDestino": {
+                        "description": "Cuenta destino frecuentemente registrada.",
+                        "type": "string",
+                        "example": "98765432"
+                      }
+                    }
+                  }
+                },
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200. Estos errores pertenecen a FacultamientoException: 1204: No se encontraron resultados,  1500 : Error interno del servidor.",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 1204
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "No se encontraron resultados"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/persona/aperturaCede": {
       "post": {
         "tags": [
@@ -11715,117 +11826,6 @@
                 "responseError": {
                   "type": "string",
                   "example": "Error de T24."
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/bup/consultaOpsFrecuentes": {
-      "post": {
-        "tags": [
-          "Sprint 5"
-        ],
-        "description": "Consolidar la información relevante respecto al diseño de la operación /consultaOpsFrecuentes del servicio /bup requerida para la integración de Multivanet con Facultamiento.",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "consultaOpsFrecuentes",
-            "description": "Diseño de la operación para consultaOpsFrecuentes",
-            "required": true,
-            "schema": {
-              "required": [
-                "usuario",
-                "ticket",
-                "canal"
-              ],
-              "properties": {
-                "usuario": {
-                  "description": "Usuario logueado, cuyas operaciones frecuentes se consultarán. Si el usuario que se recibe como parámetro no tiene la facultad necesaria para poder ejecutar la operación frecuente, esta operación se deberá descartar de la consulta.",
-                  "type": "integer",
-                  "format": "int64",
-                  "example": 123456
-                },
-                "ticket": {
-                  "required": [
-                    "id_user",
-                    "id_creds"
-                  ],
-                  "properties": {
-                    "id_user": {
-                      "type": "string",
-                      "example": "123456"
-                    },
-                    "id_creds": {
-                      "type": "string",
-                      "example": "12345678"
-                    }
-                  }
-                },
-                "canal": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": "WEB"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
-            "schema": {
-              "properties": {
-                "result": {
-                  "type": "array",
-                  "items": {
-                    "properties": {
-                      "tipoOperacion": {
-                        "description": "Identificador único del tipo de operación según el catálogo de operaciones.",
-                        "type": "string",
-                        "example": "MUL_EJECUTA_SPEI"
-                      },
-                      "aliasPreregistro": {
-                        "description": "El alias que se registró para el preregistro utilizado para hacer la operación.",
-                        "type": "string",
-                        "example": "alias"
-                      },
-                      "cuentaOrigen": {
-                        "description": "Cuenta origen frecuentemente registrada.",
-                        "type": "string",
-                        "example": "124567891"
-                      },
-                      "cuentaDestino": {
-                        "description": "Cuenta destino frecuentemente registrada.",
-                        "type": "string",
-                        "example": "98765432"
-                      }
-                    }
-                  }
-                },
-                "responseStatus": {
-                  "type": "number",
-                  "example": 200
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": ""
-                }
-              }
-            }
-          },
-          "201": {
-            "description": "Error controlado, el codigo http real es 200. Estos errores pertenecen a FacultamientoException: 1204: No se encontraron resultados,  1500 : Error interno del servidor.",
-            "schema": {
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 1204
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": "No se encontraron resultados"
                 }
               }
             }
@@ -13566,6 +13566,98 @@
         }
       }
     },
+    "/persona/impresionComprobantes": {
+      "post": {
+        "tags": [
+          "Sprint 5"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación /impresionComprobantes del servicio requerido para la reimpresión de comprobantes de Transacción.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "impresionComprobantes",
+            "description": "Operacion Impresion de Comprobantes",
+            "required": true,
+            "schema": {
+              "required": [
+                "ticket",
+                "canal",
+                "formato"
+              ],
+              "properties": {
+                "idTransaccion": {
+                  "description": "Identificador de la transacción que se requiere imprimir el contrato (este campo es mutuamente excluyente con folio en caso contrario provoca error 15400)",
+                  "type": "string",
+                  "example": 123456789
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "folio": {
+                  "description": "Identificador del folio correspondiente las transacciones que se requiere imprimir (este campo es mutuamente excluyente con idTransaccion en caso contrario provoca error 15400)"
+                },
+                "formato": {
+                  "description": "Formato del archivo de Response, solo pueden ser 2 valores aceptados “HTML” y “PDF”, en caso de que el valor de folio este establecido se ignorará este valor",
+                  "type": "string",
+                  "example": "PDF"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Entrega de respuesta erronea",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 15204
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Archivo no encontrado"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/bup/actualizaDatosPersona": {
       "post": {
         "tags": [
@@ -13998,7 +14090,8 @@
                 "idUsuario",
                 "dispositivo",
                 "ticket",
-                "canal"
+                "canal",
+                "otp"
               ],
               "properties": {
                 "idUsuario": {
@@ -14046,6 +14139,11 @@
                   }
                 },
                 "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "otp": {
                   "type": "string",
                   "minLength": 1,
                   "example": "WEB"
@@ -17631,7 +17729,6 @@
               "required": [
                 "idPersonaPropietaria",
                 "ticket",
-                "empresaPropietaria",
                 "nombre",
                 "apellidoPaterno",
                 "alias",
@@ -17639,7 +17736,8 @@
                 "relacion",
                 "correo",
                 "telefono",
-                "canal"
+                "canal",
+                "otp"
               ],
               "properties": {
                 "ticket": {
@@ -17663,12 +17761,6 @@
                   "type": "integer",
                   "format": "int64",
                   "example": 0
-                },
-                "empresaPropietaria": {
-                  "description": "Id de la empresa propietaria del adicional",
-                  "type": "integer",
-                  "format": "int64",
-                  "example": 12345
                 },
                 "nombre": {
                   "description": "Nombre de la persona adicional",
@@ -17734,20 +17826,13 @@
                 },
                 "telefono": {
                   "required": [
-                    "telefono",
-                    "idEmpresaPropietaria"
+                    "telefono"
                   ],
                   "properties": {
                     "telefono": {
                       "description": "Telefono del   usuario adicional.",
                       "type": "string",
                       "example": "5512345678"
-                    },
-                    "idEmpresaPropietaria": {
-                      "description": "Identificador único de la persona o empresa que extiende este teléfono al usuario.",
-                      "type": "integer",
-                      "format": "int64",
-                      "example": 123456
                     }
                   }
                 },
