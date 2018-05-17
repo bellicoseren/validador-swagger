@@ -12614,7 +12614,8 @@
               "required": [
                 "ticket",
                 "canal",
-                "idPersona"
+                "idPersona",
+                "otp"
               ],
               "properties": {
                 "ticket": {
@@ -12642,6 +12643,10 @@
                   "type": "string",
                   "minLength": 1,
                   "example": "WEB"
+                },
+                "otp": {
+                  "type": "string",
+                  "example": "1234567"
                 },
                 "pagoImpuestosGdf": {
                   "required": [
@@ -13677,7 +13682,8 @@
                 "telefono",
                 "correoElectronico",
                 "canal",
-                "ticket"
+                "ticket",
+                "otp"
               ],
               "properties": {
                 "idUsuario": {
@@ -13722,6 +13728,10 @@
                   "type": "string",
                   "minLength": 1,
                   "example": "WEB"
+                },
+                "otp": {
+                  "type": "string",
+                  "example": "1234567"
                 }
               }
             }
@@ -14145,8 +14155,7 @@
                 },
                 "otp": {
                   "type": "string",
-                  "minLength": 1,
-                  "example": "WEB"
+                  "example": "1234567"
                 }
               }
             }
@@ -17960,8 +17969,7 @@
                 },
                 "otp": {
                   "type": "string",
-                  "minLength": 1,
-                  "example": "WEB"
+                  "example": "1234567"
                 }
               }
             }
@@ -18351,7 +18359,8 @@
                 "idPersonaCliente",
                 "cantidadDispositivos",
                 "ticket",
-                "canal"
+                "canal",
+                "otp"
               ],
               "properties": {
                 "idPersonaCliente": {
@@ -18402,6 +18411,10 @@
                   "type": "integer",
                   "format": "int64",
                   "example": "1"
+                },
+                "otp": {
+                  "type": "string",
+                  "example": "1234567"
                 }
               }
             }
