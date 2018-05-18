@@ -8465,114 +8465,120 @@
       }
     },
     "/persona/ejecutaOperacionLote": {
-      "post": null,
-      "tags": [
-        "Sprint 3"
-      ],
-      "description": "Procesar cualquier petición de ejecución de transacciones masivamente por medio de archivos batch.",
-      "parameters": [
-        {
-          "in": "body",
-          "name": "ejecutaOperacionLote",
-          "description": "Valores para la ejecución de operacion Lotes",
-          "required": true,
-          "schema": {
-            "required": [
-              "idPersona",
-              "rutaDocumento",
-              "tipoOperacion",
-              "otp",
-              "ticket",
-              "canal"
-            ],
-            "properties": {
-              "idPersona": {
-                "type": "integer",
-                "format": "int64",
-                "example": 123546345
-              },
-              "fechaEjecucion": {
-                "description": "Fecha en la que se ejecutará el procesamiento de este archivo de operaciones. En formato dd-MM-yyyy.",
-                "type": "string",
-                "format": "date",
-                "example": "01-01-2018"
-              },
-              "rutaDocumento": {
-                "description": "Ruta donde se encontrará el documento a procesar.",
-                "type": "string",
-                "example": "http://10.201.8.1:9000/202020.captura-masiva/pruebaMultipart.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=P7L503WK4UJ4T9VAWZM2%2F20180111%2F%2Fs3%2Faws4_request&X-Amz-Date=20180111T145946Z&X-Amz-Expires=432000&X-Amz-SignedHeaders=host&X-Amz-Signature=6583d3182856994b4893803a605ea63115338bdd918b89941564c58d931a6baa"
-              },
-              "tipoOperacion": {
-                "description": "Determina el trato que se le dará al documento de operaciones que se recibe.",
-                "type": "string",
-                "example": "REGISTRO"
-              },
-              "otp": {
-                "type": "string",
-                "example": "1234567"
-              },
-              "ticket": {
-                "required": [
-                  "id_user",
-                  "id_creds"
-                ],
-                "properties": {
-                  "id_user": {
-                    "type": "string",
-                    "example": "123456"
-                  },
-                  "id_creds": {
-                    "type": "string",
-                    "example": "12345678"
+      "post": {
+        "tags": [
+          "Sprint 3"
+        ],
+        "description": "Procesar cualquier petición de ejecución de transacciones masivamente por medio de archivos batch.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "ejecutaOperacionLote",
+            "description": "Valores para la ejecución de operacion Lotes",
+            "required": true,
+            "schema": {
+              "required": [
+                "idPersona",
+                "documento",
+                "tipoOperacion",
+                "otp",
+                "ticket",
+                "canal"
+              ],
+              "properties": {
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "fechaEjecucion": {
+                  "description": "Fecha en la que se ejecutará el procesamiento de este archivo de operaciones. En formato dd-MM-yyyy.",
+                  "type": "string",
+                  "format": "date",
+                  "example": "01-01-2018"
+                },
+                "documento": {
+                  "description": "Stream de bytes del archivo que se va a subir para que se ejecute la operación. Debe mandarse en formato UTF-8.",
+                  "type": "string",
+                  "format": "binary"
+                },
+                "tipoOperacion": {
+                  "description": "Determina el trato que se le dará al documento de operaciones que se recibe.  Al momento puede recibir cualquiera de estos valores:  REGISTRO para operaciones masivas de preregistro, TRANSFERENCIAS para ejecución masiva de transferencias.  IMPUESTOS para operaciones masivas de pago de impuestos.",
+                  "type": "string",
+                  "example": "REGISTRO"
+                },
+                "otp": {
+                  "type": "string",
+                  "example": "1234567"
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
                   }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
                 }
-              },
-              "canal": {
-                "type": "string",
-                "minLength": 1,
-                "example": "WEB"
               }
             }
           }
-        }
-      ],
-      "responses": {
-        "200": {
-          "description": "Representa una ejecución exitosa. Para efectos de este servicio, será indicativo de que el archivo se subió correctamente.",
-          "schema": {
-            "required": [
-              "folioOperacion",
-              "responseStatus",
-              "responseError"
-            ],
-            "properties": {
-              "folioOperacion": {
-                "description": "Folio asignado para la operación por lote, que se utilizará para dar seguimiento a su ejecución",
-                "type": "string",
-                "example": 123456
-              },
-              "responseStatus": {
-                "type": "number",
-                "example": 200
-              },
-              "responseError": {
-                "type": "string",
-                "example": ""
+        ],
+        "responses": {
+          "200": {
+            "description": "Representa una ejecución exitosa. Para efectos de este servicio, será indicativo de que el archivo se subió correctamente.",
+            "schema": {
+              "required": [
+                "folioOperacion",
+                "estatus",
+                "responseStatus"
+              ],
+              "properties": {
+                "folioOperacion": {
+                  "description": "Folio asignado para la operación por lote, que se utilizará para dar seguimiento a su ejecución, y de ser necesario encontrar su archivo de resultados.",
+                  "type": "string",
+                  "example": "123456"
+                },
+                "estatus": {
+                  "description": "Estatus de la operación recibida. Los valores que se pueden devolver aquí corresponden a los indicados en el anexo 1 de este documento, en español.",
+                  "type": "string",
+                  "example": "1234567"
+                },
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
               }
             }
-          }
-        },
-        "201": {
-          "description": "Error controlado, el codigo http real es 200",
-          "schema": {
-            "properties": {
-              "responseStatus": {
-                "type": "number",
-                "example": 500
-              },
-              "resposeError": {
-                "type": "string",
-                "example": ""
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "resposeError": {
+                  "type": "string",
+                  "example": ""
+                }
               }
             }
           }

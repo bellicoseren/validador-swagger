@@ -3654,9 +3654,12 @@ const movimientosCFE ={
 
 
 const ejecutaOperacionLote ={
-   "folioOperacion": "123456",
-   "responseStatus": 200,
-   "responseError": ""
+
+  "folioOperacion": "123456",
+  "estatus": "1234567",
+  "responseStatus": 200,
+  "responseError": ""
+
 }
 
 
