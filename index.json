@@ -14374,7 +14374,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Usuario solicitado no existe"
+                  "example": "No se encontraron resultados"
                 }
               }
             }
@@ -14387,11 +14387,11 @@
         "tags": [
           "Sprint F"
         ],
-        "description": "Consolidar la información relevante respecto al diseño de la operación /BloqueoDesbloqueoUsuario del servicio /facultamiento requerida para la integración de Multivanet con el core Facultamiento.",
+        "description": "Consolidar la información relevante respecto al diseño de la operación /desbloqueoUsuario del servicio /facultamiento requerida para la integración de Multivanet con el core Facultamiento.",
         "parameters": [
           {
             "in": "body",
-            "name": "bloqueoDesbloqueoUsuario",
+            "name": "desbloqueoUsuario",
             "description": "Diseño de la operación para actualizaUsuario",
             "required": true,
             "schema": {
@@ -14413,16 +14413,13 @@
                   "description": "Lista de usuario para verificar ",
                   "type": "array",
                   "items": {
-                    "required": [
-                      "id"
-                    ],
-                    "properties": {
-                      "id": {
-                        "type": "integer",
-                        "example": 1
-                      }
-                    }
-                  }
+                    "type": "integer"
+                  },
+                  "example": [
+                    123456,
+                    876554,
+                    876523
+                  ]
                 },
                 "ticket": {
                   "required": [
@@ -14457,11 +14454,6 @@
           "200": {
             "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
             "schema": {
-              "required": [
-                "responseError",
-                "responseStatus",
-                "listaUsuarios"
-              ],
               "properties": {
                 "responseStatus": {
                   "type": "number",
@@ -14474,16 +14466,14 @@
                 "result": {
                   "type": "array",
                   "items": {
-                    "required": [
-                      "id",
-                      "isActivo"
-                    ],
                     "properties": {
                       "id": {
+                        "description": "Identificador del usuario afectado",
                         "type": "integer",
+                        "format": "int64",
                         "example": 1
                       },
-                      "isActivo": {
+                      "activo": {
                         "description": "Bandera que indica si el usuario terminó bloqueado o desbloqueado después de la operación.",
                         "type": "boolean",
                         "example": true
@@ -14510,16 +14500,14 @@
                   "example": [],
                   "type": "array",
                   "items": {
-                    "required": [
-                      "id",
-                      "isActivo"
-                    ],
                     "properties": {
                       "id": {
+                        "description": "Identificador del usuario afectado",
                         "type": "integer",
+                        "format": "int64",
                         "example": 1
                       },
-                      "isActivo": {
+                      "activo": {
                         "description": "Bandera que indica si el usuario terminó bloqueado o desbloqueado después de la operación.",
                         "type": "boolean",
                         "example": true
@@ -14540,7 +14528,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Usuario solicitado no existe"
+                  "example": "No se encontraron resultados"
                 }
               }
             }

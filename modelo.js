@@ -4175,14 +4175,15 @@ const bloqueoUsuario={
 }
 
 const desbloqueoUsuario={
- "responseStatus": 200,
- "responseError": "",
- "listaUsuarios": [
-   {
-     "id": 1,
-     "isActivo": true
-   }
- ]
+
+  "responseStatus": 200,
+  "responseError": "",
+  "result": [
+    {
+      "id": 1,
+      "activo": true
+    }
+  ]
 }
 
 const consultaFirmantesPotenciales={
