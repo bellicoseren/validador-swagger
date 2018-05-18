@@ -12620,7 +12620,8 @@
               "required": [
                 "ticket",
                 "canal",
-                "idPersona"
+                "idPersona",
+                "otp"
               ],
               "properties": {
                 "ticket": {
@@ -12648,6 +12649,10 @@
                   "type": "string",
                   "minLength": 1,
                   "example": "WEB"
+                },
+                "otp": {
+                  "type": "string",
+                  "example": "1234567"
                 },
                 "pagoImpuestosGdf": {
                   "required": [
@@ -13683,7 +13688,8 @@
                 "telefono",
                 "correoElectronico",
                 "canal",
-                "ticket"
+                "ticket",
+                "otp"
               ],
               "properties": {
                 "idUsuario": {
@@ -13728,6 +13734,10 @@
                   "type": "string",
                   "minLength": 1,
                   "example": "WEB"
+                },
+                "otp": {
+                  "type": "string",
+                  "example": "1234567"
                 }
               }
             }
@@ -14151,8 +14161,7 @@
                 },
                 "otp": {
                   "type": "string",
-                  "minLength": 1,
-                  "example": "WEB"
+                  "example": "1234567"
                 }
               }
             }
@@ -14237,8 +14246,7 @@
                 "idUsuario",
                 "listaUsuarios",
                 "ticket",
-                "canal",
-                "otp"
+                "canal"
               ],
               "properties": {
                 "idUsuario": {
@@ -14251,16 +14259,13 @@
                   "description": "Lista de usuario para verificar ",
                   "type": "array",
                   "items": {
-                    "required": [
-                      "id"
-                    ],
-                    "properties": {
-                      "id": {
-                        "type": "integer",
-                        "example": 1
-                      }
-                    }
-                  }
+                    "type": "integer"
+                  },
+                  "example": [
+                    123456,
+                    876554,
+                    876523
+                  ]
                 },
                 "ticket": {
                   "required": [
@@ -14295,11 +14300,6 @@
           "200": {
             "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
             "schema": {
-              "required": [
-                "responseError",
-                "responseStatus",
-                "listaUsuarios"
-              ],
               "properties": {
                 "responseStatus": {
                   "type": "number",
@@ -14312,16 +14312,14 @@
                 "result": {
                   "type": "array",
                   "items": {
-                    "required": [
-                      "id",
-                      "isActivo"
-                    ],
                     "properties": {
                       "id": {
+                        "description": "Identificador del usuario afectado",
                         "type": "integer",
+                        "format": "int64",
                         "example": 1
                       },
-                      "isActivo": {
+                      "activo": {
                         "description": "Bandera que indica si el usuario terminó bloqueado o desbloqueado después de la operación.",
                         "type": "boolean",
                         "example": true
@@ -14348,16 +14346,14 @@
                   "example": [],
                   "type": "array",
                   "items": {
-                    "required": [
-                      "id",
-                      "isActivo"
-                    ],
                     "properties": {
                       "id": {
+                        "description": "Identificador del usuario afectado",
                         "type": "integer",
+                        "format": "int64",
                         "example": 1
                       },
-                      "isActivo": {
+                      "activo": {
                         "description": "Bandera que indica si el usuario terminó bloqueado o desbloqueado después de la operación.",
                         "type": "boolean",
                         "example": true
@@ -17966,8 +17962,7 @@
                 },
                 "otp": {
                   "type": "string",
-                  "minLength": 1,
-                  "example": "WEB"
+                  "example": "1234567"
                 }
               }
             }
@@ -18357,7 +18352,8 @@
                 "idPersonaCliente",
                 "cantidadDispositivos",
                 "ticket",
-                "canal"
+                "canal",
+                "otp"
               ],
               "properties": {
                 "idPersonaCliente": {
@@ -18408,6 +18404,10 @@
                   "type": "integer",
                   "format": "int64",
                   "example": "1"
+                },
+                "otp": {
+                  "type": "string",
+                  "example": "1234567"
                 }
               }
             }
