@@ -3654,9 +3654,12 @@ const movimientosCFE ={
 
 
 const ejecutaOperacionLote ={
-   "folioOperacion": "123456",
-   "responseStatus": 200,
-   "responseError": ""
+
+  "folioOperacion": "123456",
+  "estatus": "1234567",
+  "responseStatus": 200,
+  "responseError": ""
+
 }
 
 
@@ -4160,25 +4163,27 @@ const consultaFacultamientoUsuario={
 }
 
 const bloqueoUsuario={
- "responseStatus": 200,
- "responseError": "",
- "listaUsuarios": [
-   {
-     "id": 1,
-     "isActivo": true
-   }
- ]
+
+  "responseStatus": 200,
+  "responseError": "",
+  "result": [
+    {
+      "id": 1,
+      "activo": true
+    }
+  ]
 }
 
 const desbloqueoUsuario={
- "responseStatus": 200,
- "responseError": "",
- "listaUsuarios": [
-   {
-     "id": 1,
-     "isActivo": true
-   }
- ]
+
+  "responseStatus": 200,
+  "responseError": "",
+  "result": [
+    {
+      "id": 1,
+      "activo": true
+    }
+  ]
 }
 
 const consultaFirmantesPotenciales={
