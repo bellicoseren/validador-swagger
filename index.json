@@ -14089,7 +14089,7 @@
         }
       }
     },
-    "/otp/AsignacionOtpUsuario": {
+    "/otpFacultamiento/AsignacionOtpUsuario": {
       "post": {
         "tags": [
           "Sprint F"
@@ -17127,7 +17127,7 @@
         }
       }
     },
-    "/otp/consultaStockTokens": {
+    "/otpFacultamiento/consultaStockTokens": {
       "post": {
         "tags": [
           "Sprint F"
@@ -18310,7 +18310,7 @@
         }
       }
     },
-    "/otp/crearAbastecimientoTokensCliente": {
+    "/otpFacultamiento/crearAbastecimientoTokensCliente": {
       "post": {
         "tags": [
           "Sprint F"
