@@ -14116,11 +14116,13 @@
                   ],
                   "properties": {
                     "id": {
+                      "description": "Identificador de usuario.",
                       "type": "integer",
                       "format": "int64",
                       "example": 2
                     },
                     "nombre": {
+                      "description": "Nombre del usuario.",
                       "type": "string",
                       "example": "Alfredo"
                     }
@@ -14132,6 +14134,7 @@
                   ],
                   "properties": {
                     "idDispositivo": {
+                      "description": "Nombre del usuario Identificador deldispositivo.",
                       "type": "integer",
                       "format": "int64",
                       "example": 3
@@ -14190,38 +14193,23 @@
             }
           },
           "201": {
-            "description": "Error controlado, el codigo http real es 200",
+            "description": "Error controlado, el codigo http real es 200. Estos errores pertenecen a OTPException: 2204: No se encontraron registros en la base de OTP.,  2501: OTP fuera de línea.",
             "schema": {
               "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 2204
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": "No se encontraron registros en la base de OTP."
-                }
-              }
-            }
-          },
-          "202": {
-            "description": "Error controlado, el codigo http real es 200",
-            "schema": {
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 2501
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": "OTP fuera de línea"
-                },
                 "result": {
                   "example": [],
                   "type": "array",
                   "items": {
                     "type": "string"
                   }
+                },
+                "responseStatus": {
+                  "type": "number",
+                  "example": 2500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Internal Server Error"
                 }
               }
             }
@@ -19269,7 +19257,7 @@
                   "description": "Id del usuario al cual se le quiere modificar la contraseña.",
                   "type": "integer",
                   "format": "int64",
-                  "example": 1000104701
+                  "example": 0
                 },
                 "otp": {
                   "type": "string",
@@ -19320,11 +19308,11 @@
               "properties": {
                 "responseStatus": {
                   "type": "number",
-                  "example": 2450
+                  "example": 1204
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "No coinciden las contraseñas"
+                  "example": "No se pudo actualizar el registro."
                 }
               }
             }
