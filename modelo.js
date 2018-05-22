@@ -4283,7 +4283,7 @@ const consultaBitacoraOperaciones = {
       "folio": "F0123UNASN3123",
       "fechaSolicitud": "21-04-2017 11:03:00",
       "fechaProgramada": "",
-      "importe": "$37,192.12",
+      "importe": 37192.12,
       "moneda": "MXN",
       "estatus": "APLICADA",
       "folio2": "F0123UNASN3123",
@@ -4298,9 +4298,9 @@ const consultaBitacoraOperaciones = {
       "idDispositivo": "AJDH1023731KDAD",
       "agente": "Jorge Posadas",
       "rfc": "ABCD123456ASD",
-      "iva": "$123.12",
-      "comision": "$13.12",
-      "ivaComision": "$3.12",
+      "iva": 123.12,
+      "comision": 13.12,
+      "ivaComision": 3.12,
       "cuentaOrigenTipo": "CHQ",
       "cuentaOrigenNombre": "Provedores",
       "cuentaOrigen": "1237493749",
@@ -4310,8 +4310,8 @@ const consultaBitacoraOperaciones = {
       "usuarioCaptura": "123456",
       "conceptoEdoCuenta": "Pago",
       "celularBeneficiario": "1234567890",
-      "tipoPago": "2",
-      "tipoCredito": "1"
+      "tipoPago": 2,
+      "tipoCredito": 1
     }
   ]
 }
@@ -4502,6 +4502,7 @@ var mapaModelo = {
  'consultaEmpresasPorHolding': consultaEmpresasPorHolding, 
  'consultaBitacoraOperaciones': consultaBitacoraOperaciones,
  'consultaEmpresasPorHolding': consultaEmpresasPorHolding
+
 
 }
 
