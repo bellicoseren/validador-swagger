@@ -15395,13 +15395,13 @@
                         "description": "Fecha de captura de la operación en formato dd-MM-yyyyThh:mm:ss.",
                         "type": "string",
                         "format": "date-time",
-                        "example": "21-04-2017 11:03:00"
+                        "example": "21-04-2017T11:03:00"
                       },
                       "fechaProgramada": {
                         "description": "Fecha de programación para la ejecución de la operación en formato dd-MM-yyyyThh:mm:ss.",
                         "type": "string",
                         "format": "date-time",
-                        "example": ""
+                        "example": "22-04-2017T11:03:00"
                       },
                       "importe": {
                         "description": "Importe de la operación.",
@@ -15428,7 +15428,7 @@
                         "description": "Fecha en que la operación fue atorizada en formato dd-MM-yyyyThh:mm:ss.",
                         "type": "string",
                         "format": "date-time",
-                        "example": "21-04-2017 11:03:00"
+                        "example": "21-04-2018T11:03:00"
                       },
                       "folioAutorizacion": {
                         "description": "Identificador único del proceso de autorización que puede liberar esta operación.",
@@ -15459,13 +15459,13 @@
                         "description": "Fecha de aplicación de la operación en el core que la puede ejecutar, en formato dd-MM-yyyyThh:mm:ss.",
                         "type": "string",
                         "format": "date-time",
-                        "example": "14-10-2017"
+                        "example": "14-10-2017T17:47:00"
                       },
                       "fechaLiquidacion": {
                         "description": "Fecha de la liquidación de la operación en formato dd-MM-yyyyThh:mm:ss.",
                         "type": "string",
                         "format": "date-time",
-                        "example": "14-10-2017"
+                        "example": "14-10-2017T17:47:00"
                       },
                       "idDispositivo": {
                         "description": "dentificador único del dispositivo del usuario desde el que se originó la operación.",
@@ -15583,185 +15583,185 @@
                       "idBitacora",
                       "folio",
                       "fechaSolicitud"
-                    ]
-                  },
-                  "properties": {
-                    "idBitacora": {
-                      "description": "Identificador único del registro.",
-                      "type": "integer",
-                      "format": "int64",
-                      "example": 1234567
-                    },
-                    "folio": {
-                      "description": "Folio de la operación.",
-                      "type": "string",
-                      "example": "F0123UNASN3123"
-                    },
-                    "fechaSolicitud": {
-                      "description": "Fecha de captura de la operación en formato dd-MM-yyyyThh:mm:ss.",
-                      "type": "string",
-                      "format": "date-time",
-                      "example": "21-04-2017 11:03:00"
-                    },
-                    "fechaProgramada": {
-                      "description": "Fecha de programación para la ejecución de la operación en formato dd-MM-yyyyThh:mm:ss.",
-                      "type": "string",
-                      "format": "date-time",
-                      "example": ""
-                    },
-                    "importe": {
-                      "description": "Importe de la operación.",
-                      "type": "number",
-                      "format": "double",
-                      "example": 37192.12
-                    },
-                    "moneda": {
-                      "description": "Moneda de la operación en formato de 3 caracteres.",
-                      "type": "string",
-                      "example": "MXN"
-                    },
-                    "estatus": {
-                      "description": "Estatus de la operación.",
-                      "type": "string",
-                      "example": "APLICADA"
-                    },
-                    "folio2": {
-                      "description": "Folio único de la operación asignado por el ESB a la misma.",
-                      "type": "string",
-                      "example": "F0123UNASN3123"
-                    },
-                    "fechaAutorizacion": {
-                      "description": "Fecha en que la operación fue atorizada en formato dd-MM-yyyyThh:mm:ss.",
-                      "type": "string",
-                      "format": "date-time",
-                      "example": "21-04-2017 11:03:00"
-                    },
-                    "folioAutorizacion": {
-                      "description": "Identificador único del proceso de autorización que puede liberar esta operación.",
-                      "type": "string",
-                      "example": "FO2389JDS912"
-                    },
-                    "medio": {
-                      "description": "Canal por el que se capturó la operación.",
-                      "type": "string",
-                      "example": "MultivaNet"
-                    },
-                    "concepto": {
-                      "description": "Concepto de la operación.",
-                      "type": "string",
-                      "example": "Pago de servicios financieros"
-                    },
-                    "referencia": {
-                      "description": "Referencia de la operación.",
-                      "type": "string",
-                      "example": "128362518293"
-                    },
-                    "claveRastreo": {
-                      "description": "Clave de rastreo generada para la operación.",
-                      "type": "string",
-                      "example": "1729HSQA9383712JD"
-                    },
-                    "fechaAplicacion": {
-                      "description": "Fecha de aplicación de la operación en el core que la puede ejecutar, en formato dd-MM-yyyyThh:mm:ss.",
-                      "type": "string",
-                      "format": "date-time",
-                      "example": "14-10-2017"
-                    },
-                    "fechaLiquidacion": {
-                      "description": "Fecha de la liquidación de la operación en formato dd-MM-yyyyThh:mm:ss.",
-                      "type": "string",
-                      "format": "date-time",
-                      "example": "14-10-2017"
-                    },
-                    "idDispositivo": {
-                      "description": "dentificador único del dispositivo del usuario desde el que se originó la operación.",
-                      "type": "string",
-                      "example": "AJDH1023731KDAD"
-                    },
-                    "agente": {
-                      "description": "El nombre del agente que capturó la operación, si ésta se originó por IVR. ",
-                      "type": "string",
-                      "example": "Jorge Posadas"
-                    },
-                    "rfc": {
-                      "description": "RFC capturado para el destinatario de la operación. ",
-                      "type": "string",
-                      "example": "ABCD123456ASD"
-                    },
-                    "iva": {
-                      "description": "IVA generado para la operación.",
-                      "type": "number",
-                      "format": "double",
-                      "example": 123.12
-                    },
-                    "comision": {
-                      "description": "Monto de la comisión generada por la operación.",
-                      "type": "number",
-                      "format": "double",
-                      "example": 13.12
-                    },
-                    "ivaComision": {
-                      "description": "IVA devengado de la aplicación de la comisión para la operación.",
-                      "type": "number",
-                      "format": "double",
-                      "example": 3.12
-                    },
-                    "cuentaOrigenTipo": {
-                      "description": "Tipo de la cuenta origen, según el catálogo de productos definido en la BUP.",
-                      "type": "string",
-                      "example": "CHQ"
-                    },
-                    "cuentaOrigenNombre": {
-                      "description": "Nombre de la cuenta origen usada para hacer la operación.",
-                      "type": "string",
-                      "example": "Provedores"
-                    },
-                    "cuentaOrigen": {
-                      "description": "Cuenta origen de la operación.",
-                      "type": "string",
-                      "example": "1237493749"
-                    },
-                    "cuentaDestinoTipo": {
-                      "description": "Tipo de la cuenta destino, según el catálogo de productos definido en la BUP.",
-                      "type": "string",
-                      "example": "Número Celular"
-                    },
-                    "cuentaDestinoNombre": {
-                      "description": "Nombre de la cuenta destino usada para hacer la operación.",
-                      "type": "string",
-                      "example": "Fincomun"
-                    },
-                    "cuentaDestino": {
-                      "description": "Cuenta destino de la operación.",
-                      "type": "string",
-                      "example": "5512345678"
-                    },
-                    "usuarioCaptura": {
-                      "description": "Identificador único del usuario que capturó la operación.",
-                      "type": "string",
-                      "example": "123456"
-                    },
-                    "conceptoEdoCuenta": {
-                      "description": "Si este concepto se capturó en la transacción, este campo muestra la leyenda que aparecerá en el estado de cuenta del cliente para esta operación.",
-                      "type": "string",
-                      "example": "Pago"
-                    },
-                    "celularBeneficiario": {
-                      "description": "Si la operación utilizó un número celular como destinatario, se mostrará en este campo.",
-                      "type": "string",
-                      "example": "1234567890"
-                    },
-                    "tipoPago": {
-                      "description": "Clave que identifica el tipo de pago que esta transacción representa.",
-                      "type": "integer",
-                      "format": "int64",
-                      "example": 2
-                    },
-                    "tipoCredito": {
-                      "description": "Clave que identifica el tipo de crédito para el que se generó esta transacción.",
-                      "type": "integer",
-                      "format": "int64",
-                      "example": 1
+                    ],
+                    "properties": {
+                      "idBitacora": {
+                        "description": "Identificador único del registro.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1234567
+                      },
+                      "folio": {
+                        "description": "Folio de la operación.",
+                        "type": "string",
+                        "example": "F0123UNASN3123"
+                      },
+                      "fechaSolicitud": {
+                        "description": "Fecha de captura de la operación en formato dd-MM-yyyyThh:mm:ss.",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "21-04-2017T11:03:00"
+                      },
+                      "fechaProgramada": {
+                        "description": "Fecha de programación para la ejecución de la operación en formato dd-MM-yyyyThh:mm:ss.",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "22-04-2017T11:03:00"
+                      },
+                      "importe": {
+                        "description": "Importe de la operación.",
+                        "type": "number",
+                        "format": "double",
+                        "example": 37192.12
+                      },
+                      "moneda": {
+                        "description": "Moneda de la operación en formato de 3 caracteres.",
+                        "type": "string",
+                        "example": "MXN"
+                      },
+                      "estatus": {
+                        "description": "Estatus de la operación.",
+                        "type": "string",
+                        "example": "APLICADA"
+                      },
+                      "folio2": {
+                        "description": "Folio único de la operación asignado por el ESB a la misma.",
+                        "type": "string",
+                        "example": "F0123UNASN3123"
+                      },
+                      "fechaAutorizacion": {
+                        "description": "Fecha en que la operación fue atorizada en formato dd-MM-yyyyThh:mm:ss.",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "21-04-2018T11:03:00"
+                      },
+                      "folioAutorizacion": {
+                        "description": "Identificador único del proceso de autorización que puede liberar esta operación.",
+                        "type": "string",
+                        "example": "FO2389JDS912"
+                      },
+                      "medio": {
+                        "description": "Canal por el que se capturó la operación.",
+                        "type": "string",
+                        "example": "MultivaNet"
+                      },
+                      "concepto": {
+                        "description": "Concepto de la operación.",
+                        "type": "string",
+                        "example": "Pago de servicios financieros"
+                      },
+                      "referencia": {
+                        "description": "Referencia de la operación.",
+                        "type": "string",
+                        "example": "128362518293"
+                      },
+                      "claveRastreo": {
+                        "description": "Clave de rastreo generada para la operación.",
+                        "type": "string",
+                        "example": "1729HSQA9383712JD"
+                      },
+                      "fechaAplicacion": {
+                        "description": "Fecha de aplicación de la operación en el core que la puede ejecutar, en formato dd-MM-yyyyThh:mm:ss.",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "14-10-2017T17:47:00"
+                      },
+                      "fechaLiquidacion": {
+                        "description": "Fecha de la liquidación de la operación en formato dd-MM-yyyyThh:mm:ss.",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "14-10-2017T17:47:00"
+                      },
+                      "idDispositivo": {
+                        "description": "dentificador único del dispositivo del usuario desde el que se originó la operación.",
+                        "type": "string",
+                        "example": "AJDH1023731KDAD"
+                      },
+                      "agente": {
+                        "description": "El nombre del agente que capturó la operación, si ésta se originó por IVR. ",
+                        "type": "string",
+                        "example": "Jorge Posadas"
+                      },
+                      "rfc": {
+                        "description": "RFC capturado para el destinatario de la operación. ",
+                        "type": "string",
+                        "example": "ABCD123456ASD"
+                      },
+                      "iva": {
+                        "description": "IVA generado para la operación.",
+                        "type": "number",
+                        "format": "double",
+                        "example": 123.12
+                      },
+                      "comision": {
+                        "description": "Monto de la comisión generada por la operación.",
+                        "type": "number",
+                        "format": "double",
+                        "example": 13.12
+                      },
+                      "ivaComision": {
+                        "description": "IVA devengado de la aplicación de la comisión para la operación.",
+                        "type": "number",
+                        "format": "double",
+                        "example": 3.12
+                      },
+                      "cuentaOrigenTipo": {
+                        "description": "Tipo de la cuenta origen, según el catálogo de productos definido en la BUP.",
+                        "type": "string",
+                        "example": "CHQ"
+                      },
+                      "cuentaOrigenNombre": {
+                        "description": "Nombre de la cuenta origen usada para hacer la operación.",
+                        "type": "string",
+                        "example": "Provedores"
+                      },
+                      "cuentaOrigen": {
+                        "description": "Cuenta origen de la operación.",
+                        "type": "string",
+                        "example": "1237493749"
+                      },
+                      "cuentaDestinoTipo": {
+                        "description": "Tipo de la cuenta destino, según el catálogo de productos definido en la BUP.",
+                        "type": "string",
+                        "example": "Número Celular"
+                      },
+                      "cuentaDestinoNombre": {
+                        "description": "Nombre de la cuenta destino usada para hacer la operación.",
+                        "type": "string",
+                        "example": "Fincomun"
+                      },
+                      "cuentaDestino": {
+                        "description": "Cuenta destino de la operación.",
+                        "type": "string",
+                        "example": "5512345678"
+                      },
+                      "usuarioCaptura": {
+                        "description": "Identificador único del usuario que capturó la operación.",
+                        "type": "string",
+                        "example": "123456"
+                      },
+                      "conceptoEdoCuenta": {
+                        "description": "Si este concepto se capturó en la transacción, este campo muestra la leyenda que aparecerá en el estado de cuenta del cliente para esta operación.",
+                        "type": "string",
+                        "example": "Pago"
+                      },
+                      "celularBeneficiario": {
+                        "description": "Si la operación utilizó un número celular como destinatario, se mostrará en este campo.",
+                        "type": "string",
+                        "example": "1234567890"
+                      },
+                      "tipoPago": {
+                        "description": "Clave que identifica el tipo de pago que esta transacción representa.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 2
+                      },
+                      "tipoCredito": {
+                        "description": "Clave que identifica el tipo de crédito para el que se generó esta transacción.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                      }
                     }
                   }
                 }
