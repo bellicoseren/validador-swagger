@@ -4281,26 +4281,26 @@ const consultaBitacoraOperaciones = {
     {
       "idBitacora": 1234567,
       "folio": "F0123UNASN3123",
-      "fechaSolicitud": "21-04-2017 11:03:00",
-      "fechaProgramada": "",
-      "importe": "$37,192.12",
+      "fechaSolicitud": "21-04-2017T11:03:00",
+      "fechaProgramada": "22-04-2017T11:03:00",
+      "importe": 37192.12,
       "moneda": "MXN",
       "estatus": "APLICADA",
       "folio2": "F0123UNASN3123",
-      "fechaAutorizacion": "21-04-2017 11:03:00",
+      "fechaAutorizacion": "21-04-2018T11:03:00",
       "folioAutorizacion": "FO2389JDS912",
       "medio": "MultivaNet",
       "concepto": "Pago de servicios financieros",
       "referencia": "128362518293",
       "claveRastreo": "1729HSQA9383712JD",
-      "fechaAplicacion": "14-10-2017",
-      "fechaLiquidacion": "14-10-2017",
+      "fechaAplicacion": "14-10-2017T17:47:00",
+      "fechaLiquidacion": "14-10-2017T17:47:00",
       "idDispositivo": "AJDH1023731KDAD",
       "agente": "Jorge Posadas",
       "rfc": "ABCD123456ASD",
-      "iva": "$123.12",
-      "comision": "$13.12",
-      "ivaComision": "$3.12",
+      "iva": 123.12,
+      "comision": 13.12,
+      "ivaComision": 3.12,
       "cuentaOrigenTipo": "CHQ",
       "cuentaOrigenNombre": "Provedores",
       "cuentaOrigen": "1237493749",
@@ -4310,8 +4310,8 @@ const consultaBitacoraOperaciones = {
       "usuarioCaptura": "123456",
       "conceptoEdoCuenta": "Pago",
       "celularBeneficiario": "1234567890",
-      "tipoPago": "2",
-      "tipoCredito": "1"
+      "tipoPago": 2,
+      "tipoCredito": 1
     }
   ]
 }
@@ -4500,8 +4500,8 @@ var mapaModelo = {
  'consultaLimitesUsuario':consultaLimitesUsuario,
  'resetPasswordUsuario': resetPasswordUsuario,
  'consultaEmpresasPorHolding': consultaEmpresasPorHolding, 
- 'consultaBitacoraOperaciones': consultaBitacoraOperaciones,
- 'consultaEmpresasPorHolding': consultaEmpresasPorHolding
+ 'consultaBitacoraOperaciones': consultaBitacoraOperaciones
+
 
 }
 
