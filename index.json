@@ -1513,18 +1513,16 @@
             "required": true,
             "schema": {
               "required": [
-                "canal",
                 "ticket",
-                "tipoMensaje",
                 "tipoNotificacion",
-                "to",
-                "mapParameters"
+                "canal"
               ],
               "properties": {
-                "idPersona": {
+                "idUsuario": {
+                  "description": "Identificador único de la persona en los sistemas institucionales.",
                   "type": "integer",
                   "format": "int64",
-                  "example": 123546345
+                  "example": 0
                 },
                 "ticket": {
                   "required": [
@@ -1542,29 +1540,25 @@
                     }
                   }
                 },
+                "tipoNotificacion": {
+                  "type": "string",
+                  "example": "notificacion"
+                },
+                "usuarioDestinatario": {
+                  "type": "string",
+                  "example": "mensaje"
+                },
                 "canal": {
                   "type": "string",
                   "minLength": 1,
                   "example": "WEB"
                 },
-                "tipoMensaje": {
-                  "type": "string",
-                  "example": "mensaje"
-                },
-                "tipoNotificacion": {
-                  "type": "string",
-                  "example": "notificacion"
-                },
-                "to": {
-                  "type": "string",
-                  "example": "cliente@mail.com"
-                },
-                "mapParameters": {
+                "parametros": {
                   "properties": {
                     "key": {
                       "description": "Mapa de parámetros opcionales para la configuración de diferentes medios de envío.",
                       "type": "string",
-                      "example": "key"
+                      "example": "value"
                     }
                   }
                 }
@@ -8465,114 +8459,120 @@
       }
     },
     "/persona/ejecutaOperacionLote": {
-      "post": null,
-      "tags": [
-        "Sprint 3"
-      ],
-      "description": "Procesar cualquier petición de ejecución de transacciones masivamente por medio de archivos batch.",
-      "parameters": [
-        {
-          "in": "body",
-          "name": "ejecutaOperacionLote",
-          "description": "Valores para la ejecución de operacion Lotes",
-          "required": true,
-          "schema": {
-            "required": [
-              "idPersona",
-              "rutaDocumento",
-              "tipoOperacion",
-              "otp",
-              "ticket",
-              "canal"
-            ],
-            "properties": {
-              "idPersona": {
-                "type": "integer",
-                "format": "int64",
-                "example": 123546345
-              },
-              "fechaEjecucion": {
-                "description": "Fecha en la que se ejecutará el procesamiento de este archivo de operaciones. En formato dd-MM-yyyy.",
-                "type": "string",
-                "format": "date",
-                "example": "01-01-2018"
-              },
-              "rutaDocumento": {
-                "description": "Ruta donde se encontrará el documento a procesar.",
-                "type": "string",
-                "example": "http://10.201.8.1:9000/202020.captura-masiva/pruebaMultipart.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=P7L503WK4UJ4T9VAWZM2%2F20180111%2F%2Fs3%2Faws4_request&X-Amz-Date=20180111T145946Z&X-Amz-Expires=432000&X-Amz-SignedHeaders=host&X-Amz-Signature=6583d3182856994b4893803a605ea63115338bdd918b89941564c58d931a6baa"
-              },
-              "tipoOperacion": {
-                "description": "Determina el trato que se le dará al documento de operaciones que se recibe.",
-                "type": "string",
-                "example": "REGISTRO"
-              },
-              "otp": {
-                "type": "string",
-                "example": "1234567"
-              },
-              "ticket": {
-                "required": [
-                  "id_user",
-                  "id_creds"
-                ],
-                "properties": {
-                  "id_user": {
-                    "type": "string",
-                    "example": "123456"
-                  },
-                  "id_creds": {
-                    "type": "string",
-                    "example": "12345678"
+      "post": {
+        "tags": [
+          "Sprint 3"
+        ],
+        "description": "Procesar cualquier petición de ejecución de transacciones masivamente por medio de archivos batch.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "ejecutaOperacionLote",
+            "description": "Valores para la ejecución de operacion Lotes",
+            "required": true,
+            "schema": {
+              "required": [
+                "idPersona",
+                "documento",
+                "tipoOperacion",
+                "otp",
+                "ticket",
+                "canal"
+              ],
+              "properties": {
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "fechaEjecucion": {
+                  "description": "Fecha en la que se ejecutará el procesamiento de este archivo de operaciones. En formato dd-MM-yyyy.",
+                  "type": "string",
+                  "format": "date",
+                  "example": "01-01-2018"
+                },
+                "documento": {
+                  "description": "Stream de bytes del archivo que se va a subir para que se ejecute la operación. Debe mandarse en formato UTF-8.",
+                  "type": "string",
+                  "format": "binary"
+                },
+                "tipoOperacion": {
+                  "description": "Determina el trato que se le dará al documento de operaciones que se recibe.  Al momento puede recibir cualquiera de estos valores:  REGISTRO para operaciones masivas de preregistro, TRANSFERENCIAS para ejecución masiva de transferencias.  IMPUESTOS para operaciones masivas de pago de impuestos.",
+                  "type": "string",
+                  "example": "REGISTRO"
+                },
+                "otp": {
+                  "type": "string",
+                  "example": "1234567"
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
                   }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
                 }
-              },
-              "canal": {
-                "type": "string",
-                "minLength": 1,
-                "example": "WEB"
               }
             }
           }
-        }
-      ],
-      "responses": {
-        "200": {
-          "description": "Representa una ejecución exitosa. Para efectos de este servicio, será indicativo de que el archivo se subió correctamente.",
-          "schema": {
-            "required": [
-              "folioOperacion",
-              "responseStatus",
-              "responseError"
-            ],
-            "properties": {
-              "folioOperacion": {
-                "description": "Folio asignado para la operación por lote, que se utilizará para dar seguimiento a su ejecución",
-                "type": "string",
-                "example": 123456
-              },
-              "responseStatus": {
-                "type": "number",
-                "example": 200
-              },
-              "responseError": {
-                "type": "string",
-                "example": ""
+        ],
+        "responses": {
+          "200": {
+            "description": "Representa una ejecución exitosa. Para efectos de este servicio, será indicativo de que el archivo se subió correctamente.",
+            "schema": {
+              "required": [
+                "folioOperacion",
+                "estatus",
+                "responseStatus"
+              ],
+              "properties": {
+                "folioOperacion": {
+                  "description": "Folio asignado para la operación por lote, que se utilizará para dar seguimiento a su ejecución, y de ser necesario encontrar su archivo de resultados.",
+                  "type": "string",
+                  "example": "123456"
+                },
+                "estatus": {
+                  "description": "Estatus de la operación recibida. Los valores que se pueden devolver aquí corresponden a los indicados en el anexo 1 de este documento, en español.",
+                  "type": "string",
+                  "example": "1234567"
+                },
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
               }
             }
-          }
-        },
-        "201": {
-          "description": "Error controlado, el codigo http real es 200",
-          "schema": {
-            "properties": {
-              "responseStatus": {
-                "type": "number",
-                "example": 500
-              },
-              "resposeError": {
-                "type": "string",
-                "example": ""
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "resposeError": {
+                  "type": "string",
+                  "example": ""
+                }
               }
             }
           }
@@ -11019,6 +11019,117 @@
                 "responseError": {
                   "type": "string",
                   "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bup/consultaOpsFrecuentes": {
+      "post": {
+        "tags": [
+          "Sprint 5"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación /consultaOpsFrecuentes del servicio /bup requerida para la integración de Multivanet con Facultamiento.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "consultaOpsFrecuentes",
+            "description": "Diseño de la operación para consultaOpsFrecuentes",
+            "required": true,
+            "schema": {
+              "required": [
+                "usuario",
+                "ticket",
+                "canal"
+              ],
+              "properties": {
+                "usuario": {
+                  "description": "Usuario logueado, cuyas operaciones frecuentes se consultarán. Si el usuario que se recibe como parámetro no tiene la facultad necesaria para poder ejecutar la operación frecuente, esta operación se deberá descartar de la consulta.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123456
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "properties": {
+                "result": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "tipoOperacion": {
+                        "description": "Identificador único del tipo de operación según el catálogo de operaciones.",
+                        "type": "string",
+                        "example": "MUL_EJECUTA_SPEI"
+                      },
+                      "aliasPreregistro": {
+                        "description": "El alias que se registró para el preregistro utilizado para hacer la operación.",
+                        "type": "string",
+                        "example": "alias"
+                      },
+                      "cuentaOrigen": {
+                        "description": "Cuenta origen frecuentemente registrada.",
+                        "type": "string",
+                        "example": "124567891"
+                      },
+                      "cuentaDestino": {
+                        "description": "Cuenta destino frecuentemente registrada.",
+                        "type": "string",
+                        "example": "98765432"
+                      }
+                    }
+                  }
+                },
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200. Estos errores pertenecen a FacultamientoException: 1204: No se encontraron resultados,  1500 : Error interno del servidor.",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 1204
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "No se encontraron resultados"
                 }
               }
             }
@@ -13972,7 +14083,7 @@
         }
       }
     },
-    "/otp/AsignacionOtpUsuario": {
+    "/otpFacultamiento/AsignacionOtpUsuario": {
       "post": {
         "tags": [
           "Sprint F"
@@ -13999,11 +14110,13 @@
                   ],
                   "properties": {
                     "id": {
+                      "description": "Identificador de usuario.",
                       "type": "integer",
                       "format": "int64",
                       "example": 2
                     },
                     "nombre": {
+                      "description": "Nombre del usuario.",
                       "type": "string",
                       "example": "Alfredo"
                     }
@@ -14015,6 +14128,7 @@
                   ],
                   "properties": {
                     "idDispositivo": {
+                      "description": "Nombre del usuario Identificador deldispositivo.",
                       "type": "integer",
                       "format": "int64",
                       "example": 3
@@ -14073,38 +14187,23 @@
             }
           },
           "201": {
-            "description": "Error controlado, el codigo http real es 200",
+            "description": "Error controlado, el codigo http real es 200. Estos errores pertenecen a OTPException: 2204: No se encontraron registros en la base de OTP.,  2501: OTP fuera de línea.",
             "schema": {
               "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 2204
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": "No se encontraron registros en la base de OTP."
-                }
-              }
-            }
-          },
-          "202": {
-            "description": "Error controlado, el codigo http real es 200",
-            "schema": {
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 2501
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": "OTP fuera de línea"
-                },
                 "result": {
                   "example": [],
                   "type": "array",
                   "items": {
                     "type": "string"
                   }
+                },
+                "responseStatus": {
+                  "type": "number",
+                  "example": 2500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Internal Server Error"
                 }
               }
             }
@@ -14129,8 +14228,7 @@
                 "idUsuario",
                 "listaUsuarios",
                 "ticket",
-                "canal",
-                "otp"
+                "canal"
               ],
               "properties": {
                 "idUsuario": {
@@ -14143,16 +14241,13 @@
                   "description": "Lista de usuario para verificar ",
                   "type": "array",
                   "items": {
-                    "required": [
-                      "id"
-                    ],
-                    "properties": {
-                      "id": {
-                        "type": "integer",
-                        "example": 1
-                      }
-                    }
-                  }
+                    "type": "integer"
+                  },
+                  "example": [
+                    123456,
+                    876554,
+                    876523
+                  ]
                 },
                 "ticket": {
                   "required": [
@@ -14187,11 +14282,6 @@
           "200": {
             "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
             "schema": {
-              "required": [
-                "responseError",
-                "responseStatus",
-                "listaUsuarios"
-              ],
               "properties": {
                 "responseStatus": {
                   "type": "number",
@@ -14204,16 +14294,14 @@
                 "result": {
                   "type": "array",
                   "items": {
-                    "required": [
-                      "id",
-                      "isActivo"
-                    ],
                     "properties": {
                       "id": {
+                        "description": "Identificador del usuario afectado",
                         "type": "integer",
+                        "format": "int64",
                         "example": 1
                       },
-                      "isActivo": {
+                      "activo": {
                         "description": "Bandera que indica si el usuario terminó bloqueado o desbloqueado después de la operación.",
                         "type": "boolean",
                         "example": true
@@ -14240,16 +14328,14 @@
                   "example": [],
                   "type": "array",
                   "items": {
-                    "required": [
-                      "id",
-                      "isActivo"
-                    ],
                     "properties": {
                       "id": {
+                        "description": "Identificador del usuario afectado",
                         "type": "integer",
+                        "format": "int64",
                         "example": 1
                       },
-                      "isActivo": {
+                      "activo": {
                         "description": "Bandera que indica si el usuario terminó bloqueado o desbloqueado después de la operación.",
                         "type": "boolean",
                         "example": true
@@ -14270,7 +14356,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Usuario solicitado no existe"
+                  "example": "No se encontraron resultados"
                 }
               }
             }
@@ -14283,11 +14369,11 @@
         "tags": [
           "Sprint F"
         ],
-        "description": "Consolidar la información relevante respecto al diseño de la operación /BloqueoDesbloqueoUsuario del servicio /facultamiento requerida para la integración de Multivanet con el core Facultamiento.",
+        "description": "Consolidar la información relevante respecto al diseño de la operación /desbloqueoUsuario del servicio /facultamiento requerida para la integración de Multivanet con el core Facultamiento.",
         "parameters": [
           {
             "in": "body",
-            "name": "bloqueoDesbloqueoUsuario",
+            "name": "desbloqueoUsuario",
             "description": "Diseño de la operación para actualizaUsuario",
             "required": true,
             "schema": {
@@ -14309,16 +14395,13 @@
                   "description": "Lista de usuario para verificar ",
                   "type": "array",
                   "items": {
-                    "required": [
-                      "id"
-                    ],
-                    "properties": {
-                      "id": {
-                        "type": "integer",
-                        "example": 1
-                      }
-                    }
-                  }
+                    "type": "integer"
+                  },
+                  "example": [
+                    123456,
+                    876554,
+                    876523
+                  ]
                 },
                 "ticket": {
                   "required": [
@@ -14353,11 +14436,6 @@
           "200": {
             "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
             "schema": {
-              "required": [
-                "responseError",
-                "responseStatus",
-                "listaUsuarios"
-              ],
               "properties": {
                 "responseStatus": {
                   "type": "number",
@@ -14370,16 +14448,14 @@
                 "result": {
                   "type": "array",
                   "items": {
-                    "required": [
-                      "id",
-                      "isActivo"
-                    ],
                     "properties": {
                       "id": {
+                        "description": "Identificador del usuario afectado",
                         "type": "integer",
+                        "format": "int64",
                         "example": 1
                       },
-                      "isActivo": {
+                      "activo": {
                         "description": "Bandera que indica si el usuario terminó bloqueado o desbloqueado después de la operación.",
                         "type": "boolean",
                         "example": true
@@ -14406,16 +14482,14 @@
                   "example": [],
                   "type": "array",
                   "items": {
-                    "required": [
-                      "id",
-                      "isActivo"
-                    ],
                     "properties": {
                       "id": {
+                        "description": "Identificador del usuario afectado",
                         "type": "integer",
+                        "format": "int64",
                         "example": 1
                       },
-                      "isActivo": {
+                      "activo": {
                         "description": "Bandera que indica si el usuario terminó bloqueado o desbloqueado después de la operación.",
                         "type": "boolean",
                         "example": true
@@ -14436,7 +14510,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Usuario solicitado no existe"
+                  "example": "No se encontraron resultados"
                 }
               }
             }
@@ -15711,14 +15785,13 @@
                 },
                 "ticket": {
                   "required": [
-                    "idUsuario",
+                    "id_user",
                     "id_creds"
                   ],
                   "properties": {
-                    "idUsuario": {
-                      "type": "integer",
-                      "format": "int64",
-                      "example": 1
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
                     },
                     "id_creds": {
                       "type": "string",
@@ -15787,6 +15860,115 @@
           },
           "201": {
             "description": "Error controlado, el código HTTP real es 200. Estos errores pertenecen a BUPException. 5204: No se encontraron registros, 5500: Error interno del servidor.",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 5204
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "No se encontraron registros"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bup/consultaEmpresasPorHolding": {
+      "post": {
+        "tags": [
+          "Sprint F"
+        ],
+        "description": "Interfaz que le permitirá consultar empresas, de la empresa propietaria del usuario logueado.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "consultaEmpresasPorHolding",
+            "description": "Diseño de la operación para consultaEmpresasPorHolding",
+            "required": true,
+            "schema": {
+              "required": [
+                "idUsuario",
+                "canal",
+                "ticket"
+              ],
+              "properties": {
+                "idUsuario": {
+                  "description": "Identificador único de la persona en los sistemas institucionales.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 0
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "required": [
+                "result"
+              ],
+              "properties": {
+                "result": {
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "idEmpresa",
+                      "nombre"
+                    ],
+                    "properties": {
+                      "idEmpresa": {
+                        "description": "Id de la empresa.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                      },
+                      "nombre": {
+                        "description": "Nombre de la empresa",
+                        "type": "string",
+                        "example": "Empresa"
+                      }
+                    }
+                  }
+                },
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el código HTTP real es 200.  Estos errores pertenecen a BUPException.  5204: No se encontraron registros,  5500: Error interno en el servidor.",
             "schema": {
               "properties": {
                 "responseStatus": {
@@ -16939,7 +17121,7 @@
         }
       }
     },
-    "/otp/consultaStockTokens": {
+    "/otpFacultamiento/consultaStockTokens": {
       "post": {
         "tags": [
           "Sprint F"
@@ -18122,7 +18304,7 @@
         }
       }
     },
-    "/otp/crearAbastecimientoTokensCliente": {
+    "/otpFacultamiento/crearAbastecimientoTokensCliente": {
       "post": {
         "tags": [
           "Sprint F"
@@ -19069,7 +19251,7 @@
                   "description": "Id del usuario al cual se le quiere modificar la contraseña.",
                   "type": "integer",
                   "format": "int64",
-                  "example": 1000104701
+                  "example": 0
                 },
                 "otp": {
                   "type": "string",
@@ -19120,11 +19302,11 @@
               "properties": {
                 "responseStatus": {
                   "type": "number",
-                  "example": 2450
+                  "example": 1204
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "No coinciden las contraseñas"
+                  "example": "No se pudo actualizar el registro."
                 }
               }
             }
