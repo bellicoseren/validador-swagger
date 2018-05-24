@@ -1513,18 +1513,16 @@
             "required": true,
             "schema": {
               "required": [
-                "canal",
                 "ticket",
-                "tipoMensaje",
                 "tipoNotificacion",
-                "to",
-                "mapParameters"
+                "canal"
               ],
               "properties": {
-                "idPersona": {
+                "idUsuario": {
+                  "description": "Identificador único de la persona en los sistemas institucionales.",
                   "type": "integer",
                   "format": "int64",
-                  "example": 123546345
+                  "example": 0
                 },
                 "ticket": {
                   "required": [
@@ -1542,29 +1540,25 @@
                     }
                   }
                 },
+                "tipoNotificacion": {
+                  "type": "string",
+                  "example": "notificacion"
+                },
+                "usuarioDestinatario": {
+                  "type": "string",
+                  "example": "mensaje"
+                },
                 "canal": {
                   "type": "string",
                   "minLength": 1,
                   "example": "WEB"
                 },
-                "tipoMensaje": {
-                  "type": "string",
-                  "example": "mensaje"
-                },
-                "tipoNotificacion": {
-                  "type": "string",
-                  "example": "notificacion"
-                },
-                "to": {
-                  "type": "string",
-                  "example": "cliente@mail.com"
-                },
-                "mapParameters": {
+                "parametros": {
                   "properties": {
                     "key": {
                       "description": "Mapa de parámetros opcionales para la configuración de diferentes medios de envío.",
                       "type": "string",
-                      "example": "key"
+                      "example": "value"
                     }
                   }
                 }
