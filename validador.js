@@ -68,7 +68,7 @@ function validateRequired(bodyreq, propertiesRequired, errors)
     if( bodyreq[propertiesRequired[property]] == null )
     {
       // throw new Error("Propiedad requerida faltante: "+ propertiesRequired[property]);
-      //console.log("Error: Propiedad requerida faltante: "+ propertiesRequired[property]);
+      console.log("Error: Propiedad requerida faltante: "+ propertiesRequired[property]);
       errors["required"][propertiesRequired[property]]="No se encontro la propiedad";
     }
   }
