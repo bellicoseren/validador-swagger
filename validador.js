@@ -7,10 +7,16 @@ var bodyParser = require('body-parser');
 var express = require('express');
 var swagger = require('./index.json');
 var modelo = require('./modelo');
-var Buffer1=require("Buffer");
-
+var Buffer1=require("Buffer"); 
 
 const util =require('util');
+var FormData = require('form-data');
+
+var multipart = require('connect-multiparty');
+var multipartMiddleware = multipart();
+
+let multer  = require('multer');  
+let upload  = multer({ storage: multer.memoryStorage() });
 
 var port
 var basePath=""
@@ -62,7 +68,7 @@ function validateRequired(bodyreq, propertiesRequired, errors)
     if( bodyreq[propertiesRequired[property]] == null )
     {
       // throw new Error("Propiedad requerida faltante: "+ propertiesRequired[property]);
-      console.log("Error: Propiedad requerida faltante: "+ propertiesRequired[property]);
+      //console.log("Error: Propiedad requerida faltante: "+ propertiesRequired[property]);
       errors["required"][propertiesRequired[property]]="No se encontro la propiedad";
     }
   }
@@ -319,17 +325,36 @@ function validateProperty(type, typeDefinition, formatDefinition, propertyName, 
 
 
 }
+
+
 // ruteo
 app.set('json spaces', 0);
-
  
-app.post('*', function(req, res){
+app.post('*',multipartMiddleware, function(req, res){
   try {
     console.log("Request incoming");
+    //console.log(req.body, req.files);
+
+
+    var bodyreq= req.body;
+      
+    if(req.originalUrl == "/persona/ejecutaOperacionLote"){
+
+      var ticket = JSON.parse(bodyreq.ticket);
+      var idPersona = JSON.parse(bodyreq.idPersona);
+     
+      bodyreq["ticket"] =ticket; 
+      bodyreq["idPersona"] =idPersona;
+      console.log(bodyreq); 
+
+    }else{
+      console.log("NO ES");
+    }
+
+ 
     var errors={};
     var path= swagger.paths[req.originalUrl];
-    
-
+     
     if(path == null)
     {
       //throw new Error("No existe la deficion en Swagger para validar el path: "+ req.originalUrl);
@@ -337,21 +362,19 @@ app.post('*', function(req, res){
      res.status(200).send({"errors":errors});
       //res.send(errors);
       return;
-    }
-    var bodyreq= req.body;
-    var bandera = 0;
+    } 
 
-      //console.log("bodyreq---------------------------" + util.inspect(bodyreq,false,null) );
-      //console.log("requeridos---------------------------" + util.inspect(requeridos,false,null)); 
-
- 
- 
+    var bandera = 0; 
     errors["required"]={};
     errors["type"]={};
     errors["logic"]={};
     console.log("Path " + req.originalUrl + " validando...");
 
+ 
+
+
     validate(bodyreq, path.post.parameters[0].schema, errors); 
+ 
 
     var l = validaciones(bodyreq, path.post.parameters[0].schema, errors);
     
@@ -391,6 +414,7 @@ app.post('*', function(req, res){
     res.status(500).send({"errors":"Problema con la peticion"});
   }
 });
+
 
 var isEmpty = function(obj) {
   return Object.keys(obj).length === 0;
