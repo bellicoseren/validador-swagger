@@ -1541,12 +1541,19 @@
                   }
                 },
                 "tipoNotificacion": {
+                  "description": "Nombre de la notificación a enviar.",
                   "type": "string",
                   "example": "notificacion"
                 },
                 "usuarioDestinatario": {
+                  "description": "Receptor del mensaje de salida. Esto envía una sola notificación a este usuario.",
                   "type": "string",
                   "example": "mensaje"
+                },
+                "facultad": {
+                  "description": "Si se proporciona este dato, se enviará la notifiación a todos los usuarios registrados en la base de datos que cuenten con esta facultad en cualquiera de sus perfiles.",
+                  "type": "string",
+                  "example": "MvMnuAltaUsuario"
                 },
                 "canal": {
                   "type": "string",
@@ -13617,7 +13624,9 @@
                   "example": "WEB"
                 },
                 "folio": {
-                  "description": "Identificador del folio correspondiente las transacciones que se requiere imprimir (este campo es mutuamente excluyente con idTransaccion en caso contrario provoca error 15400)"
+                  "description": "Identificador del folio correspondiente las transacciones que se requiere imprimir (este campo es mutuamente excluyente con idTransaccion en caso contrario provoca error 15400)",
+                  "type": "string",
+                  "example": 12344567
                 },
                 "formato": {
                   "description": "Formato del archivo de Response, solo pueden ser 2 valores aceptados “HTML” y “PDF”, en caso de que el valor de folio este establecido se ignorará este valor",
@@ -15309,7 +15318,8 @@
               "required": [
                 "idUsuario",
                 "canal",
-                "ticket"
+                "ticket",
+                "fechaInicio"
               ],
               "properties": {
                 "idUsuario": {
@@ -15338,6 +15348,12 @@
                   "type": "string",
                   "minLength": 1,
                   "example": "WEB"
+                },
+                "fechaInicio": {
+                  "description": "Inicio del rango de fechas de consulta de historial en formato dd-MM-yyyyThh:mm:ss",
+                  "type": "string",
+                  "format": "date",
+                  "example": "27-02-2018T17:47:00"
                 }
               }
             }
@@ -15380,19 +15396,19 @@
                         "description": "Fecha de captura de la operación en formato dd-MM-yyyyThh:mm:ss.",
                         "type": "string",
                         "format": "date-time",
-                        "example": "21-04-2017 11:03:00"
+                        "example": "21-04-2017T11:03:00"
                       },
                       "fechaProgramada": {
                         "description": "Fecha de programación para la ejecución de la operación en formato dd-MM-yyyyThh:mm:ss.",
                         "type": "string",
                         "format": "date-time",
-                        "example": ""
+                        "example": "22-04-2017T11:03:00"
                       },
                       "importe": {
                         "description": "Importe de la operación.",
                         "type": "number",
                         "format": "double",
-                        "example": "$37,192.12"
+                        "example": 37192.12
                       },
                       "moneda": {
                         "description": "Moneda de la operación en formato de 3 caracteres.",
@@ -15413,7 +15429,7 @@
                         "description": "Fecha en que la operación fue atorizada en formato dd-MM-yyyyThh:mm:ss.",
                         "type": "string",
                         "format": "date-time",
-                        "example": "21-04-2017 11:03:00"
+                        "example": "21-04-2018T11:03:00"
                       },
                       "folioAutorizacion": {
                         "description": "Identificador único del proceso de autorización que puede liberar esta operación.",
@@ -15443,14 +15459,14 @@
                       "fechaAplicacion": {
                         "description": "Fecha de aplicación de la operación en el core que la puede ejecutar, en formato dd-MM-yyyyThh:mm:ss.",
                         "type": "string",
-                        "format": "timestamp",
-                        "example": "14-10-2017"
+                        "format": "date-time",
+                        "example": "14-10-2017T17:47:00"
                       },
                       "fechaLiquidacion": {
                         "description": "Fecha de la liquidación de la operación en formato dd-MM-yyyyThh:mm:ss.",
                         "type": "string",
-                        "format": "timestamp",
-                        "example": "14-10-2017"
+                        "format": "date-time",
+                        "example": "14-10-2017T17:47:00"
                       },
                       "idDispositivo": {
                         "description": "dentificador único del dispositivo del usuario desde el que se originó la operación.",
@@ -15471,19 +15487,19 @@
                         "description": "IVA generado para la operación.",
                         "type": "number",
                         "format": "double",
-                        "example": "$123.12"
+                        "example": 123.12
                       },
                       "comision": {
                         "description": "Monto de la comisión generada por la operación.",
                         "type": "number",
                         "format": "double",
-                        "example": "$13.12"
+                        "example": 13.12
                       },
                       "ivaComision": {
                         "description": "IVA devengado de la aplicación de la comisión para la operación.",
                         "type": "number",
                         "format": "double",
-                        "example": "$3.12"
+                        "example": 3.12
                       },
                       "cuentaOrigenTipo": {
                         "description": "Tipo de la cuenta origen, según el catálogo de productos definido en la BUP.",
@@ -15532,13 +15548,15 @@
                       },
                       "tipoPago": {
                         "description": "Clave que identifica el tipo de pago que esta transacción representa.",
-                        "type": "string",
-                        "example": "2"
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 2
                       },
                       "tipoCredito": {
                         "description": "Clave que identifica el tipo de crédito para el que se generó esta transacción.",
-                        "type": "string",
-                        "example": "1"
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
                       }
                     }
                   }
@@ -15583,19 +15601,19 @@
                         "description": "Fecha de captura de la operación en formato dd-MM-yyyyThh:mm:ss.",
                         "type": "string",
                         "format": "date-time",
-                        "example": "21-04-2017 11:03:00"
+                        "example": "21-04-2017T11:03:00"
                       },
                       "fechaProgramada": {
                         "description": "Fecha de programación para la ejecución de la operación en formato dd-MM-yyyyThh:mm:ss.",
                         "type": "string",
                         "format": "date-time",
-                        "example": ""
+                        "example": "22-04-2017T11:03:00"
                       },
                       "importe": {
                         "description": "Importe de la operación.",
                         "type": "number",
                         "format": "double",
-                        "example": "$37,192.12"
+                        "example": 37192.12
                       },
                       "moneda": {
                         "description": "Moneda de la operación en formato de 3 caracteres.",
@@ -15616,7 +15634,7 @@
                         "description": "Fecha en que la operación fue atorizada en formato dd-MM-yyyyThh:mm:ss.",
                         "type": "string",
                         "format": "date-time",
-                        "example": "21-04-2017 11:03:00"
+                        "example": "21-04-2018T11:03:00"
                       },
                       "folioAutorizacion": {
                         "description": "Identificador único del proceso de autorización que puede liberar esta operación.",
@@ -15646,14 +15664,14 @@
                       "fechaAplicacion": {
                         "description": "Fecha de aplicación de la operación en el core que la puede ejecutar, en formato dd-MM-yyyyThh:mm:ss.",
                         "type": "string",
-                        "format": "timestamp",
-                        "example": "14-10-2017"
+                        "format": "date-time",
+                        "example": "14-10-2017T17:47:00"
                       },
                       "fechaLiquidacion": {
                         "description": "Fecha de la liquidación de la operación en formato dd-MM-yyyyThh:mm:ss.",
                         "type": "string",
-                        "format": "timestamp",
-                        "example": "14-10-2017"
+                        "format": "date-time",
+                        "example": "14-10-2017T17:47:00"
                       },
                       "idDispositivo": {
                         "description": "dentificador único del dispositivo del usuario desde el que se originó la operación.",
@@ -15674,19 +15692,19 @@
                         "description": "IVA generado para la operación.",
                         "type": "number",
                         "format": "double",
-                        "example": "$123.12"
+                        "example": 123.12
                       },
                       "comision": {
                         "description": "Monto de la comisión generada por la operación.",
                         "type": "number",
                         "format": "double",
-                        "example": "$13.12"
+                        "example": 13.12
                       },
                       "ivaComision": {
                         "description": "IVA devengado de la aplicación de la comisión para la operación.",
                         "type": "number",
                         "format": "double",
-                        "example": "$3.12"
+                        "example": 3.12
                       },
                       "cuentaOrigenTipo": {
                         "description": "Tipo de la cuenta origen, según el catálogo de productos definido en la BUP.",
@@ -15735,13 +15753,15 @@
                       },
                       "tipoPago": {
                         "description": "Clave que identifica el tipo de pago que esta transacción representa.",
-                        "type": "string",
-                        "example": "2"
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 2
                       },
                       "tipoCredito": {
                         "description": "Clave que identifica el tipo de crédito para el que se generó esta transacción.",
-                        "type": "string",
-                        "example": "1"
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
                       }
                     }
                   }
