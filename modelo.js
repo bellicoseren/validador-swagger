@@ -3654,9 +3654,12 @@ const movimientosCFE ={
 
 
 const ejecutaOperacionLote ={
-   "folioOperacion": "123456",
-   "responseStatus": 200,
-   "responseError": ""
+
+  "folioOperacion": "123456",
+  "estatus": "1234567",
+  "responseStatus": 200,
+  "responseError": ""
+
 }
 
 
@@ -3801,7 +3804,7 @@ const actualizaDatosPersona = {
   }
 }
  
-const asignacionOtpUsuario = {
+const AsignacionOtpUsuario = {
   "responseStatus": 200,
   "responseError": "",
   "result": [
@@ -3877,6 +3880,11 @@ const direccionesPorPersona = {
       "municipio": ""
     }
   ],
+  "responseStatus": 200,
+  "responseError": ""
+}
+
+const impresionComprobantes = {
   "responseStatus": 200,
   "responseError": ""
 }
@@ -4155,25 +4163,27 @@ const consultaFacultamientoUsuario={
 }
 
 const bloqueoUsuario={
- "responseStatus": 200,
- "responseError": "",
- "listaUsuarios": [
-   {
-     "id": 1,
-     "isActivo": true
-   }
- ]
+
+  "responseStatus": 200,
+  "responseError": "",
+  "result": [
+    {
+      "id": 1,
+      "activo": true
+    }
+  ]
 }
 
 const desbloqueoUsuario={
- "responseStatus": 200,
- "responseError": "",
- "listaUsuarios": [
-   {
-     "id": 1,
-     "isActivo": true
-   }
- ]
+
+  "responseStatus": 200,
+  "responseError": "",
+  "result": [
+    {
+      "id": 1,
+      "activo": true
+    }
+  ]
 }
 
 const consultaFirmantesPotenciales={
@@ -4271,26 +4281,26 @@ const consultaBitacoraOperaciones = {
     {
       "idBitacora": 1234567,
       "folio": "F0123UNASN3123",
-      "fechaSolicitud": "21-04-2017 11:03:00",
-      "fechaProgramada": "",
-      "importe": "$37,192.12",
+      "fechaSolicitud": "21-04-2017T11:03:00",
+      "fechaProgramada": "22-04-2017T11:03:00",
+      "importe": 37192.12,
       "moneda": "MXN",
       "estatus": "APLICADA",
       "folio2": "F0123UNASN3123",
-      "fechaAutorizacion": "21-04-2017 11:03:00",
+      "fechaAutorizacion": "21-04-2018T11:03:00",
       "folioAutorizacion": "FO2389JDS912",
       "medio": "MultivaNet",
       "concepto": "Pago de servicios financieros",
       "referencia": "128362518293",
       "claveRastreo": "1729HSQA9383712JD",
-      "fechaAplicacion": "14-10-2017",
-      "fechaLiquidacion": "14-10-2017",
+      "fechaAplicacion": "14-10-2017T17:47:00",
+      "fechaLiquidacion": "14-10-2017T17:47:00",
       "idDispositivo": "AJDH1023731KDAD",
       "agente": "Jorge Posadas",
       "rfc": "ABCD123456ASD",
-      "iva": "$123.12",
-      "comision": "$13.12",
-      "ivaComision": "$3.12",
+      "iva": 123.12,
+      "comision": 13.12,
+      "ivaComision": 3.12,
       "cuentaOrigenTipo": "CHQ",
       "cuentaOrigenNombre": "Provedores",
       "cuentaOrigen": "1237493749",
@@ -4300,8 +4310,8 @@ const consultaBitacoraOperaciones = {
       "usuarioCaptura": "123456",
       "conceptoEdoCuenta": "Pago",
       "celularBeneficiario": "1234567890",
-      "tipoPago": "2",
-      "tipoCredito": "1"
+      "tipoPago": 2,
+      "tipoCredito": 1
     }
   ]
 }
@@ -4348,6 +4358,18 @@ function consultaGATIntegra(bodyreq){
 }
 
 
+const consultaOpsFrecuentes = {
+  "result": [
+    {
+      "tipoOperacion": "MUL_EJECUTA_SPEI",
+      "aliasPreregistro": "alias",
+      "cuentaOrigen": "124567891",
+      "cuentaDestino": "98765432"
+    }
+  ],
+  "responseStatus": 200,
+  "responseError": ""
+}
 
 
 var mapaModelo = {
@@ -4449,7 +4471,8 @@ var mapaModelo = {
  'consultaFoliosGdf':consultaFoliosGdf,
  'consultaInfoRECA':consultaInfoRECA,
  'consultaGATIntegra':consultaGATIntegra,
-
+ 'consultaOpsFrecuentes':consultaOpsFrecuentes,
+ 'impresionComprobantes':impresionComprobantes,
 
 
 //////////Sprint F//////////////////
@@ -4463,7 +4486,7 @@ var mapaModelo = {
  'crearAbastecimientoTokensCliente': crearAbastecimientoTokensCliente,
  'consultaOperacionesActivasUsuario': consultaOperacionesActivasUsuario,
  'consultaStockTokens': consultaStockTokens,
- 'asignacionOtpUsuario': asignacionOtpUsuario,
+ 'AsignacionOtpUsuario': AsignacionOtpUsuario,
  'actualizaFacultamientoUsuario': actualizaFacultamientoUsuario,
  'consultaPerfilesPatronConGruposFacultades':consultaPerfilesPatronConGruposFacultades,
  'modificaPasswordUsuario':modificaPasswordUsuario,
@@ -4477,8 +4500,8 @@ var mapaModelo = {
  'consultaLimitesUsuario':consultaLimitesUsuario,
  'resetPasswordUsuario': resetPasswordUsuario,
  'consultaEmpresasPorHolding': consultaEmpresasPorHolding, 
- 'consultaBitacoraOperaciones': consultaBitacoraOperaciones,
- 'consultaEmpresasPorHolding': consultaEmpresasPorHolding
+ 'consultaBitacoraOperaciones': consultaBitacoraOperaciones
+
 
 }
 
