@@ -762,6 +762,7 @@ const envioNotificaciones = {
 **/
 
 const consultaPerfiles = {
+  "responseStatus": 200,
   "responseError": "",
   "perfiles": [
     {
@@ -770,12 +771,14 @@ const consultaPerfiles = {
       "facultadesSimples": [
         {
           "nombreFacultad": "FACULTAD_1",
-          "restriccionHorario": true
+          "controlHabilitado": true
         }
+      ],
+      "grupos": [
+        ""
       ]
     }
-  ],
-  "responseStatus": 200
+  ]
 }
 
 
