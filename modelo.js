@@ -762,6 +762,7 @@ const envioNotificaciones = {
 **/
 
 const consultaPerfiles = {
+  "responseStatus": 200,
   "responseError": "",
   "perfiles": [
     {
@@ -770,12 +771,14 @@ const consultaPerfiles = {
       "facultadesSimples": [
         {
           "nombreFacultad": "FACULTAD_1",
-          "restriccionHorario": true
+          "controlHabilitado": true
         }
+      ],
+      "grupos": [
+        ""
       ]
     }
-  ],
-  "responseStatus": 200
+  ]
 }
 
 
@@ -3651,16 +3654,32 @@ const movimientosCFE ={
 	"responseStatus": 200,
 	"responseError": ""
 }
+ 
+
+ 
+
+function ejecutaOperacionLote(bodyreq){
+console.log("otp----------"+bodyreq.otp);
+    if( bodyreq.otp == "999"){
+        var respuesta = {
+            "responseStatus": 400,
+            "responseError": ""
+            };
+    }else{
+        var respuesta ={
+
+          "folioOperacion": "123456",
+          "estatus": "1234567",
+          "responseStatus": 200,
+          "responseError": ""
+
+        };
+    }
+    return respuesta;
+  }
 
 
-const ejecutaOperacionLote ={
 
-  "folioOperacion": "123456",
-  "estatus": "1234567",
-  "responseStatus": 200,
-  "responseError": ""
-
-}
 
 
 function consultaPdfGdf(bodyreq){

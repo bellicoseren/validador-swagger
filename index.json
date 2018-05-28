@@ -1159,11 +1159,18 @@
                               "type": "string",
                               "example": "FACULTAD_1"
                             },
-                            "restriccionHorario": {
+                            "controlHabilitado": {
                               "type": "boolean",
                               "example": true
                             }
                           }
+                        }
+                      },
+                      "grupos": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "example": ""
                         }
                       }
                     }
@@ -1541,19 +1548,12 @@
                   }
                 },
                 "tipoNotificacion": {
-                  "description": "Nombre de la notificación a enviar.",
                   "type": "string",
                   "example": "notificacion"
                 },
                 "usuarioDestinatario": {
-                  "description": "Receptor del mensaje de salida. Esto envía una sola notificación a este usuario.",
                   "type": "string",
                   "example": "mensaje"
-                },
-                "facultad": {
-                  "description": "Si se proporciona este dato, se enviará la notifiación a todos los usuarios registrados en la base de datos que cuenten con esta facultad en cualquiera de sus perfiles.",
-                  "type": "string",
-                  "example": "MvMnuAltaUsuario"
                 },
                 "canal": {
                   "type": "string",
