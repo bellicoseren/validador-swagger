@@ -8604,10 +8604,10 @@
                 "ipOrigen",
                 "numeroCuentaCargo",
                 "idTipoTxn",
+                "numeroCuentaAbono",
                 "usuarioCaptura",
                 "moneda",
                 "importeTransaccion",
-                "concepto",
                 "otp",
                 "ticket",
                 "canal"
@@ -8637,7 +8637,7 @@
                   "example": "4564513"
                 },
                 "numeroCuentaAbono": {
-                  "description": "Cuenta de donde saldra la transacción",
+                  "description": "Número de cuenta de depósito. Dependiendo del tipo de transacción",
                   "type": "string",
                   "format": "string",
                   "example": "1234567890"
@@ -8681,7 +8681,7 @@
                 "cuentaTerceros": {
                   "required": [
                     "beneficiario",
-                    "rfcCurp"
+                    "referencia"
                   ],
                   "properties": {
                     "beneficiario": {
@@ -8689,13 +8689,8 @@
                       "type": "string",
                       "example": "Hector Juarez Santos"
                     },
-                    "rfcCurp": {
-                      "description": "Número de RFC o curp del Titular de la cuenta",
-                      "type": "string",
-                      "example": "GUMR880723BJ2"
-                    },
                     "referencia": {
-                      "description": "Cadena de referencia del concepto de la transacción:",
+                      "description": "Referencia puesta por el cliente para un pago referenciado.",
                       "type": "string",
                       "example": "GUMR880723BJ2"
                     },
@@ -8708,10 +8703,6 @@
                       "description": "Estado de cuenta para la transacción.",
                       "type": "string",
                       "example": ""
-                    },
-                    "iva": {
-                      "type": "number",
-                      "example": "100.00"
                     }
                   }
                 },
@@ -8721,7 +8712,8 @@
                     "tipoCuentaAbono",
                     "idTipoPago",
                     "beneficiario",
-                    "referencia"
+                    "referencia",
+                    "concepto"
                   ],
                   "properties": {
                     "banco": {
@@ -8746,14 +8738,10 @@
                       "type": "string",
                       "example": "PAGO DE RENTA"
                     },
-                    "rfcCurp": {
-                      "description": "Número de RFC o curp del Titular de la cuenta",
+                    "concepto": {
+                      "description": "Concepto de la transacción.",
                       "type": "string",
-                      "example": "GUMR880723BJ2"
-                    },
-                    "iva": {
-                      "type": "number",
-                      "example": "100.00"
+                      "example": ""
                     }
                   }
                 },
@@ -8762,7 +8750,7 @@
                     "banco",
                     "idTipoCredito",
                     "referencia",
-                    "rfcCurp"
+                    "concepto"
                   ],
                   "properties": {
                     "banco": {
@@ -8781,21 +8769,16 @@
                       "format": "string",
                       "example": "PAGO DE RENTA"
                     },
-                    "rfcCurp": {
-                      "description": "Número de RFC o curp del Titular de la cuenta",
+                    "concepto": {
+                      "description": "Concepto de la transacción.",
                       "type": "string",
-                      "example": "GUMR880723BJ2"
-                    },
-                    "iva": {
-                      "type": "number",
-                      "example": "100.00"
+                      "example": ""
                     }
                   }
                 },
                 "servicio": {
                   "required": [
-                    "referencia",
-                    "rfcCurp"
+                    "concepto"
                   ],
                   "properties": {
                     "numeroEstablecimiento": {
@@ -8810,14 +8793,10 @@
                       "format": "string",
                       "example": "PAGO DE MES DE AGOSTO"
                     },
-                    "rfcCurp": {
-                      "description": "Número de RFC o curp del Titular de la cuenta",
+                    "concepto": {
+                      "description": "Concepto de la transacción.",
                       "type": "string",
-                      "example": "TEDW112233445566"
-                    },
-                    "iva": {
-                      "type": "number",
-                      "example": "100.00"
+                      "example": ""
                     }
                   }
                 },
@@ -8828,6 +8807,12 @@
                     "referencia"
                   ],
                   "properties": {
+                    "banco": {
+                      "description": "Número de RFC o curp del Titular de la cuenta",
+                      "type": "string",
+                      "format": "string",
+                      "example": "123456"
+                    },
                     "numeroEstablecimiento": {
                       "description": "Identificador único del convenio cuyo contrato se está pagando con esta transacción.",
                       "type": "integer",
@@ -8839,12 +8824,6 @@
                       "type": "string",
                       "format": "string",
                       "example": "PAGO DE MES DE AGOSTO"
-                    },
-                    "banco": {
-                      "description": "Número de RFC o curp del Titular de la cuenta",
-                      "type": "string",
-                      "format": "string",
-                      "example": "123456"
                     }
                   }
                 },
