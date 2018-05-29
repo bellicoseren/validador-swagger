@@ -8595,7 +8595,7 @@
         "parameters": [
           {
             "in": "body",
-            "name": "ejecutaTransaccion,",
+            "name": "ejecutaTransaccion",
             "description": "ejecuta transacción",
             "required": true,
             "schema": {
@@ -8678,6 +8678,24 @@
                   "format": "string",
                   "example": " "
                 },
+                "notificaBeneficiario": {
+                  "description": "Envío de notificaciones.",
+                  "type": "string",
+                  "format": "string",
+                  "example": " "
+                },
+                "correoBeneficiario": {
+                  "description": "Email del beneficiario, para envío de notificaciones.",
+                  "type": "string",
+                  "format": "string",
+                  "example": " "
+                },
+                "telefonoBeneficiario": {
+                  "description": "Número de teléfono del beneficiario, para envío de notificaciones SMS",
+                  "type": "string",
+                  "format": "string",
+                  "example": " "
+                },
                 "cuentaTerceros": {
                   "required": [
                     "beneficiario",
@@ -8722,11 +8740,13 @@
                       "example": "Banamex"
                     },
                     "tipoCuentaAbono": {
-                      "type": "string",
-                      "example": "NOMINA"
+                      "type": "integer",
+                      "format": "int32",
+                      "example": 1
                     },
                     "idTipoPago": {
                       "type": "integer",
+                      "format": "int32",
                       "example": "1"
                     },
                     "beneficiario": {
@@ -8749,7 +8769,6 @@
                   "required": [
                     "banco",
                     "idTipoCredito",
-                    "referencia",
                     "concepto"
                   ],
                   "properties": {
@@ -8760,7 +8779,7 @@
                     },
                     "idTipoCredito": {
                       "type": "integer",
-                      "format": "int64",
+                      "format": "int32",
                       "example": "2"
                     },
                     "referencia": {
@@ -8784,7 +8803,7 @@
                     "numeroEstablecimiento": {
                       "description": "Nombre del Banco donde esta ubicada la cuenta donde se realizará el deposito del efectivo.",
                       "type": "integer",
-                      "format": "int64",
+                      "format": "int32",
                       "example": "1"
                     },
                     "referencia": {
@@ -8832,7 +8851,7 @@
                     "campania": {
                       "description": "Identificador de la campaña en T24.",
                       "type": "integer",
-                      "format": "int64",
+                      "format": "int32",
                       "example": "123"
                     }
                   }
