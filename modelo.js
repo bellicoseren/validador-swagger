@@ -3459,15 +3459,16 @@ const consultaLotes = {
   "responseStatus": 200,
   "responseError": "",
   "lotes": [
-  {
-    "folio": "123456",
-    "nombreArchivo": "dispersion.csv",
-    "fechaRegistro": "01-09-2017T02:26:00",
-    "fechaEjecucion": "01-09-2017T02:26:00",
-    "estatus": "EJECUTADO",
-    "operacion": "DISPERSION",
-    "tipo": "RESPUESTA"
-  }
+    {
+      "folio": "123456",
+      "nodoAlfresco": "dispersion",
+      "nombreArchivo": "dispersion.csv",
+      "fechaRegistro": "01-09-2017T02:26:00",
+      "fechaEjecucion": "01-09-2017T02:26:00",
+      "estatus": "EJECUTADO",
+      "operacion": "DISPERSION",
+      "tipo": "RESPUESTA"
+    }
   ]
 }
 
