@@ -6911,8 +6911,7 @@
             "schema": {
               "required": [
                 "idPersona",
-                "folio",
-                "tipo",
+                "nodoAlfresco",
                 "ticket",
                 "canal"
               ],
@@ -6922,13 +6921,8 @@
                   "format": "int64",
                   "example": 123546345
                 },
-                "folio": {
-                  "description": "Folio asignado para la operación por lote, que se utilizará para dar seguimiento a su ejecución",
-                  "type": "string",
-                  "example": 123456
-                },
-                "tipo": {
-                  "description": "Indica si se solicitan sólo archivos de envío o de respuesta en la consulta.Si no se proporciona este valor, se incluirán ambos tipos de archivos en la respuesta",
+                "nodoAlfresco": {
+                  "description": "Identificador único del documento en Alfresco. Para el caso de operaciones por lote de Banca Electrónica, se obtiene de sevicio 62 (Consulta de Lote) aunque se puede descargar cualquier documento de Alfresco con cuyo nodo se cuente.",
                   "type": "string",
                   "example": "RESPUESTA"
                 },
@@ -6962,24 +6956,14 @@
             "description": "Representa una ejecución exitosa. Para efectos de este servicio, será indicativo de que la consulta se realizó correctamente.",
             "schema": {
               "required": [
-                "contenido",
-                "responseStatus",
-                "responseError"
+                "archivoStream"
               ],
               "properties": {
-                "contenido": {
-                  "description": "Muestra el contenido del archivo",
+                "archivoStream": {
+                  "description": "En caso de una respuesta correcta, el servicio devolverá el archivo solicitado a Alfresco como un stream de bytes con encoding UTF-8.",
                   "type": "string",
-                  "format": "byte",
-                  "example": "http://10.201.8.1:9000/202020.captura-masiva/pruebaMultipart.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=P7L503WK4UJ4T9VAWZM2%2F20180111%2F%2Fs3%2Faws4_request&X-Amz-Date=20180111T145946Z&X-Amz-Expires=432000&X-Amz-SignedHeaders=host&X-Amz-Signature=6583d3182856994b4893803a605ea63115338bdd918b89941564c58d931a6baa"
-                },
-                "responseStatus": {
-                  "type": "number",
-                  "example": 200
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": ""
+                  "format": "binary",
+                  "example": "Archivo Stream"
                 }
               }
             }
@@ -6995,6 +6979,21 @@
                 "resposeError": {
                   "type": "string",
                   "example": ""
+                }
+              }
+            }
+          },
+          "202": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 1205
+                },
+                "resposeError": {
+                  "type": "string",
+                  "example": "No se encontraron resultados"
                 }
               }
             }

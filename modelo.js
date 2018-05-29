@@ -3707,14 +3707,16 @@ function consultaPdfGdf(bodyreq){
 
 function consultaArchivoLote(bodyreq){
 
-    if( bodyreq.folio == "123456"){
-        var respuesta = {
-         "contenido": "http://localhost:9000/202020.captura-masiva/capturaArchivo.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=W4GA36R375BDWRJG2KP6%2F20180211%2F%2Fs3%2Faws4_request&X-Amz-Date=20180211T072518Z&X-Amz-Expires=432000&X-Amz-SignedHeaders=host&X-Amz-Signature=151d16e089af24908d1944837a575e4d7404036038d828cc3b60671f8ef8ffaf"    
-         };
+    if( bodyreq.nodoAlfresco == "123456"){
+       var respuesta = {
+                           //Es un archivo
+                    	   "_downloadFile":true
+	                    };
     }else{
         var respuesta = {
-         "contenido" :"http://localhost:9000/202020.captura-masiva/Archivo.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=W4GA36R375BDWRJG2KP6%2F20180211%2F%2Fs3%2Faws4_request&X-Amz-Date=20180211T083730Z&X-Amz-Expires=900&X-Amz-SignedHeaders=host&X-Amz-Signature=afddd83fafd838141e3fce81d2d5f0e78f722323dff9084b3d43e64930b7c4ad" 
-          };
+                          "responseStatus": 1205,
+                          "resposeError": "No se encontraron resultados"
+                        };
     }
     return respuesta;
 }
