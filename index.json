@@ -8680,9 +8680,8 @@
                 },
                 "notificaBeneficiario": {
                   "description": "Envío de notificaciones.",
-                  "type": "string",
-                  "format": "string",
-                  "example": " "
+                  "type": "boolean",
+                  "example": false
                 },
                 "correoBeneficiario": {
                   "description": "Email del beneficiario, para envío de notificaciones.",
@@ -8724,7 +8723,7 @@
                     }
                   }
                 },
-                "interbancario": {
+                "interbancarios": {
                   "required": [
                     "banco",
                     "tipoCuentaAbono",
