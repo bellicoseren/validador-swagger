@@ -8605,7 +8605,7 @@
         "parameters": [
           {
             "in": "body",
-            "name": "ejecutaTransaccion,",
+            "name": "ejecutaTransaccion",
             "description": "ejecuta transacción",
             "required": true,
             "schema": {
@@ -8614,10 +8614,10 @@
                 "ipOrigen",
                 "numeroCuentaCargo",
                 "idTipoTxn",
+                "numeroCuentaAbono",
                 "usuarioCaptura",
                 "moneda",
                 "importeTransaccion",
-                "concepto",
                 "otp",
                 "ticket",
                 "canal"
@@ -8647,7 +8647,7 @@
                   "example": "4564513"
                 },
                 "numeroCuentaAbono": {
-                  "description": "Cuenta de donde saldra la transacción",
+                  "description": "Número de cuenta de depósito. Dependiendo del tipo de transacción",
                   "type": "string",
                   "format": "string",
                   "example": "1234567890"
@@ -8688,10 +8688,27 @@
                   "format": "string",
                   "example": " "
                 },
+                "notificaBeneficiario": {
+                  "description": "Envío de notificaciones.",
+                  "type": "boolean",
+                  "example": false
+                },
+                "correoBeneficiario": {
+                  "description": "Email del beneficiario, para envío de notificaciones.",
+                  "type": "string",
+                  "format": "string",
+                  "example": " "
+                },
+                "telefonoBeneficiario": {
+                  "description": "Número de teléfono del beneficiario, para envío de notificaciones SMS",
+                  "type": "string",
+                  "format": "string",
+                  "example": " "
+                },
                 "cuentaTerceros": {
                   "required": [
                     "beneficiario",
-                    "rfcCurp"
+                    "referencia"
                   ],
                   "properties": {
                     "beneficiario": {
@@ -8699,13 +8716,8 @@
                       "type": "string",
                       "example": "Hector Juarez Santos"
                     },
-                    "rfcCurp": {
-                      "description": "Número de RFC o curp del Titular de la cuenta",
-                      "type": "string",
-                      "example": "GUMR880723BJ2"
-                    },
                     "referencia": {
-                      "description": "Cadena de referencia del concepto de la transacción:",
+                      "description": "Referencia puesta por el cliente para un pago referenciado.",
                       "type": "string",
                       "example": "GUMR880723BJ2"
                     },
@@ -8718,20 +8730,17 @@
                       "description": "Estado de cuenta para la transacción.",
                       "type": "string",
                       "example": ""
-                    },
-                    "iva": {
-                      "type": "number",
-                      "example": "100.00"
                     }
                   }
                 },
-                "interbancario": {
+                "interbancarios": {
                   "required": [
                     "banco",
                     "tipoCuentaAbono",
                     "idTipoPago",
                     "beneficiario",
-                    "referencia"
+                    "referencia",
+                    "concepto"
                   ],
                   "properties": {
                     "banco": {
@@ -8740,11 +8749,13 @@
                       "example": "Banamex"
                     },
                     "tipoCuentaAbono": {
-                      "type": "string",
-                      "example": "NOMINA"
+                      "type": "integer",
+                      "format": "int32",
+                      "example": 1
                     },
                     "idTipoPago": {
                       "type": "integer",
+                      "format": "int32",
                       "example": "1"
                     },
                     "beneficiario": {
@@ -8756,14 +8767,10 @@
                       "type": "string",
                       "example": "PAGO DE RENTA"
                     },
-                    "rfcCurp": {
-                      "description": "Número de RFC o curp del Titular de la cuenta",
+                    "concepto": {
+                      "description": "Concepto de la transacción.",
                       "type": "string",
-                      "example": "GUMR880723BJ2"
-                    },
-                    "iva": {
-                      "type": "number",
-                      "example": "100.00"
+                      "example": ""
                     }
                   }
                 },
@@ -8771,8 +8778,7 @@
                   "required": [
                     "banco",
                     "idTipoCredito",
-                    "referencia",
-                    "rfcCurp"
+                    "concepto"
                   ],
                   "properties": {
                     "banco": {
@@ -8782,7 +8788,7 @@
                     },
                     "idTipoCredito": {
                       "type": "integer",
-                      "format": "int64",
+                      "format": "int32",
                       "example": "2"
                     },
                     "referencia": {
@@ -8791,27 +8797,22 @@
                       "format": "string",
                       "example": "PAGO DE RENTA"
                     },
-                    "rfcCurp": {
-                      "description": "Número de RFC o curp del Titular de la cuenta",
+                    "concepto": {
+                      "description": "Concepto de la transacción.",
                       "type": "string",
-                      "example": "GUMR880723BJ2"
-                    },
-                    "iva": {
-                      "type": "number",
-                      "example": "100.00"
+                      "example": ""
                     }
                   }
                 },
                 "servicio": {
                   "required": [
-                    "referencia",
-                    "rfcCurp"
+                    "concepto"
                   ],
                   "properties": {
                     "numeroEstablecimiento": {
                       "description": "Nombre del Banco donde esta ubicada la cuenta donde se realizará el deposito del efectivo.",
                       "type": "integer",
-                      "format": "int64",
+                      "format": "int32",
                       "example": "1"
                     },
                     "referencia": {
@@ -8820,14 +8821,10 @@
                       "format": "string",
                       "example": "PAGO DE MES DE AGOSTO"
                     },
-                    "rfcCurp": {
-                      "description": "Número de RFC o curp del Titular de la cuenta",
+                    "concepto": {
+                      "description": "Concepto de la transacción.",
                       "type": "string",
-                      "example": "TEDW112233445566"
-                    },
-                    "iva": {
-                      "type": "number",
-                      "example": "100.00"
+                      "example": ""
                     }
                   }
                 },
@@ -8838,6 +8835,12 @@
                     "referencia"
                   ],
                   "properties": {
+                    "banco": {
+                      "description": "Número de RFC o curp del Titular de la cuenta",
+                      "type": "string",
+                      "format": "string",
+                      "example": "123456"
+                    },
                     "numeroEstablecimiento": {
                       "description": "Identificador único del convenio cuyo contrato se está pagando con esta transacción.",
                       "type": "integer",
@@ -8849,12 +8852,6 @@
                       "type": "string",
                       "format": "string",
                       "example": "PAGO DE MES DE AGOSTO"
-                    },
-                    "banco": {
-                      "description": "Número de RFC o curp del Titular de la cuenta",
-                      "type": "string",
-                      "format": "string",
-                      "example": "123456"
                     }
                   }
                 },
@@ -8863,7 +8860,7 @@
                     "campania": {
                       "description": "Identificador de la campaña en T24.",
                       "type": "integer",
-                      "format": "int64",
+                      "format": "int32",
                       "example": "123"
                     }
                   }
