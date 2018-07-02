@@ -4393,6 +4393,14 @@ const consultaOpsFrecuentes = {
   "responseError": ""
 }
 
+const consultaInhabiles = {
+  "responseStatus": 200,
+  "responseError": "",
+  "result": {
+    "esInhabil": false
+  }
+}
+
 
 var mapaModelo = {
    //### ESB ####//
@@ -4522,7 +4530,8 @@ var mapaModelo = {
  'consultaLimitesUsuario':consultaLimitesUsuario,
  'resetPasswordUsuario': resetPasswordUsuario,
  'consultaEmpresasPorHolding': consultaEmpresasPorHolding, 
- 'consultaBitacoraOperaciones': consultaBitacoraOperaciones
+ 'consultaBitacoraOperaciones': consultaBitacoraOperaciones,
+ 'consultaInhabiles': consultaInhabiles
 
 
 }
