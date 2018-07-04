@@ -6922,9 +6922,9 @@
                   "example": 123546345
                 },
                 "nodoAlfresco": {
-                  "description": "Identificador único del documento en Alfresco. Para el caso de operaciones por lote de Banca Electrónica, se obtiene de sevicio 62 (Consulta de Lote) aunque se puede descargar cualquier documento de Alfresco con cuyo nodo se cuente.",
+                  "description": "Identificador único del documento en Alfresco.",
                   "type": "string",
-                  "example": "RESPUESTA"
+                  "example": "string"
                 },
                 "ticket": {
                   "required": [
@@ -6983,17 +6983,32 @@
               }
             }
           },
-          "202": {
-            "description": "Error controlado, el codigo http real es 200",
+          "400": {
+            "description": "Error subir archivo",
             "schema": {
               "properties": {
                 "responseStatus": {
                   "type": "number",
-                  "example": 1205
+                  "example": 400
                 },
-                "resposeError": {
+                "responseError": {
                   "type": "string",
-                  "example": "No se encontraron resultados"
+                  "example": "Error al obtener el archivo"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Error archivo no existe",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 404
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": " Error archivo no existe"
                 }
               }
             }
@@ -19334,6 +19349,110 @@
                 "responseError": {
                   "type": "string",
                   "example": "No se pudo actualizar el registro."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bup/consultaInhabiles": {
+      "post": {
+        "tags": [
+          "Sprint F"
+        ],
+        "description": "Consolidar la información relevante respecto al diseño de la operación/consultaInhabiles del servicio requerido para la integración de Multivanet con BUP.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "consultaInhabiles",
+            "description": "Diseño de la operación para consultaInhabiles",
+            "required": true,
+            "schema": {
+              "required": [
+                "ticket",
+                "dia",
+                "mes",
+                "anio"
+              ],
+              "properties": {
+                "dia": {
+                  "description": "Dia a consultar",
+                  "type": "integer",
+                  "format": "int32",
+                  "example": 21
+                },
+                "mes": {
+                  "description": "Mes a consultar",
+                  "type": "integer",
+                  "format": "int32",
+                  "example": 3
+                },
+                "anio": {
+                  "description": "Año a consultar.",
+                  "type": "integer",
+                  "format": "int32",
+                  "example": 2018
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "required": [
+                "responseStatus"
+              ],
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                },
+                "result": {
+                  "properties": {
+                    "esInhabil": {
+                      "description": "Bandera que indica si la fecha proporcionada es un día inhábil.",
+                      "type": "boolean",
+                      "example": "false"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Error interno en el servidor."
                 }
               }
             }
