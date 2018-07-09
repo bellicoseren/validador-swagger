@@ -3025,7 +3025,8 @@
             },
             "schema": {
               "type": "string",
-              "format": "binary"
+              "format": "binary",
+              "description": "Archivo en stream de bytes"
             }
           },
           "201": {
@@ -10634,6 +10635,9 @@
           "Sprint 3"
         ],
         "description": "Consolidar la información relevante respecto al diseño de la operación /obtenerReporteCobranza del servicio requerido para la integración de Multivanet con T24.",
+        "produces": [
+          "application/octet-stream"
+        ],
         "parameters": [
           {
             "in": "body",
@@ -10734,26 +10738,9 @@
           "200": {
             "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
             "schema": {
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 200
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": ""
-                },
-                "folioProgramacion": {
-                  "description": "Folio de la programación de generación de reporte de cobranza.",
-                  "type": "string",
-                  "example": "123456"
-                },
-                "rutaReporte": {
-                  "description": "Destino final del reporte donde el consumidor podrá recuperar el archivo generado. El contenido exacto de esta variable dependerá del esquema que se decida implementar para la gestión de documentos.",
-                  "type": "string",
-                  "example": "http://10.201.8.1:9000/202020.captura-masiva/pruebaMultipart.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=P7L503WK4UJ4T9VAWZM2%2F20180111%2F%2Fs3%2Faws4_request&X-Amz-Date=20180111T145946Z&X-Amz-Expires=432000&X-Amz-SignedHeaders=host&X-Amz-Signature=6583d3182856994b4893803a605ea63115338bdd918b89941564c58d931a6baa"
-                }
-              }
+              "description": "Archivo en stream de bytes",
+              "type": "string",
+              "format": "binary"
             }
           },
           "201": {

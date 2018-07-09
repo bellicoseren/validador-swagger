@@ -3726,35 +3726,12 @@ const solicitaOTPVirtual = {
   "responseError": ""
 }
 
-function obtenerReporteCobranza(bodyreq){
 
-    if((bodyreq.fechaInicio!= "" && bodyreq.fechaFin!= "") &&  bodyreq.horaProgramacion == ""){
-        var respuesta = {
-         "responseStatus": 200,
-         "responseError": "",
-         "folioProgramacion": "1234567",
-         "rutaReporte": "http://localhost:9000/202020.captura-masiva/Archivo.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=P7L503WK4UJ4T9VAWZM2%2F20180130%2F%2Fs3%2Faws4_request&X-Amz-Date=20180130T183227Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=bc8cc18bd3785562f2a8c089c0a73b6fc1004aa620092858ae3a3ea3c797543b"
-            };
+const obtenerReporteCobranza = {
+    //Es un archivo
+    "_downloadFile":true
+}
 
-    }else if ((bodyreq.fechaInicio == "" && bodyreq.fechaFin== "") &&  bodyreq.horaProgramacion != ""){
-         var respuesta = {
-        "responseStatus": 200,
-        "responseError": "",
-        "folioProgramacion": "123456",
-        "rutaReporte": ""
-            };
-        
-    }else if ((bodyreq.fechaInicio != "") &&  bodyreq.horaProgramacion == ""){
-        var respuesta = {
-         "responseStatus": 200,
-         "responseError": "",
-         "folioProgramacion": "",
-         "rutaReporte": "http://localhost:9000/202020.captura-masiva/Archivo2.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=P7L503WK4UJ4T9VAWZM2%2F20180130%2F%2Fs3%2Faws4_request&X-Amz-Date=20180130T183227Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=bc8cc18bd3785562f2a8c089c0a73b6fc1004aa620092858ae3a3ea3c797543b"
-            };
-
-    }
-    return respuesta;
-  }
 
 function consultaFoliosGdf(bodyreq){
 
