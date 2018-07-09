@@ -955,7 +955,7 @@ const consultaCuentasAgregadasCliente = {
  /////////// Sprint 2  /////////////
  
 
- const consultaCuentasAgregadasCliente = {  
+ const consultaCuentasAgregadas = {  
    "listCuentasCliente":[  
    {  
      "nombreCuenta":"BERG ROSARIO",
@@ -4400,7 +4400,7 @@ var mapaModelo = {
   'errorServicio':errorServicio,
   'consultaContratoerror':consultaContratoerror,
   /////////// Sprint 2  /////////////
-  'consultaCuentasAgregadasCliente':consultaCuentasAgregadasCliente,
+  'consultaCuentasAgregadas':consultaCuentasAgregadas,
   'consultaSaldosMultiT':consultaSaldosMultiT,
   'consultaMovimientosMultiT':consultaMovimientosMultiT,
   'consultaCtasServMultiT':consultaCtasServMultiT,

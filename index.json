@@ -1945,7 +1945,7 @@
         }
       }
     },
-    "/persona/consultaCuentasAgregadasCliente": {
+    "/persona/consultaCuentasAgregadas": {
       "post": {
         "tags": [
           "Sprint 2"
