@@ -11323,12 +11323,17 @@
                 },
                 "fondosInversion": {
                   "required": [
-                    "numeroCuenta"
+                    "numeroCuenta",
+                    "email"
                   ],
                   "properties": {
                     "numeroCuenta": {
                       "type": "string",
                       "example": "1000585654"
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "multiva@multi.com"
                     }
                   }
                 }
