@@ -4371,11 +4371,14 @@ const consultaOpsFrecuentes = {
 }
 
 const consultaInhabiles = {
+
   "responseStatus": 200,
   "responseError": "",
-  "result": {
-    "esInhabil": false
-  }
+  "result": [
+    {
+      "fecha": "21-03-2019"
+    }
+  ]
 }
 
 
