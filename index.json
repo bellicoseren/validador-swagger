@@ -19362,29 +19362,14 @@
             "required": true,
             "schema": {
               "required": [
-                "ticket",
-                "dia",
-                "mes",
-                "anio"
+                "ticket"
               ],
               "properties": {
-                "dia": {
-                  "description": "Dia a consultar",
+                "tipoOperacion": {
+                  "description": "El tipo de operación cuyos días inhábiles se desea consultar.",
                   "type": "integer",
-                  "format": "int32",
-                  "example": 21
-                },
-                "mes": {
-                  "description": "Mes a consultar",
-                  "type": "integer",
-                  "format": "int32",
-                  "example": 3
-                },
-                "anio": {
-                  "description": "Año a consultar.",
-                  "type": "integer",
-                  "format": "int32",
-                  "example": 2018
+                  "format": "int64",
+                  "example": 500
                 },
                 "ticket": {
                   "required": [
@@ -19411,7 +19396,8 @@
             "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
             "schema": {
               "required": [
-                "responseStatus"
+                "responseStatus",
+                "result"
               ],
               "properties": {
                 "responseStatus": {
@@ -19423,11 +19409,18 @@
                   "example": ""
                 },
                 "result": {
-                  "properties": {
-                    "esInhabil": {
-                      "description": "Bandera que indica si la fecha proporcionada es un día inhábil.",
-                      "type": "boolean",
-                      "example": "false"
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "fecha"
+                    ],
+                    "properties": {
+                      "fecha": {
+                        "description": "Fecha del día inhábil.",
+                        "type": "string",
+                        "format": "date",
+                        "example": "21-03-2019"
+                      }
                     }
                   }
                 }
@@ -19444,7 +19437,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Error interno en el servidor."
+                  "example": "Ocurrió un error en el sistema."
                 }
               }
             }
