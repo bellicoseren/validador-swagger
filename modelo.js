@@ -4475,7 +4475,7 @@ var mapaModelo = {
  'movimientosCFE':movimientosCFE,
  'consultaPdfGdf':consultaPdfGdf,
  'solicitaOTPVirtual':solicitaOTPVirtual,
- 'consultaFoliosGdf':consultaFoliosGdf,
+ 'foliosGDF':consultaFoliosGdf,
  'consultaInfoRECA':consultaInfoRECA,
  'consultaGATIntegra':consultaGATIntegra,
  'consultaOpsFrecuentes':consultaOpsFrecuentes,
