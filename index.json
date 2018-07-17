@@ -12165,6 +12165,16 @@
                         "description": "El folio asignado por el sistema de GDF a la operación.",
                         "type": "string",
                         "example": "123456ABCD"
+                      },
+                      "descripcion": {
+                        "description": "La descripción que el cliente haya capturado para la operación",
+                        "type": "string",
+                        "example": "La descripción que el cliente haya capturado para la operación"
+                      },
+                      "fechaEjecucion": {
+                        "description": "Fecha de ejecución de la operación en formato dd-MM-yyyyThh:mm:ss",
+                        "type": "string",
+                        "example": "2005-10-30 T 10:45:00"
                       }
                     }
                   }
