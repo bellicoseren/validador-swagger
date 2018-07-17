@@ -3727,10 +3727,31 @@ const solicitaOTPVirtual = {
 }
 
 
-const obtenerReporteCobranza = {
+/*const obtenerReporteCobranza = {
     //Es un archivo
     "_downloadFile":true
+}*/
+
+function obtenerReporteCobranza(bodyreq){
+
+      if (bodyreq.otp == "123456") {
+        var respuesta = {"_downloadFile":true};
+
+      }else if(bodyreq.otp == "200") {
+         var respuesta = {
+        "responseStatus": 200,
+        "responseError": ""
+    };
+      }else if(bodyreq.otp == "404") {
+         var respuesta = {
+        "responseStatus": 404,
+        "responseError": ""
+    };
+      }
+  return respuesta;
 }
+
+
 
 
 function consultaFoliosGdf(bodyreq){
@@ -4478,7 +4499,7 @@ var mapaModelo = {
  'movimientosCFE':movimientosCFE,
  'consultaPdfGdf':consultaPdfGdf,
  'solicitaOTPVirtual':solicitaOTPVirtual,
- 'consultaFoliosGdf':consultaFoliosGdf,
+ 'foliosGDF':consultaFoliosGdf,
  'consultaInfoRECA':consultaInfoRECA,
  'consultaGATIntegra':consultaGATIntegra,
  'consultaOpsFrecuentes':consultaOpsFrecuentes,
