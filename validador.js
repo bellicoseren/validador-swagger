@@ -337,7 +337,7 @@ app.post('*',multipartMiddleware, function(req, res){
 
 
     var bodyreq= req.body;
-      
+      console.log("pathsss------"+req.originalUrl);
     if(req.originalUrl == "/persona/ejecutaOperacionLote"){
 
       var ticket = JSON.parse(bodyreq.ticket);
@@ -345,7 +345,7 @@ app.post('*',multipartMiddleware, function(req, res){
      
       bodyreq["ticket"] =ticket; 
       bodyreq["idPersona"] =idPersona;
-      console.log(bodyreq); 
+      console.log("si entro (bodyreq) ----- "+bodyreq); 
 
     }else{
       console.log("NO ES");
