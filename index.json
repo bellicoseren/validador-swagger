@@ -11610,6 +11610,127 @@
         }
       }
     },
+    "/persona/depositoChequera": {
+      "post": {
+        "tags": [
+          "Sprint 5"
+        ],
+        "description": "Este servicio solicita al core bancario T24 hacer la apertura de pagares.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "depositoChequera",
+            "description": "deposito a Chequera",
+            "required": true,
+            "schema": {
+              "required": [
+                "ticket",
+                "cuentaAsociada",
+                "idPersona",
+                "monto",
+                "canal",
+                "otp",
+                "numeroDiasPagados"
+              ],
+              "properties": {
+                "idPersona": {
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 123546345
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": "WEB"
+                },
+                "otp": {
+                  "type": "string",
+                  "example": "1234567"
+                },
+                "ticket": {
+                  "required": [
+                    "id_user",
+                    "id_creds"
+                  ],
+                  "properties": {
+                    "id_user": {
+                      "type": "string",
+                      "example": "123456"
+                    },
+                    "id_creds": {
+                      "type": "string",
+                      "example": "12345678"
+                    }
+                  }
+                },
+                "monto": {
+                  "description": "Monto de deposito en chequera.",
+                  "type": "number",
+                  "format": "double",
+                  "example": 1000000
+                },
+                "cuentaAsociada": {
+                  "description": "Número de la cuenta que se asociará con la nueva inversión. Las transferencias desde y hacia la inversión resultante sólo se podrán ejecutar a esta cuenta.",
+                  "type": "string",
+                  "example": "123456"
+                },
+                "reinversionIntereses": {
+                  "description": "Esta bandera indica si  al vencimiento del plazo los intereses deberán moverse a la cuenta asociada con la inversión o reinvertirse en la inversión como capital.",
+                  "type": "boolean",
+                  "example": true
+                },
+                "recreacionAlVencimiento": {
+                  "description": "Esta bandera indica que el pagaré regenerará con las mismas características al vencimiento del plazo.",
+                  "type": "boolean",
+                  "example": true
+                },
+                "numeroDiasPagados": {
+                  "description": "Número de días de inversión que se pagan con este depósito.",
+                  "type": "integer",
+                  "format": "int32",
+                  "example": 3
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
+            "schema": {
+              "required": [
+                "responseStatus"
+              ],
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Error controlado, el codigo http real es 200",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 4500
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "T24 FUERA DE LINEA"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/persona/cambioInstruccion": {
       "post": {
         "tags": [
