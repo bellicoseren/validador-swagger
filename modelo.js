@@ -955,7 +955,7 @@ const consultaCuentasAgregadasCliente = {
  /////////// Sprint 2  /////////////
  
 
- const consultaCuentasAgregadasCliente = {  
+ const consultaCuentasAgregadas = {  
    "listCuentasCliente":[  
    {  
      "nombreCuenta":"BERG ROSARIO",
@@ -3726,35 +3726,33 @@ const solicitaOTPVirtual = {
   "responseError": ""
 }
 
+
+/*const obtenerReporteCobranza = {
+    //Es un archivo
+    "_downloadFile":true
+}*/
+
 function obtenerReporteCobranza(bodyreq){
 
-    if((bodyreq.fechaInicio!= "" && bodyreq.fechaFin!= "") &&  bodyreq.horaProgramacion == ""){
-        var respuesta = {
-         "responseStatus": 200,
-         "responseError": "",
-         "folioProgramacion": "1234567",
-         "rutaReporte": "http://localhost:9000/202020.captura-masiva/Archivo.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=P7L503WK4UJ4T9VAWZM2%2F20180130%2F%2Fs3%2Faws4_request&X-Amz-Date=20180130T183227Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=bc8cc18bd3785562f2a8c089c0a73b6fc1004aa620092858ae3a3ea3c797543b"
-            };
+      if (bodyreq.otp == "123456") {
+        var respuesta = {"_downloadFile":true};
 
-    }else if ((bodyreq.fechaInicio == "" && bodyreq.fechaFin== "") &&  bodyreq.horaProgramacion != ""){
+      }else if(bodyreq.otp == "200") {
          var respuesta = {
         "responseStatus": 200,
-        "responseError": "",
-        "folioProgramacion": "123456",
-        "rutaReporte": ""
-            };
-        
-    }else if ((bodyreq.fechaInicio != "") &&  bodyreq.horaProgramacion == ""){
-        var respuesta = {
-         "responseStatus": 200,
-         "responseError": "",
-         "folioProgramacion": "",
-         "rutaReporte": "http://localhost:9000/202020.captura-masiva/Archivo2.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=P7L503WK4UJ4T9VAWZM2%2F20180130%2F%2Fs3%2Faws4_request&X-Amz-Date=20180130T183227Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=bc8cc18bd3785562f2a8c089c0a73b6fc1004aa620092858ae3a3ea3c797543b"
-            };
+        "responseError": ""
+    };
+      }else if(bodyreq.otp == "404") {
+         var respuesta = {
+        "responseStatus": 404,
+        "responseError": ""
+    };
+      }
+  return respuesta;
+}
 
-    }
-    return respuesta;
-  }
+
+
 
 function consultaFoliosGdf(bodyreq){
 
@@ -4394,11 +4392,14 @@ const consultaOpsFrecuentes = {
 }
 
 const consultaInhabiles = {
+
   "responseStatus": 200,
   "responseError": "",
-  "result": {
-    "esInhabil": false
-  }
+  "result": [
+    {
+      "fecha": "21-03-2019"
+    }
+  ]
 }
 
 
@@ -4423,7 +4424,7 @@ var mapaModelo = {
   'errorServicio':errorServicio,
   'consultaContratoerror':consultaContratoerror,
   /////////// Sprint 2  /////////////
-  'consultaCuentasAgregadasCliente':consultaCuentasAgregadasCliente,
+  'consultaCuentasAgregadas':consultaCuentasAgregadas,
   'consultaSaldosMultiT':consultaSaldosMultiT,
   'consultaMovimientosMultiT':consultaMovimientosMultiT,
   'consultaCtasServMultiT':consultaCtasServMultiT,
@@ -4498,7 +4499,7 @@ var mapaModelo = {
  'movimientosCFE':movimientosCFE,
  'consultaPdfGdf':consultaPdfGdf,
  'solicitaOTPVirtual':solicitaOTPVirtual,
- 'consultaFoliosGdf':consultaFoliosGdf,
+ 'foliosGDF':consultaFoliosGdf,
  'consultaInfoRECA':consultaInfoRECA,
  'consultaGATIntegra':consultaGATIntegra,
  'consultaOpsFrecuentes':consultaOpsFrecuentes,

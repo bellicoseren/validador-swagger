@@ -15,8 +15,8 @@ var FormData = require('form-data');
 var multipart = require('connect-multiparty');
 var multipartMiddleware = multipart();
 
-let multer  = require('multer');  
-let upload  = multer({ storage: multer.memoryStorage() });
+//let multer  = require('multer');  
+//let upload  = multer({ storage: multer.memoryStorage() });
 
 var port
 var basePath=""
