@@ -6144,7 +6144,8 @@
                 "idPersona",
                 "ticket",
                 "canal",
-                "otp"
+                "otp",
+                "idDispositivo"
               ],
               "properties": {
                 "otp": {
@@ -6182,6 +6183,12 @@
                   "description": "Identificador único del dispositivo de la persona cuyo NIP se restablecerá.",
                   "type": "string",
                   "example": "String"
+                },
+                "idDispositivo": {
+                  "description": "Identificador del tipo de dispositivo según el catálogo de tipos de dispositivos  de multivatouch.",
+                  "type": "integer",
+                  "format": "int64",
+                  "example": 5
                 }
               }
             }

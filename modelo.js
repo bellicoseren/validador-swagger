@@ -3533,11 +3533,6 @@ const aperturaPagare = {
 	"responseError": ""
 }
 
-const depositoChequera = {
-	"responseStatus": 200,
-	"responseError": ""
-}
-
 const aperturaIntegra = {
   "folioInversion": "123456",
   "responseStatus": 200,
