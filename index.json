@@ -1945,7 +1945,7 @@
         }
       }
     },
-    "/persona/consultaCuentasAgregadas": {
+    "/persona/consultaCuentasAgregadasCliente": {
       "post": {
         "tags": [
           "Sprint 2"
@@ -3025,8 +3025,7 @@
             },
             "schema": {
               "type": "string",
-              "format": "binary",
-              "description": "Archivo en stream de bytes"
+              "format": "binary"
             }
           },
           "201": {
@@ -6919,7 +6918,8 @@
             "schema": {
               "required": [
                 "idPersona",
-                "nodoAlfresco",
+                "folio",
+                "tipo",
                 "ticket",
                 "canal"
               ],
@@ -6929,10 +6929,15 @@
                   "format": "int64",
                   "example": 123546345
                 },
-                "nodoAlfresco": {
-                  "description": "Identificador único del documento en Alfresco.",
+                "folio": {
+                  "description": "Folio asignado para la operación por lote, que se utilizará para dar seguimiento a su ejecución",
                   "type": "string",
-                  "example": "string"
+                  "example": 123456
+                },
+                "tipo": {
+                  "description": "Indica si se solicitan sólo archivos de envío o de respuesta en la consulta.Si no se proporciona este valor, se incluirán ambos tipos de archivos en la respuesta",
+                  "type": "string",
+                  "example": "RESPUESTA"
                 },
                 "ticket": {
                   "required": [
@@ -6964,14 +6969,24 @@
             "description": "Representa una ejecución exitosa. Para efectos de este servicio, será indicativo de que la consulta se realizó correctamente.",
             "schema": {
               "required": [
-                "archivoStream"
+                "contenido",
+                "responseStatus",
+                "responseError"
               ],
               "properties": {
-                "archivoStream": {
-                  "description": "En caso de una respuesta correcta, el servicio devolverá el archivo solicitado a Alfresco como un stream de bytes con encoding UTF-8.",
+                "contenido": {
+                  "description": "Muestra el contenido del archivo",
                   "type": "string",
-                  "format": "binary",
-                  "example": "Archivo Stream"
+                  "format": "byte",
+                  "example": "http://10.201.8.1:9000/202020.captura-masiva/pruebaMultipart.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=P7L503WK4UJ4T9VAWZM2%2F20180111%2F%2Fs3%2Faws4_request&X-Amz-Date=20180111T145946Z&X-Amz-Expires=432000&X-Amz-SignedHeaders=host&X-Amz-Signature=6583d3182856994b4893803a605ea63115338bdd918b89941564c58d931a6baa"
+                },
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
                 }
               }
             }
@@ -6987,36 +7002,6 @@
                 "resposeError": {
                   "type": "string",
                   "example": ""
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Error subir archivo",
-            "schema": {
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 400
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": "Error al obtener el archivo"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Error archivo no existe",
-            "schema": {
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 404
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": " Error archivo no existe"
                 }
               }
             }
@@ -8348,7 +8333,8 @@
                 "ticket",
                 "canal",
                 "horasEjecucion",
-                "cuentasDestino"
+                "cuentasDestino",
+                "tipoPersona"
               ],
               "properties": {
                 "idPersona": {
@@ -8397,6 +8383,11 @@
                   "type": "string",
                   "minLength": 1,
                   "example": "WEB"
+                },
+                "tipoPersona": {
+                  "description": "Cadena para identificar el tipo de persona. Los valores pueden ser FISICA o MORAL",
+                  "type": "string",
+                  "example": "FISICA"
                 },
                 "horasEjecucion": {
                   "description": "Horas en las que se realizará la ejecución del barrido.",
@@ -10642,9 +10633,6 @@
           "Sprint 3"
         ],
         "description": "Consolidar la información relevante respecto al diseño de la operación /obtenerReporteCobranza del servicio requerido para la integración de Multivanet con T24.",
-        "produces": [
-          "application/octet-stream"
-        ],
         "parameters": [
           {
             "in": "body",
@@ -10745,9 +10733,26 @@
           "200": {
             "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
             "schema": {
-              "description": "Archivo en stream de bytes",
-              "type": "string",
-              "format": "binary"
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 200
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": ""
+                },
+                "folioProgramacion": {
+                  "description": "Folio de la programación de generación de reporte de cobranza.",
+                  "type": "string",
+                  "example": "123456"
+                },
+                "rutaReporte": {
+                  "description": "Destino final del reporte donde el consumidor podrá recuperar el archivo generado. El contenido exacto de esta variable dependerá del esquema que se decida implementar para la gestión de documentos.",
+                  "type": "string",
+                  "example": "http://10.201.8.1:9000/202020.captura-masiva/pruebaMultipart.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=P7L503WK4UJ4T9VAWZM2%2F20180111%2F%2Fs3%2Faws4_request&X-Amz-Date=20180111T145946Z&X-Amz-Expires=432000&X-Amz-SignedHeaders=host&X-Amz-Signature=6583d3182856994b4893803a605ea63115338bdd918b89941564c58d931a6baa"
+                }
+              }
             }
           },
           "201": {
@@ -11295,7 +11300,8 @@
                 "canal",
                 "ticket",
                 "otp",
-                "fondosInversion"
+                "fondosInversion",
+                "tipoPersona"
               ],
               "properties": {
                 "idPersona": {
@@ -11340,9 +11346,14 @@
                     },
                     "email": {
                       "type": "string",
-                      "example": "multiva@multi.com"
+                      "example": "wterry@legosoft.com.mx"
                     }
                   }
+                },
+                "tipoPersona": {
+                  "description": "Cadena para identificar el tipo de persona. Los valores pueden ser FISICA o MORAL",
+                  "type": "string",
+                  "example": "FISICA"
                 }
               }
             }
@@ -11588,127 +11599,6 @@
                   "type": "string",
                   "example": "ABC123456"
                 },
-                "responseStatus": {
-                  "type": "number",
-                  "example": 200
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": ""
-                }
-              }
-            }
-          },
-          "201": {
-            "description": "Error controlado, el codigo http real es 200",
-            "schema": {
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 4500
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": "T24 FUERA DE LINEA"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/persona/depositoChequera": {
-      "post": {
-        "tags": [
-          "Sprint 5"
-        ],
-        "description": "Este servicio solicita al core bancario T24 hacer la apertura de pagares.",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "depositoChequera",
-            "description": "deposito a Chequera",
-            "required": true,
-            "schema": {
-              "required": [
-                "ticket",
-                "cuentaAsociada",
-                "idPersona",
-                "monto",
-                "canal",
-                "otp",
-                "numeroDiasPagados"
-              ],
-              "properties": {
-                "idPersona": {
-                  "type": "integer",
-                  "format": "int64",
-                  "example": 123546345
-                },
-                "canal": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": "WEB"
-                },
-                "otp": {
-                  "type": "string",
-                  "example": "1234567"
-                },
-                "ticket": {
-                  "required": [
-                    "id_user",
-                    "id_creds"
-                  ],
-                  "properties": {
-                    "id_user": {
-                      "type": "string",
-                      "example": "123456"
-                    },
-                    "id_creds": {
-                      "type": "string",
-                      "example": "12345678"
-                    }
-                  }
-                },
-                "monto": {
-                  "description": "Monto de deposito en chequera.",
-                  "type": "number",
-                  "format": "double",
-                  "example": 1000000
-                },
-                "cuentaAsociada": {
-                  "description": "Número de la cuenta que se asociará con la nueva inversión. Las transferencias desde y hacia la inversión resultante sólo se podrán ejecutar a esta cuenta.",
-                  "type": "string",
-                  "example": "123456"
-                },
-                "reinversionIntereses": {
-                  "description": "Esta bandera indica si  al vencimiento del plazo los intereses deberán moverse a la cuenta asociada con la inversión o reinvertirse en la inversión como capital.",
-                  "type": "boolean",
-                  "example": true
-                },
-                "recreacionAlVencimiento": {
-                  "description": "Esta bandera indica que el pagaré regenerará con las mismas características al vencimiento del plazo.",
-                  "type": "boolean",
-                  "example": true
-                },
-                "numeroDiasPagados": {
-                  "description": "Número de días de inversión que se pagan con este depósito.",
-                  "type": "integer",
-                  "format": "int32",
-                  "example": 3
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
-            "schema": {
-              "required": [
-                "responseStatus"
-              ],
-              "properties": {
                 "responseStatus": {
                   "type": "number",
                   "example": 200
@@ -12293,16 +12183,6 @@
                         "description": "El folio asignado por el sistema de GDF a la operación.",
                         "type": "string",
                         "example": "123456ABCD"
-                      },
-                      "descripcion": {
-                        "description": "La descripción que el cliente haya capturado para la operación",
-                        "type": "string",
-                        "example": "La descripción que el cliente haya capturado para la operación"
-                      },
-                      "fechaEjecucion": {
-                        "description": "Fecha de ejecución de la operación en formato dd-MM-yyyyThh:mm:ss",
-                        "type": "string",
-                        "example": "2005-10-30 T 10:45:00"
                       }
                     }
                   }
@@ -13449,7 +13329,8 @@
             "required": true,
             "schema": {
               "required": [
-                "ticket"
+                "ticket",
+                "tipoPersona"
               ],
               "properties": {
                 "ticket": {
@@ -13467,6 +13348,11 @@
                       "example": "12345678"
                     }
                   }
+                },
+                "tipoPersona": {
+                  "description": "Cadena para identificar el tipo de persona. Los valores pueden ser FISICA o MORAL",
+                  "type": "string",
+                  "example": "FISICA"
                 }
               }
             }
@@ -19500,14 +19386,29 @@
             "required": true,
             "schema": {
               "required": [
-                "ticket"
+                "ticket",
+                "dia",
+                "mes",
+                "anio"
               ],
               "properties": {
-                "tipoOperacion": {
-                  "description": "El tipo de operación cuyos días inhábiles se desea consultar.",
+                "dia": {
+                  "description": "Dia a consultar",
                   "type": "integer",
-                  "format": "int64",
-                  "example": 500
+                  "format": "int32",
+                  "example": 21
+                },
+                "mes": {
+                  "description": "Mes a consultar",
+                  "type": "integer",
+                  "format": "int32",
+                  "example": 3
+                },
+                "anio": {
+                  "description": "Año a consultar.",
+                  "type": "integer",
+                  "format": "int32",
+                  "example": 2018
                 },
                 "ticket": {
                   "required": [
@@ -19534,8 +19435,7 @@
             "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
             "schema": {
               "required": [
-                "responseStatus",
-                "result"
+                "responseStatus"
               ],
               "properties": {
                 "responseStatus": {
@@ -19547,18 +19447,11 @@
                   "example": ""
                 },
                 "result": {
-                  "type": "array",
-                  "items": {
-                    "required": [
-                      "fecha"
-                    ],
-                    "properties": {
-                      "fecha": {
-                        "description": "Fecha del día inhábil.",
-                        "type": "string",
-                        "format": "date",
-                        "example": "21-03-2019"
-                      }
+                  "properties": {
+                    "esInhabil": {
+                      "description": "Bandera que indica si la fecha proporcionada es un día inhábil.",
+                      "type": "boolean",
+                      "example": "false"
                     }
                   }
                 }
@@ -19575,7 +19468,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Ocurrió un error en el sistema."
+                  "example": "Error interno en el servidor."
                 }
               }
             }
