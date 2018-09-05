@@ -1945,7 +1945,7 @@
         }
       }
     },
-    "/persona/consultaCuentasAgregadasCliente": {
+    "/persona/consultaCuentasAgregadas": {
       "post": {
         "tags": [
           "Sprint 2"
@@ -3025,7 +3025,8 @@
             },
             "schema": {
               "type": "string",
-              "format": "binary"
+              "format": "binary",
+              "description": "Archivo en stream de bytes"
             }
           },
           "201": {
@@ -6918,8 +6919,7 @@
             "schema": {
               "required": [
                 "idPersona",
-                "folio",
-                "tipo",
+                "nodoAlfresco",
                 "ticket",
                 "canal"
               ],
@@ -6929,15 +6929,10 @@
                   "format": "int64",
                   "example": 123546345
                 },
-                "folio": {
-                  "description": "Folio asignado para la operación por lote, que se utilizará para dar seguimiento a su ejecución",
+                "nodoAlfresco": {
+                  "description": "Identificador único del documento en Alfresco.",
                   "type": "string",
-                  "example": 123456
-                },
-                "tipo": {
-                  "description": "Indica si se solicitan sólo archivos de envío o de respuesta en la consulta.Si no se proporciona este valor, se incluirán ambos tipos de archivos en la respuesta",
-                  "type": "string",
-                  "example": "RESPUESTA"
+                  "example": "string"
                 },
                 "ticket": {
                   "required": [
@@ -6969,24 +6964,14 @@
             "description": "Representa una ejecución exitosa. Para efectos de este servicio, será indicativo de que la consulta se realizó correctamente.",
             "schema": {
               "required": [
-                "contenido",
-                "responseStatus",
-                "responseError"
+                "archivoStream"
               ],
               "properties": {
-                "contenido": {
-                  "description": "Muestra el contenido del archivo",
+                "archivoStream": {
+                  "description": "En caso de una respuesta correcta, el servicio devolverá el archivo solicitado a Alfresco como un stream de bytes con encoding UTF-8.",
                   "type": "string",
-                  "format": "byte",
-                  "example": "http://10.201.8.1:9000/202020.captura-masiva/pruebaMultipart.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=P7L503WK4UJ4T9VAWZM2%2F20180111%2F%2Fs3%2Faws4_request&X-Amz-Date=20180111T145946Z&X-Amz-Expires=432000&X-Amz-SignedHeaders=host&X-Amz-Signature=6583d3182856994b4893803a605ea63115338bdd918b89941564c58d931a6baa"
-                },
-                "responseStatus": {
-                  "type": "number",
-                  "example": 200
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": ""
+                  "format": "binary",
+                  "example": "Archivo Stream"
                 }
               }
             }
@@ -7002,6 +6987,36 @@
                 "resposeError": {
                   "type": "string",
                   "example": ""
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error subir archivo",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 400
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": "Error al obtener el archivo"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Error archivo no existe",
+            "schema": {
+              "properties": {
+                "responseStatus": {
+                  "type": "number",
+                  "example": 404
+                },
+                "responseError": {
+                  "type": "string",
+                  "example": " Error archivo no existe"
                 }
               }
             }
@@ -10633,6 +10648,9 @@
           "Sprint 3"
         ],
         "description": "Consolidar la información relevante respecto al diseño de la operación /obtenerReporteCobranza del servicio requerido para la integración de Multivanet con T24.",
+        "produces": [
+          "application/octet-stream"
+        ],
         "parameters": [
           {
             "in": "body",
@@ -10733,26 +10751,9 @@
           "200": {
             "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
             "schema": {
-              "properties": {
-                "responseStatus": {
-                  "type": "number",
-                  "example": 200
-                },
-                "responseError": {
-                  "type": "string",
-                  "example": ""
-                },
-                "folioProgramacion": {
-                  "description": "Folio de la programación de generación de reporte de cobranza.",
-                  "type": "string",
-                  "example": "123456"
-                },
-                "rutaReporte": {
-                  "description": "Destino final del reporte donde el consumidor podrá recuperar el archivo generado. El contenido exacto de esta variable dependerá del esquema que se decida implementar para la gestión de documentos.",
-                  "type": "string",
-                  "example": "http://10.201.8.1:9000/202020.captura-masiva/pruebaMultipart.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=P7L503WK4UJ4T9VAWZM2%2F20180111%2F%2Fs3%2Faws4_request&X-Amz-Date=20180111T145946Z&X-Amz-Expires=432000&X-Amz-SignedHeaders=host&X-Amz-Signature=6583d3182856994b4893803a605ea63115338bdd918b89941564c58d931a6baa"
-                }
-              }
+              "description": "Archivo en stream de bytes",
+              "type": "string",
+              "format": "binary"
             }
           },
           "201": {
@@ -11346,7 +11347,7 @@
                     },
                     "email": {
                       "type": "string",
-                      "example": "wterry@legosoft.com.mx"
+                      "example": "multiva@multi.com"
                     }
                   }
                 },
@@ -12183,6 +12184,16 @@
                         "description": "El folio asignado por el sistema de GDF a la operación.",
                         "type": "string",
                         "example": "123456ABCD"
+                      },
+                      "descripcion": {
+                        "description": "La descripción que el cliente haya capturado para la operación",
+                        "type": "string",
+                        "example": "La descripción que el cliente haya capturado para la operación"
+                      },
+                      "fechaEjecucion": {
+                        "description": "Fecha de ejecución de la operación en formato dd-MM-yyyyThh:mm:ss",
+                        "type": "string",
+                        "example": "2005-10-30 T 10:45:00"
                       }
                     }
                   }
@@ -13113,7 +13124,8 @@
             "required": true,
             "schema": {
               "required": [
-                "ticket"
+                "ticket",
+                "tipoPersona"
               ],
               "properties": {
                 "ticket": {
@@ -13131,6 +13143,11 @@
                       "example": "12345678"
                     }
                   }
+                },
+                "tipoPersona": {
+                  "description": "Cadena para identificar el tipo de persona. Los valores pueden ser FISICA o MORAL",
+                  "type": "string",
+                  "example": "FISICA"
                 }
               }
             }
@@ -13171,6 +13188,11 @@
                         "type": "integer",
                         "format": "int32",
                         "example": 30
+                      },
+                      "persona": {
+                        "description": "Persona",
+                        "type": "string",
+                        "example": "MORAL"
                       }
                     }
                   }
@@ -13218,7 +13240,8 @@
             "required": true,
             "schema": {
               "required": [
-                "ticket"
+                "ticket",
+                "tipoPersona"
               ],
               "properties": {
                 "ticket": {
@@ -13236,6 +13259,11 @@
                       "example": "12345678"
                     }
                   }
+                },
+                "tipoPersona": {
+                  "description": "Cadena para identificar el tipo de persona. Los valores pueden ser FISICA o MORAL",
+                  "type": "string",
+                  "example": "FISICA"
                 }
               }
             }
@@ -19386,29 +19414,14 @@
             "required": true,
             "schema": {
               "required": [
-                "ticket",
-                "dia",
-                "mes",
-                "anio"
+                "ticket"
               ],
               "properties": {
-                "dia": {
-                  "description": "Dia a consultar",
+                "tipoOperacion": {
+                  "description": "El tipo de operación cuyos días inhábiles se desea consultar.",
                   "type": "integer",
-                  "format": "int32",
-                  "example": 21
-                },
-                "mes": {
-                  "description": "Mes a consultar",
-                  "type": "integer",
-                  "format": "int32",
-                  "example": 3
-                },
-                "anio": {
-                  "description": "Año a consultar.",
-                  "type": "integer",
-                  "format": "int32",
-                  "example": 2018
+                  "format": "int64",
+                  "example": 500
                 },
                 "ticket": {
                   "required": [
@@ -19435,7 +19448,8 @@
             "description": "Entrega la respuesta al invocador de Fuse en formato Json.",
             "schema": {
               "required": [
-                "responseStatus"
+                "responseStatus",
+                "result"
               ],
               "properties": {
                 "responseStatus": {
@@ -19447,11 +19461,18 @@
                   "example": ""
                 },
                 "result": {
-                  "properties": {
-                    "esInhabil": {
-                      "description": "Bandera que indica si la fecha proporcionada es un día inhábil.",
-                      "type": "boolean",
-                      "example": "false"
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "fecha"
+                    ],
+                    "properties": {
+                      "fecha": {
+                        "description": "Fecha del día inhábil.",
+                        "type": "string",
+                        "format": "date",
+                        "example": "21-03-2019"
+                      }
                     }
                   }
                 }
@@ -19468,7 +19489,7 @@
                 },
                 "responseError": {
                   "type": "string",
-                  "example": "Error interno en el servidor."
+                  "example": "Ocurrió un error en el sistema."
                 }
               }
             }

@@ -3568,7 +3568,8 @@ const tasasCede = {
     "tasa": 0.3,
 		"montoInicial": 0.0,    
 		"montoFinal": 1000000.00,
-		"plazo": 30
+		"plazo": 30,
+        "persona": "MORAL"
 	}],
 	"responseStatus": 200,
 	"responseError": ""
