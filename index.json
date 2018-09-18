@@ -8348,8 +8348,7 @@
                 "ticket",
                 "canal",
                 "horasEjecucion",
-                "cuentasDestino",
-                "tipoPersona"
+                "cuentasDestino"
               ],
               "properties": {
                 "idPersona": {
@@ -8398,11 +8397,6 @@
                   "type": "string",
                   "minLength": 1,
                   "example": "WEB"
-                },
-                "tipoPersona": {
-                  "description": "Cadena para identificar el tipo de persona. Los valores pueden ser FISICA o MORAL",
-                  "type": "string",
-                  "example": "FISICA"
                 },
                 "horasEjecucion": {
                   "description": "Horas en las que se realizará la ejecución del barrido.",

@@ -3477,7 +3477,7 @@ const ejecutaTransaccion = {
   "responseError": "",
   "result": {
     "estatus": "NOT_APPLIED",
-    "folioMultivanet": "222",
+    "folioMultivanet": "0944",
     "folio": " ",
     "monto": 123456.1,
     "montoComision": 12345.1,
