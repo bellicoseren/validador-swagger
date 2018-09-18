@@ -3473,8 +3473,18 @@ const consultaLotes = {
 }
 
 const ejecutaTransaccion = {
+  "responseStatus": 200,
   "responseError": "",
-  "responseStatus": 200
+  "result": {
+    "estatus": "NOT_APPLIED",
+    "folioMultivanet": "222",
+    "folio": " ",
+    "monto": 123456.1,
+    "montoComision": 12345.1,
+    "ivaComision": 0.1,
+    "iva": 0.12,
+
+  }
 }
 
 const catDispositivosMoviles = {
